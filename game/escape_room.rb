@@ -1,21 +1,6 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-# ROOM_NAMES = [
-#   "Glowing Light Room",
-#   "Musty Library",
-#   "Treasure Chamber",
-#   "Dark Cellar",
-#   "Jacuzzi Room",
-#   "Dracula's Royce",
-#   "Dining Room",
-#   "Up to the Roof",
-#   "The Lounge",
-#   "Secret door behind the painting of the old woman",
-#   "Trapdoor under the carpet",
-#   "Try to climb through the window"
-# ]
-
 ROOM_NAMES = [
   { name: "Glowing Light Room", probability: (1..10).to_a },
   { name: "Musty Library", probability: (1..10).to_a },
@@ -30,6 +15,10 @@ ROOM_NAMES = [
   { name: "Trapdoor under the carpet", probability: (1..10).to_a },
   { name: "Try to climb through the window", probability: (1..10).to_a }
 ]
+
+def inside_room(selected_room, enemy, weapon, player, second_enemy)
+  puts selected_room
+end
 
 def explore_rooms(enemy, weapon, player, second_enemy)
   selected_rooms = ROOM_NAMES.sample(3).map(&:dup)  # Create a deep copy of selected rooms
@@ -50,6 +39,6 @@ def explore_rooms(enemy, weapon, player, second_enemy)
     puts "Don't be a pillock!"
     user_choice = gets.chomp.to_i
   end
-
-  puts "testing"
+  selected_room = selected_rooms[user_choice - 1]
+  inside_room(selected_room, enemy, weapon, player, second_enemy)
 end
