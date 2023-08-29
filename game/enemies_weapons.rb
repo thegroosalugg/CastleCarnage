@@ -14,7 +14,7 @@ def random_enemy
     { name: "Werewolf 🐺", hp: rand(40..50), attack: (12..18).to_a, block: (3..8).to_a },
     { name: "Werewolf Horde 🐺🐺🐺", hp: rand(80..120), attack: (25..40).to_a, block: (6..18).to_a },
     { name: "Robot from the future 🤖", hp: rand(60..80), attack: (18..25).to_a, block: (5..15).to_a },
-    { name: "Dragon 🐉", hp: rand(100..150), attack: (30..50).to_a, block: (10..25).to_a },
+    { name: "Dragon 🐉", hp: rand(100..150), attack: (30..50).to_a, block: (5..20).to_a },
   ]
 
   enemies.sample
