@@ -38,7 +38,7 @@ while enemy[:hp] > 0 && player[:hp] > 0
 
   elsif user_action == "y"
     print `clear`
-    explore_rooms(enemy, weapon, player, second_enemy)
+    weapon, second_enemy = explore_rooms(enemy, weapon, player, second_enemy)
 
   else
     print `clear`

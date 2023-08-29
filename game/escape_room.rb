@@ -21,31 +21,32 @@ def inside_room(selected_room, enemy, weapon, player, second_enemy)
   puts "#{selected_room[:probability]}"
   randomizer = rand(5..25)
   case selected_room[:probability]
-  # when 1..3
-  #   player[:hp] += randomizer
-  #   puts "Holy shit! Some food! Better eat up. You gained #{randomizer} HP!"
-  # when 4..6
-  #   enemy[:hp] += randomizer
-  #   puts "Blyat! Shouldn't have some here. Enemy gained #{randomizer} HP!"
-  # when 6..9
-  #   player[:hp] -= randomizer
-  #   puts "Bollocks, you stepped into a bear trap, this is gonna cost ya! You lost #{randomizer} HP!"
-  # when 10..12
-  #   enemy[:hp] -= randomizer
-  #   puts "Booya, running after you the #{enemy[:name]} ate a bomb!. #{enemy[:name]} lost #{randomizer} HP"
-  when 1..10
+  when 1..3
+    player[:hp] += randomizer
+    puts "Holy shit! Some food! Better eat up. You gained #{randomizer} HP!"
+  when 4..6
+    enemy[:hp] += randomizer
+    puts "Blyat! Shouldn't have some here. Enemy gained #{randomizer} HP!"
+  when 6..9
+    player[:hp] -= randomizer
+    puts "Bollocks, you stepped into a bear trap, this is gonna cost ya! You lost #{randomizer} HP!"
+  when 10..12
+    enemy[:hp] -= randomizer
+    puts "Booya, running after you the #{enemy[:name]} ate a bomb!. #{enemy[:name]} lost #{randomizer} HP"
+  when 13..17
     weapon = pick_weapon
     puts "Gift! There's a #{weapon[:name]} here! Looks like the foot's on the other shoe!"
-  when 11..19
+  when 18
     if second_enemy.nil?
       second_enemy = random_enemy
       puts "Oh fuck! You just dun goofed, #{second_enemy[:name]} jumped out at you!"
     else
       puts "You have an ominous feeling someone was just here"
     end
-  # when 19
-  #   puts "You searched the room but found nothing."
+  when 19
+    puts "You searched the room but found nothing."
   end
+  return weapon, second_enemy
 end
 
 def explore_rooms(enemy, weapon, player, second_enemy)
