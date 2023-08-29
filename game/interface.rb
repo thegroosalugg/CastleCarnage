@@ -18,7 +18,6 @@ intro_weapon(weapon, enemy)
 puts "#{enemy[:name]} HP: #{enemy[:hp].to_i}"
 puts "Your 💖 HP: #{player[:hp].to_i}"
 
-# while (enemy[:hp] > 0 || enemy != nil) && (second_enemy[:hp] > 0 second_enemy != nil) && player[:hp] > 0
 while (enemy || second_enemy) && player[:hp] > 0
   puts "Whatcha ya gonna do?"
   puts "[t]⚔: T is for time to die fucker! [r]🤸‍♂️: Try a sommersault! [y]🏃‍♂️: Fuckin' leg it!"
@@ -56,10 +55,14 @@ while (enemy || second_enemy) && player[:hp] > 0
   end
 
   if enemy && enemy[:hp] <= 0
+    puts "#{enemy[:name]} died. Bully for you!"
+    tracked_enemy = enemy
     enemy = nil
   end
 
   if second_enemy && second_enemy[:hp] <= 0
+    puts "#{second_enemy[:name]} got blasted. "
+    tracked_enemy = second_enemy
     second_enemy = nil
   end
 
@@ -71,5 +74,4 @@ while (enemy || second_enemy) && player[:hp] > 0
 
 end
 
-# enemy == nil && second_enemy == nil ? win_message(enemy) : lose_message(enemy)
-enemy == nil && second_enemy == nil && player[:hp] > 0 ? win_message(enemy) : lose_message(enemy)
+enemy == nil && second_enemy == nil && player[:hp] > 0 ? win_message(tracked_enemy) : lose_message(tracked_enemy)
