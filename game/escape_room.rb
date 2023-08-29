@@ -70,16 +70,15 @@ def explore_rooms(enemy, weapon, player, second_enemy)
     puts "[#{i + 1}] (DEBUG: #{room[:probability]}) #{room[:name]}"
   end
 
-  user_choice = ""
+  user_choice = 0
 
   until [1, 2, 3].include?(user_choice)
+    user_choice = gets.chomp.to_i
     print `clear`
     state_of_game(enemy, second_enemy, player)
     puts "Don't be a pillock!"
     puts "______________________________________________________________________"
     selected_rooms.each_with_index { |room, i| puts "[#{i + 1}] (DEBUG: #{room[:probability]}) #{room[:name]}" }
-
-    user_choice = gets.chomp.to_i
   end
   selected_room = selected_rooms[user_choice - 1]
   inside_room(selected_room, enemy, weapon, player, second_enemy)
