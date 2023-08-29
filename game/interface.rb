@@ -7,7 +7,7 @@ require_relative 'escape_room'
 
 print `clear`
 
-player = { hp: rand(500..990), block: (1..10).to_a }
+player = { hp: rand(5000..9900), block: (1..10).to_a }
 enemy = random_enemy
 second_enemy = nil
 weapon = pick_weapon
@@ -18,7 +18,8 @@ intro_weapon(weapon, enemy)
 puts "#{enemy[:name]} HP: #{enemy[:hp].to_i}"
 puts "Your 💖 HP: #{player[:hp].to_i}"
 
-while (enemy != nil && second_enemy != nil) || player[:hp] > 0
+# while (enemy[:hp] > 0 || enemy != nil) && (second_enemy[:hp] > 0 second_enemy != nil) && player[:hp] > 0
+while (enemy || second_enemy) && player[:hp] > 0
   puts "Whatcha ya gonna do?"
   puts "[t]⚔: T is for time to die fucker! [r]🤸‍♂️: Try a sommersault! [y]🏃‍♂️: Fuckin' leg it!"
   user_action = gets.chomp.downcase
@@ -26,15 +27,11 @@ while (enemy != nil && second_enemy != nil) || player[:hp] > 0
   if user_action == "t"
     print `clear`
 
-    player_attack(enemy, weapon)
-    enemy_attack(enemy, player)
-    if second_enemy != nil
-      player_attack(second_enemy, weapon)
-      enemy_attack(second_enemy, player)
-    end
+    player_attack(enemy, weapon) if enemy
+    enemy_attack(enemy, player) if enemy
 
-  elsif user_action == "r"
-    print `clear`
+    player_attack(second_enemy, weapon) if second_enemy
+    enemy_attack(second_enemy, player) if second_enemy
 
   elsif user_action == "r"
     print `clear`
@@ -66,11 +63,13 @@ while (enemy != nil && second_enemy != nil) || player[:hp] > 0
     second_enemy = nil
   end
 
-
+  puts "______________________________________________________________________"
   puts "#{enemy[:name]} HP: #{enemy[:hp].to_i}" if enemy
   puts "#{second_enemy[:name]} HP: #{second_enemy[:hp].to_i}" if second_enemy
   puts "Your 💖 HP: #{player[:hp].to_i}"
+  puts "______________________________________________________________________"
 
 end
 
-enemy == nil && second_enemy == nil ? win_message(enemy) : lose_message(enemy)
+# enemy == nil && second_enemy == nil ? win_message(enemy) : lose_message(enemy)
+enemy == nil && second_enemy == nil && player[:hp] > 0 ? win_message(enemy) : lose_message(enemy)

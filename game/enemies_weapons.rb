@@ -29,7 +29,7 @@ def pick_weapon
     { name: "Sword 🗡️", damage: (15..25).to_a, durability: rand(3..4) },
     { name: "Magic Scepter ✨", damage: (10..20).to_a, durability: rand(3..4) },
     { name: "Fireball 🔥", damage: (20..30).to_a, durability: 1 },
-    { name: "Mace ⚒️", damage: (10..18).to_a, durability: rand(2..5) },
+    { name: "Mace 🎇", damage: (10..18).to_a, durability: rand(2..5) },
     { name: "Giant Club 🍢", damage: (20..35).to_a, durability: rand(3..6) },
     { name: "Long Bow 🏹", damage: (10..18).to_a, durability: rand(2..4) },
     { name: "Crossbow 🏹", damage: (12..20).to_a, durability: rand(2..4) },
