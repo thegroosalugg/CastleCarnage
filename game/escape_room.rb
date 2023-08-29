@@ -35,9 +35,8 @@ def explore_rooms(enemy, weapon, player, second_enemy)
 
   until [1, 2, 3].include?(user_choice)
     print `clear`
-    selected_rooms.each_with_index do |room, i|
-      puts "[#{i + 1}] (DEBUG: #{room[:probability]}) #{room[:name]}"
-    end
+    selected_rooms.each_with_index { |room, i| puts "[#{i + 1}] (DEBUG: #{room[:probability]}) #{room[:name]}" }
+
     puts "Don't be a pillock!"
     user_choice = gets.chomp.to_i
   end
