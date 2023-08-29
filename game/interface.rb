@@ -19,9 +19,17 @@ puts "#{enemy[:name]} HP: #{enemy[:hp].to_i}"
 puts "Your 💖 HP: #{player[:hp].to_i}"
 
 while (enemy || second_enemy) && player[:hp] > 0
-  puts "Whatcha ya gonna do?"
-  puts "[t]⚔: T is for time to die fucker! [r]🤸‍♂️: Try a sommersault! [y]🏃‍♂️: Fuckin' leg it!"
-  user_action = gets.chomp.downcase
+
+  if weapon[:durability] > 0
+    puts "Whatcha ya gonna do?"
+    puts "🐱‍👤[t]🗡️: T is for time to die fucker!"
+    puts "🤸‍♀️[r]🤸‍♂️: Try a sommersault!"
+    puts "🏃‍♀️[y]🏃‍♂️: Fuckin' leg it!"
+    user_action = gets.chomp.downcase
+  else
+    puts "Oh shit! Your #{weapon[:name]} broke! Better leg it!"
+    user_action = "y"
+  end
 
   if user_action == "t"
     print `clear`
@@ -46,7 +54,7 @@ while (enemy || second_enemy) && player[:hp] > 0
 
 
   elsif user_action == "y"
-    print `clear`
+    print `clear` if weapon[:durability] > 0
     enemy, weapon, second_enemy = explore_rooms(enemy, weapon, player, second_enemy)
 
   else
