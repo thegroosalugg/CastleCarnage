@@ -7,7 +7,7 @@ require_relative 'escape_room'
 
 print `clear`
 
-player = { hp: rand(5000..9900), block: (1..10).to_a }
+player = { hp: rand(50..99), block: (1..10).to_a }
 enemy = random_enemy
 second_enemy = nil
 weapon = pick_weapon
@@ -64,6 +64,12 @@ while (enemy || second_enemy) && player[:hp] > 0
     puts "#{second_enemy[:name]} got blasted. "
     tracked_enemy = second_enemy
     second_enemy = nil
+  end
+
+  if player[:hp] <= 0
+    tracked_enemy = second_enemy if second_enemy
+  else
+    tracked_enemy = enemy if enemy
   end
 
   puts "______________________________________________________________________"
