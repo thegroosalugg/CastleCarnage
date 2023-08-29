@@ -9,15 +9,17 @@ ROOM_NAMES = [
   { name: "Jacuzzi Room", probability: (1..10).to_a },
   { name: "Dracula's Royce", probability: (1..10).to_a },
   { name: "Dining Room", probability: (1..10).to_a },
-  { name: "Up to the Roof", probability: (1..10).to_a },
+  { name: "The Roof", probability: (1..10).to_a },
   { name: "The Lounge", probability: (1..10).to_a },
   { name: "Secret door behind the painting of the old woman", probability: (1..10).to_a },
   { name: "Trapdoor under the carpet", probability: (1..10).to_a },
-  { name: "Try to climb through the window", probability: (1..10).to_a }
+  { name: "Through the window", probability: (1..10).to_a }
 ]
 
 def inside_room(selected_room, enemy, weapon, player, second_enemy)
   puts selected_room
+  # case selected_room[:probability]
+  # when
 end
 
 def explore_rooms(enemy, weapon, player, second_enemy)
@@ -31,7 +33,7 @@ def explore_rooms(enemy, weapon, player, second_enemy)
   puts "Fuck, gotta pick a gaff quick, or I'm #{enemy[:name]} food!!"
   user_choice = gets.chomp.to_i
 
-  until user_choice == 1 || user_choice == 2 || user_choice == 3
+  until [1, 2, 3].include?(user_choice)
     print `clear`
     selected_rooms.each_with_index do |room, i|
       puts "[#{i + 1}] (DEBUG: #{room[:probability]}) #{room[:name]}"
