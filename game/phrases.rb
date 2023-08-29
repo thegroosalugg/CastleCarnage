@@ -21,6 +21,14 @@ def intro_weapon(weapon, enemy)
   puts weapon_phrases.sample
 end
 
+def state_of_game(enemy, second_enemy, player)
+  puts "______________________________________________________________________"
+  puts "#{enemy[:name]} HP: #{enemy[:hp].to_i}" if enemy
+  puts "#{second_enemy[:name]} HP: #{second_enemy[:hp].to_i}" if second_enemy
+  puts "💖 Your HP: #{player[:hp].to_i}"
+  puts "______________________________________________________________________"
+end
+
 def win_message(enemy)
   win_messages = [
     "You blasted #{enemy[:name]} to another dimension. Your power level has increased.",

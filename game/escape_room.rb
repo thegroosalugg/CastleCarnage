@@ -2,18 +2,18 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 ROOM_NAMES = [
-  { name: "Glowing Light Room 💡", probability: (1..9).to_a },
-  { name: "Musty Library 📙", probability: (1..9).to_a },
-  { name: "Treasure Chamber 🏴‍☠️", probability: (1..9).to_a },
-  { name: "Dark Cellar 😱", probability: (1..9).to_a },
-  { name: "Jacuzzi Room 🩲👙", probability: (1..9).to_a },
-  { name: "Dracula's Royce 🚓", probability: (1..9).to_a },
-  { name: "Dining Room 🍽", probability: (1..9).to_a },
-  { name: "The Roof 🏰🌔", probability: (1..9).to_a },
-  { name: "The Lounge 📺", probability: (1..9).to_a },
-  { name: "Secret door behind the painting of the old woman 🖼", probability: (1..9).to_a },
-  { name: "Trapdoor under the carpet 🕳", probability: (1..9).to_a },
-  { name: "Through the window 🔲", probability: (1..9).to_a }
+  { name: "💡 Glowing Light Room", probability: (1..9).to_a },
+  { name: "📙 Musty Library", probability: (1..9).to_a },
+  { name: "🏴‍☠️ Treasure Chamber", probability: (1..9).to_a },
+  { name: "😱 Dark Cellar", probability: (1..9).to_a },
+  { name: "🩲👙 Jacuzzi Room", probability: (1..9).to_a },
+  { name: "🚓 Dracula's Royce", probability: (1..9).to_a },
+  { name: "🍽 Dining Room", probability: (1..9).to_a },
+  { name: "🏰🌔 The Roof", probability: (1..9).to_a },
+  { name: "📺 The Lounge", probability: (1..9).to_a },
+  { name: "🖼 Secret door behind the painting of the old woman", probability: (1..9).to_a },
+  { name: "🕳 Trapdoor under the carpet", probability: (1..9).to_a },
+  { name: "🔲 Through the window", probability: (1..9).to_a }
 ]
 
 def inside_room(selected_room, enemy, weapon, player, second_enemy)
