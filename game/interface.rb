@@ -1,39 +1,58 @@
 # rubocop:disable all
 require_relative 'enemies_weapons'
+require_relative 'phrases'
+require_relative 'attack_mode'
+require_relative 'escape_room'
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 print `clear`
 
-player = { hp: 100, block: rand(1..10) }
+player = { hp: rand(50..99), block: (1..10).to_a }
 enemy = random_enemy
+second_enemy = nil
 weapon = pick_weapon
 
-puts "#{enemy[:name]} appeared"
-puts "There's a #{weapon[:name]} on the floor, better get it"
+intro_enemy(enemy)
+intro_weapon(weapon, enemy)
 
-while enemy[:hp] > 0
-  puts "What you gonna do?"
-  puts "[q]: Attack [w]: Block [e]: Dodge"
+puts "#{enemy[:name]} HP: #{enemy[:hp].to_i}"
+puts "Your 💖 HP: #{player[:hp].to_i}"
+
+while enemy[:hp] > 0 && player[:hp] > 0
+  puts "Whatcha ya gonna do?"
+  puts "[t]: T is for time to die fucker! [r]: Try a sommersault! [y]: Fuckin' leg it!"
   user_action = gets.chomp.downcase
 
-  if user_action == "q"
+  if user_action == "t"
     print `clear`
-    puts "#{enemy[:name]} HP: #{enemy[:hp]}"
 
-    # damage_dealt = weapon[:damage].sample - enemy[:block].sample
-    damage_dealt = [weapon[:damage].sample - enemy[:block].sample, 1].max
+    player_attack(enemy, weapon)
+    enemy_attack(enemy, player)
+    if second_enemy != nil
+      player_attack(second_enemy, weapon)
+      enemy_attack(second_enemy, player)
+    end
+  elsif user_action == "r"
+    print `clear`
+    somersault_attack(enemy, weapon, player)
 
-    enemy[:hp] -= damage_dealt
-    weapon[:durability] -= 1
-    puts "You attacked #{enemy[:name]} with #{weapon[:name]} for #{damage_dealt} damage!"
-  elsif user_action == "w"
-    # Implement blocking logic
-  elsif user_action == "e"
-    # Implement dodging logic
+  elsif user_action == "y"
+    print `clear`
+    explore_rooms(enemy, weapon, player, second_enemy)
+
   else
     print `clear`
     puts "Don't be a fool"
   end
+
+  if second_enemy.nil?
+    puts "#{enemy[:name]} HP: #{enemy[:hp].to_i}"
+    puts "Your 💖 HP: #{player[:hp].to_i}"
+  else
+    puts "#{enemy[:name]} HP: #{enemy[:hp].to_i}"
+    puts "#{second_enemy[:name]} HP: #{second_enemy[:hp].to_i}"
+    puts "Your 💖 HP: #{player[:hp].to_i}"
+  end
 end
 
-puts "#{enemy[:name]} defeated!"
+enemy[:hp] <= 0 ? win_message(enemy) : lose_message(enemy)

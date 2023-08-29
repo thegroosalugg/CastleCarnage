@@ -33,7 +33,7 @@ def pick_weapon
     { name: "Giant Club 🍢", damage: (20..35).to_a, durability: rand(3..6) },
     { name: "Long Bow 🏹", damage: (10..18).to_a, durability: rand(2..4) },
     { name: "Crossbow 🏹", damage: (12..20).to_a, durability: rand(2..4) },
-    { name: "Gatling Laser 🔫", damage: (25..40).to_a, durability: rand(5..8) },
+    { name: "Gatling Laser 🔫", damage: (25..40).to_a, durability: rand(3..4) },
   ]
 
   weapons.sample
