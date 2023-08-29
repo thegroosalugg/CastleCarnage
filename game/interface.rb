@@ -14,7 +14,7 @@ weapon = pick_weapon
 
 intro_enemy(enemy)
 intro_weapon(weapon, enemy)
-state_of_game(enemy, second_enemy, player)
+state_of_game(enemy, second_enemy, player, weapon)
 
 while (enemy || second_enemy) && player[:hp] > 0
 
@@ -27,7 +27,7 @@ while (enemy || second_enemy) && player[:hp] > 0
   else
     print `clear`
     puts "Oh shit! Your #{weapon[:name]} broke! Better leg it!"
-    # state_of_game(enemy, second_enemy, player)
+    # state_of_game(enemy, second_enemy, player, weapon)
     user_action = "y"
   end
 
@@ -57,8 +57,9 @@ while (enemy || second_enemy) && player[:hp] > 0
 
   elsif user_action == "y"
     print `clear` if weapon[:durability] >= 1
-    state_of_game(enemy, second_enemy, player)
+    state_of_game(enemy, second_enemy, player, weapon)
     enemy, weapon, second_enemy = explore_rooms(enemy, weapon, player, second_enemy)
+
 
   else
     print `clear`
@@ -84,7 +85,7 @@ while (enemy || second_enemy) && player[:hp] > 0
     tracked_enemy = enemy if enemy
   end
 
-  state_of_game(enemy, second_enemy, player)
+  state_of_game(enemy, second_enemy, player, weapon)
 end
 
 enemy == nil && second_enemy == nil && player[:hp] > 0 ? win_message(tracked_enemy) : lose_message(tracked_enemy)

@@ -21,11 +21,12 @@ def intro_weapon(weapon, enemy)
   puts weapon_phrases.sample
 end
 
-def state_of_game(enemy, second_enemy, player)
-  puts "______________________________________________________________________"
+def state_of_game(enemy, second_enemy, player, weapon)
+puts "______________________________________________________________________"
   puts "#{enemy[:name]} HP: #{enemy[:hp].to_i}" if enemy
   puts "#{second_enemy[:name]} HP: #{second_enemy[:hp].to_i}" if second_enemy
   puts "💖 Your HP: #{player[:hp].to_i}"
+  puts "⚔ Weapon: #{weapon[:name]} [DEBUG: #{weapon[:durability]}]"
   puts "______________________________________________________________________"
 end
 
