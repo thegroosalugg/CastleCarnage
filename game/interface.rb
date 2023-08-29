@@ -25,6 +25,7 @@ while (enemy || second_enemy) && player[:hp] > 0
     puts "  👟  [y]: Fuckin' leg it!"
     user_action = gets.chomp.downcase
   else
+    print `clear`
     puts "Oh shit! Your #{weapon[:name]} broke! Better leg it!"
     user_action = "y"
   end

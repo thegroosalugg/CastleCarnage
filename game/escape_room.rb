@@ -17,6 +17,7 @@ ROOM_NAMES = [
 ]
 
 def inside_room(selected_room, enemy, weapon, player, second_enemy)
+  print `clear`
   puts "You bolted off to the #{selected_room[:name]}"
   puts "#{selected_room[:probability]}"
   randomizer = rand(5..25)
