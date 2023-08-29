@@ -25,9 +25,6 @@ while (enemy || second_enemy) && player[:hp] > 0
     puts "  👟  [y]: Fuckin' leg it!"
     user_action = gets.chomp.downcase
   else
-    print `clear`
-    puts "Oh shit! Your #{weapon[:name]} broke! Better leg it!"
-    # state_of_game(enemy, second_enemy, player, weapon)
     user_action = "y"
   end
 
@@ -57,7 +54,8 @@ while (enemy || second_enemy) && player[:hp] > 0
 
   elsif user_action == "y"
     print `clear` if weapon[:durability] >= 1
-    state_of_game(enemy, second_enemy, player, weapon)
+    puts "Oh shit! Your #{weapon[:name]} broke! Better leg it!" if weapon[:durability] <= 0
+    state_of_game(enemy, second_enemy, player, weapon) if weapon[:durability] > 0
     enemy, weapon, second_enemy = explore_rooms(enemy, weapon, player, second_enemy)
 
 
