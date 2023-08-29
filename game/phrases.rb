@@ -37,6 +37,7 @@ def win_message(enemy)
   ]
 
   puts win_messages.sample
+  puts "______________________________________________________________________"
 end
 
 def lose_message(enemy)
@@ -47,4 +48,5 @@ def lose_message(enemy)
   ]
 
   puts lose_messages.sample
+  puts "______________________________________________________________________"
 end
