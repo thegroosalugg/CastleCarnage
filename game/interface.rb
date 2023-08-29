@@ -28,10 +28,10 @@ while enemy[:hp] > 0 && player[:hp] > 0
 
     player_attack(enemy, weapon)
     enemy_attack(enemy, player)
-    # if second_enemy != nil
-    #   player_attack(second_enemy, weapon)
-    #   enemy_attack(second_enemy, player)
-    # end
+    if second_enemy != nil
+      player_attack(second_enemy, weapon)
+      enemy_attack(second_enemy, player)
+    end
   elsif user_action == "r"
     print `clear`
     somersault_attack(enemy, weapon, player)
@@ -45,14 +45,14 @@ while enemy[:hp] > 0 && player[:hp] > 0
     puts "Don't be a fool"
   end
 
-  # if second_enemy.nil?
+  if second_enemy.nil?
     puts "#{enemy[:name]} HP: #{enemy[:hp].to_i}"
     puts "Your 💖 HP: #{player[:hp].to_i}"
-  # else
-  #   puts "#{enemy[:name]} HP: #{enemy[:hp].to_i}"
-  #   puts "#{second_enemy[:name]} HP: #{second_enemy[:hp].to_i}"
-  #   puts "Your 💖 HP: #{player[:hp].to_i}"
-  # end
+  else
+    puts "#{enemy[:name]} HP: #{enemy[:hp].to_i}"
+    puts "#{second_enemy[:name]} HP: #{second_enemy[:hp].to_i}"
+    puts "Your 💖 HP: #{player[:hp].to_i}"
+  end
 end
 
 enemy[:hp] <= 0 ? win_message(enemy) : lose_message(enemy)
