@@ -7,7 +7,7 @@ require_relative 'escape_room'
 
 print `clear`
 
-player = { hp: rand(500..990), block: (1..10).to_a }
+player = { hp: rand(50..99), block: (1..10).to_a }
 enemy = random_enemy
 second_enemy = nil
 weapon = pick_weapon
@@ -58,7 +58,6 @@ while (enemy || second_enemy) && player[:hp] > 0
       enemy_attack(enemy, player) if enemy
       enemy_attack(second_enemy, player) if second_enemy
     end
-
     state_of_game(enemy, second_enemy, player, weapon) unless weapon_broken
     enemy, weapon, second_enemy = explore_rooms(enemy, weapon, player, second_enemy)
 
@@ -67,13 +66,13 @@ while (enemy || second_enemy) && player[:hp] > 0
   end
 
   if enemy && enemy[:hp] <= 0
-    puts "#{enemy[:name]} died. Bully for you!"
+    enemy_killed(enemy)
     tracked_enemy = enemy
     enemy = nil
   end
 
   if second_enemy && second_enemy[:hp] <= 0
-    puts "#{second_enemy[:name]} got blasted. "
+    enemy_killed(second_enemy)
     tracked_enemy = second_enemy
     second_enemy = nil
   end

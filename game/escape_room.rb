@@ -25,19 +25,19 @@ def inside_room(selected_room, enemy, weapon, player, second_enemy)
   randomizer = rand(5..25)
   case selected_room[:probability]
   when 1
-    player[:hp] += randomizer
     puts "Holy shit! Some food! Better eat up. You gained #{randomizer} HP!"
+    player[:hp] += randomizer
   when 2
+    puts "Blyat! Shouldn't have come here. Enemy gained #{randomizer} HP!"
     enemy[:hp] += randomizer if enemy
     second_enemy[:hp] += randomizer if second_enemy
-    puts "Blyat! Shouldn't have come here. Enemy gained #{randomizer} HP!"
   when 3
-    player[:hp] -= randomizer
     puts "Bollocks, you stepped into a bear trap, this is gonna cost ya! You lost #{randomizer} HP!"
+    player[:hp] -= randomizer
   when 4
-    enemy[:hp] -= randomizer if enemy
-    second_enemy[:hp] += randomizer if second_enemy
     puts "Booya, running after you the #{enemy[:name]} ate a bomb!. #{enemy[:name]} lost #{randomizer} HP"
+    enemy[:hp] -= randomizer if enemy
+    second_enemy[:hp]-= randomizer if second_enemy
   when 5..7
     weapon = pick_weapon
     puts "Gift! There's a #{weapon[:name]} here! Looks like the foot's on the other shoe!"

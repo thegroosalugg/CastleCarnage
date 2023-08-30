@@ -73,6 +73,15 @@ def weapon_broke(weapon)
   puts weapon_messages.sample
 end
 
+def enemy_killed(enemy)
+  enemy_messages = [
+    "#{enemy[:name]} died. Bully for you!",
+    "You blasted #{enemy[:name]}! Flawless Victory.",
+  ]
+  puts "______________________________________________________________________"
+  puts enemy_messages.sample
+end
+
 # END OF GAME MESSAGES
 
 def win_message(enemy)
