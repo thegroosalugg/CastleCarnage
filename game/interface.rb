@@ -10,7 +10,7 @@ require_relative 'messages/explore_messages.rb'
 
 print `clear`
 
-player = { hp: rand(200..300), block: (1..10).to_a }
+player = { hp: rand(20..30), block: (1..10).to_a }
 enemy = random_enemy
 second_enemy = nil
 weapon = pick_weapon

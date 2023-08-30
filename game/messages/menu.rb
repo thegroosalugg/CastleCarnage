@@ -32,3 +32,33 @@ def load_menu
   puts r.sample
   puts y.sample
 end
+
+# GAME STATUS
+
+def state_of_game(enemy, second_enemy, player, weapon)
+  puts "----------------------------------------------------------------------"
+  puts "    #{enemy[:name]} HP: #{enemy[:hp].to_i}" if enemy
+  puts "    #{second_enemy[:name]} HP: #{second_enemy[:hp].to_i}" if second_enemy
+  puts "    💖 Your HP: #{player[:hp].to_i}"
+  puts "    ⚔  Weapon: #{weapon[:name]} [DEBUG: #{weapon[:durability]}]" if weapon[:durability] > 0
+  puts "----------------------------------------------------------------------"
+end
+
+# ERROR MESSAGES
+
+def error_message
+  errors = [
+    "***********************❌ Don't be a pillock ‼ ***********************",
+    "***********************❌ Don't be a plum ‼ **************************",
+    "***********************❌ Don't be a plank ‼ *************************",
+    "***********************❌ Don't be a plonka ‼ ************************",
+    "***********************❌ Don't be a fool ‼ **************************",
+    "***********************❌ Quit clowning around ‼ *********************",
+    "***********************❌ Nobody likes a joker ‼ *********************",
+  ]
+
+  print `clear`
+  puts "----------------------------------------------------------------------"
+  puts errors.sample
+  puts "----------------------------------------------------------------------"
+end
