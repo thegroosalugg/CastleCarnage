@@ -26,7 +26,7 @@ puts "______________________________________________________________________"
   puts "#{enemy[:name]} HP: #{enemy[:hp].to_i}" if enemy
   puts "#{second_enemy[:name]} HP: #{second_enemy[:hp].to_i}" if second_enemy
   puts "💖 Your HP: #{player[:hp].to_i}"
-  puts "⚔ Weapon: #{weapon[:name]} [DEBUG: #{weapon[:durability]}]"
+  puts "⚔ Weapon: #{weapon[:name]} [DEBUG: #{weapon[:durability]}]" if weapon[:durability] > 0
   puts "______________________________________________________________________"
 end
 
@@ -44,6 +44,16 @@ def error_message
   puts "______________________________________________________________________"
   puts errors.sample
   puts "______________________________________________________________________"
+end
+
+def weapon_broke(weapon)
+  weapon_messages = [
+    "Oh shit! Your #{weapon[:name]} broke. Better leg it!",
+    "Motherfucker! you dropped your #{weapon[:name]}! No time to pick it, gotta bolt!",
+    "While swinging about your #{weapon[:name]} slipped out of your hand and flew out of a window. Time to split!"
+  ]
+
+  puts weapon_messages.sample
 end
 
 def win_message(enemy)
