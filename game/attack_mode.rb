@@ -6,9 +6,9 @@ def player_attack(enemy, weapon)
   if rand(1..10) == 1
     critical_damage = damage_dealt * rand(1.4..2.0)
     enemy[:hp] -= critical_damage
-    puts "Critical Hit! You smashed #{enemy[:name]} with your #{weapon[:name]} for #{critical_damage.to_i} damage!"
+    puts "Critical🌟! You smashed #{enemy[:name]} with your #{weapon[:name]} for #{critical_damage.to_i} damage!"
   elsif rand(1..10) == 2
-    puts "While charging the enemy you wanked it up and fell on your face, dealing absolutely no damage. You plank."
+    puts "While charging the enemy you wanked it up and fell on your face 😣, dealing absolutely no damage. You plank."
     weapon[:durability] += 1
   else
     enemy[:hp] -= damage_dealt
@@ -22,9 +22,9 @@ def enemy_attack(enemy, player)
   if rand(1..10) == 1
     enemy_critical = enemy_damage * rand(1.4..2.0)
     player[:hp] -= enemy_critical
-    puts "Oh Shit! #{enemy[:name]} battered you for #{enemy_critical.to_i} critical damage! You look like a mashed potato mate!"
+    puts "Oh Shit! #{enemy[:name]} battered you for #{enemy_critical.to_i} critical🌟 damage! You look like a mashed potato mate!"
   elsif rand(1..10) == 2
-    puts "#{enemy[:name]} got confused and ran straight into a wall, you got lucky."
+    puts "#{enemy[:name]} got confused and ran straight into a wall 😣, you got lucky."
   else
     player[:hp] -= enemy_damage
     puts "The #{enemy[:name]} struck you back for #{enemy_damage} damage! Better think fast"
