@@ -22,7 +22,7 @@ def inside_room(selected_room, enemy, weapon, player, second_enemy)
 
   puts "[DEBUG: #{selected_room[:probability]}]"
 
-  randomizer = rand(5..25)
+  randomizer = rand(1..8) == 1 ? rand(30..120) : rand(20..50)
   case selected_room[:probability]
   when 1
     puts "Holy shit! Some food! Better eat up. You gained #{randomizer} HP!"
@@ -39,7 +39,7 @@ def inside_room(selected_room, enemy, weapon, player, second_enemy)
     enemy[:hp] -= randomizer if enemy
     second_enemy[:hp]-= randomizer if second_enemy
   when 5..7
-    weapon = pick_weapon
+    weapon = rand(1..5) == 1 ? special_weapon : pick_weapon
     puts "Gift! There's a #{weapon[:name]} here! Looks like the foot's on the other shoe!"
   when 8
     if second_enemy.nil?

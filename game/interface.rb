@@ -7,7 +7,7 @@ require_relative 'escape_room'
 
 print `clear`
 
-player = { hp: rand(50..99), block: (1..10).to_a }
+player = { hp: rand(200..300), block: (1..10).to_a }
 enemy = random_enemy
 second_enemy = nil
 weapon = pick_weapon
@@ -38,7 +38,6 @@ while (enemy || second_enemy) && player[:hp] > 0
     puts "----------------------------------------------------------------------" if second_enemy
     player_attack(second_enemy, weapon) if second_enemy
     enemy_attack(second_enemy, player) if second_enemy
-    puts "----------------------------------------------------------------------" if second_enemy
 
   elsif user_action == "r"
     print `clear`
@@ -55,7 +54,9 @@ while (enemy || second_enemy) && player[:hp] > 0
   elsif user_action == "y"
     print `clear` unless weapon_broken
     if rand(1..5) == 1
+      random_attack_message(enemy) if enemy
       enemy_attack(enemy, player) if enemy
+      random_attack_message(second_enemy) if second_enemy
       enemy_attack(second_enemy, player) if second_enemy
     end
     state_of_game(enemy, second_enemy, player, weapon) unless weapon_broken

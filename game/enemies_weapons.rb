@@ -22,19 +22,30 @@ end
 
 def pick_weapon
   weapons = [
-    { name: "🏏 Baseball Bat", damage: (5..10).to_a, durability: rand(2..3) },
-    { name: "🥊 Punching Glove", damage: (3..7).to_a, durability: rand(2..3) },
-    { name: "🪓 Axe", damage: (8..15).to_a, durability: rand(3..4) },
-    { name: "🗡 Dagger", damage: (10..18).to_a, durability: rand(3..4) },
-    { name: "🗡️ Sword", damage: (15..25).to_a, durability: rand(3..4) },
-    { name: "✨ Magic Scepter", damage: (10..20).to_a, durability: rand(3..4) },
-    { name: "🔥 Fireball", damage: (20..30).to_a, durability: 1 },
-    { name: "🎇 Mace", damage: (10..18).to_a, durability: rand(2..5) },
+    { name: "🏏 Baseball Bat", damage: (20..30).to_a, durability: rand(2..5) },
+    { name: "🥊 Punching Glove", damage: (10..30).to_a, durability: rand(2..3) },
+    { name: "🪓 Axe", damage: (25..40).to_a, durability: rand(3..4) },
+    { name: "🪒 Occam's Razor", damage: (15..35).to_a, durability: rand(1..3) },
+    { name: "🗡 Dagger", damage: (10..45).to_a, durability: rand(1..4) },
+    { name: "🗡️ Sword", damage: (15..50).to_a, durability: rand(2..4) },
+    { name: "🎇 Mace", damage: (16..48).to_a, durability: rand(2..5) },
     { name: "🍢 Giant Club", damage: (20..35).to_a, durability: rand(3..6) },
-    { name: "🏹 Long Bow", damage: (10..18).to_a, durability: rand(2..4) },
-    { name: "🏹 Crossbow", damage: (12..20).to_a, durability: rand(2..4) },
-    { name: "🔫 Gatling Laser", damage: (25..40).to_a, durability: rand(3..4) },
+    { name: "✨ Magic Scepter", damage: (1..60).to_a, durability: rand(1..4) },
+    { name: "🏹 Long Bow", damage: (10..90).to_a, durability: rand(1..4) },
+    { name: "🏹 Crossbow", damage: (20..80).to_a, durability: rand(1..3) },
   ]
 
   weapons.sample
+end
+
+def special_weapon
+  special_weapons = [
+    { name: "🔫 Gatling Laser", damage: (25..60).to_a, durability: rand(3..4) },
+    { name: "🔥 Fireball", damage: (40..80).to_a, durability: 1 },
+    { name: "💣 Bobomb", damage: (25..100).to_a, durability: 1 },
+    { name: "🛫 Air Strike", damage: (30..120).to_a, durability: 1 },
+    { name: "🦄 Unicorn", damage: (10..90).to_a, durability: rand(2..3) },
+  ]
+
+  special_weapons.sample
 end

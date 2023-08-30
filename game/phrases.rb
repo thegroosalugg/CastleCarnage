@@ -5,9 +5,9 @@
 
 def intro_enemy(enemy)
   enemy_phrases = [
-    "#{enemy[:name]} busted through the door, they're stark raving mad. They're out for blood!",
-    "You got too pissed and ended up in castle, a #{enemy[:name]} jumped from the ceiling, 'You goon get it now boy!'",
-    "You got caught ganking hooch from the butcher's, the clerics set the #{enemy[:name]} on you!"
+    "#{enemy[:name]} busted through the 🚪 door, they're stark raving mad. They're out for 🔪 blood!",
+    "You got proper pissed 🍷 and ended up in some 🏰 castle, a #{enemy[:name]} jumped from the ceiling, 'You goon get it now boy!'",
+    "You got caught ganking 🍻 hooch from the 🏡 package store, the 👩🏿‍🤝‍🧑🏿👨🏽‍🤝‍👨🏼townsfolk set the #{enemy[:name]} on you!"
   ]
 
   puts enemy_phrases.sample
@@ -17,7 +17,7 @@ def intro_weapon(weapon, enemy)
   weapon_phrases = [
     "There's a #{weapon[:name]} on the floor, better get that. We won't get got, we gone get!",
     "You pull out your trusty #{weapon[:name]} from your trench coat and tip your fedora, 'The only thing sharper than my #{weapon[:name]} is my wit m'lady'",
-    "You teleport behind #{enemy[:name]} and withdraw your #{weapon[:name]}, 'Nothing personnel, kid'"
+    "You ✨teleport behind #{enemy[:name]} and withdraw your #{weapon[:name]}, 'Nothing personnel, kid'"
   ]
 
   puts weapon_phrases.sample
@@ -28,11 +28,11 @@ end
 def load_menu
   puts "       Whatcha ya gonna do?"
   puts "🐱‍👤 [t]: T is for time to die fucker!"
-  puts "  ➰  [r]: Try a sommersault!"
-  puts "  👟  [y]: Fuckin' leg it!"
+  puts "🐱‍🏍  [r]: Try a sommersault!"
+  puts " 💨   [y]: Fuckin' leg it!"
 end
 
-# DYNAMIC ENEMY AND PLAYER STATUS
+# ENEMY AND PLAYER STATUS
 
 def state_of_game(enemy, second_enemy, player, weapon)
   puts "----------------------------------------------------------------------"
@@ -52,7 +52,8 @@ def error_message
     "***********************❌ Don't be a plank ‼ *************************",
     "***********************❌ Don't be a plonka ‼ ************************",
     "***********************❌ Don't be a fool ‼ **************************",
-    "***********************❌ Quit clowning around ‼ *********************"
+    "***********************❌ Quit clowning around ‼ *********************",
+    "***********************❌ Nobody likes a joker ‼ *********************",
   ]
 
   print `clear`
@@ -66,17 +67,37 @@ end
 def weapon_broke(weapon)
   weapon_messages = [
     "😲 Oh shit! Your #{weapon[:name]} broke. Better leg it!",
-    "😲 Motherfucker! you dropped your #{weapon[:name]}! No time to pick it, gotta bolt!",
-    "😲 While swinging about your #{weapon[:name]} slipped out of your hand and flew out of a window. Time to split!"
+    "😲 Motherfucker! you dropped your #{weapon[:name]}! No time to nab it, gotta bolt!",
+    "😲 Bollocks, your #{weapon[:name]} slipped out of your hand and flew out of the window. Time to split!"
   ]
 
   puts weapon_messages.sample
 end
 
+def random_attack_message(enemy)
+  messages = [
+    "👥You tried to leg it but #{enemy[:name]} jumped ya. Bugger it.",
+    "🙈You stacked it on your way out and let #{enemy[:name]} get the drop on you, watch out!",
+    "#{enemy[:name]} ✨ teleports in front of the door",
+    "You slipped on a 🍌 banana and #{enemy[:name]} jumped you!",
+    "#{enemy[:name]} did a mental 🐱‍🏍 backflip and landed in front of you!",
+    "#{enemy[:name]}: 'Get back 'ere yer scum!'",
+    "#{enemy[:name]}: 'Yar think ye can get away from me?'",
+  ]
+
+  puts messages.sample
+end
+
 def enemy_killed(enemy)
   enemy_messages = [
-    "#{enemy[:name]} died. Bully for you!",
-    "You blasted #{enemy[:name]}! Flawless Victory.",
+    "#{enemy[:name]} died. 🎯 Bully for you!",
+    "You blasted #{enemy[:name]}! 💎 Flawless Victory.",
+    "#{enemy[:name]} got got 👀",
+    "#{enemy[:name]} was anhialated ☠",
+    "#{enemy[:name]} got gatted 🤺",
+    "#{enemy[:name]} is sleeping with the fishes 🐟",
+    "#{enemy[:name]} took the 🚂 midnight train to slab city",
+    "#{enemy[:name]} turned into a ghost, whooo 👻",
   ]
   puts "----------------------------------------------------------------------"
   puts enemy_messages.sample
