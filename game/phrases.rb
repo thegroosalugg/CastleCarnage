@@ -48,9 +48,9 @@ end
 
 def weapon_broke(weapon)
   weapon_messages = [
-    "Oh shit! Your #{weapon[:name]} broke. Better leg it!",
-    "Motherfucker! you dropped your #{weapon[:name]}! No time to pick it, gotta bolt!",
-    "While swinging about your #{weapon[:name]} slipped out of your hand and flew out of a window. Time to split!"
+    "😲 Oh shit! Your #{weapon[:name]} broke. Better leg it!",
+    "😲 Motherfucker! you dropped your #{weapon[:name]}! No time to pick it, gotta bolt!",
+    "😲 While swinging about your #{weapon[:name]} slipped out of your hand and flew out of a window. Time to split!"
   ]
 
   puts weapon_messages.sample
