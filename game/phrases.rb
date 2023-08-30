@@ -23,7 +23,7 @@ def intro_weapon(weapon, enemy)
   puts weapon_phrases.sample
 end
 
-# ENEMY AND PLAYER STATUS
+# GAME STATUS
 
 def state_of_game(enemy, second_enemy, player, weapon)
   puts "----------------------------------------------------------------------"
@@ -53,7 +53,7 @@ def error_message
   puts "----------------------------------------------------------------------"
 end
 
-# DYNAMIC GAME MESSAGES
+# COMBAT MESSAGES
 
 def weapon_broke(weapon)
   weapon_messages = [
