@@ -35,10 +35,10 @@ while (enemy || second_enemy) && player[:hp] > 0
     player_attack(enemy, weapon) if enemy
     enemy_attack(enemy, player) if enemy
 
-    puts "______________________________________________________________________" if second_enemy
+    puts "----------------------------------------------------------------------" if second_enemy
     player_attack(second_enemy, weapon) if second_enemy
     enemy_attack(second_enemy, player) if second_enemy
-    puts "______________________________________________________________________" if second_enemy
+    puts "----------------------------------------------------------------------" if second_enemy
 
   elsif user_action == "r"
     print `clear`

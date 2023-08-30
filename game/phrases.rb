@@ -26,7 +26,7 @@ end
 # MAIN MENU
 
 def load_menu
-  puts "Whatcha ya gonna do?"
+  puts "       Whatcha ya gonna do?"
   puts "🐱‍👤 [t]: T is for time to die fucker!"
   puts "  ➰  [r]: Try a sommersault!"
   puts "  👟  [y]: Fuckin' leg it!"
@@ -35,30 +35,30 @@ end
 # DYNAMIC ENEMY AND PLAYER STATUS
 
 def state_of_game(enemy, second_enemy, player, weapon)
-puts "______________________________________________________________________"
-  puts "#{enemy[:name]} HP: #{enemy[:hp].to_i}" if enemy
-  puts "#{second_enemy[:name]} HP: #{second_enemy[:hp].to_i}" if second_enemy
-  puts "💖 Your HP: #{player[:hp].to_i}"
-  puts "⚔  Weapon: #{weapon[:name]} [DEBUG: #{weapon[:durability]}]" if weapon[:durability] > 0
-  puts "______________________________________________________________________"
+  puts "----------------------------------------------------------------------"
+  puts "    #{enemy[:name]} HP: #{enemy[:hp].to_i}" if enemy
+  puts "    #{second_enemy[:name]} HP: #{second_enemy[:hp].to_i}" if second_enemy
+  puts "    💖 Your HP: #{player[:hp].to_i}"
+  puts "    ⚔  Weapon: #{weapon[:name]} [DEBUG: #{weapon[:durability]}]" if weapon[:durability] > 0
+  puts "----------------------------------------------------------------------"
 end
 
 # ERROR MESSAGES
 
 def error_message
   errors = [
-    "❌ Don't be a pillock ‼",
-    "❌ Don't be a plum ‼",
-    "❌ Don't be a plank ‼",
-    "❌ Don't be a plonka ‼",
-    "❌ Don't be a fool ‼",
-    "❌ Quit clowning around ‼"
+    "***********************❌ Don't be a pillock ‼ ***********************",
+    "***********************❌ Don't be a plum ‼ **************************",
+    "***********************❌ Don't be a plank ‼ *************************",
+    "***********************❌ Don't be a plonka ‼ ************************",
+    "***********************❌ Don't be a fool ‼ **************************",
+    "***********************❌ Quit clowning around ‼ *********************"
   ]
 
   print `clear`
-  puts "______________________________________________________________________"
+  puts "----------------------------------------------------------------------"
   puts errors.sample
-  puts "______________________________________________________________________"
+  puts "----------------------------------------------------------------------"
 end
 
 # DYNAMIC GAME MESSAGES
@@ -78,7 +78,7 @@ def enemy_killed(enemy)
     "#{enemy[:name]} died. Bully for you!",
     "You blasted #{enemy[:name]}! Flawless Victory.",
   ]
-  puts "______________________________________________________________________"
+  puts "----------------------------------------------------------------------"
   puts enemy_messages.sample
 end
 
@@ -92,7 +92,7 @@ def win_message(enemy)
   ]
 
   puts win_messages.sample
-  puts "______________________________________________________________________"
+  puts "----------------------------------------------------------------------"
 end
 
 def lose_message(enemy)
@@ -103,5 +103,5 @@ def lose_message(enemy)
   ]
 
   puts lose_messages.sample
-  puts "______________________________________________________________________"
+  puts "----------------------------------------------------------------------"
 end
