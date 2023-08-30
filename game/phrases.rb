@@ -23,15 +23,6 @@ def intro_weapon(weapon, enemy)
   puts weapon_phrases.sample
 end
 
-# MAIN MENU
-
-def load_menu
-  puts "       Whatcha ya gonna do?"
-  puts "🐱‍👤 [t]: T is for time to die fucker!"
-  puts "🐱‍🏍  [r]: Try a sommersault!"
-  puts " 💨   [y]: Fuckin' leg it!"
-end
-
 # ENEMY AND PLAYER STATUS
 
 def state_of_game(enemy, second_enemy, player, weapon)

@@ -3,6 +3,7 @@ require_relative 'enemies_weapons'
 require_relative 'phrases'
 require_relative 'attack_mode'
 require_relative 'escape_room'
+require_relative 'menu'
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 print `clear`
