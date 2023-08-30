@@ -39,7 +39,7 @@ puts "______________________________________________________________________"
   puts "#{enemy[:name]} HP: #{enemy[:hp].to_i}" if enemy
   puts "#{second_enemy[:name]} HP: #{second_enemy[:hp].to_i}" if second_enemy
   puts "💖 Your HP: #{player[:hp].to_i}"
-  puts "⚔ Weapon: #{weapon[:name]} [DEBUG: #{weapon[:durability]}]" if weapon[:durability] > 0
+  puts "⚔  Weapon: #{weapon[:name]} [DEBUG: #{weapon[:durability]}]" if weapon[:durability] > 0
   puts "______________________________________________________________________"
 end
 

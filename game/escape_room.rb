@@ -69,17 +69,17 @@ def explore_rooms(enemy, weapon, player, second_enemy)
 
   selected_rooms.each_with_index do |room, i|
     room[:probability] = room[:probability].sample  # Modify probability only for the loop
-    puts "[#{i + 1}] (DEBUG: #{room[:probability]}) #{room[:name]}"
+    puts "[#{i + 4}] (DEBUG: #{room[:probability]}) #{room[:name]}"
   end
 
   user_choice = 0
 
-  until [1, 2, 3].include?(user_choice)
+  until [4, 5, 6].include?(user_choice)
     user_choice = gets.chomp.to_i
     error_message
     state_of_game(enemy, second_enemy, player, weapon)
-    selected_rooms.each_with_index { |room, i| puts "[#{i + 1}] [DEBUG: #{room[:probability]}] #{room[:name]}" }
+    selected_rooms.each_with_index { |room, i| puts "[#{i + 4}] [DEBUG: #{room[:probability]}] #{room[:name]}" }
   end
-  selected_room = selected_rooms[user_choice - 1]
+  selected_room = selected_rooms[user_choice - 4]
   inside_room(selected_room, enemy, weapon, player, second_enemy)
 end
