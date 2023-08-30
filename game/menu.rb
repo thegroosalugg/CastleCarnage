@@ -14,8 +14,9 @@ def load_menu
     "🐱‍🏍  [r]: Try a sommersault!",
     "🐱‍🏍  [r]: Do a backflip",
     "🐱‍🏍  [r]: Roundhouse!",
-    "🐱‍🏍  [r]: Go Super Saiyan",
+    "🐱‍🏍  [r]: Go 🌟 Super Saiyan",
     "🐱‍🏍  [r]: Parkour, parkour!",
+    "🐱‍🏍  [r]: 🟥🟧🟨🟩🟦🟪",
   ]
 
   y = [

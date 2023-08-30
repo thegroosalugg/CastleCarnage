@@ -65,6 +65,25 @@ def weapon_broke(weapon)
   puts weapon_messages.sample
 end
 
+def crt_dmg_msg(enemy, weapon, critical_damage)
+  crt_messages = [
+    "💥 Critical ‼ You smashed #{enemy[:name]} with your #{weapon[:name]} for 💢 #{critical_damage.to_i} damage!",
+    "You did a running jump and 💥 critical kicked #{enemy[:name]} in their stupid face for 💢 #{critical_damage.to_i} damage",
+  ]
+
+  puts crt_messages.sample
+end
+
+def missed(enemy)
+  missed_msg = [
+    "While charging the enemy you wanked it up and fell on your face 😣, dealing absolutely no damage. You plank.",
+    "You fucked up. Enjoy your zero cola with your zero damage sucka.",
+    "As you swang a punch but #{enemy[:name]} blocked you and counterpunched you right in the nose, you kissed the floor",
+  ]
+
+  puts missed_msg.sample
+end
+
 def random_attack_message(enemy)
   messages = [
     "👥You tried to leg it but #{enemy[:name]} jumped ya. Bugger it.",

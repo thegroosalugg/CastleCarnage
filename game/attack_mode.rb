@@ -3,7 +3,7 @@
 
 def player_attack(enemy, weapon)
   damage_dealt = [weapon[:damage].sample - enemy[:block].sample, 1].max
-  # if (1..10).include?(weapon[:crit_ch].sample)
+  #if (1..10).include?(weapon[:crit_ch].sample)
   if weapon[:crit_ch].sample == 1
     critical_damage = damage_dealt * weapon[:crit_x].call
 
@@ -12,9 +12,9 @@ def player_attack(enemy, weapon)
     puts critical_damage
 
     enemy[:hp] -= critical_damage
-    puts "Critical🌟! You smashed #{enemy[:name]} with your #{weapon[:name]} for #{critical_damage.to_i} damage!"
+    crt_dmg_msg(enemy, weapon, critical_damage)
   elsif rand(1..10) == 1
-    puts "While charging the enemy you wanked it up and fell on your face 😣, dealing absolutely no damage. You plank."
+    missed(enemy)
     weapon[:durability] += 1
   else
     enemy[:hp] -= damage_dealt
@@ -25,7 +25,7 @@ end
 
 def enemy_attack(enemy, player)
   enemy_damage = [enemy[:attack].sample - player[:block].sample, 1].max
-  # if (1..10).include?(enemy[:crit_ch].sample)
+  #if (1..10).include?(enemy[:crit_ch].sample)
   if enemy[:crit_ch].sample == 1
     enemy_critical = enemy_damage * enemy[:crit_x].call
 
