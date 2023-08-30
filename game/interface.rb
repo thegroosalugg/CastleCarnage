@@ -55,6 +55,10 @@ while (enemy || second_enemy) && player[:hp] > 0
   elsif user_action == "y"
     print `clear` if weapon[:durability] >= 1
     puts "Oh shit! Your #{weapon[:name]} broke! Better leg it!" if weapon[:durability] <= 0
+    if rand(1..5) == 1
+      enemy_attack(enemy, player) if enemy
+      enemy_attack(second_enemy, player) if second_enemy
+    end
     state_of_game(enemy, second_enemy, player, weapon) if weapon[:durability] > 0
     enemy, weapon, second_enemy = explore_rooms(enemy, weapon, player, second_enemy)
 
