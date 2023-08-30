@@ -1,6 +1,8 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
+# INTRO MESSAGES
+
 def intro_enemy(enemy)
   enemy_phrases = [
     "#{enemy[:name]} busted through the door, they're stark raving mad. They're out for blood!",
@@ -21,6 +23,17 @@ def intro_weapon(weapon, enemy)
   puts weapon_phrases.sample
 end
 
+# MAIN MENU
+
+def load_menu
+  puts "Whatcha ya gonna do?"
+  puts "🐱‍👤 [t]: T is for time to die fucker!"
+  puts "  ➰  [r]: Try a sommersault!"
+  puts "  👟  [y]: Fuckin' leg it!"
+end
+
+# DYNAMIC ENEMY AND PLAYER STATUS
+
 def state_of_game(enemy, second_enemy, player, weapon)
 puts "______________________________________________________________________"
   puts "#{enemy[:name]} HP: #{enemy[:hp].to_i}" if enemy
@@ -29,6 +42,8 @@ puts "______________________________________________________________________"
   puts "⚔ Weapon: #{weapon[:name]} [DEBUG: #{weapon[:durability]}]" if weapon[:durability] > 0
   puts "______________________________________________________________________"
 end
+
+# ERROR MESSAGES
 
 def error_message
   errors = [
@@ -46,6 +61,8 @@ def error_message
   puts "______________________________________________________________________"
 end
 
+# DYNAMIC GAME MESSAGES
+
 def weapon_broke(weapon)
   weapon_messages = [
     "😲 Oh shit! Your #{weapon[:name]} broke. Better leg it!",
@@ -55,6 +72,8 @@ def weapon_broke(weapon)
 
   puts weapon_messages.sample
 end
+
+# END OF GAME MESSAGES
 
 def win_message(enemy)
   win_messages = [

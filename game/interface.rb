@@ -21,10 +21,7 @@ while (enemy || second_enemy) && player[:hp] > 0
 
   if weapon[:durability] > 0
     weapon_broken = false
-    puts "Whatcha ya gonna do?"
-    puts "🐱‍👤 [t]: T is for time to die fucker!"
-    puts "  ➰  [r]: Try a sommersault!"
-    puts "  👟  [y]: Fuckin' leg it!"
+    load_menu
     user_action = gets.chomp.downcase
   else
     weapon_broke(weapon) unless weapon_broken
@@ -56,13 +53,13 @@ while (enemy || second_enemy) && player[:hp] > 0
     end
 
   elsif user_action == "y"
-    print `clear` if weapon[:durability] >= 1
+    print `clear` unless weapon_broken
     if rand(1..5) == 1
       enemy_attack(enemy, player) if enemy
       enemy_attack(second_enemy, player) if second_enemy
     end
 
-    state_of_game(enemy, second_enemy, player, weapon) if weapon[:durability] > 0
+    state_of_game(enemy, second_enemy, player, weapon) unless weapon_broken
     enemy, weapon, second_enemy = explore_rooms(enemy, weapon, player, second_enemy)
 
   else
