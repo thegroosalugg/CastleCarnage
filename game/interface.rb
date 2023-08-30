@@ -7,10 +7,11 @@ require_relative 'escape_room'
 
 print `clear`
 
-player = { hp: rand(50..99), block: (1..10).to_a }
+player = { hp: rand(500..990), block: (1..10).to_a }
 enemy = random_enemy
 second_enemy = nil
 weapon = pick_weapon
+weapon_broken = false
 
 intro_enemy(enemy)
 intro_weapon(weapon, enemy)
@@ -19,12 +20,15 @@ state_of_game(enemy, second_enemy, player, weapon)
 while (enemy || second_enemy) && player[:hp] > 0
 
   if weapon[:durability] > 0
+    weapon_broken = false
     puts "Whatcha ya gonna do?"
     puts "🐱‍👤 [t]: T is for time to die fucker!"
     puts "  ➰  [r]: Try a sommersault!"
     puts "  👟  [y]: Fuckin' leg it!"
     user_action = gets.chomp.downcase
   else
+    weapon_broke(weapon) unless weapon_broken
+    weapon_broken = true
     user_action = "y"
   end
 
@@ -53,11 +57,11 @@ while (enemy || second_enemy) && player[:hp] > 0
 
   elsif user_action == "y"
     print `clear` if weapon[:durability] >= 1
-    weapon_broke(weapon) if weapon[:durability] <= 0
     if rand(1..5) == 1
       enemy_attack(enemy, player) if enemy
       enemy_attack(second_enemy, player) if second_enemy
     end
+
     state_of_game(enemy, second_enemy, player, weapon) if weapon[:durability] > 0
     enemy, weapon, second_enemy = explore_rooms(enemy, weapon, player, second_enemy)
 
