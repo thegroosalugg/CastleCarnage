@@ -30,6 +30,22 @@ puts "______________________________________________________________________"
   puts "______________________________________________________________________"
 end
 
+def error_message
+  errors = [
+    "❌ Don't be a pillock ‼",
+    "❌ Don't be a plum ‼",
+    "❌ Don't be a plank ‼",
+    "❌ Don't be a plonka ‼",
+    "❌ Don't be a fool ‼",
+    "❌ Quit clowning around ‼"
+  ]
+
+  print `clear`
+  puts "______________________________________________________________________"
+  puts errors.sample
+  puts "______________________________________________________________________"
+end
+
 def win_message(enemy)
   win_messages = [
     "You blasted #{enemy[:name]} to another dimension. Your power level has increased.",

@@ -74,10 +74,8 @@ def explore_rooms(enemy, weapon, player, second_enemy)
 
   until [1, 2, 3].include?(user_choice)
     user_choice = gets.chomp.to_i
-    print `clear`
+    error_message
     state_of_game(enemy, second_enemy, player, weapon)
-    puts "Don't be a pillock!"
-    puts "______________________________________________________________________"
     selected_rooms.each_with_index { |room, i| puts "[#{i + 1}] [DEBUG: #{room[:probability]}] #{room[:name]}" }
   end
   selected_room = selected_rooms[user_choice - 1]
