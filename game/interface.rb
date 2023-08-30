@@ -1,9 +1,10 @@
 # rubocop:disable all
 require_relative 'enemies_weapons'
-require_relative 'phrases'
 require_relative 'attack_mode'
 require_relative 'escape_room'
-require_relative 'menu'
+require_relative 'messages/menu'
+require_relative 'messages/intro_outro'
+require_relative 'messages/combat_messages'
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 print `clear`
