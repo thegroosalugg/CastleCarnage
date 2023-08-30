@@ -60,12 +60,7 @@ end
 def explore_rooms(enemy, weapon, player, second_enemy)
   selected_rooms = ROOM_NAMES.sample(3).map(&:dup)  # Create a deep copy of selected rooms
 
-  if enemy
-    puts "Fuck, gotta dash to a gaff quick, or I'm #{enemy[:name]} food!!"
-  elsif second_enemy
-    puts "Fuck, gotta dash to a gaff quick, or I'm #{second_enemy[:name]} food!!"
-  end
-  puts "----------------------------------------------------------------------"
+  enemy ? run_away(enemy) : run_away(second_enemy)
 
   selected_rooms.each_with_index do |room, i|
     room[:probability] = room[:probability].sample  # Modify probability only for the loop

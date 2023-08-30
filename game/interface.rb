@@ -5,6 +5,7 @@ require_relative 'escape_room'
 require_relative 'messages/menu'
 require_relative 'messages/intro_outro'
 require_relative 'messages/combat_messages'
+require_relative 'messages/explore_messages.rb'
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 print `clear`
