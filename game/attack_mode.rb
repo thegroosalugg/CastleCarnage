@@ -3,11 +3,17 @@
 
 def player_attack(enemy, weapon)
   damage_dealt = [weapon[:damage].sample - enemy[:block].sample, 1].max
-  if rand(1..10) == 1
-    critical_damage = damage_dealt * rand(1.4..2.0)
+  # if (1..10).include?(weapon[:crit_ch].sample)
+  if weapon[:crit_ch].sample == 1
+    critical_damage = damage_dealt * weapon[:crit_x].call
+
+    puts "[DEBUG]"
+    puts damage_dealt
+    puts critical_damage
+
     enemy[:hp] -= critical_damage
     puts "Critical🌟! You smashed #{enemy[:name]} with your #{weapon[:name]} for #{critical_damage.to_i} damage!"
-  elsif rand(1..10) == 2
+  elsif rand(1..10) == 1
     puts "While charging the enemy you wanked it up and fell on your face 😣, dealing absolutely no damage. You plank."
     weapon[:durability] += 1
   else
@@ -19,11 +25,17 @@ end
 
 def enemy_attack(enemy, player)
   enemy_damage = [enemy[:attack].sample - player[:block].sample, 1].max
-  if rand(1..10) == 1
-    enemy_critical = enemy_damage * rand(1.4..2.0)
+  # if (1..10).include?(enemy[:crit_ch].sample)
+  if enemy[:crit_ch].sample == 1
+    enemy_critical = enemy_damage * enemy[:crit_x].call
+
+    puts "[DEBUG]"
+    puts enemy_damage
+    puts enemy_critical
+
     player[:hp] -= enemy_critical
     puts "Oh Shit! #{enemy[:name]} battered you for #{enemy_critical.to_i} critical🌟 damage! You look like a mashed potato mate!"
-  elsif rand(1..10) == 2
+  elsif rand(1..10) == 1
     puts "#{enemy[:name]} got confused and ran straight into a wall 😣, you got lucky."
   else
     player[:hp] -= enemy_damage
