@@ -35,7 +35,7 @@ def enemy_attack(enemy, player)
     player[:hp] -= enemy_critical
     enemy_crt_msg(enemy, enemy_critical)
   elsif enemy[:accuracy].sample == 1
-    puts "#{enemy[:name]} got confused and ran straight into a wall 😣, you got lucky."
+    enemy_missed(enemy)
   else
     player[:hp] -= enemy_damage
     puts "The #{enemy[:name]} struck you back for #{enemy_damage} damage! Better think fast"

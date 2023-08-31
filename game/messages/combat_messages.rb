@@ -48,10 +48,19 @@ end
 def enemy_crt_msg(enemy, enemy_critical)
   enemy_crt_msg = [
     "Oh Shit! #{enemy[:name]} battered you for #{enemy_critical.to_i} 💥 critical damage! You look like mashed potatoes mate!",
-    "#{enemy[:name]}: ↖ LP ⬆️ ↗ HP ⬅️ 🅾️ ➡️ ↙ LK ⬇️ ↘ HK => 💥 #{enemy_critical.to_i} damage",
+    "#{enemy[:name]}: ↖ LP ⬆️ ↗ HP ⬅️ 🅾️ ➡️ ↙ LK ⬇️ ↘ HK => You took 💥 #{enemy_critical.to_i} critical damage",
   ]
 
   puts enemy_crt_msg.sample
+end
+
+def enemy_missed(enemy)
+  enemy_missed_msg = [
+    "#{enemy[:name]} got confused and ran straight into a wall 😣, you got lucky.",
+    "#{enemy[:name]} fired ♨ Mega Blast, you dodged like a 😎 badman and tipped your fedora, no damage!",
+  ]
+
+  puts enemy_missed_msg.sample
 end
 
 def random_attack_message(enemy)
