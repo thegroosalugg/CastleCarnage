@@ -67,10 +67,35 @@ end
 def enemy_attack_msg(enemy, enemy_damage)
   enemy_atk_msg = [
     "The #{enemy[:name]} smashed you for 💢 #{enemy_damage} damage! Better think fast!",
-    "#{enemy[:name]} weighed you in for 💢 #{enemy_damage} damage!"
+    "#{enemy[:name]} weighed you in for 💢 #{enemy_damage} damage!",
   ]
 
   puts enemy_atk_msg.sample
+end
+
+def sommersault_success(enemy, weapon)
+  success_msg = [
+    "You ran up the wall and did a sick backflip, you strike #{enemy[:name]} twice!",
+    "You turned Super Saiyan 😼, the scouter 🥽 says your power level is over 9000 ‼",
+    "You are Blade 🐱‍👤, #{enemy[:name]} runs at the sight of you.",
+    "You kinda fucked up your stunt and tripped over a chair, but you fell into #{enemy[:name]}, getting 2 attacks.",
+    "⬇️ ➡️ HP LP ⬅️ ⬆️ LP ⬆️ ➡️ ⬅️HK  ⬇️ LK HP ➡️ ⬇️↘️ ⬅️ ⬆️ HK ⬇️",
+  ]
+
+  puts success_msg.sample
+end
+
+def sommersault_fail(enemy)
+  fail_msg = [
+    "You stacked 😵 it! #{enemy[:name]} is gonna have a field day, you plum!",
+    "#{enemy[:name]} laughed 😂 and socked 👊 you in the face.",
+    "You're still pretty drunk 🍻, you can't even stand straight.",
+    "You're Krillin 👨‍🦲, you got owned twice.",
+    "You shouldn't have eaten 3 pizzas 🍕 before trying to do acrobatics 🤢.",
+    "You tripped over your own shoes 👞 and knocked yourself out 😵.",
+  ]
+
+  puts fail_msg.sample
 end
 
 def random_attack_message(enemy)

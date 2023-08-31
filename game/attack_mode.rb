@@ -44,10 +44,10 @@ end
 
 def somersault_attack(enemy, weapon, player)
   if rand(1..3) == 1
-    puts "You ran up the wall and did a sick backflip, you strike #{enemy[:name]} twice!"
+    sommersault_success(enemy, weapon)
     player_attack(enemy, weapon); player_attack(enemy, weapon)
   else
+    sommersault_fail(enemy)
     enemy_attack(enemy, player); enemy_attack(enemy, player); enemy_attack(enemy, player)
-    puts "You stacked it! #{enemy[:name]} is having a field day, you plum!"
   end
 end
