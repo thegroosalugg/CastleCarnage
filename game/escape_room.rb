@@ -30,15 +30,15 @@ def inside_room(selected_room, enemy, weapon, player, second_enemy)
   randomizer = rand(1..8) == 1 ? rand(30..120) : rand(20..50)
   case selected_room[:probability]
   when 1
-    puts "Holy shit! Some food! Better eat up. You gained #{randomizer} HP!"
+    gained_health(randomizer)
     player[:hp] += randomizer
   when 2
+    lost_health(randomizer)
+    player[:hp] -= randomizer
+  when 3
     puts "Blyat! Shouldn't have come here. Enemy gained #{randomizer} HP!"
     enemy[:hp] += randomizer if enemy
     second_enemy[:hp] += randomizer if second_enemy
-  when 3
-    puts "Bollocks, you stepped into a bear trap, this is gonna cost ya! You lost #{randomizer} HP!"
-    player[:hp] -= randomizer
   when 4
     puts "Booya, running after you the #{enemy[:name]} ate a bomb!. #{enemy[:name]} lost #{randomizer} HP"
     enemy[:hp] -= randomizer if enemy
