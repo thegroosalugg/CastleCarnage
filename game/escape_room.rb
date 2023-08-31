@@ -9,12 +9,12 @@ ROOM_NAMES = [
   { name: "🩲👙 Jacuzzi Room", probability: (1..9).to_a },
   { name: "🚓 Dracula's Royce", probability: (1..9).to_a },
   { name: "🍽 Dining Room", probability: (1..9).to_a },
-  { name: "🏰🌔 The Roof", probability: (1..9).to_a },
-  { name: "📺 The Lounge", probability: (1..9).to_a },
+  { name: "🏰🌔 Roof", probability: (1..9).to_a },
+  { name: "📺 Lounge", probability: (1..9).to_a },
   { name: "🖼 Secret Door Behind the Painting", probability: (1..9).to_a },
   { name: "🕳 Trapdoor Under the Carpet", probability: (1..9).to_a },
-  { name: "🔲 The Window", probability: (1..9).to_a },
-  { name: "🕋 The Nightclub", probability: (1..9).to_a }
+  { name: "🔲 Window", probability: (1..9).to_a },
+  { name: "🕋 Nightclub", probability: (1..9).to_a }
 ]
 
 def inside_room(selected_room, enemy, weapon, player, second_enemy)

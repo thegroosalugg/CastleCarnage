@@ -25,8 +25,8 @@ end
 def missed(enemy)
   missed_msg = [
     "While charging the enemy you wanked it up and fell on your face 😣, dealing absolutely no damage. You plank.",
-    "You fucked up. Enjoy your zero cola with your zero damage sucka.",
-    "As you swang a punch but #{enemy[:name]} blocked you and counterpunched you right in the nose, you kissed the floor",
+    "You fucked up. Enjoy your zero cola 🥶 with your zero damage sucka.",
+    "As you swung you missed and #{enemy[:name]} knocked you the fuck out 😵. You kissed the floor. You're married to the floor.",
   ]
 
   puts missed_msg.sample
@@ -41,6 +41,7 @@ def random_attack_message(enemy)
     "#{enemy[:name]} did a mental 🐱‍🏍 backflip and landed in front of you!",
     "#{enemy[:name]}: 'Get back 'ere yer scum!'",
     "#{enemy[:name]}: 'Yar think ye can get away from me?'",
+    "#{enemy[:name]}: 'WAIT UP! I HAVE A QUESTION FOR YOU! DIE!!'",
   ]
 
   puts messages.sample
@@ -50,12 +51,13 @@ def enemy_killed(enemy)
   enemy_messages = [
     "#{enemy[:name]} died. 🎯 Bully for you!",
     "You blasted #{enemy[:name]}! 💎 Flawless Victory.",
-    "#{enemy[:name]} got got 👀",
+    "#{enemy[:name]} got got 💀",
     "#{enemy[:name]} was anhialated ☠",
     "#{enemy[:name]} got gatted 🤺",
     "#{enemy[:name]} is sleeping with the fishes 🐟",
     "#{enemy[:name]} took the 🚂 midnight train to slab city",
     "#{enemy[:name]} turned into a ghost, whooo 👻",
+    "You knocked #{enemy[:name]}'s head clean off."
   ]
   puts "----------------------------------------------------------------------"
   puts enemy_messages.sample
