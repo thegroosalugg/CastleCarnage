@@ -13,6 +13,8 @@ def weapon_broke(weapon)
   puts weapon_messages.sample
 end
 
+# Player attack
+
 def crt_dmg_msg(enemy, weapon, critical_damage)
   crt_messages = [
     "💥 Critical ‼ You smashed #{enemy[:name]} with your #{weapon[:name]} for 💢 #{critical_damage.to_i} damage!",
@@ -30,6 +32,26 @@ def missed(enemy)
   ]
 
   puts missed_msg.sample
+end
+
+def attack_msg(enemy, weapon, damage_dealt)
+  atk_msg = [
+    "You trounced #{enemy[:name]} with your #{weapon[:name]} for 💢 #{damage_dealt} damage!",
+    "You threw your trusty #{weapon[:name]} at #{enemy[:name]} for 💢 #{damage_dealt} damage! Nice shot bro!",
+  ]
+
+  puts atk_msg.sample
+end
+
+# Enemy attack
+
+def enemy_crt_msg(enemy, enemy_critical)
+  enemy_crt_msg = [
+    "Oh Shit! #{enemy[:name]} battered you for #{enemy_critical.to_i} 💥 critical damage! You look like mashed potatoes mate!",
+    "#{enemy[:name]}: ↖ LP ⬆️ ↗ HP ⬅️ 🅾️ ➡️ ↙ LK ⬇️ ↘ HK => 💥 #{enemy_critical.to_i} damage",
+  ]
+
+  puts enemy_crt_msg.sample
 end
 
 def random_attack_message(enemy)

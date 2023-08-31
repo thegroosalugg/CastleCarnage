@@ -13,19 +13,18 @@ def player_attack(enemy, weapon)
 
     enemy[:hp] -= critical_damage
     crt_dmg_msg(enemy, weapon, critical_damage)
-  elsif rand(1..10) == 1
+  elsif weapon[:accuracy].sample == 1
     missed(enemy)
     weapon[:durability] += 1
   else
     enemy[:hp] -= damage_dealt
-    puts "You attacked #{enemy[:name]} with your #{weapon[:name]} for #{damage_dealt} damage!"
+    attack_msg(enemy, weapon, damage_dealt)
   end
   weapon[:durability] -= 1
 end
 
 def enemy_attack(enemy, player)
   enemy_damage = [enemy[:attack].sample - player[:block].sample, 1].max
-  #if (1..10).include?(enemy[:crit_ch].sample)
   if enemy[:crit_ch].sample == 1
     enemy_critical = enemy_damage * enemy[:crit_x].call
 
@@ -34,8 +33,8 @@ def enemy_attack(enemy, player)
     puts enemy_critical
 
     player[:hp] -= enemy_critical
-    puts "Oh Shit! #{enemy[:name]} battered you for #{enemy_critical.to_i} critical🌟 damage! You look like a mashed potato mate!"
-  elsif rand(1..10) == 1
+    enemy_crt_msg(enemy, enemy_critical)
+  elsif enemy[:accuracy].sample == 1
     puts "#{enemy[:name]} got confused and ran straight into a wall 😣, you got lucky."
   else
     player[:hp] -= enemy_damage
