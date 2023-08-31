@@ -19,6 +19,7 @@ def crt_dmg_msg(enemy, weapon, critical_damage)
   crt_messages = [
     "💥 Critical ‼ You smashed #{enemy[:name]} with your #{weapon[:name]} for 💢 #{critical_damage.to_i} damage!",
     "You did a running jump and 💥 critical kicked #{enemy[:name]} in their stupid face for 💢 #{critical_damage.to_i} damage",
+    "⬇️ ➡️ ⬅️ ⬆️ LP ⬆️ ➡️ ⬅️ ⬇️ LK HP ➡️ ⬇️↘️ ⬅️ ⬆️ HP HK LP ⬅️ ⬅️ ↙️ ⬇️ ⬇️: 💥 #{critical_damage.to_i} critical damage!",
   ]
 
   puts crt_messages.sample
@@ -28,7 +29,7 @@ def missed(enemy)
   missed_msg = [
     "While charging the enemy you wanked it up and fell on your face 😣, dealing absolutely no damage. You plank.",
     "You fucked up. Enjoy your zero cola 🥶 with your zero damage sucka.",
-    "As you swung you missed and #{enemy[:name]} knocked you the fuck out 😵. You kissed the floor. You're married to the floor.",
+    "As you swing, you miss and #{enemy[:name]} layed you flat out 😵. You kissed the floor. You're married to the floor.",
   ]
 
   puts missed_msg.sample
@@ -61,6 +62,15 @@ def enemy_missed(enemy)
   ]
 
   puts enemy_missed_msg.sample
+end
+
+def enemy_attack_msg(enemy, enemy_damage)
+  enemy_atk_msg = [
+    "The #{enemy[:name]} smashed you for 💢 #{enemy_damage} damage! Better think fast!",
+    "#{enemy[:name]} weighed you in for 💢 #{enemy_damage} damage!"
+  ]
+
+  puts enemy_atk_msg.sample
 end
 
 def random_attack_message(enemy)

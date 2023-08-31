@@ -38,7 +38,7 @@ def enemy_attack(enemy, player)
     enemy_missed(enemy)
   else
     player[:hp] -= enemy_damage
-    puts "The #{enemy[:name]} struck you back for #{enemy_damage} damage! Better think fast"
+    enemy_attack_msg(enemy, enemy_damage)
   end
 end
 
