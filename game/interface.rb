@@ -15,6 +15,8 @@ enemy = random_enemy
 second_enemy = nil
 weapon = pick_weapon
 weapon_broken = false
+enemies_defeated = 0
+rooms_explored = 0
 
 intro_enemy(enemy)
 intro_weapon(weapon, enemy)
@@ -56,6 +58,7 @@ while (enemy || second_enemy) && player[:hp] > 0
 
   elsif user_action == "y"
     print `clear` unless weapon_broken
+    rooms_explored += 1
     if rand(1..5) == 1
       random_attack_message(enemy) if enemy
       enemy_attack(enemy, player) if enemy
@@ -70,12 +73,14 @@ while (enemy || second_enemy) && player[:hp] > 0
   end
 
   if enemy && enemy[:hp] <= 0
+    enemies_defeated += 1
     enemy_killed(enemy)
     tracked_enemy = enemy
     enemy = nil
   end
 
   if second_enemy && second_enemy[:hp] <= 0
+    enemies_defeated += 1
     enemy_killed(second_enemy)
     tracked_enemy = second_enemy
     second_enemy = nil
@@ -87,6 +92,12 @@ while (enemy || second_enemy) && player[:hp] > 0
     tracked_enemy = enemy if enemy
   end
 
+  puts "BIG BOSS BATTLE" if rooms_explored > 1 || enemies_defeated > 1
+
+  puts "DEBUG Enemies Defeated"
+  puts enemies_defeated
+  puts "DEBUG Rooms Explored"
+  puts rooms_explored
   state_of_game(enemy, second_enemy, player, weapon)
 end
 
