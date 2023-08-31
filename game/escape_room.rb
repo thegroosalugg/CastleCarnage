@@ -2,28 +2,28 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 ROOM_NAMES = [
-  { name: "🖼 Secret Door Behind the Painting", probability: (1..9).to_a },
-  { name: "🚇 Abandoned Underground Tunnels", probability: (1..9).to_a },
-  { name: "❓ Super Secret Mystery Room", probability: (1..9).to_a },
-  { name: "🕳 Trapdoor Under the Carpet", probability: (1..9).to_a },
-  { name: "💡 Glowing Light Room", probability: (1..9).to_a },
-  { name: "🏴‍☠️ Treasure Chamber", probability: (1..9).to_a },
+  { name: "🖼 The Secret Door Behind the Painting", probability: (1..9).to_a },
+  { name: "🚇 The Abandoned Underground Tunnels", probability: (1..9).to_a },
+  { name: "🕳  The Trapdoor Under the Carpet", probability: (1..9).to_a },
+  { name: "❓ The Super Secret Mystery Room", probability: (1..8).to_a },
+  { name: "🍽 The High Society Dining Room", probability: (1..9).to_a },
+  { name: "💡 The Glowing Light Room", probability: (1..9).to_a },
+  { name: "🕋 The Buzzin' Nightclub", probability: (1..9).to_a },
+  { name: "🏴‍☠️ The Treasure Chamber", probability: (1..9).to_a },
+  { name: "🛁 The Manky Bathroom", probability: (1..9).to_a },
+  { name: "🛌 The Master Bedroom", probability: (1..9).to_a },
+  { name: "🔲 The Wobbly Window", probability: (1..9).to_a },
+  { name: "📙 The Musty Library", probability: (1..9).to_a },
+  { name: "📺 The Fancy Lounge", probability: (1..9).to_a },
+  { name: "🩲 The Jacuzzi Room", probability: (1..9).to_a },
   { name: "🚓 Dracula's Royce", probability: (1..9).to_a },
-  { name: "🛌 Master Bedroom", probability: (1..9).to_a },
-  { name: "🩲👙 Jacuzzi Room", probability: (1..9).to_a },
-  { name: "📙 Musty Library", probability: (1..9).to_a },
-  { name: "😱 Dark Cellar", probability: (1..9).to_a },
-  { name: "🍽 Dining Room", probability: (1..9).to_a },
-  { name: "🕋 Nightclub", probability: (1..9).to_a },
-  { name: "🛁 Bathroom", probability: (1..9).to_a },
-  { name: "🏰🌔 Roof", probability: (1..9).to_a },
-  { name: "📺 Lounge", probability: (1..9).to_a },
-  { name: "🔲 Window", probability: (1..9).to_a },
+  { name: "😱 The Dodgy Cellar", probability: (1..9).to_a },
+  { name: "🏰 The Roof", probability: (1..9).to_a },
 ]
 
 def inside_room(selected_room, enemy, weapon, player, second_enemy)
   print `clear`
-  puts "You bolted off to the #{selected_room[:name]}"
+  enter_room(selected_room)
 
   puts "[DEBUG: #{selected_room[:probability]}]"
 

@@ -101,9 +101,9 @@ end
 def random_attack_message(enemy)
   messages = [
     "👥You tried to leg it but #{enemy[:name]} jumped ya. Bugger it.",
+    "You slipped on a 🍌 banana and #{enemy[:name]} jumped you!",
     "🙈You stacked it on your way out and let #{enemy[:name]} get the drop on you, watch out!",
     "#{enemy[:name]} ✨ teleports in front of the door",
-    "You slipped on a 🍌 banana and #{enemy[:name]} jumped you!",
     "#{enemy[:name]} did a mental 🐱‍🏍 backflip and landed in front of you!",
     "#{enemy[:name]}: 'Get back 'ere yer scum!'",
     "#{enemy[:name]}: 'Yar think ye can get away from me?'",
@@ -116,15 +116,16 @@ end
 def enemy_killed(enemy)
   enemy_messages = [
     "#{enemy[:name]} died. 🎯 Bully for you!",
-    "You blasted #{enemy[:name]}! 💎 Flawless Victory.",
     "#{enemy[:name]} got got 💀",
     "#{enemy[:name]} was anhialated ☠",
     "#{enemy[:name]} got gatted 🤺",
     "#{enemy[:name]} is sleeping with the fishes 🐟",
     "#{enemy[:name]} took the 🚂 midnight train to slab city",
     "#{enemy[:name]} turned into a ghost, whooo 👻",
-    "You knocked #{enemy[:name]}'s head clean off."
+    "You knocked #{enemy[:name]}'s head clean off.",
+    "You blasted #{enemy[:name]}! 💎 Flawless Victory.",
   ]
+
   puts "----------------------------------------------------------------------"
   puts enemy_messages.sample
 end
