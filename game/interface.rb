@@ -47,23 +47,18 @@ while (enemy || second_enemy) && player[:hp] > 0
   elsif user_action == "r"
     print `clear`
 
-    if enemy && second_enemy
-      random_enemy = [enemy, second_enemy].sample
-      somersault_attack(random_enemy, weapon, player)
-    elsif enemy
-      somersault_attack(enemy, weapon, player)
-    elsif second_enemy
-      somersault_attack(second_enemy, weapon, player)
-    end
+    target_enemy = enemy || second_enemy
+    somersault_attack(target_enemy || [enemy, second_enemy].sample, weapon, player) if target_enemy
 
   elsif user_action == "y"
     print `clear` unless weapon_broken
     rooms_explored += 1
-    if rand(1..5) == 1
-      random_attack_message(enemy) if enemy
-      enemy_attack(enemy, player) if enemy
-      random_attack_message(second_enemy) if second_enemy
-      enemy_attack(second_enemy, player) if second_enemy
+    if rand(1..2) == 1
+      target_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy
+      if target_enemy
+        random_attack_message(target_enemy)
+        enemy_attack(target_enemy, player)
+      end
     end
     state_of_game(enemy, second_enemy, player, weapon) unless weapon_broken
     enemy, weapon, second_enemy = explore_rooms(enemy, weapon, player, second_enemy)
@@ -72,18 +67,18 @@ while (enemy || second_enemy) && player[:hp] > 0
     error_message
   end
 
-  if enemy && enemy[:hp] <= 0
-    enemies_defeated += 1
-    enemy_killed(enemy)
-    tracked_enemy = enemy
-    enemy = nil
-  end
-
   if second_enemy && second_enemy[:hp] <= 0
     enemies_defeated += 1
     enemy_killed(second_enemy)
     tracked_enemy = second_enemy
     second_enemy = nil
+  end
+
+  if enemy && enemy[:hp] <= 0
+    enemies_defeated += 1
+    enemy_killed(enemy)
+    tracked_enemy = enemy
+    enemy = nil
   end
 
   if player[:hp] <= 0

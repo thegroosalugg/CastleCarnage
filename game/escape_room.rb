@@ -36,15 +36,13 @@ def inside_room(selected_room, enemy, weapon, player, second_enemy)
     lost_health(randomizer)
     player[:hp] -= randomizer
   when 3
-    enemy[:hp] += randomizer if enemy
-    enemy_health(randomizer, enemy) if enemy
-    second_enemy[:hp] += randomizer if second_enemy
-    enemy_health(randomizer, second_enemy) if second_enemy
+    target_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy
+    target_enemy[:hp] += randomizer if target_enemy
+    enemy_health(randomizer, target_enemy) if target_enemy
   when 4
-    enemy[:hp] -= randomizer if enemy
-    enemy_trap(randomizer, enemy) if enemy
-    second_enemy[:hp]-= randomizer if second_enemy
-    enemy_trap(randomizer, second_enemy) if second_enemy
+    target_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy
+    target_enemy[:hp] -= randomizer if target_enemy
+    enemy_trap(randomizer, target_enemy) if target_enemy
   when 5..7
     weapon = rand(1..5) == 1 ? special_weapon : pick_weapon
     got_weapon(weapon)
