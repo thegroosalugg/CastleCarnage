@@ -13,7 +13,7 @@ ROOM_NAMES = [
   { name: "🛁 The Manky Bathroom", probability: (1..9).to_a },
   { name: "🛌 The Master Bedroom", probability: (1..9).to_a },
   { name: "🔲 The Wobbly Window", probability: (1..9).to_a },
-  { name: "📙 The Musty Library", probability: (1..9).to_a },
+  { name: "📚 The Musty Library", probability: (1..9).to_a },
   { name: "📺 The Fancy Lounge", probability: (1..9).to_a },
   { name: "😱 The Dodgy Cellar", probability: (1..9).to_a },
   { name: "🩲 The Jacuzzi Room", probability: (1..9).to_a },

@@ -25,8 +25,8 @@ end
 
 def pick_weapon
   weapons = [
-    { name: "🏏 Baseball Bat", damage: (20..30).to_a, durability: rand(2..5), crit_ch: (1..7).to_a, crit_x: -> { rand(1.5..2.5) }, accuracy: (1..12).to_a },
-    { name: "🥊 Punching Glove", damage: (10..30).to_a, durability: rand(2..3), crit_ch: (1..5).to_a, crit_x: -> { rand(1.5..3.0) }, accuracy: (1..10).to_a },
+    { name: "🏏 Baseball Bat", damage: (25..35).to_a, durability: rand(2..5), crit_ch: (1..7).to_a, crit_x: -> { rand(1.5..2.5) }, accuracy: (1..12).to_a },
+    { name: "🥊 Punching Glove", damage: (15..35).to_a, durability: rand(2..3), crit_ch: (1..5).to_a, crit_x: -> { rand(1.5..3.0) }, accuracy: (1..10).to_a },
     { name: "🪓 Axe", damage: (25..40).to_a, durability: rand(3..4), crit_ch: (1..8).to_a, crit_x: -> { rand(1.5..2.2) }, accuracy: (1..10).to_a },
     { name: "🪒 Occam's Razor", damage: (15..35).to_a, durability: rand(1..3), crit_ch: (1..4).to_a, crit_x: -> { rand(2.0..4.0) }, accuracy: (1..8).to_a },
     { name: "🗡 Dagger", damage: (10..45).to_a, durability: rand(1..4), crit_ch: (1..5).to_a, crit_x: -> { rand(1.5..3.0) }, accuracy: (1..9).to_a },

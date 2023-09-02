@@ -92,9 +92,9 @@ def sommersault_fail(enemy)
     "You stacked 😵 it! #{enemy[:name]} is gonna have a field day, you plum!",
     "#{enemy[:name]} laughed 😂 and socked 👊 you in the face.",
     "You're still pretty drunk 🍻, you can't even stand straight.",
-    "You're Krillin 👨‍🦲, you got owned twice.",
+    "You're Krillin 👨‍🦲, you got owned thrice.",
     "You shouldn't have eaten 3 pizzas 🍕 before trying to do acrobatics 🤢.",
-    "You tripped over your own shoes 👞 and knocked yourself out 😵.",
+    "You tripped over your own shoelaces 👞 and knocked yourself out 😵.",
   ]
 
   puts fail_msg.sample
@@ -111,7 +111,7 @@ def random_attack_message(enemy)
     "#{enemy[:name]} did a mental 🐱‍🏍 backflip and landed in front of you!",
     "#{enemy[:name]}: 'Get back 'ere yer scum!'",
     "#{enemy[:name]}: 'Yar think ye can get away from me?'",
-    "#{enemy[:name]}: 'WAIT UP! I HAVE A QUESTION FOR YOU! DIE!!'",
+    "#{enemy[:name]}: 'Oi, stop and I'll shoot yar!'",
   ]
 
   puts messages.sample
