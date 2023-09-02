@@ -25,7 +25,7 @@ def inside_room(selected_room, enemy, weapon, player, second_enemy)
   print `clear`
   enter_room(selected_room)
 
-  puts "[DEBUG: #{selected_room[:probability]}]"
+  puts "[DEBUG] [Probability: #{selected_room[:probability]}]"
 
   randomizer = rand(1..8) == 1 ? rand(30..120) : rand(20..50)
   case selected_room[:probability]
@@ -54,7 +54,8 @@ def inside_room(selected_room, enemy, weapon, player, second_enemy)
       enemy = random_enemy
       enemy_spawn(enemy)
     else
-      empty_room
+      weapon = rand(1..5) == 1 ? special_weapon : pick_weapon
+      got_weapon(weapon)
     end
   when 9
     empty_room
@@ -69,7 +70,8 @@ def explore_rooms(enemy, weapon, player, second_enemy)
 
   selected_rooms.each_with_index do |room, i|
     room[:probability] = room[:probability].sample  # Modify probability only for the loop
-    puts "    [#{i + 4}] (DEBUG: #{room[:probability]}) #{room[:name]}"
+    puts "    [#{i + 4}] #{room[:name]}"
+    # puts "    [#{i + 4}] [DEBUG] [Probability: #{room[:probability]}] #{room[:name]}"
   end
 
   user_choice = 0
@@ -78,7 +80,8 @@ def explore_rooms(enemy, weapon, player, second_enemy)
     user_choice = gets.chomp.to_i
     error_message
     state_of_game(enemy, second_enemy, player, weapon)
-    selected_rooms.each_with_index { |room, i| puts "    [#{i + 4}] [DEBUG: #{room[:probability]}] #{room[:name]}" }
+    selected_rooms.each_with_index { |room, i| puts "    [#{i + 4}] #{room[:name]}" }
+    # selected_rooms.each_with_index { |room, i| puts "    [#{i + 4}] [DEBUG] [Probability: #{room[:probability]}] #{room[:name]}" }
   end
   selected_room = selected_rooms[user_choice - 4]
   inside_room(selected_room, enemy, weapon, player, second_enemy)

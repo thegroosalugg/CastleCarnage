@@ -5,7 +5,7 @@ require_relative 'escape_room'
 require_relative 'messages/menu'
 require_relative 'messages/intro_outro'
 require_relative 'messages/combat_messages'
-require_relative 'messages/explore_messages.rb'
+require_relative 'messages/explore_messages'
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 print `clear`
@@ -53,7 +53,7 @@ while (enemy || second_enemy) && player[:hp] > 0
   elsif user_action == "y"
     print `clear` unless weapon_broken
     rooms_explored += 1
-    if rand(1..2) == 1
+    if rand(1..5) == 1
       target_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy
       if target_enemy
         random_attack_message(target_enemy)
@@ -88,11 +88,10 @@ while (enemy || second_enemy) && player[:hp] > 0
   end
 
   puts "BIG BOSS BATTLE" if (enemies_defeated > 1) || (rooms_explored > 8) || (enemies_defeated > 0 && rooms_explored > 5)
-  #puts "BIG BOSS BATTLE" if ((enemies_defeated > 1) || (rooms_explored > 8) || (enemies_defeated > 0 && rooms_explored > 5)) && (rand(1..2) == 1)
+  # puts "BIG BOSS BATTLE" if ((enemies_defeated > 1) || (rooms_explored > 8) || (enemies_defeated > 0 && rooms_explored > 5)) && (rand(1..2) == 1)
 
 
-  puts "DEBUG Enemies Defeated #{enemies_defeated}"
-  puts "DEBUG Rooms Explored #{rooms_explored}"
+  puts "[DEBUG] [Enemies Defeated: #{enemies_defeated}] || [Rooms Explored: #{rooms_explored}]"
 
   state_of_game(enemy, second_enemy, player, weapon)
 end
