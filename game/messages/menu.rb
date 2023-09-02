@@ -8,6 +8,7 @@ def load_menu
     "🐱‍👤 [t]: Strike first! Strike hard! No mercy!",
     "🐱‍👤 [t]: Your soul is mine!",
     "🐱‍👤 [t]: Hadouken!",
+    "🐱‍👤 [t]: Mash 'em up, innit",
   ]
 
   r = [
@@ -16,16 +17,20 @@ def load_menu
     "🐱‍🏍  [r]: Roundhouse!",
     "🐱‍🏍  [r]: Go Super Saiyan 😼",
     "🐱‍🏍  [r]: Parkour, parkour!",
-    "🐱‍🏍  [r]: 🟥🟧🟨🟩🟦🟪",
+    "🐱‍🏍  [r]: 🟪🟦🟥🟧🟨🟩",
     "🐱‍🏍  [r]: Do a Barrel Roll",
   ]
 
   y = [
     " 💨   [y]: Fuckin' leg it!",
-    " 💨   [y]: Pussy out",
+    " 💨   [y]: Peg it!",
+    " 💨   [y]: Cheese it!",
+    " 💨   [y]: Run in the opposite direction!",
     " 💨   [y]: Melt out",
     " 💨   [y]: Skive off",
     " 💨   [y]: Mug it",
+    " 💨   [y]: Bunk it",
+    " 💨   [y]: 'Llow it!",
   ]
 
   puts "       Whatcha ya gonna do?"

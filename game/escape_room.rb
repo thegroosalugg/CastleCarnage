@@ -15,9 +15,9 @@ ROOM_NAMES = [
   { name: "🔲 The Wobbly Window", probability: (1..9).to_a },
   { name: "📙 The Musty Library", probability: (1..9).to_a },
   { name: "📺 The Fancy Lounge", probability: (1..9).to_a },
+  { name: "😱 The Dodgy Cellar", probability: (1..9).to_a },
   { name: "🩲 The Jacuzzi Room", probability: (1..9).to_a },
   { name: "🚓 Dracula's Royce", probability: (1..9).to_a },
-  { name: "😱 The Dodgy Cellar", probability: (1..9).to_a },
   { name: "🏰 The Roof", probability: (1..9).to_a },
 ]
 
@@ -36,34 +36,36 @@ def inside_room(selected_room, enemy, weapon, player, second_enemy)
     lost_health(randomizer)
     player[:hp] -= randomizer
   when 3
-    puts "Blyat! Shouldn't have come here. Enemy gained #{randomizer} HP!"
     enemy[:hp] += randomizer if enemy
+    enemy_health(randomizer, enemy) if enemy
     second_enemy[:hp] += randomizer if second_enemy
+    enemy_health(randomizer, second_enemy) if second_enemy
   when 4
-    puts "Booya, running after you the #{enemy[:name]} ate a bomb!. #{enemy[:name]} lost #{randomizer} HP"
     enemy[:hp] -= randomizer if enemy
+    enemy_trap(randomizer, enemy) if enemy
     second_enemy[:hp]-= randomizer if second_enemy
+    enemy_trap(randomizer, second_enemy) if second_enemy
   when 5..7
     weapon = rand(1..5) == 1 ? special_weapon : pick_weapon
-    puts "Gift! There's a #{weapon[:name]} here! Looks like the foot's on the other shoe!"
+    got_weapon(weapon)
   when 8
     if second_enemy.nil?
       second_enemy = random_enemy
-      puts "Oh fuck! You just dun goofed, #{second_enemy[:name]} jumped out at you!"
+      enemy_spawn(second_enemy)
     elsif enemy.nil?
       enemy = random_enemy
-      puts "Motherfucker, #{enemy[:name]} sprung out the fridge, he coming right for ya!"
+      enemy_spawn(enemy)
     else
-      puts "You have an ominous feeling someone was just here"
+      empty_room
     end
   when 9
-    puts "You searched the room but found nothing."
+    empty_room
   end
   return enemy, weapon, second_enemy
 end
 
 def explore_rooms(enemy, weapon, player, second_enemy)
-  selected_rooms = ROOM_NAMES.sample(3).map(&:dup)  # Create a deep copy of selected rooms
+  selected_rooms = ROOM_NAMES.sample(4).map(&:dup)  # Create a deep copy of selected rooms
 
   enemy ? run_away(enemy) : run_away(second_enemy)
 
@@ -74,7 +76,7 @@ def explore_rooms(enemy, weapon, player, second_enemy)
 
   user_choice = 0
 
-  until [4, 5, 6].include?(user_choice)
+  until [4, 5, 6, 7].include?(user_choice)
     user_choice = gets.chomp.to_i
     error_message
     state_of_game(enemy, second_enemy, player, weapon)

@@ -7,7 +7,7 @@ def intro_enemy(enemy)
   enemy_phrases = [
     "#{enemy[:name]} busted through the 🚪 door, they're stark raving mad. They're out for 🔪 blood!",
     "You got proper pissed 🍷 and ended up in some 🏰 castle, a #{enemy[:name]} jumped from the ceiling, 'You goon get it now boy!'",
-    "You got caught ganking 🍻 hooch from the 🏡 package store, the 👩🏿‍🤝‍🧑🏿👨🏽‍🤝‍👨🏼townsfolk set the #{enemy[:name]} on you!"
+    "You got caught ganking 🍻 hooch from the 🏡 package store, the 🏇🏌️‍♀️ townsfolk set the #{enemy[:name]} on you!"
   ]
 
   puts enemy_phrases.sample

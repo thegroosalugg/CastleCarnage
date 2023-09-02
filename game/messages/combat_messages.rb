@@ -73,6 +73,8 @@ def enemy_attack_msg(enemy, enemy_damage)
   puts enemy_atk_msg.sample
 end
 
+# Sommersault attack
+
 def sommersault_success(enemy, weapon)
   success_msg = [
     "You ran up the wall and did a sick backflip, you strike #{enemy[:name]} twice!",
@@ -98,6 +100,8 @@ def sommersault_fail(enemy)
   puts fail_msg.sample
 end
 
+# Explore rooms attack
+
 def random_attack_message(enemy)
   messages = [
     "👥You tried to leg it but #{enemy[:name]} jumped ya. Bugger it.",
@@ -112,6 +116,8 @@ def random_attack_message(enemy)
 
   puts messages.sample
 end
+
+# Enemy killed
 
 def enemy_killed(enemy)
   enemy_messages = [
