@@ -6,7 +6,7 @@ def player_attack(enemy, weapon)
   if weapon[:crit_ch].sample == 1
     critical_damage = damage_dealt * weapon[:crit_x].call
 
-    puts "[DEBUG] [Damage: #{damage_dealt}] || [Critical Dmg: #{critical_damage}]"
+    # puts "[DEBUG] [Damage: #{damage_dealt}] || [Critical Dmg: #{critical_damage}]"
 
     enemy[:hp] -= critical_damage
     crt_dmg_msg(enemy, weapon, critical_damage)
@@ -25,7 +25,7 @@ def enemy_attack(enemy, player)
   if enemy[:crit_ch].sample == 1
     enemy_critical = enemy_damage * enemy[:crit_x].call
 
-    puts "[DEBUG] [Enemy Dmg: #{enemy_damage}] || [Enemy Crit: #{enemy_critical}]"
+    # puts "[DEBUG] [Enemy Dmg: #{enemy_damage}] || [Enemy Crit: #{enemy_critical}]"
 
     player[:hp] -= enemy_critical
     enemy_crt_msg(enemy, enemy_critical)

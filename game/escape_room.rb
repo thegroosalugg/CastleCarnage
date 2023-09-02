@@ -25,7 +25,7 @@ def inside_room(selected_room, enemy, weapon, player, second_enemy)
   print `clear`
   enter_room(selected_room)
 
-  puts "[DEBUG] [Probability: #{selected_room[:probability]}]"
+  # puts "[DEBUG] [Probability: #{selected_room[:probability]}]"
 
   randomizer = rand(1..8) == 1 ? rand(30..120) : rand(20..50)
   case selected_room[:probability]

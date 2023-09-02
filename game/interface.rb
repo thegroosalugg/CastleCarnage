@@ -87,11 +87,11 @@ while (enemy || second_enemy) && player[:hp] > 0
     tracked_enemy = enemy if enemy
   end
 
-  puts "BIG BOSS BATTLE" if (enemies_defeated > 1) || (rooms_explored > 8) || (enemies_defeated > 0 && rooms_explored > 5)
+  puts "BIG BOSS BATTLE" if (enemies_defeated > 1) || (rooms_explored > 15) || (enemies_defeated > 0 && rooms_explored > 10)
   # puts "BIG BOSS BATTLE" if ((enemies_defeated > 1) || (rooms_explored > 8) || (enemies_defeated > 0 && rooms_explored > 5)) && (rand(1..2) == 1)
 
 
-  puts "[DEBUG] [Enemies Defeated: #{enemies_defeated}] || [Rooms Explored: #{rooms_explored}]"
+  # puts "[DEBUG] [Enemies Defeated: #{enemies_defeated}] || [Rooms Explored: #{rooms_explored}]"
 
   state_of_game(enemy, second_enemy, player, weapon)
 end
