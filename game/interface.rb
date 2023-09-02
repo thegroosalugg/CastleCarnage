@@ -96,10 +96,9 @@ while (enemy || second_enemy) && player[:hp] > 0
   #puts "BIG BOSS BATTLE" if ((enemies_defeated > 1) || (rooms_explored > 8) || (enemies_defeated > 0 && rooms_explored > 5)) && (rand(1..2) == 1)
 
 
-  puts "DEBUG Enemies Defeated"
-  puts enemies_defeated
-  puts "DEBUG Rooms Explored"
-  puts rooms_explored
+  puts "DEBUG Enemies Defeated #{enemies_defeated}"
+  puts "DEBUG Rooms Explored #{rooms_explored}"
+
   state_of_game(enemy, second_enemy, player, weapon)
 end
 
