@@ -43,13 +43,13 @@ end
 
 def state_of_game(enemy, second_enemy, player, weapon)
   puts "----------------------------------------------------------------------"
-  puts "    #{enemy[:name]} HP: #{enemy[:hp.to_i]} #{'🤍' * (enemy[:hp] / 20)}" if enemy
-  puts "    #{second_enemy[:name]} HP: #{second_enemy[:hp.to_i]} #{'🤍' * (second_enemy[:hp] / 20)}" if second_enemy
-  puts "    💖 Your HP: #{player[:hp].to_i } #{'❤️' * (player[:hp] / 20)}"
-  puts "    ⚔  Weapon: #{weapon[:name]}" if weapon[:durability] > 0
-  # puts "    ⚔  Weapon: #{weapon[:name]} [DEBUG] [Durability: #{weapon[:durability]}]" if weapon[:durability] > 0
+  puts "    #{enemy[:name]} HP: #{enemy[:hp].to_i} #{'🤍' * [enemy[:hp] / 20, 0].max}" if enemy
+  puts "    #{second_enemy[:name]} HP: #{second_enemy[:hp].to_i} #{'🤍' * [second_enemy[:hp] / 20, 0].max}" if second_enemy
+  puts "    💖 Your HP: #{player[:hp].to_i} #{'❤️' * [player[:hp] / 20, 0].max}"
+  puts "    ⚔  Weapon: #{weapon[:name]} #{'🟦' * [weapon[:durability], 0].max}" if weapon[:durability] > 0
   puts "----------------------------------------------------------------------"
 end
+
 
 # ERROR MESSAGES
 
