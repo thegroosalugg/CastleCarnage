@@ -15,7 +15,7 @@ def random_enemy
     { name: "🧛‍♂️ Vampire", hp: rand(220..240), attack: (18..30).to_a, block: (5..8).to_a, crit_ch: (1..5).to_a, crit_x: -> { rand(2.5..3.0) }, accuracy: (1..11).to_a },
     { name: "🐺 Zombie", hp: rand(150..180), attack: (15..25).to_a, block: (1..5).to_a, crit_ch: (1..5).to_a, crit_x: -> { rand(2.0..2.5) }, accuracy: (1..8).to_a },
     { name: "🦖 Dinosaur", hp: rand(220..280), attack: (20..40).to_a, block: (6..18).to_a, crit_ch: (1..15).to_a, crit_x: -> { rand(2.5..3.0) }, accuracy: (1..7).to_a },
-    { name: "🤖 Robot from the Future", hp: rand(180..220), attack: (8..12).to_a, block: (5..15).to_a, crit_ch: (1..10).to_a, crit_x: -> { rand(1.5..2.0) }, accuracy: (1..8).to_a },
+    { name: "🤖 Robot from the Future", hp: rand(180..220), attack: (20..30).to_a, block: (5..15).to_a, crit_ch: (1..10).to_a, crit_x: -> { rand(1.5..2.5) }, accuracy: (1..8).to_a },
     { name: "🐉 Dragon", hp: rand(200..300), attack: (10..50).to_a, block: (1..20).to_a, crit_ch: (1..20).to_a, crit_x: -> { rand(3.5..5.0) }, accuracy: (1..6).to_a },
     { name: "👻 Ghost", hp: rand(180..250), attack: (25..30).to_a, block: (3..15).to_a, crit_ch: (1..10).to_a, crit_x: -> { rand(1.5..2.0) }, accuracy: (1..10).to_a },
   ]

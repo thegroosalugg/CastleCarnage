@@ -67,18 +67,18 @@ while (enemy || second_enemy) && player[:hp] > 0
     error_message
   end
 
-  if second_enemy && second_enemy[:hp] <= 0
-    enemies_defeated += 1
-    enemy_killed(second_enemy)
-    tracked_enemy = second_enemy
-    second_enemy = nil
-  end
-
   if enemy && enemy[:hp] <= 0
     enemies_defeated += 1
     enemy_killed(enemy)
     tracked_enemy = enemy
     enemy = nil
+  end
+
+  if second_enemy && second_enemy[:hp] <= 0
+    enemies_defeated += 1
+    enemy_killed(second_enemy)
+    tracked_enemy = second_enemy
+    second_enemy = nil
   end
 
   if player[:hp] <= 0
