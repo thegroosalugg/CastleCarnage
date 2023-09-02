@@ -54,7 +54,7 @@ def gained_health(randomizer)
     "Ransacked the pantry, whipped up some beans on toast 🍞 🥫, gained 💗 #{randomizer} HP!",
     "These chili peppers 🌶 should give me the quick energy I need! You gained 💗 #{randomizer} HP!",
     "What muppet left this pie 🥧 here, nicked. You gained 💗 #{randomizer} HP!",
-    "A Spghetti Store 🏪 ? Here? Yeah I'll have the spaghetti 🍝. You gained 💗 #{randomizer} HP!".
+    "A Spghetti Store 🏪 ? Here? Yeah I'll have the spaghetti 🍝. You gained 💗 #{randomizer} HP!",
   ]
 
   puts gained_msg.sample
@@ -112,8 +112,8 @@ def got_weapon(weapon)
     "Gift 🎁 ! There's a #{weapon[:name]} here! Looks like the foot's on the other shoe!",
     "Mysterious Stranger 🕵️‍♂️ appeared, 'Hey kid, catch', he throws you a #{weapon[:name]}",
     "No way, you just remembered you still have your #{weapon[:name]} in your sock 🧦 !",
-    "You reach into your pocket for a cigarette 🚬 and pull out a #{weapon[:name]}. Jackpot!"
-    "Rummaging through the fridge 🧊, you find a #{weapon[:name]} sandwiched between the pickles! Time to add some flavour to this thrashing!"
+    "You reach into your pocket for a cigarette 🚬 and pull out a #{weapon[:name]}. Jackpot!",
+    "Rummaging through the fridge 🧊, you find a #{weapon[:name]} sandwiched between the pickles! Time to add some flavour to this thrashing!",
     "Your Amazon ⬜ package has arrived, it's that #{weapon[:name]} you ordered. Time for beatdown!",
     "There's enough useless crap 🛒 here to manfacture a #{weapon[:name]}, your mad smithing skills allow it.",
     "Santa Claus 🎅 came to bring you your gift early, it's that #{weapon[:name]} you wished for",
