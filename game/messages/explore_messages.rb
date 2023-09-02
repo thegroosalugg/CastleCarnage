@@ -43,12 +43,12 @@ end
 
 def lost_health(randomizer)
   lost_msg = [
-    "Bollocks, you stepped into a bear trap 🐻, this is gonna cost ya! You lost 🤍 #{randomizer} HP!",
-    "KABLAMO ‼ 💥 Fucking landmines 🕳 ! Who the fuck put these here?! You lost 🤍 #{randomizer} HP!",
-    "As you walked in a fridge 🧳 fell on you. You lost 🤍 #{randomizer} HP!",
-    "An axe 🪓 flew across the room and hit you in the face! You lost 🤍 #{randomizer} HP!",
-    "You stepped on a rake 🏒 ! You lost 🤍 #{randomizer} HP!",
-    "You got a beer 🍺! But it was one beer too many. Lose 🤍 #{randomizer} HP!",
+    "Bollocks, you stepped into a bear trap 🐻, this is gonna cost ya! You lost 🖤 #{randomizer} HP!",
+    "KABLAMO ‼ 💥 Fucking landmines 🕳 ! Who the fuck put these here?! You lost 🖤 #{randomizer} HP!",
+    "As you walked in a fridge 🧳 fell on you. You lost 🖤 #{randomizer} HP!",
+    "An axe 🪓 flew across the room and hit you in the face! You lost 🖤 #{randomizer} HP!",
+    "You stepped on a rake 🏒 ! You lost 🖤 #{randomizer} HP!",
+    "You got a beer 🍺! But it was one beer too many. Lose 🖤 #{randomizer} HP!",
   ]
 
   puts lost_msg.sample
@@ -56,8 +56,8 @@ end
 
 def enemy_health(randomizer, enemy)
   enemy_health_msg = [
-    "Bad decision. #{enemy[:name]} found enlightenment. #{enemy[:name]} gained 🖤 #{randomizer} HP",
-    "Your cowardice allowed #{enemy[:name]} to recover 🖤 #{randomizer} HP",
+    "Bad decision. #{enemy[:name]} found enlightenment. #{enemy[:name]} gained 🤍 #{randomizer} HP",
+    "Your cowardice allowed #{enemy[:name]} to recover 🤍 #{randomizer} HP",
   ]
 
   puts enemy_health_msg.sample
