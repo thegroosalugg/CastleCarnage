@@ -113,15 +113,20 @@ def got_weapon(weapon)
     "Mysterious Stranger 🕵️‍♂️ appeared, 'Hey kid, catch', he throws you a #{weapon[:name]}",
     "No way, you just remembered you still have your #{weapon[:name]} in your sock 🧦 !",
     "You reach into your pocket for a cigarette 🚬 and pull out a #{weapon[:name]}. Jackpot!",
-    "Rummaging through the fridge 🧊, you find a #{weapon[:name]} sandwiched between the pickles! Time to add some flavour to this thrashing!",
     "Your Amazon ⬜ package has arrived, it's that #{weapon[:name]} you ordered. Time for beatdown!",
     "There's enough useless crap 🛒 here to manfacture a #{weapon[:name]}, your mad smithing skills allow it.",
     "Santa Claus 🎅 came to bring you your gift early, it's that #{weapon[:name]} you wished for",
-    "A genie 🧞 appears and grants you 3 wishes, but you're only gonna need one, a #{weapon[:name]} for laying down the law.",
+    "A genie 🧞 appears and grants you 3 wishes, but you're only gonna need one,
+    a #{weapon[:name]} for laying down the law.",
     "What's this? 🤔 You find a hidden #{weapon[:name]} in the back of a dusty closet. Time to rewrite history!",
     "While checking the drawers 🗄️, you found a #{weapon[:name]} hidden among the spoons!",
     "Under the bed 🛏️, you discovered a #{weapon[:name]} 👀. Time for some pummeling!",
-    "You open a cookbook 📙, hollowed out there's a #{weapon[:name]} inside, you check your watch ⌚, it's 5 past throwdown o'clock.",
+
+    "You open a cookbook 📙, hollowed out there's a #{weapon[:name]} inside.
+    You check your watch ⌚, it's 5 past throwdown o'clock.",
+
+    "Rummaging through the fridge 🧊, you find a #{weapon[:name]} sandwiched between the pickles!
+    Let's add some flavour to this thrashing!",
   ]
 
   puts weapon_msg.sample
