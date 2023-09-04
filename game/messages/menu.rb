@@ -3,34 +3,45 @@
 
 def load_menu
   t = [
-    "🐱‍👤 [t]: T is for time to die fucker!",
-    "🐱‍👤 [t]: Punch him in his stupid ugly face",
     "🐱‍👤 [t]: Strike first! Strike hard! No mercy!",
-    "🐱‍👤 [t]: Your soul is mine!",
-    "🐱‍👤 [t]: Hadouken!",
+    "🐱‍👤 [t]: Punch 'em in their stupid ugly face",
+    "🐱‍👤 [t]: Challenge 'em to a thrashing",
+    "🐱‍👤 [t]: Saturday Night Square Up!",
+    "🐱‍👤 [t]: 'Peaceful' resolution",
+    "🐱‍👤 [t]: Talk about Fight Club",
+    "🐱‍👤 [t]: T is for time to die!",
     "🐱‍👤 [t]: Mash 'em up, innit",
+    "🐱‍👤 [t]: Your soul is mine!",
+    "🐱‍👤 [t]: Pay 'em a beating",
+    "🐱‍👤 [t]: Do 'em in",
   ]
 
   r = [
-    "🐱‍🏍  [r]: Try a sommersault!",
-    "🐱‍🏍  [r]: Do a backflip",
-    "🐱‍🏍  [r]: Roundhouse!",
+    "🐱‍🏍  [r]: Try something, but probably fail",
+    "🐱‍🏍  [r]: Last Chance Crusade",
     "🐱‍🏍  [r]: Go Super Saiyan 😼",
+    "🐱‍🏍  [r]: Try a sommersault!",
+    "🐱‍🏍  [r]: Throw Pokéball 🚫",
     "🐱‍🏍  [r]: Parkour, parkour!",
-    "🐱‍🏍  [r]: 🟪🟦🟥🟧🟨🟩",
     "🐱‍🏍  [r]: Do a Barrel Roll",
+    "🐱‍🏍  [r]: 🟪🟦🟥🟧🟨🟩",
+    "🐱‍🏍  [r]: Do a sick flip",
+    "🐱‍🏍  [r]: Roundhouse!",
   ]
 
   y = [
-    " 💨   [y]: Fuckin' leg it!",
-    " 💨   [y]: Peg it!",
-    " 💨   [y]: Cheese it!",
     " 💨   [y]: Run in the opposite direction!",
-    " 💨   [y]: Melt out",
+    " 💨   [y]: Dishonourable discharge",
+    " 💨   [y]: Fuckin' leg it!",
+    " 💨   [y]: Look fo' swag",
+    " 💨   [y]: Cheese it!",
     " 💨   [y]: Skive off",
-    " 💨   [y]: Mug it",
+    " 💨   [y]: 'llow it!",
+    " 💨   [y]: Melt out",
+    " 💨   [y]: Peg it!",
     " 💨   [y]: Bunk it",
-    " 💨   [y]: 'Llow it!",
+    " 💨   [y]: Bounce",
+    " 💨   [y]: Mug it",
   ]
 
   puts "       Whatcha ya gonna do?"
