@@ -6,11 +6,13 @@
 def weapon_broke(weapon)
   weapon_messages = [
     "😲 Bollocks, your #{weapon[:name]} slipped out of your hand and flew out of the window. Time to split!",
+    "😲 You suddenly forgot how to wield your #{weapon[:name]}, it's useless now. You threw it away.",
     "😲 The universe conspires against you. Your #{weapon[:name]} disintegrates into nothingness!",
     "😲 Your #{weapon[:name]} made its final stand and fell to pieces. You'll need a new one.",
     "😲 Well, that's a bummer! Your trusty #{weapon[:name]} just disintegrated into dust.",
     "😲 Goddamn it! You dropped your #{weapon[:name]}! No time to nab it, gotta bolt!",
     "😲 You used up your last shot, your #{weapon[:name]} is a paperweight.",
+    "😲 Your #{weapon[:name]} resigned from service. On your own now.",
     "😲 Your #{weapon[:name]} jumped from your hand and legged it.",
     "😲 Your #{weapon[:name]} broke 💔, time to take a walk.",
     "😲 Oh shit! Your #{weapon[:name]} broke. Better leg it!",
@@ -24,8 +26,13 @@ end
 
 def crt_dmg_msg(enemy, weapon, critical_damage)
   crt_messages = [
-    "You did a running jump and 💥 critical kicked #{enemy[:name]} in their stupid face for 💢 #{critical_damage.to_i} damage",
+    "You did a mad front flip and volunteered #{enemy[:name]} to kiss the floor 💥 #{critical_damage.to_i} critical damage!",
+    "You did a running jump and kicked #{enemy[:name]} in their stupid face for 💥 #{critical_damage.to_i} critical damage.",
+    "Your #{weapon[:name]} lit on fire 🔥 dishing out #{enemy[:name]} a meal of 💥 #{critical_damage.to_i} critical damage!",
+    "You triple cork and double battered #{enemy[:name]} in the face for 💥 #{critical_damage.to_i} critical damage!",
+    "Your deadlift 🏋️‍♂️ regime has been righteous. The 💥 #{critical_damage.to_i} damage you served is a bit critical.",
     "💥 Critical ‼ You smashed #{enemy[:name]} with your #{weapon[:name]} for 💢 #{critical_damage.to_i} damage!",
+    "You turn up the punishment as you weigh #{enemy[:name]} in for 💥 #{critical_damage.to_i} critical damage!",
     "⬇ ⬆ LP ⬅ ⬅ ⬆ ⬇ LK HP ⬇ ↘ ➡ HP HK LP  ⬅ ↙ ⬇ ⬅  ↙ ⬇ :: 💥 #{critical_damage.to_i} critical damage!",
   ]
 
@@ -34,9 +41,14 @@ end
 
 def missed(enemy)
   missed_msg = [
+    "Your stealth is like a brick 🧱 through a window. #{enemy[:name]} predicted your attacks and calmly swayed out the way",
     "As you swing, you miss and #{enemy[:name]} layed you flat out 😵. You kissed the floor. You're married to the floor.",
     "While charging the enemy you wanked it up and fell on your face 😣, dealing absolutely no damage. You plank.",
-    "You fucked up. Enjoy your zero cola 🥶 with your zero damage sucka.",
+    "#{enemy[:name]} laughs at your efforts. Your attacks go down like Skittles 🍬🟣🟢🔴🟠🟡",
+    "You fucked up. Enjoy your zero soda 🥶 with your zero damage meal combo.",
+    "Its not your day today, you clumsily run into a wall 🧱. ",
+    "#{enemy[:name]} don't give a fuck, they mash you up!",
+    "🚫 Denied ‼",
   ]
 
   puts missed_msg.sample
@@ -60,8 +72,10 @@ end
 
 def enemy_crt_msg(enemy, enemy_critical)
   enemy_crt_msg = [
-    "Oh Shit! #{enemy[:name]} battered you for #{enemy_critical.to_i} 💥 critical damage! You look like mashed potatoes mate!",
+    "Oh Shit! #{enemy[:name]} mashed you up for #{enemy_critical.to_i} 💥 critical damage! You look like mashed potatoes mate!",
+    "Get ready for a battering, #{enemy[:name]} is gone do you in for 💥 #{enemy_critical.to_i} critical damage, gutted bruv!",
     "#{enemy[:name]}: ⬅ ↖ ⬆ ↗ ➡ HP ⬅ ➡ 🅾 LP LK ⬅ ↙ ⬇ ↘ ➡ HK :: You took 💥 #{enemy_critical.to_i} critical damage.",
+    "#{enemy[:name]} is just better than you, they merk you for 💥 #{enemy_critical.to_i} critical damage.",
     "#{enemy[:name]} did a crazy as flip and kicked you for 💥 #{enemy_critical.to_i} critical damage",
     "#{enemy[:name]} did a sick combo on you for 💥 #{enemy_critical.to_i} critical damage.",
   ]
@@ -87,12 +101,16 @@ end
 
 def enemy_attack_msg(enemy, enemy_damage)
   enemy_atk_msg = [
-    "#{enemy[:name]} battered you for 💢 #{enemy_damage} damage! You're getting merked!",
+    "#{enemy[:name]} absolutely battered you for 💢 #{enemy_damage} damage! You got mashed up!",
     "The #{enemy[:name]} smashed you for 💢 #{enemy_damage} damage! Better think fast!",
-    "#{enemy[:name]} kicked you in the face for 💢 #{enemy_damage} damage!",
+    "#{enemy[:name]} slayed you for 💢 #{enemy_damage} damage! You're getting merked!",
+    "#{enemy[:name]} kicked your face in for 💢 #{enemy_damage} damage!",
     "#{enemy[:name]} roughed you up for 💢 #{enemy_damage} damage!",
     "#{enemy[:name]} weighed you in for 💢 #{enemy_damage} damage!",
+    "#{enemy[:name]} sorted you out for 💢 #{enemy_damage} damage!",
+    "#{enemy[:name]} mashed you up for 💢 #{enemy_damage} damage!",
     "#{enemy[:name]} wrecked you for 💢 #{enemy_damage} damage!",
+    "#{enemy[:name]} did you in for 💢 #{enemy_damage} damage!",
   ]
 
   puts enemy_atk_msg.sample
@@ -106,6 +124,7 @@ def sommersault_success(enemy, weapon)
     "You ran up the wall and did a sick backflip, you strike #{enemy[:name]} twice!",
     "⬇ ↘ ➡ HP LP ⬅ ↖ ⬆ LP ⬆ ↖ ⬅ HK  ⬇ LK HP  ⬇ ↘ ➡ ➡ ⬆ ⬇ HK :: Ultra Combo...",
     "With outcomes like these 💯 you might win after all, roll 🎲 twice!",
+    "The gods ⚖ smile upon you, your path is righteous",
     "Bang on ⚖. You get 2 attacks!",
   ]
 
@@ -118,7 +137,9 @@ def sommersault_fail(enemy)
     "You shouldn't have eaten 3 pizzas 🍕 before trying to do acrobatics 🤢.",
     "You tripped over your own shoelaces 👞 and knocked yourself out 😵.",
     "You're still pretty wasted 🍻, you can't even stand straight.",
+    "It ain't gonna happen today mate 🚷, take bare damage bruv",
     "#{enemy[:name]} laughed 😂 and socked 👊 you in the face.",
+    "You thought you had it, but you got merked instead 😭",
   ]
 
   puts fail_msg.sample
