@@ -2,10 +2,12 @@
 require_relative 'enemies_weapons'
 require_relative 'attack_mode'
 require_relative 'escape_room'
+require_relative 'big_boss'
 require_relative 'messages/menu'
 require_relative 'messages/intro_outro'
 require_relative 'messages/combat_messages'
 require_relative 'messages/explore_messages'
+require_relative 'messages/boss_messages'
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 print `clear`
@@ -87,9 +89,13 @@ while (enemy || second_enemy) && player[:hp] > 0
     tracked_enemy = enemy if enemy
   end
 
-  puts "BIG BOSS BATTLE" if (enemies_defeated > 1) || (rooms_explored > 15) || (enemies_defeated > 0 && rooms_explored > 10)
+  # puts "BIG BOSS BATTLE" if (enemies_defeated > 1) || (rooms_explored > 15) || (enemies_defeated > 0 && rooms_explored > 10)
   # puts "BIG BOSS BATTLE" if ((enemies_defeated > 1) || (rooms_explored > 8) || (enemies_defeated > 0 && rooms_explored > 5)) && (rand(1..2) == 1)
-
+  if rooms_explored > 0
+    player[:hp] += (enemies_defeated + 1) * 100
+    enemy = nil; second_enemy = nil; tracked_enemy = { name: "🧀 The Big Cheese" }
+    big_boss_battle(player)
+  end
 
   # puts "[DEBUG] [Enemies Defeated: #{enemies_defeated}] || [Rooms Explored: #{rooms_explored}]"
 
