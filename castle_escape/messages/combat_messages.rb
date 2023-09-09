@@ -14,6 +14,7 @@ def weapon_broke(weapon)
     "😲 You used up your last shot, your #{weapon[:name]} is a paperweight.",
     "😲 Your #{weapon[:name]} resigned from service. On your own now.",
     "😲 Your #{weapon[:name]} jumped from your hand and legged it.",
+    "😲 Your #{weapon[:name]} was pretty shoddy, sucks to be you.",
     "😲 Your #{weapon[:name]} broke 💔, time to take a walk.",
     "😲 Oh shit! Your #{weapon[:name]} broke. Better leg it!",
     "😲 Your #{weapon[:name]} disappears into thin air",
