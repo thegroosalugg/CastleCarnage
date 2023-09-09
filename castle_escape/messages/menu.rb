@@ -57,10 +57,9 @@ def state_of_game(enemy, second_enemy, player, weapon)
   puts "    #{enemy[:name]} HP: #{enemy[:hp].to_i} #{'🤍' * [enemy[:hp] / 20, 0].max}" if enemy
   puts "    #{second_enemy[:name]} HP: #{second_enemy[:hp].to_i} #{'🤍' * [second_enemy[:hp] / 20, 0].max}" if second_enemy
   puts "    💖 Your HP: #{player[:hp].to_i} #{'❤️' * [player[:hp] / 20, 0].max}"
-  puts "    ⚔  Weapon: #{weapon[:name]} #{'🟦' * [weapon[:durability], 0].max}" if weapon[:durability] > 0
+  puts "    ⚔  Weapon: #{weapon[:name]} #{'🟦' * [weapon[:durability], 0].max}" if weapon[:durability].positive?
   puts "----------------------------------------------------------------------"
 end
-
 
 # ERROR MESSAGES
 

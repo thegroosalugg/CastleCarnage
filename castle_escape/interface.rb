@@ -24,9 +24,9 @@ intro_enemy(enemy)
 intro_weapon(weapon, enemy)
 state_of_game(enemy, second_enemy, player, weapon)
 
-while (enemy || second_enemy) && player[:hp] > 0
+while (enemy || second_enemy) && player[:hp].positive?
 
-  if weapon[:durability] > 0
+  if weapon[:durability].positive?
     weapon_broken = false
     load_menu
     user_action = gets.chomp.downcase
@@ -91,8 +91,9 @@ while (enemy || second_enemy) && player[:hp] > 0
 
   # puts "BIG BOSS BATTLE" if (enemies_defeated > 1) || (rooms_explored > 15) || (enemies_defeated > 0 && rooms_explored > 10)
   # puts "BIG BOSS BATTLE" if ((enemies_defeated > 1) || (rooms_explored > 8) || (enemies_defeated > 0 && rooms_explored > 5)) && (rand(1..2) == 1)
-  if rooms_explored > 0
-    player[:hp] += (enemies_defeated + 1) * 100
+  if rooms_explored > 10
+    enemies_defeated = 1
+    player[:hp] += 100 + (enemies_defeated > 0 ? (enemies_defeated - 1) * 80 : 0)
     enemy = nil; second_enemy = nil; tracked_enemy = { name: "🧀 The Big Cheese" }
     big_boss_battle(player)
   end
@@ -102,4 +103,4 @@ while (enemy || second_enemy) && player[:hp] > 0
   state_of_game(enemy, second_enemy, player, weapon)
 end
 
-enemy == nil && second_enemy == nil && player[:hp] > 0 ? win_message(tracked_enemy) : lose_message(tracked_enemy)
+enemy == nil && second_enemy == nil && player[:hp].positive? ? win_message(tracked_enemy) : lose_message(tracked_enemy)
