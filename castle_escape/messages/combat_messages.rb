@@ -14,7 +14,7 @@ def weapon_broke(weapon)
     "😲 You used up your last shot, your #{weapon[:name]} is a paperweight.",
     "😲 Your #{weapon[:name]} resigned from service. On your own now.",
     "😲 Your #{weapon[:name]} jumped from your hand and legged it.",
-    "😲 Your #{weapon[:name]} was pretty shoddy, sucks to be you.",
+    "😲 Your #{weapon[:name]} was proper shoddy, sucks to be you.",
     "😲 Your #{weapon[:name]} broke 💔, time to take a walk.",
     "😲 Oh shit! Your #{weapon[:name]} broke. Better leg it!",
     "😲 Your #{weapon[:name]} disappears into thin air",
@@ -62,8 +62,8 @@ def attack_msg(enemy, weapon, damage_dealt)
     "You grabbed #{enemy[:name]} and smashed them through the wall for 💢 #{damage_dealt} damage!",
     "You trounced #{enemy[:name]} with your #{weapon[:name]} for 💢 #{damage_dealt} damage!",
     "You wrecked #{enemy[:name]} with your #{weapon[:name]} for 💢 #{damage_dealt} damage!",
+    "#{enemy[:name]} got teached by your #{weapon[:name]} for 💢 #{damage_dealt} damage!",
     "You merked #{enemy[:name]} with your #{weapon[:name]} for 💢 #{damage_dealt} damage!",
-    "#{weapon[:name]} #{enemy[:name]} for 💢 #{damage_dealt} damage!",
   ]
 
   puts atk_msg.sample
@@ -172,6 +172,7 @@ def enemy_killed(enemy)
     "#{enemy[:name]} took the 🚂 midnight train to slab city.",
     "#{enemy[:name]} is sleeping with the fishes 🐟",
     "#{enemy[:name]} turned into a ghost, whooo 👻",
+    "#{enemy[:name]} took a trip ✈️ to Belize.",
     "#{enemy[:name]} died. 🎯 Bully for you!",
     "#{enemy[:name]}: 'Argh, yar got me!'",
     "#{enemy[:name]} was anhialated ☠",
