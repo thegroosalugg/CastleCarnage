@@ -13,6 +13,7 @@ def load_menu
     "   🥷 [t]: Mash 'em up, innit",
     "   🥷 [t]: Your soul is mine!",
     "   🥷 [t]: Pay 'em a beating",
+    "   🥷 [t]: Choose violence",
     "   🥷 [t]: Do 'em in",
   ]
 
