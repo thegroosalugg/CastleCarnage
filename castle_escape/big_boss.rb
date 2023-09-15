@@ -1,7 +1,9 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
+
 def big_boss_battle(player)
+  selected_boss = big_boss_display
   the_boss = {
     hp: rand(500..600),
     attack: (10..100).to_a,
@@ -12,8 +14,8 @@ def big_boss_battle(player)
   }
 
   while the_boss[:hp].positive? && player[:hp].positive?
-    # print `clear`
-    big_boss
+    print `clear`
+    puts selected_boss
     puts "BOSS: #{the_boss[:hp].to_i} || YOU: #{player[:hp].to_i}"
     user_decision = gets.chomp.to_i
 

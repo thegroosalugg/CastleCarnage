@@ -2,6 +2,7 @@
 require_relative 'enemies_weapons'
 require_relative 'attack_mode'
 require_relative 'escape_room'
+require_relative 'boss_art'
 require_relative 'big_boss'
 require_relative 'messages/menu'
 require_relative 'messages/intro_outro'
