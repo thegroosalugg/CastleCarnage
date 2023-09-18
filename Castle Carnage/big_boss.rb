@@ -10,7 +10,7 @@ def big_boss_battle(player)
   while the_boss[:hp].positive? && player[:hp].positive?
     print `clear`
     puts selected_boss
-    puts "BOSS: #{the_boss[:hp].to_i} || YOU: #{player[:hp].to_i}"
+    puts "BOSS: #{the_boss[:hp].to_i} || YOU: #{player[:hp].to_i} BLOCK: #{player[:block].sample}"
     user_decision = gets.chomp.to_i
 
     player[:hp] -= 100 if user_decision == 4

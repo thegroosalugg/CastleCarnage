@@ -93,8 +93,10 @@ while (enemy || second_enemy) && player[:hp].positive?
   # puts "BIG BOSS BATTLE" if (enemies_defeated > 1) || (rooms_explored > 15) || (enemies_defeated > 0 && rooms_explored > 10)
   # puts "BIG BOSS BATTLE" if ((enemies_defeated > 1) || (rooms_explored > 8) || (enemies_defeated > 0 && rooms_explored > 5)) && (rand(1..2) == 1)
   if rooms_explored > 0
-    enemies_defeated = 1
-    player[:hp] += 100 + (enemies_defeated * 50)
+    enemies_defeated = 100 # debug
+    rooms_explored = 100 # debug
+    player[:hp] += 100 + (rooms_explored * 20)
+    player[:block] = (1..enemies_defeated + 10).to_a
     enemy = nil; second_enemy = nil; tracked_enemy = { name: "🧀 The Big Cheese" }
     big_boss_battle(player)
   end
