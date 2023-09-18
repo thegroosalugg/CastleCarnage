@@ -5,9 +5,6 @@ def player_attack(enemy, weapon)
   damage_dealt = [weapon[:damage].sample - enemy[:block].sample, 1].max
   if weapon[:crit_ch].sample == 1
     critical_damage = damage_dealt * weapon[:crit_x].call
-
-    # puts "[DEBUG] [Damage: #{damage_dealt}] || [Critical Dmg: #{critical_damage}]"
-
     enemy[:hp] -= critical_damage
     crt_dmg_msg(enemy, weapon, critical_damage)
   elsif weapon[:accuracy].sample == 1
@@ -24,9 +21,6 @@ def enemy_attack(enemy, player)
   enemy_damage = [enemy[:attack].sample - player[:block].sample, 1].max
   if enemy[:crit_ch].sample == 1
     enemy_critical = enemy_damage * enemy[:crit_x].call
-
-    # puts "[DEBUG] [Enemy Dmg: #{enemy_damage}] || [Enemy Crit: #{enemy_critical}]"
-
     player[:hp] -= enemy_critical
     enemy_crt_msg(enemy, enemy_critical)
   elsif enemy[:accuracy].sample == 1
