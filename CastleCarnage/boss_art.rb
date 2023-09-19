@@ -1,7 +1,7 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-def big_boss_display
+def big_boss_art
   bosses = [
     <<-'ASCII',
                    ____      ________
