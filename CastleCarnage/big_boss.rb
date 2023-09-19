@@ -8,7 +8,7 @@ def pop_a_hydrant(player, the_boss)
 
   case boss_type
   when :fire
-    damage_multiplier = 1.5
+    damage_multiplier = 1.9
   when :electric
     damage_multiplier = 1.2
   when :water
@@ -27,6 +27,7 @@ end
 
 
 def big_boss_battle(player)
+  print `clear`
   load_boss = big_boss_art
   the_boss = {
     hp: rand(500..600), attack: (10..100).to_a, block: (3..20).to_a, crit_ch: (1..9).to_a, crit_x: -> { rand(1.5..3.0) }, accuracy: (1..8).to_a,
@@ -34,7 +35,6 @@ def big_boss_battle(player)
   }
 
   while the_boss[:hp].positive? && player[:hp].positive?
-    #print `clear`
     puts load_boss
     boss_menu
 
