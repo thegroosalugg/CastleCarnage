@@ -8,23 +8,29 @@ def pop_a_hydrant(player, the_boss)
 
   case boss_type
   when :fire
-    damage_multiplier = 1.9
+    multiplier = 1.9
   when :electric
-    damage_multiplier = 1.2
+    multiplier = 1.2
   when :water
-    damage_multiplier = 0.6
+    multiplier = 0.6
   else
-    damage_multiplier = 1.0
+    multiplier = 1.0
   end
 
-  damage = [(40..70).to_a.sample - the_boss[:block].sample, 1].max * damage_multiplier
+  damage = [(40..70).to_a.sample - the_boss[:block].sample, 1].max * multiplier
 
-  puts "[DEBUG] damage: #{damage} multiplier #{damage_multiplier} || Boss type #{boss_type}"
+  puts "[DEBUG] damage: #{damage} multiplier #{multiplier} || Boss type #{boss_type}"
 
   the_boss[:hp] -= damage
   player[:hp] -= damage if boss_type == :electric
 end
 
+def pay_with_blood(player)
+  print `clear`
+  player[:hp] -= 20
+  player[:block] = player[:block].map { |value| value + 1 }
+  puts player[:block]
+end
 
 def big_boss_battle(player)
   print `clear`
@@ -46,6 +52,8 @@ def big_boss_battle(player)
     when 4
       pop_a_hydrant(player, the_boss)
     when 5
+      pay_with_blood((player))
+    when 6
       break
     else
       error_message

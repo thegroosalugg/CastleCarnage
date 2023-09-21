@@ -33,7 +33,7 @@ def pick_weapon
     { name: "🗡️ Sword", damage: (15..50).to_a, durability: rand(2..4), crit_ch: (1..10).to_a, crit_x: -> { rand(1.8..2.6) }, accuracy: (1..10).to_a },
     { name: "🎇 Mace", damage: (16..48).to_a, durability: rand(2..5), crit_ch: (1..11).to_a, crit_x: -> { rand(1.5..2.0) }, accuracy: (1..10).to_a },
     { name: "🍢 Giant Club", damage: (20..40).to_a, durability: rand(3..6), crit_ch: (1..10).to_a, crit_x: -> { rand(1.5..2.0) }, accuracy: (1..10).to_a },
-    { name: "✨ Magic Scepter", damage: (10..60).to_a, durability: rand(1..4), crit_ch: (1..12).to_a, crit_x: -> { rand(2.0..5.0) }, accuracy: (1..7).to_a },
+    { name: "🪄 Magic Scepter", damage: (10..60).to_a, durability: rand(1..4), crit_ch: (1..12).to_a, crit_x: -> { rand(2.0..5.0) }, accuracy: (1..7).to_a },
     { name: "🏹 Long Bow", damage: (10..90).to_a, durability: rand(1..4), crit_ch: (1..8).to_a, crit_x: -> { rand(1.7..2.5) }, accuracy: (1..12).to_a },
     { name: "🏹 Crossbow", damage: (20..80).to_a, durability: rand(1..3), crit_ch: (1..7).to_a, crit_x: -> { rand(1.6..2.3) }, accuracy: (1..11).to_a },
   ]
@@ -48,7 +48,7 @@ def special_weapon
     { name: "💣 Bobomb", damage: (40..100).to_a, durability: 1, crit_ch: (1..10).to_a, crit_x: -> { rand(1.5..2.0) }, accuracy: (1..9).to_a },
     { name: "🛫 Air Strike", damage: (50..120).to_a, durability: 1, crit_ch: (1..13).to_a, crit_x: -> { rand(3.6..5.2) }, accuracy: (1..9).to_a },
     { name: "🦄 Unicorn", damage: (10..90).to_a, durability: rand(2..3), crit_ch: (1..6).to_a, crit_x: -> { rand(2.5..3.5) }, accuracy: (1..11).to_a },
-    { name: "🐉🔥 Charizard", damage: (90..120).to_a, durability: rand(1..3), crit_ch: (1..6).to_a, crit_x: -> { rand(2.5..3.5) }, accuracy: (1..3).to_a },
+    { name: "🐲🔥 Charizard", damage: (90..120).to_a, durability: rand(1..3), crit_ch: (1..6).to_a, crit_x: -> { rand(2.5..3.5) }, accuracy: (1..3).to_a },
   ]
 
   special_weapons.sample

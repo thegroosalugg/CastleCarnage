@@ -53,6 +53,7 @@ def gained_health(randomizer)
     "Holy shit! A fucking cake 🎂! Munched! You gained 💗 #{randomizer} HP!",
     "You got the Wi-Fi Password 📝! You gained 💗 #{randomizer} HP!",
     "The doctor 🥼 is in the house. You gained 💗 #{randomizer} HP!",
+    "Some shrooms 🍄, You gained 💗 #{randomizer} HP!",
   ]
 
   puts gained_msg.sample
