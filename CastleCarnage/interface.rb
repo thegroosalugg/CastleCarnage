@@ -2,12 +2,12 @@
 require_relative 'enemies_weapons'
 require_relative 'attack_mode'
 require_relative 'escape_room'
-require_relative 'boss_art'
 require_relative 'big_boss'
 require_relative 'messages/menu'
 require_relative 'messages/intro_outro'
 require_relative 'messages/combat_messages'
 require_relative 'messages/explore_messages'
+require_relative 'messages/boss_art'
 require_relative 'messages/boss_messages'
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
@@ -91,7 +91,7 @@ while (enemy || second_enemy) && player[:hp].positive?
   end
 
   # puts "BIG BOSS BATTLE" if (enemies_defeated > 1) || (rooms_explored > 15) || (enemies_defeated > 0 && rooms_explored > 10)
-  # puts "BIG BOSS BATTLE" if ((enemies_defeated > 1) || (rooms_explored > 8) || (enemies_defeated > 0 && rooms_explored > 5)) && (rand(1..2) == 1)
+  # ((enemies_defeated > 1) || (rooms_explored > 8) || (enemies_defeated > 0 && rooms_explored > 5)) && (rand(1..2) == 1) ? big_boss_battle : big_boss_warning
   if rooms_explored > 0
     enemies_defeated = 2 # debug
     rooms_explored = 5 # debug
