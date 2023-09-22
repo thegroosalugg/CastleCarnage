@@ -3,6 +3,7 @@ require_relative 'enemies_weapons'
 require_relative 'attack_mode'
 require_relative 'escape_room'
 require_relative 'big_boss'
+require_relative 'boss_battle'
 require_relative 'messages/menu'
 require_relative 'messages/intro_outro'
 require_relative 'messages/combat_messages'
@@ -90,6 +91,9 @@ while (enemy || second_enemy) && player[:hp].positive?
     tracked_enemy = enemy if enemy
   end
 
+  state_of_game(enemy, second_enemy, player, weapon)
+
+  # puts "[DEBUG] [Enemies Defeated: #{enemies_defeated}] || [Rooms Explored: #{rooms_explored}]"
   # puts "BIG BOSS BATTLE" if (enemies_defeated > 1) || (rooms_explored > 15) || (enemies_defeated > 0 && rooms_explored > 10)
   # ((enemies_defeated > 1) || (rooms_explored > 8) || (enemies_defeated > 0 && rooms_explored > 5)) && (rand(1..2) == 1) ? big_boss_battle : big_boss_warning
   if rooms_explored > 0
@@ -99,10 +103,6 @@ while (enemy || second_enemy) && player[:hp].positive?
     enemy = nil; second_enemy = nil; tracked_enemy = { name: "🧀 The Big Cheese" }
     big_boss_battle(player)
   end
-
-  # puts "[DEBUG] [Enemies Defeated: #{enemies_defeated}] || [Rooms Explored: #{rooms_explored}]"
-
-  state_of_game(enemy, second_enemy, player, weapon)
 end
 
 enemy == nil && second_enemy == nil && player[:hp].positive? ? win_message(tracked_enemy) : lose_message(tracked_enemy)
