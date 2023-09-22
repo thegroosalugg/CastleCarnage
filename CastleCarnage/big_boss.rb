@@ -20,6 +20,7 @@ def pop_a_hydrant(player, the_boss, boss_type)
   the_boss[:hp] -= damage
   player[:hp] -= damage if boss_type == :electric
   damage_info(the_boss, boss_type, damage, multiplier)
+  boss_type = the_boss[:type].sample  
 end
 
 def pay_with_blood(player)
@@ -35,7 +36,7 @@ def big_boss_battle(player)
     hp: rand(500..600), attack: (10..100).to_a, block: (3..20).to_a, crit_ch: (1..9).to_a, crit_x: -> { rand(1.5..3.0) }, accuracy: (1..8).to_a,
     type: [:fire, :water, :electric, :ice]
   }
-  boss_type = nil
+  boss_type = the_boss[:type].sample
   game_info(player, the_boss, boss_type)
 
   while the_boss[:hp].positive? && player[:hp].positive?
@@ -43,11 +44,11 @@ def big_boss_battle(player)
     boss_menu
 
     user_decision = gets.chomp.to_i
-    boss_type = the_boss[:type].sample if (4..6).include?(user_decision)
+    #boss_type = the_boss[:type].sample if (4..6).include?(user_decision)
 
     case user_decision
     when 4
-      pop_a_hydrant(player, the_boss, boss_type)
+      boss_type = pop_a_hydrant(player, the_boss, boss_type)
     when 5
       pay_with_blood(player)
     when 6
