@@ -28,7 +28,7 @@ end
 def pay_with_blood(player)
   print `clear`
   player[:hp] -= 20
-  player[:block] = player[:block].map { |value| value + 1 }
+  player[:block] = player[:block].map { |block| block + 1 }
   puts player[:block]
 end
 
@@ -52,7 +52,7 @@ def big_boss_battle(player)
     when 4
       pop_a_hydrant(player, the_boss)
     when 5
-      pay_with_blood((player))
+      pay_with_blood(player)
     when 6
       break
     else
