@@ -59,9 +59,11 @@ def state_of_game(enemy, second_enemy, player, weapon)
   puts "    #{enemy[:name]} HP: #{enemy[:hp].to_i} #{'🤍' * [enemy[:hp] / 20, 0].max}" if enemy
   puts "    👊 Attack: #{'🔶' * (enemy[:attack].min / 20)}#{'🔸' * (enemy[:attack].min / 5 % 4)} to #{'🔶' * (enemy[:attack].max / 20)}#{'🔸' * (enemy[:attack].max / 5 % 4)} || 🛡️ Block #{'🔷' * (enemy[:block].min / 5)}#{'🔹' * (enemy[:block].min % 5)} to #{'🔷' * (enemy[:block].max / 5)}#{'🔹' * (enemy[:block].max % 5)}" if enemy
   puts "----------------------------------------------------------------------" if enemy
+
   puts "    #{second_enemy[:name]} HP: #{second_enemy[:hp].to_i} #{'🤍' * [second_enemy[:hp] / 20, 0].max}" if second_enemy
   puts "    👊 Attack: #{'🔶' * (second_enemy[:attack].min / 20)}#{'🔸' * (second_enemy[:attack].min / 5 % 4)} to #{'🔶' * (second_enemy[:attack].max / 20)}#{'🔸' * (second_enemy[:attack].max / 5 % 4)} || 🛡️ Block #{'🔷' * (second_enemy[:block].min / 5)}#{'🔹' * (second_enemy[:block].min % 5)} to #{'🔷' * (second_enemy[:block].max / 5)}#{'🔹' * (second_enemy[:block].max % 5)}" if second_enemy
   puts "----------------------------------------------------------------------" if second_enemy
+  
   puts "    💖 Your HP: #{player[:hp].to_i} #{'❤️' * [player[:hp] / 20, 0].max}"
   puts "    🛡️ Block: #{'🔷' * (player[:block].min / 5)}#{'🔹' * (player[:block].min % 5)} to #{'🔷' * (player[:block].max / 5)}#{'🔹' * (player[:block].max % 5)}"
   puts "    ⚔️ Weapon: #{weapon[:name]}" if weapon[:durability].positive?
