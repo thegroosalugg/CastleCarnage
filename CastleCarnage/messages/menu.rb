@@ -69,8 +69,8 @@ def enemy_bars(enemy)
 end
 
 def weapon_bars(weapon)
-  "⚔️ Weapon: #{weapon[:name]}" +
-  " || 💥 Damage: " +
+  "⚔️ Weapon: #{weapon[:name]}\n" +
+  "    💥 Damage: " +
   "🔶" * (weapon[:damage].min / 20) + "🔸" * (weapon[:damage].min / 5 % 4) +
   " to " +
   "🔶" * (weapon[:damage].max / 20) + "🔸" * (weapon[:damage].max / 5 % 4) +
