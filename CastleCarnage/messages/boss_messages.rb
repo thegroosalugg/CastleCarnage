@@ -14,10 +14,11 @@ def game_info(player, the_boss, boss_style, load_boss)
   puts "----------------------------------------------------------------------"
   puts "    🧀 The Big Cheese HP: #{the_boss[:hp].to_i} #{'💜' * [the_boss[:hp] / 30, 0].max}"
   puts "    🧀 The Big Cheese Style: #{boss_style}"
+  puts "----------------------------------------------------------------------"
 
   puts "    💖 Your HP: #{player[:hp].to_i} #{'❤️' * [player[:hp] / 30, 0].max}"
-  puts "    🛡️ Block: #{'🔷' * (player[:block].min / 5)}#{'🔹' * (player[:block].min % 5)} to #{'🔷' * (player[:block].max / 5)}#{'🔹' * (player[:block].max % 5)}"
-  
+  puts "    #{player_block(player)}"
+
   puts "    💰 Wallet: #{player[:cash]} #{'💵' * [player[:cash], 0].max}"
   puts "    🥴 Drunk: #{player[:drunk]} #{'🍺' * [player[:drunk], 0].max}"
   puts "----------------------------------------------------------------------"
