@@ -8,10 +8,9 @@ def big_boss_battle(player)
     hp: rand(800..1000), attack: (10..100).to_a, style: ["🍻 Barkeep"]
   }
   boss_style = the_boss[:style].sample
-  game_info(player, the_boss, boss_style)
+  game_info(player, the_boss, boss_style, load_boss)
 
   while the_boss[:hp].positive? && player[:hp].positive?
-    puts load_boss
     boss_menu
 
     user_choice = gets.chomp.to_i
@@ -29,6 +28,6 @@ def big_boss_battle(player)
       error_message
     end
 
-    game_info(player, the_boss, boss_style)
+    game_info(player, the_boss, boss_style, load_boss)
   end
 end

@@ -6,8 +6,7 @@ def fight_the_power(player, the_boss, boss_style, load_boss)
   user_choice = 0
 
   until [4, 5].include?(user_choice)
-    game_info(player, the_boss, boss_style)
-    puts load_boss
+    game_info(player, the_boss, boss_style, load_boss)
     fight_menu(boss_style)
 
     damage = ((40..80).to_a.sample * (100 - player[:drunk] * 5) / 100).to_i
@@ -38,8 +37,7 @@ def pay_with_blood(player, the_boss, boss_style, load_boss)
   user_choice = 0
 
   until [4, 5, 6].include?(user_choice)
-    game_info(player, the_boss, boss_style)
-    puts load_boss
+    game_info(player, the_boss, boss_style, load_boss)
     blood_menu
 
     user_choice = gets.chomp.to_i
