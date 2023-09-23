@@ -53,16 +53,19 @@ def load_menu
 end
 
 # GAME STATUS
+# \n indicates a line break
 
 def enemy_bars(enemy)
-  "👊 Attack: " +
+  "#{enemy[:name]} HP: #{enemy[:hp].to_i} #{'🤍' * [enemy[:hp] / 20, 0].max}\n" +
+  "    👊 Attack: " +
   "🔶" * (enemy[:attack].min / 20) + "🔸" * (enemy[:attack].min / 5 % 4) +
   " to " +
   "🔶" * (enemy[:attack].max / 20) + "🔸" * (enemy[:attack].max / 5 % 4) +
   ' || 🛡️ Block: ' +
   "🔷" * (enemy[:block].min / 5) + "🔹" * (enemy[:block].min % 5) +
   " to " +
-  "🔷" * (enemy[:block].max / 5) + "🔹" * (enemy[:block].max % 5)
+  "🔷" * (enemy[:block].max / 5) + "🔹" * (enemy[:block].max % 5) +
+  "\n----------------------------------------------------------------------"
 end
 
 def weapon_bars(weapon)
@@ -83,14 +86,8 @@ end
 
 def state_of_game(enemy, second_enemy, player, weapon)
   puts "----------------------------------------------------------------------"
-  puts "    #{enemy[:name]} HP: #{enemy[:hp].to_i} #{'🤍' * [enemy[:hp] / 20, 0].max}" if enemy
   puts "    #{enemy_bars(enemy)}" if enemy
-  puts "----------------------------------------------------------------------" if enemy
-
-  puts "    #{second_enemy[:name]} HP: #{second_enemy[:hp].to_i} #{'🤍' * [second_enemy[:hp] / 20, 0].max}" if second_enemy
   puts "    #{enemy_bars(second_enemy)}" if second_enemy
-  puts "----------------------------------------------------------------------" if second_enemy
-
   puts "    💖 Your HP: #{player[:hp].to_i} #{'❤️' * [player[:hp] / 20, 0].max}"
   puts "    #{player_block(player)}"
   puts "    ⚔️ Weapon: #{weapon[:name]}" if weapon[:durability].positive?
