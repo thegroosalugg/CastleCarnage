@@ -31,7 +31,7 @@ def fight_menu(boss_style)
 end
 
 def damage_info(the_boss, boss_style, damage, multiplier)
-  puts "You damaged 🧀 The Big Cheese #{boss_style} for #{damage} with a mutiplier of #{multiplier}"
+  puts "You damaged 🧀 The Big Cheese #{boss_style} for #{damage} with a multiplier of #{multiplier}"
 end
 
 def blood_menu
