@@ -1,11 +1,11 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-def fight_the_power(player, the_boss, boss_type)
+def fight_the_power(player, the_boss, boss_style)
   print `clear`
 
-  case boss_type
-  when "🔥 Fire"
+  case boss_style
+  when "🍻 Barkeep"
     multiplier = rand(1.5..2.5)
   when "⚡ Electric"
     multiplier = rand(1.0..1.4)
@@ -18,9 +18,9 @@ def fight_the_power(player, the_boss, boss_type)
   damage = [(40..70).to_a.sample - the_boss[:block].sample, 1].max * multiplier
 
   the_boss[:hp] -= damage
-  player[:hp] -= damage if boss_type == :electric
-  damage_info(the_boss, boss_type, damage, multiplier)
-  boss_type = the_boss[:type].sample
+  player[:hp] -= damage if boss_style == "⚡ Electric"
+  damage_info(the_boss, boss_style, damage, multiplier)
+  boss_style = the_boss[:style].sample
 end
 
 def pay_with_blood(player)

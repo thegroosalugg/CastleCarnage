@@ -14,7 +14,7 @@ require_relative 'messages/boss_messages'
 
 print `clear`
 
-player = { hp: rand(250..300), block: (1..10).to_a }
+player = { hp: rand(250..300), block: (1..10).to_a, cash: rand(10..20), drunk: 0 }
 enemy = random_enemy
 second_enemy = nil
 weapon = pick_weapon
