@@ -5,7 +5,7 @@ def big_boss_battle(player)
   print `clear`
   load_boss = big_boss_art
   the_boss = {
-    hp: rand(500..600), attack: (10..100).to_a, style: ["🍻 Barkeep"]
+    hp: rand(800..1000), attack: (10..100).to_a, style: ["🍻 Barkeep"]
   }
   boss_style = the_boss[:style].sample
   game_info(player, the_boss, boss_style)

@@ -18,6 +18,7 @@ def fight_the_power(player, the_boss, boss_style, load_boss)
       multiplier = 1.0 + (cash_spent * 0.4)
       the_boss[:hp] -= damage * multiplier
       player[:cash] -= cash_spent; player[:drunk] += cash_spent
+      player[:drunk] = [player[:drunk], 19].min
     elsif user_choice == 5
       puts "tba"
     else
@@ -26,6 +27,7 @@ def fight_the_power(player, the_boss, boss_style, load_boss)
   end
 
   print `clear`
+  puts cash_spent
   damage_info(the_boss, boss_style, damage, multiplier)
   boss_style = the_boss[:style].sample
 end
