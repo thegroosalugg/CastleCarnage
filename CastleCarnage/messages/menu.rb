@@ -69,28 +69,28 @@ def enemy_bars(enemy)
 end
 
 def weapon_bars(weapon)
-  "💥 Damage: " +
-    "🔶" * (weapon[:damage].min / 20) + "🔸" * (weapon[:damage].min / 5 % 4) +
-    " to " +
-    "🔶" * (weapon[:damage].max / 20) + "🔸" * (weapon[:damage].max / 5 % 4) +
-    " || 🪶 Uses: " +
-    "🟦" * [weapon[:durability], 0].max
+  "⚔️ Weapon: #{weapon[:name]}" +
+  " || 💥 Damage: " +
+  "🔶" * (weapon[:damage].min / 20) + "🔸" * (weapon[:damage].min / 5 % 4) +
+  " to " +
+  "🔶" * (weapon[:damage].max / 20) + "🔸" * (weapon[:damage].max / 5 % 4) +
+  " || 🪶 Uses: " +
+  "🟦" * [weapon[:durability], 0].max
 end
 
-def player_block(player)
-  "🛡️ Block: " +
-    "🔷" * (player[:block].min / 5) + "🔹" * (player[:block].min % 5) +
-    " to " +
-    "🔷" * (player[:block].max / 5) + "🔹" * (player[:block].max % 5)
+def player_bars(player)
+  "💖 Your HP: #{player[:hp].to_i} #{'❤️' * [player[:hp] / 20, 0].max}\n" +
+  "    🛡️ Block: " +
+  "🔷" * (player[:block].min / 5) + "🔹" * (player[:block].min % 5) +
+  " to " +
+  "🔷" * (player[:block].max / 5) + "🔹" * (player[:block].max % 5)
 end
 
 def state_of_game(enemy, second_enemy, player, weapon)
   puts "----------------------------------------------------------------------"
   puts "    #{enemy_bars(enemy)}" if enemy
   puts "    #{enemy_bars(second_enemy)}" if second_enemy
-  puts "    💖 Your HP: #{player[:hp].to_i} #{'❤️' * [player[:hp] / 20, 0].max}"
-  puts "    #{player_block(player)}"
-  puts "    ⚔️ Weapon: #{weapon[:name]}" if weapon[:durability].positive?
+  puts "    #{player_bars(player)}"
   puts "    #{weapon_bars(weapon)}" if weapon[:durability].positive?
   puts "----------------------------------------------------------------------"
 end
