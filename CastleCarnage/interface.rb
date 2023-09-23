@@ -96,7 +96,7 @@ while (enemy || second_enemy) && player[:hp].positive?
   # puts "[DEBUG] [Enemies Defeated: #{enemies_defeated}] || [Rooms Explored: #{rooms_explored}]"
   # puts "BIG BOSS BATTLE" if (enemies_defeated > 1) || (rooms_explored > 15) || (enemies_defeated > 0 && rooms_explored > 10)
   # ((enemies_defeated > 1) || (rooms_explored > 8) || (enemies_defeated > 0 && rooms_explored > 5)) && (rand(1..2) == 1) ? big_boss_battle : big_boss_warning
-  if rooms_explored > 0
+  if rooms_explored > 20
     enemies_defeated = 2 # debug
     rooms_explored = 5 # debug
     player[:hp] += 100 + (rooms_explored * 20); player[:block] = (1..10 + enemies_defeated).to_a

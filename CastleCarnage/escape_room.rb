@@ -2,23 +2,23 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 ROOM_NAMES = [
-  { name: "🖼 The Secret Door Behind the Painting", probability: (1..9).to_a },
-  { name: "🚇 The Abandoned Underground Tunnels", probability: (1..9).to_a },
-  { name: "🕳  The Trapdoor Under the Carpet", probability: (1..9).to_a },
-  { name: "❓ The Super Secret Mystery Room", probability: (1..8).to_a },
-  { name: "🍽 The High Society Dining Room", probability: (1..9).to_a },
-  { name: "💡 The Glowing Light Room", probability: (1..9).to_a },
-  { name: "🕋 The Buzzin' Nightclub", probability: (1..9).to_a },
-  { name: "🏴‍☠️ The Treasure Chamber", probability: (1..9).to_a },
-  { name: "🛁 The Manky Bathroom", probability: (1..9).to_a },
-  { name: "🛌 The Master Bedroom", probability: (1..9).to_a },
-  { name: "🔲 The Wobbly Window", probability: (1..9).to_a },
-  { name: "📚 The Musty Library", probability: (1..9).to_a },
-  { name: "📺 The Fancy Lounge", probability: (1..9).to_a },
-  { name: "😱 The Dodgy Cellar", probability: (1..9).to_a },
-  { name: "🩲 The Jacuzzi Room", probability: (1..9).to_a },
-  { name: "🚓 Dracula's Royce", probability: (1..9).to_a },
-  { name: "🏰 The Roof", probability: (1..9).to_a },
+  { probability: [1, 2, 5, 5, 6, 7], name: "🖼 The Secret Door Behind the Painting" },
+  { probability: [1, 2, 3, 4, 5, 5, 5, 6, 7], name: "🚇 The Abandoned Underground Tunnels" },
+  { probability: [1, 2, 3, 4, 5, 5, 5, 6, 7], name: "🕳  The Trapdoor Under the Carpet" },
+  { probability: [1, 2, 3, 4, 5, 5, 5, 6, 7], name: "❓ The Super Secret Mystery Room" },
+  { probability: [1, 2, 3, 4, 5, 5, 5, 6, 7], name: "🍽 The High Society Dining Room" },
+  { probability: [1, 2, 3, 4, 5, 5, 5, 6, 7], name: "💡 The Glowing Light Room" },
+  { probability: [1, 2, 3, 4, 5, 5, 5, 6, 7], name: "🕋 The Buzzin' Nightclub" },
+  { probability: [1, 2, 3, 4, 5, 5, 5, 6, 7], name: "🏴 The Treasure Chamber" },
+  { probability: [1, 2, 3, 4, 5, 5, 5, 6, 7], name: "🛁 The Manky Bathroom" },
+  { probability: [1, 2, 3, 4, 5, 5, 5, 6, 7], name: "🛌 The Master Bedroom" },
+  { probability: [1, 2, 3, 4, 5, 5, 5, 6, 7], name: "🔲 The Wobbly Window" },
+  { probability: [1, 2, 3, 4, 5, 5, 5, 6, 7], name: "📚 The Musty Library" },
+  { probability: [1, 2, 3, 4, 5, 5, 5, 6, 7], name: "📺 The Fancy Lounge" },
+  { probability: [1, 2, 3, 4, 5, 5, 5, 6, 7], name: "😱 The Dodgy Cellar" },
+  { probability: [1, 2, 3, 4, 5, 5, 5, 6, 7], name: "🩲 The Jacuzzi Room" },
+  { probability: [1, 2, 3, 4, 5, 5, 5, 6, 7], name: "🚓 Dracula's Royce" },
+  { probability: [1, 2, 3, 4, 5, 5, 5, 6, 7], name: "🏰 The Roof" },
 ]
 
 def inside_room(selected_room, enemy, weapon, player, second_enemy)
@@ -41,10 +41,10 @@ def inside_room(selected_room, enemy, weapon, player, second_enemy)
     target_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy
     target_enemy[:hp] -= randomizer if target_enemy
     enemy_trap(randomizer, target_enemy) if target_enemy
-  when 5..7
+  when 5
     weapon = rand(1..5) == 1 ? special_weapon : pick_weapon
     got_weapon(weapon)
-  when 8
+  when 6
     if second_enemy.nil?
       second_enemy = random_enemy
       enemy_spawn(second_enemy)
@@ -55,7 +55,7 @@ def inside_room(selected_room, enemy, weapon, player, second_enemy)
       weapon = rand(1..5) == 1 ? special_weapon : pick_weapon
       got_weapon(weapon)
     end
-  when 9
+  when 7
     empty_room
   end
   return enemy, weapon, second_enemy

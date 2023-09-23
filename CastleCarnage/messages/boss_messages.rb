@@ -15,7 +15,7 @@ def game_info(player, the_boss, boss_style, load_boss)
   puts "    🧀 The Big Cheese HP: #{the_boss[:hp].to_i} #{'💜' * [the_boss[:hp] / 30, 0].max}"
   puts "    🧀 The Big Cheese Style: #{boss_style}"
   puts "    💖 Your HP: #{player[:hp].to_i} #{'❤️' * [player[:hp] / 30, 0].max}"
-  puts "    🛡️ Block Range: (#{player[:block].min}-#{player[:block].max})"
+  puts "    🛡️ Block: #{'🔷' * (player[:block].min / 5)}#{'🔹' * (player[:block].min % 5)} to #{'🔷' * (player[:block].max / 5)}#{'🔹' * (player[:block].max % 5)}"
   puts "    💰 Wallet: #{player[:cash]} #{'💵' * [player[:cash], 0].max}"
   puts "    🥴 Drunk: #{player[:drunk]} #{'🍺' * [player[:drunk], 0].max}"
   puts "----------------------------------------------------------------------"
@@ -39,5 +39,6 @@ def blood_menu
   puts "-------------- 🧞:'Pay with Blood ❤️, Get Swag 💰'-------------------"
   puts "[4] 💪 Buff up!"
   puts "[5] 💵 Get Money"
-  puts "[6] 🥤 Bottle of Water"
+  puts "[6] 🥤 Bottle of Water and some 💊 Ibuprofen"
+  puts "[7] 🍔 Order a take away"
 end
