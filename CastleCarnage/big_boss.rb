@@ -22,7 +22,7 @@ def big_boss_battle(player)
       boss_style = fight_the_power(player, the_boss, boss_style, load_boss)
     when 5
       print `clear`
-      pay_with_blood(player)
+      pay_with_blood(player, the_boss, boss_style, load_boss)
     when 6
       break
     else
