@@ -1,15 +1,17 @@
 # rubocop:disable all
-require_relative 'enemies_weapons'
-require_relative 'attack_mode'
-require_relative 'escape_room'
-require_relative 'big_boss'
-require_relative 'boss_battle'
-require_relative 'messages/menu'
-require_relative 'messages/intro_outro'
-require_relative 'messages/combat_messages'
-require_relative 'messages/explore_messages'
-require_relative 'messages/boss_art'
-require_relative 'messages/boss_messages'
+require_relative 'main/attack_mode'
+require_relative 'main/enemies_weapons'
+require_relative 'main/escape_room'
+require_relative 'boss/big_boss'
+require_relative 'boss/blood_magic'
+require_relative 'boss/boss_battle'
+require_relative 'main/messages/combat_messages'
+require_relative 'main/messages/explore_messages'
+require_relative 'main/messages/intro_outro'
+require_relative 'main/messages/menu'
+require_relative 'boss/messages/boss_art'
+require_relative 'boss/messages/boss_menu'
+require_relative 'boss/messages/boss_messages'
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 print `clear`
