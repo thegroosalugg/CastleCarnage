@@ -13,12 +13,11 @@ def fight_the_power(player, the_boss, boss_style, load_boss)
     user_choice = gets.chomp.to_i
 
     if user_choice == 4
-      cash_spent = player[:cash].zero? ? 0 : (1..[player[:cash], 5].min).to_a.sample
+      cash_spent = player[:cash].zero? ? 0 : (1..[player[:cash], 6].min).to_a.sample
       multiplier = cash_spent.zero? ? 0.7 : 1.0 + (cash_spent * 0.5)
       the_boss[:hp] -= damage * multiplier
       player[:cash] -= cash_spent
-      player[:drunk] += cash_spent
-      player[:drunk] = [player[:drunk], 20].min
+      player[:drunk] = [player[:drunk] + cash_spent, 20].min
     elsif user_choice == 5
       puts "tba"
     else
@@ -56,8 +55,7 @@ def pay_with_blood(player, the_boss, boss_style, load_boss)
       multiplier = player[:drunk].zero? ? 0 : (1..player[:drunk]).to_a.sample
       price_paid = (multiplier * rand(5.0..10.0)).to_i
       player[:hp] -= price_paid
-      player[:drunk] -= multiplier
-      player[:drunk] = [player[:drunk], 0].max
+      player[:drunk] = [player[:drunk] - multiplier, 0].max
     when 7
       multiplier = player[:block].max > 1 ? rand(1..[player[:block].max - 1, 4].min) : 0
       player[:block] = player[:block].map { |block| [block - multiplier, 1].max }
