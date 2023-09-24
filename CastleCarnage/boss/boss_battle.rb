@@ -7,7 +7,15 @@ def pay_the_tab(player, the_boss, damage)
   total_damage = (damage * multiplier).to_i
   the_boss[:hp] -= total_damage
   player[:cash] -= cash_spent
-  player[:drunk] = [player[:drunk] + cash_spent, 20].min
+  player[:drunk] = (player[:drunk] + cash_spent).clamp(0, 20)
+  total_damage
+end
+
+def bar_fight(player, the_boss)
+  player[:drunk] = (player[:drunk] + [-1, 1, 2].sample).clamp(0, 20)
+  player[:cash] = (player[:cash] + [-2, -1, 1].sample).clamp(0, 20)
+  total_damage = ((40..80).to_a.sample * (100 - player[:drunk] * 5) / 100).to_i # update damage to current drunkness
+  the_boss[:hp] -= total_damage
   total_damage
 end
 
@@ -25,7 +33,7 @@ def fight_the_power(player, the_boss, boss_style, load_boss)
     if user_choice == 4
       total_damage = pay_the_tab(player, the_boss, damage) # Get total damage
     elsif user_choice == 5
-      puts "tba"
+      total_damage = bar_fight(player, the_boss)
     else
       error_message
     end

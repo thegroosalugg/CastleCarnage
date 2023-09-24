@@ -56,7 +56,7 @@ end
 # \n indicates a line break
 
 def enemy_bars(enemy)
-  "#{enemy[:name]} HP: #{enemy[:hp].to_i} #{'🤍' * [(enemy[:hp] - 1) / 25 + 1, 0].max}\n" +
+  "#{enemy[:name]} HP: [#{enemy[:hp].to_i}] #{'🤍' * [(enemy[:hp] - 1) / 25 + 1, 0].max}\n" +
   "    👊 Attack: min " +
   "🔶" * (enemy[:attack].min / 20) + "🔸" * (enemy[:attack].min / 5 % 4) +
   " max " +
@@ -79,7 +79,7 @@ def weapon_bars(weapon)
 end
 
 def player_bars(player)
-  "💖 Your HP: #{player[:hp].to_i} #{'❤️' * [(player[:hp] - 1) / 25 + 1, 0].max}\n" +
+  "💖 Your HP: [#{player[:hp].to_i}] #{'❤️' * [(player[:hp] - 1) / 25 + 1, 0].max}\n" +
   "    🛡️ Block: min " +
   "🔷" * (player[:block].min / 5) + "🔹" * (player[:block].min % 5) +
   " max " +

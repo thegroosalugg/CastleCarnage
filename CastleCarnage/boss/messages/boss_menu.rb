@@ -10,7 +10,7 @@ end
 
 def game_info(player, the_boss, boss_style, load_boss)
   puts "----------------------------------------------------------------------"
-  puts "    #{the_boss[:name]} HP: #{the_boss[:hp].to_i} #{'💜' * [(the_boss[:hp] - 1) / 50 + 1, 0].max}"
+  puts "    #{the_boss[:name]} HP: [#{the_boss[:hp].to_i}] #{'💜' * [(the_boss[:hp] - 1) / 50 + 1, 0].max}"
   puts "                💫 Style: #{boss_style}"
   puts "----------------------------------------------------------------------"
   puts "    #{player_bars(player)}"

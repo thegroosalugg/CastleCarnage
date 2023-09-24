@@ -31,7 +31,8 @@ def pay_with_blood(player, the_boss, boss_style, load_boss)
         multiplier = player[:drunk].zero? ? 0 : (1..player[:drunk]).to_a.sample
         price_paid = (multiplier * rand(5.0..10.0)).to_i
         player[:hp] -= price_paid
-        player[:drunk] = [player[:drunk] - multiplier, 0].max
+        player[:drunk] = (player[:drunk] - multiplier).clamp(0, 20)
+        # player[:drunk] = [player[:drunk] - multiplier, 0].max
       else
         error_message
         redo
