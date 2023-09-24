@@ -20,8 +20,7 @@ def bar_fight(player, the_boss)
   player[:drunk] = (player[:drunk] + drunk_adjustment).clamp(0, 20)
   player[:cash] = (player[:cash] + wallet_adjustment).clamp(0, 20)
 
-  drunk_adjustment.positive? ? got_drunk(drunk_adjustment) : sobered_up(drunk_adjustment)
-  wallet_adjustment.positive? ? got_cash(wallet_adjustment) : got_mugged(wallet_adjustment)
+  bar_fight_outcome(drunk_adjustment, wallet_adjustment)
 
   total_damage = ((40..80).to_a.sample * (100 - player[:drunk] * 5) / 100).to_i # update damage to current drunkness
   the_boss[:hp] -= total_damage

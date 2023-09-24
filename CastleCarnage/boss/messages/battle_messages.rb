@@ -12,34 +12,20 @@ end
 
 # Bar fight outcomes # .abs removes negatives so only positive integers displayed
 
-def got_drunk(drunk_adjustment)
-  messages = [
+def bar_fight_outcome(drunk_adjustment, wallet_adjustment)
+  got_drunk = [
     "Damn, that was a piss up, you feel #{drunk_adjustment} 🍺 drunker.",
   ]
-
-  puts messages.sample
-end
-
-def sobered_up(drunk_adjustment)
-  messages = [
+  sober_up = [
     "That knocked some sense into ya, ya feel you feel #{drunk_adjustment.abs} 🍺 lighter!",
   ]
-
-  puts messages.sample
-end
-
-def got_cash(wallet_adjustment)
-  messages = [
+  got_cash = [
     "You battered #{wallet_adjustment} 💵 outta some poor sod!",
   ]
-
-  puts messages.sample
-end
-
-def got_mugged(wallet_adjustment)
-  messages = [
+  got_mugged = [
     "You got mugged for #{wallet_adjustment.abs} 💵",
   ]
 
-  puts messages.sample
+  puts (drunk_adjustment.positive? ? got_drunk.sample : sober_up.sample)
+  puts (wallet_adjustment.positive? ? got_cash.sample : got_mugged.sample)
 end
