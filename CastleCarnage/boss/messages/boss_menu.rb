@@ -28,11 +28,26 @@ def fight_menu(boss_style)
   end
 end
 
-def blood_menu
+def blood_menu(player)
   puts "----------------------------------------------------------------------"
-  puts "-------------- 🧞:'Pay with Blood ❤️, Get Swag 💰'-------------------"
+  puts "-------------- 🧞:'Pay with Blood ❤️ Get Bargains 💰'--------------"
   puts "[4] 💪 Buff up!"
-  puts "[5] 💵 Get Money"
-  puts "[6] 🥤 Bottle of Water and some 💊 Ibuprofen"
-  puts "[7] 🍔 Order a take away"
+
+  if player[:cash] < 20
+    puts "[5] 💵 Get Money"
+  else
+    puts "--- You're too rich 💵. No more money for you ---"
+  end
+
+  if player[:drunk].positive?
+    puts "[6] 🥤 Bottle of Water and some 💊 Ibuprofen"
+  else
+    puts "--- You're not even drunk 🍺🥴 ---"
+  end
+
+  if player[:block].max > 1
+    puts "[7] 🍔 Order a take away"
+  else
+    puts "--- You're weak af bro, don't make me laugh 🤣 ---"
+  end
 end

@@ -7,7 +7,7 @@ def pay_with_blood(player, the_boss, boss_style, load_boss)
 
   until [4, 5, 6, 7].include?(user_choice)
     game_info(player, the_boss, boss_style, load_boss)
-    blood_menu
+    blood_menu(player)
 
     user_choice = gets.chomp.to_i
 
