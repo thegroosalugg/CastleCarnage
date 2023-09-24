@@ -14,7 +14,7 @@ def fight_the_power(player, the_boss, boss_style, load_boss)
 
     if user_choice == 4
       cash_spent = player[:cash].zero? ? 0 : (1..[player[:cash], 5].min).to_a.sample
-      multiplier = 1.0 + (cash_spent * 0.5)
+      multiplier = cash_spent.zero? ? 0.7 : 1.0 + (cash_spent * 0.5)
       the_boss[:hp] -= damage * multiplier
       player[:cash] -= cash_spent
       player[:drunk] += cash_spent
