@@ -16,7 +16,8 @@ def fight_the_power(player, the_boss, boss_style, load_boss)
       cash_spent = player[:cash].zero? ? 0 : (1..[player[:cash], 5].min).to_a.sample
       multiplier = 1.0 + (cash_spent * 0.5)
       the_boss[:hp] -= damage * multiplier
-      player[:cash] -= cash_spent; player[:drunk] += cash_spent
+      player[:cash] -= cash_spent
+      player[:drunk] += cash_spent
       player[:drunk] = [player[:drunk], 20].min
     elsif user_choice == 5
       puts "tba"
@@ -43,26 +44,31 @@ def pay_with_blood(player, the_boss, boss_style, load_boss)
 
     case user_choice
     when 4
-      player[:hp] -= (20..50).to_a.sample
+      price_paid = (20..50).to_a.sample
+      player[:hp] -= price_paid
       player[:block] = player[:block].map { |block| block + 1 }
     when 5
       multiplier = player[:cash] >= 20 ? 0 : rand(1..[20 - player[:cash], 8].min)
-      player[:hp] -= multiplier * 10; player[:cash] += multiplier
+      price_paid = (multiplier * rand(9.0..11.0)).to_i
+      player[:hp] -= price_paid
+      player[:cash] += multiplier
     when 6
-      multiplier = player[:drunk].zero? ? 0 : (2..[player[:drunk], 2].max).to_a.sample
-      player[:hp] -= (multiplier * rand(5.0..10.0)).to_i
+      multiplier = player[:drunk].zero? ? 0 : (1..player[:drunk]).to_a.sample
+      price_paid = (multiplier * rand(5.0..10.0)).to_i
+      player[:hp] -= price_paid
       player[:drunk] -= multiplier
       player[:drunk] = [player[:drunk], 0].max
     when 7
       multiplier = player[:block].max > 1 ? rand(1..[player[:block].max - 1, 4].min) : 0
       player[:block] = player[:block].map { |block| [block - multiplier, 1].max }
-      player[:hp] += (10..40).to_a.sample * multiplier
+      price_paid = (10..40).to_a.sample * multiplier
+      player[:hp] += price_paid
     else
       error_message
     end
   end
 
   print `clear`
-  puts multiplier
+  paid_blood_message(user_choice, price_paid, multiplier)
   boss_style = the_boss[:style].sample
 end

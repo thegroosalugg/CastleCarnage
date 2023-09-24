@@ -3,11 +3,9 @@
 
 def boss_menu
   puts "----------------------------------------------------------------------"
-  puts "Select battle method"
+  puts "     Decisions, decisions..."
   puts "[4] 👊⚡ Fight the Power"
   puts "[5] 🩸🪄 Blood Magic"
-  puts "[6] "
-  puts "[7] "
 end
 
 def game_info(player, the_boss, boss_style, load_boss)
@@ -26,7 +24,7 @@ def fight_menu(boss_style)
   puts "----------------------------------------------------------------------"
   if boss_style == "🍻 Barkeep"
     puts "[4] 💴🗒️ Settle your Tabs"
-    puts "[5] 🚖🚫 Designated Driver Mode"
+    puts "[5] 🪑🤺 Old School Bar Fight"
   end
 end
 
@@ -41,6 +39,32 @@ def blood_menu
   puts "[5] 💵 Get Money"
   puts "[6] 🥤 Bottle of Water and some 💊 Ibuprofen"
   puts "[7] 🍔 Order a take away"
+end
+
+def paid_blood_message(user_choice, price_paid, multiplier)
+  four_messages = [
+    "You sacked 🖤 #{price_paid} HP to swole up your 🛡️ block by 1.",
+  ]
+  five_messages = [
+    "You bled 🖤 #{price_paid} HP but you raked in 💵 #{multiplier} cash. Worth it.",
+  ]
+  six_messages = [
+    "🩸 Blood is thicker than 💧. You bled 🖤 #{price_paid} HP and removed 🍺 #{multiplier} beers.",
+  ]
+  seven_messages = [
+    "You got what you wanted and munched up 💗 #{price_paid} HP, but you're bloated, your 🛡️ block suffers by #{multiplier}."
+  ]
+
+  case user_choice
+  when 4
+    puts four_messages.sample
+  when 5
+    puts five_messages.sample
+  when 6
+    puts six_messages.sample
+  when 7
+    puts seven_messages.sample
+  end
 end
 
 def drained_message
