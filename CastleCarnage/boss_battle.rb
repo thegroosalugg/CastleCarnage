@@ -16,8 +16,7 @@ def fight_the_power(player, the_boss, boss_style, load_boss)
       cash_spent = player[:cash].zero? ? 0 : (1..[player[:cash], 5].min).to_a.sample
       multiplier = 1.0 + (cash_spent * 0.5)
       the_boss[:hp] -= damage * multiplier
-      player[:cash] -= cash_spent
-      player[:drunk] += cash_spent
+      player[:cash] -= cash_spent; player[:drunk] += cash_spent
       player[:drunk] = [player[:drunk], 20].min
     elsif user_choice == 5
       puts "tba"
