@@ -21,7 +21,7 @@ def big_boss_battle(player)
       boss_style = fight_the_power(player, the_boss, boss_style, load_boss)
     when 5
       print `clear`
-      power_drained == true ? error_message : boss_style = pay_with_blood(player, the_boss, boss_style, load_boss)
+      power_drained == true ? drained_message : boss_style = pay_with_blood(player, the_boss, boss_style, load_boss)
       power_drained = true
     when 6
       break

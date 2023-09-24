@@ -42,3 +42,20 @@ def blood_menu
   puts "[6] 🥤 Bottle of Water and some 💊 Ibuprofen"
   puts "[7] 🍔 Order a take away"
 end
+
+def drained_message
+  drained_msg = [
+    "*******************🩸 Once per turn, you melt ‼ **********************",
+    "*******************🩸 Uh-uh! I don't think so ‼ **********************",
+    "*******************🩸 Don't get greedy ‼ *****************************",
+    "*******************🩸 You've donated enough blood ‼ ******************",
+    "*******************🩸 You had your chance, go fight now ‼ ************",
+    "*******************🩸 Soz (Not sorry) ‼ ******************************",
+    "*******************🩸 Next round buddy ‼ *****************************",
+  ]
+
+  print `clear`
+  puts "----------------------------------------------------------------------"
+  puts drained_msg.sample
+  puts "----------------------------------------------------------------------"
+end
