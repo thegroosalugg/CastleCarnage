@@ -16,8 +16,8 @@ def game_info(player, the_boss, boss_style, load_boss)
   puts "    🧀 The Big Cheese Style: #{boss_style}"
   puts "----------------------------------------------------------------------"
   puts "    #{player_bars(player)}"
-  puts "    💰  Wallet: #{'💵' * [player[:cash], 0].max}"
-  puts "    🥴🍾 Drunk: #{'🍺' * [player[:drunk], 0].max}"
+  puts "    💰  Wallet: [DEBUG #{player[:cash]}] #{'💵' * [player[:cash], 0].max}"
+  puts "    🥴🍾 Drunk: [DEBUG #{player[:drunk]}] #{'🍺' * [player[:drunk], 0].max}"
   puts "----------------------------------------------------------------------"
   puts load_boss
 end
