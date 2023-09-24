@@ -32,7 +32,7 @@ def crt_dmg_msg(enemy, weapon, critical_damage)
     "Your #{weapon[:name]} lit on fire 🔥 dishing out #{enemy[:name]} a meal of 💥 #{critical_damage.to_i} critical damage!",
     "You triple cork and double battered #{enemy[:name]} in the face for 💥 #{critical_damage.to_i} critical damage!",
     "Your deadlift 🏋️‍♂️ regime has been righteous. The 💥 #{critical_damage.to_i} damage you served is a bit critical.",
-    "💥 Critical ‼ You smashed #{enemy[:name]} with your #{weapon[:name]} for 💢 #{critical_damage.to_i} damage!",
+    "Critical ‼ You smashed #{enemy[:name]} with your #{weapon[:name]} for 💥 #{critical_damage.to_i} damage!",
     "You turn up the punishment as you weigh #{enemy[:name]} in for 💥 #{critical_damage.to_i} critical damage!",
     "⬇ ⬆ LP ⬅ ⬅ ⬆ ⬇ LK HP ⬇ ↘ ➡ HP HK LP  ⬅ ↙ ⬇ ⬅  ↙ ⬇ :: 💥 #{critical_damage.to_i} critical damage!",
   ]
@@ -57,7 +57,7 @@ end
 
 def attack_msg(enemy, weapon, damage_dealt)
   atk_msg = [
-    "A brutal hit! #{enemy[:name]} takes a beating from your #{weapon[:name]}, suffering 💥 #{damage_dealt} damage!",
+    "A brutal hit! #{enemy[:name]} takes a beating from your #{weapon[:name]}, suffering 💢 #{damage_dealt} damage!",
     "You threw your trusty #{weapon[:name]} at #{enemy[:name]} for 💢 #{damage_dealt} damage! Nice shot bro!",
     "You grabbed #{enemy[:name]} and smashed them through the wall for 💢 #{damage_dealt} damage!",
     "You trounced #{enemy[:name]} with your #{weapon[:name]} for 💢 #{damage_dealt} damage!",

@@ -23,6 +23,7 @@ second_enemy = nil
 weapon = pick_weapon
 enemies_defeated = 0
 rooms_explored = 0
+the_boss = big_boss_awaits
 
 intro_enemy(enemy)
 intro_weapon(weapon, enemy)
@@ -100,11 +101,11 @@ while (enemy || second_enemy) && player[:hp].positive?
     enemies_defeated = 2 # debug
     rooms_explored = 5 # debug
     player[:hp] += 100 + (rooms_explored * 20); player[:block] = player[:block].map { |block| block + enemies_defeated }
-    enemy = nil; second_enemy = nil; tracked_enemy = { name: "🧀 The Big Cheese" }
-    big_boss_battle(player)
+    enemy = nil; second_enemy = nil; tracked_enemy = the_boss
+    big_boss_battle(player, the_boss)
   end
 
-  state_of_game(enemy, second_enemy, player, weapon) unless tracked_enemy[:name] == "🧀 The Big Cheese"
+  state_of_game(enemy, second_enemy, player, weapon) unless tracked_enemy == the_boss
 end
 
 enemy == nil && second_enemy == nil && player[:hp].positive? ? win_message(tracked_enemy) : lose_message(tracked_enemy)

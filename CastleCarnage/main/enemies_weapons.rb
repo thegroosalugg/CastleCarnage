@@ -53,3 +53,16 @@ def special_weapon
 
   special_weapons.sample
 end
+
+def big_boss_awaits
+  bosses = [
+    name: "💍Lord of the Rings", hp: rand(800..1000), attack: [10, 10, 15, 15, 20, 30, 40, 50, 50, 100], style: ["🍻 Barkeep"],
+    name: "🧀 The Big Cheese", hp: rand(600..800), attack: (30..120).to_a, style: ["🍻 Barkeep"],
+    name: "🧥 The Godfather", hp: rand(700..900), attack: (50..60).to_a, style: ["🍻 Barkeep"],
+    name: "🚃 The Trailer Park Supervisor", hp: rand(400..600), attack: (40..100).to_a, style: ["🍻 Barkeep"],
+    name: "🤖 The Terminator", hp: rand(800..1000), attack: (30..80).to_a, style: ["🍻 Barkeep"],
+    name: "😎 Dawsons Creek", hp: rand(600..800), attack: (40..70).to_a, style: ["🍻 Barkeep"],
+  ]
+
+  bosses.sample
+end

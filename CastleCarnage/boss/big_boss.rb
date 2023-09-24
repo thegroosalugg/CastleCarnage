@@ -1,11 +1,8 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-def big_boss_battle(player)
+def big_boss_battle(player, the_boss)
   load_boss = big_boss_art
-  the_boss = {
-    hp: rand(800..1000), attack: (10..100).to_a, style: ["🍻 Barkeep"]
-  }
   boss_style = the_boss[:style].sample
   game_info(player, the_boss, boss_style, load_boss)
 
