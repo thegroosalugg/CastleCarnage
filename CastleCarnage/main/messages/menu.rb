@@ -56,7 +56,8 @@ end
 # \n indicates a line break
 
 def enemy_bars(enemy)
-  "#{enemy[:name]} HP: [#{enemy[:hp].to_i}] #{'🤍' * [(enemy[:hp] - 1) / 25 + 1, 0].max}\n" +
+  "----------------------------------------------------------------------\n" +
+  "    #{enemy[:name]} HP: [#{enemy[:hp].to_i}] #{'🤍' * [(enemy[:hp] - 1) / 25 + 1, 0].max}\n" +
   "    👊 Attack: min " +
   "🔶" * (enemy[:attack].min / 20) + "🔸" * (enemy[:attack].min / 5 % 4) +
   " max " +
@@ -64,8 +65,7 @@ def enemy_bars(enemy)
   " || 🛡️ Block: min " +
   "🔷" * (enemy[:block].min / 5) + "🔹" * (enemy[:block].min % 5) +
   " max " +
-  "🔷" * (enemy[:block].max / 5) + "🔹" * (enemy[:block].max % 5) +
-  "\n----------------------------------------------------------------------"
+  "🔷" * (enemy[:block].max / 5) + "🔹" * (enemy[:block].max % 5)
 end
 
 def weapon_bars(weapon)
@@ -88,10 +88,10 @@ end
 
 def state_of_game(enemy, second_enemy, player, weapon)
   puts "----------------------------------------------------------------------"
+  puts "    #{player_bars(player)}"
+  puts "    #{weapon_bars(weapon)}" if weapon && weapon[:durability].positive?
   puts "    #{enemy_bars(enemy)}" if enemy
   puts "    #{enemy_bars(second_enemy)}" if second_enemy
-  puts "    #{player_bars(player)}"
-  puts "    #{weapon_bars(weapon)}" if weapon[:durability].positive?
   puts "----------------------------------------------------------------------"
 end
 

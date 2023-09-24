@@ -31,13 +31,12 @@ state_of_game(enemy, second_enemy, player, weapon)
 
 while (enemy || second_enemy) && player[:hp].positive?
 
-  if weapon[:durability].positive?
-    weapon_broken = false
+  if weapon && weapon[:durability].positive?
     load_menu
     user_choice = gets.chomp.downcase
   else
-    weapon_broke(weapon) unless weapon_broken
-    weapon_broken = true
+    weapon_broke(weapon) if weapon
+    weapon = nil
     user_choice = "y"
   end
 
@@ -58,7 +57,7 @@ while (enemy || second_enemy) && player[:hp].positive?
     somersault_attack(target_enemy || [enemy, second_enemy].sample, weapon, player) if target_enemy
 
   elsif user_choice == "y"
-    print `clear` unless weapon_broken
+    print `clear` if weapon
     rooms_explored += 1
     if rand(1..5) == 1
       target_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy
@@ -67,7 +66,7 @@ while (enemy || second_enemy) && player[:hp].positive?
         enemy_attack(target_enemy, player)
       end
     end
-    state_of_game(enemy, second_enemy, player, weapon) unless weapon_broken
+    state_of_game(enemy, second_enemy, player, weapon) if weapon
     enemy, weapon, second_enemy = explore_rooms(enemy, weapon, player, second_enemy)
 
   else
