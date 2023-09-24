@@ -2,7 +2,6 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 def big_boss_battle(player)
-  print `clear`
   load_boss = big_boss_art
   the_boss = {
     hp: rand(800..1000), attack: (10..100).to_a, style: ["🍻 Barkeep"]
