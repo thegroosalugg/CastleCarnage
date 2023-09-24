@@ -11,7 +11,8 @@ require_relative 'main/messages/intro_outro'
 require_relative 'main/messages/menu'
 require_relative 'boss/messages/boss_art'
 require_relative 'boss/messages/boss_menu'
-require_relative 'boss/messages/boss_messages'
+require_relative 'boss/messages/battle_messages'
+require_relative 'boss/messages/blood_letters'
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 print `clear`

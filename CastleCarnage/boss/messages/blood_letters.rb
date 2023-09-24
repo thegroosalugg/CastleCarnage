@@ -1,33 +1,29 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-def damage_info(the_boss, boss_style, damage, multiplier)
-  puts "You damaged 🧀 The Big Cheese #{boss_style} for #{damage} with a multiplier of #{multiplier}"
-end
-
 def paid_blood_message(user_choice, price_paid, multiplier)
-  four_messages = [
+  buff_up = [
     "You sacked 🖤 #{price_paid} HP to swole up your 🛡️ block by 1.",
   ]
-  five_messages = [
+  get_money = [
     "You bled 🖤 #{price_paid} HP but you raked in 💵 #{multiplier} cash. Worth it.",
   ]
-  six_messages = [
+  sober_up = [
     "🩸 Blood is thicker than 💧. You bled 🖤 #{price_paid} HP and removed 🍺 #{multiplier} beers.",
   ]
-  seven_messages = [
+  munch_out = [
     "You got what you wanted and munched up 💗 #{price_paid} HP, but you're bloated, your 🛡️ block suffers by #{multiplier}."
   ]
 
   case user_choice
   when 4
-    puts four_messages.sample
+    puts buff_up.sample
   when 5
-    puts five_messages.sample
+    puts get_money.sample
   when 6
-    puts six_messages.sample
+    puts sober_up.sample
   when 7
-    puts seven_messages.sample
+    puts munch_out.sample
   end
 end
 
