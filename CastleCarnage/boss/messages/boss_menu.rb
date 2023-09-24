@@ -29,25 +29,30 @@ def fight_menu(boss_style)
 end
 
 def blood_menu(player)
+  poor = [
+    "[5] 💵 Get Money",
+  ]
+  rich = [
+    "--- You're too rich 💵. No more money for you ---",
+  ]
+  drunk = [
+    "[6] 🥤 Bottle of Water and some 💊 Ibuprofen"
+  ]
+  sober = [
+    "--- You're not even drunk 🍺🥴 ---"
+  ]
+  strong = [
+    "[7] 🍔 Order a take away"
+  ]
+  weak = [
+    "--- You're weak af bro, don't make me laugh 🤣 ---"
+  ]
+
   puts "----------------------------------------------------------------------"
   puts "-------------- 🧞:'Pay with Blood ❤️ Get Bargains 💰'--------------"
   puts "[4] 💪 Buff up!"
 
-  if player[:cash] < 20
-    puts "[5] 💵 Get Money"
-  else
-    puts "--- You're too rich 💵. No more money for you ---"
-  end
-
-  if player[:drunk].positive?
-    puts "[6] 🥤 Bottle of Water and some 💊 Ibuprofen"
-  else
-    puts "--- You're not even drunk 🍺🥴 ---"
-  end
-
-  if player[:block].max > 1
-    puts "[7] 🍔 Order a take away"
-  else
-    puts "--- You're weak af bro, don't make me laugh 🤣 ---"
-  end
+  puts (player[:cash] < 20 ? poor.sample : rich.sample)
+  puts (player[:drunk].positive? ? drunk.sample : sober.sample)
+  puts (player[:block].max > 1 ? strong.sample : weak.sample)
 end
