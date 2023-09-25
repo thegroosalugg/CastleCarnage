@@ -33,6 +33,7 @@ def player_status(player)
     when 18..20 then " Fucking Wasted  😵 /"
     end
 
+  puts "    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
   puts "    💰 #{wallet} [DEBUG #{player[:cash]}] #{'💵' * [player[:cash], 0].max}"
   puts "    🍻 #{drunk} [DEBUG #{player[:drunk]}] #{'🍺' * [player[:drunk], 0].max}"
 end
@@ -116,5 +117,5 @@ def blood_menu(player)
 
   puts (player[:cash] < 20 ? poor.sample : rich.sample)
   puts (player[:drunk].positive? ? drunk.sample : sober.sample)
-  puts (player[:block].max > 1 ? strong.sample : weak.sample)
+  puts (player[:attack].max > 1 || player[:block].max > 1 ? strong.sample : weak.sample)
 end

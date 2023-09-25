@@ -7,15 +7,19 @@ def pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
 
   until [4, 5, 6, 7].include?(user_choice)
     game_info(player, weapon, the_boss, boss_style, load_boss)
+
+    puts "[DEBUG] attack #{player[:attack]} block #{player[:block]}"
+
     blood_menu(player)
 
     user_choice = gets.chomp.to_i
 
     case user_choice
     when 4
-      price_paid = (20..50).to_a.sample
+      boost = [:attack, :block].sample
+      price_paid = (boost == :attack ? (35..60) : (20..50)).to_a.sample
       player[:hp] -= price_paid
-      player[:block] = player[:block].map { |block| block + 1 }
+      player[boost] = player[boost].map { |stat| stat + 1 }
     when 5
       if player[:cash] < 20
         multiplier = player[:cash] >= 20 ? 0 : rand(1..[20 - player[:cash], 8].min)
@@ -53,6 +57,9 @@ def pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
   end
 
   print `clear`
-  paid_blood_message(user_choice, price_paid, multiplier)
+
+  puts "[DEBUG] attack #{player[:attack]} block #{player[:block]} boost #{boost}"
+  
+  paid_blood_message(user_choice, price_paid, multiplier, boost)
   boss_style = the_boss[:style].sample
 end

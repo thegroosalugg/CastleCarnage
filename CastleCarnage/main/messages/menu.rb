@@ -69,7 +69,8 @@ def enemy_bars(enemy)
 end
 
 def weapon_bars(weapon)
-  "#{weapon[:name]}" +
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
+  "    #{weapon[:name]}" +
   " 💢 Min " +
   "🔶" * (weapon[:damage].min / 20) + "🔸" * (weapon[:damage].min / 5 % 4) +
   " Max " +
@@ -78,7 +79,7 @@ def weapon_bars(weapon)
   "🟦" * [weapon[:durability], 0].max
 end
 
-# Player attack wasn't added until after the boss methods were created. It wasn't used in the main game. 
+# Player attack wasn't added until after the boss methods were created. It wasn't used in the main game.
 # As such it is passed as a block to the original player_bars method and is only called when big_boss_battle is run
 
 def player_bars(player, &block)

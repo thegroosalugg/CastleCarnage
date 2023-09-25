@@ -1,9 +1,10 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-def paid_blood_message(user_choice, price_paid, multiplier)
+def paid_blood_message(user_choice, price_paid, multiplier, boost)
+  boost = boost == :attack ? "💢 attack" : "🛡️ block"
   buff_up = [
-    "You sacked 🖤 #{price_paid} HP to swole up your 🛡️ block by 1.",
+    "You sacked 🖤 #{price_paid} HP to swole up your #{boost} by 1.",
   ]
   get_money = [
     "You bled 🖤 #{price_paid} HP but you raked in 💵 #{multiplier} cash. Worth it.",
