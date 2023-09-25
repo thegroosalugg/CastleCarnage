@@ -97,7 +97,7 @@ while (enemy || second_enemy) && player[:hp].positive?
   # puts "[DEBUG] [Enemies Defeated: #{enemies_defeated}] || [Rooms Explored: #{rooms_explored}]"
   # puts "BIG BOSS BATTLE" if (enemies_defeated > 1) || (rooms_explored > 15) || (enemies_defeated > 0 && rooms_explored > 10)
   # ((enemies_defeated > 1) || (rooms_explored > 8) || (enemies_defeated > 0 && rooms_explored > 5)) && (rand(1..2) == 1) ? big_boss_battle : big_boss_warning
-  if rooms_explored > 20
+  if rooms_explored > 0
     enemies_defeated = 2 # debug
     rooms_explored = 5 # debug
     player[:hp] += 100 + (rooms_explored * 20); player[:block] = player[:block].map { |block| block + enemies_defeated }
@@ -106,7 +106,7 @@ while (enemy || second_enemy) && player[:hp].positive?
   end
 
   state_of_game(enemy, second_enemy, player, weapon) if (enemy.nil? && second_enemy.nil? && tracked_enemy != the_boss)
-  state_of_game(enemy, second_enemy, player, weapon) unless (weapon.nil? || weapon[:durability].zero?)
+  state_of_game(enemy, second_enemy, player, weapon) unless tracked_enemy == the_boss || (weapon.nil? || weapon[:durability].zero?)
 end
 
 enemy == nil && second_enemy == nil && player[:hp].positive? ? win_message(tracked_enemy) : lose_message(tracked_enemy)
