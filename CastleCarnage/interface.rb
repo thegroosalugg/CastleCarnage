@@ -106,7 +106,7 @@ while (enemy || second_enemy) && player[:hp].positive?
   end
 
   state_of_game(enemy, second_enemy, player, weapon) if (enemy.nil? && second_enemy.nil? && tracked_enemy != the_boss)
-  state_of_game(enemy, second_enemy, player, weapon) unless tracked_enemy == the_boss || (weapon.nil? || weapon[:durability].zero?)
+  state_of_game(enemy, second_enemy, player, weapon) unless (weapon.nil? || weapon[:durability].zero?)
 end
 
 enemy == nil && second_enemy == nil && player[:hp].positive? ? win_message(tracked_enemy) : lose_message(tracked_enemy)
