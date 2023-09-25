@@ -83,8 +83,7 @@ end
 
 def weapon_bars(weapon)
   "#{BARRIER}\n" +
-  "    #{weapon[:name]}" +
-  " 💢 Min " +
+  "    #{weapon[:name]} / " +
   attack_stats(weapon) +
   " / 🛠️ " +
   "🟦" * [weapon[:durability], 0].max
@@ -92,14 +91,19 @@ end
 
 def state_of_game(enemy, second_enemy, player, weapon)
   puts SEPARATOR
+
   puts "    #{health_bars(player)}"
+  puts "    #{block_stats(player)}"
   puts "    #{weapon_bars(weapon)}" if weapon && weapon[:durability].positive?
+
   puts ENEMY_DIV if enemy
   puts "    #{health_bars(enemy)}" if enemy
   puts "    #{attack_stats(enemy)} / #{block_stats(enemy)}" if enemy
+
   puts ENEMY_DIV if second_enemy
   puts "    #{health_bars(second_enemy)}" if second_enemy
   puts "    #{attack_stats(enemy)} / #{block_stats(enemy)}" if second_enemy
+
   puts SEPARATOR
 end
 
