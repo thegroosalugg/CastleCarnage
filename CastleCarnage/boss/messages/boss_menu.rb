@@ -33,10 +33,11 @@ def player_status(player)
     when 18..20 then " Fucking Wasted  😵 /"
     end
 
-  puts "    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-  puts "    💰 #{wallet} [DEBUG #{player[:cash]}] #{'💵' * [player[:cash], 0].max}"
-  puts "    🍻 #{drunk} [DEBUG #{player[:drunk]}] #{'🍺' * [player[:drunk], 0].max}"
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
+  "    #{wallet} [DEBUG #{player[:cash]}] #{'💵' * [player[:cash], 0].max}\n" +
+  "    #{drunk} [DEBUG #{player[:drunk]}] #{'🍺' * [player[:drunk], 0].max}"
 end
+
 
 # Main game display
 
