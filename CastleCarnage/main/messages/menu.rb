@@ -58,15 +58,13 @@ end
 
 # UI Elements for Health, Attack, Block and Weapon for any entity
 
-def health_bars(entity)
-  emoji = "❤️"
-    # case entity
-    # when player   then "❤️"
-    # when the_boss then "💜"
-    # else               "🤍"
-    # end
 
-  "#{entity[:name]} / #{entity[:hp].to_i} #{emoji} / #{"#{emoji}" * [(entity[:hp] - 1) / 40 + 1, 0].max}"
+def health_bars(entity)
+  emojis = ["❤️", "🧡", "💛", "💚", "💙", "💜", "🤍", "🖤", "🤎", "💔", "❤️‍🔥", "❤️‍🩹", "❣️", "💕", "💞", "💓", "💗", "💖", "💘", "💝"]
+
+  entity[:emoji] ||= emojis.sample # Assigns an emoji only if the value is nil.
+
+  "#{entity[:name]} / #{entity[:hp].to_i} #{entity[:emoji]} / #{"#{entity[:emoji]}" * [(entity[:hp] - 1) / 40 + 1, 0].max}"
 end
 
 def attack_stats(entity)
