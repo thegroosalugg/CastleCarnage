@@ -30,17 +30,20 @@ end
 
 def drained_message
   drained_msg = [
-    "*******************🩸 Once per turn, you melt ‼ **********************",
-    "*******************🩸 Uh-uh! I don't think so ‼ **********************",
-    "*******************🩸 Don't get greedy ‼ *****************************",
-    "*******************🩸 You've donated enough blood ‼ ******************",
-    "*******************🩸 You had your chance, go fight now ‼ ************",
-    "*******************🩸 Soz (Not sorry) ‼ ******************************",
-    "*******************🩸 Next round buddy ‼ *****************************",
+    "🩸 Once per turn, you melt ‼",
+    "🩸 Uh-uh! I don't think so ‼",
+    "🩸 Don't get greedy ‼",
+    "🩸 You've donated enough blood ‼",
+    "🩸 You had your chance, go fight now ‼",
+    "🩸 Soz (Not sorry) ‼",
+    "🩸 Next round buddy ‼",
   ]
+
+  left_padding = '*' * 23
+  message = drained_msg.sample
+  right_padding = '*' * (44 - message.length)
 
   print `clear`
   puts SEPARATOR
-  puts drained_msg.sample
-  puts SEPARATOR
+  puts "#{left_padding} #{message} #{right_padding}"
 end

@@ -108,19 +108,22 @@ end
 
 def error_message
   errors = [
-    "***********************❌ Don't be a pillock ‼ ***********************",
-    "***********************❌ Don't be a plonker ‼ ***********************",
-    "***********************❌ Don't be a plank ‼ *************************",
-    "***********************❌ Don't be a plum ‼ **************************",
-    "***********************❌ Don't be a fool ‼ **************************",
-    "***********************❌ Nobody likes a joker ‼ *********************",
-    "***********************❌ Quit clowning around ‼ *********************",
-    "***********************❌ Quit faffing around ‼ **********************",
-    "***********************❌ Quit being a melon ‼ ***********************",
+    "❌ Don't be a pillock ‼",
+    "❌ Don't be a plonker ‼",
+    "❌ Don't be a plank ‼",
+    "❌ Don't be a plum ‼",
+    "❌ Don't be a fool ‼",
+    "❌ Nobody likes a joker ‼",
+    "❌ Quit clowning around ‼",
+    "❌ Quit faffing around ‼",
+    "❌ Quit being a melon ‼",
   ]
+
+  left_padding = '*' * 23
+  error = errors.sample
+  right_padding = '*' * (44 - error.length)
 
   print `clear`
   puts SEPARATOR
-  puts errors.sample
-  puts SEPARATOR
+  puts "#{left_padding} #{error} #{right_padding}"
 end
