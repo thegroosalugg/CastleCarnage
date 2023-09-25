@@ -39,6 +39,9 @@ end
 
 # Main game display
 
+# Player attack wasn't added until the boss methods were created and was not used before.
+# As such it is passed as a block to the original player_bars method and is only called when big_boss_battle is run
+
 def attack_stats(player)
   "    💢 Min " +
   "🔶" * (player[:attack].min / 20) + "🔸" * (player[:attack].min / 5 % 4) +
@@ -49,7 +52,6 @@ end
 
 def game_info(player, weapon, the_boss, boss_style, load_boss)
   puts "----------------------------------------------------------------------"
-  #puts "    #{player_bars(player)}"
   puts "    #{player_bars(player) { attack_stats(player) }}"
   puts "    #{weapon_bars(weapon)}" if weapon && weapon[:durability].positive? && boss_style == "🕶️ Bouncer"
   puts "    #{player_status(player)}"

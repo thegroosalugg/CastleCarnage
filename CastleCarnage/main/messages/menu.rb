@@ -78,6 +78,9 @@ def weapon_bars(weapon)
   "🟦" * [weapon[:durability], 0].max
 end
 
+# Player attack wasn't added until the boss methods were created and was not used before.
+# As such it is passed as a block to the original player_bars method and is only called when big_boss_battle is run
+
 def player_bars(player, &block)
   "🥷 You / #{player[:hp].to_i} ❤️ / #{'❤️' * [(player[:hp] - 1) / 25 + 1, 0].max}\n" +
 
