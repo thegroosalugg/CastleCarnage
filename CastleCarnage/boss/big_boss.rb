@@ -21,7 +21,11 @@ def big_boss_battle(player, weapon, the_boss)
       power_drained == true ? drained_message : boss_style = pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
       power_drained = true
     when 6
-      break
+      print `clear`
+      the_boss[:hp] -= 200 # Debug
+    when 7
+      print `clear`
+      player[:hp] -= 300 # Debug
     else
       error_message
     end

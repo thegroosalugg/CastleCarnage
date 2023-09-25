@@ -31,7 +31,7 @@ def enemy_attack(enemy, player)
 end
 
 def somersault_attack(enemy, weapon, player)
-  if rand(1..3) == 1
+  if rand(1..1) == 1
     sommersault_success(enemy, weapon)
     player_attack(enemy, weapon); player_attack(enemy, weapon)
   else
