@@ -68,6 +68,7 @@ def win_message(enemy)
     "You splatted the #{enemy[:name]} like a bug.",
   ]
 
+  puts SEPARATOR
   puts win_messages.sample
   puts SEPARATOR
   win_art
@@ -80,6 +81,7 @@ def lose_message(enemy)
     "You Died! #{enemy[:name]} shall feast on your entrails.",
   ]
 
+  puts SEPARATOR
   puts lose_messages.sample
   puts SEPARATOR
   lose_art

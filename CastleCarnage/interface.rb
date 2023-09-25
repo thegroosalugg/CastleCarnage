@@ -1,6 +1,6 @@
 # rubocop:disable all
 require_relative 'main/attack_mode'
-require_relative 'main/enemies_weapons'
+require_relative 'main/war_machine'
 require_relative 'main/escape_room'
 require_relative 'boss/big_boss'
 require_relative 'boss/blood_magic'
@@ -11,7 +11,7 @@ require_relative 'main/messages/intro_outro'
 require_relative 'main/messages/menu'
 require_relative 'boss/messages/boss_art'
 require_relative 'boss/messages/boss_menu'
-require_relative 'boss/messages/battle_messages'
+require_relative 'boss/messages/war_letters'
 require_relative 'boss/messages/blood_letters'
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
@@ -20,6 +20,7 @@ print `clear`
 player = { name: "🥷 You", hp: rand(250..300), attack: (30..60).to_a, block: (1..10).to_a, cash: rand(2..12), drunk: 0 }
 enemy = random_enemy
 second_enemy = nil
+tracked_enemy = enemy
 weapon = pick_weapon
 enemies_defeated = 0
 rooms_explored = 0
@@ -67,8 +68,8 @@ while (enemy || second_enemy) && player[:hp].positive?
       end
     end
     enemy ? run_away(enemy) : run_away(second_enemy)
-    state_of_game(enemy, second_enemy, player, weapon)
-    enemy, weapon, second_enemy = explore_rooms(enemy, weapon, player, second_enemy)
+    state_of_game(enemy, second_enemy, player, weapon) unless player[:hp] <= 0
+    enemy, weapon, second_enemy = explore_rooms(enemy, weapon, player, second_enemy) unless player[:hp] <= 0
 
   else
     error_message
@@ -105,7 +106,6 @@ while (enemy || second_enemy) && player[:hp].positive?
     big_boss_battle(player, weapon, the_boss)
   end
 
-  #state_of_game(enemy, second_enemy, player, weapon) if (enemy.nil? && second_enemy.nil? && tracked_enemy != the_boss)
   state_of_game(enemy, second_enemy, player, weapon) unless tracked_enemy == the_boss || (weapon.nil? || weapon[:durability].zero?)
 end
 
