@@ -12,8 +12,8 @@ def player_status(player)
   wallet =
     case player[:cash]
     when 0..2   then "[    Skint af     🫥]"
-    when 4..6   then "[   Pocket Money  🤔]"
-    when 7..9   then "[ Got some Moolah 😐]"
+    when 3..5   then "[   Pocket Money  🤔]"
+    when 6..9   then "[ Got some Moolah 😐]"
     when 10..13 then "[     Sorted      🫠]"
     when 14..17 then "[   Filthy Rich   🤑]"
     when 18..20 then "[  Totally Minted 😈]"
@@ -22,8 +22,8 @@ def player_status(player)
   drunk =
     case player[:drunk]
     when 0..2   then "[Sober as a Judge ⚖️]"
-    when 4..6   then "[  Got a Buzz on  😉]"
-    when 7..9   then "[  Feeling Tipsy  😏]"
+    when 3..5   then "[  Got a Buzz on  😉]"
+    when 6..9   then "[  Feeling Tipsy  😏]"
     when 10..13 then "[ Out on the Razz 🥴]"
     when 14..17 then "[  Proper Pissed  🤤]"
     when 18..20 then "[  Fucking Wasted 😵]"

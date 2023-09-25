@@ -14,8 +14,8 @@ def pay_the_tab(player, the_boss, damage)
 end
 
 def bar_fight(player, the_boss)
-  drunk_adjustment = [-1, 1, 2].sample
-  wallet_adjustment = [-2, -1, 1].sample
+  drunk_adjustment = [-2, -1, 1, 2, 3].sample
+  wallet_adjustment = [-3, -2, -1, 1, 2].sample
 
   player[:drunk] = (player[:drunk] + drunk_adjustment).clamp(0, 20)
   player[:cash] = (player[:cash] + wallet_adjustment).clamp(0, 20)
