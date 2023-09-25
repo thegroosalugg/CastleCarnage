@@ -2,7 +2,7 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 def player_attack(enemy, weapon)
-  damage_dealt = [weapon[:damage].sample - enemy[:block].sample, 1].max
+  damage_dealt = [weapon[:attack].sample - enemy[:block].sample, 1].max
   if weapon[:crit_ch].sample == 1
     critical_damage = damage_dealt * weapon[:crit_x].call
     enemy[:hp] -= critical_damage

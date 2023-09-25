@@ -3,7 +3,7 @@
 
 SEPARATOR = "-" * 70
 BARRIER = "~" * 49
-ENEMY_DIV = "_" * 66
+ENEMY_DIV = " " * 4 + "_" * 66
 
 def load_menu
   t = [
@@ -56,52 +56,52 @@ def load_menu
   puts y.sample
 end
 
-# GAME STATUS
-# \n indicates a line break
+# UI Elements for Health, Attack, Block and Weapon for any entity
 
-def enemy_bars(enemy)
-  "#{ENEMY_DIV}\n" +
-  "    #{enemy[:name]} / #{enemy[:hp].to_i} 🤍 / #{'🤍' * [(enemy[:hp] - 1) / 25 + 1, 0].max}\n" +
-  "    💢 Min " +
-  "🔶" * (enemy[:attack].min / 20) + "🔸" * (enemy[:attack].min / 5 % 4) +
+def health_bars(entity)
+  emoji = "❤️"
+    # case entity
+    # when player   then "❤️"
+    # when the_boss then "💜"
+    # else               "🤍"
+    # end
+
+  "#{entity[:name]} / #{entity[:hp].to_i} #{emoji} / #{"#{emoji}" * [(entity[:hp] - 1) / 40 + 1, 0].max}"
+end
+
+def attack_stats(entity)
+  "💢 Min " +
+  "🔶" * (entity[:attack].min / 20) + "🔸" * (entity[:attack].min / 5 % 4) +
   " Max " +
-  "🔶" * (enemy[:attack].max / 20) + "🔸" * (enemy[:attack].max / 5 % 4) +
-  " / 🛡️ Min " +
-  "🔷" * (enemy[:block].min / 5) + "🔹" * (enemy[:block].min % 5) +
+  "🔶" * (entity[:attack].max / 20) + "🔸" * (entity[:attack].max / 5 % 4)
+end
+
+def block_stats(entity)
+  "🛡️ Min " +
+  "🔷" * (entity[:block].min / 5) + "🔹" * (entity[:block].min % 5) +
   " Max " +
-  "🔷" * (enemy[:block].max / 5) + "🔹" * (enemy[:block].max % 5)
+  "🔷" * (entity[:block].max / 5) + "🔹" * (entity[:block].max % 5)
 end
 
 def weapon_bars(weapon)
   "#{BARRIER}\n" +
   "    #{weapon[:name]}" +
   " 💢 Min " +
-  "🔶" * (weapon[:damage].min / 20) + "🔸" * (weapon[:damage].min / 5 % 4) +
-  " Max " +
-  "🔶" * (weapon[:damage].max / 20) + "🔸" * (weapon[:damage].max / 5 % 4) +
+  attack_stats(weapon) +
   " / 🛠️ " +
   "🟦" * [weapon[:durability], 0].max
 end
 
-# Player attack wasn't added until after the boss methods were created. It wasn't used in the main game.
-# As such it is passed as a block to the original player_bars method and is only called when big_boss_battle is run
-
-def player_bars(player, &block)
-  "🥷 You / #{player[:hp].to_i} ❤️ / #{'❤️' * [(player[:hp] - 1) / 25 + 1, 0].max}\n" +
-
-  (block_given? ? yield : "    🛡️ Min ") +
-
-  "🔷" * (player[:block].min / 5) + "🔹" * (player[:block].min % 5) +
-  " Max " +
-  "🔷" * (player[:block].max / 5) + "🔹" * (player[:block].max % 5)
-end
-
 def state_of_game(enemy, second_enemy, player, weapon)
   puts SEPARATOR
-  puts "    #{player_bars(player)}"
+  puts "    #{health_bars(player)}"
   puts "    #{weapon_bars(weapon)}" if weapon && weapon[:durability].positive?
-  puts "    #{enemy_bars(enemy)}" if enemy
-  puts "    #{enemy_bars(second_enemy)}" if second_enemy
+  puts ENEMY_DIV if enemy
+  puts "    #{health_bars(enemy)}" if enemy
+  puts "    #{attack_stats(enemy)} / #{block_stats(enemy)}" if enemy
+  puts ENEMY_DIV if second_enemy
+  puts "    #{health_bars(second_enemy)}" if second_enemy
+  puts "    #{attack_stats(enemy)} / #{block_stats(enemy)}" if second_enemy
   puts SEPARATOR
 end
 

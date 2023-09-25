@@ -2,7 +2,7 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 # Main Menu
-BOSS_DIV = "=" * 70
+BOSS_DIV = " " * 4 + "=" * 66
 
 def boss_menu
   puts SEPARATOR
@@ -39,27 +39,17 @@ def player_status(player)
   "    #{drunk} [DEBUG #{player[:drunk]}] #{'🍺' * [player[:drunk], 0].max}"
 end
 
-
-# Main game display
-
-# Player attack wasn't added until after the boss methods were created. It wasn't used in the main game.
-# As such it is passed as a block to the original player_bars method and is only called when big_boss_battle is run
-
-def attack_stats(player)
-  "    💢 Min " +
-  "🔶" * (player[:attack].min / 20) + "🔸" * (player[:attack].min / 5 % 4) +
-  " Max " +
-  "🔶" * (player[:attack].max / 20) + "🔸" * (player[:attack].max / 5 % 4) +
-  " / 🛡️ Min "
-end
+# Same as state_of_game but made exclusively for the big_boss
 
 def game_info(player, weapon, the_boss, boss_style, load_boss)
   puts SEPARATOR
-  puts "    #{player_bars(player) { attack_stats(player) }}"
+  puts "    #{health_bars(player)}"
+  puts "    #{attack_stats(player)} / #{block_stats(player)}"
   puts "    #{weapon_bars(weapon)}" if weapon && weapon[:durability].positive? && boss_style == "🕶️ Bouncer"
   puts "    #{player_status(player)}"
   puts BOSS_DIV
-  puts "    #{the_boss[:name]} / #{boss_style} / #{the_boss[:hp].to_i} 💜 / #{'💜' * [(the_boss[:hp] - 1) / 50 + 1, 0].max}"
+  puts "    #{health_bars(the_boss)}"
+  puts "    #{boss_style} / #{attack_stats(the_boss)}"
   puts SEPARATOR
   puts load_boss
 end
