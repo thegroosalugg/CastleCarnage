@@ -3,6 +3,7 @@
 
 SEPARATOR = "-" * 70
 BARRIER = "~" * 49
+ENEMY_DIV = "_" * 66
 
 def load_menu
   t = [
@@ -59,7 +60,7 @@ end
 # \n indicates a line break
 
 def enemy_bars(enemy)
-  "#{SEPARATOR[0..-5]}\n" +
+  "#{ENEMY_DIV}\n" +
   "    #{enemy[:name]} / #{enemy[:hp].to_i} 🤍 / #{'🤍' * [(enemy[:hp] - 1) / 25 + 1, 0].max}\n" +
   "    💢 Min " +
   "🔶" * (enemy[:attack].min / 20) + "🔸" * (enemy[:attack].min / 5 % 4) +

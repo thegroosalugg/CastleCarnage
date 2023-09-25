@@ -2,6 +2,7 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 # Main Menu
+BOSS_DIV = "=" * 70
 
 def boss_menu
   puts SEPARATOR
@@ -57,7 +58,7 @@ def game_info(player, weapon, the_boss, boss_style, load_boss)
   puts "    #{player_bars(player) { attack_stats(player) }}"
   puts "    #{weapon_bars(weapon)}" if weapon && weapon[:durability].positive? && boss_style == "🕶️ Bouncer"
   puts "    #{player_status(player)}"
-  puts SEPARATOR
+  puts BOSS_DIV
   puts "    #{the_boss[:name]} / #{boss_style} / #{the_boss[:hp].to_i} 💜 / #{'💜' * [(the_boss[:hp] - 1) / 50 + 1, 0].max}"
   puts SEPARATOR
   puts load_boss
