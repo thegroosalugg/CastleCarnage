@@ -39,7 +39,7 @@ end
 
 # Main game display
 
-# Player attack wasn't added until the boss methods were created and was not used before.
+# Player attack wasn't added until after the boss methods were created. It wasn't used in the main game.
 # As such it is passed as a block to the original player_bars method and is only called when big_boss_battle is run
 
 def attack_stats(player)
