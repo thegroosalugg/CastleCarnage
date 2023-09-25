@@ -1,6 +1,9 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
+SEPARATOR = "-" * 70
+BARRIER = "~" * 49
+
 def load_menu
   t = [
     "   🥷 [t]: Strike first! Strike hard! No mercy!",
@@ -56,7 +59,7 @@ end
 # \n indicates a line break
 
 def enemy_bars(enemy)
-  "----------------------------------------------------------------------\n" +
+  "#{SEPARATOR[0..-5]}\n" +
   "    #{enemy[:name]} / #{enemy[:hp].to_i} 🤍 / #{'🤍' * [(enemy[:hp] - 1) / 25 + 1, 0].max}\n" +
   "    💢 Min " +
   "🔶" * (enemy[:attack].min / 20) + "🔸" * (enemy[:attack].min / 5 % 4) +
@@ -69,7 +72,7 @@ def enemy_bars(enemy)
 end
 
 def weapon_bars(weapon)
-  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
+  "#{BARRIER}\n" +
   "    #{weapon[:name]}" +
   " 💢 Min " +
   "🔶" * (weapon[:damage].min / 20) + "🔸" * (weapon[:damage].min / 5 % 4) +
@@ -93,12 +96,12 @@ def player_bars(player, &block)
 end
 
 def state_of_game(enemy, second_enemy, player, weapon)
-  puts "----------------------------------------------------------------------"
+  puts SEPARATOR
   puts "    #{player_bars(player)}"
   puts "    #{weapon_bars(weapon)}" if weapon && weapon[:durability].positive?
   puts "    #{enemy_bars(enemy)}" if enemy
   puts "    #{enemy_bars(second_enemy)}" if second_enemy
-  puts "----------------------------------------------------------------------"
+  puts SEPARATOR
 end
 
 # ERROR MESSAGES
@@ -117,7 +120,7 @@ def error_message
   ]
 
   print `clear`
-  puts "----------------------------------------------------------------------"
+  puts SEPARATOR
   puts errors.sample
-  puts "----------------------------------------------------------------------"
+  puts SEPARATOR
 end

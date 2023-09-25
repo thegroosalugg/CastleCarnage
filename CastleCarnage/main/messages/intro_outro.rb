@@ -10,7 +10,7 @@ def intro_enemy(enemy)
 
     "You got caught ganking 🍻 hooch from the 🏡 package store.
     The 🏇🏌️‍♀️ townsfolk set the #{enemy[:name]} on you!",
-    
+
     "#{enemy[:name]} busted through the 🚪 door, they're stark raving mad. They're out for 🔪 blood!",
   ]
 
@@ -69,7 +69,7 @@ def win_message(enemy)
   ]
 
   puts win_messages.sample
-  puts "----------------------------------------------------------------------"
+  puts SEPARATOR
   win_art
 end
 
@@ -81,6 +81,6 @@ def lose_message(enemy)
   ]
 
   puts lose_messages.sample
-  puts "----------------------------------------------------------------------"
+  puts SEPARATOR
   lose_art
 end

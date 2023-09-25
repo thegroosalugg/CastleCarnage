@@ -46,7 +46,7 @@ while (enemy || second_enemy) && player[:hp].positive?
     player_attack(enemy, weapon) if enemy
     enemy_attack(enemy, player) if enemy
 
-    puts "----------------------------------------------------------------------" if second_enemy
+    puts SEPARATOR if second_enemy
     player_attack(second_enemy, weapon) if second_enemy
     enemy_attack(second_enemy, player) if second_enemy
 

@@ -40,7 +40,7 @@ def drained_message
   ]
 
   print `clear`
-  puts "----------------------------------------------------------------------"
+  puts SEPARATOR
   puts drained_msg.sample
-  puts "----------------------------------------------------------------------"
+  puts SEPARATOR
 end

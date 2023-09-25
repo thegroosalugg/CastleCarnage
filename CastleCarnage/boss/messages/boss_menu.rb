@@ -4,7 +4,7 @@
 # Main Menu
 
 def boss_menu
-  puts "----------------------------------------------------------------------"
+  puts SEPARATOR
   puts "     Decisions, decisions..."
   puts "[4] 👊⚡ Fight the Power"
   puts "[5] 🩸🪄 Blood Magic"
@@ -33,7 +33,7 @@ def player_status(player)
     when 18..20 then " Fucking Wasted  😵 /"
     end
 
-  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
+  "#{BARRIER}\n" +
   "    #{wallet} [DEBUG #{player[:cash]}] #{'💵' * [player[:cash], 0].max}\n" +
   "    #{drunk} [DEBUG #{player[:drunk]}] #{'🍺' * [player[:drunk], 0].max}"
 end
@@ -53,13 +53,13 @@ def attack_stats(player)
 end
 
 def game_info(player, weapon, the_boss, boss_style, load_boss)
-  puts "----------------------------------------------------------------------"
+  puts SEPARATOR
   puts "    #{player_bars(player) { attack_stats(player) }}"
   puts "    #{weapon_bars(weapon)}" if weapon && weapon[:durability].positive? && boss_style == "🕶️ Bouncer"
   puts "    #{player_status(player)}"
-  puts "----------------------------------------------------------------------"
+  puts SEPARATOR
   puts "    #{the_boss[:name]} / #{boss_style} / #{the_boss[:hp].to_i} 💜 / #{'💜' * [(the_boss[:hp] - 1) / 50 + 1, 0].max}"
-  puts "----------------------------------------------------------------------"
+  puts SEPARATOR
   puts load_boss
 end
 
@@ -72,7 +72,7 @@ def fight_menu(player, boss_style, weapon)
   get_weapon = [
     "[4] ⚔️ Armoury"
   ]
-  puts "----------------------------------------------------------------------"
+  puts SEPARATOR
   case boss_style
   when "🍻 Barkeep"
     puts "[4] 💴🗒️ Settle your Tabs"
@@ -112,7 +112,7 @@ def blood_menu(player)
     "------------- Don't be Silly 🤣 ---------------",
   ]
 
-  puts "----------------------------------------------------------------------"
+  puts SEPARATOR
   puts "-------------- 🧞:'Pay with Blood ❤️ Get Bargains 💰'--------------"
   puts "[4] 💪 Buff up!"
 

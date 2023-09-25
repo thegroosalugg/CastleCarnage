@@ -12,7 +12,7 @@ def run_away(enemy)
   ]
 
   puts run_msgs.sample
-  puts "----------------------------------------------------------------------"
+  puts SEPARATOR
 end
 
 def enter_room(selected_room)

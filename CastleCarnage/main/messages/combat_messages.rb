@@ -183,6 +183,6 @@ def enemy_killed(enemy)
     "You blasted #{enemy[:name]}! Flawless 💎 Victory.",
   ]
 
-  puts "----------------------------------------------------------------------"
+  puts SEPARATOR
   puts enemy_messages.sample
 end
