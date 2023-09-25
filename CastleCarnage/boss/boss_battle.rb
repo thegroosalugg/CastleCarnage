@@ -22,7 +22,7 @@ def bar_fight(player, the_boss)
 
   bar_fight_outcome(drunk_adjustment, wallet_adjustment)
 
-  total_damage = ((40..80).to_a.sample * (100 - player[:drunk] * 5) / 100).to_i # update damage to current drunkness
+  total_damage = (player[:attack].sample * (100 - player[:drunk] * 5) / 100).to_i
   the_boss[:hp] -= total_damage
 
   total_damage
@@ -36,7 +36,7 @@ def fight_the_power(player, weapon, the_boss, boss_style, load_boss)
     game_info(player, weapon, the_boss, boss_style, load_boss)
     fight_menu(player, boss_style, weapon)
 
-    damage = ((40..80).to_a.sample * (100 - player[:drunk] * 5) / 100).to_i
+    damage = (player[:attack].sample * (100 - player[:drunk] * 5) / 100).to_i
     user_choice = gets.chomp.to_i
 
     if user_choice == 4

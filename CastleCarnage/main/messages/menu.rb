@@ -58,7 +58,7 @@ end
 def enemy_bars(enemy)
   "----------------------------------------------------------------------\n" +
   "    #{enemy[:name]} / #{enemy[:hp].to_i} 🤍 / #{'🤍' * [(enemy[:hp] - 1) / 25 + 1, 0].max}\n" +
-  "    👊 Min " +
+  "    💢 Min " +
   "🔶" * (enemy[:attack].min / 20) + "🔸" * (enemy[:attack].min / 5 % 4) +
   " Max " +
   "🔶" * (enemy[:attack].max / 20) + "🔸" * (enemy[:attack].max / 5 % 4) +
@@ -78,9 +78,11 @@ def weapon_bars(weapon)
   "🟦" * [weapon[:durability], 0].max
 end
 
-def player_bars(player)
+def player_bars(player, &block)
   "🥷 You / #{player[:hp].to_i} ❤️ / #{'❤️' * [(player[:hp] - 1) / 25 + 1, 0].max}\n" +
-  "    🛡️ Min " +
+
+  (block_given? ? yield : "    🛡️ Min ") +
+
   "🔷" * (player[:block].min / 5) + "🔹" * (player[:block].min % 5) +
   " Max " +
   "🔷" * (player[:block].max / 5) + "🔹" * (player[:block].max % 5)

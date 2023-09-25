@@ -39,9 +39,18 @@ end
 
 # Main game display
 
+def attack_stats(player)
+  "    💢 Min " +
+  "🔶" * (player[:attack].min / 20) + "🔸" * (player[:attack].min / 5 % 4) +
+  " Max " +
+  "🔶" * (player[:attack].max / 20) + "🔸" * (player[:attack].max / 5 % 4) +
+  " / 🛡️ Min "
+end
+
 def game_info(player, weapon, the_boss, boss_style, load_boss)
   puts "----------------------------------------------------------------------"
-  puts "    #{player_bars(player)}"
+  #puts "    #{player_bars(player)}"
+  puts "    #{player_bars(player) { attack_stats(player) }}"
   puts "    #{weapon_bars(weapon)}" if weapon && weapon[:durability].positive? && boss_style == "🕶️ Bouncer"
   puts "    #{player_status(player)}"
   puts "----------------------------------------------------------------------"

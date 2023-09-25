@@ -17,7 +17,7 @@ require_relative 'boss/messages/blood_letters'
 
 print `clear`
 
-player = { hp: rand(250..300), block: (1..10).to_a, cash: rand(2..12), drunk: 0 }
+player = { hp: rand(250..300), attack: (30..60).to_a, block: (1..10).to_a, cash: rand(2..12), drunk: 0 }
 enemy = random_enemy
 second_enemy = nil
 weapon = pick_weapon
