@@ -9,7 +9,6 @@ def player_attack(enemy, weapon)
     crt_dmg_msg(enemy, weapon, critical_damage)
   elsif weapon[:accuracy].sample == 1
     missed(enemy)
-    weapon[:durability] += 1
   else
     enemy[:hp] -= damage_dealt
     attack_msg(enemy, weapon, damage_dealt)

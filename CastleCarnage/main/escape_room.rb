@@ -64,8 +64,6 @@ end
 def explore_rooms(enemy, weapon, player, second_enemy)
   selected_rooms = ROOM_NAMES.sample(4).map(&:dup)  # Create a deep copy of selected rooms
 
-  enemy ? run_away(enemy) : run_away(second_enemy)
-
   selected_rooms.each_with_index do |room, i|
     room[:probability] = room[:probability].sample  # Modify probability only for the loop
     puts "    [#{i + 4}] #{room[:name]}"

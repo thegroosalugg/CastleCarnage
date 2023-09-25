@@ -66,7 +66,8 @@ while (enemy || second_enemy) && player[:hp].positive?
         enemy_attack(target_enemy, player)
       end
     end
-    state_of_game(enemy, second_enemy, player, weapon) if weapon
+    enemy ? run_away(enemy) : run_away(second_enemy)
+    state_of_game(enemy, second_enemy, player, weapon)
     enemy, weapon, second_enemy = explore_rooms(enemy, weapon, player, second_enemy)
 
   else
@@ -104,7 +105,7 @@ while (enemy || second_enemy) && player[:hp].positive?
     big_boss_battle(player, weapon, the_boss)
   end
 
-  state_of_game(enemy, second_enemy, player, weapon) unless tracked_enemy == the_boss
+  state_of_game(enemy, second_enemy, player, weapon) unless tracked_enemy == the_boss || (weapon.nil? || weapon[:durability].zero?)
 end
 
 enemy == nil && second_enemy == nil && player[:hp].positive? ? win_message(tracked_enemy) : lose_message(tracked_enemy)
