@@ -102,7 +102,7 @@ def state_of_game(enemy, second_enemy, player, weapon)
 
   puts ENEMY_DIV if second_enemy
   puts "    #{health_bars(second_enemy)}" if second_enemy
-  puts "    #{attack_stats(enemy)} / #{block_stats(enemy)}" if second_enemy
+  puts "    #{attack_stats(second_enemy)} / #{block_stats(second_enemy)}" if second_enemy
 
   puts SEPARATOR
 end
