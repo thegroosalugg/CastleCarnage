@@ -17,7 +17,7 @@ require_relative 'boss/messages/blood_letters'
 
 print `clear`
 
-player = { hp: rand(250..300), block: (1..10).to_a, cash: rand(10..20), drunk: 0 }
+player = { hp: rand(250..300), block: (1..10).to_a, cash: rand(2..12), drunk: 0 }
 enemy = random_enemy
 second_enemy = nil
 weapon = pick_weapon
@@ -101,7 +101,7 @@ while (enemy || second_enemy) && player[:hp].positive?
     rooms_explored = 5 # debug
     player[:hp] += 100 + (rooms_explored * 20); player[:block] = player[:block].map { |block| block + enemies_defeated }
     enemy = nil; second_enemy = nil; tracked_enemy = the_boss
-    big_boss_battle(player, the_boss)
+    big_boss_battle(player, weapon, the_boss)
   end
 
   state_of_game(enemy, second_enemy, player, weapon) unless tracked_enemy == the_boss

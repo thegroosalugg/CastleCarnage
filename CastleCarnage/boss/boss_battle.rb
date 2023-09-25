@@ -28,13 +28,13 @@ def bar_fight(player, the_boss)
   total_damage
 end
 
-def fight_the_power(player, the_boss, boss_style, load_boss)
+def fight_the_power(player, weapon, the_boss, boss_style, load_boss)
 
   user_choice = 0
 
   until [4, 5].include?(user_choice)
-    game_info(player, the_boss, boss_style, load_boss)
-    fight_menu(boss_style)
+    game_info(player, weapon, the_boss, boss_style, load_boss)
+    fight_menu(player, boss_style, weapon)
 
     damage = ((40..80).to_a.sample * (100 - player[:drunk] * 5) / 100).to_i
     user_choice = gets.chomp.to_i

@@ -1,10 +1,10 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-def big_boss_battle(player, the_boss)
+def big_boss_battle(player, weapon, the_boss)
   load_boss = big_boss_art
   boss_style = the_boss[:style].sample
-  game_info(player, the_boss, boss_style, load_boss)
+  game_info(player, weapon, the_boss, boss_style, load_boss)
 
   while the_boss[:hp].positive? && player[:hp].positive?
     boss_menu
@@ -15,10 +15,10 @@ def big_boss_battle(player, the_boss)
     when 4
       print `clear`
       power_drained = false
-      boss_style = fight_the_power(player, the_boss, boss_style, load_boss)
+      boss_style = fight_the_power(player, weapon, the_boss, boss_style, load_boss)
     when 5
       print `clear`
-      power_drained == true ? drained_message : boss_style = pay_with_blood(player, the_boss, boss_style, load_boss)
+      power_drained == true ? drained_message : boss_style = pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
       power_drained = true
     when 6
       break
@@ -26,6 +26,6 @@ def big_boss_battle(player, the_boss)
       error_message
     end
 
-    game_info(player, the_boss, boss_style, load_boss)
+    game_info(player, weapon, the_boss, boss_style, load_boss)
   end
 end

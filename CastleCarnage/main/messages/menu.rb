@@ -57,32 +57,32 @@ end
 
 def enemy_bars(enemy)
   "----------------------------------------------------------------------\n" +
-  "    #{enemy[:name]} HP: [#{enemy[:hp].to_i}] #{'🤍' * [(enemy[:hp] - 1) / 25 + 1, 0].max}\n" +
-  "    👊 Attack: min " +
+  "    #{enemy[:name]} / #{enemy[:hp].to_i} 🤍 / #{'🤍' * [(enemy[:hp] - 1) / 25 + 1, 0].max}\n" +
+  "    👊 Min " +
   "🔶" * (enemy[:attack].min / 20) + "🔸" * (enemy[:attack].min / 5 % 4) +
-  " max " +
+  " Max " +
   "🔶" * (enemy[:attack].max / 20) + "🔸" * (enemy[:attack].max / 5 % 4) +
-  " || 🛡️ Block: min " +
+  " / 🛡️ Min " +
   "🔷" * (enemy[:block].min / 5) + "🔹" * (enemy[:block].min % 5) +
-  " max " +
+  " Max " +
   "🔷" * (enemy[:block].max / 5) + "🔹" * (enemy[:block].max % 5)
 end
 
 def weapon_bars(weapon)
-  "⚔️ Weapon: #{weapon[:name]}\n" +
-  "    💥 Damage: min " +
+  "#{weapon[:name]}" +
+  " 💢 Min " +
   "🔶" * (weapon[:damage].min / 20) + "🔸" * (weapon[:damage].min / 5 % 4) +
-  " max " +
+  " Max " +
   "🔶" * (weapon[:damage].max / 20) + "🔸" * (weapon[:damage].max / 5 % 4) +
-  " || 🪶 Uses: " +
+  " / 🛠️ " +
   "🟦" * [weapon[:durability], 0].max
 end
 
 def player_bars(player)
-  "💖 Your HP: [#{player[:hp].to_i}] #{'❤️' * [(player[:hp] - 1) / 25 + 1, 0].max}\n" +
-  "    🛡️ Block: min " +
+  "🥷 You / #{player[:hp].to_i} ❤️ / #{'❤️' * [(player[:hp] - 1) / 25 + 1, 0].max}\n" +
+  "    🛡️ Min " +
   "🔷" * (player[:block].min / 5) + "🔹" * (player[:block].min % 5) +
-  " max " +
+  " Max " +
   "🔷" * (player[:block].max / 5) + "🔹" * (player[:block].max % 5)
 end
 
