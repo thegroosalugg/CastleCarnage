@@ -20,6 +20,7 @@ def weapon_broke(weapon)
     "😲 Your #{weapon[:name]} disappears into thin air",
   ]
 
+  puts SEPARATOR
   puts weapon_messages.sample
 end
 

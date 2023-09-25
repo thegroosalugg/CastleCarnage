@@ -13,7 +13,7 @@ def player_attack(enemy, weapon)
     enemy[:hp] -= damage_dealt
     attack_msg(enemy, weapon, damage_dealt)
   end
-  weapon[:durability] -= 1
+  weapon[:durability] = [weapon[:durability] - 1, 0].max
 end
 
 def enemy_attack(enemy, player)
