@@ -62,7 +62,7 @@ def pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
 
   print `clear`
 
-  second_message = "[DEBUG] 💢 #{player[:attack].minmax.join('-')} 🛡️ #{player[:block].minmax.join('-')} 🚀 #{boost} ❌ [#{multiplier}] // 💲#{[price_paid]}" # DEBUGGING
+  second_message = "[DEBUG] 💢 #{player[:attack].minmax.join('-')} 🛡️ #{player[:block].minmax.join('-')} 🚀 #{boost} ❌ [#{multiplier}] 💲#{[price_paid]}" # DEBUGGING
   puts text_break(second_message, " ", 70) # DEBUGGING
 
   paid_blood_message(player, user_choice, price_paid, multiplier, boost)

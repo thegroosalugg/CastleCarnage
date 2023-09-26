@@ -162,18 +162,18 @@ end
 
 def error_message
   messages = [
-    "❌ Don't be a pillock ‼",
-    "❌ Don't be a plonker ‼",
-    "❌ Don't be a plank ‼",
-    "❌ Don't be a plum ‼",
-    "❌ Don't be a fool ‼",
-    "❌ Nobody likes a joker ‼",
-    "❌ Quit clowning around ‼",
-    "❌ Quit faffing around ‼",
-    "❌ Quit being a melon ‼",
+    " Don't be a pillock ‼ ",
+    " Don't be a plonker ‼ ",
+    " Don't be a plank ‼ ",
+    " Don't be a plum ‼ ",
+    " Don't be a fool ‼ ",
+    " Nobody likes a joker ‼ ",
+    " Quit clowning around ‼ ",
+    " Quit faffing around ‼ ",
+    " Quit being a melon ‼ ",
   ]
 
   print `clear`
   puts SEPARATOR
-  puts padding_generator(messages.sample, "*", 77)
+  puts padding_generator(messages.sample, "❌", 50)
 end

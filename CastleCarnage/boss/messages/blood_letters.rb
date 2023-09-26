@@ -32,16 +32,16 @@ end
 
 def drained_message
   messages = [
-    "🩸 Once per turn, you melt ‼",
-    "🩸 Uh-uh! I don't think so ‼",
-    "🩸 Don't get greedy ‼",
-    "🩸 You've donated enough blood ‼",
-    "🩸 You had your chance, go fight now ‼",
-    "🩸 Soz (Not sorry) ‼",
-    "🩸 Next round buddy ‼",
+    " Once per turn, you melt ‼ ",
+    " Uh-uh! I don't think so ‼ ",
+    " Don't get greedy ‼ ",
+    " You've donated enough blood ‼ ",
+    " You had your chance, go fight now ‼ ",
+    " Soz (Not sorry) ‼ ",
+    " Next round buddy ‼ ",
   ]
 
   print `clear`
   puts SEPARATOR
-  puts padding_generator(messages.sample, "*", 77)
+  puts padding_generator(messages.sample, "🩸", 52)
 end

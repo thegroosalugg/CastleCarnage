@@ -50,7 +50,7 @@ def game_info(player, weapon, the_boss, boss_style, load_boss)
   puts "    #{health_bars(the_boss)}"
   puts "    #{boss_style} / #{attack_stats(the_boss)}"
   puts SEPARATOR
-  puts " " * (10..30).to_a.sample + load_boss
+  puts load_boss
 end
 
 # Menu when selecting Fight the Power
