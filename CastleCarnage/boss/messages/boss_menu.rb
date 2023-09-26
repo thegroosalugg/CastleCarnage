@@ -77,6 +77,11 @@ end
 # Menu when selecting Pay with Blood
 
 def blood_menu(player)
+  always_open = [
+    "[4] 💪 Get Buff!",
+    "[4] 🏋️ Deadlift Regiment!",
+    "[4] 🫙 Creatine Monohydrate!",
+  ]
   poor = [
     "[5] 💵 Get Money",
     "[5] 💵 Lottery Tickets",
@@ -87,8 +92,7 @@ def blood_menu(player)
   rich = [
     "--- You're too rich 💵 No more money for you ---",
     "------------- The Taxman Cometh 💵 -------------",
-    "------------- Get Lost ------------ -------------",
-
+    "------------- Get Lost ⛔  ---------------------",
   ]
   drunk = [
     "[6] 🥤 Bottle of Water",
@@ -112,8 +116,7 @@ def blood_menu(player)
 
   puts SEPARATOR
   puts "-------------- 🧞:'Pay with Blood ❤️ Get Bargains 💰'--------------"
-  puts "[4] 💪 Buff up!"
-
+  puts always_open.sample
   puts (player[:cash] < 20 ? poor.sample : rich.sample)
   puts (player[:drunk].positive? ? drunk.sample : sober.sample)
   puts (player[:attack].max > 1 || player[:block].max > 1 ? strong.sample : weak.sample)

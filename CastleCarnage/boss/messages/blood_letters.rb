@@ -39,11 +39,11 @@ def drained_message
     "🩸 Next round buddy ‼",
   ]
 
-  left_padding = '*' * 27
+  p_left = '*' * 27
   message = drained_msg.sample
-  right_padding = '*' * (50 - message.length)
+  p_right = '*' * (50 - message.length)
 
   print `clear`
   puts SEPARATOR
-  puts "#{left_padding} #{message} #{right_padding}"
+  puts "#{p_left} #{message} #{p_right}"
 end

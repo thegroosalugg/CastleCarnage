@@ -8,6 +8,11 @@ BARRIER = "~" * 70
 ENEMY_DIV = "_" * 76
 BOSS_DIV = " " * 4 + "=" * 76
 
+# Def White Space Generator
+
+def padding_generator(message, p_left, p_right)
+end
+
 # Main game menu
 
 def load_menu
@@ -68,9 +73,6 @@ def name_player(player)
 
   while your_name.empty?
     title_screen
-    puts " " * 16 + BARRIER
-    puts " " * 42 + "Enter Your Name"
-    puts " " * 16 + BARRIER
     your_name = gets.chomp.strip.slice(0, 9).downcase.capitalize
     player[:name] = "🥷 #{your_name}"
     error_message
@@ -139,7 +141,6 @@ def state_of_game(enemy, second_enemy, player, weapon)
   puts "    #{health_bars(player)}"
   puts "    #{block_stats(player)}"
   puts "    #{weapon_bars(weapon)}" if weapon && weapon[:durability].positive?
-
   puts "    #{enemy_bars(enemy)}" if enemy
   puts "    #{enemy_bars(second_enemy)}" if second_enemy
   puts SEPARATOR
@@ -160,11 +161,11 @@ def error_message
     "❌ Quit being a melon ‼",
   ]
 
-  left_padding = '*' * 27
+  p_left = '*' * 27
   error = errors.sample
-  right_padding = '*' * (50 - error.length)
+  p_right = '*' * (50 - error.length)
 
   print `clear`
   puts SEPARATOR
-  puts "#{left_padding} #{error} #{right_padding}"
+  puts "#{p_left} #{error} #{p_right}"
 end
