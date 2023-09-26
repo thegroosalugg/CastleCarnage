@@ -8,7 +8,8 @@ def pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
   until [4, 5, 6, 7].include?(user_choice)
     game_info(player, weapon, the_boss, boss_style, load_boss)
 
-    puts "[DEBUG] attack #{player[:attack]} block #{player[:block]}"
+    message = "[DEBUG] attack #{player[:attack]} block #{player[:block]}" # DEBUGGING
+    puts text_break(message, " ", 70) # DEBUGGING
 
     blood_menu(player)
 
@@ -60,7 +61,8 @@ def pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
 
   print `clear`
 
-  puts "[DEBUG] attack #{player[:attack]} block #{player[:block]} boost #{boost}"
+  second_message = "[DEBUG] attack #{player[:attack]} block #{player[:block]} boost #{boost}" # DEBUGGING
+  puts text_break(second_message, " ", 70) # DEBUGGING
 
   paid_blood_message(user_choice, price_paid, multiplier, boost)
   boss_style = the_boss[:style].sample
