@@ -1,9 +1,12 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
+# various ASCII separators
+
 SEPARATOR = "-" * 80
 BARRIER = "~" * 70
 ENEMY_DIV = "_" * 76
+BOSS_DIV = " " * 4 + "=" * 76
 
 # Main game menu
 

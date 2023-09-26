@@ -2,7 +2,6 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 # Main Menu
-BOSS_DIV = " " * 4 + "=" * 76
 
 def boss_menu
   puts SEPARATOR
@@ -81,14 +80,22 @@ def blood_menu(player)
   poor = [
     "[5] 💵 Get Money",
     "[5] 💵 Lottery Tickets",
+    "[5] 📓 Read the Necronomicon",
+    "[5] 😈 Deal with the Devil",
+    "[5] 🎰 Get Rich QUick Scheme",
   ]
   rich = [
     "--- You're too rich 💵 No more money for you ---",
     "------------- The Taxman Cometh 💵 -------------",
+    "------------- Get Lost ------------ -------------",
+
   ]
   drunk = [
     "[6] 🥤 Bottle of Water",
     "[6] 💊 Ibuprofen",
+    "[6] 🍕 Greasy Pizza",
+    "[6] 🎬 90's Action Movies",
+    "[6] 🥙 Döner Kebab"
   ]
   sober = [
     "--------- You're not even drunk 🍺🥴 -----------",
@@ -96,7 +103,7 @@ def blood_menu(player)
   ]
   strong = [
     "[7] 🍔 Order a take away",
-    "[7] ⚖️ Attempt at life forever",
+    "[7] ⚖️ Live another day",
   ]
   weak = [
     "-- You're too feeble, don't make me laugh 🤣 --",
