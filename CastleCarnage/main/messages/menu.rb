@@ -86,33 +86,34 @@ def percentage(entity, key)
   key == :accuracy ? accuracy : crit_ch
 end
 
+# Display generators that combine the above methods to create dynamic displays for enemy, player and weapon
+
+def enemy_bars(enemy)
+  "#{ENEMY_DIV}\n" +
+  "    #{health_bars(enemy)}\n" +
+  "    #{attack_stats(enemy)} / 💥 #{percentage(enemy, :crit_ch)}% / 🎯 #{percentage(enemy, :accuracy)}% / #{block_stats(enemy)}"
+end
+
 def weapon_bars(weapon)
   "#{BARRIER}\n" +
   "    #{weapon[:name]} / " +
   attack_stats(weapon) +
+  " / 💥 " +
+  "#{percentage(weapon, :crit_ch)}%" +
+  " / 🎯 " +
+  "#{percentage(weapon, :accuracy)}%" +
   " / 🛠️ " +
   "🟦" * [weapon[:durability], 0].max
 end
 
 def state_of_game(enemy, second_enemy, player, weapon)
   puts SEPARATOR
-
   puts "    #{health_bars(player)}"
   puts "    #{block_stats(player)}"
   puts "    #{weapon_bars(weapon)}" if weapon && weapon[:durability].positive?
-  puts "    💥 #{percentage(weapon, :crit_ch)}% / 🎯 #{percentage(weapon, :accuracy)}%"  if weapon && weapon[:durability].positive?
 
-  puts ENEMY_DIV if enemy
-  puts "    #{health_bars(enemy)}" if enemy
-  puts "    #{attack_stats(enemy)} / #{block_stats(enemy)}" if enemy
-  puts "    💥 #{percentage(enemy, :crit_ch)}% / 🎯 #{percentage(enemy, :accuracy)}%"  if enemy
-
-
-  puts ENEMY_DIV if second_enemy
-  puts "    #{health_bars(second_enemy)}" if second_enemy
-  puts "    #{attack_stats(second_enemy)} / #{block_stats(second_enemy)}" if second_enemy
-  puts "    💥 #{percentage(second_enemy, :crit_ch)}% / 🎯 #{percentage(second_enemy, :accuracy)}%"  if second_enemy
-
+  puts "    #{enemy_bars(enemy)}" if enemy
+  puts "    #{enemy_bars(second_enemy)}" if second_enemy
   puts SEPARATOR
 end
 
