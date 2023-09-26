@@ -69,9 +69,9 @@ end
 
 def attack_stats(entity)
   "💢 Min " +
-  "🔶" * (entity[:attack].min / 20) + "🔸" * (entity[:attack].min / 5 % 4) +
+  "🔶" * (entity[:attack].min / 20) + ("🔸" * ((entity[:attack].min - 1) / 5 % 4 + 1)) +
   " Max " +
-  "🔶" * (entity[:attack].max / 20) + "🔸" * (entity[:attack].max / 5 % 4)
+  "🔶" * (entity[:attack].max / 20) + ("🔸" * ((entity[:attack].max - 1) / 5 % 4 + 1))
 end
 
 def block_stats(entity)
