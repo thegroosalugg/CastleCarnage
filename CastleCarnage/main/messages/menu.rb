@@ -104,7 +104,7 @@ end
 def percentage(entity, key)
   accuracy = 100 - (100 / (entity[key.to_sym].max))
   crit_ch = 100 - accuracy
-  key == :accuracy ? " / 🎯 #{accuracy}%" : " / 💥 #{crit_ch}%"
+  key == :accuracy ? "🎯 #{accuracy}%" : " / 💥 #{crit_ch}% / "
 end
 
 # Display generators that combine the above methods to create dynamic displays for enemy, player and weapon
@@ -112,18 +112,19 @@ end
 def enemy_bars(enemy)
   "#{ENEMY_DIV}\n" +
   "    #{health_bars(enemy)}\n" +
-  "    #{attack_stats(enemy)}" +
+  "\n" +
+  "    #{percentage(enemy, :accuracy)}" +
   "#{percentage(enemy, :crit_ch)}" +
-  "#{percentage(enemy, :accuracy)} / " +
+  "#{attack_stats(enemy)} / " +
   "#{block_stats(enemy)}"
 end
 
 def weapon_bars(weapon)
   "#{BARRIER}\n" +
   "    #{weapon[:name]} / " +
-  attack_stats(weapon) +
-  "#{percentage(weapon, :crit_ch)}" +
   "#{percentage(weapon, :accuracy)}" +
+  "#{percentage(weapon, :crit_ch)}" +
+  attack_stats(weapon) +
   " / 🛠️ " +
   "🟦" * [weapon[:durability], 0].max
 end
