@@ -1,9 +1,9 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-SEPARATOR = "-" * 70
-BARRIER = "~" * 50
-ENEMY_DIV = "_" * 66
+SEPARATOR = "-" * 80
+BARRIER = "~" * 70
+ENEMY_DIV = "_" * 76
 
 # Main game menu
 
@@ -65,9 +65,9 @@ def name_player(player)
 
   while your_name.empty?
     title_screen
-    puts " " * 26 + BARRIER
+    puts " " * 16 + BARRIER
     puts " " * 42 + "Enter Your Name"
-    puts " " * 26 + BARRIER
+    puts " " * 16 + BARRIER
     your_name = gets.chomp.strip.slice(0, 9).downcase.capitalize
     player[:name] = "🥷 #{your_name}"
     error_message
@@ -157,9 +157,9 @@ def error_message
     "❌ Quit being a melon ‼",
   ]
 
-  left_padding = '*' * 23
+  left_padding = '*' * 27
   error = errors.sample
-  right_padding = '*' * (44 - error.length)
+  right_padding = '*' * (50 - error.length)
 
   print `clear`
   puts SEPARATOR

@@ -2,7 +2,7 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 # Main Menu
-BOSS_DIV = " " * 4 + "=" * 66
+BOSS_DIV = " " * 4 + "=" * 76
 
 def boss_menu
   puts SEPARATOR
