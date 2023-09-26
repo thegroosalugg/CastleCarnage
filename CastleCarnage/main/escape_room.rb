@@ -28,10 +28,10 @@ def inside_room(selected_room, enemy, weapon, player, second_enemy)
 
   case selected_room[:probability]
   when 1
-    gained_health(randomizer)
+    gained_health(player, randomizer)
     player[:hp] += randomizer
   when 2
-    lost_health(randomizer)
+    lost_health(player, randomizer)
     player[:hp] -= randomizer
   when 3
     target_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy

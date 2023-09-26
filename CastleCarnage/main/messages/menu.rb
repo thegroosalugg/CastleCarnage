@@ -11,7 +11,7 @@ BOSS_DIV = " " * 4 + "=" * 76
 # Def White Space Generator
 
 def padding_generator(message, char, size)
-  padding = char * ((size - message.length) / 2)
+  padding = char * [1, (size - message.length) / 2].max
   "#{padding} #{message} #{padding}"
 end
 

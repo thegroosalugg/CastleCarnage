@@ -35,44 +35,44 @@ def enter_room(selected_room)
   puts room_msg.sample
 end
 
-def gained_health(randomizer)
+def gained_health(player, randomizer)
   gained_msg = [
-    "Ah mate! Who left this grass ☘ here?! Northern Lights? Sweet as! You gained 💗 #{randomizer} HP!",
-    "A Spghetti Store 🏪 ? Here? Yeah, I'll have the spaghetti 🍝. You gained 💗 #{randomizer} HP!",
-    "These chili peppers 🌶 should give me the quick energy I need! You gained 💗 #{randomizer} HP!",
-    "Ha! Some idiot left this pizza 🍕 in the trash! What a treat! You gained 💗 #{randomizer} HP!",
-    "This milk 🍼 is well out of date, eh, let's drink it anyways. You gained 💗 #{randomizer} HP!",
-    "Ransacked the pantry, whipped up some beans on toast 🍞 🥫, gained 💗 #{randomizer} HP!",
-    "Proper hungry. These mouldy bananas 🍌 will have to do. You gained 💗 #{randomizer} HP!",
-    "The Rock 👨‍🦲 awaits you and gives you a high five 🙏. You gained 💗 #{randomizer} HP!",
-    "Fuckin' A🅰! Still some cold ones in the fridge 🍻! You gained 💗 #{randomizer} HP!",
-    "There's some chips 🍟 on the floor. 5 second rule ‼ You gained 💗 #{randomizer} HP!",
-    "Heisenberg's blue 🕵️‍♂️!! Whoooa! 🥴 River dance! You gained 💗 #{randomizer} HP!",
-    "What muppet left this pie 🥧 here, nicked. You gained 💗 #{randomizer} HP!",
-    "Holy shit! A fucking cake 🎂! Munched! You gained 💗 #{randomizer} HP!",
-    "You got the Wi-Fi Password 📝! You gained 💗 #{randomizer} HP!",
-    "The doctor 🥼 is in the house. You gained 💗 #{randomizer} HP!",
-    "Some shrooms 🍄, You gained 💗 #{randomizer} HP!",
+    "Ah mate! Who left this grass ☘ here?! Northern Lights? Sweet as! You gained #{player[:emoji]} #{randomizer} HP!",
+    "A Spghetti Store 🏪 ? Here? Yeah, I'll have the spaghetti 🍝. You gained #{player[:emoji]} #{randomizer} HP!",
+    "These chili peppers 🌶 should give me the quick energy I need! You gained #{player[:emoji]} #{randomizer} HP!",
+    "Ha! Some idiot left this pizza 🍕 in the trash! What a treat! You gained #{player[:emoji]} #{randomizer} HP!",
+    "This milk 🍼 is well out of date, eh, let's drink it anyways. You gained #{player[:emoji]} #{randomizer} HP!",
+    "Ransacked the pantry, whipped up some beans on toast 🍞 🥫, gained #{player[:emoji]} #{randomizer} HP!",
+    "Proper hungry. These mouldy bananas 🍌 will have to do. You gained #{player[:emoji]} #{randomizer} HP!",
+    "The Rock 👨‍🦲 awaits you and gives you a high five 🙏. You gained #{player[:emoji]} #{randomizer} HP!",
+    "Fuckin' A🅰! Still some cold ones in the fridge 🍻! You gained #{player[:emoji]} #{randomizer} HP!",
+    "There's some chips 🍟 on the floor. 5 second rule ‼ You gained #{player[:emoji]} #{randomizer} HP!",
+    "Heisenberg's blue 🕵️‍♂️!! Whoooa! 🥴 River dance! You gained #{player[:emoji]} #{randomizer} HP!",
+    "What muppet left this pie 🥧 here, nicked. You gained #{player[:emoji]} #{randomizer} HP!",
+    "Holy shit! A fucking cake 🎂! Munched! You gained #{player[:emoji]} #{randomizer} HP!",
+    "You got the Wi-Fi Password 📝! You gained #{player[:emoji]} #{randomizer} HP!",
+    "The doctor 🥼 is in the house. You gained #{player[:emoji]} #{randomizer} HP!",
+    "Some shrooms 🍄, You gained #{player[:emoji]} #{randomizer} HP!",
   ]
 
   puts gained_msg.sample
 end
 
-def lost_health(randomizer)
+def lost_health(player, randomizer)
   lost_msg = [
-    "The phone 📱 reception in here is terrible and there's no Wi-Fi 📻. You lost 🖤 #{randomizer} HP!",
-    "Bollocks, you stepped into a bear trap 🐻, this is gonna cost ya! You lost 🖤 #{randomizer} HP!",
-    "Crikey! A seagull 🦆 swooped down and nicked your chips 🍟! You lost 🖤 #{randomizer} HP!",
-    "KABLAMO ‼ 💥 bloody landmines 🕳 ! Who put these here?! You lost 🖤 #{randomizer} HP!",
-    "An axe 🪓 flew across the room and hit you in the face! You lost 🖤 #{randomizer} HP!",
-    "There's a party 🎉 occuring, but you don't know anyone. You lost 🖤 #{randomizer} HP!",
-    "You got a Take Away 🥡, but they got your order wrong. You lost 🖤 #{randomizer} HP!",
-    "You walked into the bad part of the neighbourhood 🏘.  You lost 🖤 #{randomizer} HP!",
-    "You got a beer 🍺! But it was one beer too many. You lost 🖤 #{randomizer} HP!",
-    "A bear 🐻 jumped out and ate some of you. You lost 🖤 #{randomizer} HP!",
-    "As you walked in a fridge 🧳 fell on you. You lost 🖤 #{randomizer} HP!",
-    "The bad music 🎵 up in here torments you. You lost 🖤 #{randomizer} HP!",
-    "You stepped on a rake 🏒 ! You lost 🖤 #{randomizer} HP!",
+    "The phone 📱 reception in here is terrible and there's no Wi-Fi 📻. You lost #{player[:emoji]} #{randomizer} HP!",
+    "Bollocks, you stepped into a bear trap 🐻, this is gonna cost ya! You lost #{player[:emoji]} #{randomizer} HP!",
+    "Crikey! A seagull 🦆 swooped down and nicked your chips 🍟! You lost #{player[:emoji]} #{randomizer} HP!",
+    "KABLAMO ‼ 💥 bloody landmines 🕳 ! Who put these here?! You lost #{player[:emoji]} #{randomizer} HP!",
+    "An axe 🪓 flew across the room and hit you in the face! You lost #{player[:emoji]} #{randomizer} HP!",
+    "There's a party 🎉 occuring, but you don't know anyone. You lost #{player[:emoji]} #{randomizer} HP!",
+    "You got a Take Away 🥡, but they got your order wrong. You lost #{player[:emoji]} #{randomizer} HP!",
+    "You walked into the bad part of the neighbourhood 🏘.  You lost #{player[:emoji]} #{randomizer} HP!",
+    "You got a beer 🍺! But it was one beer too many. You lost #{player[:emoji]} #{randomizer} HP!",
+    "A bear 🐻 jumped out and ate some of you. You lost #{player[:emoji]} #{randomizer} HP!",
+    "As you walked in a fridge 🧳 fell on you. You lost #{player[:emoji]} #{randomizer} HP!",
+    "The bad music 🎵 up in here torments you. You lost #{player[:emoji]} #{randomizer} HP!",
+    "You stepped on a rake 🏒 ! You lost #{player[:emoji]} #{randomizer} HP!",
   ]
 
   puts lost_msg.sample
@@ -80,19 +80,19 @@ end
 
 def enemy_health(randomizer, enemy)
   enemy_health_msg = [
-    "You're practically feeding #{enemy[:name]} with your poor decisions. They regain 🤍 #{randomizer} HP!",
-    "Congratulations, you've become #{enemy[:name]}'s personal healer, dishing out 🤍 #{randomizer} HP!",
-    "Keep up the good work! #{enemy[:name]} is loving the free health recovery of 🤍 #{randomizer} HP!",
-    "It's like you're working for #{enemy[:name]}'s well-being. They polished off 🤍 #{randomizer} HP!",
-    "Bad decision. #{enemy[:name]} found enlightenment. #{enemy[:name]} gained 🤍 #{randomizer} HP",
-    "You're practically a health potion for #{enemy[:name]}. They gorged 🤍 #{randomizer} HP!",
-    "You're a one-person support system for #{enemy[:name]}. They scoff 🤍 #{randomizer} HP!",
-    "#{enemy[:name]} is having a grand time at your expense, devouring 🤍 #{randomizer} HP!",
-    "#{enemy[:name]} finds your actions amusing, as they chow down 🤍 #{randomizer} HP.",
-    "#{enemy[:name]} thanks you for the health boost as they munch 🤍 #{randomizer} HP!",
-    "#{enemy[:name]} feasts on your incompetence, wolfing down 🤍 #{randomizer} HP!",
-    "#{enemy[:name]} laughs at your missteps and eats up 🤍 #{randomizer} HP!",
-    "Your cowardice allowed #{enemy[:name]} to recover 🤍 #{randomizer} HP",
+    "You're practically feeding #{enemy[:name]} with your poor decisions. They regain #{enemy[:emoji]} #{randomizer} HP!",
+    "Congratulations, you've become #{enemy[:name]}'s personal healer, dishing out #{enemy[:emoji]} #{randomizer} HP!",
+    "Keep up the good work! #{enemy[:name]} is loving the free health recovery of #{enemy[:emoji]} #{randomizer} HP!",
+    "It's like you're working for #{enemy[:name]}'s well-being. They polished off #{enemy[:emoji]} #{randomizer} HP!",
+    "Bad decision. #{enemy[:name]} found enlightenment. #{enemy[:name]} gained #{enemy[:emoji]} #{randomizer} HP",
+    "You're practically a health potion for #{enemy[:name]}. They gorged #{enemy[:emoji]} #{randomizer} HP!",
+    "You're a one-person support system for #{enemy[:name]}. They scoff #{enemy[:emoji]} #{randomizer} HP!",
+    "#{enemy[:name]} is having a grand time at your expense, devouring #{enemy[:emoji]} #{randomizer} HP!",
+    "#{enemy[:name]} finds your actions amusing, as they chow down #{enemy[:emoji]} #{randomizer} HP.",
+    "#{enemy[:name]} thanks you for the health boost as they munch #{enemy[:emoji]} #{randomizer} HP!",
+    "#{enemy[:name]} feasts on your incompetence, wolfing down #{enemy[:emoji]} #{randomizer} HP!",
+    "#{enemy[:name]} laughs at your missteps and eats up #{enemy[:emoji]} #{randomizer} HP!",
+    "Your cowardice allowed #{enemy[:name]} to recover #{enemy[:emoji]} #{randomizer} HP",
   ]
 
   puts enemy_health_msg.sample
