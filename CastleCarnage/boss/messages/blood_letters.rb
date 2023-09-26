@@ -29,7 +29,7 @@ def paid_blood_message(user_choice, price_paid, multiplier, boost)
 end
 
 def drained_message
-  drained_msg = [
+  messages = [
     "🩸 Once per turn, you melt ‼",
     "🩸 Uh-uh! I don't think so ‼",
     "🩸 Don't get greedy ‼",
@@ -39,11 +39,7 @@ def drained_message
     "🩸 Next round buddy ‼",
   ]
 
-  p_left = '*' * 27
-  message = drained_msg.sample
-  p_right = '*' * (50 - message.length)
-
   print `clear`
   puts SEPARATOR
-  puts "#{p_left} #{message} #{p_right}"
+  padding_generator(messages.sample, "*", 77)
 end

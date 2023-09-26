@@ -5,10 +5,10 @@
 
 def intro_enemy(enemy)
   enemy_phrases = [
-    "You got proper pissed 🍷 and ended up in some 🏰 castle, a #{enemy[:name]} jumped from the ceiling!
+    "    You got proper pissed 🍷 and ended up in some 🏰 castle, a #{enemy[:name]} jumped from the ceiling!
     'You goon get it now boy!'",
 
-    "You got caught ganking 🍻 hooch from the 🏡 package store.
+    "    You got caught ganking 🍻 hooch from the 🏡 package store.
     The 🏇🏌️‍♀️ townsfolk set the #{enemy[:name]} on you!",
 
     "#{enemy[:name]} busted through the 🚪 door, they're stark raving mad. They're out for 🔪 blood!",
@@ -19,10 +19,10 @@ end
 
 def intro_weapon(weapon, enemy)
   weapon_phrases = [
-    "You ✨teleport behind #{enemy[:name]} and withdraw your #{weapon[:name]}, 'Nothing personnel, kid'",
-    "There's a #{weapon[:name]} on the floor, better get that. We won't get got, we gone get!",
+    "    You ✨teleport behind #{enemy[:name]} and withdraw your #{weapon[:name]}, 'Nothing personnel, kid'",
+    "    There's a #{weapon[:name]} on the floor, better get that. We won't get got, we gone get!",
 
-    "You pull out your trusty #{weapon[:name]} from your trench coat and tip your fedora.
+    "    You pull out your trusty #{weapon[:name]} from your trench coat and tip your fedora.
     'The only thing sharper than my #{weapon[:name]} is my wit m'lady'",
   ]
 

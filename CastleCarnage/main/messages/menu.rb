@@ -10,7 +10,9 @@ BOSS_DIV = " " * 4 + "=" * 76
 
 # Def White Space Generator
 
-def padding_generator(message, p_left, p_right)
+def padding_generator(message, char, size)
+  padding = char * ((size - message.length) / 2)
+  puts"#{padding} #{message} #{padding}"
 end
 
 # Main game menu
@@ -149,7 +151,7 @@ end
 # ERROR MESSAGES
 
 def error_message
-  errors = [
+  messages = [
     "❌ Don't be a pillock ‼",
     "❌ Don't be a plonker ‼",
     "❌ Don't be a plank ‼",
@@ -161,11 +163,7 @@ def error_message
     "❌ Quit being a melon ‼",
   ]
 
-  p_left = '*' * 27
-  error = errors.sample
-  p_right = '*' * (50 - error.length)
-
   print `clear`
   puts SEPARATOR
-  puts "#{p_left} #{error} #{p_right}"
+  padding_generator(messages.sample, "*", 77)
 end
