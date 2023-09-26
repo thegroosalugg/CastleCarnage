@@ -17,7 +17,7 @@ require_relative 'boss/messages/blood_letters'
 
 print `clear`
 
-player = { name: "🥷 You", hp: rand(250..300), attack: (30..60).to_a, block: (1..10).to_a, cash: rand(2..12), drunk: 0 }
+player = { hp: rand(250..300), attack: (30..60).to_a, block: (1..10).to_a, cash: rand(2..12), drunk: 0 }
 enemy = random_enemy
 second_enemy = nil
 tracked_enemy = enemy
@@ -26,6 +26,7 @@ enemies_defeated = 0
 rooms_explored = 0
 the_boss = big_boss_awaits
 
+name_player(player)
 intro_enemy(enemy)
 intro_weapon(weapon, enemy)
 state_of_game(enemy, second_enemy, player, weapon)

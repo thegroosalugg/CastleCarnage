@@ -5,6 +5,8 @@ SEPARATOR = "-" * 70
 BARRIER = "~" * 50
 ENEMY_DIV = " " * 4 + "_" * 66
 
+# Main game menu
+
 def load_menu
   t = [
     "   🥷 [t]: Strike first! Strike hard! No mercy!",
@@ -37,7 +39,7 @@ def load_menu
 
   y = [
     "   💨 [y]: Run in the opposite direction!",
-    "   💨 [y]: Dishonourable discharge",
+    "   💨 [y]: Dishonourable Discharge",
     "   💨 [y]: Fuckin' leg it!",
     "   💨 [y]: Look fo' swag",
     "   💨 [y]: Cheese it!",
@@ -56,7 +58,19 @@ def load_menu
   puts y.sample
 end
 
-# UI Elements for Health, Attack, Block and Weapon for any entity
+# Name your player
+
+def name_player(player)
+  title_screen
+  puts BARRIER
+  puts " " * 18 + "Enter Your Name"
+  puts BARRIER
+  your_name = gets.chomp.downcase.capitalize
+  player[:name] = "🥷 #{your_name}"
+  print `clear`
+end
+
+# UI Elements for Health, Attack, Block, Accuracy and Crit Chance for any entity
 # \n represents line break when concatenating strings
 
 def health_bars(entity)
@@ -92,7 +106,8 @@ end
 def enemy_bars(enemy)
   "#{ENEMY_DIV}\n" +
   "    #{health_bars(enemy)}\n" +
-  "    #{attack_stats(enemy)}" + "#{percentage(enemy, :crit_ch)}" +
+  "    #{attack_stats(enemy)}" +
+  "#{percentage(enemy, :crit_ch)}" +
   "#{percentage(enemy, :accuracy)} / " +
   "#{block_stats(enemy)}"
 end
@@ -106,6 +121,8 @@ def weapon_bars(weapon)
   " / 🛠️ " +
   "🟦" * [weapon[:durability], 0].max
 end
+
+# Main UI that displays all current happenings, by chaining the above methods
 
 def state_of_game(enemy, second_enemy, player, weapon)
   puts SEPARATOR
