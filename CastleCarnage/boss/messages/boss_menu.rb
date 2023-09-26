@@ -38,6 +38,13 @@ def player_status(player)
   "    #{drunk} [DEBUG #{player[:drunk]}] #{'🍺' * [player[:drunk], 0].max}"
 end
 
+# the boss now moves!!
+
+def move_ascii_art(load_boss)
+  vertical_offset = (10..30).to_a.sample
+  load_boss.split("\n").map { |line| " " * vertical_offset + line }.join("\n")
+end
+
 # Same as state_of_game but made exclusively for the big_boss
 
 def game_info(player, weapon, the_boss, boss_style, load_boss)
@@ -50,7 +57,7 @@ def game_info(player, weapon, the_boss, boss_style, load_boss)
   puts "    #{health_bars(the_boss)}"
   puts "    #{boss_style} / #{attack_stats(the_boss)}"
   puts SEPARATOR
-  puts load_boss
+  puts move_ascii_art(load_boss)
 end
 
 # Menu when selecting Fight the Power
