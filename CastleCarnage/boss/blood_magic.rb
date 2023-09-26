@@ -17,7 +17,7 @@ def pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
     case user_choice
     when 4
       boost = [:attack, :block].sample
-      price_paid = (boost == :attack ? (35..60) : (20..50)).to_a.sample
+      price_paid = (boost == :attack ? (35..55) : (20..50)).to_a.sample
       player[:hp] -= price_paid
       player[boost] = player[boost].map { |stat| stat + 1 }
     when 5
@@ -42,10 +42,13 @@ def pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
         redo
       end
     when 7
-      if player[:block].max > 1
-        multiplier = player[:block].max > 1 ? rand(1..[player[:block].max - 1, 4].min) : 0
-        player[:block] = player[:block].map { |block| [block - multiplier, 1].max }
-        price_paid = (10..40).to_a.sample * multiplier
+      if player[:block].max > 1 || player[:attack].max > 1
+        boost = [:attack, :block].select { |stat| player[stat].max > 1 }.sample
+
+        multiplier = player[boost].max > 1 ? rand(1..[player[boost].max - 1, 4].min) : 0
+        player[boost] = player[boost].map { |boost| [boost - multiplier, 1].max }
+
+        price_paid = (20..40).to_a.sample * multiplier
         player[:hp] += price_paid
       else
         error_message
@@ -59,7 +62,7 @@ def pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
   print `clear`
 
   puts "[DEBUG] attack #{player[:attack]} block #{player[:block]} boost #{boost}"
-  
+
   paid_blood_message(user_choice, price_paid, multiplier, boost)
   boss_style = the_boss[:style].sample
 end

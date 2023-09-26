@@ -13,7 +13,7 @@ def paid_blood_message(user_choice, price_paid, multiplier, boost)
     "🩸 is thicker than 💧. You sacked 🖤 #{price_paid} HP and removed 🍺 #{multiplier} beers.",
   ]
   munch_out = [
-    "You got what you wanted and munched up 💗 #{price_paid} HP, but you're bloated, your 🛡️ block suffers by #{multiplier}."
+    "You got what you wanted and munched up 💗 #{price_paid} HP, but you're bloated, your #{boost} suffers by #{multiplier}."
   ]
 
   case user_choice
