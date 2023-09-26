@@ -3,7 +3,7 @@
 
 SEPARATOR = "-" * 70
 BARRIER = "~" * 50
-ENEMY_DIV = " " * 4 + "_" * 66
+ENEMY_DIV = "_" * 66
 
 # Main game menu
 
@@ -65,7 +65,7 @@ def name_player(player)
   puts " " * 26 + BARRIER
   puts " " * 42 + "Enter Your Name"
   puts " " * 26 + BARRIER
-  your_name = gets.chomp.downcase.capitalize
+  your_name = gets.chomp.strip.slice(0, 9).downcase.capitalize
   player[:name] = "🥷 #{your_name}"
   print `clear`
 end
