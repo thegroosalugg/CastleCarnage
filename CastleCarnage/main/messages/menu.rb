@@ -60,7 +60,7 @@ end
 
 
 def health_bars(entity)
-  emojis = ["❤️", "🧡", "💛", "💚", "💙", "💜", "🤍", "🖤", "🤎", "💔", "❤️‍🔥", "❤️‍🩹", "❣️", "💕", "💞", "💓", "💗", "💖", "💘", "💝"]
+  emojis = ["❤️", "🧡", "💛", "💚", "💙", "💜", "🤍", "🖤", "🤎", "💔", "❣️", "💕", "💞", "💓", "💗", "💖", "💘", "💝"]
 
   entity[:emoji] ||= emojis.sample # Assigns an emoji only if the value is nil.
 
@@ -81,6 +81,10 @@ def block_stats(entity)
   "🔷" * (entity[:block].max / 5) + "🔹" * (entity[:block].max % 5)
 end
 
+def percentage(entity, key)
+  percentage = 100 - (100 / (entity[key.to_sym].max))
+end
+
 def weapon_bars(weapon)
   "#{BARRIER}\n" +
   "    #{weapon[:name]} / " +
@@ -95,14 +99,18 @@ def state_of_game(enemy, second_enemy, player, weapon)
   puts "    #{health_bars(player)}"
   puts "    #{block_stats(player)}"
   puts "    #{weapon_bars(weapon)}" if weapon && weapon[:durability].positive?
+  puts "    💥 #{percentage(weapon, :crit_ch)}% / 🎯 #{percentage(weapon, :accuracy)}%"  if weapon && weapon[:durability].positive?
 
   puts ENEMY_DIV if enemy
   puts "    #{health_bars(enemy)}" if enemy
   puts "    #{attack_stats(enemy)} / #{block_stats(enemy)}" if enemy
+  puts "    💥 #{percentage(enemy, :crit_ch)}% / 🎯 #{percentage(enemy, :accuracy)}%"  if enemy
+
 
   puts ENEMY_DIV if second_enemy
   puts "    #{health_bars(second_enemy)}" if second_enemy
   puts "    #{attack_stats(second_enemy)} / #{block_stats(second_enemy)}" if second_enemy
+  puts "    💥 #{percentage(second_enemy, :crit_ch)}% / 🎯 #{percentage(second_enemy, :accuracy)}%"  if second_enemy
 
   puts SEPARATOR
 end
