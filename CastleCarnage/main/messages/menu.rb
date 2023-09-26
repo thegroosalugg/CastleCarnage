@@ -61,12 +61,18 @@ end
 # Name your player
 
 def name_player(player)
-  title_screen
-  puts " " * 26 + BARRIER
-  puts " " * 42 + "Enter Your Name"
-  puts " " * 26 + BARRIER
-  your_name = gets.chomp.strip.slice(0, 9).downcase.capitalize
-  player[:name] = "🥷 #{your_name}"
+  your_name = ""
+
+  while your_name.empty?
+    title_screen
+    puts " " * 26 + BARRIER
+    puts " " * 42 + "Enter Your Name"
+    puts " " * 26 + BARRIER
+    your_name = gets.chomp.strip.slice(0, 9).downcase.capitalize
+    player[:name] = "🥷 #{your_name}"
+    error_message
+  end
+
   print `clear`
 end
 
