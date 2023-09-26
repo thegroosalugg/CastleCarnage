@@ -21,8 +21,8 @@ def intro(player, weapon, enemy)
     'The only thing sharper than my #{weapon[:name]} is my wit m'lady'",
   ]
 
-  puts padding_generator(enemy_intro.sample, " ", 100)
-  puts padding_generator(player_intro.sample, " ", 100)
+  puts text_break(enemy_intro.sample, " ", 50)
+  puts text_break(player_intro.sample, " ", 50)
 end
 
 # END OF GAME MESSAGES

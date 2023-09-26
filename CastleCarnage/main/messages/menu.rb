@@ -15,6 +15,26 @@ def padding_generator(message, char, size)
   "#{padding} #{message} #{padding}"
 end
 
+# Created a text break method to align messages properly.
+# It automatically calls the padding generator above and takes the same arguments
+
+def text_break(message, char, size)
+  words = message.split
+  word_count = message.split.count
+  char_count = message.length
+
+  line_count = (char_count / size.to_f).ceil
+  words_per_line = (word_count / line_count + word_count % line_count).ceil
+
+  lines = []
+
+  line_count.times {
+    line = words.shift(words_per_line)
+    lines << line.join(' ')
+  }
+  lines.each { |line| padding_generator(line, char, size)}
+end
+
 # Main game menu
 
 def load_menu
