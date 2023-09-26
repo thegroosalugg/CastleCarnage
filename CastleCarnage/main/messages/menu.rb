@@ -12,7 +12,7 @@ BOSS_DIV = " " * 4 + "=" * 76
 
 def padding_generator(message, char, size)
   padding = char * ((size - message.length) / 2)
-  puts"#{padding} #{message} #{padding}"
+  "#{padding} #{message} #{padding}"
 end
 
 # Main game menu
@@ -165,5 +165,5 @@ def error_message
 
   print `clear`
   puts SEPARATOR
-  padding_generator(messages.sample, "*", 77)
+  puts padding_generator(messages.sample, "*", 77)
 end

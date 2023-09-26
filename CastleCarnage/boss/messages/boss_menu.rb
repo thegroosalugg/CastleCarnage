@@ -78,46 +78,46 @@ end
 
 def blood_menu(player)
   always_open = [
-    "[4] 💪 Get Buff!",
-    "[4] 🏋️ Deadlift Regiment!",
-    "[4] 🫙 Creatine Monohydrate!",
+    "   [4] 💪 Get Buff!",
+    "   [4] 🏋️ Deadlift Regiment!",
+    "   [4] 🫙 Creatine Monohydrate!",
   ]
   poor = [
-    "[5] 💵 Get Money",
-    "[5] 💵 Lottery Tickets",
-    "[5] 📓 Read the Necronomicon",
-    "[5] 😈 Deal with the Devil",
-    "[5] 🎰 Get Rich QUick Scheme",
+    "   [5] 💵 Get Money",
+    "   [5] 💵 Lottery Tickets",
+    "   [5] 📓 Read the Necronomicon",
+    "   [5] 😈 Deal with the Devil",
+    "   [5] 🎰 Get Rich QUick Scheme",
   ]
   rich = [
-    "--- You're too rich 💵 No more money for you ---",
-    "------------- The Taxman Cometh 💵 -------------",
-    "------------- Get Lost ⛔  ---------------------",
+    "You're too rich 💵 No more money for you",
+    "The Taxman Cometh 💵",
+    "Get Lost ⛔",
   ]
   drunk = [
-    "[6] 🥤 Bottle of Water",
-    "[6] 💊 Ibuprofen",
-    "[6] 🍕 Greasy Pizza",
-    "[6] 🎬 90's Action Movies",
-    "[6] 🥙 Döner Kebab"
+    "   [6] 🥤 Bottle of Water",
+    "   [6] 💊 Ibuprofen",
+    "   [6] 🍕 Greasy Pizza",
+    "   [6] 🎬 90's Action Movies",
+    "   [6] 🥙 Döner Kebab"
   ]
   sober = [
-    "--------- You're not even drunk 🍺🥴 -----------",
-    "------------ We Don't Have it 🚫 ---------------",
+    "You're not even drunk 🍺🥴",
+    "We Don't Have it 🚫",
   ]
   strong = [
-    "[7] 🍔 Order a take away",
-    "[7] ⚖️ Live another day",
+    "   [7] 🍔 Order a take away",
+    "   [7] ⚖️ Live another day",
   ]
   weak = [
-    "-- You're too feeble, don't make me laugh 🤣 --",
-    "------------- Don't be Silly 🤣 ---------------",
+    "You're too feeble, don't make me laugh 🤣",
+    "Don't be Silly 🤣",
   ]
 
   puts SEPARATOR
-  puts "-------------- 🧞:'Pay with Blood ❤️ Get Bargains 💰'--------------"
+  puts padding_generator("🧞:'Pay with Blood ❤️ Get Bargains 💰'", "-", 50)
   puts always_open.sample
-  puts (player[:cash] < 20 ? poor.sample : rich.sample)
-  puts (player[:drunk].positive? ? drunk.sample : sober.sample)
-  puts (player[:attack].max > 1 || player[:block].max > 1 ? strong.sample : weak.sample)
+  puts (player[:cash] < 20 ? poor.sample : padding_generator(rich.sample, "-", 50))
+  puts (player[:drunk].positive? ? drunk.sample : padding_generator(sober.sample, "-", 50))
+  puts (player[:attack].max > 1 || player[:block].max > 1 ? strong.sample : padding_generator(weak.sample, "-", 50))
 end

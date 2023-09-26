@@ -41,5 +41,5 @@ def drained_message
 
   print `clear`
   puts SEPARATOR
-  padding_generator(messages.sample, "*", 77)
+  puts padding_generator(messages.sample, "*", 77)
 end
