@@ -20,19 +20,20 @@ end
 
 def text_break(message, char, size)
   words = message.split
-  word_count = message.split.count
-  char_count = message.length
-
-  line_count = (char_count / size.to_f).ceil
-  words_per_line = (word_count / line_count + word_count % line_count).ceil
-
   lines = []
+  current_line = []
 
-  line_count.times {
-    line = words.shift(words_per_line)
-    lines << line.join(' ')
-  }
-  lines.each { |line| padding_generator(line, char, size)}
+  words.each do |word|
+    if current_line.join(' ').length + word.length + 1 <= size
+      current_line << word
+    else
+      lines << current_line.join(' ')
+      current_line = [word]
+    end
+  end
+
+  lines << current_line.join(' ') unless current_line.empty?
+  lines.map { |line| padding_generator(line, char, size) }
 end
 
 # Main game menu
@@ -115,17 +116,13 @@ def health_bars(entity)
 end
 
 def attack_stats(entity)
-  "💢 Min " +
-  "🔶" * (entity[:attack].min / 20) + ("🔸" * ((entity[:attack].min - 1) / 5 % 4 + 1)) +
-  " Max " +
-  "🔶" * (entity[:attack].max / 20) + ("🔸" * ((entity[:attack].max - 1) / 5 % 4 + 1))
+  "💢 Min " + "🔶" * (entity[:attack].min / 20) + ("🔸" * ((entity[:attack].min - 1) / 5 % 4 + 1)) +
+  " Max " + "🔶" * (entity[:attack].max / 20) + ("🔸" * ((entity[:attack].max - 1) / 5 % 4 + 1))
 end
 
 def block_stats(entity)
-  "🛡️ Min " +
-  "🔷" * (entity[:block].min / 5) + "🔹" * (entity[:block].min % 5) +
-  " Max " +
-  "🔷" * (entity[:block].max / 5) + "🔹" * (entity[:block].max % 5)
+  "🛡️ Min " + "🔷" * (entity[:block].min / 5) + "🔹" * (entity[:block].min % 5) +
+  " Max " + "🔷" * (entity[:block].max / 5) + "🔹" * (entity[:block].max % 5)
 end
 
 def percentage(entity, key)
@@ -140,20 +137,13 @@ def enemy_bars(enemy)
   "#{ENEMY_DIV}\n" +
   "    #{health_bars(enemy)}\n" +
   "\n" +
-  "    #{percentage(enemy, :accuracy)}" +
-  "#{percentage(enemy, :crit_ch)}" +
-  "#{attack_stats(enemy)} / " +
-  "#{block_stats(enemy)}"
+  "    #{percentage(enemy, :accuracy)}" + "#{percentage(enemy, :crit_ch)}" + "#{attack_stats(enemy)} / " + "#{block_stats(enemy)}"
 end
 
 def weapon_bars(weapon)
   "#{BARRIER}\n" +
-  "    #{weapon[:name]} / " +
-  "#{percentage(weapon, :accuracy)}" +
-  "#{percentage(weapon, :crit_ch)}" +
-  attack_stats(weapon) +
-  " / 🛠️ " +
-  "🟦" * [weapon[:durability], 0].max
+  "    #{weapon[:name]} / " + "#{percentage(weapon, :accuracy)}" + "#{percentage(weapon, :crit_ch)}" + attack_stats(weapon) +
+  " / 🛠️ " + "🟦" * [weapon[:durability], 0].max
 end
 
 # Main UI that displays all current happenings, by chaining the above methods
