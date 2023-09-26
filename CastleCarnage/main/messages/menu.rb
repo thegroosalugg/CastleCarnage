@@ -2,7 +2,7 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 SEPARATOR = "-" * 70
-BARRIER = "~" * 49
+BARRIER = "~" * 50
 ENEMY_DIV = " " * 4 + "_" * 66
 
 def load_menu
@@ -58,7 +58,6 @@ end
 
 # UI Elements for Health, Attack, Block and Weapon for any entity
 
-
 def health_bars(entity)
   emojis = ["❤️", "🧡", "💛", "💚", "💙", "💜", "🤍", "🖤", "🤎", "💔", "❣️", "💕", "💞", "💓", "💗", "💖", "💘", "💝"]
 
@@ -82,7 +81,9 @@ def block_stats(entity)
 end
 
 def percentage(entity, key)
-  percentage = 100 - (100 / (entity[key.to_sym].max))
+  accuracy = 100 - (100 / (entity[key.to_sym].max))
+  crit_ch = 100 - accuracy
+  key == :accuracy ? accuracy : crit_ch
 end
 
 def weapon_bars(weapon)
