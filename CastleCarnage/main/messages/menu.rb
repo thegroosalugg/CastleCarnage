@@ -62,9 +62,9 @@ end
 
 def name_player(player)
   title_screen
-  puts BARRIER
-  puts " " * 18 + "Enter Your Name"
-  puts BARRIER
+  puts " " * 26 + BARRIER
+  puts " " * 42 + "Enter Your Name"
+  puts " " * 26 + BARRIER
   your_name = gets.chomp.downcase.capitalize
   player[:name] = "🥷 #{your_name}"
   print `clear`
