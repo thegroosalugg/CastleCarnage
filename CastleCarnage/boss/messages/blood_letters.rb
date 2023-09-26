@@ -3,6 +3,7 @@
 
 def paid_blood_message(user_choice, price_paid, multiplier, boost)
   boost = boost == :attack ? "💢 attack" : "🛡️ block"
+  
   buff_up = [
     "You sacked 🖤 #{price_paid} HP to swole up your #{boost} by 1.",
   ]

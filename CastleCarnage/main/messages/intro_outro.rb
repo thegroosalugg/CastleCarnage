@@ -21,31 +21,24 @@ end
 
 # END OF GAME MESSAGES
 
-def win_message(enemy)
-  win_messages = [
+def game_over(enemy, player)
+  win = [
     "You blasted #{enemy[:name]} to another dimension. Your power level has increased.",
     "#{enemy[:name]} had a sudden heart attack, you win by default.",
     "You splatted the #{enemy[:name]} like a bug.",
   ]
-
-  puts SEPARATOR
-  puts win_messages.sample
-  puts SEPARATOR
-  win_art
-end
-
-def lose_message(enemy)
-  lose_messages = [
+  lose = [
     "You stacked it and fell on a spike. #{enemy[:name]} laughs at your misfortune.",
     "#{enemy[:name]} ripped your head off. You won't be coming home for dinner.",
     "You Died! #{enemy[:name]} shall feast on your entrails.",
   ]
 
   puts SEPARATOR
-  puts lose_messages.sample
+  puts (player[:hp].positive? ? win.sample : lose.sample)
   puts SEPARATOR
-  lose_art
+  player[:hp].positive? ? win_art : lose_art
 end
+
 
 # ASCII Att
 
