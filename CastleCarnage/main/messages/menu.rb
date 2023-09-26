@@ -57,6 +57,7 @@ def load_menu
 end
 
 # UI Elements for Health, Attack, Block and Weapon for any entity
+# \n represents line break when concatenating strings
 
 def health_bars(entity)
   emojis = ["❤️", "🧡", "💛", "💚", "💙", "💜", "🤍", "🖤", "🤎", "💔", "❣️", "💕", "💞", "💓", "💗", "💖", "💘", "💝"]
@@ -99,6 +100,7 @@ end
 def weapon_bars(weapon)
   "#{BARRIER}\n" +
   "    #{weapon[:name]} / " +
+  attack_stats(weapon) +
   "#{percentage(weapon, :crit_ch)}" +
   "#{percentage(weapon, :accuracy)}" +
   " / 🛠️ " +
