@@ -3,8 +3,8 @@
 
 # INTRO MESSAGES
 
-def intro_enemy(enemy)
-  enemy_phrases = [
+def intro(player, weapon, enemy)
+  enemy_intro = [
     "    You got proper pissed 🍷 and ended up in some 🏰 castle, a #{enemy[:name]} jumped from the ceiling!
     'You goon get it now boy!'",
 
@@ -13,12 +13,7 @@ def intro_enemy(enemy)
 
     "#{enemy[:name]} busted through the 🚪 door, they're stark raving mad. They're out for 🔪 blood!",
   ]
-
-  puts enemy_phrases.sample
-end
-
-def intro_weapon(weapon, enemy)
-  weapon_phrases = [
+  player_intro = [
     "    You ✨teleport behind #{enemy[:name]} and withdraw your #{weapon[:name]}, 'Nothing personnel, kid'",
     "    There's a #{weapon[:name]} on the floor, better get that. We won't get got, we gone get!",
 
@@ -26,7 +21,8 @@ def intro_weapon(weapon, enemy)
     'The only thing sharper than my #{weapon[:name]} is my wit m'lady'",
   ]
 
-  puts weapon_phrases.sample
+  puts padding_generator(enemy_intro.sample, " ", 100)
+  puts padding_generator(player_intro.sample, " ", 100)
 end
 
 # END OF GAME MESSAGES

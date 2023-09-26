@@ -27,8 +27,7 @@ rooms_explored = 0
 the_boss = big_boss_awaits
 
 name_player(player)
-intro_enemy(enemy)
-intro_weapon(weapon, enemy)
+intro(player, weapon, enemy)
 state_of_game(enemy, second_enemy, player, weapon)
 
 while (enemy || second_enemy) && player[:hp].positive?
