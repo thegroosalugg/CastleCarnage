@@ -2,9 +2,9 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 ENEMIES = [
-  "👺 Goblin", "👹 Ogre", "👹 Orc", "🤪 Village Idiot", "👳 Village Elder", "👑 Village King",
+  "👺 Goblin", "👹 Ogre", "👾 Orc", "🤪 Village Idiot", "👳 Village Elder", "👑 Village King",
   "🧙 Wizard", "🧝 Druid", "🐺 Werewolf", "🧛 Vampire", "🧟 Zombie", "🦖 Dinosaur", "🤖 Robot from the Future",
-  "🐉 Dragon", "👻 Banshee", "🦹 Villain", "🦍 King Kong", "🐍 Snake", "🦖 T-Rex", "🦑 Squid", "🦂 Giant Scorpion",
+  "🐉 Dragon", "👻 Banshee", "🦹 Arsehole", "🦍 King Kong", "🐍 Snake", "🦑 Crazy Squid", "🦂 Giant Scorpion",
 ]
 
 BOSSES = [
@@ -12,7 +12,7 @@ BOSSES = [
 ]
 
 WEAPONS = [
-  "🏏 Baseball Bat", "🥊 Punching Glove", "🪓 Axe", "🪒 Occam's Razor", "🗡 Dagger", "🗡️ Sword", "🎇 Mace", "🍢 Giant Club",
+  "🏏 Baseball Bat", "🥊 Punching Glove", "🪓 Axe", "🔪 Switchblade", "🗡 Dagger", "🗡️ Sword", "🎇 Mace", "🍢 Giant Club",
   "🛠️ Wrench", "🪄 Magic Scepter", "🏹 Crossbow", "🪚 Chainsaw", "🔫 Revolver", "🪃 Boomerang", "⚔️ Battle Axe", "🪓 Hatchet", "🧨 Dynamite",
 ]
 
@@ -22,8 +22,8 @@ SPECIAL_WEAPONS = [
 
 ROOMS = [
   "🖼 The Secret Door Behind the Painting", "🚇 The Abandoned Underground Tunnels", "🕳 The Trapdoor Under the Carpet", "❓ The Super Secret Mystery Room",
-  "🍽 The High Society Dining Room", "💡 The Glowing Light Room", "🕋 The Buzzin' Nightclub", "🏴 The Treasure Chamber", "🛁 The Manky Bathroom",
-  "🛌 The Master Bedroom", "🔲 The Wobbly Window", "📚 The Musty Library", "📺 The Fancy Lounge", "😱 The Dodgy Cellar", "🩲 The Jacuzzi Room",
+  "🍽 The High Society Dining Room", "💡 The Light Bulb Room", "🕋 The Buzzin' Nightclub", "🎁 The Treasure Chamber", "🛁 The Manky Bathroom",
+  "🛌 The Master Bedroom", "🔲 The Wobbly Window", "📚 The Dirty Library", "📺 The Classy Lounge", "🍷 The Dodgy Cellar", "🩲 The Jacuzzi Room",
   "🚓 Dracula's Royce", "🏰 The Roof",
 ]
 
@@ -78,7 +78,7 @@ def room_vault
       name: ROOMS.sample,
       chance: Array.new(rand(4..12)) { rand(1..7) } # creates an array with 4-12 integers, each with a value between 1 and 7
     }
-    
+
     # Check if the generated room's name is unique within the chosen_rooms array
     unless chosen_rooms.any? { |chosen_room| chosen_room[:name] == room[:name] }
       chosen_rooms << room
