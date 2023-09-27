@@ -69,6 +69,18 @@ while (enemy || second_enemy) && player[:hp].positive?
     state_of_game(enemy, second_enemy, player, weapon) unless player[:hp] <= 0
     enemy, weapon, second_enemy = explore_rooms(enemy, weapon, player, second_enemy) unless player[:hp] <= 0
 
+    # DEBUG CHEAT MENU
+  elsif user_choice == "g"
+    print `clear`
+    player[:hp] -= 200
+  elsif user_choice == "h"
+    print `clear`
+    enemy[:hp] -= 200 if enemy
+    second_enemy[:hp] -= 200 if second_enemy
+  elsif user_choice == "j"
+    weapon[:durability] -= 1
+    # ENF OF MENU
+
   else
     error_message
   end
