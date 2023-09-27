@@ -1,6 +1,23 @@
 The game is made just for fun, not to be taken seriously.
 The purpose is to practice writing Ruby code and refactoring.
 
+************************* UI **************************
+
+   🥷 You / 289 💔 / 💔💔💔💔💔💔💔💔
+    🛡️ Min 🔹 Max 🔷🔷
+    〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰
+    🏹 Crossbow / 🎯 84% / 💥 9% / 💢 Min 🔶🔸🔸 Max 🔶🔶🔸🔸 / 🛠️ 🟦🟦🟦🟦
+    🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡
+    👹 Orc / 249 ❤️ / ❤️❤️❤️❤️❤️❤️❤️
+
+    🎯 88% / 💥 10% / 💢 Min 🔶🔸 Max 🔶🔸🔸🔸 / 🛡️ Min 🔹🔹🔹🔹 Max 🔷🔷🔹🔹
+
+289 💔 > health in integers. Emojis will change each playthrough
+💔💔💔 > life bars. One heart = 40hp. If you have under 40, one heart will display
+💢 Min 🔶🔸🔸 Max 🔶🔶🔸🔸 > Attack Range. 🔸 = 5 | 🔶 = 20 | One 🔸 will always display if attack is under 5; for instance 🔶🔶🔸🔸🔸🔸 = attack between 55-60; 🔶🔶🔶 = 60; 🔶🔶🔶🔸 = 60-65 etc.
+🛡️ Min 🔹 Max 🔷🔷 > Block Range. 🔹 = 1 | 🔷 = 5 | Simples.
+🎯 84% > Accuracy
+💥 10% > Critical Chance
 ********************** MAIN GAME **********************
 
 Select [t] to attack the enemy with your weapon, but the enemy will attack back at the same time.
