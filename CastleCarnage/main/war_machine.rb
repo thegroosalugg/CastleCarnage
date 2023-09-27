@@ -71,8 +71,19 @@ def special_weapon
 end
 
 def room_vault
-  room = {
-    name: ROOMS.sample,
-    chance: Array.new(rand(4..12)) { rand(1..7) } # creates an array that has 4-12 integers, each with value 1-7
-  }
+  chosen_rooms = []
+
+  while chosen_rooms.length < 4
+    room = {
+      name: ROOMS.sample,
+      chance: Array.new(rand(4..12)) { rand(1..7) } # creates an array with 4-12 integers, each with a value between 1 and 7
+    }
+    
+    # Check if the generated room's name is unique within the chosen_rooms array
+    unless chosen_rooms.any? { |chosen_room| chosen_room[:name] == room[:name] }
+      chosen_rooms << room
+    end
+  end
+
+  chosen_rooms
 end
