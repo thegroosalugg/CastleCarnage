@@ -4,7 +4,11 @@
 ENEMIES = [
   "👺 Goblin", "👹 Ogre", "👹 Orc", "🤪 Village Idiot", "👳 Village Elder", "👑 Village King",
   "🧙 Wizard", "🧝 Druid", "🐺 Werewolf", "🧛 Vampire", "🧟 Zombie", "🦖 Dinosaur", "🤖 Robot from the Future",
-  "🐉 Dragon", "👻 Ghost", "🦹 Villain", "🦍 King Kong", "🐍 Snake", "🦖 T-Rex", "🦑 Squid", "🦂 Giant Scorpion",
+  "🐉 Dragon", "👻 Banshee", "🦹 Villain", "🦍 King Kong", "🐍 Snake", "🦖 T-Rex", "🦑 Squid", "🦂 Giant Scorpion",
+]
+
+BOSSES = [
+  "💍 Lord of the Rings", "🧀 The Big Cheese", "🧥 The Godfather", "🚃 The Trailer Park Supervisor", "🤖 The Terminator", "😎 Dawsons Creek",
 ]
 
 WEAPONS = [
@@ -16,8 +20,11 @@ SPECIAL_WEAPONS = [
   "🔫 Gatling Laser",  "🚀 Rocket Launcher", "🔥 Fireball", "💣 Bobomb", "🛫 Air Strike", "🦄 Unicorn", "🔥🐲 Charizard", "📓 Necronomicon",
 ]
 
-BOSSES = [
-  "💍 Lord of the Rings", "🧀 The Big Cheese", "🧥 The Godfather", "🚃 The Trailer Park Supervisor", "🤖 The Terminator", "😎 Dawsons Creek",
+ROOMS = [
+  "🖼 The Secret Door Behind the Painting", "🚇 The Abandoned Underground Tunnels", "🕳 The Trapdoor Under the Carpet", "❓ The Super Secret Mystery Room",
+  "🍽 The High Society Dining Room", "💡 The Glowing Light Room", "🕋 The Buzzin' Nightclub", "🏴 The Treasure Chamber", "🛁 The Manky Bathroom",
+  "🛌 The Master Bedroom", "🔲 The Wobbly Window", "📚 The Musty Library", "📺 The Fancy Lounge", "😱 The Dodgy Cellar", "🩲 The Jacuzzi Room",
+  "🚓 Dracula's Royce", "🏰 The Roof",
 ]
 
 def random_enemy
@@ -60,5 +67,12 @@ def special_weapon
     accuracy: (1..rand(6..12)).to_a,
     crit_ch: (1..rand(6..12)).to_a,
     crit_x: -> { rand(rand(2.0..3.0)..rand(3.1..5.0)) }
+  }
+end
+
+def room_vault
+  room = {
+    name: ROOMS.sample,
+    chance: Array.new(rand(4..12)) { rand(1..7) } # creates an array that has 4-12 integers, each with value 1-7
   }
 end
