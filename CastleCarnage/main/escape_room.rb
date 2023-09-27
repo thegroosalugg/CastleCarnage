@@ -24,7 +24,7 @@ ROOM_NAMES = [
 def inside_room(selected_room, enemy, weapon, player, second_enemy)
   print `clear`
   enter_room(selected_room)
-  randomizer = rand(1..8) == 1 ? rand(30..120) : rand(20..50)
+  randomizer = rand(1..8) == 1 ? rand(50..120) : rand(20..50)
 
   case selected_room[:probability]
   when 1
@@ -35,12 +35,12 @@ def inside_room(selected_room, enemy, weapon, player, second_enemy)
     player[:hp] -= randomizer
   when 3
     target_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy
-    target_enemy[:hp] += randomizer if target_enemy
-    enemy_health(randomizer, target_enemy) if target_enemy
+    target_enemy[:hp] += randomizer
+    enemy_health(randomizer, target_enemy)
   when 4
     target_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy
-    target_enemy[:hp] -= randomizer if target_enemy
-    enemy_trap(randomizer, target_enemy) if target_enemy
+    target_enemy[:hp] -= randomizer
+    enemy_trap(randomizer, target_enemy)
   when 5
     weapon = rand(1..5) == 1 ? special_weapon : pick_weapon
     got_weapon(weapon)

@@ -78,7 +78,11 @@ while (enemy || second_enemy) && player[:hp].positive?
     enemy[:hp] -= 200 if enemy
     second_enemy[:hp] -= 200 if second_enemy
   elsif user_choice == "j"
+    print `clear`
     weapon[:durability] -= 1
+  elsif user_choice == "f"
+    print `clear`
+    second_enemy = random_enemy
     # ENF OF MENU
 
   else
