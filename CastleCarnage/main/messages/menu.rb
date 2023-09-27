@@ -3,10 +3,10 @@
 
 # various ASCII separators
 
-SEPARATOR = "-" * 80
-BARRIER = "~" * 70
-ENEMY_DIV = "_" * 76
-BOSS_DIV = " " * 4 + "=" * 76
+SEPARATOR = "⚔" * 80
+BARRIER = "〰" * 36
+ENEMY_DIV = "🗡" * 76
+BOSS_DIV = " " * 4 + "▪" * 76
 
 # Def White Space Generator
 
