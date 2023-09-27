@@ -62,10 +62,8 @@ while (enemy || second_enemy) && player[:hp].positive?
     rooms_explored += 1
     if rand(1..5) == 1
       target_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy
-      if target_enemy
-        random_attack_message(target_enemy)
-        enemy_attack(target_enemy, player)
-      end
+      random_attack_message(target_enemy)
+      enemy_attack(target_enemy, player)
     end
     enemy ? run_away(enemy) : run_away(second_enemy)
     state_of_game(enemy, second_enemy, player, weapon) unless player[:hp] <= 0
@@ -98,7 +96,7 @@ while (enemy || second_enemy) && player[:hp].positive?
   # puts "[DEBUG] [Enemies Defeated: #{enemies_defeated}] || [Rooms Explored: #{rooms_explored}]"
   # puts "BIG BOSS BATTLE" if (enemies_defeated > 1) || (rooms_explored > 15) || (enemies_defeated > 0 && rooms_explored > 10)
   # ((enemies_defeated > 1) || (rooms_explored > 8) || (enemies_defeated > 0 && rooms_explored > 5)) && (rand(1..2) == 1) ? big_boss_battle : big_boss_warning
-  if rooms_explored > 0
+  if rooms_explored > 10
     enemies_defeated = 2 # debug
     rooms_explored = 5 # debug
     player[:hp] += 100 + (rooms_explored * 20); player[:block] = player[:block].map { |block| block + enemies_defeated }
