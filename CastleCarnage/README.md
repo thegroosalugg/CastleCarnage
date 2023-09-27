@@ -13,12 +13,13 @@ The purpose is to practice writing Ruby code and refactoring.
 <br>
  289 💔 -> health in integers. Emojis will change each playthrough<br>
 💔💔💔 -> life bars. One heart = 40hp. If you have under 40, one heart will display<br>
-💢 Min 🔶🔸🔸 Max 🔶🔶🔸🔸 -> Attack Range. 🔸 = 5  | 🔶 = 20  |  One 🔸 will always display if attack is under 5;<br>
+💢 Min 🔶🔸🔸 Max 🔶🔶🔸🔸 -> Attack Range. 🔸 = 5 / 🔶 = 20 / One 🔸 will always display if attack is under 5;<br>
 for instance 🔶🔶🔸🔸🔸🔸 =  attack between 55-60;  🔶🔶🔶 = 60;  🔶🔶🔶🔸 = 60-65 etc.<br>
-🛡️ Min 🔹 Max 🔷🔷 -> Block Range. 🔹 = 1  |  🔷 = 5  |  Simples.<br>
+🛡️ Min 🔹 Max 🔷🔷 -> Block Range. 🔹 = 1 / 🔷 = 5 / Simples.<br>
 🎯 84% -> Accuracy<br>
 💥 10% -> Critical Chance<br>
 🛠️ 🟦🟦🟦🟦 -> Weapon Durability<br>
+
 ********************** MAIN GAME **********************
 
 Select [t] to attack the enemy with your weapon, but the enemy will attack back at the same time.
