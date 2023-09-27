@@ -48,7 +48,7 @@ def explore_rooms(enemy, weapon, player, second_enemy)
   chosen_rooms = Array.new(4) { room_vault } # create 4 rooms in an array so we can iterate them to user
   puts chosen_rooms
 
-  until [4, 5, 6, 7].include?(user_choice) # index +4 / -4 to set user choice to (4..7) instead of (0..3)
+  until (4..7).include?(user_choice) # index +4 / -4 to set user choice to (4..7) instead of (0..3)
     chosen_rooms.each_with_index { |room, i| puts "    [#{i + 4}] #{room[:name]} [CHANCE] #{room[:chance]}" } # DEBUG INFO (remove roomchance)
 
     user_choice = gets.chomp.to_i
