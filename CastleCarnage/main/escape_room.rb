@@ -45,7 +45,14 @@ end
 
 def explore_rooms(enemy, weapon, player, second_enemy)
   user_choice = 0
-  chosen_rooms = Array.new(4) { room_vault } # create 4 rooms in an array so we can iterate them to user
+  chosen_rooms = []
+
+  while chosen_rooms.length < 4 # Generate 4 unique rooms with unique names
+    room = room_vault
+    unless chosen_rooms.any? { |chosen_room| chosen_room[:name] == room[:name] }
+      chosen_rooms << room
+    end
+  end
   puts chosen_rooms
 
   until (4..7).include?(user_choice) # index +4 / -4 to set user choice to (4..7) instead of (0..3)
