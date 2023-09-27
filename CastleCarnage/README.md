@@ -7,9 +7,8 @@ The purpose is to practice writing Ruby code and refactoring.
 🛡️ Min 🔹 Max 🔷🔷<br>
 〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰<br>
 🏹 Crossbow / 🎯 84% / 💥 9% / 💢 Min 🔶🔸🔸 Max 🔶🔶🔸🔸 / 🛠️ 🟦🟦🟦🟦<br>
-🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡🗡<br>
+〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰<br>
 👹 Orc / 249 ❤️ / ❤️❤️❤️❤️❤️❤️❤️<br>
-<br>
 🎯 88% / 💥 10% / 💢 Min 🔶🔸 Max 🔶🔸🔸🔸 / 🛡️ Min 🔹🔹🔹🔹 Max 🔷🔷🔹🔹<br>
 <br>
 289 💔 > health in integers. Emojis will change each playthrough<br>
@@ -19,7 +18,6 @@ The purpose is to practice writing Ruby code and refactoring.
 🎯 84% > Accuracy<br>
 💥 10% > Critical Chance<br>
 ********************** MAIN GAME **********************
-
 
 Select [t] to attack the enemy with your weapon, but the enemy will attack back at the same time.
 > Each attack removes 1 durability. Once your weapon breaks you can no longer attack and must search the rooms for a new weapon.<br>
