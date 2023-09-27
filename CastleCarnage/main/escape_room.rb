@@ -1,8 +1,22 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-def inside_room(entered_room, enemy, weapon, player, second_enemy)
+def explore_rooms(enemy, weapon, player, second_enemy)
+  user_choice = 0
+  chosen_rooms = room_vault
+
+  puts chosen_rooms # DEBUG INFO
+
+  until (4..7).include?(user_choice) # index +4 / -4 to set user choice to (4..7) instead of (0..3)
+    chosen_rooms.each_with_index { |room, i| puts "    [#{i + 4}] #{room[:name]} [CHANCE] #{room[:chance]}" } # DEBUG INFO (remove roomchance)
+
+    user_choice = gets.chomp.to_i
+    error_message
+    state_of_game(enemy, second_enemy, player, weapon)
+  end
+
   print `clear`
+  entered_room = chosen_rooms[user_choice - 4]
   enter_room(entered_room)
   randomizer = rand(1..8) == 1 ? rand(50..120) : rand(20..50)
 
@@ -41,22 +55,4 @@ def inside_room(entered_room, enemy, weapon, player, second_enemy)
     empty_room
   end
   return enemy, weapon, second_enemy
-end
-
-def explore_rooms(enemy, weapon, player, second_enemy)
-  user_choice = 0
-  chosen_rooms = room_vault
-
-  puts chosen_rooms
-
-  until (4..7).include?(user_choice) # index +4 / -4 to set user choice to (4..7) instead of (0..3)
-    chosen_rooms.each_with_index { |room, i| puts "    [#{i + 4}] #{room[:name]} [CHANCE] #{room[:chance]}" } # DEBUG INFO (remove roomchance)
-
-    user_choice = gets.chomp.to_i
-    error_message
-    state_of_game(enemy, second_enemy, player, weapon)
-  end
-
-  entered_room = chosen_rooms[user_choice - 4]
-  inside_room(entered_room, enemy, weapon, player, second_enemy)
 end
