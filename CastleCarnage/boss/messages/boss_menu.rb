@@ -122,7 +122,7 @@ def blood_menu(player)
   ]
 
   puts SEPARATOR
-  puts padding_generator("🧞:'Pay with Blood ❤️ Get Bargains 💰'", "-", 50)
+  puts padding_generator(" 🧞:'Pay with Blood ❤️ Get Bargains 💰' ", "💠", 57)
   puts always_open.sample
   puts (player[:cash] < 20 ? poor.sample : padding_generator(rich.sample, "-", 50))
   puts (player[:drunk].positive? ? drunk.sample : padding_generator(sober.sample, "-", 50))
