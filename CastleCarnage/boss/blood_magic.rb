@@ -18,7 +18,7 @@ def pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
     case user_choice
     when 4 # spend HP to increase player attack or block randomly
       boost = [:attack, :block].sample
-      price_paid = (boost == :attack ? (35..60) : (20..50)).to_a.sample
+      price_paid = (boost == :attack ? (35..60) : (25..50)).to_a.sample
       multiplier = price_paid / rand(15..25)
       player[:hp] -= price_paid
       player[boost] = player[boost].map { |boost| [boost + multiplier, 80].min }
