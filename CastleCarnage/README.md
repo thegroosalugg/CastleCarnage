@@ -19,9 +19,9 @@ Select [y] to run through rooms and get random outcomes based on the room chosen
 > If you keep attacking, your weapon will break and you will be forced to run through rooms.
 
 Escape the castle by defeating all enemies, however exploring rooms can spawn a second enemy, causing the loop to run indefinitely.
-> defeating the first enemy while the second enemy is active can cause another enemy to spawn in its place in one of the rooms.
-> rooms explored and enemies defeated are recorded. Remain in the castle long enough and trigger the boss battle.
-> both counters modify player health and atack/block for the battle.
+> Defeating the first enemy while the second enemy is active can cause another enemy to spawn in its place in one of the rooms.
+> Rooms explored and enemies defeated are recorded. Remain in the castle long enough and trigger the boss battle.
+> Both counters modify player health and atack/block for the battle.
 
 ********************** BIG BOSS **********************
 
