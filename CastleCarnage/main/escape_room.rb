@@ -46,6 +46,6 @@ def explore_rooms(enemy, weapon, player, second_enemy)
     end
   end
 
-  gifted(gift, randomizer, player, enemy, weapon)
+  gifted(gift, randomizer, player, enemy, second_enemy, weapon)
   return enemy, weapon, second_enemy
 end

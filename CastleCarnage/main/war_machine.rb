@@ -90,7 +90,7 @@ def room_vault
   while chosen_rooms.length < 4
     room = {
       name: ROOMS.sample,
-      chance: Array.new(rand(4..12)) { rand(1..7) } # creates an array with 4-12 integers, each with a value between 1-7
+      chance: Array.new(rand(4..12)) { rand(6..6) } # creates an array with 4-12 integers, each with a value between 1-7
     }
 
     # Check if the generated room's name is unique within the chosen_rooms array
@@ -98,7 +98,7 @@ def room_vault
       chosen_rooms << room
     end
   end
-  
+
   chosen_rooms.map { |room| room[:name] = "#{DESC.sample} #{room[:name]}" } # Give the rooms a unique desc
   chosen_rooms
 end
