@@ -5,10 +5,11 @@ def run_away(enemy)
   run_msgs = [
     "Damn, that #{enemy[:name]}'s a wasteman, maybe there be something in one of them rooms.",
     "There's a rad motorbike 🏍 parked up, you gank it quick and mosey off.",
+    "Ain't sticking around 'ere, better try me luck with them rooms, innit!",
     "Dammit, gotta dash to a gaff quick, or I'm #{enemy[:name]} food!!",
     "That bastard #{enemy[:name]} is right behing me, gotta cheese it!",
     "Better leg it, not let #{enemy[:name]} get the drop on you.",
-    "Time to get ghost 👻",
+    "Bugger it, time to get ghost 👻",
   ]
 
   puts text_break(run_msgs.sample, " ", 70)
@@ -35,7 +36,21 @@ def enter_room(entered_room)
   puts text_break(room_msg.sample, " ", 70)
 end
 
-def gifted(gift, randomizer, player, enemy, second_enemy, weapon)
+def gifts(gift, randomizer, player, enemy)
+  empty_room = [
+    "There's a Take Away Food Cart 🛍, but they only serve food you don't like, also you have no money 💵",
+    "There are bikes 🚲🚲🚲 here but you can't ride indoors, Professor Oak 👨‍🏫 will find out immediately",
+    "If you stay here, you'll have to help somebody pack 🧳, and it would probably take all day.",
+    "The temperature 🔅 is just right, but there's something else you don't like here ⁉ 😠🗯 ⁉",
+    "Nothing bad happened, nothing good happened either, you get another turn at life.",
+    "There's the exit 🚪! But your foot 🦶 hurts so you can't leave.",
+    "There's an elephant 🐘 in here. You marvell at its excellence.",
+    "🐩🐕🐩 nothing but dogs barking in here, time to vamoose.",
+    "You have an ominous feeling somebody 🦇 was just here 🔲",
+    "Wild Entei 🐕‍🦺 appeared! Entei 🐕‍🦺 fled 💨.",
+    "It's too bloody hot ♨ in here 🥵",
+    "Freezing ❄ my ass off here 🥶",
+  ]
   gained_hp = [
     "✅ Ah mate! Who left this grass ☘ here?! Northern Lights? Sweet as! You gained #{player[:emoji]} #{randomizer} HP!",
     "✅ A Spghetti Store 🏪 ? Here? Yeah, I'll have the spaghetti 🍝. You gained #{player[:emoji]} #{randomizer} HP!",
@@ -92,6 +107,23 @@ def gifted(gift, randomizer, player, enemy, second_enemy, weapon)
     "✅ Booya 💥, the #{enemy[:name]} stepped on a land mine 🕳  dealing 'em #{enemy[:emoji]} #{randomizer} damage!",
     "✅ #{enemy[:name]} got weighed in on the way in, losing #{enemy[:emoji]} #{randomizer} HP!",
   ]
+
+  message = case gift
+  when 0
+    empty_room
+  when 1
+    gained_hp
+  when 2
+    lost_hp
+  when 3
+    enemy_hp
+  when 4
+    enemy_trap
+  end
+  puts text_break(message.sample, " ", 70)
+end
+
+def got_weapon(weapon)
   got_weapon = [
     "What's this? 🤔 You find a hidden #{weapon[:name]} in the back of a dusty closet. Time to rewrite history!",
     "There's enough useless crap 🛒 here to manfacture a #{weapon[:name]}, your mad smithing skills allow it.",
@@ -107,6 +139,11 @@ def gifted(gift, randomizer, player, enemy, second_enemy, weapon)
     "A genie 🧞 appears and grants you 3 wishes, but you're only gonna need one: a #{weapon[:name]} for laying down the law.",
     "You open a cookbook 📙, hollowed out there's a #{weapon[:name]} inside. You check your watch ⌚, it's 5 past throwdown o'clock.",
   ]
+
+  puts text_break(got_weapon.sample, " ", 70)
+end
+
+def enemy_spawn(enemy)
   enemy_spawn = [
     "There's another package from Amazon 🎁, but oh shit! It's #{enemy[:name]} with an order for bloodshed!",
     "You stare at the mirror 🔲, but you slowly realise the #{enemy[:name]} staring back isn't you...",
@@ -119,43 +156,6 @@ def gifted(gift, randomizer, player, enemy, second_enemy, weapon)
     "#{enemy[:name]}: 'Step on up kiddies, thrashings for all!'",
     "It's a full moon 🌕 tonight. #{enemy[:name]} steps on up.",
   ]
-  empty_room = [
-    "There's a Take Away Food Cart 🛍, but they only serve food you don't like, also you have no money 💵",
-    "There are bikes 🚲🚲🚲 here but you can't ride indoors, Professor Oak 👨‍🏫 will find out immediately",
-    "If you stay here, you'll have to help somebody pack 🧳, and it would probably take all day.",
-    "The temperature 🔅 is just right, but there's something else you don't like here ⁉ 😠🗯 ⁉",
-    "Nothing bad happened, nothing good happened either, you get another turn at life.",
-    "There's the exit 🚪! But your foot 🦶 hurts so you can't leave.",
-    "There's an elephant 🐘 in here. You marvell at its excellence.",
-    "🐩🐕🐩 nothing but dogs barking in here, time to vamoose.",
-    "You have an ominous feeling somebody 🦇 was just here 🔲",
-    "Wild Entei 🐕‍🦺 appeared! Entei 🐕‍🦺 fled 💨.",
-    "It's too bloody hot ♨ in here 🥵",
-    "Freezing ❄ my ass off here 🥶",
-  ]
 
-  message = case gift
-  when 1
-    gained_hp
-  when 2
-    lost_hp
-  when 3
-    enemy_hp
-  when 4
-    enemy_trap
-  when 5
-    got_weapon
-  when 6
-    #(enemy.nil? && second_enemy.nil?) ? enemy_spawn : got_weapon
-    if second_enemy.nil?
-      enemy_spawn
-    elsif enemy.nil?
-      enemy_spawn
-    else
-      got_weapon
-    end
-  when 7
-    empty_room
-  end
-  puts text_break(message.sample, " ", 70)
+  puts text_break(enemy_spawn.sample, " ", 70)
 end

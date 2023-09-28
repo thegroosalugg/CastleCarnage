@@ -4,7 +4,7 @@
 # COMBAT MESSAGES
 
 def weapon_broke(weapon)
-  weapon_messages = [
+  messages = [
     "😲 Bollocks, your #{weapon[:name]} slipped out of your hand and flew out of the window. Time to split!",
     "😲 You suddenly forgot how to wield your #{weapon[:name]}, it's useless now. You threw it away.",
     "😲 The universe conspires against you. Your #{weapon[:name]} disintegrates into nothingness!",
@@ -21,7 +21,7 @@ def weapon_broke(weapon)
   ]
 
   puts SEPARATOR
-  puts weapon_messages.sample
+  puts text_break(messages.sample, " ", 70)
 end
 
 # Player attack
@@ -163,13 +163,13 @@ def random_attack_message(enemy)
     "#{enemy[:name]}: 'Oi, give us 5 bucks!",
   ]
 
-  puts messages.sample
+  puts text_break(messages.sample, " ", 70)
 end
 
 # Enemy killed
 
 def enemy_killed(enemy)
-  enemy_messages = [
+  messages = [
     "#{enemy[:name]} took the 🚂 midnight train to slab city.",
     "#{enemy[:name]} is sleeping with the fishes 🐟",
     "#{enemy[:name]} turned into a ghost, whooo 👻",
@@ -185,5 +185,5 @@ def enemy_killed(enemy)
   ]
 
   puts SEPARATOR
-  puts enemy_messages.sample
+  puts text_break(messages.sample, " ", 70)
 end
