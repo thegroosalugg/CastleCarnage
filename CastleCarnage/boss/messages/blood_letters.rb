@@ -8,24 +8,20 @@ def paid_blood_message(player, user_choice, price_paid, multiplier, boost)
     "You sacked #{player[:emoji]} #{price_paid} HP to swole up your #{boost} by #{multiplier}.",
   ]
   get_money = [
-    "You bled 🖤 #{price_paid} HP but you raked in 💵 #{multiplier} cash. Worth it.",
+    "You bled #{player[:emoji]} #{price_paid} HP but you raked in 💵 #{multiplier} cash. Worth it.",
   ]
   sober_up = [
-    "🩸 is thicker than 💧. You sacked 🖤 #{price_paid} HP and removed 🍺 #{multiplier} beers.",
+    "🩸 is thicker than 💧. You sacked #{player[:emoji]} #{price_paid} HP and removed 🍺 #{multiplier} beers.",
   ]
   munch_out = [
     "You got what you wanted and munched up #{player[:emoji]} #{price_paid} HP, but you're bloated, your #{boost} suffers by #{multiplier}."
   ]
 
   message = case user_choice
-  when 4
-    buff_up
-  when 5
-    get_money
-  when 6
-    sober_up
-  when 7
-    munch_out
+  when 4 then buff_up
+  when 5 then get_money
+  when 6 then sober_up
+  when 7 then munch_out
   end
   puts text_break(message.sample, " ", 70)
 end

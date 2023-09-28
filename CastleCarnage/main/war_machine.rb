@@ -49,7 +49,7 @@ def random_enemy
     block: (rand(1..5)..rand(6..15)).to_a,
     accuracy: (1..rand(5..11)).to_a,
     crit_ch: (1..rand(5..11)).to_a,
-    crit_x: -> { rand(rand(1.5..2.0)..rand(2.0..4.0)) }
+    crit_x: -> { rand(rand(1.5..2.0)..rand(2.1..4.0)) }
   }
 end
 

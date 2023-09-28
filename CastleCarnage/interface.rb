@@ -91,7 +91,7 @@ while (enemy || second_enemy) && player[:hp].positive?
   elsif user_choice == "n"
     print `clear`
     second_enemy = random_enemy
-    # ENF OF MENU
+    # END OF MENU
 
   else
     error_message
@@ -131,5 +131,4 @@ while (enemy || second_enemy) && player[:hp].positive?
   state_of_game(enemy, second_enemy, player, weapon) unless tracked_enemy == the_boss || (weapon.nil? || weapon[:durability].zero?)
 end
 
-#state_of_game(tracked_enemy, tracked_enemy, player, weapon) if weapon[:durability].zero? && tracked_enemy =! the_boss
 game_over(tracked_enemy, player)

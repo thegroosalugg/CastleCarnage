@@ -2,7 +2,7 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 def run_away(enemy)
-  run_msgs = [
+  messages = [
     "Damn, that #{enemy[:name]}'s a wasteman, maybe there be something in one of them rooms.",
     "There's a rad motorbike 🏍 parked up, you gank it quick and mosey off.",
     "Ain't sticking around 'ere, better try me luck with them rooms, innit!",
@@ -12,11 +12,11 @@ def run_away(enemy)
     "Bugger it, time to get ghost 👻",
   ]
 
-  puts text_break(run_msgs.sample, " ", 70)
+  puts text_break(messages.sample, " ", 70)
 end
 
 def enter_room(entered_room)
-  room_msg = [
+  messages = [
     "I think I smelled some nosh 🍔 in #{entered_room[:name]}, better check it, absolutely famished.",
     "Bollocks! I need a slash so bad! Bugger it, #{entered_room[:name]} will have to do.",
     "I've got a good feeling about #{entered_room[:name]}, let's 'ave a butcher's!",
@@ -33,7 +33,7 @@ def enter_room(entered_room)
     "You bolted off to #{entered_room[:name]}",
   ]
 
-  puts text_break(room_msg.sample, " ", 70)
+  puts text_break(messages.sample, " ", 70)
 end
 
 def gifts(gift, randomizer, player, enemy)
@@ -53,11 +53,10 @@ def gifts(gift, randomizer, player, enemy)
   ]
   gained_hp = [
     "✅ Ah mate! Who left this grass ☘ here?! Northern Lights? Sweet as! You gained #{player[:emoji]} #{randomizer} HP!",
-    "✅ A Spghetti Store 🏪 ? Here? Yeah, I'll have the spaghetti 🍝. You gained #{player[:emoji]} #{randomizer} HP!",
+    "✅ A Spaghetti Store 🏪 ? Here? Yeah, I'll have the spaghetti 🍝. You gained #{player[:emoji]} #{randomizer} HP!",
     "✅ These chili peppers 🌶 should give me the quick energy I need! You gained #{player[:emoji]} #{randomizer} HP!",
     "✅ Ha! Some idiot left this pizza 🍕 in the trash! What a treat! You gained #{player[:emoji]} #{randomizer} HP!",
     "✅ This milk 🍼 is well out of date, eh, let's drink it anyways. You gained #{player[:emoji]} #{randomizer} HP!",
-    "✅ Ransacked the pantry, whipped up some beans on toast 🍞 🥫, gained #{player[:emoji]} #{randomizer} HP!",
     "✅ Proper hungry. These mouldy bananas 🍌 will have to do. You gained #{player[:emoji]} #{randomizer} HP!",
     "✅ The Rock 👨‍🦲 awaits you and gives you a high five 🙏. You gained #{player[:emoji]} #{randomizer} HP!",
     "✅ Fuckin' A! Still some cold ones in the fridge 🍻! You gained #{player[:emoji]} #{randomizer} HP!",
@@ -108,23 +107,18 @@ def gifts(gift, randomizer, player, enemy)
     "✅ #{enemy[:name]} got weighed in on the way in, losing #{enemy[:emoji]} #{randomizer} HP!",
   ]
 
-  message = case gift
-  when 0
-    empty_room
-  when 1
-    gained_hp
-  when 2
-    lost_hp
-  when 3
-    enemy_hp
-  when 4
-    enemy_trap
+  messages = case gift
+  when 0 then empty_room
+  when 1 then gained_hp
+  when 2 then lost_hp
+  when 3 then enemy_hp
+  when 4 then enemy_trap
   end
-  puts text_break(message.sample, " ", 70)
+  puts text_break(messages.sample, " ", 70)
 end
 
 def got_weapon(weapon)
-  got_weapon = [
+  messages = [
     "What's this? 🤔 You find a hidden #{weapon[:name]} in the back of a dusty closet. Time to rewrite history!",
     "There's enough useless crap 🛒 here to manfacture a #{weapon[:name]}, your mad smithing skills allow it.",
     "Your Amazon 🎁 package has arrived, it's that #{weapon[:name]} you ordered. Time for beatdown!",
@@ -140,11 +134,11 @@ def got_weapon(weapon)
     "You open a cookbook 📙, hollowed out there's a #{weapon[:name]} inside. You check your watch ⌚, it's 5 past throwdown o'clock.",
   ]
 
-  puts text_break(got_weapon.sample, " ", 70)
+  puts text_break(messages.sample, " ", 70)
 end
 
 def enemy_spawn(enemy)
-  enemy_spawn = [
+  messages = [
     "There's another package from Amazon 🎁, but oh shit! It's #{enemy[:name]} with an order for bloodshed!",
     "You stare at the mirror 🔲, but you slowly realise the #{enemy[:name]} staring back isn't you...",
     "#{enemy[:name]} was waiting for you in the trash can 🚮, ready to show you he can thrash 👊",
@@ -157,5 +151,5 @@ def enemy_spawn(enemy)
     "It's a full moon 🌕 tonight. #{enemy[:name]} steps on up.",
   ]
 
-  puts text_break(enemy_spawn.sample, " ", 70)
+  puts text_break(messages.sample, " ", 70)
 end

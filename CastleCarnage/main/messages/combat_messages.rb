@@ -27,7 +27,7 @@ end
 # Player attack
 
 def crt_dmg_msg(enemy, weapon, critical_damage)
-  crt_messages = [
+  messages = [
     "You did a mad front flip and volunteered #{enemy[:name]} to kiss the floor 💥 #{critical_damage.to_i} critical damage!",
     "You did a running jump and kicked #{enemy[:name]} in their stupid face for 💥 #{critical_damage.to_i} critical damage.",
     "Your #{weapon[:name]} lit on fire 🔥 dishing out #{enemy[:name]} a meal of 💥 #{critical_damage.to_i} critical damage!",
@@ -38,11 +38,11 @@ def crt_dmg_msg(enemy, weapon, critical_damage)
     "⬇ ⬆ LP ⬅ ⬅ ⬆ ⬇ LK HP ⬇ ↘ ➡ HP HK LP  ⬅ ↙ ⬇ ⬅  ↙ ⬇ :: 💥 #{critical_damage.to_i} critical damage!",
   ]
 
-  puts crt_messages.sample
+  puts text_break(messages.sample, " ", 70)
 end
 
 def missed(enemy)
-  missed_msg = [
+  messages = [
     "Your stealth is like a brick 🧱 through a window. #{enemy[:name]} predicted your attacks and calmly swayed out the way",
     "As you swing, you miss and #{enemy[:name]} layed you flat out 😵. You kissed the floor. You're married to the floor.",
     "While charging the enemy you wanked it up and fell on your face 😣, dealing absolutely no damage. You plank.",
@@ -53,11 +53,11 @@ def missed(enemy)
     "🚫 Denied ‼",
   ]
 
-  puts missed_msg.sample
+  puts text_break(messages.sample, " ", 70)
 end
 
 def attack_msg(enemy, weapon, damage_dealt)
-  atk_msg = [
+  messages = [
     "A brutal hit! #{enemy[:name]} takes a beating from your #{weapon[:name]}, suffering 💢 #{damage_dealt} damage!",
     "You threw your trusty #{weapon[:name]} at #{enemy[:name]} for 💢 #{damage_dealt} damage! Nice shot bro!",
     "You grabbed #{enemy[:name]} and smashed them through the wall for 💢 #{damage_dealt} damage!",
@@ -67,13 +67,13 @@ def attack_msg(enemy, weapon, damage_dealt)
     "You merked #{enemy[:name]} with your #{weapon[:name]} for 💢 #{damage_dealt} damage!",
   ]
 
-  puts atk_msg.sample
+  puts text_break(messages.sample, " ", 70)
 end
 
 # Enemy attack
 
 def enemy_crt_msg(enemy, enemy_critical)
-  enemy_crt_msg = [
+  messages = [
     "Oh Shit! #{enemy[:name]} mashed you up for #{enemy_critical.to_i} 💥 critical damage! You look like mashed potatoes mate!",
     "Get ready for a battering, #{enemy[:name]} is gone do you in for 💥 #{enemy_critical.to_i} critical damage, gutted bruv!",
     "#{enemy[:name]}: ⬅ ↖ ⬆ ↗ ➡ HP ⬅ ➡ 🅾 LP LK ⬅ ↙ ⬇ ↘ ➡ HK :: You took 💥 #{enemy_critical.to_i} critical damage.",
@@ -82,11 +82,11 @@ def enemy_crt_msg(enemy, enemy_critical)
     "#{enemy[:name]} did a sick combo on you for 💥 #{enemy_critical.to_i} critical damage.",
   ]
 
-  puts enemy_crt_msg.sample
+  puts text_break(messages.sample, " ", 70)
 end
 
 def enemy_missed(enemy)
-  enemy_missed_msg = [
+  messages = [
     "#{enemy[:name]} jumped at you and fell out the window, completely missing ❕ #{enemy[:name]} flew back in!",
     "#{enemy[:name]} fired ♨ Mega Blast, you dodged like a 😎 badman and tipped your fedora, no damage!",
     "You danced away 💃🏽 from #{enemy[:name]}'s attack, leaving them swinging at thin air!",
@@ -98,11 +98,11 @@ def enemy_missed(enemy)
 
   ]
 
-  puts enemy_missed_msg.sample
+  puts text_break(messages.sample, " ", 70)
 end
 
 def enemy_attack_msg(enemy, enemy_damage)
-  enemy_atk_msg = [
+  messages = [
     "#{enemy[:name]} absolutely battered you for 💢 #{enemy_damage} damage! You got mashed up!",
     "The #{enemy[:name]} smashed you for 💢 #{enemy_damage} damage! Better think fast!",
     "#{enemy[:name]} slayed you for 💢 #{enemy_damage} damage! You're getting merked!",
@@ -115,13 +115,13 @@ def enemy_attack_msg(enemy, enemy_damage)
     "#{enemy[:name]} did you in for 💢 #{enemy_damage} damage!",
   ]
 
-  puts enemy_atk_msg.sample
+  puts text_break(messages.sample, " ", 70)
 end
 
 # Sommersault attack
 
 def sommersault_success(enemy, weapon)
-  success_msg = [
+  messages = [
     "You turned Super Saiyan 😼, the scouter 🥽 says your power level is over 9000 ‼",
     "You ran up the wall and did a sick backflip, you strike #{enemy[:name]} twice!",
     "⬇ ↘ ➡ HP LP ⬅ ↖ ⬆ LP ⬆ ↖ ⬅ HK  ⬇ LK HP  ⬇ ↘ ➡ ➡ ⬆ ⬇ HK :: Ultra Combo...",
@@ -130,11 +130,11 @@ def sommersault_success(enemy, weapon)
     "Bang on ⚖. You get 2 attacks!",
   ]
 
-  puts success_msg.sample
+  puts text_break(messages.sample, " ", 70)
 end
 
 def sommersault_fail(enemy)
-  fail_msg = [
+  messages = [
     "You stacked 😵 it! #{enemy[:name]} is gonna have a field day, you plum!",
     "You shouldn't have eaten 3 pizzas 🍕 before trying to do acrobatics 🤢.",
     "You tripped over your own shoelaces 👞 and knocked yourself out 😵.",
@@ -144,10 +144,10 @@ def sommersault_fail(enemy)
     "You thought you had it, but you got merked instead 😭",
   ]
 
-  puts fail_msg.sample
+  puts text_break(messages.sample, " ", 70)
 end
 
-# Explore rooms attack
+# Explore rooms > player randomly attacked
 
 def random_attack_message(enemy)
   messages = [
