@@ -11,32 +11,32 @@ def run_away(enemy)
     "Time to get ghost 👻",
   ]
 
-  puts run_msgs.sample
+  puts text_break(run_msgs.sample, " ", 70)
 end
 
-def enter_room(selected_room)
+def enter_room(entered_room)
   room_msg = [
-    "I think I smelled some nosh 🍔 in #{selected_room[:name]}, better check it, absolutely famished.",
-    "Bollocks! I need a slash so bad! Bugger it, #{selected_room[:name]} will have to do.",
-    "I've got a good feeling about #{selected_room[:name]}, let's 'ave a butcher's!",
-    "Oi, this #{selected_room[:name]} looks like a proper gaff, doesn't it?",
-    "I reckon #{selected_room[:name]} might 'ave a hidden treasure or two!",
-    "You ran and did a mental action dive 🦶 into #{selected_room[:name]}",
-    "#{selected_room[:name]} seems like the most blinding choice, innit?",
-    "Off to #{selected_room[:name]} I go, fingers crossed for good swag!",
-    "#{selected_room[:name]} seems like the right place to be, mate!",
-    "They won't find me in #{selected_room[:name]}, I'm golden 🥇",
-    "#{selected_room[:name]} seems like most inticing choice.",
-    "In we go to #{selected_room[:name]}, let's 'ave it!",
-    "You danced 🕺 into #{selected_room[:name]}",
-    "You bolted off to #{selected_room[:name]}",
+    "I think I smelled some nosh 🍔 in #{entered_room[:name]}, better check it, absolutely famished.",
+    "Bollocks! I need a slash so bad! Bugger it, #{entered_room[:name]} will have to do.",
+    "I've got a good feeling about #{entered_room[:name]}, let's 'ave a butcher's!",
+    "Oi, this #{entered_room[:name]} looks like a proper gaff, doesn't it?",
+    "I reckon #{entered_room[:name]} might 'ave a hidden treasure or two!",
+    "You ran and did a mental action dive 🦶 into #{entered_room[:name]}",
+    "#{entered_room[:name]} seems like the most blinding choice, innit?",
+    "Off to #{entered_room[:name]} I go, fingers crossed for good swag!",
+    "#{entered_room[:name]} seems like the right place to be, mate!",
+    "They won't find me in #{entered_room[:name]}, I'm golden 🥇",
+    "#{entered_room[:name]} seems like most inticing choice.",
+    "In we go to #{entered_room[:name]}, let's 'ave it!",
+    "You danced 🕺 into #{entered_room[:name]}",
+    "You bolted off to #{entered_room[:name]}",
   ]
 
-  puts room_msg.sample
+  puts text_break(room_msg.sample, " ", 70)
 end
 
-def gained_health(player, randomizer)
-  gained_msg = [
+def gifted(gift, randomizer, player, enemy, weapon)
+  gained_hp = [
     "Ah mate! Who left this grass ☘ here?! Northern Lights? Sweet as! You gained #{player[:emoji]} #{randomizer} HP!",
     "A Spghetti Store 🏪 ? Here? Yeah, I'll have the spaghetti 🍝. You gained #{player[:emoji]} #{randomizer} HP!",
     "These chili peppers 🌶 should give me the quick energy I need! You gained #{player[:emoji]} #{randomizer} HP!",
@@ -54,12 +54,7 @@ def gained_health(player, randomizer)
     "The doctor 🥼 is in the house. You gained #{player[:emoji]} #{randomizer} HP!",
     "Some shrooms 🍄, You gained #{player[:emoji]} #{randomizer} HP!",
   ]
-
-  puts gained_msg.sample
-end
-
-def lost_health(player, randomizer)
-  lost_msg = [
+  lost_hp = [
     "The phone 📱 reception in here is terrible and there's no Wi-Fi 📻. You lost #{player[:emoji]} #{randomizer} HP!",
     "Bollocks, you stepped into a bear trap 🐻, this is gonna cost ya! You lost #{player[:emoji]} #{randomizer} HP!",
     "Crikey! A seagull 🦆 swooped down and nicked your chips 🍟! You lost #{player[:emoji]} #{randomizer} HP!",
@@ -74,12 +69,7 @@ def lost_health(player, randomizer)
     "The bad music 🎵 up in here torments you. You lost #{player[:emoji]} #{randomizer} HP!",
     "You stepped on a rake 🏒 ! You lost #{player[:emoji]} #{randomizer} HP!",
   ]
-
-  puts lost_msg.sample
-end
-
-def enemy_health(randomizer, enemy)
-  enemy_health_msg = [
+  enemy_hp = [
     "You're practically feeding #{enemy[:name]} with your poor decisions. They regain #{enemy[:emoji]} #{randomizer} HP!",
     "Congratulations, you've become #{enemy[:name]}'s personal healer, dishing out #{enemy[:emoji]} #{randomizer} HP!",
     "Keep up the good work! #{enemy[:name]} is loving the free health recovery of #{enemy[:emoji]} #{randomizer} HP!",
@@ -94,12 +84,7 @@ def enemy_health(randomizer, enemy)
     "#{enemy[:name]} laughs at your missteps and eats up #{enemy[:emoji]} #{randomizer} HP!",
     "Your cowardice allowed #{enemy[:name]} to recover #{enemy[:emoji]} #{randomizer} HP",
   ]
-
-  puts enemy_health_msg.sample
-end
-
-def enemy_trap(randomizer, enemy)
-  enemy_trap_msg = [
+  enemy_trap = [
     "As you step inside you turn around and give a #{enemy[:name]} menacing glare dealing 💢 #{randomizer} damage, you feel dangerous ⚠",
     "Chasing after you, #{enemy[:name]} walked in front of a truck 🚚. #{enemy[:name]} lost 💢 #{randomizer} HP!",
     "Your level of swagger 😎 is too high, #{enemy[:name]} just couldn't take and lost 💢 #{randomizer} HP!",
@@ -107,12 +92,7 @@ def enemy_trap(randomizer, enemy)
     "Booya 💥, the #{enemy[:name]} stepped on a land mine 🕳  dealing 'em 💢 #{randomizer} damage!",
     "#{enemy[:name]} got weighed in on the way in, losing 💢 #{randomizer} HP!",
   ]
-
-  puts enemy_trap_msg.sample
-end
-
-def got_weapon(weapon)
-  weapon_msg = [
+  got_weapon = [
     "What's this? 🤔 You find a hidden #{weapon[:name]} in the back of a dusty closet. Time to rewrite history!",
     "There's enough useless crap 🛒 here to manfacture a #{weapon[:name]}, your mad smithing skills allow it.",
     "Your Amazon 🎁 package has arrived, it's that #{weapon[:name]} you ordered. Time for beatdown!",
@@ -123,22 +103,11 @@ def got_weapon(weapon)
     "Mysterious Stranger 🕵️‍♂️ appeared, 'Hey kid, catch', he throws you a #{weapon[:name]}",
     "No way, you just remembered you still have your #{weapon[:name]} in your sock 🧦 !",
     "Under the bed 🛏️, you discovered a #{weapon[:name]} 👀. Time for some pummeling!",
-
-    "Rummaging through the fridge 🧊, you find a #{weapon[:name]} sandwiched between the pickles!
-    Let's add some flavour to this thrashing!",
-
-    "A genie 🧞 appears and grants you 3 wishes, but you're only gonna need one:
-    a #{weapon[:name]} for laying down the law.",
-
-    "You open a cookbook 📙, hollowed out there's a #{weapon[:name]} inside.
-    You check your watch ⌚, it's 5 past throwdown o'clock.",
+    "Rummaging through the fridge 🧊, you find a #{weapon[:name]} sandwiched between the pickles! Let's add some flavour to this thrashing!",
+    "A genie 🧞 appears and grants you 3 wishes, but you're only gonna need one: a #{weapon[:name]} for laying down the law.",
+    "You open a cookbook 📙, hollowed out there's a #{weapon[:name]} inside. You check your watch ⌚, it's 5 past throwdown o'clock.",
   ]
-
-  puts weapon_msg.sample
-end
-
-def enemy_spawn(enemy)
-  spawn_msg = [
+  enemy_spawn = [
     "There's another package from Amazon 🎁, but oh shit! It's #{enemy[:name]} with an order for bloodshed!",
     "You stare at the mirror 🔲, but you slowly realise the #{enemy[:name]} staring back isn't you...",
     "#{enemy[:name]} was waiting for you in the trash can 🚮, ready to show you he can thrash 👊",
@@ -150,12 +119,7 @@ def enemy_spawn(enemy)
     "#{enemy[:name]}: 'Step on up kiddies, thrashings for all!'",
     "It's a full moon 🌕 tonight. #{enemy[:name]} steps on up.",
   ]
-
-  puts spawn_msg.sample
-end
-
-def empty_room
-  empty_msg = [
+  empty_room = [
     "There's a Take Away Food Cart 🛍, but they only serve food you don't like, also you have no money 💵",
     "There are bikes 🚲🚲🚲 here but you can't ride indoors, Professor Oak 👨‍🏫 will find out immediately",
     "If you stay here, you'll have to help somebody pack 🧳, and it would probably take all day.",
@@ -170,5 +134,21 @@ def empty_room
     "Freezing ❄ my ass off here 🥶",
   ]
 
-  puts empty_msg.sample
-end
+    message = case gift
+      when 1
+        gained_hp
+      when 2
+        lost_hp
+      when 3
+        enemy_hp
+      when 4
+        enemy_trap
+      when 5
+        got_weapon
+      when 6
+        enemy_spawn
+      when 7
+        empty_room
+      end
+      puts text_break(message.sample, " ", 70)
+  end

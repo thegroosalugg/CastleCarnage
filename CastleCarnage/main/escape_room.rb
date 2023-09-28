@@ -19,40 +19,33 @@ def explore_rooms(enemy, weapon, player, second_enemy)
   entered_room = chosen_rooms[user_choice - 4]
   enter_room(entered_room)
   randomizer = rand(1..8) == 1 ? rand(50..120) : rand(20..50)
+  gift = entered_room[:chance].sample
 
-  puts "[CHANCE] #{entered_room[:chance]}" # DEBUG INFO
+  puts "[CHANCE] #{gift}" # DEBUG INFO
 
-  case entered_room[:chance].sample
+  case gift
   when 1
-    gained_health(player, randomizer)
     player[:hp] += randomizer
   when 2
-    lost_health(player, randomizer)
     player[:hp] -= randomizer
   when 3
     target_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy
     target_enemy[:hp] += randomizer
-    enemy_health(randomizer, target_enemy)
   when 4
     target_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy
     target_enemy[:hp] -= randomizer
-    enemy_trap(randomizer, target_enemy)
   when 5
     weapon = rand(1..5) == 1 ? special_weapon : pick_weapon
-    got_weapon(weapon)
   when 6
     if second_enemy.nil?
       second_enemy = random_enemy
-      enemy_spawn(second_enemy)
     elsif enemy.nil?
       enemy = random_enemy
-      enemy_spawn(enemy)
     else
       weapon = rand(1..5) == 1 ? special_weapon : pick_weapon
-      got_weapon(weapon)
     end
-  when 7
-    empty_room
   end
+
+  gifted(gift, randomizer, player, enemy, weapon)
   return enemy, weapon, second_enemy
 end

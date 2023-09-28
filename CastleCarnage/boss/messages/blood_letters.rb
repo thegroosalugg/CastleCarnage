@@ -19,15 +19,15 @@ def paid_blood_message(player, user_choice, price_paid, multiplier, boost)
 
   message = case user_choice
   when 4
-    buff_up.sample
+    buff_up
   when 5
-    get_money.sample
+    get_money
   when 6
-    sober_up.sample
+    sober_up
   when 7
-    munch_out.sample
+    munch_out
   end
-  puts text_break(message, " ", 70)
+  puts text_break(message.sample, " ", 70)
 end
 
 def drained_message
