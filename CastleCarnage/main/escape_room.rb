@@ -20,27 +20,27 @@ def explore_rooms(enemy, weapon, player, second_enemy)
   gift = entered_room[:chance].sample
 
   case gift
-  when 1
+  when 1 # Player gains health
     player[:hp] += randomizer
-  when 2
+  when 2 # Player steps on a trap
     player[:hp] -= randomizer
-  when 3
+  when 3 # Enemy gains health
     target_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy
     target_enemy[:hp] += randomizer
-  when 4
+  when 4 # Enemy steps on a trap
     target_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy
     target_enemy[:hp] -= randomizer
-  when 5
+  when 5 # Get a new weapon; 20% for special weapon
     weapon = rand(1..5) == 1 ? special_weapon : pick_weapon
     got_weapon(weapon)
-  when 6
+  when 6 # New enemy spawns in empty slot
     if second_enemy.nil?
       second_enemy = random_enemy
       enemy_spawn(second_enemy)
-    elsif enemy.nil?
+    elsif enemy.nil? # Second enemy alive? && enemy dead? -> New enemy spawns in empty slot
       enemy = random_enemy
       enemy_spawn(enemy)
-    else
+    else # 2 enemies on your jock? Increase chance of new weapon, 25% chance for special weapon
       weapon = rand(1..4) == 1 ? special_weapon : pick_weapon
       got_weapon(weapon)
     end
