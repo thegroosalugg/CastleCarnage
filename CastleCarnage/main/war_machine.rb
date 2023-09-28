@@ -2,7 +2,7 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 ENEMIES = [
-  "👺 Goblin", "👹 Ogre", "👾 Orc", "🤪 Village Idiot", "👳 Village Elder", "👑 Village King",
+  "👺 Goblin", "👹 Ogre", "👾 Orc", "🤪 Village Idiot", "👳 Village Elder", "👑 Village King", "🦀 Milelurk",
   "🧙 Wizard", "🧝 Druid", "🐺 Werewolf", "🧛 Vampire", "🧟 Zombie", "🦖 Dinosaur", "🤖 Robot from the Future",
   "🐉 Dragon", "👻 Banshee", "🦹 Arsehole", "🦍 King Kong", "🐍 Snake", "🦑 Crazy Squid", "🦂 Giant Scorpion",
 ]
@@ -12,19 +12,33 @@ BOSSES = [
 ]
 
 WEAPONS = [
-  "🏏 Baseball Bat", "🥊 Punching Glove", "🪓 Axe", "🔪 Switchblade", "🗡 Dagger", "🗡️ Sword", "🎇 Mace", "🍢 Giant Club",
-  "🛠️ Wrench", "🪄 Magic Scepter", "🏹 Crossbow", "🪚 Chainsaw", "🔫 Revolver", "🪃 Boomerang", "⚔️ Battle Axe", "🪓 Hatchet", "🧨 Dynamite",
+  "🏏 Baseball Bat", "🥊 Punching Glove", "🪓 Axe", "🔪 Switchblade", "🗡 Dagger", "🗡️ Sword", "🎇 Mace", "🍢 Giant Club", "🛠️ Wrench",
+  "🪄 Magic Scepter", "🏹 Crossbow", "🪚 Chainsaw", "🔫 Revolver", "🪃 Boomerang", "⚔️ Battle Axe", "🪓 Hatchet", "🧨 Dynamite",
 ]
 
 SPECIAL_WEAPONS = [
-  "🔫 Gatling Laser",  "🚀 Rocket Launcher", "🔥 Fireball", "💣 Bobomb", "🛫 Air Strike", "🦄 Unicorn", "🔥🐲 Charizard", "📓 Necronomicon",
+  "🔫 Gatling Laser", "🚀 Rocket Launcher", "🔥 Fireball", "💣 Bobomb", "🛫 Air Strike", "🦄 Unicorn", "🔥🐲 Charizard", "📓 Necronomicon",
 ]
 
 ROOMS = [
-  "🖼 The Secret Door Behind the Painting", "🚇 The Abandoned Underground Tunnels", "🕳 The Trapdoor Under the Carpet", "❓ The Super Secret Mystery Room",
-  "🍽 The High Society Dining Room", "💡 The Light Bulb Room", "🕋 The Buzzin' Nightclub", "🎁 The Treasure Chamber", "🛁 The Manky Bathroom",
-  "🛌 The Master Bedroom", "🔲 The Wobbly Window", "📚 The Dirty Library", "📺 The Classy Lounge", "🍷 The Dodgy Cellar", "🩲 The Jacuzzi Room",
-  "🚓 Dracula's Royce", "🏰 The Roof",
+  "Bathroom 🛁", "Dining Room 🍽️", "Library 📚", "Bedroom 🛌", "Kitchen 🍳", "Living Room 🛋",
+  "Game Room 🎮", "Home Office 🖥", "Garage 🚗", "Attic 🕸", "Basement 🕳", "Garden 🌳",
+  "Patio 🏞", "Balcony 🏙", "Pantry 🍏", "Closet 🧥", "Laundry Room 🧺", "Guest Bedroom 🛌",
+  "Study 📖", "Foyer 🚪", "Sunroom ☀️", "Mudroom 🧦", "Theater Room 🎬", "Gym for Muscles 🏋️‍♂️",
+  "Pool Room 🎱", "Wine Cellar 🍷", "Music Room 🎵", "Art Studio 🎨", "Craft Room ✂️", "Nightclub 🕋",
+  "Workshop ⚒️", "Sauna 🧖‍♂️", "Guest Bathroom 🚿", "Playroom 🧸", "Nursery 👶", "Bar 🍸",
+  "Cinema 🍿", "Billiards Room 🎱", "Den 📺", "Lounge 🍹", "Conservatory 🌿",
+  "Porch 🏡", "Walk-In Closet 👗", "Wine Tasting Room 🍇", "Cigar Lounge 🚬", "Reading Nook 📚",
+  "Secret Passage 🗝", "Observatory 🔭", "Greenhouse 🌱", "Dance Studio 💃", "Recording Studio 🎤",
+  "Arcade 🕹️", "Arcane Library 📜", "Chapel ⛪", "Crypt 💀", "Hidden Chamber 🕳", "Laboratory 🧪",
+]
+
+DESC = [
+  "💩 The Manky", "🗯 The Shoddy", "🧛 Dracula's", "🏢 The Swanky", "🐝 The Buzzing", "🍷 The Dodgy", "🩸 The Bloody",
+  "🎉 The Reem", "🐴 The Pony", "🤬 The Bastard", "🤩 The Peng", "🤪 The Mental", "👹 The Wicked", "🎭 The Dramatic",
+  "🎤 The Groovy", "🎃 The Spooky", "🚢 The Nautical", "🍔 The Greasy", "🌑 The Abandoned", "😵 The Bonkers", "🎸 The Rocking",
+  "🍄 The Shroomy", "🦁 The Roaring", "🌵 The Deserted", "🤢 The Gnarly", "🏛️ The Presidential", "🔮 The Trippy", "🤮 The Minging",
+  "🐒 The Cheeky", "🗣️ The Banter", "🅱️ The Bitchin'", "👻 The Haunted", "🐺 The Howling",
 ]
 
 def random_enemy
@@ -65,7 +79,7 @@ def special_weapon
     durability: rand(1..2),
     attack: (rand(30..40)..rand(41..100)).to_a,
     accuracy: (1..rand(6..12)).to_a,
-    crit_ch: (1..rand(6..12)).to_a,
+    crit_ch: (1..rand(5..8)).to_a,
     crit_x: -> { rand(rand(2.0..3.0)..rand(3.1..5.0)) }
   }
 end
@@ -76,7 +90,7 @@ def room_vault
   while chosen_rooms.length < 4
     room = {
       name: ROOMS.sample,
-      chance: Array.new(rand(4..12)) { rand(1..7) } # creates an array with 4-12 integers, each with a value between 1 and 7
+      chance: Array.new(rand(4..12)) { rand(1..7) } # creates an array with 4-12 integers, each with a value between 1-7
     }
 
     # Check if the generated room's name is unique within the chosen_rooms array
@@ -84,6 +98,7 @@ def room_vault
       chosen_rooms << room
     end
   end
-
+  
+  chosen_rooms.map { |room| room[:name] = "#{DESC.sample} #{room[:name]}" } # Give the rooms a unique desc
   chosen_rooms
 end
