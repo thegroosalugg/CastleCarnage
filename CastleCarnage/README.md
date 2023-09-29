@@ -22,10 +22,10 @@ for instance 🔶🔶🔸🔸🔸🔸 =  attack between 55-60;  🔶🔶🔶 = 6
 
 ********************** MAIN GAME **********************
 
-Select [t] to attack the enemy with your weapon, but the enemy will attack back at the same time.
+Select [t] to attack the enemy with your weapon, the enemy will strike back after your strike
 > Each attack removes 1 durability. Once your weapon breaks you can no longer attack and must search the rooms for a new weapon.<br>
 > When there are 2 enemies, you attack both and they both respond in one combat. You will lose 2 durability for attacking, but you can still attack both if your weapon has only 1 durability remaining.<br>
-> If you and the enemy simultaneously kill each other, you still lose. That's just how life goes.<br>
+> You strike first, strike hard, no mercy. A lethal blow to the enemy will prevent them from striking you back<br>
 
 Select [r] to try a sommersault, if successful you attack twice without taking damage.
 > If you fail, the enemy attacks you 3 times without taking damage. The dangers of failure must always outweigh the benefits of success, that's why it's called a risk.<br>
