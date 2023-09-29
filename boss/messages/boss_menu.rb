@@ -28,7 +28,7 @@ def player_status(player)
     when 0..2   then "Sober as a Judge ⚖️ /"
     when 3..5   then " Got a Buzz on   😉 /"
     when 6..9   then " Feeling Tipsy   😏 /"
-    when 10..13 then "Out on the Razz  🥴 /"
+    when 10..13 then " Out on the Razz 🥴 /"
     when 14..17 then " Proper Pissed   🤤 /"
     when 18..20 then " Fucking Wasted  😵 /"
     end
@@ -51,7 +51,7 @@ def game_info(player, weapon, the_boss, boss_style, load_boss)
   puts SEPARATOR
   puts "    #{health_bars(player)}"
   puts "    #{attack_stats(player)} / #{block_stats(player)}"
-  puts "    #{weapon_bars(weapon)}" if weapon && weapon[:durability].positive? && boss_style == "🕶️ Bouncer"
+  puts "    #{weapon_bars(weapon)}" if weapon[:durability].positive? && boss_style == "🕶️ Bouncer"
   puts "    #{player_status(player)}"
   puts BOSS_DIV
   puts "    #{health_bars(the_boss)}"

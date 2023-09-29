@@ -1,6 +1,15 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
+def bonus(player, rooms_explored, enemies_defeated)
+  health = 100 + (rooms_explored * 20)
+  boost = [:attack, :block].sample
+  multiplier = enemies_defeated * rand(1..3)
+  player[:hp] += health
+  player[boost] = player[boost].map { |stat| stat + multiplier }
+  your_rewards(player, health, boost, multiplier)
+end
+
 def big_boss_battle(player, weapon, the_boss)
   load_boss = big_boss_art
   boss_style = the_boss[:style].sample
