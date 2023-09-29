@@ -47,11 +47,11 @@ while (enemy || second_enemy) && player[:hp].positive?
     print `clear`
 
     strike(player, enemy, weapon) if enemy                 # Player strikes
-    strike(enemy, player) if enemy                         # Enemy strikes back
+    strike(enemy, player) if enemy && enemy[:hp].positive? # Enemy strikes back, unless you kill them first
 
     puts SEPARATOR if second_enemy                         # Repeat process if second enemy on your jock
     strike(player, second_enemy, weapon) if second_enemy
-    strike(second_enemy, player) if second_enemy
+    strike(second_enemy, player) if second_enemy && second_enemy[:hp].positive?
 
   elsif user_choice == "r"
     print `clear`
