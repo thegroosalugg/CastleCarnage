@@ -24,7 +24,7 @@ def weapon_broke(weapon)
   puts text_break(messages.sample, " ", 70)
 end
 
-# Player attack
+# Player vs enemy strike
 
 def critical_hit(attacker, target, critical_damage)
   messages = [
@@ -53,9 +53,9 @@ def missed(attacker, target)
     "#{attacker[:name]}'s stealth is like a brick 🧱 through a window. #{target[:name]} predicted the attack and calmly swayed out the way",
     "#{attacker[:name]} jumped at you and fell out the window, completely missing! #{attacker[:name]} had to climb back in!",
     "#{attacker[:name]} fired ♨ Mega Blast, #{target[:name]} dodged like a 😎 badman and tipped their fedora. No damage!",
-    "#{target[:name]} laughs at #{attacker[:name]}'s efforts. Their attacks go down like Skittles 🍬🟣🟢🔴🟠🟡",
     "#{attacker[:name]} fucked up. #{attacker[:name]} sips their zero soda and zero damage meal combo 🍔🍟🥤",
     "#{target[:name]} danced away 💃🏽 from #{attacker[:name]}'s attack, leaving them swinging at thin air!",
+    "#{target[:name]} laughs at #{attacker[:name]}'s efforts. Their attacks go down like Skittles 🍬",
     "#{attacker[:name]} got confused and ran straight into a wall 😣, #{target[:name]} got lucky.",
     "#{target[:name]} jumped over 🦘 #{attacker[:name]}, avoiding them like an ex in a mall.",
     "#{target[:name]}'s stealth 👟 is spot on, they avoided #{attacker[:name]}'s mashing up!",
@@ -122,14 +122,15 @@ end
 
 def random_attack(enemy)
   messages = [
-    "🙈You stacked it on your way out and let #{enemy[:name]} get the drop on you, watch out!",
-    "#{enemy[:name]} did a mental 🐱‍🏍 backflip and landed in front of you!",
-    "👥You tried to leg it but #{enemy[:name]} jumped ya. Bugger it.",
+    "🙈 You stacked it on your way out and let #{enemy[:name]} get the drop on you, watch out!",
+    "#{enemy[:name]} did a mental 🤸 backflip and landed in front of you!",
+    "👥 You tried to leg it but #{enemy[:name]} jumped ya. Bugger it.",
     "You slipped on a 🍌 banana and #{enemy[:name]} jumped you!",
     "#{enemy[:name]} is faster 💨 than you. You get merked.",
     "#{enemy[:name]}: 'Yar think ye can get away from me?'",
     "#{enemy[:name]} ✨ teleports in front of the door",
     "#{enemy[:name]}: 'Oi, stop and I'll shoot yar!'",
+    "#{enemy[:name]}: 'Lend us ur phone 📱 bruv!'",
     "#{enemy[:name]}: 'Get back 'ere yer scum!'",
     "#{enemy[:name]}: 'Oi, give us 5 bucks!",
   ]
