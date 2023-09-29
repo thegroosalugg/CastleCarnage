@@ -18,20 +18,16 @@ def strike(attacker, target, weapon = nil)
   weapon[:durability] = [weapon[:durability] - 1, 0].max if attacker[:id] == "player"
 end
 
-def somersault_attack(player, enemy, weapon)
-  if rand(1..3) == 1
-    sommersault_success(enemy, weapon)
-    2.times { strike(player, enemy, weapon) }
-  else
-    sommersault_fail(enemy)
-    3.times { strike(enemy, player) }
-  end
+def somersault_attack(player, enemy, weapon)   # succeed and strike twice, fail and get struck thrice
+  chance = rand(1..3)
+  somersault(chance, enemy)
+  chance == 1 ? 2.times { strike(player, enemy, weapon) } : 3.times { strike(enemy, player) }
 end
 
 def escape_attempt(enemy, second_enemy, player, weapon)
-  enemy ? run_away(enemy) : run_away(second_enemy)
-  if rand(1..5) == 1
-    target_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy
+  target_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy
+  run_away(target_enemy)
+  if rand(1..1) == 1
     random_attack(target_enemy)
     strike(target_enemy, player)
   end
