@@ -66,6 +66,7 @@ def pick_weapon
   weapon = {
     name: WEAPONS.sample,
     durability: rand(1..5),
+    broken: false,
     attack: (rand(20..30)..rand(31..60)).to_a,
     accuracy: (1..rand(5..11)).to_a,
     crit_ch: (1..rand(5..11)).to_a,

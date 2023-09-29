@@ -32,12 +32,20 @@ state_of_game(enemy, second_enemy, player, weapon)
 
 while (enemy || second_enemy) && player[:hp].positive?
 
-  if weapon && weapon[:durability].positive?
+  if weapon && weapon[:durability].positive?     # Fight menu when weapon equipped
+    weapon[:broken] = false
     load_menu
     user_choice = gets.chomp.downcase
-  else
-    weapon_broke(weapon) if weapon
-    weapon = nil
+  else                                           # Weapon breaks, player must run through rooms
+    weapon_broke(weapon) unless weapon[:broken]
+    weapon[:broken] = true
+    enemy ? run_away(enemy) : run_away(second_enemy)
+    if rand(1..1) == 1
+      target_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy
+      random_attack_message(target_enemy)
+      enemy_attack(target_enemy, player)
+    end
+    state_of_game(enemy, second_enemy, player, weapon)
     user_choice = "y"
   end
 
@@ -58,15 +66,15 @@ while (enemy || second_enemy) && player[:hp].positive?
     somersault_attack(target_enemy || [enemy, second_enemy].sample, weapon, player) if target_enemy
 
   elsif user_choice == "y"
-    print `clear` if weapon
+    print `clear` unless weapon[:broken]
     rooms_explored += 1
-    if rand(1..5) == 1
+    enemy ? run_away(enemy) : run_away(second_enemy) unless weapon[:broken]
+    if rand(1..1) == 1 && weapon[:broken] == false
       target_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy
       random_attack_message(target_enemy)
       enemy_attack(target_enemy, player)
     end
-    enemy ? run_away(enemy) : run_away(second_enemy)
-    state_of_game(enemy, second_enemy, player, weapon) unless player[:hp] <= 0
+    state_of_game(enemy, second_enemy, player, weapon) unless weapon[:broken]
     enemy, weapon, second_enemy = explore_rooms(enemy, weapon, player, second_enemy) unless player[:hp] <= 0
 
     # DEBUG CHEAT MENU
@@ -128,7 +136,7 @@ while (enemy || second_enemy) && player[:hp].positive?
     big_boss_battle(player, weapon, the_boss)
   end
 
-  state_of_game(enemy, second_enemy, player, weapon) unless tracked_enemy == the_boss || (weapon.nil? || weapon[:durability].zero?)
+  state_of_game(enemy, second_enemy, player, weapon) unless tracked_enemy == the_boss || weapon[:durability].zero?
 end
 
 game_over(tracked_enemy, player)

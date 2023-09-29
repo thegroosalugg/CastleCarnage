@@ -17,7 +17,7 @@ def explore_rooms(enemy, weapon, player, second_enemy)
   entered_room = chosen_rooms[user_choice - 4]
   enter_room(entered_room)
   randomizer = rand(1..8) == 1 ? rand(50..120) : rand(20..50)
-  gift = entered_room[:chance].sample
+  gift = 4#entered_room[:chance].sample
 
   case gift
   when 1 # Player gains health
