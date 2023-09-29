@@ -32,11 +32,11 @@ state_of_game(enemy, second_enemy, player, weapon)
 
 while (enemy || second_enemy) && player[:hp].positive?
 
-  if weapon[:durability].positive?                         # Fight menu when weapon equipped
+  if weapon[:durability].positive?                              # Fight menu when weapon equipped
     weapon[:broken] = false
     load_menu
     user_choice = gets.chomp.downcase
-  else                                                     # Player must run through rooms if weapon broken
+  else                                                          # Player must run through rooms if weapon broken
     weapon_broke(weapon) unless weapon[:broken]
     weapon[:broken] = true
     escape_attempt(enemy, second_enemy, player, weapon)
@@ -46,10 +46,10 @@ while (enemy || second_enemy) && player[:hp].positive?
   if user_choice == "t"
     print `clear`
 
-    strike(player, enemy, weapon) if enemy                 # Player strikes
-    strike(enemy, player) if enemy && enemy[:hp].positive? # Enemy strikes back, unless you kill them first
+    strike(player, enemy, weapon) if enemy                      # Player strikes
+    strike(enemy, player) if enemy && enemy[:hp].positive?      # Enemy strikes back, unless you kill them first
 
-    puts SEPARATOR if second_enemy                         # Repeat process if second enemy on your jock
+    puts SEPARATOR if second_enemy                              # Repeat process if second enemy on your jock
     strike(player, second_enemy, weapon) if second_enemy
     strike(second_enemy, player) if second_enemy && second_enemy[:hp].positive?
 
@@ -94,10 +94,10 @@ while (enemy || second_enemy) && player[:hp].positive?
     error_message
   end
 
-  if enemy && enemy[:hp] <= 0                              # enemy dies
-    enemies_defeated += 1                                  # defeated counter
+  if enemy && enemy[:hp] <= 0                                   # enemy dies
+    enemies_defeated += 1                                       # defeated counter
     enemy_killed(enemy)
-    tracked_enemy = enemy                                  # records last enemy to pass to game over method
+    tracked_enemy = enemy                                       # records last enemy to pass to game over method
     enemy = nil
   end
 
