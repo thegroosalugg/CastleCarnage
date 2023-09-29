@@ -113,7 +113,7 @@ def somersault(chance, enemy)
     "#{enemy[:name]} laughed 😂 and socked 👊 you in the face.",
     "You thought you had it, but you got merked instead 😭",
   ]
-  
+
   messages = chance == 1 ? success : failed
   puts text_break(messages.sample, " ", 70)
 end
