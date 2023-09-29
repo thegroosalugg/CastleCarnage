@@ -108,13 +108,10 @@ while (enemy || second_enemy) && player[:hp].positive?
     second_enemy = nil
   end
 
-  if player[:hp] <= 0                                      # Player dies and last enemy is tracked
-    tracked_enemy = second_enemy if second_enemy
-  else
-    tracked_enemy = enemy if enemy
-  end
+  # Player dies and last enemy is tracked. Random enemy if both present, elsif enemy, else second enemy
+  tracked_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy if player[:hp] <= 0
 
-  # puts "[DEBUG] [Enemies Defeated: #{enemies_defeated}] || [Rooms Explored: #{rooms_explored}]"
+    # puts "[DEBUG] [Enemies Defeated: #{enemies_defeated}] || [Rooms Explored: #{rooms_explored}]"
   # puts "BIG BOSS BATTLE" if (enemies_defeated > 1) || (rooms_explored > 15) || (enemies_defeated > 0 && rooms_explored > 10)
   # ((enemies_defeated > 1) || (rooms_explored > 8) || (enemies_defeated > 0 && rooms_explored > 5)) && (rand(1..2) == 1) ? big_boss_battle : big_boss_warning
   if rooms_explored > 100
