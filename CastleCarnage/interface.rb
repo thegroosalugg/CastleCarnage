@@ -17,7 +17,7 @@ require_relative 'boss/messages/blood_letters'
 
 print `clear`
 
-player = { hp: rand(250..300), attack: (30..60).to_a, block: (1..10).to_a, cash: rand(2..12), drunk: 0 }
+player = { id: "player", hp: rand(250..300), attack: (30..60).to_a, block: (1..10).to_a, cash: rand(2..12), drunk: 0 }
 enemy = random_enemy
 second_enemy = nil
 tracked_enemy = enemy
@@ -32,11 +32,11 @@ state_of_game(enemy, second_enemy, player, weapon)
 
 while (enemy || second_enemy) && player[:hp].positive?
 
-  if weapon[:durability].positive?     # Fight menu when weapon equipped
+  if weapon[:durability].positive?                         # Fight menu when weapon equipped
     weapon[:broken] = false
     load_menu
     user_choice = gets.chomp.downcase
-  else                                           # Player must run through rooms if weapon broken
+  else                                                     # Player must run through rooms if weapon broken
     weapon_broke(weapon) unless weapon[:broken]
     weapon[:broken] = true
     escape_attempt(enemy, second_enemy, player, weapon)
@@ -46,23 +46,24 @@ while (enemy || second_enemy) && player[:hp].positive?
   if user_choice == "t"
     print `clear`
 
-    player_attack(enemy, weapon) if enemy
-    enemy_attack(enemy, player) if enemy
+    strike(player, enemy, weapon) if enemy                 # Player strikes
+    strike(enemy, player) if enemy                         # Enemy strikes back
 
-    puts SEPARATOR if second_enemy
-    player_attack(second_enemy, weapon) if second_enemy
-    enemy_attack(second_enemy, player) if second_enemy
+    puts SEPARATOR if second_enemy                         # Repeat process if second enemy on your jock
+    strike(player, second_enemy, weapon) if second_enemy
+    strike(second_enemy, player) if second_enemy
 
   elsif user_choice == "r"
     print `clear`
 
-    target_enemy = enemy || second_enemy
-    somersault_attack(target_enemy || [enemy, second_enemy].sample, weapon, player) if target_enemy
+    target_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy
+    somersault_attack(player, target_enemy, weapon)
 
   elsif user_choice == "y"
-    rooms_explored += 1
     print `clear` unless weapon[:broken]
+
     escape_attempt(enemy, second_enemy, player, weapon) unless weapon[:broken]
+    rooms_explored += 1
     enemy, weapon, second_enemy = explore_rooms(enemy, weapon, player, second_enemy) unless player[:hp] <= 0
 
     # DEBUG CHEAT MENU
@@ -93,10 +94,10 @@ while (enemy || second_enemy) && player[:hp].positive?
     error_message
   end
 
-  if enemy && enemy[:hp] <= 0
-    enemies_defeated += 1
+  if enemy && enemy[:hp] <= 0                              # enemy dies
+    enemies_defeated += 1                                  # defeated counter
     enemy_killed(enemy)
-    tracked_enemy = enemy
+    tracked_enemy = enemy                                  # records last enemy to pass to game over method
     enemy = nil
   end
 
@@ -107,7 +108,7 @@ while (enemy || second_enemy) && player[:hp].positive?
     second_enemy = nil
   end
 
-  if player[:hp] <= 0
+  if player[:hp] <= 0                                      # Player dies and last enemy is tracked
     tracked_enemy = second_enemy if second_enemy
   else
     tracked_enemy = enemy if enemy

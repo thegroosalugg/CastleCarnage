@@ -43,6 +43,7 @@ DESC = [
 
 def random_enemy
   enemy = {
+    id: "enemy",
     name: ENEMIES.sample,
     hp: rand(200..400),
     attack: (rand(20..30)..rand(31..60)).to_a,
@@ -55,6 +56,7 @@ end
 
 def big_boss_awaits
   boss = {
+    id: "boss",
     name: BOSSES.sample,
     hp: rand(600..1000),
     attack: (rand(20..50)..rand(51..90)).to_a,
@@ -64,6 +66,7 @@ end
 
 def pick_weapon
   weapon = {
+    id: "weapon",
     name: WEAPONS.sample,
     durability: rand(1..5),
     broken: false,
@@ -76,6 +79,7 @@ end
 
 def special_weapon
   special_weapon = {
+    id: "special weapon",
     name: SPECIAL_WEAPONS.sample,
     durability: rand(1..2),
     attack: (rand(30..40)..rand(41..100)).to_a,
