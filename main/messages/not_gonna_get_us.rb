@@ -4,8 +4,8 @@
 def run_away(enemy)
   messages = [
     "Damn, that #{enemy[:name]}'s a wasteman, maybe there be something in one of them rooms.",
-    "There's a rad motorbike 🏍 parked up, you gank it quick and mosey off.",
     "Ain't sticking around 'ere, better try me luck with them rooms, innit!",
+    "There's a mad motorbizzle 🏍 slabbed up 'ere, time to gank it 'n' go!",
     "Dammit, gotta dash to a gaff quick, or I'm #{enemy[:name]} food!!",
     "That bastard #{enemy[:name]} is right behing me, gotta cheese it!",
     "Better leg it, not let #{enemy[:name]} get the drop on you.",
@@ -100,10 +100,14 @@ def gifts(gift, randomizer, player, enemy)
   ]
   enemy_trap = [
     "✅ As you step inside you turn around and give a #{enemy[:name]} menacing glare dealing #{enemy[:emoji]} #{randomizer} damage, you feel dangerous ⚠",
+    "✅ Arnie 💪😎: 'You know when I said I'd kill you last.. I lied' #{enemy[:name]} got gatted for #{enemy[:emoji]} #{randomizer} damage!",
     "✅ Chasing after you, #{enemy[:name]} walked in front of a truck 🚚. #{enemy[:name]} lost #{enemy[:emoji]} #{randomizer} HP!",
     "✅ Your level of swagger 😎 is too high, #{enemy[:name]} just couldn't take and lost #{enemy[:emoji]} #{randomizer} HP!",
+    "✅ #{enemy[:name]} just remembered they forgot to take the bins 🗑️ out costing them #{enemy[:emoji]} #{randomizer} HP!",
     "✅ You found a grenade 🍈, tossing it at #{enemy[:name]} for #{enemy[:emoji]} #{randomizer} damage! Kamblamo 💥",
     "✅ Booya 💥, the #{enemy[:name]} stepped on a land mine 🕳  dealing 'em #{enemy[:emoji]} #{randomizer} damage!",
+    "✅ Nobody suspects... the butterfly 🦋 ! #{enemy[:name]} got merked for #{enemy[:emoji]} #{randomizer} damage!",
+    "✅ You got saved by Batman 🦇 !#{enemy[:name]} going to prison 🏛️ for #{enemy[:emoji]} #{randomizer} HP!",
     "✅ #{enemy[:name]} got weighed in on the way in, losing #{enemy[:emoji]} #{randomizer} HP!",
   ]
 
@@ -119,6 +123,9 @@ end
 
 def got_weapon(weapon)
   messages = [
+    "Rummaging through the fridge 🧊, you find a #{weapon[:name]} sandwiched between the pickles! Let's add some flavour to this thrashing!",
+    "You open a cookbook 📙, hollowed out there's a #{weapon[:name]} inside. You check your watch ⌚, it's 5 past throwdown o'clock.",
+    "A genie 🧞 appears and grants you 3 wishes, but you're only gonna need one: a #{weapon[:name]} for laying down the law.",
     "What's this? 🤔 You find a hidden #{weapon[:name]} in the back of a dusty closet. Time to rewrite history!",
     "There's enough useless crap 🛒 here to manfacture a #{weapon[:name]}, your mad smithing skills allow it.",
     "Your Amazon 🎁 package has arrived, it's that #{weapon[:name]} you ordered. Time for beatdown!",
@@ -129,9 +136,6 @@ def got_weapon(weapon)
     "Mysterious Stranger 🕵️‍♂️ appeared, 'Hey kid, catch', he throws you a #{weapon[:name]}",
     "No way, you just remembered you still have your #{weapon[:name]} in your sock 🧦 !",
     "Under the bed 🛏️, you discovered a #{weapon[:name]} 👀. Time for some pummeling!",
-    "Rummaging through the fridge 🧊, you find a #{weapon[:name]} sandwiched between the pickles! Let's add some flavour to this thrashing!",
-    "A genie 🧞 appears and grants you 3 wishes, but you're only gonna need one: a #{weapon[:name]} for laying down the law.",
-    "You open a cookbook 📙, hollowed out there's a #{weapon[:name]} inside. You check your watch ⌚, it's 5 past throwdown o'clock.",
   ]
 
   puts text_break(messages.sample, " ", 70)
