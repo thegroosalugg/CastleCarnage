@@ -5,7 +5,7 @@ def pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
 
   user_choice = 0
 
-  until [4, 5, 6, 7].include?(user_choice)
+  until (4..7).include?(user_choice)
     game_info(player, weapon, the_boss, boss_style, load_boss)
 
     message = "[DEBUG] 💢 #{player[:attack].minmax.join('-')} 🛡️ #{player[:block].minmax.join('-')}" # DEBUGGING

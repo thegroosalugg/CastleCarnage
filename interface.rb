@@ -11,6 +11,7 @@ require_relative 'main/messages/intro_outro'
 require_relative 'main/messages/menu'
 require_relative 'boss/messages/boss_art'
 require_relative 'boss/messages/boss_menu'
+require_relative 'boss/messages/talks_with_the_boss'
 require_relative 'boss/messages/war_letters'
 require_relative 'boss/messages/blood_letters'
 #-----------------------------YOUR CODE BELOW---------------------------------->
@@ -111,18 +112,19 @@ while (enemy || second_enemy) && player[:hp].positive?
   # Player dies and last enemy is tracked. Random enemy if both present, elsif enemy, else second enemy
   tracked_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy if player[:hp] <= 0
 
-    # puts "[DEBUG] [Enemies Defeated: #{enemies_defeated}] || [Rooms Explored: #{rooms_explored}]"
+  # puts "[DEBUG] [Enemies Defeated: #{enemies_defeated}] || [Rooms Explored: #{rooms_explored}]"
   # puts "BIG BOSS BATTLE" if (enemies_defeated > 1) || (rooms_explored > 15) || (enemies_defeated > 0 && rooms_explored > 10)
   # ((enemies_defeated > 1) || (rooms_explored > 8) || (enemies_defeated > 0 && rooms_explored > 5)) && (rand(1..2) == 1) ? big_boss_battle : big_boss_warning
-  if rooms_explored > 100
+  if rooms_explored > 110
     enemies_defeated = 2 # debug
     rooms_explored = 5 # debug
-    player[:hp] += 100 + (rooms_explored * 20); player[:block] = player[:block].map { |block| block + enemies_defeated }
+    bonus(player, rooms_explored, enemies_defeated)
     enemy = nil; second_enemy = nil; tracked_enemy = the_boss
     big_boss_battle(player, weapon, the_boss)
   end
 
-  state_of_game(enemy, second_enemy, player, weapon) unless tracked_enemy == the_boss || weapon[:durability].zero?
+  state_of_game(enemy, second_enemy, player, weapon) unless tracked_enemy[:id] == "boss" || weapon[:durability].zero?
 end
 
+state_of_game(enemy, second_enemy, player, weapon) if tracked_enemy[:id] == "enemy" && weapon[:durability].zero?
 game_over(tracked_enemy, player)

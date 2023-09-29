@@ -2,12 +2,12 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 def damage_info(the_boss, total_damage)
-  dmg_messages = [
+  messages = [
    "You smashed #{the_boss[:name]} in for like 💢 #{total_damage} damage, surfs up bro!",
    "Time for a mashing up, #{the_boss[:name]} got weighed in for 💢 #{total_damage} damage!",
   ]
 
-  puts dmg_messages.sample
+  puts text_break(messages.sample, " ", 70)
 end
 
 # Bar fight outcomes # .abs removes negatives so only positive integers displayed
@@ -26,6 +26,8 @@ def bar_fight_outcome(drunk_adjustment, wallet_adjustment)
     "You got mugged for #{wallet_adjustment.abs} 💵",
   ]
 
-  puts (drunk_adjustment.positive? ? got_drunk.sample : sober_up.sample)
-  puts (wallet_adjustment.positive? ? got_cash.sample : got_mugged.sample)
+  drunk = drunk_adjustment.positive? ? got_drunk : sober_up
+  wallet = wallet_adjustment.positive? ? got_cash : got_mugged
+  puts text_break(drunk.sample, " ", 70)
+  puts text_break(wallet.sample, " ", 70)
 end
