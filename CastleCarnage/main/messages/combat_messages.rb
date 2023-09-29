@@ -26,7 +26,7 @@ end
 
 # Player attack
 
-def crt_dmg_msg(enemy, weapon, critical_damage)
+def critical_hit(enemy, weapon, critical_damage)
   messages = [
     "You did a mad front flip and volunteered #{enemy[:name]} to kiss the floor 💥 #{critical_damage.to_i} critical damage!",
     "You did a running jump and kicked #{enemy[:name]} in their stupid face for 💥 #{critical_damage.to_i} critical damage.",
@@ -56,7 +56,7 @@ def missed(enemy)
   puts text_break(messages.sample, " ", 70)
 end
 
-def attack_msg(enemy, weapon, damage_dealt)
+def succesful_hit(enemy, weapon, damage_dealt)
   messages = [
     "A brutal hit! #{enemy[:name]} takes a beating from your #{weapon[:name]}, suffering 💢 #{damage_dealt} damage!",
     "You threw your trusty #{weapon[:name]} at #{enemy[:name]} for 💢 #{damage_dealt} damage! Nice shot bro!",
@@ -72,7 +72,7 @@ end
 
 # Enemy attack
 
-def enemy_crt_msg(enemy, enemy_critical)
+def enemy_crit(enemy, enemy_critical)
   messages = [
     "Oh Shit! #{enemy[:name]} mashed you up for #{enemy_critical.to_i} 💥 critical damage! You look like mashed potatoes mate!",
     "Get ready for a battering, #{enemy[:name]} is gone do you in for 💥 #{enemy_critical.to_i} critical damage, gutted bruv!",
@@ -101,7 +101,7 @@ def enemy_missed(enemy)
   puts text_break(messages.sample, " ", 70)
 end
 
-def enemy_attack_msg(enemy, enemy_damage)
+def enemy_hit(enemy, enemy_damage)
   messages = [
     "#{enemy[:name]} absolutely battered you for 💢 #{enemy_damage} damage! You got mashed up!",
     "The #{enemy[:name]} smashed you for 💢 #{enemy_damage} damage! Better think fast!",
@@ -149,7 +149,7 @@ end
 
 # Explore rooms > player randomly attacked
 
-def random_attack_message(enemy)
+def random_attack(enemy)
   messages = [
     "🙈You stacked it on your way out and let #{enemy[:name]} get the drop on you, watch out!",
     "#{enemy[:name]} did a mental 🐱‍🏍 backflip and landed in front of you!",

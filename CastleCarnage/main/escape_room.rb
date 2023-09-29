@@ -17,7 +17,7 @@ def explore_rooms(enemy, weapon, player, second_enemy)
   entered_room = chosen_rooms[user_choice - 4]
   enter_room(entered_room)
   randomizer = rand(1..8) == 1 ? rand(50..120) : rand(20..50)
-  gift = 4#entered_room[:chance].sample
+  gift = entered_room[:chance].sample
 
   case gift
   when 1 # Player gains health
@@ -37,7 +37,7 @@ def explore_rooms(enemy, weapon, player, second_enemy)
     if second_enemy.nil?
       second_enemy = random_enemy
       enemy_spawn(second_enemy)
-    elsif enemy.nil? # Second enemy alive? && enemy dead? -> New enemy spawns in empty slot
+    elsif enemy.nil? # New enemy spawns in empty slot if second enemy alive? && enemy dead?
       enemy = random_enemy
       enemy_spawn(enemy)
     else # 2 enemies on your jock? Increase chance of new weapon, 25% chance for special weapon
