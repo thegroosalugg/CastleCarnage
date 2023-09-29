@@ -27,7 +27,7 @@ end
 def escape_attempt(enemy, second_enemy, player, weapon)
   target_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy
   run_away(target_enemy)
-  if rand(1..1) == 1
+  if rand(1..5) == 1
     random_attack(target_enemy)
     strike(target_enemy, player)
   end

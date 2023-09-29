@@ -95,8 +95,8 @@ end
 
 # Sommersault attack
 
-def sommersault_success(enemy, weapon)
-  messages = [
+def somersault(chance, enemy)
+  success = [
     "You turned Super Saiyan 😼, the scouter 🥽 says your power level is over 9000 ‼",
     "You ran up the wall and did a sick backflip, you strike #{enemy[:name]} twice!",
     "⬇ ↘ ➡ HP LP ⬅ ↖ ⬆ LP ⬆ ↖ ⬅ HK  ⬇ LK HP  ⬇ ↘ ➡ ➡ ⬆ ⬇ HK :: Ultra Combo...",
@@ -104,12 +104,7 @@ def sommersault_success(enemy, weapon)
     "The gods ⚖ smile upon you, your path is righteous",
     "Bang on ⚖. You get 2 attacks!",
   ]
-
-  puts text_break(messages.sample, " ", 70)
-end
-
-def sommersault_fail(enemy)
-  messages = [
+  failed = [
     "You stacked 😵 it! #{enemy[:name]} is gonna have a field day, you plum!",
     "You shouldn't have eaten 3 pizzas 🍕 before trying to do acrobatics 🤢.",
     "You tripped over your own shoelaces 👞 and knocked yourself out 😵.",
@@ -118,7 +113,8 @@ def sommersault_fail(enemy)
     "#{enemy[:name]} laughed 😂 and socked 👊 you in the face.",
     "You thought you had it, but you got merked instead 😭",
   ]
-
+  
+  messages = chance == 1 ? success : failed
   puts text_break(messages.sample, " ", 70)
 end
 
