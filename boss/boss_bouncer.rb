@@ -18,7 +18,7 @@ def fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
     fight_menu(player, boss_style, weapon)
 
     unarmed_damage = (player[:attack].sample * (100 - player[:drunk] * 5) / 100).to_i
-    weapon_damage = ((player[:attack].sample / 2 + weapon[:attack].sample) * (100 - player[:drunk] * 5) / 100).to_i
+    weapon_damage = ((player[:attack].sample + weapon[:attack].sample) * (100 - player[:drunk] * 5) / 100).to_i
     user_choice = gets.chomp.to_i
 
     case user_choice

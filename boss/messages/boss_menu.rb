@@ -144,7 +144,7 @@ def blood_menu(player)
   puts buffout.sample
   puts (player[:cash] < 20 ? money.sample : denied)
   puts (player[:drunk].positive? ? drink.sample : denied)
-  puts (player[:attack].max > 1 || player[:block].max > 1 ? health.sample : denied)
+  puts ((player[:attack].max > 1 || player[:block].max > 1) && player[:hp] < 1000 ? health.sample : denied)
 end
 
 # Same messages for both of the above menus.
