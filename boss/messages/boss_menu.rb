@@ -98,47 +98,42 @@ end
 # Menu when selecting Pay with Blood
 
 def blood_menu(player)
+  denied = [
+    "Get Lost ⛔",
+    "We Don't Have It ⛔",
+    "Out of Stock ⛔",
+    "Just No ⛔",
+    "You Can't Have That ⛔",
+  ]
   always_open = [
     "   [4] 💪 Get Buff!",
     "   [4] 🏋️ Deadlift Regiment!",
     "   [4] 🫙 Creatine Monohydrate!",
   ]
-  poor = [
+  money = [
     "   [5] 💵 Get Money",
     "   [5] 💵 Lottery Tickets",
     "   [5] 📓 Read the Necronomicon",
     "   [5] 😈 Deal with the Devil",
-    "   [5] 🎰 Get Rich QUick Scheme",
+    "   [5] 🎰 Get Rich Quick Scheme",
   ]
-  rich = [
-    "You're too rich 💵 No more money for you",
-    "The Taxman Cometh 💵",
-    "Get Lost ⛔",
-  ]
-  drunk = [
+  drink = [
     "   [6] 🥤 Bottle of Water",
     "   [6] 💊 Ibuprofen",
     "   [6] 🍕 Greasy Pizza",
     "   [6] 🎬 90's Action Movies",
     "   [6] 🥙 Döner Kebab"
   ]
-  sober = [
-    "You're not even drunk 🍺🥴",
-    "We Don't Have it 🚫",
-  ]
-  strong = [
+  buff_up = [
     "   [7] 🍔 Order a take away",
-    "   [7] ⚖️ Live another day",
+    "   [7] ⚖️ Live to fight another day",
   ]
-  weak = [
-    "You're too feeble, don't make me laugh 🤣",
-    "Don't be Silly 🤣",
-  ]
+  cant_have_it = padding_generator(denied.sample, "-", 50)
 
   puts SEPARATOR
   puts padding_generator(" 🧞:'Pay with Blood ❤️ Get Bargains 💰' ", "💠", 57)
   puts always_open.sample
-  puts (player[:cash] < 20 ? poor.sample : padding_generator(rich.sample, "-", 50))
-  puts (player[:drunk].positive? ? drunk.sample : padding_generator(sober.sample, "-", 50))
-  puts (player[:attack].max > 1 || player[:block].max > 1 ? strong.sample : padding_generator(weak.sample, "-", 50))
+  puts (player[:cash] < 20 ? money.sample : cant_have_it)
+  puts (player[:drunk].positive? ? drink.sample : cant_have_it)
+  puts (player[:attack].max > 1 || player[:block].max > 1 ? buff_up.sample : cant_have_it)
 end

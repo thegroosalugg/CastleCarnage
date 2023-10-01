@@ -44,7 +44,7 @@ def big_boss_battle(player, weapon, the_boss)
       print `clear`
       weapon[:durability] += 1 # Debug
       # END OF MENU
-      
+
     else
       error_message
     end
