@@ -64,20 +64,34 @@ end
 
 def fight_menu(player, boss_style, weapon)
   denied = [
-
+    "Don't get greedy ⛔",
   ]
   get_weapon = [
-    "[4] ⚔️ Armoury"
+    "[4] ⚔️ Armoury",
   ]
+  ranged_strike = [
+    "[5] 🏹 Ranged Strike"
+  ]
+  weapon_strike = [
+    "[6] ⚔️ Strike with #{weapon[:name]}"
+  ]
+  unarmed_strike = [
+    "[6] 👊 Face Punch"
+  ]
+  sneak_attack = [
+    "[7] 👟 Sneak Attack"
+  ]
+
   puts SEPARATOR
   case boss_style
   when "🍻 Barkeep"
     puts "[4] 💴🗒️ Settle your Tabs"
     puts "[5] 🪑🤺 Old School Bar Fight"
   when "🕶️ Bouncer"
-    # puts (weapon? && player[:cash] < 5 ? denied.sample : get_weapon.sample)
-    puts "[4] ⚔️ Armoury" unless weapon
-    puts "[5] "
+    puts (weapon[:durability].positive? || player[:cash] < 5 ? padding_generator(denied.sample, "-", 50) : get_weapon.sample)
+    puts (weapon[:durability] < 3 ? padding_generator(denied.sample, "-", 50) : ranged_strike.sample)
+    puts (weapon[:durability].positive? ? weapon_strike.sample : unarmed_strike.sample)
+    puts sneak_attack.sample
   end
 end
 
