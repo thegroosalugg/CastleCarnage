@@ -1,10 +1,10 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-def damage_info(the_boss, total_damage)
+def damage_info(the_boss, damage)
   messages = [
-   "You smashed #{the_boss[:name]} in for like 💢 #{total_damage} damage, surfs up bro!",
-   "Time for a mashing up, #{the_boss[:name]} got weighed in for 💢 #{total_damage} damage!",
+   "You smashed #{the_boss[:name]} in for like 💢 #{damage} damage, surfs up bro!",
+   "Time for a mashing up, #{the_boss[:name]} got weighed in for 💢 #{damage} damage!",
   ]
 
   puts text_break(messages.sample, " ", 70)
