@@ -54,13 +54,13 @@ while (enemy || second_enemy) && player[:hp].positive?
     strike(player, second_enemy, weapon) if second_enemy
     strike(second_enemy, player) if second_enemy && second_enemy[:hp].positive?
 
-  elsif user_choice == "r"
+  elsif user_choice == "r"                                      # Target single enemy with somersault attack
     print `clear`
 
     target_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy
     somersault_attack(player, target_enemy, weapon)
 
-  elsif user_choice == "y"
+  elsif user_choice == "y"                                      # Avoid combat and run through rooms. Counter records no. of rooms explored
     print `clear` unless weapon[:broken]
 
     escape_attempt(enemy, second_enemy, player, weapon) unless weapon[:broken]
@@ -95,18 +95,18 @@ while (enemy || second_enemy) && player[:hp].positive?
     error_message
   end
 
-  if enemy && enemy[:hp] <= 0                                   # enemy dies
-    enemies_defeated += 1                                       # defeated counter
-    enemy_killed(enemy)
-    tracked_enemy = enemy                                       # records last enemy to pass to game over method
-    enemy = nil
-  end
-
-  if second_enemy && second_enemy[:hp] <= 0
-    enemies_defeated += 1
-    enemy_killed(second_enemy)
-    tracked_enemy = second_enemy
-    second_enemy = nil
+  # check for enemy deaths, update counter, track last enemy for game over
+  [enemy, second_enemy].each_with_index do |current_enemy, index|
+    if current_enemy && current_enemy[:hp] <= 0
+      enemies_defeated += 1
+      enemy_killed(current_enemy)
+      tracked_enemy = current_enemy
+      if index == 0
+        enemy = nil
+      elsif index == 1
+        second_enemy = nil
+      end
+    end
   end
 
   # Player dies and last enemy is tracked. Random enemy if both present, elsif enemy, else second enemy

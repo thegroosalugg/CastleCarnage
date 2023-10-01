@@ -16,6 +16,7 @@ def explore_rooms(enemy, weapon, player, second_enemy)
   print `clear`
   entered_room = chosen_rooms[user_choice - 4]
   enter_room(entered_room)
+  target_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy
   randomizer = rand(1..8) == 1 ? rand(50..120) : rand(20..50)
   gift = entered_room[:chance].sample
 
@@ -25,10 +26,8 @@ def explore_rooms(enemy, weapon, player, second_enemy)
   when 2 # Player steps on a trap
     player[:hp] -= randomizer
   when 3 # Enemy gains health
-    target_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy
     target_enemy[:hp] += randomizer
   when 4 # Enemy steps on a trap
-    target_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy
     target_enemy[:hp] -= randomizer
   when 5 # Get a new weapon; 20% for special weapon
     weapon = rand(1..5) == 1 ? special_weapon : pick_weapon
@@ -46,6 +45,6 @@ def explore_rooms(enemy, weapon, player, second_enemy)
     end
   end
 
-  gifts(gift, randomizer, player, (target_enemy ? target_enemy : enemy)) unless [5, 6].include?(gift)
+  gifts(gift, randomizer, player, target_enemy) unless [5, 6].include?(gift)
   return enemy, weapon, second_enemy
 end

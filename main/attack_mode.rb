@@ -31,5 +31,5 @@ def escape_attempt(enemy, second_enemy, player, weapon)
     random_attack(target_enemy)
     strike(target_enemy, player)
   end
-  state_of_game(enemy, second_enemy, player, weapon)
+  state_of_game(enemy, second_enemy, player, weapon) unless player[:hp] <= 0
 end
