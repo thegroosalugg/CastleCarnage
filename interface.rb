@@ -14,6 +14,7 @@ require_relative 'boss/messages/boss_menu'
 require_relative 'boss/messages/talks_with_the_boss'
 require_relative 'boss/messages/war_letters'
 require_relative 'boss/messages/blood_letters'
+require_relative 'debug/cheat_mode'
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 print `clear`
@@ -37,6 +38,8 @@ while (enemy || second_enemy) && player[:hp].positive?
     weapon[:broken] = false
     load_menu
     user_choice = gets.chomp.downcase
+    # DEBUG CHEAT MENU
+    enemy, second_enemy, weapon = cheat_menu(player, enemy, second_enemy, weapon, user_choice)
   else                                                          # Player must run through rooms if weapon broken
     weapon_broke(weapon) unless weapon[:broken]
     weapon[:broken] = true
@@ -66,30 +69,6 @@ while (enemy || second_enemy) && player[:hp].positive?
     escape_attempt(enemy, second_enemy, player, weapon) unless weapon[:broken]
     rooms_explored += 1
     enemy, weapon, second_enemy = explore_rooms(enemy, weapon, player, second_enemy) unless player[:hp] <= 0
-
-    # DEBUG CHEAT MENU
-  elsif user_choice == "f"
-    print `clear`
-    player[:hp] -= 200
-  elsif user_choice == "g"
-    print `clear`
-    enemy[:hp] -= 200 if enemy
-  elsif user_choice == "h"
-    print `clear`
-    second_enemy[:hp] -= 200 if second_enemy
-  elsif user_choice == "c"
-    print `clear`
-    weapon[:durability] -= 1
-  elsif user_choice == "v"
-    print `clear`
-    weapon = pick_weapon
-  elsif user_choice == "b"
-    print `clear`
-    enemy = random_enemy
-  elsif user_choice == "n"
-    print `clear`
-    second_enemy = random_enemy
-    # END OF MENU
 
   else
     error_message
