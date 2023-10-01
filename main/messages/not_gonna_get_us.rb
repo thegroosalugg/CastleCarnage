@@ -12,6 +12,7 @@ def run_away(enemy)
     "Bugger it, time to get ghost 👻",
   ]
 
+  puts SEPARATOR
   puts text_break(messages.sample, " ", 70)
 end
 
