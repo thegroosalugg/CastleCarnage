@@ -20,6 +20,9 @@ def big_boss_battle(player, weapon, the_boss)
 
     user_choice = gets.chomp.to_i
 
+    # DEBUG CHEAT MENU
+    weapon, boss_style = cheat_menu_boss(user_choice, player, weapon, the_boss, boss_style)
+
     case user_choice
     when 4
       print `clear`
@@ -29,22 +32,6 @@ def big_boss_battle(player, weapon, the_boss)
       print `clear`
       power_drained == true ? drained_message : boss_style = pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
       power_drained = true
-
-      # DEBUG CHEAT MENU
-    when 1
-      print `clear`
-      the_boss[:hp] -= 300 # Debug
-    when 11
-      print `clear`
-      player[:hp] -= 200 # Debug
-    when 2
-      print `clear`
-      weapon[:durability] -= 1 # Debug
-    when 22
-      print `clear`
-      weapon[:durability] += 1 # Debug
-      # END OF MENU
-
     else
       error_message
     end
