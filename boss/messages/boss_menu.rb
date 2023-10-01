@@ -15,7 +15,7 @@ end
 def player_status(player)
   wallet =
     case player[:cash]
-    when 0..2   then "    Skint af     🫥 /"
+    when 0..2   then "    Skint AF     🫥 /"
     when 3..5   then "  Pocket Money   🤔 /"
     when 6..9   then " Got some Moolah 😐 /"
     when 10..13 then "     Sorted      🫠 /"
@@ -38,14 +38,14 @@ def player_status(player)
   "    #{drunk} [DEBUG #{player[:drunk]}] #{'🍺' * [player[:drunk], 0].max}"
 end
 
-# the boss now moves!!
+# the boss moves!
 
 def move_ascii_art(load_boss)
   vertical_offset = (10..30).to_a.sample
   load_boss.split("\n").map { |line| " " * vertical_offset + line }.join("\n")
 end
 
-# Same as state_of_game but made exclusively for the big_boss
+# Same as state of game but exclusively for big boss
 
 def game_info(player, weapon, the_boss, boss_style, load_boss)
   puts SEPARATOR
@@ -62,69 +62,99 @@ end
 
 # Menu when selecting Fight the Power
 
-def fight_menu(player, boss_style, weapon)
-  denied = [
+def barkeep
+  money_fight = [
+    "[4] 💴🗒️ Settle your Tabs",
+  ]
+  bar_fight = [
+    "[5] 🪑🤺 Old School Bar Fight",
+  ]
 
+  puts money_fight.sample
+  puts bar_fight.sample
+end
+
+def bouncer(player, weapon)
+  weapon_strike = [
+    "[4] ⚔️ Strike with #{weapon[:name]}",
+  ]
+  unarmed_strike = [
+    "[4] 👊 Face Punch",
+  ]
+  ranged_strike = [
+    "[5] 🏹 Ranged Strike",
   ]
   get_weapon = [
-    "[4] ⚔️ Armoury"
+    "[6] ⚔️ Armoury",
   ]
+  sneak_attack = [
+    "[7] 👟 Sneak Attack",
+  ]
+
+  puts (weapon[:durability].positive? ? weapon_strike.sample : unarmed_strike.sample)
+  puts (weapon[:durability] > 2 ? ranged_strike.sample : denied)
+  puts (weapon[:durability].zero? || player[:cash] > 4 ? get_weapon.sample : denied)
+  puts sneak_attack.sample
+end
+
+def toilet_guy
+end
+
+def fight_menu(player, boss_style, weapon)
   puts SEPARATOR
   case boss_style
   when "🍻 Barkeep"
-    puts "[4] 💴🗒️ Settle your Tabs"
-    puts "[5] 🪑🤺 Old School Bar Fight"
+    barkeep
   when "🕶️ Bouncer"
-    # puts (weapon? && player[:cash] < 5 ? denied.sample : get_weapon.sample)
-    puts "[4] ⚔️ Armoury" unless weapon
-    puts "[5] "
+    bouncer(player, weapon)
   end
 end
 
 # Menu when selecting Pay with Blood
 
 def blood_menu(player)
-  always_open = [
+  buffout = [
     "   [4] 💪 Get Buff!",
     "   [4] 🏋️ Deadlift Regiment!",
     "   [4] 🫙 Creatine Monohydrate!",
   ]
-  poor = [
+  money = [
     "   [5] 💵 Get Money",
     "   [5] 💵 Lottery Tickets",
     "   [5] 📓 Read the Necronomicon",
     "   [5] 😈 Deal with the Devil",
-    "   [5] 🎰 Get Rich QUick Scheme",
+    "   [5] 🎰 Get Rich Quick Scheme",
   ]
-  rich = [
-    "You're too rich 💵 No more money for you",
-    "The Taxman Cometh 💵",
-    "Get Lost ⛔",
-  ]
-  drunk = [
+  drink = [
     "   [6] 🥤 Bottle of Water",
     "   [6] 💊 Ibuprofen",
     "   [6] 🍕 Greasy Pizza",
     "   [6] 🎬 90's Action Movies",
     "   [6] 🥙 Döner Kebab"
   ]
-  sober = [
-    "You're not even drunk 🍺🥴",
-    "We Don't Have it 🚫",
-  ]
-  strong = [
+  health = [
     "   [7] 🍔 Order a take away",
-    "   [7] ⚖️ Live another day",
-  ]
-  weak = [
-    "You're too feeble, don't make me laugh 🤣",
-    "Don't be Silly 🤣",
+    "   [7] ⚖️ Live to fight another day",
   ]
 
   puts SEPARATOR
   puts padding_generator(" 🧞:'Pay with Blood ❤️ Get Bargains 💰' ", "💠", 57)
-  puts always_open.sample
-  puts (player[:cash] < 20 ? poor.sample : padding_generator(rich.sample, "-", 50))
-  puts (player[:drunk].positive? ? drunk.sample : padding_generator(sober.sample, "-", 50))
-  puts (player[:attack].max > 1 || player[:block].max > 1 ? strong.sample : padding_generator(weak.sample, "-", 50))
+  puts buffout.sample
+  puts (player[:cash] < 20 ? money.sample : denied)
+  puts (player[:drunk].positive? ? drink.sample : denied)
+  puts (player[:attack].max > 1 || player[:block].max > 1 ? health.sample : denied)
+end
+
+# Same messages for both of the above menus.
+
+def denied
+  messages = [
+    "Get Lost ⛔",
+    "We Don't Have It ⛔",
+    "Out of Stock ⛔",
+    "Just No ⛔",
+    "You Can't Have That ⛔",
+  ]
+
+  padding_generator(messages.sample, "-", 50)
 end
