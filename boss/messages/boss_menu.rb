@@ -38,14 +38,14 @@ def player_status(player)
   "    #{drunk} [DEBUG #{player[:drunk]}] #{'🍺' * [player[:drunk], 0].max}"
 end
 
-# the boss now moves!!
+# the boss moves!
 
 def move_ascii_art(load_boss)
   vertical_offset = (10..30).to_a.sample
   load_boss.split("\n").map { |line| " " * vertical_offset + line }.join("\n")
 end
 
-# Same as state_of_game but made exclusively for the big_boss
+# Same as state of game but exclusively for big boss
 
 def game_info(player, weapon, the_boss, boss_style, load_boss)
   puts SEPARATOR
@@ -62,33 +62,51 @@ end
 
 # Menu when selecting Fight the Power
 
-def fight_menu(player, boss_style, weapon)
+def barkeep
+  money_fight = [
+    "[4] 💴🗒️ Settle your Tabs",
+  ]
+  bar_fight = [
+    "[5] 🪑🤺 Old School Bar Fight",
+  ]
+
+  puts money_fight.sample
+  puts bar_fight.sample
+end
+
+def bouncer(player, weapon)
   weapon_strike = [
-    "[4] ⚔️ Strike with #{weapon[:name]}"
+    "[4] ⚔️ Strike with #{weapon[:name]}",
   ]
   unarmed_strike = [
-    "[4] 👊 Face Punch"
+    "[4] 👊 Face Punch",
   ]
   ranged_strike = [
-    "[5] 🏹 Ranged Strike"
+    "[5] 🏹 Ranged Strike",
   ]
   get_weapon = [
     "[6] ⚔️ Armoury",
   ]
   sneak_attack = [
-    "[7] 👟 Sneak Attack"
+    "[7] 👟 Sneak Attack",
   ]
 
+  puts (weapon[:durability].positive? ? weapon_strike.sample : unarmed_strike.sample)
+  puts (weapon[:durability] > 2 ? ranged_strike.sample : denied)
+  puts (weapon[:durability].zero? || player[:cash] > 4 ? get_weapon.sample : denied)
+  puts sneak_attack.sample
+end
+
+def toilet_guy
+end
+
+def fight_menu(player, boss_style, weapon)
   puts SEPARATOR
   case boss_style
   when "🍻 Barkeep"
-    puts "[4] 💴🗒️ Settle your Tabs"
-    puts "[5] 🪑🤺 Old School Bar Fight"
+    barkeep
   when "🕶️ Bouncer"
-    puts (weapon[:durability].positive? ? weapon_strike.sample : unarmed_strike.sample)
-    puts (weapon[:durability] > 2 ? ranged_strike.sample : denied)
-    puts (weapon[:durability].zero? || player[:cash] > 4 ? get_weapon.sample : denied)
-    puts sneak_attack.sample
+    bouncer(player, weapon)
   end
 end
 
