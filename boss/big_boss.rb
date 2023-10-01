@@ -16,21 +16,25 @@ def big_boss_battle(player, weapon, the_boss)
   game_info(player, weapon, the_boss, boss_style, load_boss)
 
   while the_boss[:hp].positive? && player[:hp].positive?
-    boss_menu
+    boss_menu(boss_style)
 
     user_choice = gets.chomp.to_i
 
     # DEBUG CHEAT MENU
     weapon, boss_style = cheat_menu_boss(user_choice, player, weapon, the_boss, boss_style)
 
-    case user_choice
-    when 4
+    if user_choice == 4
       print `clear`
       power_drained = false
-      boss_style = fight_the_barkeep(player, weapon, the_boss, boss_style, load_boss) if boss_style == "🍻 Barkeep"
-      boss_style, weapon = fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss) if boss_style == "🕶️ Bouncer"
-      boss_style = fight_the_toilet(player, weapon, the_boss, boss_style, load_boss) if boss_style == "🚾 Toilet Guy"
-    when 5
+      case boss_style
+      when "🍻 Barkeep"
+        boss_style = fight_the_barkeep(player, weapon, the_boss, boss_style, load_boss)
+      when "🕶️ Bouncer"
+        boss_style, weapon = fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
+      when "🚾 Toilet Guy"
+        boss_style = fight_the_toilet(player, weapon, the_boss, boss_style, load_boss)
+      end
+    elsif user_choice == 5
       print `clear`
       power_drained == true ? drained_message : boss_style = pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
       power_drained = true
