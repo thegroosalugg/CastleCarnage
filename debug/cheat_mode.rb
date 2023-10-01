@@ -17,6 +17,7 @@ def cheat_menu(player, enemy, second_enemy, weapon, user_choice)
   when "w2"then weapon[:durability] += 1
   end
   print `clear`
+  weapon[:durability] = weapon[:durability].clamp(0, 10)
   return enemy, second_enemy, weapon
 end
 
@@ -40,5 +41,8 @@ def cheat_menu_boss(user_choice, player, weapon, the_boss, boss_style)
   when "d" then player[:drunk] += 1
   end
   print `clear`
+  weapon[:durability] = weapon[:durability].clamp(0, 10)
+  player[:cash] = player[:cash].clamp(0, 20)
+  player[:drunk] = player[:drunk].clamp(0, 20)
   return weapon, boss_style
 end
