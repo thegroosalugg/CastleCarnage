@@ -49,12 +49,12 @@ end
 
 def game_info(player, weapon, the_boss, boss_style, load_boss)
   puts SEPARATOR
-  puts "    #{health_bars(player)}"
+  puts "    #{health_bars(player)}\n" + "\n"
   puts "    #{attack_stats(player)} / #{block_stats(player)}"
   puts "    #{weapon_bars(weapon)}" if weapon[:durability].positive? && boss_style == "🕶️ Bouncer"
   puts "    #{player_status(player)}"
   puts BOSS_DIV
-  puts "    #{health_bars(the_boss)}"
+  puts "    #{health_bars(the_boss)}\n" + "\n"
   puts "    #{boss_style} / #{attack_stats(the_boss)}"
   puts SEPARATOR
   puts move_ascii_art(load_boss)
