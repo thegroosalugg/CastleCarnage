@@ -28,7 +28,7 @@ def bar_fight(player, the_boss)
   total_damage
 end
 
-def fight_the_power(player, weapon, the_boss, boss_style, load_boss)
+def fight_the_barkeep(player, weapon, the_boss, boss_style, load_boss)
 
   user_choice = 0
 
