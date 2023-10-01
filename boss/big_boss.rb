@@ -28,6 +28,8 @@ def big_boss_battle(player, weapon, the_boss)
       print `clear`
       power_drained = false
       boss_style = fight_the_barkeep(player, weapon, the_boss, boss_style, load_boss) if boss_style == "🍻 Barkeep"
+      boss_style, weapon = fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss) if boss_style == "🕶️ Bouncer"
+      boss_style = fight_the_toilet(player, weapon, the_boss, boss_style, load_boss) if boss_style == "🚾 Toilet Guy"
     when 5
       print `clear`
       power_drained == true ? drained_message : boss_style = pay_with_blood(player, weapon, the_boss, boss_style, load_boss)

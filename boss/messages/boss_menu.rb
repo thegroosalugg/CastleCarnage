@@ -107,6 +107,8 @@ def fight_menu(player, boss_style, weapon)
     barkeep
   when "🕶️ Bouncer"
     bouncer(player, weapon)
+  when "🚾 Toilet Guy"
+    toilet_guy
   end
 end
 

@@ -60,7 +60,7 @@ def big_boss_awaits
     name: BOSSES.sample,
     hp: rand(600..1000),
     attack: (rand(20..50)..rand(51..90)).to_a,
-    style: ["🍻 Barkeep", "🕶️ Bouncer"]
+    style: ["🍻 Barkeep", "🕶️ Bouncer", "🚾 Toilet Guy"]
   }
 end
 
