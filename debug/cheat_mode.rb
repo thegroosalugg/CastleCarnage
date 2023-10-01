@@ -15,6 +15,9 @@ def cheat_menu(player, enemy, second_enemy, weapon, user_choice)
   when "w"
     print `clear`
     weapon = pick_weapon
+  when "ww"
+    print `clear`
+    weapon = special_weapon
   when "w1"
     print `clear`
     weapon[:durability] -= 1
@@ -42,39 +45,45 @@ end
 def cheat_menu_boss(user_choice, player, weapon, the_boss, boss_style)
 
   case user_choice
-  when 1
+  when "b"
     print `clear`
     the_boss[:hp] -= 200
-  when 11
+  when "h"
     print `clear`
     player[:hp] -= 100
-  when 2
-    print `clear`
-    weapon[:durability] -= 1
-  when 22
-    print `clear`
-    weapon[:durability] += 1
-  when 21
+  when "w"
     print `clear`
     weapon = pick_weapon
-  when 23
+  when "ww"
     print `clear`
     weapon = special_weapon
-  when 3
+  when "w1"
+    print `clear`
+    weapon[:durability] -= 1
+  when "w2"
+    print `clear`
+    weapon[:durability] += 1
+  when "1"
     print `clear`
     boss_style = "🍻 Barkeep"
-  when 33
+  when "2"
     print `clear`
     boss_style = "🕶️ Bouncer"
-  when 32
+  when "3"
     print `clear`
     boss_style = "🚾 Toilet Guy"
-  when 43
+  when "x"
     print `clear`
     player[:cash] -= 1
-  when 44
+  when "c"
     print `clear`
     player[:cash] += 1
+  when "s"
+    print `clear`
+    player[:drunk] -= 1
+  when "d"
+    print `clear`
+    player[:drunk] += 1
   end
   return weapon, boss_style
 end

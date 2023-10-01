@@ -6,8 +6,8 @@
 def boss_menu(boss_style)
   puts SEPARATOR
   puts "     Decisions, decisions..."
-  puts "[4] 👊⚡ Fight the #{boss_style}"
-  puts "[5] 🩸🪄 Blood Magic"
+  puts "[t] 👊⚡ Fight the #{boss_style}"
+  puts "[r] 🩸🪄 Blood Magic"
 end
 
 # Dynamic status for player cash & drunkness

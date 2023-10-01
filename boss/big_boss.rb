@@ -18,12 +18,12 @@ def big_boss_battle(player, weapon, the_boss)
   while the_boss[:hp].positive? && player[:hp].positive?
     boss_menu(boss_style)
 
-    user_choice = gets.chomp.to_i
+    user_choice = gets.chomp.downcase
 
     # DEBUG CHEAT MENU
     weapon, boss_style = cheat_menu_boss(user_choice, player, weapon, the_boss, boss_style)
 
-    if user_choice == 4
+    if user_choice == "t"
       print `clear`
       power_drained = false
       case boss_style
@@ -34,7 +34,7 @@ def big_boss_battle(player, weapon, the_boss)
       when "🚾 Toilet Guy"
         boss_style = fight_the_toilet(player, weapon, the_boss, boss_style, load_boss)
       end
-    elsif user_choice == 5
+    elsif user_choice == "r"
       print `clear`
       power_drained == true ? drained_message : boss_style = pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
       power_drained = true
