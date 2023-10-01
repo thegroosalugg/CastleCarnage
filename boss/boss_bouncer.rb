@@ -18,7 +18,7 @@ def fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
     fight_menu(player, boss_style, weapon)
 
     unarmed_damage = (player[:attack].sample * (100 - player[:drunk] * 5) / 100).to_i
-    weapon_damage = ((player[:attack].sample + weapon[:attack].sample) * (100 - player[:drunk] * 5) / 100).to_i
+    weapon_damage = ((player[:attack].sample / 2 + weapon[:attack].sample) * (100 - player[:drunk] * 5) / 100).to_i
     user_choice = gets.chomp.to_i
 
     case user_choice
@@ -29,11 +29,27 @@ def fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
       total_damage = beef_with_the_bouncer(player, the_boss, weapon, (weapon[:durability].positive? ? weapon_damage : unarmed_damage))
     when 5
       print `clear`
-      #total_damage = bar_fight(player, the_boss)
+      if weapon[:durability] > 2
+        the_boss[:hp] -= (weapon_damage * rand(2.0..2.5))
+        weapon[:durability] = 0
+      else
+        error_message
+        redo
+      end
     when 6
       print `clear`
+      if weapon[:durability].zero? && player[:cash] > 4
+        weapon = rand(1..5) == 1 ? special_weapon : pick_weapon
+        got_weapon(weapon)
+        player[:cash] -= 5
+        redo
+      else
+        error_message
+        redo
+      end
     when 7
       print `clear`
+
     else
       error_message
     end

@@ -93,7 +93,7 @@ def bouncer(player, weapon)
 
   puts (weapon[:durability].positive? ? weapon_strike.sample : unarmed_strike.sample)
   puts (weapon[:durability] > 2 ? ranged_strike.sample : denied)
-  puts (weapon[:durability].zero? || player[:cash] > 4 ? get_weapon.sample : denied)
+  puts (weapon[:durability].zero? && player[:cash] > 4 ? get_weapon.sample : denied)
   puts sneak_attack.sample
 end
 

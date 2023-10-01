@@ -69,6 +69,12 @@ def cheat_menu_boss(user_choice, player, weapon, the_boss, boss_style)
   when 32
     print `clear`
     boss_style = "🚾 Toilet Guy"
+  when 43
+    print `clear`
+    player[:cash] -= 1
+  when 44
+    print `clear`
+    player[:cash] += 1
   end
   return weapon, boss_style
 end
