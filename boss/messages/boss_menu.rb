@@ -15,7 +15,7 @@ end
 def player_status(player)
   wallet =
     case player[:cash]
-    when 0..2   then "    Skint af     🫥 /"
+    when 0..2   then "    Skint AF     🫥 /"
     when 3..5   then "  Pocket Money   🤔 /"
     when 6..9   then " Got some Moolah 😐 /"
     when 10..13 then "     Sorted      🫠 /"
@@ -63,20 +63,17 @@ end
 # Menu when selecting Fight the Power
 
 def fight_menu(player, boss_style, weapon)
-  denied = [
-    "Don't get greedy ⛔",
+  weapon_strike = [
+    "[4] ⚔️ Strike with #{weapon[:name]}"
   ]
-  get_weapon = [
-    "[4] ⚔️ Armoury",
+  unarmed_strike = [
+    "[4] 👊 Face Punch"
   ]
   ranged_strike = [
     "[5] 🏹 Ranged Strike"
   ]
-  weapon_strike = [
-    "[6] ⚔️ Strike with #{weapon[:name]}"
-  ]
-  unarmed_strike = [
-    "[6] 👊 Face Punch"
+  get_weapon = [
+    "[6] ⚔️ Armoury",
   ]
   sneak_attack = [
     "[7] 👟 Sneak Attack"
@@ -88,9 +85,9 @@ def fight_menu(player, boss_style, weapon)
     puts "[4] 💴🗒️ Settle your Tabs"
     puts "[5] 🪑🤺 Old School Bar Fight"
   when "🕶️ Bouncer"
-    puts (weapon[:durability].positive? || player[:cash] < 5 ? padding_generator(denied.sample, "-", 50) : get_weapon.sample)
-    puts (weapon[:durability] < 3 ? padding_generator(denied.sample, "-", 50) : ranged_strike.sample)
     puts (weapon[:durability].positive? ? weapon_strike.sample : unarmed_strike.sample)
+    puts (weapon[:durability] > 2 ? ranged_strike.sample : denied)
+    puts (weapon[:durability].zero? || player[:cash] > 4 ? get_weapon.sample : denied)
     puts sneak_attack.sample
   end
 end
@@ -98,14 +95,7 @@ end
 # Menu when selecting Pay with Blood
 
 def blood_menu(player)
-  denied = [
-    "Get Lost ⛔",
-    "We Don't Have It ⛔",
-    "Out of Stock ⛔",
-    "Just No ⛔",
-    "You Can't Have That ⛔",
-  ]
-  always_open = [
+  buffout = [
     "   [4] 💪 Get Buff!",
     "   [4] 🏋️ Deadlift Regiment!",
     "   [4] 🫙 Creatine Monohydrate!",
@@ -124,16 +114,29 @@ def blood_menu(player)
     "   [6] 🎬 90's Action Movies",
     "   [6] 🥙 Döner Kebab"
   ]
-  buff_up = [
+  health = [
     "   [7] 🍔 Order a take away",
     "   [7] ⚖️ Live to fight another day",
   ]
-  cant_have_it = padding_generator(denied.sample, "-", 50)
 
   puts SEPARATOR
   puts padding_generator(" 🧞:'Pay with Blood ❤️ Get Bargains 💰' ", "💠", 57)
-  puts always_open.sample
-  puts (player[:cash] < 20 ? money.sample : cant_have_it)
-  puts (player[:drunk].positive? ? drink.sample : cant_have_it)
-  puts (player[:attack].max > 1 || player[:block].max > 1 ? buff_up.sample : cant_have_it)
+  puts buffout.sample
+  puts (player[:cash] < 20 ? money.sample : denied)
+  puts (player[:drunk].positive? ? drink.sample : denied)
+  puts (player[:attack].max > 1 || player[:block].max > 1 ? health.sample : denied)
+end
+
+# Same messages for both of the above menus.
+
+def denied
+  messages = [
+    "Get Lost ⛔",
+    "We Don't Have It ⛔",
+    "Out of Stock ⛔",
+    "Just No ⛔",
+    "You Can't Have That ⛔",
+  ]
+
+  padding_generator(messages.sample, "-", 50)
 end
