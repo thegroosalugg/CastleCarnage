@@ -1,0 +1,85 @@
+# rubocop:disable all
+#-----------------------------YOUR CODE BELOW---------------------------------->
+
+def fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
+
+  user_choice = 0
+
+  until (4..7).include?(user_choice)
+    game_info(player, weapon, the_boss, boss_style, load_boss)
+    fight_menu(player, boss_style, weapon)
+
+    unarmed_damage = { id: :unarmed, value: (player[:attack].sample * (100 - player[:drunk] * 5) / 100).to_i }
+    weapon_damage = { id: :weapon, value: ((player[:attack].sample + weapon[:attack].sample) * (100 - player[:drunk] * 5) / 100).to_i }
+    user_choice = gets.chomp.to_i
+
+    case user_choice
+    when 4
+      print `clear`
+      damage = weapon[:durability].positive? ? weapon_damage : unarmed_damage
+      if damage[:id] == :weapon
+        weapon[:durability] = [weapon[:durability] - 1, 0].max
+        # if weapon[:crit_ch].sample == 1
+        if rand(1..2) == 1
+          damage[:value] = (damage[:value] * weapon[:crit_x].call).to_i
+          critical_hit(player, the_boss, damage[:value])
+        elsif rand(1..2) == 2
+        # elsif weapon[:accuracy].sample == 1
+          damage[:value] = 0
+          missed(player, the_boss)
+        end
+        weapon_broke(weapon) if weapon[:durability].zero?
+      end
+      the_boss[:hp] -= damage[:value]
+      succesful_hit(player, the_boss, damage[:value]) # need to fix this message
+    when 5 # tested and working
+      print `clear`
+      if weapon[:durability] > 2
+        damage = (weapon_damage[:value] * rand(2.0..2.5)).to_i
+        the_boss[:hp] -= damage
+        weapon[:durability] = 0
+        succesful_hit(player, the_boss, damage)
+        weapon_broke(weapon)
+      else
+        error_message
+        redo
+      end
+    when 6  # tested and working
+      print `clear`
+      if weapon[:durability].zero? && player[:cash] > 4
+        weapon = rand(1..5) == 1 ? special_weapon : pick_weapon
+        got_weapon(weapon)
+        player[:cash] -= 5
+        redo
+      else
+        error_message
+        redo
+      end
+    when 7 # tested and working
+      print `clear`
+      damage = (unarmed_damage[:value] * rand(0.6..1.0)).to_i
+      chance = rand(1..2)
+      if chance == 1
+        cash = rand(3..6)
+        player[:cash] = [player[:cash] + cash, 20].min
+        the_boss[:hp] -= damage
+        if rand(1..5) == 1
+          life = (damage * rand(1.0..2.0)).to_i
+          player[:hp] += life
+          gained(player, life, :life)
+        end
+        succesful_hit(player, the_boss, damage)
+        gained(player, cash, :cash)
+      else
+        counter_attack = (the_boss[:attack].sample * rand(0.6..0.8) - player[:block].sample).to_i
+        player[:hp] -= counter_attack
+        counter(player, the_boss, counter_attack)
+      end
+    else
+      error_message
+    end
+  end
+
+  boss_style = the_boss[:style].sample
+  return boss_style, weapon
+end

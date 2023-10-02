@@ -116,13 +116,15 @@ def health_bars(entity)
 end
 
 def attack_stats(entity)
-  "💢 Min " + "🔶" * (entity[:attack].min / 20) + ("🔸" * ((entity[:attack].min - 1) / 5 % 4 + 1)) +
-  " Max " + "🔶" * (entity[:attack].max / 20) + ("🔸" * ((entity[:attack].max - 1) / 5 % 4 + 1))
+  "💢 " + ("🔸" * ((entity[:attack].min - 1) / 5 % 4 + 1)) + "🔶" * (entity[:attack].min / 20) +
+  " #{entity[:attack].minmax.join('-')} " +
+  "🔶" * (entity[:attack].max / 20) + ("🔸" * ((entity[:attack].max - 1) / 5 % 4 + 1))
 end
 
 def block_stats(entity)
-  "🛡️ Min " + "🔷" * (entity[:block].min / 5) + "🔹" * (entity[:block].min % 5) +
-  " Max " + "🔷" * (entity[:block].max / 5) + "🔹" * (entity[:block].max % 5)
+  "🛡️ " + "🔹" * (entity[:block].min % 5) + "🔷" * (entity[:block].min / 5) +
+  " #{entity[:block].minmax.join('-')} " +
+  "🔷" * (entity[:block].max / 5) + "🔹" * (entity[:block].max % 5)
 end
 
 def percentage(entity, key)
@@ -150,7 +152,7 @@ end
 
 def state_of_game(enemy, second_enemy, player, weapon)
   puts SEPARATOR
-  puts "    #{health_bars(player)}"
+  puts "    #{health_bars(player)}\n" + "\n"
   puts "    #{block_stats(player)}"
   puts "    #{weapon_bars(weapon)}" if weapon[:durability].positive?
   puts "    #{enemy_bars(enemy)}" if enemy

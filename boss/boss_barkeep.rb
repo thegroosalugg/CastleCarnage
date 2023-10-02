@@ -1,16 +1,15 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-def pay_the_tab(player, the_boss, damage)
+def pay_the_tab(player, the_boss)
   cash_spent = player[:cash].zero? ? 0 : (1..[player[:cash], 6].min).to_a.sample
   multiplier = cash_spent.zero? ? 0.6 : 1.0 + (cash_spent * 0.5)
-  total_damage = (damage * multiplier).to_i
+  damage = ((player[:attack].sample * (100 - player[:drunk] * 5) / 100) * multiplier).to_i
 
-  the_boss[:hp] -= total_damage
+  the_boss[:hp] -= damage
   player[:cash] -= cash_spent
   player[:drunk] = (player[:drunk] + cash_spent).clamp(0, 20)
-
-  total_damage
+  succesful_hit(player, the_boss, damage)
 end
 
 def bar_fight(player, the_boss)
@@ -22,13 +21,12 @@ def bar_fight(player, the_boss)
 
   bar_fight_outcome(drunk_adjustment, wallet_adjustment)
 
-  total_damage = (player[:attack].sample * (100 - player[:drunk] * 5) / 100).to_i
-  the_boss[:hp] -= total_damage
-
-  total_damage
+  damage = (player[:attack].sample * (100 - player[:drunk] * 5) / 100).to_i # updates damage to current drunkness
+  the_boss[:hp] -= damage
+  succesful_hit(player, the_boss, damage)
 end
 
-def fight_the_power(player, weapon, the_boss, boss_style, load_boss)
+def fight_the_barkeep(player, weapon, the_boss, boss_style, load_boss)
 
   user_choice = 0
 
@@ -36,20 +34,18 @@ def fight_the_power(player, weapon, the_boss, boss_style, load_boss)
     game_info(player, weapon, the_boss, boss_style, load_boss)
     fight_menu(player, boss_style, weapon)
 
-    damage = (player[:attack].sample * (100 - player[:drunk] * 5) / 100).to_i
     user_choice = gets.chomp.to_i
 
     if user_choice == 4
       print `clear`
-      total_damage = pay_the_tab(player, the_boss, damage) # Get total damage
+      pay_the_tab(player, the_boss)
     elsif user_choice == 5
       print `clear`
-      total_damage = bar_fight(player, the_boss)
+      bar_fight(player, the_boss)
     else
       error_message
     end
   end
 
-  damage_info(the_boss, total_damage)
   boss_style = the_boss[:style].sample
 end

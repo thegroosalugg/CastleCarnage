@@ -3,11 +3,11 @@
 
 # Main Menu
 
-def boss_menu
+def boss_menu(boss_style)
   puts SEPARATOR
   puts "     Decisions, decisions..."
-  puts "[4] 👊⚡ Fight the Power"
-  puts "[5] 🩸🪄 Blood Magic"
+  puts "[t] 👊⚡ Fight the #{boss_style}"
+  puts "[r] 🩸🪄 Blood Magic"
 end
 
 # Dynamic status for player cash & drunkness
@@ -49,12 +49,12 @@ end
 
 def game_info(player, weapon, the_boss, boss_style, load_boss)
   puts SEPARATOR
-  puts "    #{health_bars(player)}"
+  puts "    #{health_bars(player)}\n" + "\n"
   puts "    #{attack_stats(player)} / #{block_stats(player)}"
   puts "    #{weapon_bars(weapon)}" if weapon[:durability].positive? && boss_style == "🕶️ Bouncer"
   puts "    #{player_status(player)}"
   puts BOSS_DIV
-  puts "    #{health_bars(the_boss)}"
+  puts "    #{health_bars(the_boss)}\n" + "\n"
   puts "    #{boss_style} / #{attack_stats(the_boss)}"
   puts SEPARATOR
   puts move_ascii_art(load_boss)
@@ -93,7 +93,7 @@ def bouncer(player, weapon)
 
   puts (weapon[:durability].positive? ? weapon_strike.sample : unarmed_strike.sample)
   puts (weapon[:durability] > 2 ? ranged_strike.sample : denied)
-  puts (weapon[:durability].zero? || player[:cash] > 4 ? get_weapon.sample : denied)
+  puts (weapon[:durability].zero? && player[:cash] > 4 ? get_weapon.sample : denied)
   puts sneak_attack.sample
 end
 
@@ -107,6 +107,8 @@ def fight_menu(player, boss_style, weapon)
     barkeep
   when "🕶️ Bouncer"
     bouncer(player, weapon)
+  when "🚾 Toilet Guy"
+    toilet_guy
   end
 end
 
@@ -142,7 +144,7 @@ def blood_menu(player)
   puts buffout.sample
   puts (player[:cash] < 20 ? money.sample : denied)
   puts (player[:drunk].positive? ? drink.sample : denied)
-  puts (player[:attack].max > 1 || player[:block].max > 1 ? health.sample : denied)
+  puts ((player[:attack].max > 1 || player[:block].max > 1) && player[:hp] < 1000 ? health.sample : denied)
 end
 
 # Same messages for both of the above menus.
