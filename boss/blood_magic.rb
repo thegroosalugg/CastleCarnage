@@ -6,7 +6,7 @@ def get_buff(player)
   price_paid = (boost == :attack ? (35..60) : (25..50)).to_a.sample
   multiplier = price_paid / rand(15..25)
   player[:hp] -= price_paid
-  player[boost] = player[boost].map { |boost| [boost + multiplier, 80].min }
+  player[boost] = player[boost].map { |stat| [stat + multiplier, 80].min }
   return price_paid, multiplier, boost
 end
 
@@ -30,7 +30,7 @@ def munch_out(player)
   boost = [:attack, :block].select { |stat| player[stat].max > 1 }.sample
 
   multiplier = player[boost].max > 1 ? rand(1..[player[boost].max - 1, 4].min) : 0
-  player[boost] = player[boost].map { |boost| [boost - multiplier, 1].max }
+  player[boost] = player[boost].map { |stat| [stat - multiplier, 1].max }
 
   price_paid = (25..50).to_a.sample * multiplier
   player[:hp] = [player[:hp] + price_paid, 1000].min
