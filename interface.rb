@@ -21,7 +21,7 @@ require_relative 'debug/cheat_mode'
 
 print `clear`
 
-player = { id: :player, hp: rand(250..300), attack: (20..45).to_a, block: (1..10).to_a, cash: rand(2..12), drunk: 0 }
+player = { id: :player, hp: rand(250..300), attack: (20..35).to_a, block: (1..10).to_a, cash: rand(2..12), drunk: 0 }
 enemy = random_enemy
 second_enemy = nil
 tracked_enemy = enemy
