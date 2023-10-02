@@ -79,12 +79,13 @@ def pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
         error_message
         redo
       end
+    when 0 then break
     else
       error_message
     end
   end
 
   print `clear`
-  paid_blood_message(player, user_choice, price_paid, multiplier, boost)
-  boss_style = the_boss[:style].sample
+  paid_blood_message(player, user_choice, price_paid, multiplier, boost) unless user_choice.zero?
+  boss_style = user_choice.zero? ? boss_style : the_boss[:style].sample
 end

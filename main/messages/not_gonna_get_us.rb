@@ -53,26 +53,23 @@ def gifts(gift, randomizer, player, enemy)
     "Freezing ❄ my ass off here 🥶",
   ]
   gained_hp = [
-    "✅ Ah mate! Who left this grass ☘ here?! Northern Lights? Sweet as! You gained #{player[:emoji]} #{randomizer} HP!",
-    "✅ A Spaghetti Store 🏪 ? Here? Yeah, I'll have the spaghetti 🍝. You gained #{player[:emoji]} #{randomizer} HP!",
-    "✅ These chili peppers 🌶 should give me the quick energy I need! You gained #{player[:emoji]} #{randomizer} HP!",
+    "✅ Ah mate! Who left this grass 🌿 here?! Northern Lights? Sweet as! You gained #{player[:emoji]} #{randomizer} HP!",
+    "✅ A Spaghetti Store? Here? Yeah, I'll have the spaghetti 🍝 You gained #{player[:emoji]} #{randomizer} HP!",
+    "✅ These chili peppers 🌶️ should give me the quick energy I need! You gained #{player[:emoji]} #{randomizer} HP!",
     "✅ Ha! Some idiot left this pizza 🍕 in the trash! What a treat! You gained #{player[:emoji]} #{randomizer} HP!",
     "✅ This milk 🍼 is well out of date, eh, let's drink it anyways. You gained #{player[:emoji]} #{randomizer} HP!",
     "✅ Proper hungry. These mouldy bananas 🍌 will have to do. You gained #{player[:emoji]} #{randomizer} HP!",
     "✅ The Rock 👨‍🦲 awaits you and gives you a high five 🙏. You gained #{player[:emoji]} #{randomizer} HP!",
     "✅ Fuckin' A! Still some cold ones in the fridge 🍻! You gained #{player[:emoji]} #{randomizer} HP!",
-    "✅ There's some chips 🍟 on the floor. 5 second rule ‼ You gained #{player[:emoji]} #{randomizer} HP!",
-    "✅ Heisenberg's blue 🕵️‍♂️!! Whoooa! 🥴 River dance! You gained #{player[:emoji]} #{randomizer} HP!",
+    "✅ There's some chips 🍟 on the floor. 5 second rule‼ You gained #{player[:emoji]} #{randomizer} HP!",
+    "✅ Heisenberg's 🕵️‍♂️ blue! Whoooa! 🥴 River dance! You gained #{player[:emoji]} #{randomizer} HP!",
     "✅ What muppet left this pie 🥧 here, nicked. You gained #{player[:emoji]} #{randomizer} HP!",
     "✅ Holy shit! A fucking cake 🎂! Munched! You gained #{player[:emoji]} #{randomizer} HP!",
-    "✅ You got the Wi-Fi Password 📝! You gained #{player[:emoji]} #{randomizer} HP!",
-    "✅ The doctor 🥼 is in the house. You gained #{player[:emoji]} #{randomizer} HP!",
     "✅ Some shrooms 🍄, You gained #{player[:emoji]} #{randomizer} HP!",
   ]
   lost_hp = [
     "❌ The phone 📱 reception in here is terrible and there's no Wi-Fi 📻. You lost #{player[:emoji]} #{randomizer} HP!",
     "❌ Bollocks, you stepped into a bear trap 🐻, this is gonna cost ya! You lost #{player[:emoji]} #{randomizer} HP!",
-    "❌ Crikey! A seagull 🦆 swooped down and nicked your chips 🍟! You lost #{player[:emoji]} #{randomizer} HP!",
     "❌ KABLAMO ‼ 💥 bloody landmines 🕳 ! Who put these here?! You lost #{player[:emoji]} #{randomizer} HP!",
     "❌ An axe 🪓 flew across the room and hit you in the face! You lost #{player[:emoji]} #{randomizer} HP!",
     "❌ There's a party 🎉 occuring, but you don't know anyone. You lost #{player[:emoji]} #{randomizer} HP!",
@@ -82,7 +79,7 @@ def gifts(gift, randomizer, player, enemy)
     "❌ A bear 🐻 jumped out and ate some of you. You lost #{player[:emoji]} #{randomizer} HP!",
     "❌ As you walked in a fridge 🧳 fell on you. You lost #{player[:emoji]} #{randomizer} HP!",
     "❌ The bad music 🎵 up in here torments you. You lost #{player[:emoji]} #{randomizer} HP!",
-    "❌ You stepped on a rake 🏒 ! You lost #{player[:emoji]} #{randomizer} HP!",
+    "❌ You forgot to take the bins 🗑️ out. You lost #{player[:emoji]} #{randomizer} HP!",
   ]
   enemy_hp = [
     "❌ You're practically feeding #{enemy[:name]} with your poor decisions. They regain #{enemy[:emoji]} #{randomizer} HP!",
