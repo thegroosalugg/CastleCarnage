@@ -36,6 +36,26 @@ def armoury(player)
   weapon
 end
 
+def sneak_attack(player, the_boss, damage)
+  chance = rand(1..2)
+  if chance == 1
+    cash = rand(3..6)
+    player[:cash] = [player[:cash] + cash, 20].min
+    the_boss[:hp] -= damage
+    if rand(1..5) == 1
+      life = (damage * rand(1.0..2.0)).to_i
+      player[:hp] += life
+      gained(player, life, :life)
+    end
+    succesful_hit(player, the_boss, damage)
+    gained(player, cash, :cash)
+  else
+    counter_attack = (the_boss[:attack].sample * rand(0.6..0.8) - player[:block].sample).to_i
+    player[:hp] -= counter_attack
+    counter(player, the_boss, counter_attack)
+  end
+end
+
 def fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
   user_choice = 0
 
@@ -69,26 +89,10 @@ def fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
         error_message
         redo
       end
-    when 7 # tested and working
+    when 7
       print `clear`
       damage = (unarmed_damage[:value] * rand(0.6..1.0)).to_i
-      chance = rand(1..2)
-      if chance == 1
-        cash = rand(3..6)
-        player[:cash] = [player[:cash] + cash, 20].min
-        the_boss[:hp] -= damage
-        if rand(1..5) == 1
-          life = (damage * rand(1.0..2.0)).to_i
-          player[:hp] += life
-          gained(player, life, :life)
-        end
-        succesful_hit(player, the_boss, damage)
-        gained(player, cash, :cash)
-      else
-        counter_attack = (the_boss[:attack].sample * rand(0.6..0.8) - player[:block].sample).to_i
-        player[:hp] -= counter_attack
-        counter(player, the_boss, counter_attack)
-      end
+      sneak_attack(player, the_boss, damage)
     else
       error_message
     end
