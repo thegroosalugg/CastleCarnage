@@ -2,7 +2,7 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 def strike(attacker, target, weapon = nil)
-  damage_source = attacker[:id] == "player" ? weapon : attacker
+  damage_source = attacker[:id] == :player ? weapon : attacker
   damage_dealt = [damage_source[:attack].sample - target[:block].sample, 1].max
 
   if damage_source[:crit_ch].sample == 1
@@ -15,7 +15,7 @@ def strike(attacker, target, weapon = nil)
     target[:hp] -= damage_dealt
     succesful_hit(attacker, target, damage_dealt)
   end
-  weapon[:durability] = [weapon[:durability] - 1, 0].max if attacker[:id] == "player"
+  weapon[:durability] = [weapon[:durability] - 1, 0].max if attacker[:id] == :player
 end
 
 def somersault_attack(player, enemy, weapon)   # succeed and strike twice, fail and get struck thrice

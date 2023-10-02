@@ -21,7 +21,7 @@ require_relative 'debug/cheat_mode'
 
 print `clear`
 
-player = { id: "player", hp: rand(250..300), attack: (20..45).to_a, block: (1..10).to_a, cash: rand(2..12), drunk: 0 }
+player = { id: :player, hp: rand(250..300), attack: (20..45).to_a, block: (1..10).to_a, cash: rand(2..12), drunk: 0 }
 enemy = random_enemy
 second_enemy = nil
 tracked_enemy = enemy
@@ -104,8 +104,8 @@ while (enemy || second_enemy) && player[:hp].positive?
     big_boss_battle(player, weapon, the_boss)
   end
 
-  state_of_game(enemy, second_enemy, player, weapon) unless tracked_enemy[:id] == "boss" || weapon[:durability].zero?
+  state_of_game(enemy, second_enemy, player, weapon) unless tracked_enemy[:id] == :boss || weapon[:durability].zero?
 end
 
-state_of_game(enemy, second_enemy, player, weapon) if tracked_enemy[:id] == "enemy" && weapon[:durability].zero?
+state_of_game(enemy, second_enemy, player, weapon) if tracked_enemy[:id] == :enemy && weapon[:durability].zero?
 game_over(tracked_enemy, player)
