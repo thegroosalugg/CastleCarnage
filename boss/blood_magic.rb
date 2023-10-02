@@ -49,7 +49,7 @@ def pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
         multiplier = player[boost].max > 1 ? rand(1..[player[boost].max - 1, 4].min) : 0
         player[boost] = player[boost].map { |boost| [boost - multiplier, 1].max }
 
-        price_paid = (20..40).to_a.sample * multiplier
+        price_paid = (25..50).to_a.sample * multiplier
         player[:hp] = [player[:hp] + price_paid, 1000].min
       else
         error_message
