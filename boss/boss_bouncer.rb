@@ -29,6 +29,13 @@ def ranged_strike(player, weapon, the_boss, weapon_damage)
   weapon_broke(weapon)
 end
 
+def armoury(player)
+  weapon = rand(1..5) == 1 ? special_weapon : pick_weapon
+  got_weapon(weapon)
+  player[:cash] -= 5
+  weapon
+end
+
 def fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
   user_choice = 0
 
@@ -53,12 +60,10 @@ def fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
         error_message
         redo
       end
-    when 6  # tested and working
+    when 6
       print `clear`
       if weapon[:durability].zero? && player[:cash] > 4
-        weapon = rand(1..5) == 1 ? special_weapon : pick_weapon
-        got_weapon(weapon)
-        player[:cash] -= 5
+        weapon = armoury(player)
         redo
       else
         error_message
