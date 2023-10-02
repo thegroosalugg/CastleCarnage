@@ -3,24 +3,32 @@
 
 # Bar fight outcomes # .abs removes negatives so only positive integers displayed
 
-def bar_fight_outcome(drunk_adjustment, wallet_adjustment)
+def bar_fight_outcome(beers, wallet)
   got_drunk = [
-    "Damn, that was a piss up, you feel #{drunk_adjustment} 🍺 drunker.",
+    "Damn, that was a piss up, you feel #{beers} 🍺 drunker.",
   ]
   sober_up = [
-    "That knocked some sense into ya, ya feel you feel #{drunk_adjustment.abs} 🍺 lighter!",
+    "That knocked some sense into ya, ya feel you feel #{beers.abs} 🍺 lighter!",
   ]
   got_cash = [
-    "You battered #{wallet_adjustment} 💵 outta some poor sod!",
+    "You battered #{wallet} 💵 outta some poor sod!",
   ]
   got_mugged = [
-    "You got mugged for #{wallet_adjustment.abs} 💵",
+    "You got mugged for #{wallet.abs} 💵",
   ]
 
-  drunk = drunk_adjustment.positive? ? got_drunk : sober_up
-  wallet = wallet_adjustment.positive? ? got_cash : got_mugged
+  drunk = beers.positive? ? got_drunk : sober_up
+  wallet = wallet.positive? ? got_cash : got_mugged
   puts text_break(drunk.sample, " ", 70)
   puts text_break(wallet.sample, " ", 70)
+end
+
+def paid_the_tab(cash_spent)
+  messages = [
+    "You doled out #{cash_spent} 💵 and ate up #{cash_spent} 🍺 drinks. Time for some dishing.",
+  ]
+
+  puts text_break(messages.sample, " ", 70)
 end
 
 def counter(player, the_boss, counter_attack)

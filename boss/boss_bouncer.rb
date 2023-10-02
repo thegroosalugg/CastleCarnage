@@ -1,8 +1,35 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-def fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
+def beef_with_the_bouncer(player, weapon, the_boss, damage)
+  case damage[:id]
+  when :unarmed
+    the_boss[:hp] -= damage[:value]
+    succesful_hit(player, the_boss, damage[:value])
+  when :weapon
+    if weapon[:crit_ch].sample == 1
+      damage[:value] = (damage[:value] * weapon[:crit_x].call).to_i
+      critical_hit(player, the_boss, damage[:value])
+    elsif weapon[:accuracy].sample == 1
+      damage[:value] = 0
+      missed(player, the_boss)
+    else
+      succesful_hit(player, the_boss, damage[:value])
+    end
+    the_boss[:hp] -= damage[:value]
+    weapon[:durability] = [weapon[:durability] - 1, 0].max
+  end
+end
 
+def ranged_strike(player, weapon, the_boss, weapon_damage)
+  damage = (weapon_damage[:value] * rand(2.0..2.5)).to_i
+  the_boss[:hp] -= damage
+  weapon[:durability] = 0
+  succesful_hit(player, the_boss, damage)
+  weapon_broke(weapon)
+end
+
+def fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
   user_choice = 0
 
   until (4..7).include?(user_choice)
@@ -17,29 +44,11 @@ def fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
     when 4
       print `clear`
       damage = weapon[:durability].positive? ? weapon_damage : unarmed_damage
-      if damage[:id] == :weapon
-        weapon[:durability] = [weapon[:durability] - 1, 0].max
-        # if weapon[:crit_ch].sample == 1
-        if rand(1..2) == 1
-          damage[:value] = (damage[:value] * weapon[:crit_x].call).to_i
-          critical_hit(player, the_boss, damage[:value])
-        elsif rand(1..2) == 2
-        # elsif weapon[:accuracy].sample == 1
-          damage[:value] = 0
-          missed(player, the_boss)
-        end
-        weapon_broke(weapon) if weapon[:durability].zero?
-      end
-      the_boss[:hp] -= damage[:value]
-      succesful_hit(player, the_boss, damage[:value]) # need to fix this message
-    when 5 # tested and working
+      beef_with_the_bouncer(player, weapon, the_boss, damage)
+    when 5
       print `clear`
       if weapon[:durability] > 2
-        damage = (weapon_damage[:value] * rand(2.0..2.5)).to_i
-        the_boss[:hp] -= damage
-        weapon[:durability] = 0
-        succesful_hit(player, the_boss, damage)
-        weapon_broke(weapon)
+        ranged_strike(player, weapon, the_boss, weapon_damage)
       else
         error_message
         redo
