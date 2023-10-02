@@ -2,11 +2,16 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 def get_buff(player)
-  boost = [:attack, :block].sample
+  stats = []
+  [player[:attack], player[:block]].each_with_index do |stat, index| # selects stats when attack < 50 || block < 25
+    stats << :attack if index == 0 && stat.max < 50
+    stats << :block if index == 1 && stat.max < 25
+  end
+  boost = stats.sample
   price_paid = (boost == :attack ? (35..60) : (25..50)).to_a.sample
   multiplier = price_paid / rand(15..25)
   player[:hp] -= price_paid
-  player[boost] = player[boost].map { |stat| [stat + multiplier, 80].min }
+  player[boost] = player[boost].map { |stat| [stat + multiplier, boost == :attack ? 50 : 25].min }
   return price_paid, multiplier, boost
 end
 
@@ -42,31 +47,32 @@ def pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
 
   until (4..7).include?(user_choice)
     game_info(player, weapon, the_boss, boss_style, load_boss)
-
-    message = "[DEBUG] 💢 #{player[:attack].minmax.join('-')} 🛡️ #{player[:block].minmax.join('-')}" # DEBUGGING
-    puts text_break(message, " ", 70) # DEBUGGING
-
     blood_menu(player)
 
     user_choice = gets.chomp.to_i
     case user_choice
-    when 4 # spend HP to increase player attack or block randomly
+    when 4 # pay HP to increase player attack / block at random. Max 50 attack / 25 block range
+      if player[:attack].max < 50 || player[:block].max < 25
       price_paid, multiplier, boost = get_buff(player)
-    when 5 # spend HP to get cash
+    else
+      error_message
+      redo
+    end
+    when 5 # pay HP for cash: 0-20
       if player[:cash] < 20
         price_paid, multiplier = get_rich(player)
       else
         error_message
         redo
       end
-    when 6 # spend HP to decrease toxicity
+    when 6 # pay HP to decrease toxicity: 20-0
       if player[:drunk].positive?
         price_paid, multiplier = sort_it_out(player)
       else
         error_message
         redo
       end
-    when 7 # sacrifice attack or block to gain HP
+    when 7 # sacrifice attack / block for HP: 1000 max
       if (player[:attack].max > 1 || player[:block].max > 1) && player[:hp] < 1000
         price_paid, multiplier, boost = munch_out(player)
       else
@@ -79,10 +85,6 @@ def pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
   end
 
   print `clear`
-
-  second_message = "[DEBUG] 💢 #{player[:attack].minmax.join('-')} 🛡️ #{player[:block].minmax.join('-')} 🚀 #{boost} ❌ [#{multiplier}] 💲#{[price_paid]}" # DEBUGGING
-  puts text_break(second_message, " ", 70) # DEBUGGING
-
   paid_blood_message(player, user_choice, price_paid, multiplier, boost)
   boss_style = the_boss[:style].sample
 end
