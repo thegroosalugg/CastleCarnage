@@ -10,7 +10,7 @@ def pay_the_tab(player, the_boss)
   player[:cash] -= cash_spent
   player[:drunk] = (player[:drunk] + cash_spent).clamp(0, 20)
 
-  invoice(cash_spent, :bar)
+  invoice(cash_spent, :bar_tab)
   succesful_hit(player, the_boss, damage)
 end
 
@@ -24,7 +24,7 @@ def bar_fight(player, the_boss)
   damage = (player[:attack].sample * (100 - player[:drunk] * 5) / 100).to_i.clamp(0, 100) # updates damage to current drunkenness
   the_boss[:hp] -= damage
 
-  bar_fight_outcome(beers, wallet)
+  invoice([beers, wallet], :bar_fight)
   succesful_hit(player, the_boss, damage)
 end
 

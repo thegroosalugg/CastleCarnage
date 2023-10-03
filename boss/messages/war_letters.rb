@@ -33,52 +33,47 @@ def style_outro(the_boss, boss_style)
   puts text_break(messages.sample, " ", 70)
 end
 
-# BARKEEP STYLE
+# Invoice for stat changes
 # Bar fight outcomes # .abs removes negatives so only positive integers displayed
 
-def bar_fight_outcome(beers, wallet)
-  got_drunk = [
-    "Damn, that was a piss up, you feel #{beers} 🍺 drunker.",
+def invoice(amount, where)
+  got_drunk = [ # bar fight
+    "Damn, that was a piss up, you feel #{amount[0]} 🍺 drunker.",
   ]
   sober_up = [
-    "That knocked some sense into ya, ya feel you feel #{beers.abs} 🍺 lighter!",
+    "That knocked some sense into ya, ya feel you feel #{amount[0].abs} 🍺 lighter!",
   ]
   got_cash = [
-    "You battered #{wallet} 💵 outta some poor sod!",
+    "You battered #{amount[1]} 💵 outta some poor sod!",
   ]
   got_mugged = [
-    "You got mugged for #{wallet.abs} 💵",
+    "You got mugged for #{amount[1].abs} 💵",
   ]
-
-  drunk = beers.positive? ? got_drunk : sober_up
-  money = wallet.positive? ? got_cash : got_mugged
-  puts text_break(drunk.sample, " ", 70)
-  puts text_break(money.sample, " ", 70)
-end
-
-def invoice(amount, where)
-  bar = [
+  bar = [ # pay the tab
     "You doled out #{amount} 💵 and ate up #{amount} 🍺 drinks. Time for some dishing.",
-  ]
-  pit = [
-    "You got trampled for #{amount} 💵",
   ]
   skint = [
     "You're too skint to get a drink, the damage you deal is reduced.",
   ]
+  pit = [ # hardcore
+    "You got trampled for #{amount} 💵",
+  ]
   broke = [
     "You got no cash and nothing to lose, but that don't mean you can't take extra damage!",
   ]
-  guard = [
+  guard = [ # not tonight
     "Your weapon provided an extra #{amount} 🛡️ block, better use it wisely.",
   ]
 
   messages = case where
-  when :bar  then amount.zero? ? skint : bar
-  when :pit  then amount.zero? ? broke : pit
-  when :club then guard
+  when :bar_fight
+    beers = amount[0].positive? ? got_drunk : sober_up
+    cash = amount[1].positive? ? got_cash : got_mugged
+    [[beers.sample, cash.sample].join(' ')]
+  when :bar_tab then amount.zero? ? skint : bar
+  when :pit     then amount.zero? ? broke : pit
+  when :club    then guard
   end
-
   puts text_break(messages.sample, " ", 70)
 end
 
