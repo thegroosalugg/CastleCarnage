@@ -96,14 +96,23 @@ def bouncer(player, weapon)
 end
 
 def band
+  mosh_pit = [
+    "[4] 🤷🧑‍🦯 Mosh Pit",
+  ]
+  tba = [
+    "[5] TBA",
+  ]
+
+  puts mosh_pit.sample
+  puts tba.sample
 end
 
 def fight_menu(player, boss_style, weapon)
   puts SEPARATOR
   case boss_style
-  when "🍻 Barkeep"    then barkeep
-  when "🕶️ Bouncer"    then bouncer(player, weapon)
-  when "🎶 Band"       then band
+  when "🍻 Barkeep" then barkeep
+  when "🕶️ Bouncer" then bouncer(player, weapon)
+  when "🎶 Band"    then band
   end
 end
 

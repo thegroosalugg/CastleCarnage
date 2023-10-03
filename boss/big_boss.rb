@@ -27,9 +27,9 @@ def big_boss_battle(player, weapon, the_boss)
       print `clear`
       power_drained = false
       case boss_style
-      when "🍻 Barkeep"    then boss_style = fight_the_barkeep(player, weapon, the_boss, boss_style, load_boss)
-      when "🕶️ Bouncer"    then boss_style, weapon = fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
-      when "🎶 Band"       then boss_style = fight_the_band(player, weapon, the_boss, boss_style, load_boss)
+      when "🍻 Barkeep" then boss_style = fight_the_barkeep(player, weapon, the_boss, boss_style, load_boss)
+      when "🕶️ Bouncer" then boss_style, weapon = fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
+      when "🎶 Band"    then boss_style = fight_the_band(player, weapon, the_boss, boss_style, load_boss)
       end
     elsif user_choice == "r"
       print `clear`

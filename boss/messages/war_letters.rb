@@ -12,12 +12,13 @@ def style_intro(the_boss, boss_style)
   band = [
     "#{the_boss[:name]} is playing 🎸 rocking music, a mosh pit is about to break out!",
     "#{the_boss[:name]} is two-stepping across the room 🤾, Parkway Drive 🎸 appear on stage!",
+    "Some wanker just started playing dubstep 🎧 you're gonna take some serious damage this round.",
   ]
 
   messages = case boss_style
-  when "🍻 Barkeep"    then barkeep
-  when "🕶️ Bouncer"    then bouncer
-  when "🎶 Band"       then band
+  when "🍻 Barkeep" then barkeep
+  when "🕶️ Bouncer" then bouncer
+  when "🎶 Band"    then band
   end
   puts text_break(messages.sample, " ", 70)
 end
