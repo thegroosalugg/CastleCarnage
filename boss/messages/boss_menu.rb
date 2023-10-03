@@ -101,12 +101,9 @@ end
 def fight_menu(player, boss_style, weapon)
   puts SEPARATOR
   case boss_style
-  when "🍻 Barkeep"
-    barkeep
-  when "🕶️ Bouncer"
-    bouncer(player, weapon)
-  when "🚾 Toilet Guy"
-    toilet_guy
+  when "🍻 Barkeep"    then barkeep
+  when "🕶️ Bouncer"    then bouncer(player, weapon)
+  when "🚾 Toilet Guy" then toilet_guy
   end
 end
 

@@ -1,6 +1,26 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
+def style_intro(the_boss, boss_style)
+  barkeep = [
+    "The #{boss_style} is in the house 🛖 orders up",
+  ]
+  bouncer = [
+    "#{the_boss[:name]} is excerting its pressure, you drink another beer 🍺",
+  ]
+  toilet_guy = [
+    "#{boss_style} here, draw your wallet 👛",
+  ]
+
+  messages = case boss_style
+  when "🍻 Barkeep"    then barkeep
+  when "🕶️ Bouncer"    then bouncer
+  when "🚾 Toilet Guy" then toilet_guy
+  end
+  puts text_break(messages.sample, " ", 70)
+end
+
+# BARKEEP STYLE
 # Bar fight outcomes # .abs removes negatives so only positive integers displayed
 
 def bar_fight_outcome(beers, wallet)
@@ -30,6 +50,8 @@ def paid_the_tab(cash_spent)
 
   puts text_break(messages.sample, " ", 70)
 end
+
+# BOUNCER STYLE
 
 def counter(player, the_boss, counter_attack)
   messages = [

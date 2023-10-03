@@ -58,6 +58,8 @@ end
 
 def fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
   user_choice = 0
+  player[:drunk] += 1
+  style_intro(the_boss, boss_style)
 
   until (4..7).include?(user_choice)
     game_info(player, weapon, the_boss, boss_style, load_boss)

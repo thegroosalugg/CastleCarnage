@@ -30,6 +30,7 @@ end
 
 def fight_the_barkeep(player, weapon, the_boss, boss_style, load_boss)
   user_choice = 0
+  style_intro(the_boss, boss_style)
 
   until [4, 5].include?(user_choice)
     game_info(player, weapon, the_boss, boss_style, load_boss)
