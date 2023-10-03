@@ -2,9 +2,21 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 def youre_barred(the_boss, player)
+  if the_boss[:accuracy].sample == 1
+    missed(the_boss, player)
+  else
+
+    succesful_hit(the_boss, player, damage)
+  end
 end
 
 def not_tonight(the_boss, player, weapon)
+  if the_boss[:accuracy].sample == 1
+    missed(the_boss, player)
+  else
+
+    succesful_hit(the_boss, player, damage)
+  end
 end
 
 def hardcore(the_boss, player)
