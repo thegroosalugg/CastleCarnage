@@ -1,7 +1,7 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-def fight_the_toilet(player, weapon, the_boss, boss_style, load_boss)
+def fight_the_band(player, weapon, the_boss, boss_style, load_boss)
   user_choice = 0
   style_intro(the_boss, boss_style)
 
@@ -22,4 +22,6 @@ def fight_the_toilet(player, weapon, the_boss, boss_style, load_boss)
   end
 
   boss_style = the_boss[:style].sample
+  style_outro(the_boss, boss_style)
+  return boss_style
 end

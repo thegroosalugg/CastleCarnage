@@ -4,19 +4,29 @@
 def style_intro(the_boss, boss_style)
   barkeep = [
     "The #{boss_style} is in the house 🛖 orders up",
+    "The #{boss_style} is keeping the liquor flowng, its happy hour ⌚",
   ]
   bouncer = [
     "#{the_boss[:name]} is excerting its pressure, you drink another beer 🍺",
   ]
-  toilet_guy = [
-    "#{boss_style} here, draw your wallet 👛",
+  band = [
+    "#{the_boss[:name]} is playing 🎸 rocking music, a mosh pit is about to break out!",
+    "#{the_boss[:name]} is two-stepping across the room 🤾, Parkway Drive 🎸 appear on stage!",
   ]
 
   messages = case boss_style
   when "🍻 Barkeep"    then barkeep
   when "🕶️ Bouncer"    then bouncer
-  when "🚾 Toilet Guy" then toilet_guy
+  when "🎶 Band"       then band
   end
+  puts text_break(messages.sample, " ", 70)
+end
+
+def style_outro(the_boss, boss_style)
+  messages = [
+    "#{the_boss[:name]} assumes the #{boss_style} fighting stance, watch out!",
+  ]
+
   puts text_break(messages.sample, " ", 70)
 end
 
@@ -38,16 +48,20 @@ def bar_fight_outcome(beers, wallet)
   ]
 
   drunk = beers.positive? ? got_drunk : sober_up
-  wallet = wallet.positive? ? got_cash : got_mugged
+  money = wallet.positive? ? got_cash : got_mugged
   puts text_break(drunk.sample, " ", 70)
-  puts text_break(wallet.sample, " ", 70)
+  puts text_break(money.sample, " ", 70)
 end
 
 def paid_the_tab(cash_spent)
-  messages = [
+  spent = [
     "You doled out #{cash_spent} 💵 and ate up #{cash_spent} 🍺 drinks. Time for some dishing.",
   ]
+  skint = [
+    "You're too skint to get a drink, the damage you deal is reduced.",
+  ]
 
+  messages = cash_spent.zero? ? skint : spent
   puts text_break(messages.sample, " ", 70)
 end
 

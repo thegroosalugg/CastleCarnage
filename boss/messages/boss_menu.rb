@@ -95,7 +95,7 @@ def bouncer(player, weapon)
   puts sneak_attack.sample
 end
 
-def toilet_guy
+def band
 end
 
 def fight_menu(player, boss_style, weapon)
@@ -103,7 +103,7 @@ def fight_menu(player, boss_style, weapon)
   case boss_style
   when "🍻 Barkeep"    then barkeep
   when "🕶️ Bouncer"    then bouncer(player, weapon)
-  when "🚾 Toilet Guy" then toilet_guy
+  when "🎶 Band"       then band
   end
 end
 
@@ -147,10 +147,10 @@ end
 
 def denied
   messages = [
-    "Get Lost ⛔",
-    "We Don't Have It ⛔",
-    "Out of Stock ⛔",
     "Just No ⛔",
+    "Get Lost ⛔",
+    "Out of Stock ⛔",
+    "We Don't Have It ⛔",
     "You Can't Have That ⛔",
   ]
 

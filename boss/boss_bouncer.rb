@@ -58,7 +58,7 @@ end
 
 def fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
   user_choice = 0
-  player[:drunk] += 1
+  player[:drunk] = (player[:drunk] + 1).clamp(0, 20)
   style_intro(the_boss, boss_style)
 
   until (4..7).include?(user_choice)
@@ -101,5 +101,6 @@ def fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
   end
 
   boss_style = the_boss[:style].sample
+  style_outro(the_boss, boss_style)
   return boss_style, weapon
 end
