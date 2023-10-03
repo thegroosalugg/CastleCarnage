@@ -36,7 +36,7 @@ end
 # Invoice for stat changes
 # Bar fight outcomes # .abs removes negatives so only positive integers displayed
 
-def invoice(amount, where)
+def invoice(player, amount, where)
   got_drunk = [ # bar fight
     "Damn, that was a piss up, you feel #{amount[0]} 🍺 drunker.",
   ]
@@ -61,18 +61,26 @@ def invoice(amount, where)
   broke = [
     "You got no cash and nothing to lose, but that don't mean you can't take extra damage!",
   ]
+  life = [ # sneak attack
+    "Oi, oi, you lucky people, you swagged #{player[:emoji]} #{amount} HP along the way, you sneaky 👟 bastard!",
+  ]
+  cash = [
+    "You ganked a hefty bit of loot, #{amount} 💵 for your pocket. Spend it wisely!",
+  ]
   guard = [ # not tonight
     "Your weapon provided an extra #{amount} 🛡️ block, better use it wisely.",
   ]
 
   messages = case where
-  when :bar_fight
+  when :brawl
     beers = amount[0].positive? ? got_drunk : sober_up
     cash = amount[1].positive? ? got_cash : got_mugged
     [[beers.sample, cash.sample].join(' ')]
-  when :bar_tab then amount.zero? ? skint : bar
-  when :pit     then amount.zero? ? broke : pit
-  when :club    then guard
+  when :tab  then amount.zero? ? skint : bar
+  when :pit  then amount.zero? ? broke : pit
+  when :club then guard
+  when :life then life
+  when :cash then cash
   end
   puts text_break(messages.sample, " ", 70)
 end
@@ -83,21 +91,6 @@ def counter(player, the_boss, counter_attack)
   messages = [
     "#{the_boss[:name]} spotted you being a plank and served you for #{player[:emoji]} #{counter_attack} damage.",
   ]
-
-  puts text_break(messages.sample, " ", 70)
-end
-
-def gained(player, stuff, type)
-  life = [
-    "Oi, oi, you lucky people, you swagged #{player[:emoji]} #{stuff} HP along the way, you sneaky 👟 bastard!",
-  ]
-  cash = [
-    "You ganked a hefty bit of loot, #{stuff} 💵 for your pocket. Spend it wisely!",
-  ]
-  messages = case type
-  when :life then life
-  when :cash then cash
-  end
 
   puts text_break(messages.sample, " ", 70)
 end

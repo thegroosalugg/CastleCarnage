@@ -17,8 +17,8 @@ def not_tonight(the_boss, player, weapon)
     guard = weapon[:durability] * rand(2..3)
     damage = (the_boss[:attack].sample - (player[:block].sample + guard)).clamp(0, 100)
     player[:hp] -= damage
-    invoice(guard, :club) if weapon[:durability].positive?
     succesful_hit(the_boss, player, damage)
+    invoice(player, guard, :club) if weapon[:durability].positive?
   end
 end
 
@@ -30,7 +30,7 @@ def hardcore(the_boss, player)
     player[:cash] = (player[:cash] - cash_lost).clamp(0, 20)
     damage = (the_boss[:attack].sample * (cash_lost.zero? ? 1.4 : (1.0 + cash_lost * 0.1)) - player[:block].sample).to_i.clamp(0, 100)
     player[:hp] -= damage
-    invoice(cash_lost, :pit)
+    invoice(player, cash_lost, :pit)
     succesful_hit(the_boss, player, damage)
   end
 end
