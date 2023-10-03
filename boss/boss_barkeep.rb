@@ -10,7 +10,7 @@ def pay_the_tab(player, the_boss)
   player[:cash] -= cash_spent
   player[:drunk] = (player[:drunk] + cash_spent).clamp(0, 20)
 
-  paid_the_tab(cash_spent, :bar)
+  invoice(cash_spent, :bar)
   succesful_hit(player, the_boss, damage)
 end
 

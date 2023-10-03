@@ -18,6 +18,7 @@ def beef_with_the_bouncer(player, weapon, the_boss, damage)
     end
     the_boss[:hp] -= damage[:value]
     weapon[:durability] = [weapon[:durability] - 1, 0].max
+    weapon_broke(weapon) if weapon[:durability].zero? && damage[:id] == :weapon
   end
 end
 

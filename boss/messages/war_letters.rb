@@ -56,23 +56,27 @@ def bar_fight_outcome(beers, wallet)
   puts text_break(money.sample, " ", 70)
 end
 
-def paid_the_tab(cash_spent, where)
+def invoice(amount, where)
   bar = [
-    "You doled out #{cash_spent} 💵 and ate up #{cash_spent} 🍺 drinks. Time for some dishing.",
+    "You doled out #{amount} 💵 and ate up #{amount} 🍺 drinks. Time for some dishing.",
   ]
   pit = [
-    "You got trampled for #{cash_spent} 💵",
+    "You got trampled for #{amount} 💵",
   ]
   skint = [
     "You're too skint to get a drink, the damage you deal is reduced.",
   ]
   broke = [
-    "You got no cash and nothing to lose, but that don't mean you can't take extra damage!"
+    "You got no cash and nothing to lose, but that don't mean you can't take extra damage!",
+  ]
+  guard = [
+    "Your weapon provided an extra #{amount} 🛡️ block, better use it wisely.",
   ]
 
   messages = case where
-  when :bar then cash_spent.zero? ? skint : bar
-  when :pit then cash_spent.zero? ? broke : pit
+  when :bar  then amount.zero? ? skint : bar
+  when :pit  then amount.zero? ? broke : pit
+  when :club then guard
   end
 
   puts text_break(messages.sample, " ", 70)
