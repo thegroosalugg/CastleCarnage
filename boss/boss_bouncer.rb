@@ -38,6 +38,7 @@ def armoury(player)
 end
 
 def sneak_attack(player, the_boss, damage)
+  player[:sneaky] = true
   chance = rand(1..2)
   if chance == 1
     cash = rand(3..6)
@@ -60,6 +61,7 @@ end
 def fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
   user_choice = 0
   player[:drunk] = (player[:drunk] + 1).clamp(0, 20)
+  player[:sneaky] = false
   style_intro(the_boss, boss_style)
 
   until (4..7).include?(user_choice)

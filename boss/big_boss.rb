@@ -33,7 +33,7 @@ def big_boss_battle(player, weapon, the_boss)
       end
     elsif user_choice == "r"
       print `clear`
-      power_drained == true ? drained_message : boss_style = pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
+      power_drained ? drained_message : boss_style = pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
       power_drained = true
     else
       error_message

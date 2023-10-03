@@ -14,11 +14,11 @@ def not_tonight(the_boss, player, weapon)
   if the_boss[:accuracy].sample == 1
     missed(the_boss, player)
   else
-    guard = weapon[:durability] * rand(2..3)
+    guard = player[:sneaky] ? 0 : weapon[:durability] * rand(2..3)
     damage = (the_boss[:attack].sample - (player[:block].sample + guard)).clamp(0, 100)
     player[:hp] -= damage
     succesful_hit(the_boss, player, damage)
-    invoice(player, guard, :club) if weapon[:durability].positive?
+    invoice(player, guard, :club) unless player[:sneaky] || weapon[:durability].zero?
   end
 end
 
