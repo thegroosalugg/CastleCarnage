@@ -101,7 +101,7 @@ def fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
     end
   end
 
-  not_tonight(the_boss, player, weapon)
+  boss_strikes_back(the_boss, boss_style, player, weapon)
   boss_style = the_boss[:style].sample
   style_outro(the_boss, boss_style)
   return boss_style, weapon
