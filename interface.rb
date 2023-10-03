@@ -110,4 +110,9 @@ def play_game
   game_over(tracked_enemy, player)
 end
 
-play_game
+loop do
+  play_game
+  play_again
+  user_choice = gets.chomp.downcase
+  break if user_choice != "y"
+end

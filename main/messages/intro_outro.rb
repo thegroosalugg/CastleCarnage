@@ -1,27 +1,6 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-# Replay option
-
-def replay(player)
-  puts SEPARATOR
-  play_again
-  user_choice = ""
-  until user_choice == "n"
-    user_choice = gets.chomp.downcase
-    case user_choice
-    when "y" then play_game
-    when "n" then break
-    else
-      error_message
-      puts SEPARATOR
-      player[:hp].positive? ? win_art : lose_art
-      puts SEPARATOR
-      play_again
-    end
-  end
-end
-
 # INTRO MESSAGES
 
 def intro(player, weapon, enemy)
@@ -57,7 +36,7 @@ def game_over(enemy, player)
   puts text_break((player[:hp].positive? ? win : lose).sample, " ", 70)
   puts SEPARATOR
   player[:hp].positive? ? win_art : lose_art
-  replay(player)
+  puts SEPARATOR
 end
 
 
@@ -93,9 +72,8 @@ end
 def play_again
   puts <<-'ASCII'
 
-      ░█▀▀█ █── █▀▀█ █──█ 　 ─█▀▀█ █▀▀▀ █▀▀█ ─▀─ █▀▀▄ ▀█ 　 ░█──░█ 　 　 ░█▄─░█
-      ░█▄▄█ █── █▄▄█ █▄▄█ 　 ░█▄▄█ █─▀█ █▄▄█ ▀█▀ █──█ █▀ 　 ░█▄▄▄█ 　 　 ░█░█░█
-      ░█─── ▀▀▀ ▀──▀ ▄▄▄█ 　 ░█─░█ ▀▀▀▀ ▀──▀ ▀▀▀ ▀──▀ ▄─ 　 ──░█── 　 　 ░█──▀█
+  █▀█ █▀█ █▀▀ █▀ █▀   █▀ █▄█ ▀█   ▀█▀ █▀█   █▀█ █░░ ▄▀█ █▄█   ▄▀█ █▀▀ ▄▀█ █ █▄░█ 
+  █▀▀ █▀▄ ██▄ ▄█ ▄█   █▄ ░█░ ▄█   ░█░ █▄█   █▀▀ █▄▄ █▀█ ░█░   █▀█ █▄█ █▀█ █ █░▀█ 
   ASCII
 end
 
