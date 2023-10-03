@@ -1,9 +1,10 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-# INTRO MESSAGES
+# Replay option
 
-def replay(enemy, player)
+def replay(player)
+  puts SEPARATOR
   play_again
   user_choice = ""
 
@@ -17,11 +18,14 @@ def replay(enemy, player)
       error_message
       puts SEPARATOR
       player[:hp].positive? ? win_art : lose_art
+      puts SEPARATOR
       play_again
     end
   end
 
 end
+
+# INTRO MESSAGES
 
 def intro(player, weapon, enemy)
   enemy_intro = [
@@ -55,7 +59,7 @@ def game_over(enemy, player)
   puts text_break((player[:hp].positive? ? win : lose).sample, " ", 70)
   puts SEPARATOR
   player[:hp].positive? ? win_art : lose_art
-  replay(enemy, player)
+  replay(player)
 end
 
 
@@ -63,6 +67,7 @@ end
 
 def lose_art
   puts <<-'ASCII'
+
     ▓██   ██▓ ▒█████   █    ██    ▓█████▄  ██▓▓█████ ▓█████▄
      ▒██  ██▒▒██▒  ██▒ ██  ▓██▒   ▒██▀ ██▌▓██▒▓█   ▀ ▒██▀ ██▌
       ▒██ ██░▒██░  ██▒▓██  ▒██░   ░██   █▌▒██▒▒███   ░██   █▌
@@ -78,12 +83,12 @@ end
 
 def win_art
   puts <<-'ASCII'
-      __  __                 __________                                ______________
-      _ \/ /_________  __    ___  ____/__________________ ___________________  /__  /
-      __  /_  __ \  / / /    __  __/  __  ___/  ___/  __ `/__  __ \  _ \  __  /__  /
-      _  / / /_/ / /_/ /     _  /___  _(__  )/ /__ / /_/ /__  /_/ /  __/ /_/ /  /_/
-      /_/  \____/\__,_/      /_____/  /____/ \___/ \__,_/ _  .___/\___/\__,_/  (_)
-                                                          /_/
+  __  __                 __________                                ______________
+  _ \/ /_________  __    ___  ____/__________________ ___________________  /__  /
+  __  /_  __ \  / / /    __  __/  __  ___/  ___/  __ `/__  __ \  _ \  __  /__  /
+  _  / / /_/ / /_/ /     _  /___  _(__  )/ /__ / /_/ /__  /_/ /  __/ /_/ /  /_/
+  /_/  \____/\__,_/      /_____/  /____/ \___/ \__,_/ _  .___/\___/\__,_/  (_)
+                                                      /_/
   ASCII
 end
 
