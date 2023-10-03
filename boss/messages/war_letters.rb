@@ -1,6 +1,8 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
+# Intro outro messages for changes to boss fighting style
+
 def style_intro(the_boss, boss_style)
   barkeep = [
     "The #{boss_style} is in the house 🛖 orders up",
@@ -54,15 +56,25 @@ def bar_fight_outcome(beers, wallet)
   puts text_break(money.sample, " ", 70)
 end
 
-def paid_the_tab(cash_spent)
-  spent = [
+def paid_the_tab(cash_spent, where)
+  bar = [
     "You doled out #{cash_spent} 💵 and ate up #{cash_spent} 🍺 drinks. Time for some dishing.",
+  ]
+  pit = [
+    "You got trampled for #{cash_spent} 💵",
   ]
   skint = [
     "You're too skint to get a drink, the damage you deal is reduced.",
   ]
+  broke = [
+    "You got no cash and nothing to lose, but that don't mean you can't take extra damage!"
+  ]
 
-  messages = cash_spent.zero? ? skint : spent
+  messages = case where
+  when :bar then cash_spent.zero? ? skint : bar
+  when :pit then cash_spent.zero? ? broke : pit
+  end
+
   puts text_break(messages.sample, " ", 70)
 end
 

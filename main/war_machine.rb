@@ -59,7 +59,8 @@ def big_boss_awaits
     id: :boss,
     name: BOSSES.sample,
     hp: rand(800..1000),
-    attack: (rand(20..30)..rand(31..60)).to_a,
+    attack: (rand(25..30)..rand(31..60)).to_a,
+    accuracy: (1..rand(4..10)).to_a,
     style: ["🍻 Barkeep", "🕶️ Bouncer", "🎶 Band"]
   }
 end

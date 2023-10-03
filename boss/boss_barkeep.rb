@@ -2,7 +2,7 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 def pay_the_tab(player, the_boss)
-  cash_spent = player[:cash].zero? ? 0 : (1..[player[:cash], 6].min).to_a.sample
+  cash_spent = player[:cash].zero? ? 0 : rand(1..[player[:cash], 6].min)
   multiplier = cash_spent.zero? ? 0.6 : 1.0 + (cash_spent * 0.5) # don't go to the bar with no money
   damage = ((player[:attack].sample * (100 - player[:drunk] * 5) / 100) * multiplier).to_i
 
@@ -10,7 +10,7 @@ def pay_the_tab(player, the_boss)
   player[:cash] -= cash_spent
   player[:drunk] = (player[:drunk] + cash_spent).clamp(0, 20)
 
-  paid_the_tab(cash_spent)
+  paid_the_tab(cash_spent, :bar)
   succesful_hit(player, the_boss, damage)
 end
 

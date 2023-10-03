@@ -12,8 +12,10 @@ def fight_the_band(player, weapon, the_boss, boss_style, load_boss)
     user_choice = gets.chomp.to_i
     if user_choice == 4
       print `clear`
+      boss_strikes_back(the_boss, boss_style, player, weapon)
     elsif user_choice == 5
       print `clear`
+      boss_strikes_back(the_boss, boss_style, player, weapon)
     else
       error_message
     end
