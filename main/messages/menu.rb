@@ -8,15 +8,15 @@ BARRIER = "〰" * 36
 ENEMY_DIV = "🗡" * 76
 BOSS_DIV = " " * 4 + "▪" * 76
 
-# Def White Space Generator
+# White Space Generator
 
 def padding_generator(message, char, size)
   padding = char * [1, (size - message.length) / 2].max
   "#{padding} #{message} #{padding}"
 end
 
-# Created a text break method to align messages properly.
-# It automatically calls the padding generator above and takes the same arguments
+# Created text break method to align messages
+# Automatically calls padding generator and takes same arguments
 
 def text_break(message, char, size)
   words = message.split
@@ -133,7 +133,7 @@ def percentage(entity, key)
   key == :accuracy ? "🎯 #{accuracy}%" : " / 💥 #{crit_ch}% / "
 end
 
-# Display generators that combine the above methods to create dynamic displays for enemy, player and weapon
+# Display generators that combine above methods to create dynamic displays for enemy and weapon
 
 def enemy_bars(enemy)
   "#{ENEMY_DIV}\n" +

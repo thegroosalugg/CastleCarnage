@@ -54,10 +54,10 @@ def gifts(gift, randomizer, player, enemy)
   ]
   gained_hp = [
     "✅ Ah mate! Who left this grass 🌿 here?! Northern Lights? Sweet as! You gained #{player[:emoji]} #{randomizer} HP!",
-    "✅ A Spaghetti Store? Here? Yeah, I'll have the spaghetti 🍝 You gained #{player[:emoji]} #{randomizer} HP!",
     "✅ These chili peppers 🌶️ should give me the quick energy I need! You gained #{player[:emoji]} #{randomizer} HP!",
     "✅ Ha! Some idiot left this pizza 🍕 in the trash! What a treat! You gained #{player[:emoji]} #{randomizer} HP!",
     "✅ This milk 🍼 is well out of date, eh, let's drink it anyways. You gained #{player[:emoji]} #{randomizer} HP!",
+    "✅ A Spaghetti Store? Here? Yeah, I'll have the spaghetti 🍝 You gained #{player[:emoji]} #{randomizer} HP!",
     "✅ Proper hungry. These mouldy bananas 🍌 will have to do. You gained #{player[:emoji]} #{randomizer} HP!",
     "✅ The Rock 👨‍🦲 awaits you and gives you a high five 🙏. You gained #{player[:emoji]} #{randomizer} HP!",
     "✅ Fuckin' A! Still some cold ones in the fridge 🍻! You gained #{player[:emoji]} #{randomizer} HP!",

@@ -13,8 +13,7 @@ end
 # Dynamic status for player cash & drunkness
 
 def player_status(player)
-  wallet =
-    case player[:cash]
+  wallet = case player[:cash]
     when 0..2   then "    Skint AF     🫥 /"
     when 3..5   then "  Pocket Money   🤔 /"
     when 6..9   then " Got some Moolah 😐 /"
@@ -23,8 +22,7 @@ def player_status(player)
     when 18..20 then " Totally Minted  😈 /"
     end
 
-  drunk =
-    case player[:drunk]
+  drunk = case player[:drunk]
     when 0..2   then "Sober as a Judge ⚖️ /"
     when 3..5   then " Got a Buzz on   😉 /"
     when 6..9   then " Feeling Tipsy   😏 /"
@@ -76,7 +74,7 @@ end
 
 def bouncer(player, weapon)
   weapon_strike = [
-    "[4] ⚔️ Strike with #{weapon[:name]}",
+    "[4] 💢 Strike with #{weapon[:name]}",
   ]
   unarmed_strike = [
     "[4] 👊 Face Punch",

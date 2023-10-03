@@ -2,7 +2,7 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 def bonus(player, rooms_explored, enemies_defeated)
-  health = 100 + (rooms_explored * 20)
+  health = 100 + (rooms_explored * 25)
   boost = [:attack, :block].sample
   multiplier = enemies_defeated * rand(1..3)
   player[:hp] += health

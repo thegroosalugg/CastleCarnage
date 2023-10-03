@@ -18,6 +18,7 @@ def weapon_broke(weapon)
     "😲 Your #{weapon[:name]} broke 💔, time to take a walk.",
     "😲 Oh shit! Your #{weapon[:name]} broke. Better leg it!",
     "😲 Your #{weapon[:name]} disappears into thin air",
+    "😲 Goodbye #{weapon[:name]}, you will be missed.",
   ]
 
   puts SEPARATOR
@@ -125,7 +126,7 @@ def random_attack(enemy)
     "🙈 You stacked it on your way out and let #{enemy[:name]} get the drop on you, watch out!",
     "#{enemy[:name]} did a mental 🤸 backflip and landed in front of you!",
     "👥 You tried to leg it but #{enemy[:name]} jumped ya. Bugger it.",
-    "You slipped on a 🍌 banana and #{enemy[:name]} jumped you!",
+    "You slipped on a mouldy banana 🍌 and #{enemy[:name]} jumped ya!",
     "#{enemy[:name]} is faster 💨 than you. You get merked.",
     "#{enemy[:name]}: 'Yar think ye can get away from me?'",
     "#{enemy[:name]} ✨ teleports in front of the door",

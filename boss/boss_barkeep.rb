@@ -3,7 +3,7 @@
 
 def pay_the_tab(player, the_boss)
   cash_spent = player[:cash].zero? ? 0 : (1..[player[:cash], 6].min).to_a.sample
-  multiplier = cash_spent.zero? ? 0.6 : 1.0 + (cash_spent * 0.5)
+  multiplier = cash_spent.zero? ? 0.6 : 1.0 + (cash_spent * 0.5) # don't go to the bar with no money
   damage = ((player[:attack].sample * (100 - player[:drunk] * 5) / 100) * multiplier).to_i
 
   the_boss[:hp] -= damage
@@ -15,13 +15,13 @@ def pay_the_tab(player, the_boss)
 end
 
 def bar_fight(player, the_boss)
-  beers = player[:drunk].zero? ? [2, 3].sample : [-2, -1, 1, 2, 3].sample
-  wallet = player[:cash] >= 20 ? [-2, -3].sample : [-3, -2, -1, 1, 2].sample
+  beers = player[:drunk].zero? ? [2, 3].sample : [-2, -1, 1, 2, 3].sample # don't go to the bar with no beers
+  wallet = player[:cash] >= 20 ? [-2, -3].sample : [-3, -2, -1, 1, 2].sample # don't go to the bar with a full wallet
 
   player[:drunk] = (player[:drunk] + beers).clamp(0, 20)
   player[:cash] = (player[:cash] + wallet).clamp(0, 20)
 
-  damage = (player[:attack].sample * (100 - player[:drunk] * 5) / 100).to_i # updates damage to current drunkness
+  damage = (player[:attack].sample * (100 - player[:drunk] * 5) / 100).to_i # updates damage to current drunkenness
   the_boss[:hp] -= damage
 
   bar_fight_outcome(beers, wallet)
