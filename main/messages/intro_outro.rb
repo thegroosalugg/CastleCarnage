@@ -7,13 +7,11 @@ def replay(player)
   puts SEPARATOR
   play_again
   user_choice = ""
-
   until user_choice == "n"
     user_choice = gets.chomp.downcase
-    if user_choice == "y"
-      play_game
-    elsif user_choice == "n"
-      break
+    case user_choice
+    when "y" then play_game
+    when "n" then break
     else
       error_message
       puts SEPARATOR
@@ -22,7 +20,6 @@ def replay(player)
       play_again
     end
   end
-
 end
 
 # INTRO MESSAGES
