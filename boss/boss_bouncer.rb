@@ -8,7 +8,7 @@ def beef_with_the_bouncer(player, weapon, the_boss, damage)
     succesful_hit(player, the_boss, damage[:value])
   when :weapon
     if weapon[:crit_ch].sample == 1
-      damage[:value] = (damage[:value] * weapon[:crit_x].call).to_i
+      damage[:value] = (damage[:value] * weapon[:crit_x].call).to_i.clamp(0, 150)
       critical_hit(player, the_boss, damage[:value])
     elsif weapon[:accuracy].sample == 1
       damage[:value] = 0
@@ -22,7 +22,7 @@ def beef_with_the_bouncer(player, weapon, the_boss, damage)
 end
 
 def ranged_strike(player, weapon, the_boss, weapon_damage)
-  damage = (weapon_damage[:value] * rand(2.0..2.5)).to_i
+  damage = (weapon_damage[:value] * rand(2.0..2.5)).to_i.clamp(0, 200)
   the_boss[:hp] -= damage
   weapon[:durability] = 0
   succesful_hit(player, the_boss, damage)
@@ -50,7 +50,7 @@ def sneak_attack(player, the_boss, damage)
     succesful_hit(player, the_boss, damage)
     gained(player, cash, :cash)
   else
-    counter_attack = (the_boss[:attack].sample * rand(0.6..0.8) - player[:block].sample).to_i
+    counter_attack = (the_boss[:attack].sample * rand(0.6..0.8) - player[:block].sample).to_i.clamp(0, 100)
     player[:hp] -= counter_attack
     counter(player, the_boss, counter_attack)
   end
@@ -100,6 +100,7 @@ def fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
     end
   end
 
+  not_tonight(the_boss, player, weapon)
   boss_style = the_boss[:style].sample
   style_outro(the_boss, boss_style)
   return boss_style, weapon
