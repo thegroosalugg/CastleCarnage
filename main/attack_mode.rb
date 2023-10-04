@@ -3,10 +3,10 @@
 
 def strike(attacker, target, weapon = nil)
   damage_source = attacker[:id] == :player ? weapon : attacker
-  damage_dealt = [damage_source[:attack].sample - target[:block].sample, 1].max
+  damage_dealt = (damage_source[:attack].sample - target[:block].sample).clamp(0, 100)
 
   if damage_source[:crit_ch].sample == 1
-    critical_damage = (damage_dealt * damage_source[:crit_x].call).to_i
+    critical_damage = (damage_dealt * damage_source[:crit_x].call).to_i.clamp(0, 150)
     target[:hp] -= critical_damage
     critical_hit(attacker, target, critical_damage)
   elsif damage_source[:accuracy].sample == 1

@@ -48,8 +48,8 @@ def random_enemy
     hp: rand(200..400),
     attack: (rand(20..30)..rand(31..60)).to_a,
     block: (rand(1..5)..rand(6..15)).to_a,
-    accuracy: (1..rand(5..11)).to_a,
-    crit_ch: (1..rand(5..11)).to_a,
+    accuracy: (1..rand(4..11)).to_a,
+    crit_ch: (1..rand(4..11)).to_a,
     crit_x: -> { rand(rand(1.5..2.0)..rand(2.1..4.0)) }
   }
 end
@@ -58,9 +58,10 @@ def big_boss_awaits
   boss = {
     id: :boss,
     name: BOSSES.sample,
-    hp: rand(600..1000),
-    attack: (rand(20..50)..rand(51..90)).to_a,
-    style: ["🍻 Barkeep", "🕶️ Bouncer", "🚾 Toilet Guy"]
+    hp: rand(800..1000),
+    attack: (rand(30..40)..rand(41..65)).to_a,
+    accuracy: (1..rand(4..10)).to_a,
+    style: ["🍻 Barkeep", "🕶️ Bouncer", "🎶 Band"]
   }
 end
 
@@ -71,8 +72,8 @@ def pick_weapon
     durability: rand(1..5),
     broken: false,
     attack: (rand(20..30)..rand(31..60)).to_a,
-    accuracy: (1..rand(5..11)).to_a,
-    crit_ch: (1..rand(5..11)).to_a,
+    accuracy: (1..rand(4..11)).to_a,
+    crit_ch: (1..rand(4..11)).to_a,
     crit_x: -> { rand(rand(1.5..2.5)..rand(2.6..5.0)) }
   }
 end
@@ -82,8 +83,8 @@ def special_weapon
     id: :special_weapon,
     name: SPECIAL_WEAPONS.sample,
     durability: rand(1..2),
-    attack: (rand(30..40)..rand(41..100)).to_a,
-    accuracy: (1..rand(6..12)).to_a,
+    attack: (rand(30..40)..rand(41..99)).to_a,
+    accuracy: (1..rand(5..12)).to_a,
     crit_ch: (1..rand(5..8)).to_a,
     crit_x: -> { rand(rand(2.0..3.0)..rand(3.1..5.0)) }
   }
@@ -95,7 +96,7 @@ def room_vault
   while chosen_rooms.length < 4
     room = {
       name: ROOMS.sample,
-      chance: Array.new(rand(4..12)) { rand(0..6) } # creates an array with 4-12 integers, each with a value between 1-7
+      chance: Array.new(rand(4..12)) { rand(0..6) } # creates an array with 4-12 integers, each with a value between 0-6
     }
 
     # Check if the generated room's name is unique within the chosen_rooms array

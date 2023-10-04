@@ -13,8 +13,7 @@ end
 # Dynamic status for player cash & drunkness
 
 def player_status(player)
-  wallet =
-    case player[:cash]
+  wallet = case player[:cash]
     when 0..2   then "    Skint AF     🫥 /"
     when 3..5   then "  Pocket Money   🤔 /"
     when 6..9   then " Got some Moolah 😐 /"
@@ -23,8 +22,7 @@ def player_status(player)
     when 18..20 then " Totally Minted  😈 /"
     end
 
-  drunk =
-    case player[:drunk]
+  drunk = case player[:drunk]
     when 0..2   then "Sober as a Judge ⚖️ /"
     when 3..5   then " Got a Buzz on   😉 /"
     when 6..9   then " Feeling Tipsy   😏 /"
@@ -76,7 +74,7 @@ end
 
 def bouncer(player, weapon)
   weapon_strike = [
-    "[4] ⚔️ Strike with #{weapon[:name]}",
+    "[4] 💢 Strike with #{weapon[:name]}",
   ]
   unarmed_strike = [
     "[4] 👊 Face Punch",
@@ -97,18 +95,24 @@ def bouncer(player, weapon)
   puts sneak_attack.sample
 end
 
-def toilet_guy
+def band
+  mosh_pit = [
+    "[4] 🤷🧑‍🦯 Mosh Pit",
+  ]
+  tba = [
+    "[5] TBA",
+  ]
+
+  puts mosh_pit.sample
+  puts tba.sample
 end
 
 def fight_menu(player, boss_style, weapon)
   puts SEPARATOR
   case boss_style
-  when "🍻 Barkeep"
-    barkeep
-  when "🕶️ Bouncer"
-    bouncer(player, weapon)
-  when "🚾 Toilet Guy"
-    toilet_guy
+  when "🍻 Barkeep" then barkeep
+  when "🕶️ Bouncer" then bouncer(player, weapon)
+  when "🎶 Band"    then band
   end
 end
 
@@ -152,10 +156,10 @@ end
 
 def denied
   messages = [
-    "Get Lost ⛔",
-    "We Don't Have It ⛔",
-    "Out of Stock ⛔",
     "Just No ⛔",
+    "Get Lost ⛔",
+    "Out of Stock ⛔",
+    "We Don't Have It ⛔",
     "You Can't Have That ⛔",
   ]
 

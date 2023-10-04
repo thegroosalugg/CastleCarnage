@@ -2,7 +2,7 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 def bonus(player, rooms_explored, enemies_defeated)
-  health = 100 + (rooms_explored * 20)
+  health = 100 + (rooms_explored * 25)
   boost = [:attack, :block].sample
   multiplier = enemies_defeated * rand(1..3)
   player[:hp] += health
@@ -27,13 +27,13 @@ def big_boss_battle(player, weapon, the_boss)
       print `clear`
       power_drained = false
       case boss_style
-      when "🍻 Barkeep"    then boss_style = fight_the_barkeep(player, weapon, the_boss, boss_style, load_boss)
-      when "🕶️ Bouncer"    then boss_style, weapon = fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
-      when "🚾 Toilet Guy" then boss_style = fight_the_toilet(player, weapon, the_boss, boss_style, load_boss)
+      when "🍻 Barkeep" then boss_style = fight_the_barkeep(player, weapon, the_boss, boss_style, load_boss)
+      when "🕶️ Bouncer" then boss_style, weapon = fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
+      when "🎶 Band"    then boss_style = fight_the_band(player, weapon, the_boss, boss_style, load_boss)
       end
     elsif user_choice == "r"
       print `clear`
-      power_drained == true ? drained_message : boss_style = pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
+      power_drained ? drained_message : boss_style = pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
       power_drained = true
     else
       error_message

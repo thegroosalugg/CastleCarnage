@@ -7,17 +7,17 @@ def get_buff(player)
     stats << :attack if index == 0 && stat.max < 50
     stats << :block if index == 1 && stat.max < 25
   end
-  boost = stats.sample
+  boost = stats.sample # nil value not possible, method call is guarded by same clause
   price_paid = (boost == :attack ? (35..60) : (25..50)).to_a.sample
   multiplier = price_paid / rand(15..25)
   player[:hp] -= price_paid
-  player[boost] = player[boost].map { |stat| [stat + multiplier, boost == :attack ? 50 : 25].min }
+  player[boost] = player[boost].map { |stat| [stat + multiplier, boost == :attack ? 50 : 25].min } # sets max range limits: attack: 50, block: 25
   return price_paid, multiplier, boost
 end
 
 def get_rich(player)
   multiplier = player[:cash] >= 20 ? 0 : rand(1..[20 - player[:cash], 8].min)
-  price_paid = (multiplier * rand(9.0..11.0)).to_i
+  price_paid = (multiplier * rand(2.5..5.0)).to_i
   player[:hp] -= price_paid
   player[:cash] += multiplier
   return price_paid, multiplier
@@ -25,7 +25,7 @@ end
 
 def sort_it_out(player)
   multiplier = player[:drunk].zero? ? 0 : (1..player[:drunk]).to_a.sample
-  price_paid = (multiplier * rand(5.0..10.0)).to_i
+  price_paid = (multiplier * rand(1.5..2.5)).to_i
   player[:hp] -= price_paid
   player[:drunk] = (player[:drunk] - multiplier).clamp(0, 20)
   return price_paid, multiplier
@@ -88,4 +88,6 @@ def pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
   print `clear`
   paid_blood_message(player, user_choice, price_paid, multiplier, boost) unless user_choice.zero?
   boss_style = user_choice.zero? ? boss_style : the_boss[:style].sample
+  style_outro(the_boss, boss_style) unless user_choice.zero?
+  return boss_style
 end

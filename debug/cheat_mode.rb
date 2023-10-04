@@ -34,7 +34,7 @@ def cheat_menu_boss(user_choice, player, weapon, the_boss, boss_style)
   when "b" then the_boss[:hp] -= 200
   when "1" then boss_style = "🍻 Barkeep"
   when "2" then boss_style = "🕶️ Bouncer"
-  when "3" then boss_style = "🚾 Toilet Guy"
+  when "3" then boss_style = "🎶 Band"
   when "v" then player[:cash] -= 1
   when "c" then player[:cash] += 1
   when "f" then player[:drunk] -= 1
