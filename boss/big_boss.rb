@@ -2,10 +2,10 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 def bonus(player, rooms_explored, enemies_defeated)
-  health = 100 + (rooms_explored * 25)
+  health = 100 + (rooms_explored * 50)
   boost = [:attack, :block].sample
   multiplier = enemies_defeated * rand(1..3)
-  player[:hp] += health
+  player[:hp] = [player[:hp] + health, 1000].min
   player[boost] = player[boost].map { |stat| stat + multiplier }
   your_rewards(player, health, boost, multiplier)
 end
