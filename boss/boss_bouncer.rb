@@ -103,8 +103,8 @@ def fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
     end
   end
 
-  boss_strikes_back(the_boss, boss_style, player, weapon)
+  boss_strikes_back(the_boss, boss_style, player, weapon) if the_boss[:hp].positive?
   boss_style = the_boss[:style].sample
-  style_outro(the_boss, boss_style)
+  style_outro(the_boss, boss_style) if the_boss[:hp].positive?
   return boss_style, weapon
 end
