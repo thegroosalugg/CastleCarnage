@@ -41,7 +41,7 @@ def sneak_attack(player, the_boss, damage)
   player[:sneaky] = true
   chance = rand(1..2)
   if chance == 1
-    cash = rand(3..6)
+    cash = rand(3..7)
     player[:cash] = [player[:cash] + cash, 20].min
     the_boss[:hp] -= damage
     if rand(1..5) == 1
