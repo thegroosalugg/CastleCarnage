@@ -5,7 +5,8 @@ def youre_barred(the_boss, player)
   if the_boss[:accuracy].sample == 1
     missed(the_boss, player)
   else
-
+    damage = (the_boss[:attack].sample + 10 - player[:cash] - player[:block].sample).clamp(0, 20)
+    player[:hp] -= damage
     succesful_hit(the_boss, player, damage)
   end
 end
@@ -28,7 +29,7 @@ def hardcore(the_boss, player)
   else
     cash_lost = player[:cash].zero? ? 0 : rand(1..[player[:cash], 3].min)
     player[:cash] = (player[:cash] - cash_lost).clamp(0, 20)
-    damage = (the_boss[:attack].sample * (cash_lost.zero? ? 1.4 : (1.0 + cash_lost * 0.1)) - player[:block].sample).to_i.clamp(0, 100)
+    damage = (the_boss[:attack].sample * (cash_lost.zero? ? 1.3 : (0.9 + cash_lost * 0.1)) - player[:block].sample).to_i.clamp(0, 100)
     player[:hp] -= damage
     invoice(player, cash_lost, :pit)
     succesful_hit(the_boss, player, damage)
