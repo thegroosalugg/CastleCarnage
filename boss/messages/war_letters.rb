@@ -20,20 +20,13 @@ def blue_steel(the_boss, boss_style, time)
     "#{the_boss[:name]} assumes the #{boss_style} fighting stance, watch out!",
   ]
   reprise = [
-    "That was quite a mash up, you're one 🍺 lighter. #{the_boss[:name]} switches up to #{boss_style}, get 'em.",
+    "That was quite a mash up, you're one 🍺 lighter.",
   ]
 
   messages = case boss_style
   when "🍻 Barkeep" then time == :intro ? barkeep : outro
   when "🕶️ Bouncer" then time == :intro ? bouncer : outro
-  when "🎶 Band"
-    if time == :reprise
-      reprise
-    elsif time == :intro
-      band
-    else
-      outro
-    end
+  when "🎶 Band"    then (time == :reprise) ? reprise : (time == :intro) ? band : outro
   end
   puts text_break(messages.sample, " ", 70)
 end
