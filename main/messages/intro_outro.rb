@@ -37,6 +37,7 @@ def game_over(enemy, player)
   puts SEPARATOR
   player[:hp].positive? ? win_art : lose_art
   puts SEPARATOR
+  play_again
 end
 
 
