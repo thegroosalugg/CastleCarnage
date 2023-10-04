@@ -1,30 +1,6 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-# COMBAT MESSAGES
-
-def weapon_broke(weapon)
-  messages = [
-    "😲 Bollocks, your #{weapon[:name]} slipped out of your hand and flew out of the window. Time to split!",
-    "😲 You suddenly forgot how to wield your #{weapon[:name]}, it's useless now. You threw it away.",
-    "😲 The universe conspires against you. Your #{weapon[:name]} disintegrates into nothingness!",
-    "😲 Your #{weapon[:name]} made its final stand and fell to pieces. You'll need a new one.",
-    "😲 Well, that's a bummer! Your trusty #{weapon[:name]} just disintegrated into dust.",
-    "😲 Goddamn it! You dropped your #{weapon[:name]}! No time to nab it, gotta bolt!",
-    "😲 You used up your last shot, your #{weapon[:name]} is a paperweight.",
-    "😲 Your #{weapon[:name]} resigned from service. On your own now.",
-    "😲 Your #{weapon[:name]} jumped from your hand and legged it.",
-    "😲 Your #{weapon[:name]} was proper shoddy, sucks to be you.",
-    "😲 Your #{weapon[:name]} broke 💔, time to take a walk.",
-    "😲 Oh shit! Your #{weapon[:name]} broke. Better leg it!",
-    "😲 Your #{weapon[:name]} disappears into thin air",
-    "😲 Goodbye #{weapon[:name]}, you will be missed.",
-  ]
-
-  puts SEPARATOR
-  puts text_break(messages.sample, " ", 70)
-end
-
 # Player vs enemy strike
 
 def critical_hit(attacker, target, critical_damage)

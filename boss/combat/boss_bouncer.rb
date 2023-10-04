@@ -18,7 +18,7 @@ def beef_with_the_bouncer(player, weapon, the_boss, damage)
     end
     the_boss[:hp] -= damage[:value]
     weapon[:durability] = [weapon[:durability] - 1, 0].max
-    weapon_broke(weapon) if weapon[:durability].zero? && damage[:id] == :weapon
+    weapon_speaks(weapon, :broke) if weapon[:durability].zero? && damage[:id] == :weapon
   end
 end
 
@@ -27,12 +27,12 @@ def ranged_strike(player, weapon, the_boss, weapon_damage)
   the_boss[:hp] -= damage
   weapon[:durability] = 0
   succesful_hit(player, the_boss, damage)
-  weapon_broke(weapon)
+  weapon_speaks(weapon, :broke)
 end
 
 def armoury(player)
   weapon = rand(1..5) == 1 ? special_weapon : pick_weapon
-  got_weapon(weapon)
+  weapon_speaks(weapon, :got)
   player[:cash] -= 5
   weapon
 end

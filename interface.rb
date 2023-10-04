@@ -44,7 +44,7 @@ def play_game
       # DEBUG CHEAT MENU
       enemy, second_enemy, weapon = cheat_menu(player, enemy, second_enemy, weapon, user_choice)
     else                                                          # Player must run through rooms if weapon broken
-      weapon_broke(weapon) unless weapon[:broken]
+      weapon_speaks(weapon, :broke) unless weapon[:broken]
       weapon[:broken] = true
       escape_attempt(enemy, second_enemy, player, weapon)
       user_choice = "y"
