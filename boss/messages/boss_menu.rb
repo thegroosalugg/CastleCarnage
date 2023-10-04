@@ -97,7 +97,7 @@ end
 
 def band
   mosh_pit = [
-    "[4] 🤷🧑‍🦯 Mosh Pit",
+    "[4] ✖️ Mosh Pit",
   ]
   tba = [
     "[5] TBA",

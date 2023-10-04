@@ -41,7 +41,7 @@ def sneak_attack(player, the_boss, damage)
   player[:sneaky] = true
   chance = rand(1..2)
   if chance == 1
-    cash = rand(3..6)
+    cash = rand(3..7)
     player[:cash] = [player[:cash] + cash, 20].min
     the_boss[:hp] -= damage
     if rand(1..5) == 1
@@ -62,7 +62,7 @@ def fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
   user_choice = 0
   player[:drunk] = (player[:drunk] + 1).clamp(0, 20)
   player[:sneaky] = false
-  style_intro(the_boss, boss_style)
+  blue_steel(the_boss, boss_style, :intro)
 
   until (4..7).include?(user_choice)
     game_info(player, weapon, the_boss, boss_style, load_boss)
@@ -96,15 +96,15 @@ def fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
       end
     when 7
       print `clear`
-      damage = (unarmed_damage[:value] * rand(0.6..1.0)).to_i
+      damage = (unarmed_damage[:value] * rand(0.7..1.0)).to_i
       sneak_attack(player, the_boss, damage)
     else
       error_message
     end
   end
 
-  boss_strikes_back(the_boss, boss_style, player, weapon) if the_boss[:hp].positive?
+  boss_strikes_back(the_boss, boss_style, player, weapon) unless the_boss[:hp] <= 0 || user_choice == 5
   boss_style = the_boss[:style].sample
-  style_outro(the_boss, boss_style) if the_boss[:hp].positive?
+  blue_steel(the_boss, boss_style, :outro) if the_boss[:hp].positive?
   return boss_style, weapon
 end
