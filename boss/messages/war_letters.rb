@@ -55,11 +55,17 @@ def invoice(player, amount, where)
   skint = [
     "You're too skint to get a drink, the damage you deal is reduced.",
   ]
-  pit = [ # hardcore
-    "You got trampled for #{amount} 💵",
+  xcore = [ # xhardcorex
+    "You got trampled and lost #{amount} 💵 your damage is reduced.",
   ]
   broke = [
-    "You got no cash and nothing to lose, but that don't mean you can't take extra damage!",
+    "You're skint and got nothing to lose, but that don't mean you can't take extra damage!",
+  ]
+  pit = [ # mosh pit
+    "",
+  ]
+  guard = [ # not tonight
+    "Your weapon provided an extra #{amount} 🛡️ block, better use it wisely.",
   ]
   life = [ # sneak attack
     "Oi, oi, you lucky people, you swagged #{player[:emoji]} #{amount} HP along the way, you sneaky 👟 bastard!",
@@ -67,20 +73,18 @@ def invoice(player, amount, where)
   cash = [
     "You ganked a hefty bit of loot, #{amount} 💵 for your pocket. Spend it wisely!",
   ]
-  guard = [ # not tonight
-    "Your weapon provided an extra #{amount} 🛡️ block, better use it wisely.",
-  ]
 
   messages = case where
-  when :brawl
+  when :brawl # bar fight
     beers = amount[0].positive? ? got_drunk : sober_up
     cash = amount[1].positive? ? got_cash : got_mugged
     [[beers.sample, cash.sample].join(' ')]
-  when :tab  then amount.zero? ? skint : bar
-  when :pit  then amount.zero? ? broke : pit
-  when :club then guard
-  when :life then life
-  when :cash then cash
+  when :tab   then amount.zero? ? skint : bar # pay the tab
+  when :xcore then amount.zero? ? broke : xcore # xhardcorex
+  when :pit   then pit # mosh pit
+  when :club  then guard # not tonight
+  when :life  then life # sneak attack
+  when :cash  then cash
   end
   puts text_break(messages.sample, " ", 70)
 end

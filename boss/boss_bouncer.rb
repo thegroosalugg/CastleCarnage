@@ -96,7 +96,7 @@ def fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
       end
     when 7
       print `clear`
-      damage = (unarmed_damage[:value] * rand(0.6..1.0)).to_i
+      damage = (unarmed_damage[:value] * rand(0.7..1.0)).to_i
       sneak_attack(player, the_boss, damage)
     else
       error_message
