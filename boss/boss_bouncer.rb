@@ -62,7 +62,7 @@ def fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
   user_choice = 0
   player[:drunk] = (player[:drunk] + 1).clamp(0, 20)
   player[:sneaky] = false
-  style_intro(the_boss, boss_style)
+  blue_steel(the_boss, boss_style, :intro)
 
   until (4..7).include?(user_choice)
     game_info(player, weapon, the_boss, boss_style, load_boss)
@@ -105,6 +105,6 @@ def fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
 
   boss_strikes_back(the_boss, boss_style, player, weapon) unless the_boss[:hp] <= 0 || user_choice == 5
   boss_style = the_boss[:style].sample
-  style_outro(the_boss, boss_style) if the_boss[:hp].positive?
+  blue_steel(the_boss, boss_style, :outro) if the_boss[:hp].positive?
   return boss_style, weapon
 end

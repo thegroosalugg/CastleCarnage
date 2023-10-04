@@ -3,7 +3,7 @@
 
 # Intro outro messages for changes to boss fighting style
 
-def style_intro(the_boss, boss_style)
+def blue_steel(the_boss, boss_style, time)
   barkeep = [
     "The #{boss_style} is in the house 🛖 orders up",
     "The #{boss_style} is keeping the liquor flowng, its happy hour ⌚",
@@ -16,20 +16,25 @@ def style_intro(the_boss, boss_style)
     "#{the_boss[:name]} is two-stepping across the room 🤾, Parkway Drive 🎸 appear on stage!",
     "Some wanker just started playing dubstep 🎧 you're gonna take some serious damage this round.",
   ]
-
-  messages = case boss_style
-  when "🍻 Barkeep" then barkeep
-  when "🕶️ Bouncer" then bouncer
-  when "🎶 Band"    then band
-  end
-  puts text_break(messages.sample, " ", 70)
-end
-
-def style_outro(the_boss, boss_style)
-  messages = [
+  outro = [
     "#{the_boss[:name]} assumes the #{boss_style} fighting stance, watch out!",
   ]
+  reprise = [
+    "That was quite a mash up, you're one 🍺 lighter. #{the_boss[:name]} switches up to #{boss_style}, get 'em.",
+  ]
 
+  messages = case boss_style
+  when "🍻 Barkeep" then time == :intro ? barkeep : outro
+  when "🕶️ Bouncer" then time == :intro ? bouncer : outro
+  when "🎶 Band"
+    if time == :reprise
+      reprise
+    elsif time == :intro
+      band
+    else
+      outro
+    end
+  end
   puts text_break(messages.sample, " ", 70)
 end
 

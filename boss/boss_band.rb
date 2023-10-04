@@ -11,7 +11,7 @@ end
 
 def fight_the_band(player, weapon, the_boss, boss_style, load_boss)
   user_choice = 0
-  style_intro(the_boss, boss_style)
+  blue_steel(the_boss, boss_style, :intro)
 
   until [4, 5].include?(user_choice)
     game_info(player, weapon, the_boss, boss_style, load_boss)
@@ -32,6 +32,6 @@ def fight_the_band(player, weapon, the_boss, boss_style, load_boss)
 
   player[:drunk] = (player[:drunk] - 1).clamp(0, 20)
   boss_style = the_boss[:style].sample
-  style_outro(the_boss, boss_style) if the_boss[:hp].positive?
+  blue_steel(the_boss, boss_style, :reprise) if the_boss[:hp].positive?
   return boss_style
 end

@@ -88,6 +88,6 @@ def pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
   print `clear`
   paid_blood_message(player, user_choice, price_paid, multiplier, boost) unless user_choice.zero?
   boss_style = user_choice.zero? ? boss_style : the_boss[:style].sample
-  style_outro(the_boss, boss_style) unless user_choice.zero?
+  blue_steel(the_boss, boss_style, :outro) unless user_choice.zero?
   return boss_style
 end
