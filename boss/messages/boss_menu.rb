@@ -39,7 +39,7 @@ end
 # the boss moves!
 
 def move_ascii_art(load_boss)
-  vertical_offset = (10..30).to_a.sample
+  vertical_offset = rand(10..30)
   load_boss.split("\n").map { |line| " " * vertical_offset + line }.join("\n")
 end
 
@@ -149,7 +149,7 @@ def blood_menu(player)
   puts (player[:cash] < 20 ? money.sample : denied)
   puts (player[:drunk].positive? ? drink.sample : denied)
   puts ((player[:attack].max > 1 || player[:block].max > 1) && player[:hp] < 1000 ? health.sample : denied)
-  puts "   [0] 🏃 Geeeet ooooout!"
+  puts "   [9] 🏃 Geeeet ooooout!"
 end
 
 # Same messages for both of the above menus.

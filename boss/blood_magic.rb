@@ -8,10 +8,10 @@ def get_buff(player)
     stats << :block if index == 1 && stat.max < 25
   end
   boost = stats.sample # nil value not possible, method call is guarded by same clause
-  price_paid = (boost == :attack ? (35..60) : (25..50)).to_a.sample
+  price_paid = rand(boost == :attack ? (35..60) : (25..50))
   multiplier = price_paid / rand(15..25)
-  player[:hp] -= price_paid
-  player[boost] = player[boost].map { |stat| [stat + multiplier, boost == :attack ? 50 : 25].min } # sets max range limits: attack: 50, block: 25
+  player[:hp] -= price_paid                                       # sets max range limits: attack: 50, block: 25
+  player[boost] = (player[boost].min + multiplier)..[player[boost].max + multiplier, (boost == :attack ? 50 : 25)].min
   return price_paid, multiplier, boost
 end
 
@@ -24,7 +24,7 @@ def get_rich(player)
 end
 
 def sort_it_out(player)
-  multiplier = player[:drunk].zero? ? 0 : (1..player[:drunk]).to_a.sample
+  multiplier = player[:drunk].zero? ? 0 : rand(1..player[:drunk])
   price_paid = (multiplier * rand(1.5..2.5)).to_i
   player[:hp] -= price_paid
   player[:drunk] = (player[:drunk] - multiplier).clamp(0, 20)
@@ -35,9 +35,9 @@ def munch_out(player)
   boost = [:attack, :block].select { |stat| player[stat].max > 1 }.sample
 
   multiplier = player[boost].max > 1 ? rand(1..[player[boost].max - 1, 4].min) : 0
-  player[boost] = player[boost].map { |stat| [stat - multiplier, 1].max }
+  player[boost] = [(player[boost].min - multiplier), 1].max..[player[boost].max - multiplier, 1].max
 
-  price_paid = (25..50).to_a.sample * multiplier
+  price_paid = rand(25..50) * multiplier
   player[:hp] = [player[:hp] + price_paid, 1000].min
   return price_paid, multiplier, boost
 end
@@ -79,15 +79,15 @@ def pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
         error_message
         redo
       end
-    when 0 then break
+    when 9 then break
     else
       error_message
     end
   end
 
   print `clear`
-  paid_blood_message(player, user_choice, price_paid, multiplier, boost) unless user_choice.zero?
-  boss_style = user_choice.zero? ? boss_style : the_boss[:style].sample
-  blue_steel(the_boss, boss_style, :outro) unless user_choice.zero?
+  paid_blood_message(player, user_choice, price_paid, multiplier, boost) unless user_choice == 9
+  boss_style = user_choice == 9 ? boss_style : the_boss[:style].sample
+  blue_steel(the_boss, boss_style, :outro) unless user_choice == 9
   return boss_style
 end

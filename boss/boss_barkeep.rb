@@ -4,7 +4,7 @@
 def pay_the_tab(player, the_boss)
   cash_spent = player[:cash].zero? ? 0 : rand(1..[player[:cash], 6].min)
   multiplier = cash_spent.zero? ? 0.6 : 1.0 + (cash_spent * 0.5) # don't go to the bar with no money
-  damage = ((player[:attack].sample * (100 - player[:drunk] * 5) / 100) * multiplier).to_i.clamp(0, 150)
+  damage = (rand(player[:attack]) * (100 - player[:drunk] * 5) / 100 * multiplier).to_i.clamp(0, 150)
 
   the_boss[:hp] -= damage
   player[:cash] -= cash_spent
@@ -21,7 +21,7 @@ def bar_fight(player, the_boss)
   player[:drunk] = (player[:drunk] + beers).clamp(0, 20)
   player[:cash] = (player[:cash] + wallet).clamp(0, 20)
 
-  damage = (player[:attack].sample * (100 - player[:drunk] * 5) / 100).to_i.clamp(0, 100) # updates damage to current drunkenness
+  damage = (rand(player[:attack]) * (100 - player[:drunk] * 5) / 100).to_i.clamp(0, 100) # updates damage to current drunkenness
   the_boss[:hp] -= damage
 
   invoice(player, [beers, wallet], :brawl)
