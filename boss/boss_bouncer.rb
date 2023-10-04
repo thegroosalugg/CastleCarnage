@@ -7,10 +7,10 @@ def beef_with_the_bouncer(player, weapon, the_boss, damage)
     the_boss[:hp] -= damage[:value]
     succesful_hit(player, the_boss, damage[:value])
   when :weapon
-    if weapon[:crit_ch].sample == 1
-      damage[:value] = (damage[:value] * weapon[:crit_x].call).to_i.clamp(0, 150)
+    if rand(weapon[:crit_ch]) == 1
+      damage[:value] = (damage[:value] * rand(weapon[:crit_x])).to_i.clamp(0, 150)
       critical_hit(player, the_boss, damage[:value])
-    elsif weapon[:accuracy].sample == 1
+    elsif rand(weapon[:accuracy]) == 1
       damage[:value] = 0
       missed(player, the_boss)
     else
@@ -52,7 +52,7 @@ def sneak_attack(player, the_boss, damage)
     succesful_hit(player, the_boss, damage)
     invoice(player, cash, :cash)
   else
-    counter_attack = (the_boss[:attack].sample * rand(0.6..0.8) - player[:block].sample).to_i.clamp(0, 100)
+    counter_attack = (rand(the_boss[:attack]) * rand(0.6..0.8) - rand(player[:block])).to_i.clamp(0, 100)
     player[:hp] -= counter_attack
     counter(player, the_boss, counter_attack)
   end
@@ -68,8 +68,8 @@ def fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
     game_info(player, weapon, the_boss, boss_style, load_boss)
     fight_menu(player, boss_style, weapon)
 
-    unarmed_damage = { id: :unarmed, value: (player[:attack].sample * (100 - player[:drunk] * 5) / 100).to_i }
-    weapon_damage = { id: :weapon, value: ((player[:attack].sample + weapon[:attack].sample) * (100 - player[:drunk] * 5) / 100).to_i }
+    unarmed_damage = { id: :unarmed, value: (rand(player[:attack]) * (100 - player[:drunk] * 5) / 100).to_i }
+    weapon_damage = { id: :weapon, value: ((rand(player[:attack]) + rand(weapon[:attack])) * (100 - player[:drunk] * 5) / 100).to_i }
     user_choice = gets.chomp.to_i
 
     case user_choice

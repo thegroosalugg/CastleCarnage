@@ -3,7 +3,7 @@
 
 def mosh_pit(the_boss, boss_style, player, cash_lost) # damage reduced by cash lost, multiplier incresed by drunkenness
   cash_lost = 3 if cash_lost.zero? && player[:cash].zero?
-  damage = ((player[:attack].sample - cash_lost * rand(2.0..3.5)) * (1.0 + player[:drunk] * 0.1)).to_i.clamp(0, 100)
+  damage = ((rand(player[:attack]) - cash_lost * rand(2.0..3.5)) * (1.0 + player[:drunk] * 0.1)).to_i.clamp(0, 100)
   the_boss[:hp] -= damage
   invoice(player, player[:drunk], :pit)
   succesful_hit(player, the_boss, damage)

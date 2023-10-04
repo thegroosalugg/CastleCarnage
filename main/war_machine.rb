@@ -46,11 +46,11 @@ def random_enemy
     id: :enemy,
     name: ENEMIES.sample,
     hp: rand(200..400),
-    attack: (rand(20..30)..rand(31..60)).to_a,
-    block: (rand(1..5)..rand(6..15)).to_a,
-    accuracy: (1..rand(4..11)).to_a,
-    crit_ch: (1..rand(4..11)).to_a,
-    crit_x: -> { rand(rand(1.5..2.0)..rand(2.1..4.0)) }
+    attack: (rand(20..30)..rand(31..60)),
+    block: (rand(1..5)..rand(6..15)),
+    accuracy: (1..rand(4..11)),
+    crit_ch: (1..rand(4..11)),
+    crit_x: (rand(1.5..2.0)..rand(2.1..4.0))
   }
 end
 
@@ -59,8 +59,8 @@ def big_boss_awaits
     id: :boss,
     name: BOSSES.sample,
     hp: rand(800..1000),
-    attack: (rand(30..40)..rand(41..65)).to_a,
-    accuracy: (1..rand(4..10)).to_a,
+    attack: (rand(30..40)..rand(41..65)),
+    accuracy: (1..rand(4..10)),
     style: ["🍻 Barkeep", "🕶️ Bouncer", "🎶 Band"]
   }
 end
@@ -71,10 +71,10 @@ def pick_weapon
     name: WEAPONS.sample,
     durability: rand(1..5),
     broken: false,
-    attack: (rand(20..30)..rand(31..60)).to_a,
-    accuracy: (1..rand(4..11)).to_a,
-    crit_ch: (1..rand(4..11)).to_a,
-    crit_x: -> { rand(rand(1.5..2.5)..rand(2.6..5.0)) }
+    attack: (rand(20..30)..rand(31..60)),
+    accuracy: (1..rand(4..11)),
+    crit_ch: (1..rand(4..11)),
+    crit_x: (rand(1.5..2.5)..rand(2.6..5.0))
   }
 end
 
@@ -83,10 +83,10 @@ def special_weapon
     id: :special_weapon,
     name: SPECIAL_WEAPONS.sample,
     durability: rand(1..2),
-    attack: (rand(30..40)..rand(41..99)).to_a,
-    accuracy: (1..rand(5..12)).to_a,
-    crit_ch: (1..rand(5..8)).to_a,
-    crit_x: -> { rand(rand(2.0..3.0)..rand(3.1..5.0)) }
+    attack: (rand(30..40)..rand(41..99)),
+    accuracy: (1..rand(5..12)),
+    crit_ch: (1..rand(5..8)),
+    crit_x: (rand(2.0..3.0)..rand(3.1..5.0))
   }
 end
 
