@@ -62,7 +62,14 @@ def invoice(player, amount, where)
     "You're skint and got nothing to lose, but that don't mean you can't take extra damage!",
   ]
   pit = [ # mosh pit
-    "",
+    case player[:drunk]
+    when 0..2   then "You're well knackered 😩 your damage is hemel."
+    when 3..5   then "Got a buzz on 😉 you start to headbang!"
+    when 6..9   then "One sixer sunk, getting the two-step on."
+    when 10..13 then "Whisky 🥃 armour on. Time to start windmilling ☠️"
+    when 14..17 then "You feel invincible, nothins guna stp u nw 🤤 "
+    when 18..20 then "🍺🍻😏🤪🥳😉🥴🤤😵"
+    end
   ]
   guard = [ # not tonight
     "Your weapon provided an extra #{amount} 🛡️ block, better use it wisely.",
