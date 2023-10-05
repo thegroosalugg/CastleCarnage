@@ -56,11 +56,16 @@ on_point = [
     "#{attacker[:name]} wrecked #{target[:name]} for 💢 #{damage} damage!",
     "#{attacker[:name]} did #{target[:name]} in for 💢 #{damage} damage!",
   ]
+  counter = [
+    "#{attacker[:name]} saw you try to pull a fast one and headbutted you for #{target[:emoji]} #{damage} damage.",
+    "#{attacker[:name]} spotted you being a plank and served you for #{target[:emoji]} #{damage} damage.",
+    ]
 
   messages = case outcome
   when :critical then critical
   when :missed   then missed
   when :hit      then on_point
+  when :counter  then counter
   end
   puts text_break(messages.sample, " ", 70)
 end
