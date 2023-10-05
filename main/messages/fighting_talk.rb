@@ -3,28 +3,23 @@
 
 # Player vs enemy strike
 
-def critical_hit(attacker, target, critical_damage)
-  messages = [
-    "Get ready for a battering, #{attacker[:name]} is gone do #{target[:name]} in for 💥 #{critical_damage} critical damage, #{target[:name]} is proper gutted bruv!",
-    "Oh Shit! #{attacker[:name]} mashed #{target[:name]} up for #{critical_damage} 💥 critical damage! #{target[:name]} looks like mashed potatoes mate!",
-    "#{attacker[:name]}: ⬇ ⬆ LP ⬅ ⬅ ⬆ ⬇ LK HP ⬇ ↘ ➡ HP HK LP  ⬅ ↙ ⬇ ⬅  ↙ ⬇ :: 💥 #{critical_damage} critical damage served to #{target[:name]}!",
-    "#{attacker[:name]} did a mad front flip and volunteered #{target[:name]} to kiss the floor cleaning up 💥 #{critical_damage} critical damage!",
-    "#{attacker[:name]}'s deadlift 🏋️‍♂️ regime has been righteous. The 💥 #{critical_damage} damage served to #{target[:name]} is a bit critical.",
-    "#{attacker[:name]} did a running jump and kicked #{target[:name]} in their stupid face for 💥 #{critical_damage} critical damage.",
-    "#{attacker[:name]} is just better than #{target[:name]}, they merk #{target[:name]} for 💥 #{critical_damage} critical damage.",
-    "#{attacker[:name]} triple corked and double battered #{target[:name]} in the face for 💥 #{critical_damage} critical damage!",
-    "#{attacker[:name]} turns up the punishment as #{target[:name]} gets weighed in for 💥 #{critical_damage} critical damage!",
-    "#{attacker[:name]} did a sick combo on you for 💥 #{critical_damage} critical damage, fucking #{target[:name]} up!",
-    "#{attacker[:name]} lit on fire 🔥 dishing out #{target[:name]} a meal of 💥 #{critical_damage} critical damage!",
-    "#{attacker[:name]} did a crazy as flip and kicked #{target[:name]} for 💥 #{critical_damage} critical damage",
-    "Critical‼ #{attacker[:name]} smashed #{target[:name]} for 💥 #{critical_damage} damage! Booya!",
+def shots_fired(attacker, target, damage = 0, outcome)
+  critical = [
+    "Get ready for a battering, #{attacker[:name]} is gone do #{target[:name]} in for 💥 #{damage} critical damage, #{target[:name]} is proper gutted bruv!",
+    "Oh Shit! #{attacker[:name]} mashed #{target[:name]} up for #{damage} 💥 critical damage! #{target[:name]} looks like mashed potatoes mate!",
+    "#{attacker[:name]}: ⬇ ⬆ LP ⬅ ⬅ ⬆ ⬇ LK HP ⬇ ↘ ➡ HP HK LP  ⬅ ↙ ⬇ ⬅  ↙ ⬇ :: 💥 #{damage} critical damage served to #{target[:name]}!",
+    "#{attacker[:name]} did a mad front flip and volunteered #{target[:name]} to kiss the floor cleaning up 💥 #{damage} critical damage!",
+    "#{attacker[:name]}'s deadlift 🏋️‍♂️ regime has been righteous. The 💥 #{damage} damage served to #{target[:name]} is a bit critical.",
+    "#{attacker[:name]} did a running jump and kicked #{target[:name]} in their stupid face for 💥 #{damage} critical damage.",
+    "#{attacker[:name]} is just better than #{target[:name]}, they merk #{target[:name]} for 💥 #{damage} critical damage.",
+    "#{attacker[:name]} triple corked and double battered #{target[:name]} in the face for 💥 #{damage} critical damage!",
+    "#{attacker[:name]} turns up the punishment as #{target[:name]} gets weighed in for 💥 #{damage} critical damage!",
+    "#{attacker[:name]} did a sick combo on you for 💥 #{damage} critical damage, fucking #{target[:name]} up!",
+    "#{attacker[:name]} lit on fire 🔥 dishing out #{target[:name]} a meal of 💥 #{damage} critical damage!",
+    "#{attacker[:name]} did a crazy as flip and kicked #{target[:name]} for 💥 #{damage} critical damage",
+    "Critical‼ #{attacker[:name]} smashed #{target[:name]} for 💥 #{damage} damage! Booya!",
   ]
-
-  puts text_break(messages.sample, " ", 70)
-end
-
-def missed(attacker, target)
-  messages = [
+missed = [
     "As #{attacker[:name]} swings, they miss and #{target[:name]} layed them flat out 😵. #{attacker[:name]} kissed the floor. #{attacker[:name]} is married to the floor.",
     "While charging #{target[:name]}, #{attacker[:name]} wanked it up and fell on their face 😣, dealing absolutely no damage. What a wally!",
     "#{attacker[:name]}'s stealth is like a brick 🧱 through a window. #{target[:name]} predicted the attack and calmly swayed out the way",
@@ -42,31 +37,31 @@ def missed(attacker, target)
     "#{target[:name]} don't give a fuck, they mash #{attacker[:name]} up!",
     "#{target[:name]}: '🚫 Denied‼'",
   ]
-
-  puts text_break(messages.sample, " ", 70)
-end
-
-def succesful_hit(attacker, target, damage_dealt)
-  messages = [
-    "#{attacker[:name]} absolutely battered #{target[:name]} for 💢 #{damage_dealt} damage! #{target[:name]} got mashed up!",
-    "School's in session. #{target[:name]} got teached by Professor 🧑‍🎓#{attacker[:name]} for 💢 #{damage_dealt} damage!",
-    "#{attacker[:name]} slayed #{target[:name]} for 💢 #{damage_dealt} damage! #{target[:name]}'s getting merked!",
-    "#{attacker[:name]} grabbed #{target[:name]} and smashed them through the wall for 💢 #{damage_dealt} damage!",
-    "#{attacker[:name]} roughed #{target[:name]} up for 💢 #{damage_dealt} damage! Time to call for a doctor!",
-    "#{attacker[:name]} absolutely wrecked #{target[:name]} for 💢 #{damage_dealt} damage! Who's the boss?!",
-    "#{attacker[:name]} kicked #{target[:name]}'s face in for 💢 #{damage_dealt} damage! What a savage!",
-    "A brutal hit! #{attacker[:name]} lays #{target[:name]} out, delivering 💢 #{damage_dealt} damage!",
-    "#{attacker[:name]} smashed #{target[:name]} for 💢 #{damage_dealt} damage! Better think fast!",
-    "#{attacker[:name]} trounced #{target[:name]} for 💢 #{damage_dealt} damage! Step on up brah!",
-    "#{attacker[:name]} slammed #{target[:name]} for 💢 #{damage_dealt} damage! Nice shot bro!",
-    "#{attacker[:name]} merked #{target[:name]} for 💢 #{damage_dealt} damage! What's up!",
-    "#{attacker[:name]} weighed #{target[:name]} in for 💢 #{damage_dealt} damage!",
-    "#{attacker[:name]} sorted #{target[:name]} out for 💢 #{damage_dealt} damage!",
-    "#{attacker[:name]} mashed #{target[:name]} up for 💢 #{damage_dealt} damage!",
-    "#{attacker[:name]} wrecked #{target[:name]} for 💢 #{damage_dealt} damage!",
-    "#{attacker[:name]} did #{target[:name]} in for 💢 #{damage_dealt} damage!",
+on_point = [
+    "#{attacker[:name]} absolutely battered #{target[:name]} for 💢 #{damage} damage! #{target[:name]} got mashed up!",
+    "School's in session. #{target[:name]} got teached by Professor 🧑‍🎓#{attacker[:name]} for 💢 #{damage} damage!",
+    "#{attacker[:name]} slayed #{target[:name]} for 💢 #{damage} damage! #{target[:name]}'s getting merked!",
+    "#{attacker[:name]} grabbed #{target[:name]} and smashed them through the wall for 💢 #{damage} damage!",
+    "#{attacker[:name]} roughed #{target[:name]} up for 💢 #{damage} damage! Time to call for a doctor!",
+    "#{attacker[:name]} absolutely wrecked #{target[:name]} for 💢 #{damage} damage! Who's the boss?!",
+    "#{attacker[:name]} kicked #{target[:name]}'s face in for 💢 #{damage} damage! What a savage!",
+    "A brutal hit! #{attacker[:name]} lays #{target[:name]} out, delivering 💢 #{damage} damage!",
+    "#{attacker[:name]} smashed #{target[:name]} for 💢 #{damage} damage! Better think fast!",
+    "#{attacker[:name]} trounced #{target[:name]} for 💢 #{damage} damage! Step on up brah!",
+    "#{attacker[:name]} slammed #{target[:name]} for 💢 #{damage} damage! Nice shot bro!",
+    "#{attacker[:name]} merked #{target[:name]} for 💢 #{damage} damage! What's up!",
+    "#{attacker[:name]} weighed #{target[:name]} in for 💢 #{damage} damage!",
+    "#{attacker[:name]} sorted #{target[:name]} out for 💢 #{damage} damage!",
+    "#{attacker[:name]} mashed #{target[:name]} up for 💢 #{damage} damage!",
+    "#{attacker[:name]} wrecked #{target[:name]} for 💢 #{damage} damage!",
+    "#{attacker[:name]} did #{target[:name]} in for 💢 #{damage} damage!",
   ]
 
+  messages = case outcome
+  when :critical then critical
+  when :missed   then missed
+  when :hit      then on_point
+  end
   puts text_break(messages.sample, " ", 70)
 end
 

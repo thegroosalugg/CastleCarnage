@@ -5,16 +5,16 @@ def beef_with_the_bouncer(player, weapon, the_boss, damage)
   case damage[:id]
   when :unarmed
     the_boss[:hp] -= damage[:value]
-    succesful_hit(player, the_boss, damage[:value])
+    shots_fired(player, the_boss, damage[:value], :hit)
   when :weapon
     if rand(weapon[:crit_ch]) == 1
       damage[:value] = (damage[:value] * rand(weapon[:crit_x])).to_i.clamp(0, 150)
-      critical_hit(player, the_boss, damage[:value])
+      shots_fired(player, the_boss, damage[:value], :critical)
     elsif rand(weapon[:accuracy]) == 1
       damage[:value] = 0
-      missed(player, the_boss)
+      shots_fired(player, the_boss, :missed)
     else
-      succesful_hit(player, the_boss, damage[:value])
+      shots_fired(player, the_boss, damage[:value], :hit)
     end
     the_boss[:hp] -= damage[:value]
     weapon[:durability] = [weapon[:durability] - 1, 0].max
@@ -26,7 +26,7 @@ def ranged_strike(player, weapon, the_boss, weapon_damage)
   damage = (weapon_damage[:value] * rand(2.0..2.5)).to_i.clamp(0, 200)
   the_boss[:hp] -= damage
   weapon[:durability] = 0
-  succesful_hit(player, the_boss, damage)
+  shots_fired(player, the_boss, damage, :hit)
   weapon_speaks(weapon, :broke)
 end
 
@@ -49,7 +49,7 @@ def sneak_attack(player, the_boss, damage)
       player[:hp] += life
       invoice(player, life, :life)
     end
-    succesful_hit(player, the_boss, damage)
+    shots_fired(player, the_boss, damage, :hit)
     invoice(player, cash, :cash)
   else
     counter_attack = (rand(the_boss[:attack]) * rand(0.6..0.8) - rand(player[:block])).to_i.clamp(0, 100)

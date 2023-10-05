@@ -2,18 +2,18 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 def strike(attacker, target, weapon = nil)
-  damage_source = attacker[:id] == :player ? weapon : attacker
-  damage_dealt = (rand(damage_source[:attack]) - rand(target[:block])).clamp(0, 100)
+  source = attacker[:id] == :player ? weapon : attacker
+  damage = (rand(source[:attack]) - rand(target[:block])).clamp(0, 100)
 
-  if rand(damage_source[:crit_ch]) == 1
-    critical_damage = (damage_dealt * rand(damage_source[:crit_x])).to_i.clamp(0, 150)
-    target[:hp] -= critical_damage
-    critical_hit(attacker, target, critical_damage)
-  elsif rand(damage_source[:accuracy]) == 1
-    missed(attacker, target)
+  if rand(source[:crit_ch]) == 1
+    critical = (damage * rand(source[:crit_x])).to_i.clamp(0, 150)
+    target[:hp] -= critical
+    shots_fired(attacker, target, critical, :critical)
+  elsif rand(source[:accuracy]) == 1
+    shots_fired(attacker, target, :missed)
   else
-    target[:hp] -= damage_dealt
-    succesful_hit(attacker, target, damage_dealt)
+    target[:hp] -= damage
+    shots_fired(attacker, target, damage, :hit)
   end
   weapon[:durability] = [weapon[:durability] - 1, 0].max if attacker[:id] == :player
 end
