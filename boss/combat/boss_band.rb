@@ -10,10 +10,9 @@ def mosh_pit(the_boss, boss_style, player, cash_lost) # damage reduced by cash l
 end
 
 def dance_off(the_boss, boss_style, player)
-  user_choice = ""
-  until user_choice.to_s.length == 3 && user_choice.chars.all? { |char| ('1'..'3').include?(char) }
-
-    user_choice = gets.chomp
+  user_choice = 0
+  until user_choice.digits.all? { |digit| [1, 2, 3].include?(digit) } && user_choice.digits.length == 3
+    user_choice = gets.chomp.to_i
     error_message
   end
   puts "SUCCESS"
