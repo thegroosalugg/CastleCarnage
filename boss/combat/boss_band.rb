@@ -9,6 +9,12 @@ def mosh_pit(the_boss, boss_style, player, cash_lost) # damage reduced by cash l
   shots_fired(player, the_boss, damage, :hit)
 end
 
+def swing(attacker, target)
+  damage = (rand(attacker[:attack]) * 0.6).to_i
+  target[:hp] -= damage
+  shots_fired(attacker, target, damage, :hit)
+end
+
 def dance_off(the_boss, boss_style, player)
   user_choice = []
   boss_moves =  Array.new(4) { rand(1..3) }
@@ -17,8 +23,8 @@ def dance_off(the_boss, boss_style, player)
     error_message
   end
   user_choice.each_with_index do |choice, index|
-    player_wins += 1 if (choice > boss_moves[index]) || (choice == 1 && boss_moves[index] == 3) unless (boss_moves[index] == 1 && choice == 3)
-    boss_wins += 1 if (boss_moves[index] > choice) || (boss_moves[index] == 1 && choice == 3) unless (choice == 1 && boss_moves[index] == 3)
+    swing(player, the_boss) if (choice > boss_moves[index]) || (choice == 1 && boss_moves[index] == 3) unless (boss_moves[index] == 1 && choice == 3)
+    swing(the_boss, player) if (boss_moves[index] > choice) || (boss_moves[index] == 1 && choice == 3) unless (choice == 1 && boss_moves[index] == 3)
   end
 end
 
