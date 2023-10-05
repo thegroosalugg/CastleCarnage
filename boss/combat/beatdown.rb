@@ -12,7 +12,7 @@ def youre_barred(the_boss, player)
 end
 
 def not_tonight(the_boss, player, weapon)
-  if rand(the_boss[:accuracy]) == 1
+  if rand(the_boss[:accuracy]) <= (player[:sneaky] ? 2 : 1)        # attempting a sneak attack increases boss's miss chance by 1
     missed(the_boss, player)                                       # bouncer gets damage boost for player drunkenness
   else                                                             # block upgraded by weapon durability
     guard = player[:sneaky] ? 0 : weapon[:durability] * rand(2..3) # no guard bonus for sneak attacks
