@@ -8,6 +8,7 @@ require_relative 'boss/combat/boss_barkeep'
 require_relative 'boss/combat/boss_bouncer'
 require_relative 'boss/combat/boss_band'
 require_relative 'boss/combat/beatdown'
+require_relative 'main/messages/enemy_speaks'
 require_relative 'main/messages/fighting_talk'
 require_relative 'main/messages/not_gonna_get_us'
 require_relative 'main/messages/intro_outro'
@@ -81,7 +82,7 @@ def play_game
     [enemy, second_enemy].each_with_index do |current_enemy, index|
       if current_enemy && current_enemy[:hp] <= 0
         enemies_defeated += 1
-        enemy_killed(current_enemy)
+        enemy_speaks(current_enemy, :pwned)
         tracked_enemy = current_enemy
         if index == 0
           enemy = nil
