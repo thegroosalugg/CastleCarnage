@@ -10,12 +10,16 @@ def mosh_pit(the_boss, boss_style, player, cash_lost) # damage reduced by cash l
 end
 
 def dance_off(the_boss, boss_style, player)
-  user_choice = 0
-  until user_choice.digits.all? { |digit| [1, 2, 3].include?(digit) } && user_choice.digits.length == 3
-    user_choice = gets.chomp.to_i
+  user_choice = []
+  boss_moves =  Array.new(4) { rand(1..3) }
+  until user_choice.all? { |digit| [1, 2, 3].include?(digit) } && user_choice.length == 4
+    user_choice = gets.chomp.to_i.digits.reverse
     error_message
   end
-  puts "SUCCESS"
+  user_choice.each_with_index do |choice, index|
+    player_wins += 1 if (choice > boss_moves[index]) || (choice == 1 && boss_moves[index] == 3) unless (boss_moves[index] == 1 && choice == 3)
+    boss_wins += 1 if (boss_moves[index] > choice) || (boss_moves[index] == 1 && choice == 3) unless (choice == 1 && boss_moves[index] == 3)
+  end
 end
 
 def fight_the_band(player, weapon, the_boss, boss_style, load_boss)
