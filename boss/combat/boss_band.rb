@@ -9,6 +9,16 @@ def mosh_pit(the_boss, boss_style, player, cash_lost) # damage reduced by cash l
   shots_fired(player, the_boss, damage, :hit)
 end
 
+def dance_off(the_boss, boss_style, player)
+  user_choice = ""
+  until user_choice.to_s.length == 3 && user_choice.chars.all? { |char| ('1'..'3').include?(char) }
+
+    user_choice = gets.chomp
+    error_message
+  end
+  puts "SUCCESS"
+end
+
 def fight_the_band(player, weapon, the_boss, boss_style, load_boss)
   user_choice = 0
   blue_steel(the_boss, boss_style, :intro)
@@ -24,7 +34,8 @@ def fight_the_band(player, weapon, the_boss, boss_style, load_boss)
       mosh_pit(the_boss, boss_style, player, cash_lost)
     elsif user_choice == 5
       print `clear`
-      boss_strikes_back(the_boss, boss_style, player, weapon)
+      dance_off(the_boss, boss_style, player)
+      # boss_strikes_back(the_boss, boss_style, player, weapon)
     else
       error_message
     end

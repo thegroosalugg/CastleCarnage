@@ -21,7 +21,7 @@ def bar_fight(player, the_boss)
   player[:drunk] = (player[:drunk] + beers).clamp(0, 20)
   player[:cash] = (player[:cash] + wallet).clamp(0, 20)
 
-  damage = (rand(player[:attack]) * (100 - player[:drunk] * 5) / 100).to_i.clamp(0, 100) # updates damage to current drunkenness
+  damage = (rand(player[:attack]) * (100 - player[:drunk] * 4) / 100).to_i.clamp(0, 100) # updates damage to current drunkenness
   the_boss[:hp] -= damage
 
   invoice(player, [beers, wallet], :brawl)

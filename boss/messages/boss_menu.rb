@@ -100,7 +100,7 @@ def band
     "[4] ✖️ Mosh Pit",
   ]
   tba = [
-    "[5] TBA",
+    "[5] 🪩 Dance Off",
   ]
 
   puts mosh_pit.sample
@@ -125,11 +125,11 @@ def blood_menu(player)
     "   [4] 🫙 Creatine Monohydrate!",
   ]
   money = [
-    "   [5] 💵 Get Money",
-    "   [5] 💵 Lottery Tickets",
-    "   [5] 📓 Read the Necronomicon",
-    "   [5] 😈 Deal with the Devil",
-    "   [5] 🎰 Get Rich Quick Scheme",
+    "   [5] 💵 Gimme Money",
+    "   [5] 🎴 Scratchards",
+    "   [5] 💰 Rob a bank",
+    "   [5] 😈 Deal with Devil",
+    "   [5] 🎰 Pyramid Scheme",
   ]
   drink = [
     "   [6] 🥤 Bottle of Water",
@@ -139,8 +139,9 @@ def blood_menu(player)
     "   [6] 🥙 Döner Kebab"
   ]
   health = [
-    "   [7] 🍔 Order a take away",
-    "   [7] ⚖️ Live to fight another day",
+    "   [7] 🍔 Cheat Day",
+    "   [7] 🧵 Hang on by a thread",
+    "   [7] 🥣 Dodgy Looking Potion",
   ]
 
   puts SEPARATOR
