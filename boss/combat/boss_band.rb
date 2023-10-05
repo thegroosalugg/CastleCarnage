@@ -6,7 +6,7 @@ def mosh_pit(the_boss, boss_style, player, cash_lost) # damage reduced by cash l
   damage = ((rand(player[:attack]) - cash_lost * rand(2.0..3.5)) * (1.0 + player[:drunk] * 0.1)).to_i.clamp(0, 100)
   the_boss[:hp] -= damage
   invoice(player, player[:drunk], :pit)
-  succesful_hit(player, the_boss, damage)
+  shots_fired(player, the_boss, damage, :hit)
 end
 
 def fight_the_band(player, weapon, the_boss, boss_style, load_boss)

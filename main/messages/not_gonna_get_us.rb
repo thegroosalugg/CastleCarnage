@@ -1,21 +1,6 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-def run_away(enemy)
-  messages = [
-    "Damn, that #{enemy[:name]}'s a wasteman, maybe there be something in one of them rooms.",
-    "Ain't sticking around 'ere, better try me luck with them rooms, innit!",
-    "There's a mad motorbizzle 🏍 slabbed up 'ere, time to gank it 'n' go!",
-    "Dammit, gotta dash to a gaff quick, or I'm #{enemy[:name]} food!!",
-    "That bastard #{enemy[:name]} is right behing me, gotta cheese it!",
-    "Better leg it, not let #{enemy[:name]} get the drop on you.",
-    "Bugger it, time to get ghost 👻",
-  ]
-
-  puts SEPARATOR
-  puts text_break(messages.sample, " ", 70)
-end
-
 def enter_room(entered_room)
   messages = [
     "I think I smelled some nosh 🍔 in #{entered_room[:name]}, better check it, absolutely famished.",
@@ -119,8 +104,8 @@ def gifts(gift, randomizer, player, enemy)
   puts text_break(messages.sample, " ", 70)
 end
 
-def got_weapon(weapon)
-  messages = [
+def weapon_speaks(weapon, status)
+  got = [
     "Rummaging through the fridge 🧊, you find a #{weapon[:name]} sandwiched between the pickles! Let's add some flavour to this thrashing!",
     "You open a cookbook 📙, hollowed out there's a #{weapon[:name]} inside. You check your watch ⌚, it's 5 past throwdown o'clock.",
     "A genie 🧞 appears and grants you 3 wishes, but you're only gonna need one: a #{weapon[:name]} for laying down the law.",
@@ -135,23 +120,23 @@ def got_weapon(weapon)
     "No way, you just remembered you still have your #{weapon[:name]} in your sock 🧦 !",
     "Under the bed 🛏️, you discovered a #{weapon[:name]} 👀. Time for some pummeling!",
   ]
-
-  puts text_break(messages.sample, " ", 70)
-end
-
-def enemy_spawn(enemy)
-  messages = [
-    "There's another package from Amazon 🎁, but oh shit! It's #{enemy[:name]} with an order for bloodshed!",
-    "You stare at the mirror 🔲, but you slowly realise the #{enemy[:name]} staring back isn't you...",
-    "#{enemy[:name]} was waiting for you in the trash can 🚮, ready to show you he can thrash 👊",
-    "Motherfucking #{enemy[:name]} sprung out the fridge 🧊, they coming right for ya!",
-    "The phone 📞 rings, you pick up, it's #{enemy[:name]} calling for your death.",
-    "Wild #{enemy[:name]} appeared ‼ #{enemy[:name]}'s exerting its pressure!",
-    "#{enemy[:name]}: 'Yargh, yer stepped into the wrong castle matey'",
-    "Oh shit! You just dun goofed, #{enemy[:name]} jumped out at you!",
-    "#{enemy[:name]}: 'Step on up kiddies, thrashings for all!'",
-    "It's a full moon 🌕 tonight. #{enemy[:name]} steps on up.",
+  broke = [
+    "😲 Bollocks, your #{weapon[:name]} slipped out of your hand and flew out of the window. Time to split!",
+    "😲 You suddenly forgot how to wield your #{weapon[:name]}, it's useless now. You threw it away.",
+    "😲 The universe conspires against you. Your #{weapon[:name]} disintegrates into nothingness!",
+    "😲 Your #{weapon[:name]} made its final stand and fell to pieces. You'll need a new one.",
+    "😲 Well, that's a bummer! Your trusty #{weapon[:name]} just disintegrated into dust.",
+    "😲 Goddamn it! You dropped your #{weapon[:name]}! No time to nab it, gotta bolt!",
+    "😲 You used up your last shot, your #{weapon[:name]} is a paperweight.",
+    "😲 Your #{weapon[:name]} resigned from service. On your own now.",
+    "😲 Your #{weapon[:name]} jumped from your hand and legged it.",
+    "😲 Your #{weapon[:name]} was proper shoddy, sucks to be you.",
+    "😲 Your #{weapon[:name]} broke 💔, time to take a walk.",
+    "😲 Oh shit! Your #{weapon[:name]} broke. Better leg it!",
+    "😲 Your #{weapon[:name]} disappears into thin air",
+    "😲 Goodbye #{weapon[:name]}, you will be missed.",
   ]
-
+  messages = status == :got ? got : broke
+  puts SEPARATOR if status == :broke
   puts text_break(messages.sample, " ", 70)
 end

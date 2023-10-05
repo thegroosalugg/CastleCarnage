@@ -31,17 +31,17 @@ def explore_rooms(enemy, weapon, player, second_enemy)
     target_enemy[:hp] -= randomizer
   when 5 # Get a new weapon; 20% for special weapon
     weapon = rand(1..5) == 1 ? special_weapon : pick_weapon
-    got_weapon(weapon)
+    weapon_speaks(weapon, :got)
   when 6 # New enemy spawns in empty slot
     if second_enemy.nil?
       second_enemy = random_enemy
-      enemy_spawn(second_enemy)
+      enemy_speaks(second_enemy, :summon)
     elsif enemy.nil? # New enemy spawns in empty slot if second enemy alive? && enemy dead?
       enemy = random_enemy
-      enemy_spawn(enemy)
+      enemy_speaks(enemy, :summon)
     else # 2 enemies on your jock? Increase chance of new weapon, 25% chance for special weapon
       weapon = rand(1..4) == 1 ? special_weapon : pick_weapon
-      got_weapon(weapon)
+      weapon_speaks(weapon, :got)
     end
   end
 

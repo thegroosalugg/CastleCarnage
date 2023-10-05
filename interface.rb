@@ -8,6 +8,7 @@ require_relative 'boss/combat/boss_barkeep'
 require_relative 'boss/combat/boss_bouncer'
 require_relative 'boss/combat/boss_band'
 require_relative 'boss/combat/beatdown'
+require_relative 'main/messages/enemy_speaks'
 require_relative 'main/messages/fighting_talk'
 require_relative 'main/messages/not_gonna_get_us'
 require_relative 'main/messages/intro_outro'
@@ -44,7 +45,7 @@ def play_game
       # DEBUG CHEAT MENU
       enemy, second_enemy, weapon = cheat_menu(player, enemy, second_enemy, weapon, user_choice)
     else                                                          # Player must run through rooms if weapon broken
-      weapon_broke(weapon) unless weapon[:broken]
+      weapon_speaks(weapon, :broke) unless weapon[:broken]
       weapon[:broken] = true
       escape_attempt(enemy, second_enemy, player, weapon)
       user_choice = "y"
@@ -81,7 +82,7 @@ def play_game
     [enemy, second_enemy].each_with_index do |current_enemy, index|
       if current_enemy && current_enemy[:hp] <= 0
         enemies_defeated += 1
-        enemy_killed(current_enemy)
+        enemy_speaks(current_enemy, :pwned)
         tracked_enemy = current_enemy
         if index == 0
           enemy = nil

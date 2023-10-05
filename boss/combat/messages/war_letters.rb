@@ -93,13 +93,3 @@ def invoice(player, amount, where)
   end
   puts text_break(messages.sample, " ", 70)
 end
-
-# BOUNCER STYLE
-
-def counter(player, the_boss, counter_attack)
-  messages = [
-    "#{the_boss[:name]} spotted you being a plank and served you for #{player[:emoji]} #{counter_attack} damage.",
-  ]
-
-  puts text_break(messages.sample, " ", 70)
-end
