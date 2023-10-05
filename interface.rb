@@ -23,7 +23,7 @@ require_relative 'debug/cheat_mode'
 
 def play_game
   print `clear`
-  player = { id: :player, hp: rand(250..300), attack: (30..40), block: (1..10), cash: rand(2..12), drunk: 0 }
+  player = { id: :player, hp: rand(250..300), attack: (rand(25..30)..rand(35..40)), block: (1..10), cash: rand(3..10), drunk: 0 }
   name_player(player)
   enemy = random_enemy
   second_enemy = nil

@@ -3,7 +3,7 @@
 
 def get_buff(player)
   stats = []
-  [player[:attack], player[:block]].each_with_index do |stat, index| # selects stats when attack < 50 || block < 25
+  [player[:attack], player[:block]].each_with_index do |stat, index| # selects stats when attack < 50 || block < 20
     stats << :attack if index == 0 && stat.max < 50
     stats << :block if index == 1 && stat.max < 20
   end
