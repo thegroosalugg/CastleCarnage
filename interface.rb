@@ -27,29 +27,27 @@ def play_game
   name_player(player)
   enemies = []
   3.times { enemies << random_enemy }
-  enemy = random_enemy
-  second_enemy = nil
-  tracked_enemy = enemy
+  tracked_enemy = enemies.sample
   weapon = pick_weapon
   enemies_defeated = 0
   rooms_explored = 0
   the_boss = big_boss_awaits
 
-  intro(player, weapon, enemy)
+  intro(player, weapon, tracked_enemy)
   state_of_game(enemies, player, weapon)
 
-  while (enemy || second_enemy) && player[:hp].positive?
+  while !enemies.empty? && player[:hp].positive?
 
     if weapon[:durability].positive?                              # Fight menu when weapon equipped
       weapon[:broken] = false
       load_menu
       user_choice = gets.chomp.downcase
       # DEBUG CHEAT MENU
-      enemy, second_enemy, weapon = cheat_menu(player, enemy, second_enemy, weapon, user_choice)
+      # enemy, second_enemy, weapon = cheat_menu(player, enemy, second_enemy, weapon, user_choice)
     else                                                          # Player must run through rooms if weapon broken
       weapon_speaks(weapon, :broke) unless weapon[:broken]
       weapon[:broken] = true
-      escape_attempt(enemy, second_enemy, player, weapon)
+      escape_attempt(enemies, player, weapon)
       user_choice = "y"
     end
 
@@ -72,9 +70,9 @@ def play_game
     elsif user_choice == "y"                                      # Avoid combat and run through rooms. Counter records no. of rooms explored
       print `clear` unless weapon[:broken]
 
-      escape_attempt(enemy, second_enemy, player, weapon) unless weapon[:broken]
+      escape_attempt(enemies, player, weapon) unless weapon[:broken]
       rooms_explored += 1
-      enemy, weapon, second_enemy = explore_rooms(enemy, weapon, player, second_enemy) unless player[:hp] <= 0
+      enemies, weapon = explore_rooms(enemies, weapon, player) unless player[:hp] <= 0
 
     else
       error_message

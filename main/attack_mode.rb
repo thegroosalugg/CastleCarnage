@@ -24,8 +24,8 @@ def somersault_attack(player, enemy, weapon)   # succeed and strike twice, fail 
   chance == 1 ? 2.times { strike(player, enemy, weapon) } : 3.times { strike(enemy, player) }
 end
 
-def escape_attempt(enemy, second_enemy, player, weapon)
-  target_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy
+def escape_attempt(enemies, player, weapon)
+  target_enemy = enemies.sample
   enemy_speaks(target_enemy, :escape)
   if rand(1..5) == 1
     enemy_speaks(target_enemy, :surprise)

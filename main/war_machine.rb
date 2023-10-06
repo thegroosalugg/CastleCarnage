@@ -45,8 +45,8 @@ def random_enemy
   enemy = {
     id: :enemy,
     name: ENEMIES.sample,
-    hp: rand(200..400),
-    attack: (rand(20..30)..rand(31..60)),
+    hp: rand(80..130),
+    attack: (rand(20..30)..rand(31..40)),
     block: (rand(1..5)..rand(6..15)),
     accuracy: (1..rand(4..11)),
     crit_ch: (1..rand(4..11)),
