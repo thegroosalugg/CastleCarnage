@@ -31,7 +31,7 @@ def dance_off(player, weapon, the_boss, boss_style, load_boss)
       step_on_up unless (1..3).include?(user_choice)
     end
     print `clear`
-    show_your_moves(player, the_boss, user_choice, boss_moves)
+    show_your_moves(player, the_boss, user_choice, boss_moves) # Paper, Scizzors, Rock rules. Highes number wins, except 1 > 3
     swing(player, the_boss) if (user_choice > boss_moves[round]) || (user_choice == 1 && boss_moves[round] == 3) unless (boss_moves[round] == 1 && user_choice == 3)
     swing(the_boss, player) if (boss_moves[round] > user_choice) || (boss_moves[round] == 1 && user_choice == 3) unless (user_choice == 1 && boss_moves[round] == 3)
     if round < 3  # Check if it's not the last round
