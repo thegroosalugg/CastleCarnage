@@ -53,15 +53,12 @@ def play_game
 
     if user_choice == "t"
       print `clear`
-
-      combat(enemies, player, weapon)
-      # strike(player, enemy, weapon) if enemy
-      # strike(enemy, player) if enemy && enemy[:hp].positive?
+      mortal_kombat(enemies, player, weapon)
 
     elsif user_choice == "r"                                      # Target single enemy with somersault attack
       print `clear`
 
-      target_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy
+      target_enemy = enemies.sample
       somersault_attack(player, target_enemy, weapon)
 
     elsif user_choice == "y"                                      # Avoid combat and run through rooms. Counter records no. of rooms explored

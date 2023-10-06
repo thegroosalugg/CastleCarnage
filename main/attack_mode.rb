@@ -24,21 +24,25 @@ def somersault_attack(player, enemy, weapon)   # succeed and strike twice, fail 
   chance == 1 ? 2.times { strike(player, enemy, weapon) } : 3.times { strike(enemy, player) }
 end
 
-def combat(enemies, player, weapon)
-  puts "Choose an enemy to attack:"
-  enemies.each_with_index do |enemy, index|
-    puts "[#{index + 1}] #{enemy[:name]}"
-  end
+def mortal_kombat(enemies, player, weapon)
+  user_choice = -1
 
-  enemy_choice = gets.chomp.to_i - 1
+  until user_choice >= 0 && user_choice < enemies.length
+    state_of_game(enemies, player, weapon)
+    puts "    Who yer gonna whack:"
+    enemies.each_with_index { |enemy, index| puts "    [#{index + 4}] #{enemy[:name]}" }
+    user_choice = gets.chomp.to_i - 4
 
-  if enemy_choice >= 0 && enemy_choice < enemies.length
-    strike(player, enemies[enemy_choice], weapon)
-    strike(enemies[enemy_choice], player) if enemies[enemy_choice][:hp].positive?
-  else
-    error_message
+    if user_choice >= 0 && user_choice < enemies.length
+      print `clear`
+      strike(player, enemies[user_choice], weapon)
+      strike(enemies[user_choice], player) if enemies[user_choice][:hp].positive?
+    else
+      error_message
+    end
   end
 end
+
 
 def escape_attempt(enemies, player, weapon)
   target_enemy = enemies.sample

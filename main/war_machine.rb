@@ -69,7 +69,7 @@ def pick_weapon
   weapon = {
     id: :weapon,
     name: WEAPONS.sample,
-    durability: rand(1..5),
+    durability: rand(2..6),
     broken: false,
     attack: (rand(20..30)..rand(31..60)),
     accuracy: (1..rand(4..11)),
@@ -82,7 +82,7 @@ def special_weapon
   special_weapon = {
     id: :special_weapon,
     name: SPECIAL_WEAPONS.sample,
-    durability: rand(1..2),
+    durability: rand(2..3),
     attack: (rand(30..40)..rand(41..99)),
     accuracy: (1..rand(5..12)),
     crit_ch: (1..rand(5..8)),
