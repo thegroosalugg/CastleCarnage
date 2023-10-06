@@ -43,7 +43,7 @@ def play_game
       load_menu
       user_choice = gets.chomp.downcase
       # DEBUG CHEAT MENU
-      # enemy, second_enemy, weapon = cheat_menu(player, enemy, second_enemy, weapon, user_choice)
+      enemies, weapon = cheat_menu(player, enemies, weapon, user_choice)
     else                                                          # Player must run through rooms if weapon broken
       weapon_speaks(weapon, :broke) unless weapon[:broken]
       weapon[:broken] = true
@@ -79,21 +79,17 @@ def play_game
     end
 
     # check for enemy deaths, update counter, track last enemy for game over
-    [enemy, second_enemy].each_with_index do |current_enemy, index|
+    enemies.each_with_index do |current_enemy, index|
       if current_enemy && current_enemy[:hp] <= 0
         enemies_defeated += 1
         enemy_speaks(current_enemy, :pwned)
         tracked_enemy = current_enemy
-        if index == 0
-          enemy = nil
-        elsif index == 1
-          second_enemy = nil
-        end
+        enemies.delete_at(index) # Remove the defeated enemy from the array
       end
     end
 
     # Player dies and last enemy is tracked. Random enemy if both present, elsif enemy, else second enemy
-    tracked_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy if player[:hp] <= 0
+    tracked_enemy = enemies.sample if player[:hp] <= 0
 
     # ((enemies_defeated > 1) || (rooms_explored > 8) || (enemies_defeated > 0 && rooms_explored > 5)) && (rand(1..2) == 1) ? big_boss_battle : big_boss_warning
     # if rooms_explored.zero?
