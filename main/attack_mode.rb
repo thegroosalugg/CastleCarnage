@@ -24,6 +24,22 @@ def somersault_attack(player, enemy, weapon)   # succeed and strike twice, fail 
   chance == 1 ? 2.times { strike(player, enemy, weapon) } : 3.times { strike(enemy, player) }
 end
 
+def combat(enemies, player, weapon)
+  puts "Choose an enemy to attack:"
+  enemies.each_with_index do |enemy, index|
+    puts "[#{index + 1}] #{enemy[:name]}"
+  end
+
+  enemy_choice = gets.chomp.to_i - 1
+
+  if enemy_choice >= 0 && enemy_choice < enemies.length
+    strike(player, enemies[enemy_choice], weapon)
+    strike(enemies[enemy_choice], player) if enemies[enemy_choice][:hp].positive?
+  else
+    error_message
+  end
+end
+
 def escape_attempt(enemies, player, weapon)
   target_enemy = enemies.sample
   enemy_speaks(target_enemy, :escape)

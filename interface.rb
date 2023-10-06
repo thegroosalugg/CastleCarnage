@@ -54,12 +54,9 @@ def play_game
     if user_choice == "t"
       print `clear`
 
-      strike(player, enemy, weapon) if enemy                      # Player strikes
-      strike(enemy, player) if enemy && enemy[:hp].positive?      # Enemy strikes back, unless you kill them first
-
-      puts SEPARATOR if second_enemy                              # Repeat process if second enemy on your jock
-      strike(player, second_enemy, weapon) if second_enemy
-      strike(second_enemy, player) if second_enemy && second_enemy[:hp].positive?
+      combat(enemies, player, weapon)
+      # strike(player, enemy, weapon) if enemy
+      # strike(enemy, player) if enemy && enemy[:hp].positive?
 
     elsif user_choice == "r"                                      # Target single enemy with somersault attack
       print `clear`
