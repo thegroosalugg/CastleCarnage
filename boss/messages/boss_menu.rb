@@ -99,12 +99,12 @@ def band
   mosh_pit = [
     "[4] ✖️ Mosh Pit",
   ]
-  tba = [
-    "[5] TBA",
+  dance_off = [
+    "[5] 🪩 Dance Off",
   ]
 
   puts mosh_pit.sample
-  puts tba.sample
+  puts dance_off.sample
 end
 
 def fight_menu(player, boss_style, weapon)
@@ -125,11 +125,11 @@ def blood_menu(player)
     "   [4] 🫙 Creatine Monohydrate!",
   ]
   money = [
-    "   [5] 💵 Get Money",
-    "   [5] 💵 Lottery Tickets",
-    "   [5] 📓 Read the Necronomicon",
-    "   [5] 😈 Deal with the Devil",
-    "   [5] 🎰 Get Rich Quick Scheme",
+    "   [5] 💵 Gimme Money",
+    "   [5] 🎴 Scratchards",
+    "   [5] 💰 Rob a bank",
+    "   [5] 😈 Deal with Devil",
+    "   [5] 🎰 Pyramid Scheme",
   ]
   drink = [
     "   [6] 🥤 Bottle of Water",
@@ -139,13 +139,14 @@ def blood_menu(player)
     "   [6] 🥙 Döner Kebab"
   ]
   health = [
-    "   [7] 🍔 Order a take away",
-    "   [7] ⚖️ Live to fight another day",
+    "   [7] 🍔 Cheat Day",
+    "   [7] 🧵 Hang on by a thread",
+    "   [7] 🥣 Dodgy Looking Potion",
   ]
 
   puts SEPARATOR
   puts padding_generator(" 🧞:'Pay with Blood ❤️ Get Bargains 💰' ", "💠", 57)
-  puts (player[:attack].max < 50 || player[:block].max < 25 ? buffout.sample : denied)
+  puts (player[:attack].max < 50 || player[:block].max < 20 ? buffout.sample : denied)
   puts (player[:cash] < 20 ? money.sample : denied)
   puts (player[:drunk].positive? ? drink.sample : denied)
   puts ((player[:attack].max > 1 || player[:block].max > 1) && player[:hp] < 1000 ? health.sample : denied)

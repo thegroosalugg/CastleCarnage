@@ -9,6 +9,38 @@ def mosh_pit(the_boss, boss_style, player, cash_lost) # damage reduced by cash l
   shots_fired(player, the_boss, damage, :hit)
 end
 
+def swing(attacker, target)
+  damage = (rand(attacker[:attack]) * 0.6).to_i
+  target[:hp] -= damage
+  shots_fired(attacker, target, damage, :hit)
+end
+
+def dance_off(player, weapon, the_boss, boss_style, load_boss)
+  game_info(player, weapon, the_boss, boss_style, load_boss)
+  step_on_up
+  boss_moves = []
+
+  4.times do |round|
+    boss_moves << rand(1..3)
+    user_choice = 0
+
+    until [1, 2, 3].include?(user_choice)
+      user_choice = gets.chomp.to_i
+      error_message unless (1..3).include?(user_choice)
+      game_info(player, weapon, the_boss, boss_style, load_boss) unless (1..3).include?(user_choice)
+      step_on_up unless (1..3).include?(user_choice)
+    end
+    print `clear`
+    show_your_moves(player, the_boss, user_choice, boss_moves)
+    swing(player, the_boss) if (user_choice > boss_moves[round]) || (user_choice == 1 && boss_moves[round] == 3) unless (boss_moves[round] == 1 && user_choice == 3)
+    swing(the_boss, player) if (boss_moves[round] > user_choice) || (boss_moves[round] == 1 && user_choice == 3) unless (user_choice == 1 && boss_moves[round] == 3)
+    if round < 3  # Check if it's not the last round
+      game_info(player, weapon, the_boss, boss_style, load_boss)
+      step_on_up
+    end
+  end
+end
+
 def fight_the_band(player, weapon, the_boss, boss_style, load_boss)
   user_choice = 0
   blue_steel(the_boss, boss_style, :intro)
@@ -24,7 +56,7 @@ def fight_the_band(player, weapon, the_boss, boss_style, load_boss)
       mosh_pit(the_boss, boss_style, player, cash_lost)
     elsif user_choice == 5
       print `clear`
-      boss_strikes_back(the_boss, boss_style, player, weapon)
+      dance_off(player, weapon, the_boss, boss_style, load_boss)
     else
       error_message
     end

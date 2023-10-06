@@ -4,14 +4,14 @@
 # Intro outro messages for changes to boss fighting style
 
 def blue_steel(the_boss, boss_style, time)
-  barkeep = [
+  blue_steel = [
     "The #{boss_style} is in the house 🛖 orders up",
     "The #{boss_style} is keeping the liquor flowng, its happy hour ⌚",
   ]
-  bouncer = [
+  le_tigre = [
     "#{the_boss[:name]} is excerting its pressure, you drink another beer 🍺",
   ]
-  band = [
+  magnum = [
     "#{the_boss[:name]} is playing 🎸 rocking music, a mosh pit is about to break out!",
     "#{the_boss[:name]} is two-stepping across the room 🤾, Parkway Drive 🎸 appear on stage!",
     "Some wanker just started playing dubstep 🎧 you're gonna take some serious damage this round.",
@@ -24,9 +24,9 @@ def blue_steel(the_boss, boss_style, time)
   ]
 
   messages = case boss_style
-  when "🍻 Barkeep" then time == :intro ? barkeep : outro
-  when "🕶️ Bouncer" then time == :intro ? bouncer : outro
-  when "🎶 Band"    then (time == :reprise) ? reprise : (time == :intro) ? band : outro
+  when "🍻 Barkeep" then time == :intro ? blue_steel : outro
+  when "🕶️ Bouncer" then time == :intro ? le_tigre : outro
+  when "🎶 Band"    then (time == :reprise) ? reprise : (time == :intro) ? magnum : outro
   end
   puts text_break(messages.sample, " ", 70)
 end
@@ -91,5 +91,47 @@ def invoice(player, amount, where)
   when :life  then life # sneak attack
   when :cash  then cash
   end
+  puts text_break(messages.sample, " ", 70)
+end
+
+def step_on_up
+  puts SEPARATOR
+  puts "Show your moves..."
+  puts "   [1] 🧊 Blue Steel"
+  puts "   [2] 🐯 Le Tigre"
+  puts "   [3] 🍦 Magnum"
+end
+
+def show_your_moves(player, the_boss, user_choice, boss_moves)
+  boss_swag = [
+    "#{the_boss[:name]} got mad style 💫 The crowd is going mental.",
+    "⛷️🤺🏃🕴️ The Crowd: '#{the_boss[:name].upcase} #{the_boss[:name].upcase} #{the_boss[:name].upcase}'",
+  ]
+  player_swag = [
+    "With the grace of a falcon 🦅 you're stealing the show",
+    "⛷️🤺🏃🕴️ The Crowd: '#{player[:name].upcase} #{player[:name].upcase} #{player[:name].upcase}'",
+  ]
+  both_suck = [
+    "You both suck and slap 🤚 each other in the face mid spin."
+  ]
+
+  p user_choice
+  p boss_moves
+  messages = []
+
+  boss_moves.each do |move|
+    if move == 1 && user_choice == 3
+      messages << boss_swag.sample
+    elsif move == 3 && user_choice == 1
+      messages << player_swag.sample
+    elsif move < user_choice
+      messages << player_swag.sample
+    elsif move > user_choice
+      messages << boss_swag.sample
+    else
+      messages << both_suck.sample
+    end
+  end
+
   puts text_break(messages.sample, " ", 70)
 end

@@ -1,7 +1,7 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-def paid_blood_message(player, user_choice, price_paid, multiplier, boost)
+def blood_ritual(player, user_choice, price_paid, multiplier, boost)
   boost = boost == :attack ? "💢 attack" : "🛡️ block"
 
   buff_up = [
@@ -26,7 +26,7 @@ def paid_blood_message(player, user_choice, price_paid, multiplier, boost)
   puts text_break(messages.sample, " ", 70)
 end
 
-def drained_message
+def drained
   messages = [
     " Once per turn, you melt ‼ ",
     " Uh-uh! I don't think so ‼ ",
