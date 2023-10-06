@@ -30,7 +30,7 @@ end
 
 def fight_the_barkeep(player, weapon, the_boss, boss_style, load_boss)
   user_choice = 0
-  blue_steel(the_boss, boss_style, :intro)
+  boss_walks(the_boss, boss_style, :intro)
 
   until [4, 5].include?(user_choice)
     game_info(player, weapon, the_boss, boss_style, load_boss)
@@ -50,6 +50,6 @@ def fight_the_barkeep(player, weapon, the_boss, boss_style, load_boss)
 
   boss_strikes_back(the_boss, boss_style, player, weapon) if the_boss[:hp].positive?
   boss_style = the_boss[:style].sample
-  blue_steel(the_boss, boss_style, :outro) if the_boss[:hp].positive?
+  boss_walks(the_boss, boss_style, :outro) if the_boss[:hp].positive?
   return boss_style
 end
