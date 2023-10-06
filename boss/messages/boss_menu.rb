@@ -99,12 +99,12 @@ def band
   mosh_pit = [
     "[4] ✖️ Mosh Pit",
   ]
-  tba = [
+  dance_off = [
     "[5] 🪩 Dance Off",
   ]
 
   puts mosh_pit.sample
-  puts tba.sample
+  puts dance_off.sample
 end
 
 def fight_menu(player, boss_style, weapon)

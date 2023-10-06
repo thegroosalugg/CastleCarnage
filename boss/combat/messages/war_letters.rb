@@ -94,9 +94,44 @@ def invoice(player, amount, where)
   puts text_break(messages.sample, " ", 70)
 end
 
-def show_your_moves(user_choice, boss_moves)
-  messages = [
-    "Success",
+def step_on_up
+  puts SEPARATOR
+  puts "Show your moves..."
+  puts "   [1] 🧊 Blue Steel"
+  puts "   [2] 🐯 Le Tigre"
+  puts "   [3] 🍦 Magnum"
+end
+
+def show_your_moves(player, the_boss, user_choice, boss_moves)
+  boss_swag = [
+    "#{the_boss[:name]} got mad style 💫 The crowd is going mental.",
+    "⛷️🤺🏃🕴️ The Crowd: '#{the_boss[:name].upcase} #{the_boss[:name].upcase} #{the_boss[:name].upcase}'",
   ]
+  player_swag = [
+    "With the grace of a falcon 🦅 you're stealing the show",
+    "⛷️🤺🏃🕴️ The Crowd: '#{player[:name].upcase} #{player[:name].upcase} #{player[:name].upcase}'",
+  ]
+  both_suck = [
+    "You both suck and slap 🤚 each other in the face mid spin."
+  ]
+
+  p user_choice
+  p boss_moves
+  messages = []
+
+  boss_moves.each do |move|
+    if move == 1 && user_choice == 3
+      messages << boss_swag.sample
+    elsif move == 3 && user_choice == 1
+      messages << player_swag.sample
+    elsif move < user_choice
+      messages << player_swag.sample
+    elsif move > user_choice
+      messages << boss_swag.sample
+    else
+      messages << both_suck.sample
+    end
+  end
+
   puts text_break(messages.sample, " ", 70)
 end
