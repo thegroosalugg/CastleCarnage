@@ -88,6 +88,6 @@ def pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
   print `clear`
   blood_ritual(player, user_choice, price_paid, multiplier, boost) unless user_choice == 9
   boss_style = user_choice == 9 ? boss_style : the_boss[:style].sample
-  blue_steel(the_boss, boss_style, :outro) unless user_choice == 9
+  boss_walks(the_boss, boss_style, :outro) unless user_choice == 9
   return boss_style
 end

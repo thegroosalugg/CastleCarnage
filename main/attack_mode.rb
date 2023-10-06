@@ -24,12 +24,32 @@ def somersault_attack(player, enemy, weapon)   # succeed and strike twice, fail 
   chance == 1 ? 2.times { strike(player, enemy, weapon) } : 3.times { strike(enemy, player) }
 end
 
-def escape_attempt(enemy, second_enemy, player, weapon)
-  target_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy
+def mortal_kombat(enemies, player, weapon)
+  user_choice = -1
+
+  until user_choice >= 0 && user_choice < enemies.length
+    state_of_game(enemies, player, weapon)
+    puts "    Who yer gonna whack:"
+    enemies.each_with_index { |enemy, index| puts "    [#{index + 4}] #{enemy[:name]}" }
+    user_choice = gets.chomp.to_i - 4
+
+    if user_choice >= 0 && user_choice < enemies.length
+      print `clear`
+      strike(player, enemies[user_choice], weapon)
+      strike(enemies[user_choice], player) if enemies[user_choice][:hp].positive?
+    else
+      error_message
+    end
+  end
+end
+
+
+def escape_attempt(enemies, player, weapon)
+  target_enemy = enemies.sample
   enemy_speaks(target_enemy, :escape)
   if rand(1..5) == 1
     enemy_speaks(target_enemy, :surprise)
     strike(target_enemy, player)
   end
-  state_of_game(enemy, second_enemy, player, weapon) unless player[:hp] <= 0
+  state_of_game(enemies, player, weapon) unless player[:hp] <= 0
 end
