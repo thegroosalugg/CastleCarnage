@@ -103,36 +103,27 @@ def step_on_up
 end
 
 def show_your_moves(player, the_boss, user_choice, boss_moves)
-  boss_swag = [
+  lose = [
     "#{the_boss[:name]} got mad style 💫 The crowd is going mental.",
     "⛷️🤺🏃🕴️ The Crowd: '#{the_boss[:name].upcase} #{the_boss[:name].upcase} #{the_boss[:name].upcase}'",
   ]
-  player_swag = [
+  win = [
     "With the grace of a falcon 🦅 you're stealing the show",
     "⛷️🤺🏃🕴️ The Crowd: '#{player[:name].upcase} #{player[:name].upcase} #{player[:name].upcase}'",
   ]
-  both_suck = [
+  draw = [
     "You both suck and slap 🤚 each other in the face mid spin."
   ]
 
-  p user_choice
-  p boss_moves
   messages = ""
-
   boss_moves.each do |move|
-    if move == 1 && user_choice == 3
-      messages = boss_swag
-    elsif move == 3 && user_choice == 1
-      messages = player_swag
-    elsif move < user_choice
-      messages = player_swag
-    elsif move > user_choice
-      messages = boss_swag
-    else
-      messages = both_suck
+    messages = case
+    when move == 1 && user_choice == 3 then lose
+    when move == 3 && user_choice == 1 then win
+    when move < user_choice            then win
+    when move > user_choice            then lose
+    when move == user_choice           then draw
     end
   end
-  p messages
-
   puts text_break(messages.sample, " ", 70)
 end
