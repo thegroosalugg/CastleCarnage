@@ -31,5 +31,5 @@ def escape_attempt(enemy, second_enemy, player, weapon)
     enemy_speaks(target_enemy, :surprise)
     strike(target_enemy, player)
   end
-  state_of_game(enemy, second_enemy, player, weapon) unless player[:hp] <= 0
+  state_of_game(enemies, player, weapon) unless player[:hp] <= 0
 end

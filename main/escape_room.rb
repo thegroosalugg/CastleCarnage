@@ -10,7 +10,7 @@ def explore_rooms(enemy, weapon, player, second_enemy)
 
     user_choice = gets.chomp.to_i
     error_message
-    state_of_game(enemy, second_enemy, player, weapon)
+    state_of_game(enemies, player, weapon)
   end
 
   print `clear`

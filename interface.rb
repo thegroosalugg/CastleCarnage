@@ -25,6 +25,8 @@ def play_game
   print `clear`
   player = { id: :player, hp: rand(250..300), attack: (rand(25..30)..rand(35..40)), block: (1..10), cash: rand(3..10), drunk: 0 }
   name_player(player)
+  enemies = []
+  3.times { enemies << random_enemy }
   enemy = random_enemy
   second_enemy = nil
   tracked_enemy = enemy
@@ -34,7 +36,7 @@ def play_game
   the_boss = big_boss_awaits
 
   intro(player, weapon, enemy)
-  state_of_game(enemy, second_enemy, player, weapon)
+  state_of_game(enemies, player, weapon)
 
   while (enemy || second_enemy) && player[:hp].positive?
 
@@ -96,18 +98,18 @@ def play_game
     tracked_enemy = (enemy && second_enemy) ? [enemy, second_enemy].sample : enemy || second_enemy if player[:hp] <= 0
 
     # ((enemies_defeated > 1) || (rooms_explored > 8) || (enemies_defeated > 0 && rooms_explored > 5)) && (rand(1..2) == 1) ? big_boss_battle : big_boss_warning
-    if rooms_explored.zero?
-      enemies_defeated = 2 # debug
-      rooms_explored = 5 # debug
-      enemy = nil; second_enemy = nil; tracked_enemy = the_boss
-      bonus(player, rooms_explored, enemies_defeated)
-      big_boss_battle(player, weapon, the_boss)
-    end
+    # if rooms_explored.zero?
+    #   enemies_defeated = 2 # debug
+    #   rooms_explored = 5 # debug
+    #   enemy = nil; second_enemy = nil; tracked_enemy = the_boss
+    #   bonus(player, rooms_explored, enemies_defeated)
+    #   big_boss_battle(player, weapon, the_boss)
+    # end
 
-    state_of_game(enemy, second_enemy, player, weapon) unless tracked_enemy[:id] == :boss || weapon[:durability].zero?
+    state_of_game(enemies, player, weapon) unless tracked_enemy[:id] == :boss || weapon[:durability].zero?
   end
 
-  state_of_game(enemy, second_enemy, player, weapon) if tracked_enemy[:id] == :enemy && weapon[:durability].zero?
+  state_of_game(enemies, player, weapon) if tracked_enemy[:id] == :enemy && weapon[:durability].zero?
   game_over(tracked_enemy, player)
 end
 

@@ -150,13 +150,12 @@ end
 
 # Main UI that displays all current happenings, by chaining the above methods
 
-def state_of_game(enemy, second_enemy, player, weapon)
+def state_of_game(enemies, player, weapon)
   puts SEPARATOR
   puts "    #{health_bars(player)}\n" + "\n"
   puts "    #{block_stats(player)}"
   puts "    #{weapon_bars(weapon)}" if weapon[:durability].positive?
-  puts "    #{enemy_bars(enemy)}" if enemy
-  puts "    #{enemy_bars(second_enemy)}" if second_enemy
+  enemies.each { |enemy| puts "    #{enemy_bars(enemy)}" }
   puts SEPARATOR
 end
 
