@@ -16,15 +16,20 @@ def swing(attacker, target)
 end
 
 def dance_off(the_boss, boss_style, player)
-  user_choice = []
-  boss_moves =  Array.new(4) { rand(1..3) }
-  until user_choice.all? { |digit| [1, 2, 3].include?(digit) } && user_choice.length == 4
-    user_choice = gets.chomp.to_i.digits.reverse
-    error_message
-  end
-  user_choice.each_with_index do |choice, index|
-    swing(player, the_boss) if (choice > boss_moves[index]) || (choice == 1 && boss_moves[index] == 3) unless (boss_moves[index] == 1 && choice == 3)
-    swing(the_boss, player) if (boss_moves[index] > choice) || (boss_moves[index] == 1 && choice == 3) unless (choice == 1 && boss_moves[index] == 3)
+  boss_moves = []
+
+  4.times do |round|
+    boss_moves << rand(1..3)
+    user_choice = 0
+
+    until [1, 2, 3].include?(user_choice)
+      user_choice = gets.chomp.to_i
+      #error_message
+    end
+    p boss_moves
+    show_your_moves(user_choice, boss_moves)
+    swing(player, the_boss) if (user_choice > boss_moves[round]) || (user_choice == 1 && boss_moves[round] == 3) unless (boss_moves[round] == 1 && user_choice == 3)
+    swing(the_boss, player) if (boss_moves[round] > user_choice) || (boss_moves[round] == 1 && user_choice == 3) unless (user_choice == 1 && boss_moves[round] == 3)
   end
 end
 

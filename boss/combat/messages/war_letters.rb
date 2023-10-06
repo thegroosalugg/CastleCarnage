@@ -93,3 +93,10 @@ def invoice(player, amount, where)
   end
   puts text_break(messages.sample, " ", 70)
 end
+
+def show_your_moves(user_choice, boss_moves)
+  messages = [
+    "Success",
+  ]
+  puts text_break(messages.sample, " ", 70)
+end
