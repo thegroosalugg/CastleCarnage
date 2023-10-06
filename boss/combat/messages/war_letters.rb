@@ -103,6 +103,11 @@ def step_on_up
 end
 
 def show_your_moves(player, the_boss, user_choice, boss_moves)
+  move_names = {
+    1 => "🧊 Blue Steel",
+    2 => "🐯 Le Tigre",
+    3 => "🍦 Magnum"
+  }
   lose = [
     "#{the_boss[:name]} got mad style 💫 The crowd is going mental.",
     "⛷️🤺🏃🕴️ The Crowd: '#{the_boss[:name].upcase} #{the_boss[:name].upcase} #{the_boss[:name].upcase}'",
@@ -124,6 +129,8 @@ def show_your_moves(player, the_boss, user_choice, boss_moves)
     when move > user_choice            then lose
     when move == user_choice           then draw
     end
+    puts text_break("#{player[:name]} #{move_names[user_choice]} || #{the_boss[:name]} #{move_names[move]}", " ", 70)
   end
+  puts SEPARATOR
   puts text_break(messages.sample, " ", 70)
 end
