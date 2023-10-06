@@ -96,7 +96,7 @@ end
 
 def step_on_up
   puts SEPARATOR
-  puts "Show your moves..."
+  puts "    Show your moves..."
   puts "   [1] 🧊 Blue Steel"
   puts "   [2] 🐯 Le Tigre"
   puts "   [3] 🍦 Magnum"
@@ -117,21 +117,22 @@ def show_your_moves(player, the_boss, user_choice, boss_moves)
 
   p user_choice
   p boss_moves
-  messages = []
+  messages = ""
 
   boss_moves.each do |move|
     if move == 1 && user_choice == 3
-      messages << boss_swag.sample
+      messages = boss_swag
     elsif move == 3 && user_choice == 1
-      messages << player_swag.sample
+      messages = player_swag
     elsif move < user_choice
-      messages << player_swag.sample
+      messages = player_swag
     elsif move > user_choice
-      messages << boss_swag.sample
+      messages = boss_swag
     else
-      messages << both_suck.sample
+      messages = both_suck
     end
   end
+  p messages
 
   puts text_break(messages.sample, " ", 70)
 end
