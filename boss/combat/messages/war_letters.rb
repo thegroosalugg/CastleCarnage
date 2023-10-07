@@ -97,39 +97,40 @@ end
 def step_on_up
   puts SEPARATOR
   puts "    Show your moves..."
-  puts "   [1] 🧊 Blue Steel"
-  puts "   [2] 🐯 Le Tigre"
-  puts "   [3] 🍦 Magnum"
+  puts "   [4] 🧊 Blue Steel"
+  puts "   [5] 🐯 Le Tigre"
+  puts "   [6] 🍦 Magnum"
 end
 
-def show_your_moves(player, the_boss, user_choice, boss_moves)
+def show_your_moves(player, the_boss, user_moves, boss_moves)
   move_names = {
-    1 => "🧊 Blue Steel",
-    2 => "🐯 Le Tigre",
-    3 => "🍦 Magnum"
+    4 => "🧊 Blue Steel",
+    5 => "🐯  Le Tigre ",
+    6 => "🍦   Magnum  "
   }
   lose = [
     "#{the_boss[:name]} got mad style 💫 The crowd is going mental.",
-    "⛷️🤺🏃🕴️ The Crowd: '#{the_boss[:name].upcase} #{the_boss[:name].upcase} #{the_boss[:name].upcase}'",
+    "The crowd 🤺🏃🕴️ is chanting for #{the_boss[:name]}, they thirst for blood",
   ]
   win = [
     "With the grace of a falcon 🦅 you're stealing the show",
-    "⛷️🤺🏃🕴️ The Crowd: '#{player[:name].upcase} #{player[:name].upcase} #{player[:name].upcase}'",
+    "#{the_boss[:name]} is getting served with your mental moves",
   ]
   draw = [
     "You both suck and slap 🤚 each other in the face mid spin."
   ]
 
   messages = ""
-  boss_moves.each do |move|
+  boss_moves.each_with_index do |boss, round|
+    user = user_moves[round]
     messages = case
-    when move == 1 && user_choice == 3 then lose
-    when move == 3 && user_choice == 1 then win
-    when move < user_choice            then win
-    when move > user_choice            then lose
-    when move == user_choice           then draw
+    when boss == 4 && user == 6 then lose
+    when boss == 6 && user == 4 then win
+    when boss < user  then win
+    when boss > user  then lose
+    when boss == user then draw
     end
-    puts text_break("#{player[:name]} #{move_names[user_choice]} || #{the_boss[:name]} #{move_names[move]}", " ", 70)
+    puts " " * (20 - "#{player[:name]}".length) + "#{player[:name]} 💬 #{move_names[user]} / #{move_names[boss]} 🗨️ #{the_boss[:name]}"
   end
   puts SEPARATOR
   puts text_break(messages.sample, " ", 70)

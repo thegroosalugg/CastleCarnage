@@ -19,21 +19,24 @@ def dance_off(player, weapon, the_boss, boss_style, load_boss)
   game_info(player, weapon, the_boss, boss_style, load_boss)
   step_on_up
   boss_moves = []
+  user_moves = []
 
   4.times do |round|
-    boss_moves << rand(1..3)
+    boss_moves << rand(4..6)
     user_choice = 0
 
-    until [1, 2, 3].include?(user_choice)
+    until (4..6).include?(user_choice)
       user_choice = gets.chomp.to_i
-      error_message unless (1..3).include?(user_choice)
-      game_info(player, weapon, the_boss, boss_style, load_boss) unless (1..3).include?(user_choice)
-      step_on_up unless (1..3).include?(user_choice)
+      error_message unless (4..6).include?(user_choice)
+      game_info(player, weapon, the_boss, boss_style, load_boss) unless (4..6).include?(user_choice)
+      step_on_up unless (4..6).include?(user_choice)
     end
+
+    user_moves << user_choice
     print `clear`
-    show_your_moves(player, the_boss, user_choice, boss_moves) # Paper, Scizzors, Rock rules. Highes number wins, except 1 > 3
-    swing(player, the_boss) if (user_choice > boss_moves[round]) || (user_choice == 1 && boss_moves[round] == 3) unless (boss_moves[round] == 1 && user_choice == 3)
-    swing(the_boss, player) if (boss_moves[round] > user_choice) || (boss_moves[round] == 1 && user_choice == 3) unless (user_choice == 1 && boss_moves[round] == 3)
+    show_your_moves(player, the_boss, user_moves, boss_moves) # Paper, Scizzors, Rock rules. Highes number wins, except 1 > 3
+    swing(player, the_boss) if (user_choice > boss_moves[round]) || (user_choice == 4 && boss_moves[round] == 6) unless (boss_moves[round] == 4 && user_choice == 6)
+    swing(the_boss, player) if (boss_moves[round] > user_choice) || (boss_moves[round] == 4 && user_choice == 6) unless (user_choice == 4 && boss_moves[round] == 6)
     if round < 3  # Check if it's not the last round
       game_info(player, weapon, the_boss, boss_style, load_boss)
       step_on_up

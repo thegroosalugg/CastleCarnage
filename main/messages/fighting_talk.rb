@@ -35,7 +35,7 @@ missed = [
     "Its not #{attacker[:name]}'s day today, they clumsily run into a wall 🧱",
     "#{target[:name]} ✨ teleported and avoided #{attacker[:name]}'s attack.",
     "#{target[:name]} don't give a fuck, they mash #{attacker[:name]} up!",
-    "#{target[:name]}: '🚫 Denied‼'",
+    "#{target[:name]} 💬 '🚫 Denied‼'",
   ]
 on_point = [
     "#{attacker[:name]} absolutely battered #{target[:name]} for 💢 #{damage} damage! #{target[:name]} got mashed up!",
