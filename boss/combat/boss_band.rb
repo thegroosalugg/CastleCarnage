@@ -46,6 +46,28 @@ def dance_off(player, weapon, the_boss, boss_style, load_boss)
   end
 end
 
+def keg_stand(player, weapon, the_boss, boss_style, load_boss)
+  user_choice = 0
+  boss_move = [4, 5].sample
+  game_info(player, weapon, the_boss, boss_style, load_boss)
+  puts "DECIDE 4 or 5"
+
+  until [4, 5].include?(user_choice)
+    user_choice = gets.chomp.to_i
+    game_info(player, weapon, the_boss, boss_style, load_boss) unless [4, 5].include?(user_choice)
+    error_message unless [4, 5].include?(user_choice)
+    if user_choice == boss_move
+      swing(player, the_boss)
+      redo
+    else
+      swing(the_boss, player)
+    end
+  end
+  puts "BOSS #{boss_move}"
+  puts "USER #{user_choice}"
+end
+
+
 def fight_the_band(player, weapon, the_boss, boss_style, load_boss)
   user_choice = 0
   boss_walks(the_boss, boss_style, :intro)
@@ -55,13 +77,17 @@ def fight_the_band(player, weapon, the_boss, boss_style, load_boss)
     fight_menu(player, boss_style, weapon)
 
     user_choice = gets.chomp.to_i
-    if user_choice == 4
+    case user_choice
+    when 4
       print `clear`                                                        # band boss always strikes first
       cash_lost = boss_strikes_back(the_boss, boss_style, player, weapon)  # player damage decreased by cash lost and increased by drunkenness
       mosh_pit(the_boss, boss_style, player, cash_lost)
-    elsif user_choice == 5
+    when 5
       print `clear`
       dance_off(player, weapon, the_boss, boss_style, load_boss)
+    when 6
+      print `clear`
+      keg_stand(player, weapon, the_boss, boss_style, load_boss)
     else
       error_message
     end

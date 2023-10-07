@@ -102,9 +102,13 @@ def band
   dance_off = [
     "[5] 🪩 Dance Off",
   ]
+  keg_stand = [
+    "[6] 🍺 Keg Stand",
+  ]
 
   puts mosh_pit.sample
   puts dance_off.sample
+  puts keg_stand.sample
 end
 
 def fight_menu(player, boss_style, weapon)
