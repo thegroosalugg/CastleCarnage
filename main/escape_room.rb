@@ -24,6 +24,7 @@ def explore_rooms(enemies, weapon, player)
   when 1 # Player gains health
     player[:hp] += randomizer
   when 2 # Player steps on a trap
+    randomizer /= 2
     player[:hp] -= randomizer
   when 3 # Enemy gains health
     randomizer /= 2
@@ -34,7 +35,7 @@ def explore_rooms(enemies, weapon, player)
     weapon = rand(1..5) == 1 ? special_weapon : pick_weapon
     weapon_speaks(weapon, :got)
   when 6 # New enemy spawns in empty slot
-    if enemies.length < 5
+    if enemies.length < 4
       enemies << random_enemy
       enemy_speaks(enemies[-1], :summon)
     else
