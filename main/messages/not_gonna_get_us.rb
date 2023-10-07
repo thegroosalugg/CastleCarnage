@@ -22,84 +22,67 @@ def enter_room(entered_room)
   puts text_break(messages.sample, " ", 70)
 end
 
-def gifts(gift, randomizer, player, enemy)
-  empty_room = [
-    "There's a Take Away Food Cart 🛍, but they only serve food you don't like, also you have no money 💵",
-    "There are bikes 🚲🚲🚲 here but you can't ride indoors, Professor Oak 👨‍🏫 will find out immediately",
-    "If you stay here, you'll have to help somebody pack 🧳, and it would probably take all day.",
-    "The temperature 🔅 is just right, but there's something else you don't like here ⁉ 😠🗯 ⁉",
-    "Nothing bad happened, nothing good happened either, you get another turn at life.",
-    "There's the exit 🚪! But your foot 🦶 hurts so you can't leave.",
-    "There's an elephant 🐘 in here. You marvell at its excellence.",
-    "🐩🐕🐩 nothing but dogs barking in here, time to vamoose.",
-    "You have an ominous feeling somebody 🦇 was just here 🔲",
-    "Wild Entei 🐕‍🦺 appeared! Entei 🐕‍🦺 fled 💨.",
-    "It's too bloody hot ♨ in here 🥵",
-    "Freezing ❄ my ass off here 🥶",
-  ]
+def gifts(entity, operator, randomizer)
   gained_hp = [
-    "✅ Ah mate! Who left this grass 🌿 here?! Northern Lights? Sweet as! You gained #{player[:emoji]} #{randomizer} HP!",
-    "✅ These chili peppers 🌶️ should give me the quick energy I need! You gained #{player[:emoji]} #{randomizer} HP!",
-    "✅ Ha! Some idiot left this pizza 🍕 in the trash! What a treat! You gained #{player[:emoji]} #{randomizer} HP!",
-    "✅ This milk 🍼 is well out of date, eh, let's drink it anyways. You gained #{player[:emoji]} #{randomizer} HP!",
-    "✅ A Spaghetti Store? Here? Yeah, I'll have the spaghetti 🍝 You gained #{player[:emoji]} #{randomizer} HP!",
-    "✅ Proper hungry. These mouldy bananas 🍌 will have to do. You gained #{player[:emoji]} #{randomizer} HP!",
-    "✅ The Rock 👨‍🦲 awaits you and gives you a high five 🙏. You gained #{player[:emoji]} #{randomizer} HP!",
-    "✅ Fuckin' A! Still some cold ones in the fridge 🍻! You gained #{player[:emoji]} #{randomizer} HP!",
-    "✅ There's some chips 🍟 on the floor. 5 second rule‼ You gained #{player[:emoji]} #{randomizer} HP!",
-    "✅ Heisenberg's 🕵️‍♂️ blue! Whoooa! 🥴 River dance! You gained #{player[:emoji]} #{randomizer} HP!",
-    "✅ What muppet left this pie 🥧 here, nicked. You gained #{player[:emoji]} #{randomizer} HP!",
-    "✅ Holy shit! A fucking cake 🎂! Munched! You gained #{player[:emoji]} #{randomizer} HP!",
-    "✅ Some shrooms 🍄, You gained #{player[:emoji]} #{randomizer} HP!",
+    "✅ Ah mate! Who left this grass 🌿 here?! Northern Lights? Sweet as! You gained #{entity[:emoji]} #{randomizer} HP!",
+    "✅ These chili peppers 🌶️ should give me the quick energy I need! You gained #{entity[:emoji]} #{randomizer} HP!",
+    "✅ Ha! Some idiot left this pizza 🍕 in the trash! What a treat! You gained #{entity[:emoji]} #{randomizer} HP!",
+    "✅ This milk 🍼 is well out of date, eh, let's drink it anyways. You gained #{entity[:emoji]} #{randomizer} HP!",
+    "✅ A Spaghetti Store? Here? Yeah, I'll have the spaghetti 🍝 You gained #{entity[:emoji]} #{randomizer} HP!",
+    "✅ Proper hungry. These mouldy bananas 🍌 will have to do. You gained #{entity[:emoji]} #{randomizer} HP!",
+    "✅ The Rock 👨‍🦲 awaits you and gives you a high five 🙏. You gained #{entity[:emoji]} #{randomizer} HP!",
+    "✅ Fuckin' A! Still some cold ones in the fridge 🍻! You gained #{entity[:emoji]} #{randomizer} HP!",
+    "✅ There's some chips 🍟 on the floor. 5 second rule‼ You gained #{entity[:emoji]} #{randomizer} HP!",
+    "✅ Heisenberg's 🕵️‍♂️ blue! Whoooa! 🥴 River dance! You gained #{entity[:emoji]} #{randomizer} HP!",
+    "✅ What muppet left this pie 🥧 here, nicked. You gained #{entity[:emoji]} #{randomizer} HP!",
+    "✅ Holy shit! A fucking cake 🎂! Munched! You gained #{entity[:emoji]} #{randomizer} HP!",
+    "✅ Some shrooms 🍄, You gained #{entity[:emoji]} #{randomizer} HP!",
   ]
   lost_hp = [
-    "❌ The phone 📱 reception in here is terrible and there's no Wi-Fi 📻. You lost #{player[:emoji]} #{randomizer} HP!",
-    "❌ Bollocks, you stepped into a bear trap 🐻, this is gonna cost ya! You lost #{player[:emoji]} #{randomizer} HP!",
-    "❌ KABLAMO ‼ 💥 bloody landmines 🕳 ! Who put these here?! You lost #{player[:emoji]} #{randomizer} HP!",
-    "❌ An axe 🪓 flew across the room and hit you in the face! You lost #{player[:emoji]} #{randomizer} HP!",
-    "❌ There's a party 🎉 occuring, but you don't know anyone. You lost #{player[:emoji]} #{randomizer} HP!",
-    "❌ You got a Take Away 🥡, but they got your order wrong. You lost #{player[:emoji]} #{randomizer} HP!",
-    "❌ You walked into the bad part of the neighbourhood 🏘.  You lost #{player[:emoji]} #{randomizer} HP!",
-    "❌ You got a beer 🍺! But it was one beer too many. You lost #{player[:emoji]} #{randomizer} HP!",
-    "❌ A bear 🐻 jumped out and ate some of you. You lost #{player[:emoji]} #{randomizer} HP!",
-    "❌ As you walked in a fridge 🧳 fell on you. You lost #{player[:emoji]} #{randomizer} HP!",
-    "❌ The bad music 🎵 up in here torments you. You lost #{player[:emoji]} #{randomizer} HP!",
-    "❌ You forgot to take the bins 🗑️ out. You lost #{player[:emoji]} #{randomizer} HP!",
+    "❌ The phone 📱 reception in here is terrible and there's no Wi-Fi 📻. You lost #{entity[:emoji]} #{randomizer} HP!",
+    "❌ Bollocks, you stepped into a bear trap 🐻, this is gonna cost ya! You lost #{entity[:emoji]} #{randomizer} HP!",
+    "❌ KABLAMO ‼ 💥 bloody landmines 🕳 ! Who put these here?! You lost #{entity[:emoji]} #{randomizer} HP!",
+    "❌ An axe 🪓 flew across the room and hit you in the face! You lost #{entity[:emoji]} #{randomizer} HP!",
+    "❌ There's a party 🎉 occuring, but you don't know anyone. You lost #{entity[:emoji]} #{randomizer} HP!",
+    "❌ You got a Take Away 🥡, but they got your order wrong. You lost #{entity[:emoji]} #{randomizer} HP!",
+    "❌ You walked into the bad part of the neighbourhood 🏘.  You lost #{entity[:emoji]} #{randomizer} HP!",
+    "❌ You got a beer 🍺! But it was one beer too many. You lost #{entity[:emoji]} #{randomizer} HP!",
+    "❌ A bear 🐻 jumped out and ate some of you. You lost #{entity[:emoji]} #{randomizer} HP!",
+    "❌ As you walked in a fridge 🧳 fell on you. You lost #{entity[:emoji]} #{randomizer} HP!",
+    "❌ The bad music 🎵 up in here torments you. You lost #{entity[:emoji]} #{randomizer} HP!",
+    "❌ You forgot to take the bins 🗑️ out. You lost #{entity[:emoji]} #{randomizer} HP!",
   ]
   enemy_hp = [
-    "❌ You're practically feeding #{enemy[:name]} with your poor decisions. They regain #{enemy[:emoji]} #{randomizer} HP!",
-    "❌ Congratulations, you've become #{enemy[:name]}'s personal healer, dishing out #{enemy[:emoji]} #{randomizer} HP!",
-    "❌ Keep up the good work! #{enemy[:name]} is loving the free health recovery of #{enemy[:emoji]} #{randomizer} HP!",
-    "❌ It's like you're working for #{enemy[:name]}'s well-being. They polished off #{enemy[:emoji]} #{randomizer} HP!",
-    "❌ Bad decision. #{enemy[:name]} found enlightenment. #{enemy[:name]} gained #{enemy[:emoji]} #{randomizer} HP",
-    "❌ You're practically a health potion for #{enemy[:name]}. They gorged #{enemy[:emoji]} #{randomizer} HP!",
-    "❌ You're a one-person support system for #{enemy[:name]}. They scoff #{enemy[:emoji]} #{randomizer} HP!",
-    "❌ #{enemy[:name]} is having a grand time at your expense, devouring #{enemy[:emoji]} #{randomizer} HP!",
-    "❌ #{enemy[:name]} finds your actions amusing, as they chow down #{enemy[:emoji]} #{randomizer} HP.",
-    "❌ #{enemy[:name]} thanks you for the health boost as they munch #{enemy[:emoji]} #{randomizer} HP!",
-    "❌ #{enemy[:name]} feasts on your incompetence, wolfing down #{enemy[:emoji]} #{randomizer} HP!",
-    "❌ #{enemy[:name]} laughs at your missteps and eats up #{enemy[:emoji]} #{randomizer} HP!",
-    "❌ Your cowardice allowed #{enemy[:name]} to recover #{enemy[:emoji]} #{randomizer} HP",
+    "❌ You're practically feeding #{entity[:name]} with your poor decisions. They regain #{entity[:emoji]} #{randomizer} HP!",
+    "❌ Congratulations, you've become #{entity[:name]}'s personal healer, dishing out #{entity[:emoji]} #{randomizer} HP!",
+    "❌ Keep up the good work! #{entity[:name]} is loving the free health recovery of #{entity[:emoji]} #{randomizer} HP!",
+    "❌ It's like you're working for #{entity[:name]}'s well-being. They polished off #{entity[:emoji]} #{randomizer} HP!",
+    "❌ Bad decision. #{entity[:name]} found enlightenment. #{entity[:name]} gained #{entity[:emoji]} #{randomizer} HP",
+    "❌ You're practically a health potion for #{entity[:name]}. They gorged #{entity[:emoji]} #{randomizer} HP!",
+    "❌ You're a one-person support system for #{entity[:name]}. They scoff #{entity[:emoji]} #{randomizer} HP!",
+    "❌ #{entity[:name]} is having a grand time at your expense, devouring #{entity[:emoji]} #{randomizer} HP!",
+    "❌ #{entity[:name]} finds your actions amusing, as they chow down #{entity[:emoji]} #{randomizer} HP.",
+    "❌ #{entity[:name]} thanks you for the health boost as they munch #{entity[:emoji]} #{randomizer} HP!",
+    "❌ #{entity[:name]} feasts on your incompetence, wolfing down #{entity[:emoji]} #{randomizer} HP!",
+    "❌ #{entity[:name]} laughs at your missteps and eats up #{entity[:emoji]} #{randomizer} HP!",
+    "❌ Your cowardice allowed #{entity[:name]} to recover #{entity[:emoji]} #{randomizer} HP",
   ]
   enemy_trap = [
-    "✅ As you step inside you turn around and give a #{enemy[:name]} menacing glare dealing #{enemy[:emoji]} #{randomizer} damage, you feel dangerous ⚠",
-    "✅ Arnie 💪😎: 'You know when I said I'd kill you last.. I lied' #{enemy[:name]} got gatted for #{enemy[:emoji]} #{randomizer} damage!",
-    "✅ Chasing after you, #{enemy[:name]} walked in front of a truck 🚚. #{enemy[:name]} lost #{enemy[:emoji]} #{randomizer} HP!",
-    "✅ Your level of swagger 😎 is too high, #{enemy[:name]} just couldn't take and lost #{enemy[:emoji]} #{randomizer} HP!",
-    "✅ #{enemy[:name]} just remembered they forgot to take the bins 🗑️ out costing them #{enemy[:emoji]} #{randomizer} HP!",
-    "✅ You found a grenade 🍈, tossing it at #{enemy[:name]} for #{enemy[:emoji]} #{randomizer} damage! Kamblamo 💥",
-    "✅ Booya 💥, the #{enemy[:name]} stepped on a land mine 🕳  dealing 'em #{enemy[:emoji]} #{randomizer} damage!",
-    "✅ Nobody suspects... the butterfly 🦋 ! #{enemy[:name]} got merked for #{enemy[:emoji]} #{randomizer} damage!",
-    "✅ You got saved by Batman 🦇 !#{enemy[:name]} going to prison 🏛️ for #{enemy[:emoji]} #{randomizer} HP!",
-    "✅ #{enemy[:name]} got weighed in on the way in, losing #{enemy[:emoji]} #{randomizer} HP!",
+    "✅ As you step inside you turn around and give a #{entity[:name]} menacing glare dealing #{entity[:emoji]} #{randomizer} damage, you feel dangerous ⚠",
+    "✅ Arnie 💪😎: 'You know when I said I'd kill you last.. I lied' #{entity[:name]} got gatted for #{entity[:emoji]} #{randomizer} damage!",
+    "✅ Chasing after you, #{entity[:name]} walked in front of a truck 🚚. #{entity[:name]} lost #{entity[:emoji]} #{randomizer} HP!",
+    "✅ Your level of swagger 😎 is too high, #{entity[:name]} just couldn't take and lost #{entity[:emoji]} #{randomizer} HP!",
+    "✅ #{entity[:name]} just remembered they forgot to take the bins 🗑️ out costing them #{entity[:emoji]} #{randomizer} HP!",
+    "✅ You found a grenade 🍈, tossing it at #{entity[:name]} for #{entity[:emoji]} #{randomizer} damage! Kamblamo 💥",
+    "✅ Booya 💥, the #{entity[:name]} stepped on a land mine 🕳  dealing 'em #{entity[:emoji]} #{randomizer} damage!",
+    "✅ Nobody suspects... the butterfly 🦋 ! #{entity[:name]} got merked for #{entity[:emoji]} #{randomizer} damage!",
+    "✅ You got saved by Batman 🦇 !#{entity[:name]} going to prison 🏛️ for #{entity[:emoji]} #{randomizer} HP!",
+    "✅ #{entity[:name]} got weighed in on the way in, losing #{entity[:emoji]} #{randomizer} HP!",
   ]
 
-  messages = case gift
-  when 0 then empty_room
-  when 1 then gained_hp
-  when 2 then lost_hp
-  when 3 then enemy_hp
-  when 4 then enemy_trap
+  messages = case operator
+  when 0 then entity[:id] == :player ? gained_hp : enemy_hp
+  when 1 then entity[:id] == :player ? lost_hp : enemy_trap
   end
   puts text_break(messages.sample, " ", 70)
 end
