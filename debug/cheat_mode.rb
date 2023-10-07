@@ -11,8 +11,8 @@ def cheat_menu(player, enemies, weapon, user_choice)
   when "hh" then player[:hp] += 100
   when "w1" then weapon = pick_weapon
   when "w2" then weapon = special_weapon
-  when "w"  then weapon[:durability] -= 1
-  when "ww" then weapon[:durability] += 1
+  when "w"  then weapon[:durability] += 1
+  when "ww" then weapon[:durability] -= 1
   end
   print `clear`
   weapon[:durability] = weapon[:durability].clamp(0, 10)
@@ -27,8 +27,8 @@ def cheat_menu_boss(user_choice, player, weapon, the_boss, boss_style)
   when "hh" then player[:hp] += 100
   when "w1" then weapon = pick_weapon
   when "w2" then weapon = special_weapon
-  when "w"  then weapon[:durability] -= 1
-  when "ww" then weapon[:durability] += 1
+  when "w"  then weapon[:durability] += 1
+  when "ww" then weapon[:durability] -= 1
   when "b"  then the_boss[:hp] -= 200
   when "1"  then boss_style = "🍻 Barkeep"
   when "2"  then boss_style = "🕶️ Bouncer"
