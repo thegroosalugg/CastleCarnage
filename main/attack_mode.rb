@@ -47,7 +47,7 @@ end
 def escape_attempt(enemies, player, weapon)
   target_enemy = enemies.sample
   enemy_speaks(target_enemy, :escape)
-  if rand(1..5) == 1
+  if rand(1..4) == 1
     enemy_speaks(target_enemy, :surprise)
     strike(target_enemy, player)
   end

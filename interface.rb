@@ -86,7 +86,7 @@ def play_game
       end
     end
 
-    tracked_enemy = enemies.sample if player[:hp] <= 0 # Player dies and last enemy is tracked
+    tracked_enemy = enemies.sample if player[:hp] <= 0 && tracked_enemy[:id] != :boss # Player dies and last enemy is tracked
 
     player[:awakened] = true if ((enemies_defeated > rand(3..5)) || (rooms_explored > rand(10..15)) || (enemies_defeated > rand(2..3) && rooms_explored > rand(5..10)))
 
