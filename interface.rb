@@ -86,13 +86,13 @@ def play_game
     tracked_enemy = enemies.sample if player[:hp] <= 0
 
     # ((enemies_defeated > 1) || (rooms_explored > 8) || (enemies_defeated > 0 && rooms_explored > 5)) && (rand(1..2) == 1) ? big_boss_battle : big_boss_warning
-    # if rooms_explored.zero?
-    #   enemies_defeated = 2 # debug
-    #   rooms_explored = 5 # debug
-    #   enemy = nil; second_enemy = nil; tracked_enemy = the_boss
-    #   bonus(player, rooms_explored, enemies_defeated)
-    #   big_boss_battle(player, weapon, the_boss)
-    # end
+    if rooms_explored.zero?
+      enemies_defeated = 2 # debug
+      rooms_explored = 5 # debug
+      enemy = nil; second_enemy = nil; tracked_enemy = the_boss
+      bonus(player, rooms_explored, enemies_defeated)
+      big_boss_battle(player, weapon, the_boss)
+    end
 
     state_of_game(enemies, player, weapon) unless tracked_enemy[:id] == :boss || weapon[:durability].zero?
   end

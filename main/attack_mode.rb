@@ -43,7 +43,6 @@ def mortal_kombat(enemies, player, weapon)
   end
 end
 
-
 def escape_attempt(enemies, player, weapon)
   target_enemy = enemies.sample
   enemy_speaks(target_enemy, :escape)
