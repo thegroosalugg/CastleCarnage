@@ -20,8 +20,9 @@ end
 
 def somersault_attack(player, enemy, weapon)   # succeed and strike twice, fail and get struck thrice
   chance = rand(1..3)
+  n = rand(2..3)
   somersault(chance, enemy)
-  chance == 1 ? 2.times { strike(player, enemy, weapon) } : 3.times { strike(enemy, player) }
+  chance == 1 ? n.times { strike(player, enemy, weapon) } : n.times { strike(enemy, player) }
 end
 
 def mortal_kombat(enemies, player, weapon)

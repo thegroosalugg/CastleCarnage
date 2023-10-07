@@ -102,7 +102,7 @@ def step_on_up
   puts "   [6] 🍦 Magnum"
 end
 
-def show_your_moves(player, the_boss, user_choice, boss_moves)
+def show_your_moves(player, the_boss, user_moves, boss_moves)
   move_names = {
     4 => "🧊 Blue Steel",
     5 => "🐯  Le Tigre ",
@@ -121,15 +121,16 @@ def show_your_moves(player, the_boss, user_choice, boss_moves)
   ]
 
   messages = ""
-  boss_moves.each do |move|
+  boss_moves.each_with_index do |boss, round|
+    user = user_moves[round]
     messages = case
-    when move == 4 && user_choice == 6 then lose
-    when move == 6 && user_choice == 4 then win
-    when move < user_choice            then win
-    when move > user_choice            then lose
-    when move == user_choice           then draw
+    when boss == 4 && user == 6 then lose
+    when boss == 6 && user == 4 then win
+    when boss < user  then win
+    when boss > user  then lose
+    when boss == user then draw
     end
-    puts text_break("#{player[:name]}: [#{move_names[user_choice]}] || [#{move_names[move]}] :#{the_boss[:name]}", " ", 70)
+    puts " " * (20 - "#{player[:name]}".length) + "#{player[:name]} 💬 #{move_names[user]} / #{move_names[boss]} 🗨️ #{the_boss[:name]}"
   end
   puts SEPARATOR
   puts text_break(messages.sample, " ", 70)

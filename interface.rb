@@ -89,7 +89,7 @@ def play_game
     if rooms_explored.zero?
       enemies_defeated = 2 # debug
       rooms_explored = 5 # debug
-      enemy = nil; second_enemy = nil; tracked_enemy = the_boss
+      tracked_enemy = the_boss
       bonus(player, rooms_explored, enemies_defeated)
       big_boss_battle(player, weapon, the_boss)
     end
