@@ -55,7 +55,7 @@ def play_game
       print `clear`
       mortal_kombat(enemies, player, weapon)
 
-    elsif user_choice == "r"                                      # Target single enemy with somersault attack
+    elsif user_choice == "r"                                      # Target random enemy with somersault attack
       print `clear`
 
       target_enemy = enemies.sample
@@ -72,8 +72,7 @@ def play_game
       error_message
     end
 
-    # check for enemy deaths, update counter, track last enemy for game over
-    enemies.each_with_index do |current_enemy, index|
+    enemies.each_with_index do |current_enemy, index| # check for enemy deaths, update counter, track last enemy for game over
       if current_enemy && current_enemy[:hp] <= 0
         enemies_defeated += 1
         enemy_speaks(current_enemy, :pwned)
@@ -82,8 +81,7 @@ def play_game
       end
     end
 
-    # Player dies and last enemy is tracked. Random enemy if both present, elsif enemy, else second enemy
-    tracked_enemy = enemies.sample if player[:hp] <= 0
+    tracked_enemy = enemies.sample if player[:hp] <= 0 # Player dies and last enemy is tracked
 
     # ((enemies_defeated > 1) || (rooms_explored > 8) || (enemies_defeated > 0 && rooms_explored > 5)) && (rand(1..2) == 1) ? big_boss_battle : big_boss_warning
     if rooms_explored.zero?
