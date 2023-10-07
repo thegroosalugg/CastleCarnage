@@ -38,7 +38,7 @@ end
 
 # Main game menu
 
-def load_menu
+def load_menu(player)
   t = [
     "   🥷 [t]: Strike first! Strike hard! No mercy!",
     "   🥷 [t]: Punch 'em in their stupid ugly face",
@@ -58,12 +58,9 @@ def load_menu
     "   🐬 [r]: Try something, but probably fail",
     "   🐬 [r]: Last Chance Crusade",
     "   🐬 [r]: Do Something Stupid",
-    "   🐬 [r]: Go Super Saiyan 😼",
     "   🐬 [r]: Try a sommersault!",
-    "   🐬 [r]: Throw Pokéball 🚫",
     "   🐬 [r]: Parkour, parkour!",
     "   🐬 [r]: Do a Barrel Roll",
-    "   🐬 [r]: 🟪🟦🟥🟧🟨🟩",
     "   🐬 [r]: Do a sick flip",
     "   🐬 [r]: Roundhouse!",
   ]
@@ -82,11 +79,15 @@ def load_menu
     "   💨 [y]: Bounce",
     "   💨 [y]: Mug it",
   ]
+  x = [
+    "   💀 [4] The Boss Awaits",
+  ]
 
   puts "       Whatcha ya gonna do?"
   puts t.sample
   puts r.sample
   puts y.sample
+  puts x.sample if player[:awakened]
 end
 
 # Name your player
