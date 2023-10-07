@@ -10,9 +10,9 @@ def intro(player, weapon, enemy)
     "#{enemy[:name]} busted through the 🚪 door, they're stark raving mad. They're out for 🔪 blood!",
   ]
   player_intro = [
-    "You teleport ✨ behind #{enemy[:name]} and withdraw your #{weapon[:name]}. #{player[:name]}: 'Nothing personnel, kid'",
+    "You teleport ✨ behind #{enemy[:name]} and withdraw your #{weapon[:name]}. #{player[:name]} 💬 'Nothing personnel, kid'",
     "There's a #{weapon[:name]} on the floor, better get that. We won't get got, we gone get!",
-    "You pull out your trusty #{weapon[:name]} from your trench coat and tip your fedora. #{player[:name]}: 'The only thing sharper than my #{weapon[:name]} is my wit m'lady'",
+    "You pull out your trusty #{weapon[:name]} from your trench coat and tip your fedora. #{player[:name]} 💬 'The only thing sharper than my #{weapon[:name]} is my wit m'lady'",
   ]
 
   puts text_break([enemy_intro.sample, player_intro.sample].join(' '), " ", 70)
