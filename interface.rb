@@ -40,7 +40,7 @@ def play_game
 
     if weapon[:durability].positive?                              # Fight menu when weapon equipped
       weapon[:broken] = false
-      load_menu
+      load_menu(player)
       user_choice = gets.chomp.downcase
       # DEBUG CHEAT MENU
       enemies, weapon = cheat_menu(player, enemies, weapon, user_choice)
@@ -51,29 +51,33 @@ def play_game
       user_choice = "y"
     end
 
-    if user_choice == "t"
+    case user_choice
+    when "t"
       print `clear`
       mortal_kombat(enemies, player, weapon)
-
-    elsif user_choice == "r"                                      # Target single enemy with somersault attack
+    when "r"                                      # Target random enemy with somersault attack
       print `clear`
-
       target_enemy = enemies.sample
       somersault_attack(player, target_enemy, weapon)
-
-    elsif user_choice == "y"                                      # Avoid combat and run through rooms. Counter records no. of rooms explored
+    when "y"                                      # Avoid combat and run through rooms. Counter records no. of rooms explored
       print `clear` unless weapon[:broken]
-
       escape_attempt(enemies, player, weapon) unless weapon[:broken]
       rooms_explored += 1
       enemies, weapon = explore_rooms(enemies, weapon, player) unless player[:hp] <= 0
-
+    when "4"
+      if player[:awakened]
+        enemies = []
+        tracked_enemy = the_boss
+        bonus(player, rooms_explored, enemies_defeated)
+        big_boss_battle(player, weapon, the_boss)
+      else
+        error_message
+      end
     else
       error_message
     end
 
-    # check for enemy deaths, update counter, track last enemy for game over
-    enemies.each_with_index do |current_enemy, index|
+    enemies.each_with_index do |current_enemy, index| # check for enemy deaths, update counter, track last enemy for game over
       if current_enemy && current_enemy[:hp] <= 0
         enemies_defeated += 1
         enemy_speaks(current_enemy, :pwned)
@@ -82,17 +86,9 @@ def play_game
       end
     end
 
-    # Player dies and last enemy is tracked. Random enemy if both present, elsif enemy, else second enemy
-    tracked_enemy = enemies.sample if player[:hp] <= 0
+    tracked_enemy = enemies.sample if player[:hp] <= 0 # Player dies and last enemy is tracked
 
-    # ((enemies_defeated > 1) || (rooms_explored > 8) || (enemies_defeated > 0 && rooms_explored > 5)) && (rand(1..2) == 1) ? big_boss_battle : big_boss_warning
-    if rooms_explored.zero?
-      enemies_defeated = 2 # debug
-      rooms_explored = 5 # debug
-      tracked_enemy = the_boss
-      bonus(player, rooms_explored, enemies_defeated)
-      big_boss_battle(player, weapon, the_boss)
-    end
+    player[:awakened] = true if ((enemies_defeated > rand(3..5)) || (rooms_explored > rand(10..15)) || (enemies_defeated > rand(2..3) && rooms_explored > rand(5..10)))
 
     state_of_game(enemies, player, weapon) unless tracked_enemy[:id] == :boss || weapon[:durability].zero?
   end
