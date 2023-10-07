@@ -26,6 +26,7 @@ def explore_rooms(enemies, weapon, player)
   when 2 # Player steps on a trap
     player[:hp] -= randomizer
   when 3 # Enemy gains health
+    randomizer /= 2
     target_enemy[:hp] += randomizer
   when 4 # Enemy steps on a trap
     target_enemy[:hp] -= randomizer
