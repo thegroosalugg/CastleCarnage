@@ -104,12 +104,22 @@ def step_on_up
   puts "   [6] 🍦 Magnum"
 end
 
-def show_your_moves(player, the_boss, user_moves, boss_moves)
-  move_names = {
+# Band boss style > when 6
+
+def roll
+  puts SEPARATOR
+  puts "    Figure it out..."
+  puts "   [4] 🍹"
+  puts "   [5] 🍸"
+end
+
+def show_your_moves(player, the_boss, user_moves, boss_moves, method)
+  moves = {
     4 => "🧊 Blue Steel",
     5 => "🐯  Le Tigre ",
     6 => "🍦   Magnum  "
   }
+
   lose = [
     "#{the_boss[:name]} got mad style 💫 The crowd is going mental.",
     "The crowd 🤺🏃🕴️ is chanting for #{the_boss[:name]}, they thirst for blood",
@@ -123,26 +133,23 @@ def show_your_moves(player, the_boss, user_moves, boss_moves)
   ]
 
   messages = ""
-  boss_moves.each_with_index do |boss, round|
-    user = user_moves[round]
-    messages = case
-    when boss == 4 && user == 6 then lose
-    when boss == 6 && user == 4 then win
-    when boss < user  then win
-    when boss > user  then lose
-    when boss == user then draw
+
+  if method == :dance
+    boss_moves.each_with_index do |boss, round|
+      user = user_moves[round]
+      messages = case
+      when boss == 4 && user == 6 then lose
+      when boss == 6 && user == 4 then win
+      when boss < user  then win
+      when boss > user  then lose
+      when boss == user then draw
+      end
+      puts " " * (20 - "#{player[:name]}".length) + "#{player[:name]} 💬 #{moves[user]} / #{moves[boss]} 🗨️ #{the_boss[:name]}"
     end
-    puts " " * (20 - "#{player[:name]}".length) + "#{player[:name]} 💬 #{move_names[user]} / #{move_names[boss]} 🗨️ #{the_boss[:name]}"
+  elsif method == :keg
+    puts " " * (32 - "#{player[:name]}".length) + "#{player[:name]} 💬 #{user_moves} / #{boss_moves} 🗨️ #{the_boss[:name]}"
+    messages = (user_moves == boss_moves ? lose : win)
   end
   puts SEPARATOR
   puts text_break(messages.sample, " ", 70)
-end
-
-# Band boss style > when 6
-
-def roll
-  puts SEPARATOR
-  puts "    Figure it out..."
-  puts "   [4] 🍹"
-  puts "   [5] 🍸"
 end
