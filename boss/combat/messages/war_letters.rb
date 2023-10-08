@@ -147,11 +147,13 @@ def show_your_moves(player, the_boss, user_moves, boss_moves, method)
       when boss > user  then lose
       when boss == user then draw
       end
-      puts " " * (20 - "#{player[:name]}".length) + "#{player[:name]} 💬 #{moves[user]} / #{moves[boss]} 🗨️ #{the_boss[:name]}"
+      x = messages == win ? "✅" : "❌"
+      puts " " * (20 - "#{player[:name]}".length) + "#{player[:name]} 💬 #{moves[user]} #{x} #{moves[boss]} 🗨️ #{the_boss[:name]}"
     end
   elsif method == :keg
-    puts " " * (32 - "#{player[:name]}".length) + "#{player[:name]} 💬 #{drinks[user_moves]} " + (user_moves == boss_moves ? "❌" : "✅") + " #{drinks[boss_moves]} 🗨️ #{the_boss[:name]}"
     messages = (user_moves == boss_moves ? lose : win)
+    x = user_moves == boss_moves ? "❌" : "✅"
+    puts " " * (32 - "#{player[:name]}".length) + "#{player[:name]} 💬 #{drinks[user_moves]} #{x} #{drinks[boss_moves]} 🗨️ #{the_boss[:name]}"
   end
   puts SEPARATOR
   puts text_break(messages.sample, " ", 70)
