@@ -43,22 +43,21 @@ def dance_off(player, weapon, the_boss, boss_style, load_boss)
   end
 end
 
-# def keg_stand(player, weapon, the_boss, boss_style, load_boss)
-#   user_choice = 0
-
-#   until (4..5).include?(user_choice)
-#     user_choice = gets.chomp.to_i
-#     error_message
-#   end
-
-# end
-
+def keg_stand(player, weapon, the_boss, boss_style, load_boss)
+  user_choice = 0
+  game_info(player, weapon, the_boss, boss_style, load_boss)
+  until [4, 5].include?(user_choice)
+    user_choice = gets.chomp.to_i
+    error_message unless [4, 5].include?(user_choice)
+    game_info(player, weapon, the_boss, boss_style, load_boss) unless [4, 5].include?(user_choice)
+  end
+end
 
 def fight_the_band(player, weapon, the_boss, boss_style, load_boss)
   user_choice = 0
   boss_walks(the_boss, boss_style, :intro)
 
-  until [4, 5].include?(user_choice)
+  until (4..6).include?(user_choice)
     game_info(player, weapon, the_boss, boss_style, load_boss)
     fight_menu(player, boss_style, weapon)
 
