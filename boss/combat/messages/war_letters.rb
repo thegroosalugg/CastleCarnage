@@ -94,6 +94,8 @@ def invoice(player, amount, where)
   puts text_break(messages.sample, " ", 70)
 end
 
+# Band boss style > when 5
+
 def step_on_up
   puts SEPARATOR
   puts "    Show your moves..."
@@ -134,4 +136,13 @@ def show_your_moves(player, the_boss, user_moves, boss_moves)
   end
   puts SEPARATOR
   puts text_break(messages.sample, " ", 70)
+end
+
+# Band boss style > when 6
+
+def roll
+  puts SEPARATOR
+  puts "    Decide..."
+  puts "   [4] 🍺 Beer"
+  puts "   [5] ☕ Coffee"
 end

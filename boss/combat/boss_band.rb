@@ -9,8 +9,9 @@ def mosh_pit(the_boss, boss_style, player, cash_lost) # damage reduced by cash l
   shots_fired(player, the_boss, damage, :hit)
 end
 
-def swing(attacker, target)
-  damage = (rand(attacker[:attack]) * 0.6).to_i
+def swing(attacker, target, method)
+  multiplier = method == :drank && attacker[:id] == :boss ? rand(1.0..1.5) : 0.7
+  damage = (rand(attacker[:attack]) * multiplier).to_i
   target[:hp] -= damage
   shots_fired(attacker, target, damage, :hit)
 end
@@ -29,36 +30,47 @@ def dance_off(player, weapon, the_boss, boss_style, load_boss)
 
     until (4..6).include?(user_choice)
       user_choice = gets.chomp.to_i
-      error_message unless (4..6).include?(user_choice)
-      game_info(player, weapon, the_boss, boss_style, load_boss) unless (4..6).include?(user_choice)
-      step_on_up unless (4..6).include?(user_choice)
+      error_message
+      game_info(player, weapon, the_boss, boss_style, load_boss)
+      step_on_up
     end
 
     user_moves << user_choice
     print `clear`
     show_your_moves(player, the_boss, user_moves, boss_moves)
 
-    swing(player, the_boss) if (user_choice > boss_moves[round]) || (user_choice == 4 && boss_moves[round] == 6) unless (boss_moves[round] == 4 && user_choice == 6)
-    swing(the_boss, player) if (boss_moves[round] > user_choice) || (boss_moves[round] == 4 && user_choice == 6) unless (user_choice == 4 && boss_moves[round] == 6)
+    swing(player, the_boss, :dance) if (user_choice > boss_moves[round]) || (user_choice == 4 && boss_moves[round] == 6) unless (boss_moves[round] == 4 && user_choice == 6)
+    swing(the_boss, player, :dance) if (boss_moves[round] > user_choice) || (boss_moves[round] == 4 && user_choice == 6) unless (user_choice == 4 && boss_moves[round] == 6)
   end
 end
 
-# def keg_stand(player, weapon, the_boss, boss_style, load_boss)
-#   user_choice = 0
-
-#   until (4..5).include?(user_choice)
-#     user_choice = gets.chomp.to_i
-#     error_message
-#   end
-
-# end
-
+def keg_stand(player, weapon, the_boss, boss_style, load_boss)
+  user_choice = 0
+  boss_move = [4, 5].sample
+  game_info(player, weapon, the_boss, boss_style, load_boss)
+  roll
+  until [4, 5].include?(user_choice)
+    user_choice = gets.chomp.to_i
+    error_message
+    game_info(player, weapon, the_boss, boss_style, load_boss)
+    roll
+  end
+  print `clear`
+  puts "YOU #{user_choice} BOSS #{boss_move}" # debug
+  if user_choice == boss_move
+    swing(player, the_boss, :drank)
+    keg_stand(player, weapon, the_boss, boss_style, load_boss)
+  else
+    swing(the_boss, player, :drank)
+  end
+  player[:drunk] = (player[:drunk] + 1).clamp(0, 20)
+end
 
 def fight_the_band(player, weapon, the_boss, boss_style, load_boss)
   user_choice = 0
   boss_walks(the_boss, boss_style, :intro)
 
-  until [4, 5].include?(user_choice)
+  until (4..6).include?(user_choice)
     game_info(player, weapon, the_boss, boss_style, load_boss)
     fight_menu(player, boss_style, weapon)
 
