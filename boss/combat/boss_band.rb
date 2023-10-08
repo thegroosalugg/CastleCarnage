@@ -63,6 +63,7 @@ def keg_stand(player, weapon, the_boss, boss_style, load_boss)
   else
     swing(the_boss, player, :drank)
   end
+  player[:drunk] = (player[:drunk] + 1).clamp(0, 20)
 end
 
 def fight_the_band(player, weapon, the_boss, boss_style, load_boss)
