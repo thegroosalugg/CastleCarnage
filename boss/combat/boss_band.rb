@@ -45,6 +45,35 @@ def dance_off(player, weapon, the_boss, boss_style, load_boss)
 end
 
 def keg_stand(player, weapon, the_boss, boss_style, load_boss)
+  boss_move = [4, 5].sample
+  player[:drunk] = (player[:drunk] + 1).clamp(0, 20)
+
+  loop do
+    user_choice = 0
+    game_info(player, weapon, the_boss, boss_style, load_boss)
+    roll
+
+    until [4, 5].include?(user_choice)
+      user_choice = gets.chomp.to_i
+      error_message
+      game_info(player, weapon, the_boss, boss_style, load_boss)
+      roll
+    end
+
+    print `clear`
+    puts "YOU #{user_choice} BOSS #{boss_move}" # debug
+
+    if user_choice == boss_move
+      #player[:drunk] = (player[:drunk] + 1).clamp(0, 20)
+      swing(player, the_boss, :drank)
+    else
+      swing(the_boss, player, :drank)
+      break # Exit the loop if choices don't match
+    end
+  end
+end
+
+def keg_stand(player, weapon, the_boss, boss_style, load_boss)
   user_choice = 0
   boss_move = [4, 5].sample
   game_info(player, weapon, the_boss, boss_style, load_boss)
