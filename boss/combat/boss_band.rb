@@ -10,7 +10,7 @@ def mosh_pit(the_boss, boss_style, player, cash_lost) # damage reduced by cash l
 end
 
 def swing(attacker, target, method)
-  multiplier = method == :drank && attacker[:id] == :boss ? rand(1.0..1.5) : 0.7
+  multiplier = method == :keg && attacker[:id] == :boss ? rand(1.0..1.5) : 0.7
   damage = (rand(attacker[:attack]) * multiplier).to_i
   target[:hp] -= damage
   shots_fired(attacker, target, damage, :hit)
@@ -37,7 +37,7 @@ def dance_off(player, weapon, the_boss, boss_style, load_boss)
 
     user_moves << user_choice
     print `clear`
-    show_your_moves(player, the_boss, user_moves, boss_moves)
+    show_your_moves(player, the_boss, user_moves, boss_moves, :dance)
 
     swing(player, the_boss, :dance) if (user_choice > boss_moves[round]) || (user_choice == 4 && boss_moves[round] == 6) unless (boss_moves[round] == 4 && user_choice == 6)
     swing(the_boss, player, :dance) if (boss_moves[round] > user_choice) || (boss_moves[round] == 4 && user_choice == 6) unless (user_choice == 4 && boss_moves[round] == 6)
@@ -45,9 +45,9 @@ def dance_off(player, weapon, the_boss, boss_style, load_boss)
 end
 
 def keg_stand(player, weapon, the_boss, boss_style, load_boss)
-  boss_move = [4, 5].sample
 
   loop do
+    boss_move = [4, 5].sample
     user_choice = 0
     game_info(player, weapon, the_boss, boss_style, load_boss)
     roll
@@ -60,13 +60,13 @@ def keg_stand(player, weapon, the_boss, boss_style, load_boss)
     end
 
     print `clear`
-    puts "YOU #{user_choice} BOSS #{boss_move}" # debug
+    show_your_moves(player, the_boss, user_choice, boss_move, :keg)
 
-    if user_choice == boss_move
-      swing(player, the_boss, :drank)
-      player[:drunk] = (player[:drunk] + 1).clamp(0, 20)
+    if user_choice != boss_move
+      swing(player, the_boss, :keg)
+      player[:drunk] = (player[:drunk] + 2).clamp(0, 20)
     else
-      swing(the_boss, player, :drank)
+      swing(the_boss, player, :keg)
       break # Exit the loop if choices don't match
     end
   end
