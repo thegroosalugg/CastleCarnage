@@ -18,15 +18,11 @@ end
 def dance_off(player, weapon, the_boss, boss_style, load_boss)
   boss_moves = []
   user_moves = []
-  display = true
 
   4.times do |round|
     break if player[:hp] <= 0 || the_boss[:hp] <= 0
-
-    if display
-      game_info(player, weapon, the_boss, boss_style, load_boss)
-      step_on_up
-    end
+    game_info(player, weapon, the_boss, boss_style, load_boss)
+    step_on_up
 
     boss_moves << rand(4..6)
     user_choice = 0
@@ -34,6 +30,8 @@ def dance_off(player, weapon, the_boss, boss_style, load_boss)
     until (4..6).include?(user_choice)
       user_choice = gets.chomp.to_i
       error_message unless (4..6).include?(user_choice)
+      game_info(player, weapon, the_boss, boss_style, load_boss) unless (4..6).include?(user_choice)
+      step_on_up unless (4..6).include?(user_choice)
     end
 
     user_moves << user_choice
@@ -42,30 +40,18 @@ def dance_off(player, weapon, the_boss, boss_style, load_boss)
 
     swing(player, the_boss) if (user_choice > boss_moves[round]) || (user_choice == 4 && boss_moves[round] == 6) unless (boss_moves[round] == 4 && user_choice == 6)
     swing(the_boss, player) if (boss_moves[round] > user_choice) || (boss_moves[round] == 4 && user_choice == 6) unless (user_choice == 4 && boss_moves[round] == 6)
-    round < 3 ? display = true : display = false
   end
 end
 
-def keg_stand(player, weapon, the_boss, boss_style, load_boss)
-  user_choice = 0
-  boss_move = [4, 5].sample
-  game_info(player, weapon, the_boss, boss_style, load_boss)
-  puts "DECIDE 4 or 5"
+# def keg_stand(player, weapon, the_boss, boss_style, load_boss)
+#   user_choice = 0
 
-  until [4, 5].include?(user_choice)
-    user_choice = gets.chomp.to_i
-    game_info(player, weapon, the_boss, boss_style, load_boss) unless [4, 5].include?(user_choice)
-    error_message unless [4, 5].include?(user_choice)
-    if user_choice == boss_move
-      swing(player, the_boss)
-      redo
-    else
-      swing(the_boss, player)
-    end
-  end
-  puts "BOSS #{boss_move}"
-  puts "USER #{user_choice}"
-end
+#   until (4..5).include?(user_choice)
+#     user_choice = gets.chomp.to_i
+#     error_message
+#   end
+
+# end
 
 
 def fight_the_band(player, weapon, the_boss, boss_style, load_boss)
