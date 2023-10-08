@@ -119,7 +119,10 @@ def show_your_moves(player, the_boss, user_moves, boss_moves, method)
     5 => "🐯  Le Tigre ",
     6 => "🍦   Magnum  "
   }
-
+  drinks = {
+    4 => "🍹",
+    5 => "🍸"
+  }
   lose = [
     "#{the_boss[:name]} got mad style 💫 The crowd is going mental.",
     "The crowd 🤺🏃🕴️ is chanting for #{the_boss[:name]}, they thirst for blood",
@@ -147,7 +150,8 @@ def show_your_moves(player, the_boss, user_moves, boss_moves, method)
       puts " " * (20 - "#{player[:name]}".length) + "#{player[:name]} 💬 #{moves[user]} / #{moves[boss]} 🗨️ #{the_boss[:name]}"
     end
   elsif method == :keg
-    puts " " * (32 - "#{player[:name]}".length) + "#{player[:name]} 💬 #{user_moves} / #{boss_moves} 🗨️ #{the_boss[:name]}"
+    puts " " * 40 + (user_moves == boss_moves ? "❌" : "✅")
+    puts " " * (32 - "#{player[:name]}".length) + "#{player[:name]} 💬 #{drinks[user_moves]} / #{drinks[boss_moves]} 🗨️ #{the_boss[:name]}"
     messages = (user_moves == boss_moves ? lose : win)
   end
   puts SEPARATOR
