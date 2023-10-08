@@ -142,7 +142,7 @@ end
 
 def roll
   puts SEPARATOR
-  puts "    Decide..."
-  puts "   [4] 🍺 Beer"
-  puts "   [5] ☕ Coffee"
+  puts "    Figure it out..."
+  puts "   [4] 🍹"
+  puts "   [5] 🍸"
 end
