@@ -135,3 +135,10 @@ def show_your_moves(player, the_boss, user_moves, boss_moves)
   puts SEPARATOR
   puts text_break(messages.sample, " ", 70)
 end
+
+def roll
+  puts SEPARATOR
+  puts "    Decide..."
+  puts "   [4] 🍺 Beer"
+  puts "   [5] ☕ Coffee"
+end

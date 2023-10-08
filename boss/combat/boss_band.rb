@@ -29,9 +29,9 @@ def dance_off(player, weapon, the_boss, boss_style, load_boss)
 
     until (4..6).include?(user_choice)
       user_choice = gets.chomp.to_i
-      error_message unless (4..6).include?(user_choice)
-      game_info(player, weapon, the_boss, boss_style, load_boss) unless (4..6).include?(user_choice)
-      step_on_up unless (4..6).include?(user_choice)
+      error_message
+      game_info(player, weapon, the_boss, boss_style, load_boss)
+      step_on_up
     end
 
     user_moves << user_choice
@@ -45,13 +45,23 @@ end
 
 def keg_stand(player, weapon, the_boss, boss_style, load_boss)
   user_choice = 0
+  boss_move = [4, 5].sample
   game_info(player, weapon, the_boss, boss_style, load_boss)
+  roll
   until [4, 5].include?(user_choice)
     user_choice = gets.chomp.to_i
-    error_message unless [4, 5].include?(user_choice)
-    game_info(player, weapon, the_boss, boss_style, load_boss) unless [4, 5].include?(user_choice)
+    error_message
+    game_info(player, weapon, the_boss, boss_style, load_boss)
+    roll
   end
   print `clear`
+  puts "YOU #{user_choice} BOSS #{boss_move}" # debug
+  if user_choice == boss_move
+    swing(player, the_boss)
+    keg_stand(player, weapon, the_boss, boss_style, load_boss)
+  else
+    swing(the_boss, player)
+  end
 end
 
 def fight_the_band(player, weapon, the_boss, boss_style, load_boss)
