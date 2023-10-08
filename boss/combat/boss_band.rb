@@ -51,6 +51,7 @@ def keg_stand(player, weapon, the_boss, boss_style, load_boss)
     error_message unless [4, 5].include?(user_choice)
     game_info(player, weapon, the_boss, boss_style, load_boss) unless [4, 5].include?(user_choice)
   end
+  print `clear`
 end
 
 def fight_the_band(player, weapon, the_boss, boss_style, load_boss)
