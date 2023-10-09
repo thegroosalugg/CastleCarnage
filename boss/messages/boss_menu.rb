@@ -68,7 +68,7 @@ def barkeep(player)
     "[5] 🪑🤺 Old School Bar Fight",
   ]
   blackjack = [
-    "[6] ♠️♥️♦️♣️ BlackJack",
+    "[6] ♠️♥️ BlackJack ♦️♣️",
   ]
 
   puts money_fight.sample
