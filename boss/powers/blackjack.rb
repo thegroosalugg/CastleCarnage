@@ -42,13 +42,10 @@ end
 
 def blackjack(player, the_boss)
   deck = card_deck
-  boss_hand = []
-  your_hand = []
+  boss_hand, your_hand = [], []
 
-  2.times { boss_hand << deck.shift }
-  2.times { your_hand << deck.shift }
-
-  boss_total, your_total = [boss_hand, your_hand].map { |hand| hand.sum { |card| card[:value] } }
+  [boss_hand, your_hand].each { |hand| 2.times { hand << deck.shift } } # starting hands, draw 2 cards each
+  boss_total, your_total = [boss_hand, your_hand].map { |hand| hand.sum { |card| card[:value] } } # get total hand value
 
   your_hand, your_total = check_ace(your_hand, your_total)
   boss_hand, boss_total = check_ace(boss_hand, boss_total)
