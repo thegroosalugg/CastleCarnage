@@ -47,7 +47,7 @@ def fight_the_barkeep(player, weapon, the_boss, boss_style, load_boss)
     when 6
       if player[:cash].positive?
         print `clear`
-        blackjack(player)
+        blackjack(player, the_boss)
       else
         error_message
         redo

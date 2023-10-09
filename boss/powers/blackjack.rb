@@ -22,12 +22,8 @@ def deck
   end
 
   deck.shuffle! # Shuffle the deck
-
-  deck.each do |card| # Print the deck
-    puts "#{card[:face]} (Value: #{card[:value]})"
-  end
 end
 
-def blackjack(player)
-  puts "♣️♦️♥️♠️👑🫅🤴👸"
+def blackjack(player, the_boss)
+  puts deck
 end
