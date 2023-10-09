@@ -24,6 +24,15 @@ def deck
   deck.shuffle! # Shuffle the deck
 end
 
+def whos_holding_what(boss_hand, your_hand)
+  boss_cards, your_cards = [boss_hand, your_hand].map { |hand| hand.map { |card| card[:suit] } }
+  boss_total, your_total = [boss_hand, your_hand].map { |hand| hand.sum { |card| card[:value] } }
+
+  #puts "Boss: #{boss_cards.join(', ')} (Total: #{boss_total})"
+  puts "Boss: #{boss_cards[0]} 🎴  (Total: #{boss_hand.first[:value]})"
+  puts " You: #{your_cards.join(' ')}  (Total: #{your_total})"
+end
+
 def blackjack(player, the_boss)
   deck
   boss_hand = []
@@ -32,10 +41,5 @@ def blackjack(player, the_boss)
   2.times { boss_hand << deck.shift }
   2.times { your_hand << deck.shift }
 
-  boss_cards, your_cards = [boss_hand, your_hand].map { |hand| hand.map { |card| card[:suit] } }
-  boss_total, your_total = [boss_hand, your_hand].map { |hand| hand.sum { |card| card[:value] } }
-
-  #puts "Boss: #{boss_cards.join(', ')} (Total: #{boss_total})"
-  puts "Boss: #{boss_cards[0]} 🎴 (Total: #{boss_hand.first[:value]})"
-  puts " You: #{your_cards.join(' ')}  (Total: #{your_total})"
+  whos_holding_what(boss_hand, your_hand)
 end
