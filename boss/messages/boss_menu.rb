@@ -73,7 +73,7 @@ def barkeep(player)
 
   puts money_fight.sample
   puts bar_fight.sample
-  puts (player[:cash] > 1 ? blackjack.sample : denied)
+  puts (player[:cash].positive? ? blackjack.sample : denied)
 end
 
 def bouncer(player, weapon)
