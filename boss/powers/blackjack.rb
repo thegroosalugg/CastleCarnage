@@ -24,7 +24,7 @@ def deck
   deck.shuffle! # Shuffle the deck
 end
 
-def whos_holding_what(boss_hand, your_hand)
+def whos_holding_what(player, boss_hand, your_hand)
   boss_cards, your_cards = [boss_hand, your_hand].map { |hand| hand.map { |card| card[:suit] } }
   boss_total, your_total = [boss_hand, your_hand].map { |hand| hand.sum { |card| card[:value] } }
 
@@ -41,5 +41,19 @@ def blackjack(player, the_boss)
   2.times { boss_hand << deck.shift }
   2.times { your_hand << deck.shift }
 
-  whos_holding_what(boss_hand, your_hand)
+  total = your_hand.sum { |card| card[:value] }
+
+  while total < 21
+    print `clear`
+    whos_holding_what(player, boss_hand, your_hand)
+    puts "Press 4 to Hit or 5 to Stick"
+    user_action = gets.chomp
+
+    if user_action == "4"
+      your_hand << deck.shift
+      total = your_hand.sum { |card| card[:value] }
+    elsif user_action == "5"
+      break
+    end
+  end
 end
