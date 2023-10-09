@@ -60,16 +60,20 @@ end
 
 # Menu when selecting Fight the Power
 
-def barkeep
+def barkeep(player)
   money_fight = [
     "[4] 💴🗒️ Settle your Tabs",
   ]
   bar_fight = [
     "[5] 🪑🤺 Old School Bar Fight",
   ]
+  blackjack = [
+    "[6] ♠️♥️ BlackJack ♦️♣️",
+  ]
 
   puts money_fight.sample
   puts bar_fight.sample
+  puts (player[:cash].positive? ? blackjack.sample : denied)
 end
 
 def bouncer(player, weapon)
@@ -114,7 +118,7 @@ end
 def fight_menu(player, boss_style, weapon)
   puts SEPARATOR
   case boss_style
-  when "🍻 Barkeep" then barkeep
+  when "🍻 Barkeep" then barkeep(player)
   when "🕶️ Bouncer" then bouncer(player, weapon)
   when "🎶 Band"    then band
   end
