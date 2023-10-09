@@ -100,12 +100,12 @@ def step_on_up(method)
   puts SEPARATOR
   puts "    Show your moves..."
   if method == :dance
-    puts "   [4] 🧊 Blue Steel"
-    puts "   [5] 🐯 Le Tigre"
-    puts "   [6] 🍦 Magnum"
+    puts "[4] 🧊 Blue Steel"
+    puts "[5] 🐯 Le Tigre"
+    puts "[6] 🍦 Magnum"
   else
-    puts "   [4] 🍹"
-    puts "   [5] 🍸"
+    puts "[4] ♨️ Firestarter"
+    puts "[5] ❄️ Cold as Ice"
   end
 end
 
@@ -124,8 +124,8 @@ def show_your_moves(player, the_boss, user_moves, boss_moves, method)
     6 => "🍦   Magnum  "
   }
   drinks = {
-    4 => "🍹",
-    5 => "🍸"
+    4 => "♨️ Firestarter",
+    5 => "❄️ Cold as Ice"
   }
   lose = [
     "#{the_boss[:name]} got mad style 💫 The crowd is going mental.",
@@ -157,7 +157,7 @@ def show_your_moves(player, the_boss, user_moves, boss_moves, method)
   elsif method == :keg
     messages = (user_moves == boss_moves ? lose : win)
     x = user_moves == boss_moves ? "❌" : "✅"
-    puts " " * (28 - "#{player[:name]}".length) + "#{player[:name]} 💬 #{drinks[user_moves]} #{x} #{drinks[boss_moves]} 🗨️ #{the_boss[:name]}"
+    puts " " * (16 - "#{player[:name]}".length) + "#{player[:name]} 💬 #{drinks[user_moves]} #{x} #{drinks[boss_moves]} 🗨️ #{the_boss[:name]}"
   end
   puts SEPARATOR
   puts text_break(messages.sample, " ", 70)

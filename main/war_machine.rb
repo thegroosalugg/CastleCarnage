@@ -12,7 +12,7 @@ BOSSES = [
 ]
 
 WEAPONS = [
-  "🏏 Baseball Bat", "🥊 Punching Glove", "🪓 Axe", "🔪 Switchblade", "🗡 Dagger", "🗡️ Sword", "🎇 Mace", "🍢 Giant Club", "🛠️ Wrench",
+  "🏏 Baseball Bat", "🥊 Punching Glove", "🔪 Switchblade", "🗡 Dagger", "🗡️ Sword", "🎇 Mace", "🍢 Giant Club", "🛠️ Wrench",
   "🪄 Magic Scepter", "🏹 Crossbow", "🪚 Chainsaw", "🔫 Revolver", "🪃 Boomerang", "⚔️ Battle Axe", "🪓 Hatchet", "🧨 Dynamite",
 ]
 
