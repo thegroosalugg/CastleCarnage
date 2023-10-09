@@ -29,12 +29,13 @@ def blackjack(player, the_boss)
   boss_hand = []
   your_hand = []
 
-  boss_hand << deck.shift(2)
-  your_hand << deck.shift(2)
+  2.times { boss_hand << deck.shift }
+  2.times { your_hand << deck.shift }
 
-  boss_cards, your_cards = [boss_hand, your_hand].map { |hand| hand.flatten.map { |card| card[:suit] } }
-  boss_total, your_total = [boss_hand, your_hand].map { |hand| hand.flatten.sum { |card| card[:value] } }
+  boss_cards, your_cards = [boss_hand, your_hand].map { |hand| hand.map { |card| card[:suit] } }
+  boss_total, your_total = [boss_hand, your_hand].map { |hand| hand.sum { |card| card[:value] } }
 
-  puts "Boss: #{boss_cards.join(', ')} (Total: #{boss_total})"
-  puts " You: #{your_cards.join(', ')} (Total: #{your_total})"
+  #puts "Boss: #{boss_cards.join(', ')} (Total: #{boss_total})"
+  puts "Boss: #{boss_cards[0]} 🎴 (Total: #{boss_hand.first[:value]})"
+  puts " You: #{your_cards.join(' ')}  (Total: #{your_total})"
 end
