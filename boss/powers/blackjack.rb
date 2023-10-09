@@ -24,13 +24,20 @@ def deck
   deck.shuffle! # Shuffle the deck
 end
 
-def whos_holding_what(player, boss_hand, your_hand)
+def whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
   boss_cards, your_cards = [boss_hand, your_hand].map { |hand| hand.map { |card| card[:suit] } }
-  boss_total, your_total = [boss_hand, your_hand].map { |hand| hand.sum { |card| card[:value] } }
 
-  #puts "Boss: #{boss_cards.join(', ')} (Total: #{boss_total})"
   puts "Boss: #{boss_cards[0]} 🎴  (Total: #{boss_hand.first[:value]})"
-  puts " You: #{your_cards.join(' ')}  (Total: #{your_total})"
+  puts "Boss: #{boss_cards.join(' ')} (Total: #{boss_total})"
+  puts " You: #{your_cards.join(' ')} (Total: #{your_total})"
+end
+
+def check_ace(hand, total)
+  if hand.last[:value] == 11 && total > 21
+    hand.last[:value] = 1
+    total -= 10
+  end
+  [hand, total]
 end
 
 def blackjack(player, the_boss)
@@ -41,17 +48,22 @@ def blackjack(player, the_boss)
   2.times { boss_hand << deck.shift }
   2.times { your_hand << deck.shift }
 
-  total = your_hand.sum { |card| card[:value] }
+  boss_total, your_total = [boss_hand, your_hand].map { |hand| hand.sum { |card| card[:value] } }
 
-  while total < 21
+  your_hand, your_total = check_ace(your_hand, your_total)
+  boss_hand, boss_total = check_ace(boss_hand, boss_total)
+
+  while your_total < 21
     print `clear`
-    whos_holding_what(player, boss_hand, your_hand)
+    whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
     puts "Press 4 to Hit or 5 to Stick"
     user_action = gets.chomp
 
     if user_action == "4"
       your_hand << deck.shift
-      total = your_hand.sum { |card| card[:value] }
+      your_total = your_hand.sum { |card| card[:value] }
+      your_hand, your_total = check_ace(your_hand, your_total)
+      whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
     elsif user_action == "5"
       break
     end
