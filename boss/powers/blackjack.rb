@@ -1,7 +1,7 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-def deck
+def card_deck
   deck = []
   suits = ["♠️", "♥️", "♦️", "♣️"] # Define an array of emojis representing card suits
   royals = { "K" => 10, "Q" => 10, "J" => 10, "A" => 11 } # Define suit cards and their values
@@ -41,7 +41,7 @@ def check_ace(hand, total)
 end
 
 def blackjack(player, the_boss)
-  deck
+  deck = card_deck
   boss_hand = []
   your_hand = []
 
@@ -55,6 +55,7 @@ def blackjack(player, the_boss)
 
   while your_total < 21
     print `clear`
+    deck = card_deck if deck.empty?
     whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
     puts "Press 4 to Hit or 5 to Stick"
     user_action = gets.chomp
