@@ -4,7 +4,7 @@
 def deck
   deck = []
   suits = ["♠️", "♥️", "♦️", "♣️"] # Define an array of emojis representing card faces
-  royals = { "Ķ" => 10, "ʠ" => 10, "J" => 10, "Ā" => "11" } # Define face cards and their values (e.g., King, Queen, Jack)
+  royals = { "Ķ" => 10, "ʠ" => 10, "J" => 10, "Ā" => 11 } # Define face cards and their values (e.g., King, Queen, Jack)
   values = (2..10).to_a # Define card values for numbered cards (2 to 10)
 
   suits.each do |face| # Add numbered cards to the deck
