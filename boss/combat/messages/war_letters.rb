@@ -1,6 +1,12 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
+# Whitespace generator so display stays in same place regardless of name length
+
+def whitespace(entity, char, size)
+  char * (size - entity[:name].length)
+end
+
 # Invoice for stat changes
 # Bar fight outcomes # .abs removes negatives so only positive integers displayed
 
@@ -70,11 +76,11 @@ def whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_t
   boss_cards, your_cards = [boss_hand, your_hand].map { |hand| hand.map { |card| card[:suit] } }
 
   puts SEPARATOR
-  puts " " * (30 - "#{the_boss[:name]}".length) + # whitespace generator so display is consistent regardless of name length
+  puts whitespace(the_boss, " ", 30) + # whitespace generator so display is consistent regardless of name length
   "#{the_boss[:name]} (#{boss_hand.first[:value]}) #{boss_cards[0]} 🃏" unless player[:stuck]
-  puts " " * (30 - "#{the_boss[:name]}".length) +
+  puts whitespace(the_boss, " ", 30) +
   "#{the_boss[:name]} (#{boss_total}) #{boss_cards.join(' ')}" if player[:stuck]
-  puts " " * (30 - "#{player[:name]}".length) +
+  puts whitespace(player, " ", 30) +
   "#{player[:name]} (#{your_total}) #{your_cards.join(' ')}"
 end
 
@@ -131,12 +137,12 @@ def show_your_moves(player, the_boss, user_moves, boss_moves, method)
       when boss == user then draw
       end
       x = messages == win ? "✅" : "❌"
-      puts " " * (16 - "#{player[:name]}".length) + "#{player[:name]} 💬 #{moves[user]} #{x} #{moves[boss]} 🗨️ #{the_boss[:name]}"
+      puts whitespace(player, " ", 16) + "#{player[:name]} 💬 #{moves[user]} #{x} #{moves[boss]} 🗨️ #{the_boss[:name]}"
     end
   elsif method == :keg
     messages = (user_moves == boss_moves ? lose : win)
     x = user_moves == boss_moves ? "❌" : "✅"
-    puts " " * (16 - "#{player[:name]}".length) + "#{player[:name]} 💬 #{drinks[user_moves]} #{x} #{drinks[boss_moves]} 🗨️ #{the_boss[:name]}"
+    puts whitespace(player, " ", 16) + "#{player[:name]} 💬 #{drinks[user_moves]} #{x} #{drinks[boss_moves]} 🗨️ #{the_boss[:name]}"
   end
   puts SEPARATOR
   puts text_break(messages.sample, " ", 70)
