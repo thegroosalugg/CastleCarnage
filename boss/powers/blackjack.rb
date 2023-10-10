@@ -1,8 +1,6 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-# Find the messagess in combat/messages/war_letters.rb
-
 def card_deck
   deck = []
   suits = ["♠️", "♥️", "♦️", "♣️"] # Define an array of emojis representing card suits

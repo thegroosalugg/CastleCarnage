@@ -19,6 +19,7 @@ require_relative 'boss/messages/boss_menu'
 require_relative 'boss/messages/talks_with_the_boss'
 require_relative 'boss/combat/messages/war_letters'
 require_relative 'boss/powers/messages/blood_letters'
+require_relative 'boss/powers/messages/bust_or_break'
 require_relative 'debug/cheat_mode'
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
