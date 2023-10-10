@@ -26,6 +26,7 @@ def somersault_attack(player, enemy, weapon)   # succeed and strike twice, fail 
 end
 
 def mortal_kombat(enemies, player, weapon)
+  greeting
   user_choice = -1
 
   until user_choice >= 0 && user_choice < enemies.length
