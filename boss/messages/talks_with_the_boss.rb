@@ -31,9 +31,9 @@ end
 def boss_walks(the_boss, boss_style, time)
   barkeep = [
     "The #{boss_style} is keeping the liquor flowng, its happy hour ⌚",
-    "#{the_boss} is getting close to barring you, prepare!",
+    "#{the_boss[:name]} is getting close to barring you, prepare!",
     "The #{boss_style} is in the house 🛖 orders up",
-    "#{the_boss} is the liquor 🍾",
+    "#{the_boss[:name]} is the liquor 🍾",
   ]
   bouncer = [
     "#{the_boss[:name]} is excerting its pressure, you drink another beer 🍺",
