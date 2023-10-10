@@ -11,14 +11,15 @@ def card_deck
 
   suits.each do |suit| # Add numbered cards to the deck
     values.each do |value|
-      card = { suit: "#{value}#{suit}", value: value }
+      w = value == 10 ? "" : " " # creates a whitespace to even display between single & double digits
+      card = { suit: "#{w}#{value}#{suit}", value: value }
       deck << card
     end
   end
 
   suits.each do |suit| # Add suit cards to the deck
     royals.each do |name, value|
-      card = { suit: "#{name}#{suit}", value: value }
+      card = { suit: " #{name}#{suit}", value: value }
       deck << card
     end
   end

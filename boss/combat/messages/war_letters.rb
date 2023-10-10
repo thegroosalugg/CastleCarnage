@@ -78,7 +78,7 @@ def whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_t
 
   puts SEPARATOR
   puts whitespace(the_boss, " ", 30) + # whitespace generator so display is consistent regardless of name length
-  "#{the_boss[:name]} ⟪#{w}#{boss_hand.first[:value]}⟫ ʃ #{boss_cards[0]} 🃏" unless player[:stuck]
+  "#{the_boss[:name]} ⟪#{w}#{boss_hand.first[:value]}⟫ ʃ #{boss_cards[0]}  🃏" unless player[:stuck]
   puts whitespace(the_boss, " ", 30) +
   "#{the_boss[:name]} ⟪#{x}#{boss_total}⟫ ʃ #{boss_cards.join(' ')}" if player[:stuck]
   puts whitespace(player, " ", 30) +
