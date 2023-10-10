@@ -80,12 +80,11 @@ def blackjack(player, the_boss)
     print `clear`
     whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
 
-    # Check if player wins or loses
-    if your_total <= 21 && (your_total > boss_total || boss_total > 21)
+    if your_total <= 21 && (your_total > boss_total || boss_total > 21) # Who's the winner
       puts "You win!"
     else
       puts "You lose!"
-      break # End the game if the player loses
+      break # Game ends if you lose
     end
 
     puts "Press [Y] to play again"
