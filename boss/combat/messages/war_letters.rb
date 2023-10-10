@@ -77,11 +77,11 @@ def whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_t
 
   puts SEPARATOR
   puts whitespace(the_boss, " ", 30) + # whitespace generator so display is consistent regardless of name length
-  "#{the_boss[:name]} (#{boss_hand.first[:value]}) #{boss_cards[0]} 🃏" unless player[:stuck]
+  "#{the_boss[:name]} ⟪#{boss_hand.first[:value]}⟫ ʃ #{boss_cards[0]} 🃏" unless player[:stuck]
   puts whitespace(the_boss, " ", 30) +
-  "#{the_boss[:name]} (#{boss_total}) #{boss_cards.join(' ')}" if player[:stuck]
+  "#{the_boss[:name]} ⟪#{boss_total}⟫ ʃ #{boss_cards.join(' ')}" if player[:stuck]
   puts whitespace(player, " ", 30) +
-  "#{player[:name]} (#{your_total}) #{your_cards.join(' ')}"
+  "#{player[:name]} ⟪#{your_total}⟫ ʃ #{your_cards.join(' ')}"
 end
 
 # Band boss style > when 5 & 6. Barkeep boss style when 6.
