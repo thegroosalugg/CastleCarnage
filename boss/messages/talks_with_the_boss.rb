@@ -15,7 +15,12 @@ end
 
 def greeting
   messages = [
+    "Strike first, strike hard, no mercy",
     "Step on up and show who's the boss",
+    "Will you get got, or you gone get?",
+    "Time to walk the dinosaur 🦕",
+    "Time for a thrashing",
+    "Lay down the law",
   ]
 
   puts text_break(messages.sample, " ", 70)
@@ -25,22 +30,30 @@ end
 
 def boss_walks(the_boss, boss_style, time)
   barkeep = [
-    "The #{boss_style} is in the house 🛖 orders up",
     "The #{boss_style} is keeping the liquor flowng, its happy hour ⌚",
+    "#{the_boss} is getting close to barring you, prepare!",
+    "The #{boss_style} is in the house 🛖 orders up",
+    "#{the_boss} is the liquor 🍾",
   ]
   bouncer = [
     "#{the_boss[:name]} is excerting its pressure, you drink another beer 🍺",
   ]
   band = [
-    "#{the_boss[:name]} is playing 🎸 rocking music, a mosh pit is about to break out!",
-    "#{the_boss[:name]} is two-stepping across the room 🤾, Parkway Drive 🎸 appear on stage!",
     "Some wanker just started playing dubstep 🎧 you're gonna take some serious damage this round.",
+    "#{the_boss[:name]} is two-stepping across the room 🤾, Parkway Drive 🎸 appear on stage!",
+    "#{the_boss[:name]} is smashing some banging tunes 🎸 a mosh pit is about to break out!",
+    "🎧 Sandstorm by Darude starts playing, shit's 'bout to get proper 🎶",
   ]
   outro = [
+    "#{the_boss[:name]} had enough of your shit as it prepares #{boss_style} stance",
     "#{the_boss[:name]} assumes the #{boss_style} fighting stance, watch out!",
+    "#{the_boss[:name]} is commerically trained in #{boss_style} style",
+    "#{the_boss[:name]} switches up to #{boss_style} style",
   ]
   reprise = [
+    "You're slighly less wasted, your alcohol goes down one 🍺",
     "That was quite a mash up, you're one 🍺 lighter.",
+    "You sweat out a 🍺 your hangover decreases",
   ]
 
   messages = case boss_style
