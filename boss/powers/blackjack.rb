@@ -49,7 +49,7 @@ def blackjack(player, weapon, the_boss, boss_style, load_boss)
 
     your_hand, your_total = check_ace(your_hand, your_total)
     boss_hand, boss_total = check_ace(boss_hand, boss_total)
-    whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
+    whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
 
     while your_total < 21
       deck = card_deck if deck.empty?
@@ -62,13 +62,13 @@ def blackjack(player, weapon, the_boss, boss_style, load_boss)
         your_hand << deck.shift
         your_total = your_hand.sum { |card| card[:value] }
         your_hand, your_total = check_ace(your_hand, your_total)
-        whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
+        whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
       elsif user_action == "5"
         player[:stuck] = true
         break
       else
         error_message
-        whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
+        whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
       end
     end
 
@@ -86,12 +86,12 @@ def blackjack(player, weapon, the_boss, boss_style, load_boss)
     else
       puts "You lose!"
       player[:stuck] = true if boss_total == 21
-      whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
+      whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
       break # Game ends if you lose
     end
 
     loop do
-      whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
+      whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
       game_info(player, weapon, the_boss, boss_style, load_boss)
       puts "Press [Y] to play again or [N] to quit"
       play_again = gets.chomp.downcase

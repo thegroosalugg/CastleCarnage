@@ -66,13 +66,16 @@ end
 
 # Blackjack state of game
 
-def whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
+def whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
   boss_cards, your_cards = [boss_hand, your_hand].map { |hand| hand.map { |card| card[:suit] } }
 
   puts SEPARATOR
-  puts "Boss: (#{boss_hand.first[:value]}) #{boss_cards[0]} 🃏" unless player[:stuck]
-  puts "Boss: (#{boss_total}) #{boss_cards.join(' ')}" if player[:stuck]
-  puts " You: (#{your_total}) #{your_cards.join(' ')}"
+  puts " " * (30 - "#{the_boss[:name]}".length) + # whitespace generator so display is consistent regardless of name length
+  "#{the_boss[:name]} (#{boss_hand.first[:value]}) #{boss_cards[0]} 🃏" unless player[:stuck]
+  puts " " * (30 - "#{the_boss[:name]}".length) +
+  "#{the_boss[:name]} (#{boss_total}) #{boss_cards.join(' ')}" if player[:stuck]
+  puts " " * (30 - "#{player[:name]}".length) +
+  "#{player[:name]} (#{your_total}) #{your_cards.join(' ')}"
 end
 
 # Band boss style > when 5 & 6. Barkeep boss style when 6.
