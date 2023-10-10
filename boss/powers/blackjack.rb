@@ -27,6 +27,7 @@ end
 def whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
   boss_cards, your_cards = [boss_hand, your_hand].map { |hand| hand.map { |card| card[:suit] } }
 
+  puts SEPARATOR
   puts "Boss: (#{boss_hand.first[:value]}) #{boss_cards[0]} 🃏" unless player[:stuck]
   puts "Boss: (#{boss_total}) #{boss_cards.join(' ')}" if player[:stuck]
   puts " You: (#{your_total}) #{your_cards.join(' ')}"
@@ -40,7 +41,7 @@ def check_ace(hand, total)
   [hand, total]
 end
 
-def blackjack(player, the_boss)
+def blackjack(player, weapon, the_boss, boss_style, load_boss)
   loop do
     player[:stuck] = false
     deck = card_deck
@@ -51,23 +52,26 @@ def blackjack(player, the_boss)
 
     your_hand, your_total = check_ace(your_hand, your_total)
     boss_hand, boss_total = check_ace(boss_hand, boss_total)
+    whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
 
     while your_total < 21
-      print `clear`
       deck = card_deck if deck.empty?
-      whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
+      game_info(player, weapon, the_boss, boss_style, load_boss)
       puts "Press 4 to Hit or 5 to Stick"
       user_action = gets.chomp
 
       if user_action == "4"
+        print `clear`
         your_hand << deck.shift
         your_total = your_hand.sum { |card| card[:value] }
         your_hand, your_total = check_ace(your_hand, your_total)
-        print `clear` if your_total >= 21
         whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
       elsif user_action == "5"
         player[:stuck] = true
         break
+      else
+        error_message
+        whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
       end
     end
 
@@ -87,8 +91,10 @@ def blackjack(player, the_boss)
       break # Game ends if you lose
     end
 
+    game_info(player, weapon, the_boss, boss_style, load_boss)
     puts "Press [Y] to play again"
     play_again = gets.chomp.downcase
+    print `clear`
     break unless play_again == 'y'
   end
 end
