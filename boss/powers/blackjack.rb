@@ -1,6 +1,8 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
+# Find the messagess in combat/messages/war_letters.rb
+
 def card_deck
   deck = []
   suits = ["♠️", "♥️", "♦️", "♣️"] # Define an array of emojis representing card suits
@@ -24,15 +26,6 @@ def card_deck
   deck.shuffle! # Shuffle the deck
 end
 
-def whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
-  boss_cards, your_cards = [boss_hand, your_hand].map { |hand| hand.map { |card| card[:suit] } }
-
-  puts SEPARATOR
-  puts "Boss: (#{boss_hand.first[:value]}) #{boss_cards[0]} 🃏" unless player[:stuck]
-  puts "Boss: (#{boss_total}) #{boss_cards.join(' ')}" if player[:stuck]
-  puts " You: (#{your_total}) #{your_cards.join(' ')}"
-end
-
 def check_ace(hand, total)
   if hand.last[:value] == 11 && total > 21
     hand.last[:value] = 1
@@ -44,6 +37,7 @@ end
 def blackjack(player, weapon, the_boss, boss_style, load_boss)
   loop do
     print `clear`
+    greeting
 
     player[:cash] -= 1
     player[:stuck] = false
@@ -60,7 +54,7 @@ def blackjack(player, weapon, the_boss, boss_style, load_boss)
     while your_total < 21
       deck = card_deck if deck.empty?
       game_info(player, weapon, the_boss, boss_style, load_boss)
-      puts "Press 4 to Hit or 5 to Stick"
+      step_on_up(:cards)
       user_action = gets.chomp
 
       if user_action == "4"
@@ -98,6 +92,7 @@ def blackjack(player, weapon, the_boss, boss_style, load_boss)
     game_info(player, weapon, the_boss, boss_style, load_boss)
     puts "Press [Y] to play again"
     play_again = gets.chomp.downcase
+    print `clear` if play_again == 'y'
     break unless play_again == 'y'
   end
 end

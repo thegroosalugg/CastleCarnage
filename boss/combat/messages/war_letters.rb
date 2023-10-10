@@ -94,7 +94,18 @@ def invoice(player, amount, where)
   puts text_break(messages.sample, " ", 70)
 end
 
-# Band boss style > when 5 & 6
+# Blackjack state of game
+
+def whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
+  boss_cards, your_cards = [boss_hand, your_hand].map { |hand| hand.map { |card| card[:suit] } }
+
+  puts SEPARATOR
+  puts "Boss: (#{boss_hand.first[:value]}) #{boss_cards[0]} 🃏" unless player[:stuck]
+  puts "Boss: (#{boss_total}) #{boss_cards.join(' ')}" if player[:stuck]
+  puts " You: (#{your_total}) #{your_cards.join(' ')}"
+end
+
+# Band boss style > when 5 & 6. Barkeep boss style when 6.
 
 def step_on_up(method)
   puts SEPARATOR
@@ -103,9 +114,12 @@ def step_on_up(method)
     puts "[4] 🧊 Blue Steel"
     puts "[5] 🐯 Le Tigre"
     puts "[6] 🍦 Magnum"
-  else
+  elsif method == :keg
     puts "[4] ♨️ Firestarter"
     puts "[5] ❄️ Cold as Ice"
+  elsif method == :cards
+    puts "[4] 🃏 Hit me!"
+    puts "[5] 🪂 I'm out!"
   end
 end
 
