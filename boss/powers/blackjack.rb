@@ -83,17 +83,26 @@ def blackjack(player, weapon, the_boss, boss_style, load_boss)
     if your_total <= 21 && (your_total > boss_total || boss_total > 21) # Who's the winner
       puts "You win!"
       player[:cash] = (player[:cash] + 3).clamp(0, 20)
-      whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
     else
       puts "You lose!"
       whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
       break # Game ends if you lose
     end
 
-    game_info(player, weapon, the_boss, boss_style, load_boss)
-    puts "Press [Y] to play again"
-    play_again = gets.chomp.downcase
-    print `clear` unless play_again == 'y'
-    break unless play_again == 'y'
+    loop do
+      whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
+      game_info(player, weapon, the_boss, boss_style, load_boss)
+      puts "Press [Y] to play again or [N] to quit"
+      play_again = gets.chomp.downcase
+      case play_again
+      when 'y'
+        break
+      when 'n'
+        print `clear`
+        return
+      else
+        error_message
+      end
+    end
   end
 end
