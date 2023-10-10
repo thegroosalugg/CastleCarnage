@@ -44,9 +44,8 @@ def fight_the_barkeep(player, weapon, the_boss, boss_style, load_boss)
     when 5
       print `clear`
       bar_fight(player, the_boss)
-    when 6
+    when 6 # print `clear` exists inside the method
       if player[:cash].positive?
-        print `clear`
         blackjack(player, weapon, the_boss, boss_style, load_boss)
         redo
       else
