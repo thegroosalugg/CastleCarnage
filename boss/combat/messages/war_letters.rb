@@ -85,6 +85,15 @@ def whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_t
   "#{player[:name]} ⟪#{y}#{your_total}⟫ ʃ #{your_cards.join(' ')}"
 end
 
+def draw_card(hand)
+  card = hand.last[:suit]
+  messages = [
+    "You drew #{card}, good for you",
+  ]
+
+  puts text_break(messages.sample, " ", 70)
+end
+
 # Band boss style > when 5 & 6. Barkeep boss style when 6.
 
 def step_on_up(method)

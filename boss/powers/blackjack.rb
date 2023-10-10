@@ -63,6 +63,7 @@ def blackjack(player, weapon, the_boss, boss_style, load_boss)
         your_hand << deck.shift
         your_total = your_hand.sum { |card| card[:value] }
         your_hand, your_total = check_ace(your_hand, your_total)
+        draw_card(your_hand)
         whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
       elsif user_action == "5"
         player[:stuck] = true
@@ -80,6 +81,7 @@ def blackjack(player, weapon, the_boss, boss_style, load_boss)
     end
 
     print `clear`
+    draw_card(your_hand)
 
     if your_total <= 21 && (your_total > boss_total || boss_total > 21) # Who's the winner
       puts "You win!"
