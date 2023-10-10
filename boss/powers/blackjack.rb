@@ -85,6 +85,7 @@ def blackjack(player, weapon, the_boss, boss_style, load_boss)
       player[:cash] = (player[:cash] + 3).clamp(0, 20)
     else
       puts "You lose!"
+      player[:stuck] = true if boss_total == 21
       whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
       break # Game ends if you lose
     end
