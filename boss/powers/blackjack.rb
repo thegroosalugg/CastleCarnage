@@ -1,7 +1,7 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-def deck
+def card_deck
   deck = []
   suits = ["♠️", "♥️", "♦️", "♣️"] # Define an array of emojis representing card suits
   royals = { "K" => 10, "Q" => 10, "J" => 10, "A" => 11 } # Define suit cards and their values
@@ -24,36 +24,71 @@ def deck
   deck.shuffle! # Shuffle the deck
 end
 
-def whos_holding_what(player, boss_hand, your_hand)
+def whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
   boss_cards, your_cards = [boss_hand, your_hand].map { |hand| hand.map { |card| card[:suit] } }
-  boss_total, your_total = [boss_hand, your_hand].map { |hand| hand.sum { |card| card[:value] } }
 
-  #puts "Boss: #{boss_cards.join(', ')} (Total: #{boss_total})"
-  puts "Boss: #{boss_cards[0]} 🎴  (Total: #{boss_hand.first[:value]})"
-  puts " You: #{your_cards.join(' ')}  (Total: #{your_total})"
+  puts "Boss: (#{boss_hand.first[:value]}) #{boss_cards[0]} 🃏" unless player[:stuck]
+  puts "Boss: (#{boss_total}) #{boss_cards.join(' ')}" if player[:stuck]
+  puts " You: (#{your_total}) #{your_cards.join(' ')}"
+end
+
+def check_ace(hand, total)
+  if hand.last[:value] == 11 && total > 21
+    hand.last[:value] = 1
+    total -= 10
+  end
+  [hand, total]
 end
 
 def blackjack(player, the_boss)
-  deck
-  boss_hand = []
-  your_hand = []
+  loop do
+    player[:stuck] = false
+    deck = card_deck
+    boss_hand, your_hand = [], []
 
-  2.times { boss_hand << deck.shift }
-  2.times { your_hand << deck.shift }
+    [boss_hand, your_hand].each { |hand| 2.times { hand << deck.shift } }
+    boss_total, your_total = [boss_hand, your_hand].map { |hand| hand.sum { |card| card[:value] } }
 
-  total = your_hand.sum { |card| card[:value] }
+    your_hand, your_total = check_ace(your_hand, your_total)
+    boss_hand, boss_total = check_ace(boss_hand, boss_total)
 
-  while total < 21
-    print `clear`
-    whos_holding_what(player, boss_hand, your_hand)
-    puts "Press 4 to Hit or 5 to Stick"
-    user_action = gets.chomp
+    while your_total < 21
+      print `clear`
+      deck = card_deck if deck.empty?
+      whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
+      puts "Press 4 to Hit or 5 to Stick"
+      user_action = gets.chomp
 
-    if user_action == "4"
-      your_hand << deck.shift
-      total = your_hand.sum { |card| card[:value] }
-    elsif user_action == "5"
-      break
+      if user_action == "4"
+        your_hand << deck.shift
+        your_total = your_hand.sum { |card| card[:value] }
+        your_hand, your_total = check_ace(your_hand, your_total)
+        print `clear` if your_total >= 21
+        whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
+      elsif user_action == "5"
+        player[:stuck] = true
+        break
+      end
     end
+
+    while boss_total < 16
+      boss_hand << deck.shift
+      boss_total = boss_hand.sum { |card| card[:value] }
+      boss_hand, boss_total = check_ace(boss_hand, boss_total)
+    end
+
+    print `clear`
+    whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
+
+    if your_total <= 21 && (your_total > boss_total || boss_total > 21) # Who's the winner
+      puts "You win!"
+    else
+      puts "You lose!"
+      break # Game ends if you lose
+    end
+
+    puts "Press [Y] to play again"
+    play_again = gets.chomp.downcase
+    break unless play_again == 'y'
   end
 end
