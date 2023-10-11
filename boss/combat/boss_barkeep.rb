@@ -45,9 +45,10 @@ def fight_the_barkeep(player, weapon, the_boss, boss_style, load_boss)
     when 5
       print `clear`
       bar_fight(player, the_boss)
+      the_boss[:rage] = (the_boss[:rage] - 1).clamp(0, 10)
     when 6 # print `clear` exists inside the method
       if player[:cash].positive? && player[:jacked]
-        player[:jacked] = false
+        player[:jacked] = false # disable game till next round
         the_boss[:rage] = (the_boss[:rage] + 1).clamp(0, 10)
         blackjack(player, weapon, the_boss, boss_style, load_boss)
         redo
@@ -60,6 +61,7 @@ def fight_the_barkeep(player, weapon, the_boss, boss_style, load_boss)
     end
   end
 
+  boss_rage(player, the_boss)
   boss_strikes_back(the_boss, boss_style, player, weapon) if the_boss[:hp].positive?
   boss_style = the_boss[:style].sample
   boss_walks(the_boss, boss_style, :outro) if the_boss[:hp].positive?

@@ -63,3 +63,15 @@ def boss_walks(the_boss, boss_style, time)
   end
   puts text_break(messages.sample, " ", 70)
 end
+
+def boss_speaks(player, the_boss, blast = 0, outcome)
+  hit = [
+    "#{the_boss[:name]} has had enough of your crap, they blast you for 💢 #{blast} damage!",
+  ]
+  threat = [
+    "#{the_boss[:name]} is getting aggy, you better pick your moves carefully",
+  ]
+
+  messages = outcome == :hit ? hit : threat
+  puts text_break(messages.sample, " ", 70)
+end

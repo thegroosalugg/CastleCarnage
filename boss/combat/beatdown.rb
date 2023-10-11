@@ -45,3 +45,17 @@ def boss_strikes_back(the_boss, boss_style, player, weapon)
   when "🎶 Band"    then xhardcorex(the_boss, player)
   end
 end
+
+def boss_rage(player, the_boss)
+  if the_boss[:rage] > 4
+    if rand(2) == 1
+      rage = rand(1..the_boss[:rage])
+      the_boss[:rage] -= rage
+      blast = rand(8..10) * rage - rand(player[:block])
+      player[:hp] -= blast
+      boss_speaks(player, the_boss, blast, :hit)
+    else
+      boss_speaks(player, the_boss, blast, :threat)
+    end
+  end
+end

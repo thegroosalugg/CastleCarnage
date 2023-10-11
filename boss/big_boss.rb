@@ -32,10 +32,14 @@ def big_boss_battle(player, weapon, the_boss)
       when "🎶 Band"    then boss_style = fight_the_band(player, weapon, the_boss, boss_style, load_boss)
       end
     elsif user_choice == "r"
-      print `clear`
-      player[:drained] ? drained : boss_style = pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
-      player[:drained] = true
-      the_boss[:rage] = (the_boss[:rage] + 1).clamp(0, 10)
+      unless player[:drained]
+        print `clear`
+        the_boss[:rage] = (the_boss[:rage] + 1).clamp(0, 10)
+        boss_style = pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
+        player[:drained] = true
+      else
+        drained
+      end
     else
       error_message
     end
