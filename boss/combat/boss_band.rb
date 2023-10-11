@@ -90,9 +90,11 @@ def fight_the_band(player, weapon, the_boss, boss_style, load_boss)
       mosh_pit(the_boss, boss_style, player, cash_lost)
     when 5
       print `clear`
+      the_boss[:rage] = (the_boss[:rage] + 1).clamp(0, 10)
       dance_off(player, weapon, the_boss, boss_style, load_boss)
     when 6
       print `clear`
+      the_boss[:rage] = (the_boss[:rage] + 1).clamp(0, 10)
       keg_stand(player, weapon, the_boss, boss_style, load_boss)
     else
       error_message

@@ -36,6 +36,12 @@ def player_status(player)
   "    #{drunk} [DEBUG #{player[:drunk]}] #{'🍺' * [player[:drunk], 0].max}"
 end
 
+# boss rage bar
+
+def rage(the_boss)
+  "🐲" + "🔥" * [the_boss[:rage], 0].max
+end
+
 # the boss moves!
 
 def move_ascii_art(load_boss)
@@ -52,8 +58,8 @@ def game_info(player, weapon, the_boss, boss_style, load_boss)
   puts "    #{weapon_bars(weapon)}" if weapon[:durability].positive? && boss_style == "🕶️ Bouncer"
   puts "    #{player_status(player)}"
   puts BOSS_DIV
-  puts "    #{health_bars(the_boss)}\n" + "\n"
-  puts "    #{boss_style} / #{attack_stats(the_boss)}"
+  puts "    #{health_bars(the_boss)}\n" + "\n"          # weird looking code makes font red
+  puts "    #{boss_style} / #{attack_stats(the_boss)} / \e[31m𝖗𝖆𝖌𝖊\e[0m #{rage(the_boss)}"
   puts SEPARATOR
   puts move_ascii_art(load_boss)
 end

@@ -89,6 +89,7 @@ def fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
       print `clear`
       if weapon[:durability].zero? && player[:cash] > 4
         weapon = armoury(player)
+        the_boss[:rage] = (the_boss[:rage] + 1).clamp(0, 10)
         redo
       else
         error_message
@@ -98,6 +99,7 @@ def fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
       print `clear`
       damage = (unarmed_damage[:value] * rand(0.7..1.0)).to_i
       sneak_attack(player, the_boss, damage)
+      the_boss[:rage] = (the_boss[:rage] + 1).clamp(0, 10)
     else
       error_message
     end

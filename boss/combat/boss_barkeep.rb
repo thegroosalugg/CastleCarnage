@@ -48,6 +48,7 @@ def fight_the_barkeep(player, weapon, the_boss, boss_style, load_boss)
     when 6 # print `clear` exists inside the method
       if player[:cash].positive? && player[:jacked]
         player[:jacked] = false
+        the_boss[:rage] = (the_boss[:rage] + 1).clamp(0, 10)
         blackjack(player, weapon, the_boss, boss_style, load_boss)
         redo
       else
