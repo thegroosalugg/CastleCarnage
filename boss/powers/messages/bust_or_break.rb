@@ -28,3 +28,10 @@ def draw_card(who, hand)
 
   puts text_break(messages.sample, " ", 70)
 end
+
+def continue
+  puts SEPARATOR
+  puts "You want it?"
+  puts "[Y] Another!"
+  puts "[N] 'llow it"
+end

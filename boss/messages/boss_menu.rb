@@ -117,6 +117,7 @@ end
 
 def fight_menu(player, boss_style, weapon)
   puts SEPARATOR
+  puts "    What's up, what's up..."
   case boss_style
   when "🍻 Barkeep" then barkeep(player)
   when "🕶️ Bouncer" then bouncer(player, weapon)

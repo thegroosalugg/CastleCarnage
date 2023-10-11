@@ -79,7 +79,7 @@ def blackjack(player, weapon, the_boss, boss_style, load_boss)
     end
 
     print `clear`
-    draw_card(the_boss, boss_hand) unless your_total > 21 || boss_hand.length < 3
+    draw_card(the_boss, boss_hand) unless your_total >= 21 || boss_hand.length < 3
 
     if your_total <= 21 && (your_total > boss_total || boss_total > 21) # Who's the winner
       puts "You win!"
@@ -95,7 +95,7 @@ def blackjack(player, weapon, the_boss, boss_style, load_boss)
     loop do
       whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
       game_info(player, weapon, the_boss, boss_style, load_boss)
-      puts "Press [Y] to play again or [N] to quit"
+      continue
       play_again = gets.chomp.downcase
       case play_again
       when 'y'
