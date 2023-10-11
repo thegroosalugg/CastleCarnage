@@ -30,6 +30,7 @@ end
 
 def fight_the_barkeep(player, weapon, the_boss, boss_style, load_boss)
   user_choice = 0
+  player[:jacked] = true
   boss_walks(the_boss, boss_style, :intro)
 
   until (4..6).include?(user_choice)
@@ -45,7 +46,8 @@ def fight_the_barkeep(player, weapon, the_boss, boss_style, load_boss)
       print `clear`
       bar_fight(player, the_boss)
     when 6 # print `clear` exists inside the method
-      if player[:cash].positive?
+      if player[:cash].positive? && player[:jacked]
+        player[:jacked] = false
         blackjack(player, weapon, the_boss, boss_style, load_boss)
         redo
       else
