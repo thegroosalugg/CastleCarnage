@@ -16,10 +16,14 @@ def whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_t
   "#{player[:name]} ⟪#{y}#{your_total}⟫ ʃ #{your_cards.join(' ')}"
 end
 
-def draw_card(hand)
+def draw_card(who, hand)
   card = hand.last[:suit]
+  guy = who[:name]
   messages = [
-    "You drew #{card}, good for you",
+    "#{guy} drew #{card}",
+    "#{guy} whipped out #{card}",
+    "#{guy} presented a #{card}",
+    "#{guy} comes loaded heavy with #{card}",
   ]
 
   puts text_break(messages.sample, " ", 70)

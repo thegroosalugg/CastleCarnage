@@ -74,12 +74,12 @@ end
 
 def somersault(chance, enemy)
   success = [
-    "You turned Super Saiyan 😼, the scouter 🥽 says your power level is over 9000 ‼",
-    "You ran up the wall and did a sick backflip, you strike #{enemy[:name]} twice!",
-    "⬇ ↘ ➡ HP LP ⬅ ↖ ⬆ LP ⬆ ↖ ⬅ HK  ⬇ LK HP  ⬇ ↘ ➡ ➡ ⬆ ⬇ HK :: Ultra Combo...",
-    "With outcomes like these 💯 you might win after all, roll 🎲 twice!",
+    "You ran up the wall and did a sick backflip, you strike #{enemy[:name]} again and again!",
+    "You turned Super Saiyan 😼, the scouter 🥽 says your power level is over 9000!",
+    "⬇ ↘ ➡ HP LP ⬅ ↖ ⬆ LP ⬆ ↖ ⬅ HK  ⬇ LK HP  ⬇ ↘ ➡ ➡ ⬆ ⬇ HK ⟪⟪Ultra Combo⟫⟫",
+    "With outcomes like these 💯 you might win after all, roll 🎲 on!",
     "The gods ⚖ smile upon you, your path is righteous",
-    "Bang on ⚖. You get 2 attacks!",
+    "Bang on ⚖. You get an extra attack or two!",
   ]
   failed = [
     "You stacked 😵 it! #{enemy[:name]} is gonna have a field day, you plum!",

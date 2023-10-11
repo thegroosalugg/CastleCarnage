@@ -54,16 +54,16 @@ def blackjack(player, weapon, the_boss, boss_style, load_boss)
       deck = card_deck if deck.empty?
       game_info(player, weapon, the_boss, boss_style, load_boss)
       step_on_up(:cards)
-      user_action = gets.chomp
+      user_action = gets.chomp.to_i
 
-      if user_action == "4"
+      if user_action == 4
         print `clear`
         your_hand << deck.shift
         your_total = your_hand.sum { |card| card[:value] }
         your_hand, your_total = check_ace(your_hand, your_total)
-        draw_card(your_hand)
+        draw_card(player, your_hand)
         whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
-      elsif user_action == "5"
+      elsif user_action == 5
         player[:stuck] = true
         break
       else
@@ -79,12 +79,13 @@ def blackjack(player, weapon, the_boss, boss_style, load_boss)
     end
 
     print `clear`
-    draw_card(your_hand)
+    draw_card(the_boss, boss_hand) unless your_total > 21 || boss_hand.length < 3
 
     if your_total <= 21 && (your_total > boss_total || boss_total > 21) # Who's the winner
       puts "You win!"
       player[:cash] = (player[:cash] + 3).clamp(0, 20)
     else
+      draw_card(player, your_hand) unless your_hand.length < 3 || user_action == 5
       puts "You lose!"
       player[:stuck] = true if boss_total == 21
       whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
