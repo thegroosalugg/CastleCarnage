@@ -25,7 +25,7 @@ def big_boss_battle(player, weapon, the_boss)
 
     if user_choice == "t"
       print `clear`
-      power_drained = false
+      player[:drained] = false
       case boss_style
       when "🍻 Barkeep" then boss_style = fight_the_barkeep(player, weapon, the_boss, boss_style, load_boss)
       when "🕶️ Bouncer" then boss_style, weapon = fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
@@ -33,8 +33,8 @@ def big_boss_battle(player, weapon, the_boss)
       end
     elsif user_choice == "r"
       print `clear`
-      power_drained ? drained : boss_style = pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
-      power_drained = true
+      player[:drained] ? drained : boss_style = pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
+      player[:drained] = true
     else
       error_message
     end
