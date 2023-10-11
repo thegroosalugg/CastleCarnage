@@ -69,7 +69,7 @@ def keg_stand(player, weapon, the_boss, boss_style, load_boss)
       player[:drunk] = (player[:drunk] + 2).clamp(0, 20)
     else
       swing(the_boss, player, :keg)
-      break # Exit the loop if choices don't match
+      break # Exit loop if choices match
     end
   end
 end

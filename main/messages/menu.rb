@@ -8,7 +8,13 @@ BARRIER = "〰" * 36
 ENEMY_DIV = "🗡" * 76
 BOSS_DIV = " " * 4 + "▪" * 76
 
-# White Space Generator
+# Whitespace generator so display stays in same place regardless of name length
+
+def whitespace(entity, char, size)
+  char * (size - entity[:name].length)
+end
+
+# Padding Generator
 
 def padding_generator(message, char, size)
   padding = char * [1, (size - message.length) / 2].max

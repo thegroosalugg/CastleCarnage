@@ -1,36 +1,6 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-# Intro outro messages for changes to boss fighting style
-
-def boss_walks(the_boss, boss_style, time)
-  barkeep = [
-    "The #{boss_style} is in the house 🛖 orders up",
-    "The #{boss_style} is keeping the liquor flowng, its happy hour ⌚",
-  ]
-  bouncer = [
-    "#{the_boss[:name]} is excerting its pressure, you drink another beer 🍺",
-  ]
-  band = [
-    "#{the_boss[:name]} is playing 🎸 rocking music, a mosh pit is about to break out!",
-    "#{the_boss[:name]} is two-stepping across the room 🤾, Parkway Drive 🎸 appear on stage!",
-    "Some wanker just started playing dubstep 🎧 you're gonna take some serious damage this round.",
-  ]
-  outro = [
-    "#{the_boss[:name]} assumes the #{boss_style} fighting stance, watch out!",
-  ]
-  reprise = [
-    "That was quite a mash up, you're one 🍺 lighter.",
-  ]
-
-  messages = case boss_style
-  when "🍻 Barkeep" then time == :intro ? barkeep : outro
-  when "🕶️ Bouncer" then time == :intro ? bouncer : outro
-  when "🎶 Band"    then (time == :reprise) ? reprise : (time == :intro) ? band : outro
-  end
-  puts text_break(messages.sample, " ", 70)
-end
-
 # Invoice for stat changes
 # Bar fight outcomes # .abs removes negatives so only positive integers displayed
 
@@ -94,17 +64,6 @@ def invoice(player, amount, where)
   puts text_break(messages.sample, " ", 70)
 end
 
-# Blackjack state of game
-
-def whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
-  boss_cards, your_cards = [boss_hand, your_hand].map { |hand| hand.map { |card| card[:suit] } }
-
-  puts SEPARATOR
-  puts "Boss: (#{boss_hand.first[:value]}) #{boss_cards[0]} 🃏" unless player[:stuck]
-  puts "Boss: (#{boss_total}) #{boss_cards.join(' ')}" if player[:stuck]
-  puts " You: (#{your_total}) #{your_cards.join(' ')}"
-end
-
 # Band boss style > when 5 & 6. Barkeep boss style when 6.
 
 def step_on_up(method)
@@ -121,14 +80,6 @@ def step_on_up(method)
     puts "[4] 🃏 Hit me!"
     puts "[5] 🪂 I'm out!"
   end
-end
-
-def greeting
-  messages = [
-    "Step on up and show who's the boss",
-  ]
-
-  puts text_break(messages.sample, " ", 70)
 end
 
 def show_your_moves(player, the_boss, user_moves, boss_moves, method)
@@ -166,12 +117,12 @@ def show_your_moves(player, the_boss, user_moves, boss_moves, method)
       when boss == user then draw
       end
       x = messages == win ? "✅" : "❌"
-      puts " " * (16 - "#{player[:name]}".length) + "#{player[:name]} 💬 #{moves[user]} #{x} #{moves[boss]} 🗨️ #{the_boss[:name]}"
+      puts whitespace(player, " ", 16) + "#{player[:name]} 💬 ⟪#{moves[user]}⟫ #{x} ⟪#{moves[boss]}⟫ 🗨️ #{the_boss[:name]}"
     end
   elsif method == :keg
     messages = (user_moves == boss_moves ? lose : win)
     x = user_moves == boss_moves ? "❌" : "✅"
-    puts " " * (16 - "#{player[:name]}".length) + "#{player[:name]} 💬 #{drinks[user_moves]} #{x} #{drinks[boss_moves]} 🗨️ #{the_boss[:name]}"
+    puts whitespace(player, " ", 16) + "#{player[:name]} 💬 ⟪#{drinks[user_moves]}⟫ #{x} ⟪#{drinks[boss_moves]}⟫ 🗨️ #{the_boss[:name]}"
   end
   puts SEPARATOR
   puts text_break(messages.sample, " ", 70)

@@ -1,8 +1,6 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-# Find the messagess in combat/messages/war_letters.rb
-
 def card_deck
   deck = []
   suits = ["♠️", "♥️", "♦️", "♣️"] # Define an array of emojis representing card suits
@@ -11,14 +9,15 @@ def card_deck
 
   suits.each do |suit| # Add numbered cards to the deck
     values.each do |value|
-      card = { suit: "#{value}#{suit}", value: value }
+      w = value == 10 ? "" : " " # creates a whitespace to even display between single & double digits
+      card = { suit: "#{w}#{value}#{suit}", value: value }
       deck << card
     end
   end
 
   suits.each do |suit| # Add suit cards to the deck
     royals.each do |name, value|
-      card = { suit: "#{name}#{suit}", value: value }
+      card = { suit: " #{name}#{suit}", value: value }
       deck << card
     end
   end
@@ -49,26 +48,27 @@ def blackjack(player, weapon, the_boss, boss_style, load_boss)
 
     your_hand, your_total = check_ace(your_hand, your_total)
     boss_hand, boss_total = check_ace(boss_hand, boss_total)
-    whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
+    whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
 
     while your_total < 21
       deck = card_deck if deck.empty?
       game_info(player, weapon, the_boss, boss_style, load_boss)
       step_on_up(:cards)
-      user_action = gets.chomp
+      user_action = gets.chomp.to_i
 
-      if user_action == "4"
+      if user_action == 4
         print `clear`
         your_hand << deck.shift
         your_total = your_hand.sum { |card| card[:value] }
         your_hand, your_total = check_ace(your_hand, your_total)
-        whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
-      elsif user_action == "5"
+        draw_card(player, your_hand)
+        whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
+      elsif user_action == 5
         player[:stuck] = true
         break
       else
         error_message
-        whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
+        whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
       end
     end
 
@@ -79,21 +79,33 @@ def blackjack(player, weapon, the_boss, boss_style, load_boss)
     end
 
     print `clear`
+    draw_card(the_boss, boss_hand) unless your_total >= 21 || boss_hand.length < 3
 
     if your_total <= 21 && (your_total > boss_total || boss_total > 21) # Who's the winner
-      puts "You win!"
+      whos_the_boss(your_hand, your_total, boss_total)
       player[:cash] = (player[:cash] + 3).clamp(0, 20)
-      whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
     else
-      puts "You lose!"
-      whos_holding_what(player, boss_hand, boss_total, your_hand, your_total)
+      draw_card(player, your_hand) unless your_hand.length < 3 || user_action == 5
+      whos_the_boss(your_hand, your_total, boss_total)
+      player[:stuck] = true if boss_total == 21
+      whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
       break # Game ends if you lose
     end
 
-    game_info(player, weapon, the_boss, boss_style, load_boss)
-    puts "Press [Y] to play again"
-    play_again = gets.chomp.downcase
-    print `clear` unless play_again == 'y'
-    break unless play_again == 'y'
+    loop do
+      whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
+      game_info(player, weapon, the_boss, boss_style, load_boss)
+      continue
+      play_again = gets.chomp.downcase
+      case play_again
+      when 'y'
+        break
+      when 'n'
+        print `clear`
+        return
+      else
+        error_message
+      end
+    end
   end
 end

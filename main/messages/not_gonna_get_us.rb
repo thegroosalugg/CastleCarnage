@@ -116,6 +116,7 @@ def weapon_speaks(weapon, status)
     "😲 Your #{weapon[:name]} was proper shoddy, sucks to be you.",
     "😲 Your #{weapon[:name]} broke 💔, time to take a walk.",
     "😲 Oh shit! Your #{weapon[:name]} broke. Better leg it!",
+    "😲 Poxy #{weapon[:name]} gone 'n' did a runner on you",
     "😲 Your #{weapon[:name]} disappears into thin air",
     "😲 Goodbye #{weapon[:name]}, you will be missed.",
   ]

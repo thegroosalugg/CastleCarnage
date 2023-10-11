@@ -73,7 +73,7 @@ def barkeep(player)
 
   puts money_fight.sample
   puts bar_fight.sample
-  puts (player[:cash].positive? ? blackjack.sample : denied)
+  puts (player[:cash].positive? && player[:jacked] ? blackjack.sample : denied)
 end
 
 def bouncer(player, weapon)
@@ -117,6 +117,7 @@ end
 
 def fight_menu(player, boss_style, weapon)
   puts SEPARATOR
+  puts "    What's up, what's up..."
   case boss_style
   when "🍻 Barkeep" then barkeep(player)
   when "🕶️ Bouncer" then bouncer(player, weapon)
