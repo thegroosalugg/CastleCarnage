@@ -29,6 +29,27 @@ def draw_card(who, hand)
   puts text_break(messages.sample, " ", 70)
 end
 
+def whos_the_boss(your_hand, your_total, boss_total)
+  win = [
+    "✅ Slam! Another win for the chosen one",
+  ]
+  lose = [
+    "❌ You lost mate, giv's ur money, chop-chop",
+  ]
+  blackjack = [
+    "🎌 Blackjack, get it back!",
+  ]
+
+  messages = if your_total == 21 && your_hand.length == 2 && boss_total != 21
+    blackjack
+  elsif your_total <= 21 && (your_total > boss_total || boss_total > 21)
+    win
+  else
+    lose
+  end
+  puts text_break(messages.sample, " ", 70)
+end
+
 def continue
   puts SEPARATOR
   puts "You want it?"

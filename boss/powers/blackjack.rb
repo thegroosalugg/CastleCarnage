@@ -82,11 +82,11 @@ def blackjack(player, weapon, the_boss, boss_style, load_boss)
     draw_card(the_boss, boss_hand) unless your_total >= 21 || boss_hand.length < 3
 
     if your_total <= 21 && (your_total > boss_total || boss_total > 21) # Who's the winner
-      puts "You win!"
+      whos_the_boss(your_hand, your_total, boss_total)
       player[:cash] = (player[:cash] + 3).clamp(0, 20)
     else
       draw_card(player, your_hand) unless your_hand.length < 3 || user_action == 5
-      puts "You lose!"
+      whos_the_boss(your_hand, your_total, boss_total)
       player[:stuck] = true if boss_total == 21
       whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
       break # Game ends if you lose
