@@ -65,8 +65,9 @@ def boss_walks(the_boss, boss_style, time)
 end
 
 def boss_speaks(player, the_boss, blast = 0, outcome)
+  player = player[:id] == :player ? "you" : player[:name]
   hit = [
-    "#{the_boss[:name]} has had enough of your crap, they blast you for 💢 #{blast} damage!",
+    "#{the_boss[:name]} has had enough of your crap, they blast #{player} for 💢 #{blast} damage!",
   ]
   threat = [
     "#{the_boss[:name]} is getting aggy, you better pick your moves carefully",

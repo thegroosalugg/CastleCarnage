@@ -22,7 +22,7 @@ end
 
 # boss menu cheat interface. Not possible to combine the 2
 
-def cheat_menu_boss(user_choice, player, weapon, the_boss, boss_style)
+def cheat_menu_boss(user_choice, player, buddy, weapon, the_boss, boss_style)
   case user_choice
   when "h"  then player[:hp] -= 100
   when "hh" then player[:hp] += 100
@@ -32,6 +32,8 @@ def cheat_menu_boss(user_choice, player, weapon, the_boss, boss_style)
   when "ww" then weapon[:durability] -= 1
   when "b"  then the_boss[:hp] -= 200
   when "a"  then the_boss[:rage] += 1
+  when "e"  then buddy[:hp] -= 100 if buddy
+  when "ee" then buddy = random_enemy
   when "1"  then boss_style = "🍻 Barkeep"
   when "2"  then boss_style = "🕶️ Bouncer"
   when "3"  then boss_style = "🎶 Band"
@@ -44,5 +46,5 @@ def cheat_menu_boss(user_choice, player, weapon, the_boss, boss_style)
   weapon[:durability] = weapon[:durability].clamp(0, 10)
   player[:cash] = player[:cash].clamp(0, 20)
   player[:drunk] = player[:drunk].clamp(0, 20)
-  return weapon, boss_style
+  return buddy, weapon, boss_style
 end

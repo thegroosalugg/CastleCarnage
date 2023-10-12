@@ -3,11 +3,17 @@
 
 # Main Menu
 
-def boss_menu(boss_style)
+def boss_menu(player, boss_style)
+  magic = "[y] 🪦🪄 Necromancy"
+  t = 4 - player[:turns]
+  n = t == 1 ? "next" : "in #{t}"
+  s = t == 1 ? "" : "s"
+
   puts SEPARATOR
   puts "     Decisions, decisions..."
   puts "[t] 👊⚡ Fight the #{boss_style}"
   puts "[r] 🩸🪄 Blood Magic"
+  puts player[:turns] == 4 ? magic : padding_generator("⏱️ Available #{n} turn#{s}", "-", 50)
 end
 
 # Dynamic status for player cash & drunkness
@@ -32,8 +38,8 @@ def player_status(player)
     end
 
   "#{BARRIER}\n" +
-  "    #{wallet} [DEBUG #{player[:cash]}] #{'💵' * [player[:cash], 0].max}\n" +
-  "    #{drunk} [DEBUG #{player[:drunk]}] #{'🍺' * [player[:drunk], 0].max}"
+  "    #{wallet} #{'💵' * [player[:cash], 0].max}\n" +
+  "    #{drunk} #{'🍺' * [player[:drunk], 0].max}"
 end
 
 # boss rage bar
@@ -51,11 +57,12 @@ end
 
 # Same as state of game but exclusively for big boss
 
-def game_info(player, weapon, the_boss, boss_style, load_boss)
+def game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
   puts SEPARATOR
   puts "    #{health_bars(player)}\n" + "\n"
   puts "    #{attack_stats(player)} / #{block_stats(player)}"
   puts "    #{weapon_bars(weapon)}" if weapon[:durability].positive? && boss_style == "🕶️ Bouncer"
+  puts "    #{enemy_bars(buddy)}" if buddy && buddy[:hp].positive?
   puts "    #{player_status(player)}"
   puts BOSS_DIV
   puts "    #{health_bars(the_boss)}\n" + "\n"          # weird looking code makes font red

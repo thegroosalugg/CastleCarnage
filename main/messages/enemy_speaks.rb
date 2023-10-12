@@ -50,12 +50,17 @@ def enemy_speaks(enemy, event)
     "You knocked #{enemy[:name]}'s head clean off.",
     "You blasted #{enemy[:name]}! Flawless 💎 Victory.",
   ]
+  revive = [
+    "Dark magics summon #{enemy[:name]} to aid you, may your path be righeous",
+    "Smoke 🌫️ fills the room as #{enemy[:name]} rises from the grave 🪦",
+  ]
 
   messages = case event
   when :summon   then summon
   when :escape   then escape
   when :surprise then surprise
   when :pwned    then pwned
+  when :revive   then revive
   end
   puts SEPARATOR if event == :pwned
   puts text_break(messages.sample, " ", 80)

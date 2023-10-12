@@ -48,6 +48,9 @@ def invoice(player, amount, where)
   cash = [
     "You ganked a hefty bit of loot, #{amount} 💵 for your pocket. Spend it wisely!",
   ]
+  grave = [
+    "You pay the price, you draw #{player[:emoji]} #{amount} HP.",
+  ]
 
   messages = case where
   when :brawl # bar fight
@@ -60,6 +63,7 @@ def invoice(player, amount, where)
   when :club  then guard # not tonight
   when :life  then life # sneak attack
   when :cash  then cash
+  when :grave then grave # necromancy
   end
   puts text_break(messages.sample, " ", 80)
 end

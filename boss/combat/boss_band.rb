@@ -16,14 +16,14 @@ def swing(attacker, target, method)
   shots_fired(attacker, target, damage, :hit)
 end
 
-def dance_off(player, weapon, the_boss, boss_style, load_boss)
+def dance_off(player, buddy, weapon, the_boss, boss_style, load_boss)
   greeting
   boss_moves = []
   user_moves = []
 
   4.times do |round|
     break if player[:hp] <= 0 || the_boss[:hp] <= 0
-    game_info(player, weapon, the_boss, boss_style, load_boss)
+    game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
     step_on_up(:dance)
 
     boss_moves << rand(4..6)
@@ -32,7 +32,7 @@ def dance_off(player, weapon, the_boss, boss_style, load_boss)
     until (4..6).include?(user_choice)
       user_choice = gets.chomp.to_i
       error_message
-      game_info(player, weapon, the_boss, boss_style, load_boss)
+      game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
       step_on_up(:dance)
     end
 
@@ -45,19 +45,19 @@ def dance_off(player, weapon, the_boss, boss_style, load_boss)
   end
 end
 
-def keg_stand(player, weapon, the_boss, boss_style, load_boss)
+def keg_stand(player, buddy, weapon, the_boss, boss_style, load_boss)
   greeting
 
   loop do
     boss_move = [4, 5].sample
     user_choice = 0
-    game_info(player, weapon, the_boss, boss_style, load_boss)
+    game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
     step_on_up(:keg)
 
     until [4, 5].include?(user_choice)
       user_choice = gets.chomp.to_i
       error_message
-      game_info(player, weapon, the_boss, boss_style, load_boss)
+      game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
       step_on_up(:keg)
     end
 
@@ -74,12 +74,12 @@ def keg_stand(player, weapon, the_boss, boss_style, load_boss)
   end
 end
 
-def fight_the_band(player, weapon, the_boss, boss_style, load_boss)
+def fight_the_band(player, buddy, weapon, the_boss, boss_style, load_boss)
   user_choice = 0
   boss_walks(the_boss, boss_style, :intro)
 
   until (4..6).include?(user_choice)
-    game_info(player, weapon, the_boss, boss_style, load_boss)
+    game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
     fight_menu(player, boss_style, weapon)
 
     user_choice = gets.chomp.to_i
@@ -87,21 +87,22 @@ def fight_the_band(player, weapon, the_boss, boss_style, load_boss)
     when 4
       print `clear`                                                        # band boss always strikes first
       the_boss[:rage] = (the_boss[:rage] - 1).clamp(0, 10)
-      cash_lost = boss_strikes_back(the_boss, boss_style, player, weapon)  # player damage decreased by cash lost and increased by drunkenness
+      cash_lost = boss_strikes_back(the_boss, boss_style, player, buddy, weapon)  # player damage decreased by cash lost and increased by drunkenness
       mosh_pit(the_boss, boss_style, player, cash_lost)
     when 5
       print `clear`
       the_boss[:rage] = (the_boss[:rage] + 1).clamp(0, 10)
-      dance_off(player, weapon, the_boss, boss_style, load_boss)
+      dance_off(player, buddy, weapon, the_boss, boss_style, load_boss)
     when 6
       print `clear`
       the_boss[:rage] = (the_boss[:rage] + 1).clamp(0, 10)
-      keg_stand(player, weapon, the_boss, boss_style, load_boss)
+      keg_stand(player, buddy, weapon, the_boss, boss_style, load_boss)
     else
       error_message
     end
   end
 
+  strike(buddy, the_boss) if (buddy && buddy[:hp].positive?) && rand(2) == 1
   boss_walks(the_boss, boss_style, :reprise) unless player[:drunk].zero?
   player[:drunk] = (player[:drunk] - 1).clamp(0, 20)
   boss_style = the_boss[:style].sample
