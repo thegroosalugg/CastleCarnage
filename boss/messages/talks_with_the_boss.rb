@@ -73,5 +73,6 @@ def boss_speaks(player, the_boss, blast = 0, outcome)
   ]
 
   messages = outcome == :hit ? hit : threat
+  puts SEPARATOR
   puts text_break(messages.sample, " ", 70)
 end

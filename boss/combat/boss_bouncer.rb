@@ -106,7 +106,6 @@ def fight_the_bouncer(player, weapon, the_boss, boss_style, load_boss)
     end
   end
 
-  boss_rage(player, the_boss)
   boss_strikes_back(the_boss, boss_style, player, weapon) unless the_boss[:hp] <= 0 || user_choice == 5
   boss_style = the_boss[:style].sample
   boss_walks(the_boss, boss_style, :outro) if the_boss[:hp].positive?

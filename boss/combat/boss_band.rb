@@ -104,7 +104,6 @@ def fight_the_band(player, weapon, the_boss, boss_style, load_boss)
 
   boss_walks(the_boss, boss_style, :reprise) unless player[:drunk].zero?
   player[:drunk] = (player[:drunk] - 1).clamp(0, 20)
-  boss_rage(player, the_boss)
   boss_style = the_boss[:style].sample
   boss_walks(the_boss, boss_style, :outro) if the_boss[:hp].positive?
   return boss_style
