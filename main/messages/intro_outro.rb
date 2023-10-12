@@ -15,7 +15,7 @@ def intro(player, weapon, enemy)
     "You pull out your trusty #{weapon[:name]} from your trench coat and tip your fedora. #{player[:name]} 💬 'The only thing sharper than my #{weapon[:name]} is my wit m'lady'",
   ]
 
-  puts text_break([enemy_intro.sample, player_intro.sample].join(' '), " ", 70)
+  puts text_break([enemy_intro.sample, player_intro.sample].join(' '), " ", 80)
 end
 
 # END OF GAME MESSAGES
@@ -33,7 +33,7 @@ def game_over(enemy, player)
   ]
 
   puts SEPARATOR if enemy[:id] == :boss
-  puts text_break((player[:hp].positive? ? win : lose).sample, " ", 70)
+  puts text_break((player[:hp].positive? ? win : lose).sample, " ", 80)
   puts SEPARATOR
   player[:hp].positive? ? win_art : lose_art
   puts SEPARATOR

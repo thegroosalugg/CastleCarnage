@@ -61,7 +61,7 @@ def invoice(player, amount, where)
   when :life  then life # sneak attack
   when :cash  then cash
   end
-  puts text_break(messages.sample, " ", 70)
+  puts text_break(messages.sample, " ", 80)
 end
 
 # Band boss style > when 5 & 6. Barkeep boss style when 6.
@@ -125,5 +125,5 @@ def show_your_moves(player, the_boss, user_moves, boss_moves, method)
     puts whitespace(player, " ", 16) + "#{player[:name]} 💬 ⟪#{drinks[user_moves]}⟫ #{x} ⟪#{drinks[boss_moves]}⟫ 🗨️ #{the_boss[:name]}"
   end
   puts SEPARATOR
-  puts text_break(messages.sample, " ", 70)
+  puts text_break(messages.sample, " ", 80)
 end

@@ -19,7 +19,7 @@ def enter_room(entered_room)
     "You bolted off to #{entered_room[:name]}",
   ]
 
-  puts text_break(messages.sample, " ", 70)
+  puts text_break(messages.sample, " ", 80)
 end
 
 def gifts(entity, operator, randomizer)
@@ -84,7 +84,7 @@ def gifts(entity, operator, randomizer)
   when 0 then entity[:id] == :player ? gained_hp : enemy_hp
   when 1 then entity[:id] == :player ? lost_hp : enemy_trap
   end
-  puts text_break(messages.sample, " ", 70)
+  puts text_break(messages.sample, " ", 80)
 end
 
 def weapon_speaks(weapon, status)
@@ -122,5 +122,5 @@ def weapon_speaks(weapon, status)
   ]
   messages = status == :got ? got : broke
   puts SEPARATOR if status == :broke
-  puts text_break(messages.sample, " ", 70)
+  puts text_break(messages.sample, " ", 80)
 end

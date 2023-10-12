@@ -67,7 +67,7 @@ on_point = [
   when :hit      then on_point
   when :counter  then counter
   end
-  puts text_break(messages.sample, " ", 70)
+  puts text_break(messages.sample, " ", 80)
 end
 
 # Sommersault attack
@@ -92,5 +92,5 @@ def somersault(chance, n)
   ]
 
   messages = chance == 1 ? success : failed
-  puts text_break(messages.sample, " ", 70)
+  puts text_break(messages.sample, " ", 80)
 end

@@ -10,7 +10,7 @@ def your_rewards(player, health, boost, multiplier)
     "You've been blessed, dark magics grant you #{player[:emoji]} #{health} HP, your #{boost} grows by #{multiplier}. Go get 'em.",
   ]
 
-  puts text_break(messages.sample, " ", 70)
+  puts text_break(messages.sample, " ", 80)
 end
 
 def greeting
@@ -23,7 +23,7 @@ def greeting
     "Lay down the law",
   ]
 
-  puts text_break(messages.sample, " ", 70)
+  puts text_break(messages.sample, " ", 80)
 end
 
 # Intro outro messages for changes to boss fighting style
@@ -61,7 +61,7 @@ def boss_walks(the_boss, boss_style, time)
   when "🕶️ Bouncer" then time == :intro ? bouncer : outro
   when "🎶 Band"    then (time == :reprise) ? reprise : (time == :intro) ? band : outro
   end
-  puts text_break(messages.sample, " ", 70)
+  puts text_break(messages.sample, " ", 80)
 end
 
 def boss_speaks(player, the_boss, blast = 0, outcome)
@@ -74,5 +74,5 @@ def boss_speaks(player, the_boss, blast = 0, outcome)
 
   messages = outcome == :hit ? hit : threat
   puts SEPARATOR
-  puts text_break(messages.sample, " ", 70)
+  puts text_break(messages.sample, " ", 80)
 end
