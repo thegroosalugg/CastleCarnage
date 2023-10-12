@@ -44,7 +44,7 @@ def big_boss_battle(player, weapon, the_boss)
       error_message
     end
 
-    boss_rage(player, the_boss) if user_choice == "t"
+    boss_rage(player, the_boss) if user_choice == "t" && the_boss[:hp].positive?
     game_info(player, weapon, the_boss, boss_style, load_boss)
   end
 end
