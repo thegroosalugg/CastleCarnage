@@ -59,7 +59,7 @@ def big_boss_awaits
   boss = {
     id: :boss,
     name: BOSSES.sample,
-    hp: rand(700..999),
+    hp: rand(650..750),
     attack: (rand(30..40)..rand(41..50)),
     accuracy: (1..rand(4..10)),
     rage: 0,
