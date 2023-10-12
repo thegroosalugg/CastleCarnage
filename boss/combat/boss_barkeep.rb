@@ -28,13 +28,13 @@ def bar_fight(player, the_boss)
   shots_fired(player, the_boss, damage, :hit)
 end
 
-def fight_the_barkeep(player, weapon, the_boss, boss_style, load_boss)
+def fight_the_barkeep(player, buddy, weapon, the_boss, boss_style, load_boss)
   user_choice = 0
   player[:jacked] = true
   boss_walks(the_boss, boss_style, :intro)
 
   until (4..6).include?(user_choice)
-    game_info(player, weapon, the_boss, boss_style, load_boss)
+    game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
     fight_menu(player, boss_style, weapon)
 
     user_choice = gets.chomp.to_i
@@ -50,7 +50,7 @@ def fight_the_barkeep(player, weapon, the_boss, boss_style, load_boss)
       if player[:cash].positive? && player[:jacked]
         player[:jacked] = false # disable game till next round
         the_boss[:rage] = (the_boss[:rage] + 1).clamp(0, 10)
-        blackjack(player, weapon, the_boss, boss_style, load_boss)
+        blackjack(player, buddy, weapon, the_boss, boss_style, load_boss)
         redo
       else
         error_message

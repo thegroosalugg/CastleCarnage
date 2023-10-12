@@ -33,7 +33,7 @@ def check_ace(hand, total)
   [hand, total]
 end
 
-def blackjack(player, weapon, the_boss, boss_style, load_boss)
+def blackjack(player, buddy, weapon, the_boss, boss_style, load_boss)
   loop do
     print `clear`
     greeting
@@ -52,7 +52,7 @@ def blackjack(player, weapon, the_boss, boss_style, load_boss)
 
     while your_total < 21
       deck = card_deck if deck.empty?
-      game_info(player, weapon, the_boss, boss_style, load_boss)
+      game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
       step_on_up(:cards)
       user_action = gets.chomp.to_i
 
@@ -94,7 +94,7 @@ def blackjack(player, weapon, the_boss, boss_style, load_boss)
 
     loop do
       whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
-      game_info(player, weapon, the_boss, boss_style, load_boss)
+      game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
       continue
       play_again = gets.chomp.downcase
       case play_again

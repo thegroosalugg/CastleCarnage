@@ -42,11 +42,11 @@ def munch_out(player)
   return price_paid, multiplier, boost
 end
 
-def pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
+def pay_with_blood(player, buddy, weapon, the_boss, boss_style, load_boss)
   user_choice = 0
 
   until (4..7).include?(user_choice)
-    game_info(player, weapon, the_boss, boss_style, load_boss)
+    game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
     blood_menu(player)
 
     user_choice = gets.chomp.to_i
