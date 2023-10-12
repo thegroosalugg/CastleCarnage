@@ -44,6 +44,7 @@ end
 
 def pay_with_blood(player, buddy, weapon, the_boss, boss_style, load_boss)
   user_choice = 0
+  greeting(:shop)
 
   until (4..7).include?(user_choice)
     game_info(player, buddy, weapon, the_boss, boss_style, load_boss)

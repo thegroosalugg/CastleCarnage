@@ -25,7 +25,7 @@ require_relative 'debug/cheat_mode'
 
 def play_game
   print `clear`
-  player = { id: :player, hp: rand(300..350), attack: (rand(25..30)..rand(35..40)), block: (1..10), cash: rand(3..10), drunk: 0 }
+  player = { id: :player, hp: rand(275..300), attack: (rand(25..30)..rand(35..40)), block: (1..10), cash: rand(3..10), drunk: 0 }
   name_player(player)
   enemies = []
   3.times { enemies << random_enemy }
@@ -88,9 +88,7 @@ def play_game
     end
 
     tracked_enemy = enemies.sample if player[:hp] <= 0 && tracked_enemy[:id] != :boss # Player dies and last enemy is tracked
-
     player[:awakened] = true if (enemies_defeated > 3 || rooms_explored > 14 || (enemies_defeated > 2 && rooms_explored > 9)) # unlock big boss
-
     state_of_game(enemies, player, weapon) unless tracked_enemy[:id] == :boss || weapon[:durability].zero?
   end
 

@@ -16,7 +16,7 @@ def explore_rooms(enemies, weapon, player)
     chosen_rooms.each_with_index { |room, i| puts "    [#{i + 4}] #{room[:name]}" }
 
     user_choice = gets.chomp.to_i
-    error_message
+    error_message unless (4..7).include?(user_choice)
     state_of_game(enemies, player, weapon)
   end
 

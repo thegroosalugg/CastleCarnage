@@ -4,15 +4,15 @@
 # Main Menu
 
 def boss_menu(player, boss_style)
-  magic = "[y] 🪦🪄 Necromancy"
+  magic = "  🔥#{player[:emoji]} [y] 🪦🪄 Necromancy"
   t = 4 - player[:turns]
   n = t == 1 ? "next" : "in #{t}"
   s = t == 1 ? "" : "s"
 
   puts SEPARATOR
   puts "     Decisions, decisions..."
-  puts "[t] 👊⚡ Fight the #{boss_style}"
-  puts "[r] 🩸🪄 Blood Magic"
+  puts "    ⚔️ [t] 👊⚡ Fight the #{boss_style}"
+  puts "  🔥#{player[:emoji]} [r] 🩸🪄 Blood Magic"
   puts player[:turns] == 4 ? magic : padding_generator("⏱️ Available #{n} turn#{s}", "-", 50)
 end
 
@@ -75,13 +75,13 @@ end
 
 def barkeep(player)
   money_fight = [
-    "[4] 💴🗒️ Settle your Tabs",
+    "  💵🍺 [4] 💴🗒️ Settle your Tabs",
   ]
   bar_fight = [
-    "[5] 🪑🤺 Old School Bar Fight",
+    "❄️💵🍺 [5] 🪑🤺 Old School Bar Fight",
   ]
   blackjack = [
-    "[6] ♠️♥️ BlackJack ♦️♣️",
+    "🔥💵   [6] ♠️♥️ BlackJack ♦️♣️",
   ]
 
   puts money_fight.sample
@@ -91,19 +91,19 @@ end
 
 def bouncer(player, weapon)
   weapon_strike = [
-    "[4] 💢 Strike with #{weapon[:name]}",
+    "     [4] 💢 Strike with #{weapon[:name]}",
   ]
   unarmed_strike = [
-    "[4] 👊 Face Punch",
+    "  ❄️ [4] 👊 Face Punch",
   ]
   ranged_strike = [
-    "[5] 🏹 Ranged Strike",
+    "  🔥 [5] 🏹 Ranged Strike",
   ]
   get_weapon = [
-    "[6] ⚔️ Armoury",
+    "💵🔥 [6] ⚔️ Armoury",
   ]
   sneak_attack = [
-    "[7] 👟 Sneak Attack",
+    "  🔥 [7] 👟 Sneak Attack",
   ]
 
   puts (weapon[:durability].positive? ? weapon_strike.sample : unarmed_strike.sample)
@@ -114,13 +114,13 @@ end
 
 def band
   mosh_pit = [
-    "[4] ✖️ Mosh Pit",
+    " 💵❄️ [4] ✖️ Mosh Pit",
   ]
   dance_off = [
-    "[5] 🪩 Dance Off",
+    "   🔥 [5] 🪩 Dance Off",
   ]
   keg_stand = [
-    "[6] 🍺 Keg Stand",
+    " 🍺🔥 [6] 🍺 Keg Stand",
   ]
 
   puts mosh_pit.sample
@@ -142,37 +142,37 @@ end
 
 def blood_menu(player)
   buffout = [
-    "   [4] 💪 Get Buff!",
-    "   [4] 🏋️ Deadlift Regiment!",
-    "   [4] 🫙 Creatine Monohydrate!",
+    "💢🛡️ [4] 💪 Get Buff!",
+    "💢🛡️ [4] 🏋️ Deadlift Regiment!",
+    "💢🛡️ [4] 🫙 Creatine Monohydrate!",
   ]
   money = [
-    "   [5] 💵 Gimme Money",
-    "   [5] 🎴 Scratchards",
-    "   [5] 💰 Rob a bank",
-    "   [5] 😈 Deal with Devil",
-    "   [5] 🎰 Pyramid Scheme",
+    "  💵 [5] 💵 Gimme Money",
+    "  💵 [5] 🎴 Scratchards",
+    "  💵 [5] 💰 Rob a bank",
+    "  💵 [5] 😈 Deal with Devil",
+    "  💵 [5] 🎰 Pyramid Scheme",
   ]
   drink = [
-    "   [6] 🥤 Bottle of Water",
-    "   [6] 💊 Ibuprofen",
-    "   [6] 🍕 Greasy Pizza",
-    "   [6] 🎬 90's Action Movies",
-    "   [6] 🥙 Döner Kebab"
+    "  🍺 [6] 🥤 Bottle of Water",
+    "  🍺 [6] 💊 Ibuprofen",
+    "  🍺 [6] 🍕 Greasy Pizza",
+    "  🍺 [6] 🎬 90's Action Movies",
+    "  🍺 [6] 🥙 Döner Kebab"
   ]
   health = [
-    "   [7] 🍔 Cheat Day",
-    "   [7] 🧵 Hang on by a thread",
-    "   [7] 🥣 Dodgy Looking Potion",
+    "  #{player[:emoji]} [7] 🍔 Cheat Day",
+    "  #{player[:emoji]} [7] 🧵 Hang on by a thread",
+    "  #{player[:emoji]} [7] 🥣 Dodgy Looking Potion",
   ]
 
   puts SEPARATOR
-  puts padding_generator(" 🧞:'Pay with Blood ❤️ Get Bargains 💰' ", "💠", 57)
+  puts padding_generator(" 🧞💬 'Pay with Blood ❤️ Get Bargains 💰' ", "💠", 57)
   puts (player[:attack].max < 50 || player[:block].max < 20 ? buffout.sample : denied)
   puts (player[:cash] < 20 ? money.sample : denied)
   puts (player[:drunk].positive? ? drink.sample : denied)
   puts ((player[:attack].max > 1 || player[:block].max > 1) && player[:hp] < 650 ? health.sample : denied)
-  puts "   [9] 🏃 Geeeet ooooout!"
+  puts "  💨 [9] 🏃 Geeeet ooooout!"
 end
 
 # Same messages for both of the above menus.

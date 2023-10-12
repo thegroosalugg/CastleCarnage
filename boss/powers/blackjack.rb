@@ -36,7 +36,7 @@ end
 def blackjack(player, buddy, weapon, the_boss, boss_style, load_boss)
   loop do
     print `clear`
-    greeting
+    greeting(:combat)
 
     player[:cash] -= 1
     player[:stuck] = false
@@ -96,11 +96,11 @@ def blackjack(player, buddy, weapon, the_boss, boss_style, load_boss)
       whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
       game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
       continue
-      play_again = gets.chomp.downcase
+      play_again = gets.chomp.to_i
       case play_again
-      when 'y'
+      when 4
         break
-      when 'n'
+      when 5
         print `clear`
         return
       else

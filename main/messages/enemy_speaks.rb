@@ -43,12 +43,11 @@ def enemy_speaks(enemy, event)
     "#{enemy[:name]} took a trip ✈️ to Belize.",
     "#{enemy[:name]} died. 🎯 Bully for you!",
     "#{enemy[:name]} 💬 'Argh, yar got me!'",
+    "#{enemy[:name]}'s head came clean off.",
     "#{enemy[:name]} was anhialated ☠",
     "#{enemy[:name]} was defeated ☠",
     "#{enemy[:name]} got shanked 🗡",
     "#{enemy[:name]} got got 💀",
-    "You knocked #{enemy[:name]}'s head clean off.",
-    "You blasted #{enemy[:name]}! Flawless 💎 Victory.",
   ]
   revive = [
     "Dark magics summon #{enemy[:name]} to aid you, may your path be righeous",
