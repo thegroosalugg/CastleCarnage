@@ -5,12 +5,15 @@
 
 def boss_menu(player, boss_style)
   magic = "[y] 🪦🪄 Necromancy"
+  t = 4 - player[:turns]
+  n = t == 1 ? "next" : "in #{t}"
+  s = t == 1 ? "" : "s"
 
   puts SEPARATOR
   puts "     Decisions, decisions..."
   puts "[t] 👊⚡ Fight the #{boss_style}"
   puts "[r] 🩸🪄 Blood Magic"
-  puts player[:turns] == 4 ? magic : padding_generator("⏱️ Available in #{4 - player[:turns]} turns", "-", 50)
+  puts player[:turns] == 4 ? magic : padding_generator("⏱️ Available #{n} turn#{s}", "-", 50)
 end
 
 # Dynamic status for player cash & drunkness
