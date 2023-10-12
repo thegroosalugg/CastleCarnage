@@ -19,7 +19,7 @@ def strike(attacker, target, weapon = nil)
 end
 
 def somersault_attack(player, enemy, weapon)   # succeed and strike twice, fail and get struck thrice
-  chance = rand(1..3)
+  chance = rand(2)
   n = rand(2..3)
   somersault(chance, enemy)
   chance == 1 ? n.times { strike(player, enemy, weapon) } : n.times { strike(enemy, player) }
