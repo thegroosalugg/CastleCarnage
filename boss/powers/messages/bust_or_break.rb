@@ -26,7 +26,7 @@ def draw_card(who, hand)
     "#{guy} comes loaded heavy with #{card}",
   ]
 
-  puts text_break(messages.sample, " ", 70)
+  puts text_break(messages.sample, " ", 80)
 end
 
 def whos_the_boss(your_hand, your_total, boss_total)
@@ -47,7 +47,7 @@ def whos_the_boss(your_hand, your_total, boss_total)
   else
     lose
   end
-  puts text_break(messages.sample, " ", 70)
+  puts text_break(messages.sample, " ", 80)
 end
 
 def continue

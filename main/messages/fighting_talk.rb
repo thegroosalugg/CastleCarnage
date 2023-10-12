@@ -67,30 +67,30 @@ on_point = [
   when :hit      then on_point
   when :counter  then counter
   end
-  puts text_break(messages.sample, " ", 70)
+  puts text_break(messages.sample, " ", 80)
 end
 
 # Sommersault attack
 
-def somersault(chance, enemy)
+def somersault(chance, n)
   success = [
-    "You ran up the wall and did a sick backflip, you strike #{enemy[:name]} again and again!",
     "You turned Super Saiyan 😼, the scouter 🥽 says your power level is over 9000!",
     "⬇ ↘ ➡ HP LP ⬅ ↖ ⬆ LP ⬆ ↖ ⬅ HK  ⬇ LK HP  ⬇ ↘ ➡ ➡ ⬆ ⬇ HK ⟪⟪Ultra Combo⟫⟫",
-    "With outcomes like these 💯 you might win after all, roll 🎲 on!",
+    "With outcomes like these 💯 you might win after all, roll 🎲 #{n} times!",
+    "You ran up the wall and did a sick backflip, you strike #{n} times!",
     "The gods ⚖ smile upon you, your path is righteous",
-    "Bang on ⚖. You get an extra attack or two!",
+    "Bang on ⚖. You get #{n} extra attacks!",
   ]
   failed = [
-    "You stacked 😵 it! #{enemy[:name]} is gonna have a field day, you plum!",
-    "You shouldn't have eaten 3 pizzas 🍕 before trying to do acrobatics 🤢.",
+    "You shouldn't have eaten #{n} pizzas 🍕 before trying to do acrobatics 🤢.",
     "You tripped over your own shoelaces 👞 and knocked yourself out 😵.",
     "You're still pretty wasted 🍻, you can't even stand straight.",
     "It ain't gonna happen today mate 🚷, take bare damage bruv",
-    "#{enemy[:name]} laughed 😂 and socked 👊 you in the face.",
+    "You stacked 😵 it! They gone have a field day, you plum!",
     "You thought you had it, but you got merked instead 😭",
+    "The enemy laughed 😂 and socked 👊 you in the face.",
   ]
 
   messages = chance == 1 ? success : failed
-  puts text_break(messages.sample, " ", 70)
+  puts text_break(messages.sample, " ", 80)
 end

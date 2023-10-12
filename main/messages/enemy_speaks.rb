@@ -58,5 +58,5 @@ def enemy_speaks(enemy, event)
   when :pwned    then pwned
   end
   puts SEPARATOR if event == :pwned
-  puts text_break(messages.sample, " ", 70)
+  puts text_break(messages.sample, " ", 80)
 end

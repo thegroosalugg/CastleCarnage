@@ -3,7 +3,7 @@
 
 def health_trap(entity)
   operator = rand(2) # Operator decides (+) or (-) Randomizer nerfed for player trap & enemy health gain
-  randomizer = (entity[:id] == :player && operator == 1) || (entity[:id] == :enemy && operator == 0) ? rand(10..20) : (rand(1..8) == 1 ? rand(50..99) : rand(20..50))
+  randomizer = (entity[:id] == :player && operator == 1) || (entity[:id] == :enemy && operator == 0) ? rand(10..20) : (rand(1..5) == 1 ? rand(50..99) : rand(20..50))
   operator == 0 ? entity[:hp] += randomizer : entity[:hp] -= randomizer
   gifts(entity, operator, randomizer)
 end

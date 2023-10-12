@@ -23,7 +23,7 @@ def blood_ritual(player, user_choice, price_paid, multiplier, boost)
   when 6 then sober_up
   when 7 then munch_out
   end
-  puts text_break(messages.sample, " ", 70)
+  puts text_break(messages.sample, " ", 80)
 end
 
 def drained

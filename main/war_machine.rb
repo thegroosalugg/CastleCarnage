@@ -46,12 +46,12 @@ def random_enemy
   enemy = {
     id: :enemy,
     name: ENEMIES.sample,
-    hp: rand(70..100),
-    attack: (rand(20..30)..rand(31..40)),
-    block: (rand(1..5)..rand(6..15)),
+    hp: rand(60..90),
+    attack: (rand(20..27)..rand(28..35)),
+    block: (rand(1..5)..rand(6..12)),
     accuracy: (1..rand(4..11)),
     crit_ch: (1..rand(4..11)),
-    crit_x: (rand(1.5..2.0)..rand(2.1..4.0))
+    crit_x: (rand(1.5..2.0)..rand(2.1..3.5))
   }
 end
 
@@ -59,7 +59,7 @@ def big_boss_awaits
   boss = {
     id: :boss,
     name: BOSSES.sample,
-    hp: rand(800..1000),
+    hp: rand(650..750),
     attack: (rand(30..40)..rand(41..50)),
     accuracy: (1..rand(4..10)),
     rage: 0,

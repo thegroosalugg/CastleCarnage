@@ -38,7 +38,7 @@ def munch_out(player)
   player[boost] = [(player[boost].min - multiplier), 1].max..[player[boost].max - multiplier, 1].max
 
   price_paid = (rand(1..5) == 1 ? rand(50..75) : rand(25..50)) * multiplier
-  player[:hp] = [player[:hp] + price_paid, 1000].min
+  player[:hp] = [player[:hp] + price_paid, 650].min
   return price_paid, multiplier, boost
 end
 
@@ -73,7 +73,7 @@ def pay_with_blood(player, weapon, the_boss, boss_style, load_boss)
         redo
       end
     when 7 # sacrifice attack / block for HP: 1000 max
-      if (player[:attack].max > 1 || player[:block].max > 1) && player[:hp] < 1000
+      if (player[:attack].max > 1 || player[:block].max > 1) && player[:hp] < 650
         price_paid, multiplier, boost = munch_out(player)
       else
         error_message
