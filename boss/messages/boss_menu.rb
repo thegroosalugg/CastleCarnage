@@ -142,28 +142,28 @@ end
 
 def blood_menu(player)
   buffout = [
-    "💢🛡️ [4] 💪 Get Buff!",
-    "💢🛡️ [4] 🏋️ Deadlift Regiment!",
-    "💢🛡️ [4] 🫙 Creatine Monohydrate!",
+    " 💢🛡️ [4] 💪 Get Buff!",
+    " 💢🛡️ [4] 🏋️ Deadlift Regiment!",
+    " 💢🛡️ [4] 🫙 Creatine Monohydrate!",
   ]
   money = [
-    "  💵 [5] 💵 Gimme Money",
-    "  💵 [5] 🎴 Scratchards",
-    "  💵 [5] 💰 Rob a bank",
-    "  💵 [5] 😈 Deal with Devil",
-    "  💵 [5] 🎰 Pyramid Scheme",
+    "   💵 [5] 💵 Gimme Money",
+    "   💵 [5] 🎴 Scratchards",
+    "   💵 [5] 💰 Rob a bank",
+    "   💵 [5] 😈 Deal with Devil",
+    "   💵 [5] 🎰 Pyramid Scheme",
   ]
   drink = [
-    "  🍺 [6] 🥤 Bottle of Water",
-    "  🍺 [6] 💊 Ibuprofen",
-    "  🍺 [6] 🍕 Greasy Pizza",
-    "  🍺 [6] 🎬 90's Action Movies",
-    "  🍺 [6] 🥙 Döner Kebab"
+    "   🍺 [6] 🥤 Bottle of Water",
+    "   🍺 [6] 💊 Ibuprofen",
+    "   🍺 [6] 🍕 Greasy Pizza",
+    "   🍺 [6] 🎬 90's Action Movies",
+    "   🍺 [6] 🥙 Döner Kebab"
   ]
   health = [
-    "  #{player[:emoji]} [7] 🍔 Cheat Day",
-    "  #{player[:emoji]} [7] 🧵 Hang on by a thread",
-    "  #{player[:emoji]} [7] 🥣 Dodgy Looking Potion",
+    "   #{player[:emoji]} [7] 🍔 Cheat Day",
+    "   #{player[:emoji]} [7] 🧵 Hang on by a thread",
+    "   #{player[:emoji]} [7] 🥣 Dodgy Looking Potion",
   ]
 
   puts SEPARATOR
@@ -172,7 +172,7 @@ def blood_menu(player)
   puts (player[:cash] < 20 ? money.sample : denied)
   puts (player[:drunk].positive? ? drink.sample : denied)
   puts ((player[:attack].max > 1 || player[:block].max > 1) && player[:hp] < 650 ? health.sample : denied)
-  puts "  💨 [9] 🏃 Geeeet ooooout!"
+  puts "   💨 [9] 🏃 Geeeet ooooout!"
 end
 
 # Same messages for both of the above menus.

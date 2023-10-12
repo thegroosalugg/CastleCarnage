@@ -6,7 +6,7 @@
 
 def invoice(player, amount, where)
   got_drunk = [ # bar fight
-    "Damn, that was a piss up, you feel #{amount[0]} 🍺 drunker.",
+    "Damn, that was a piss up, you feel #{amount[0]} 🍺 more wasted.",
   ]
   sober_up = [
     "That knocked some sense into ya, ya feel you feel #{amount[0].abs} 🍺 lighter!",
@@ -18,7 +18,7 @@ def invoice(player, amount, where)
     "You got mugged for #{amount[1].abs} 💵",
   ]
   bar = [ # pay the tab
-    "You doled out #{amount} 💵 and ate up #{amount} 🍺 drinks. Time for some dishing.",
+    "You doled out #{amount} 💵 and sunk #{amount} 🍺 bevvies. Time for some dishing.",
   ]
   skint = [
     "You're too skint to get a drink, the damage you deal is reduced.",
