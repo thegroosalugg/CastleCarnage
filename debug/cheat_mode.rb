@@ -31,6 +31,7 @@ def cheat_menu_boss(user_choice, player, weapon, the_boss, boss_style)
   when "w"  then weapon[:durability] += 1
   when "ww" then weapon[:durability] -= 1
   when "b"  then the_boss[:hp] -= 200
+  when "a"  then the_boss[:rage] += 1
   when "1"  then boss_style = "🍻 Barkeep"
   when "2"  then boss_style = "🕶️ Bouncer"
   when "3"  then boss_style = "🎶 Band"

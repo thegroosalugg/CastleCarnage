@@ -4,7 +4,7 @@
 def pay_the_tab(player, the_boss)
   cash_spent = player[:cash].zero? ? 0 : rand(1..[player[:cash], 6].min)
   multiplier = cash_spent.zero? ? 0.6 : 1.0 + (cash_spent * 0.5) # don't go to the bar with no money
-  damage = (rand(player[:attack]) * (100 - player[:drunk] * 5) / 100 * multiplier).to_i.clamp(0, 150)
+  damage = (rand(player[:attack]) * (100 - player[:drunk] * 5) / 100 * multiplier).to_i.clamp(1, 150)
 
   the_boss[:hp] -= damage
   player[:cash] -= cash_spent
@@ -21,7 +21,7 @@ def bar_fight(player, the_boss)
   player[:drunk] = (player[:drunk] + beers).clamp(0, 20)
   player[:cash] = (player[:cash] + wallet).clamp(0, 20)
 
-  damage = (rand(player[:attack]) * (100 - player[:drunk] * 4) / 100).to_i.clamp(0, 100) # updates damage to current drunkenness
+  damage = (rand(player[:attack]) * (100 - player[:drunk] * 4) / 100).to_i.clamp(1, 100) # updates damage to current drunkenness
   the_boss[:hp] -= damage
 
   invoice(player, [beers, wallet], :brawl)
@@ -45,9 +45,11 @@ def fight_the_barkeep(player, weapon, the_boss, boss_style, load_boss)
     when 5
       print `clear`
       bar_fight(player, the_boss)
+      the_boss[:rage] = (the_boss[:rage] - 1).clamp(0, 10)
     when 6 # print `clear` exists inside the method
       if player[:cash].positive? && player[:jacked]
-        player[:jacked] = false
+        player[:jacked] = false # disable game till next round
+        the_boss[:rage] = (the_boss[:rage] + 1).clamp(0, 10)
         blackjack(player, weapon, the_boss, boss_style, load_boss)
         redo
       else
