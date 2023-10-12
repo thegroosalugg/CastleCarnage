@@ -171,7 +171,7 @@ def blood_menu(player)
   puts (player[:attack].max < 50 || player[:block].max < 20 ? buffout.sample : denied)
   puts (player[:cash] < 20 ? money.sample : denied)
   puts (player[:drunk].positive? ? drink.sample : denied)
-  puts ((player[:attack].max > 1 || player[:block].max > 1) && player[:hp] < 650 ? health.sample : denied)
+  puts ((player[:attack].max > 1 || player[:block].max > 1) && player[:hp] < 500 ? health.sample : denied)
   puts "   💨 [9] 🏃 Geeeet ooooout!"
 end
 

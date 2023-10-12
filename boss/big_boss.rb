@@ -5,7 +5,7 @@ def bonus(player, rooms_explored, enemies_defeated)
   health = rooms_explored * 40
   boost = [:attack, :block].sample
   multiplier = enemies_defeated * rand(1..2)
-  player[:hp] = [player[:hp] + health, 650].min
+  player[:hp] = [player[:hp] + health, 500].min
   player[boost] = (player[boost].min + multiplier)..(player[boost].max + multiplier)
   your_rewards(player, health, boost, multiplier)
 end
