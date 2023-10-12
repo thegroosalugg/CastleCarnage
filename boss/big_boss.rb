@@ -23,7 +23,7 @@ def big_boss_battle(player, weapon, the_boss)
     user_choice = gets.chomp.downcase
 
     # DEBUG CHEAT MENU
-    weapon, boss_style = cheat_menu_boss(user_choice, player, weapon, the_boss, boss_style)
+    buddy, weapon, boss_style = cheat_menu_boss(user_choice, player, buddy, weapon, the_boss, boss_style)
 
     if user_choice == "t"
       print `clear`
@@ -60,7 +60,7 @@ def big_boss_battle(player, weapon, the_boss)
       buddy = nil
     end
 
-    boss_rage(player, the_boss) if user_choice == "t" && the_boss[:hp].positive?
+    boss_rage(player, buddy, the_boss) if user_choice == "t" && the_boss[:hp].positive?
     game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
   end
 end

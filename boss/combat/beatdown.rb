@@ -46,14 +46,15 @@ def boss_strikes_back(the_boss, boss_style, player, weapon)
   end
 end
 
-def boss_rage(player, the_boss)
+def boss_rage(player, buddy, the_boss)
   if the_boss[:rage] > 4
     if rand(3) == 1
       rage = rand(3..the_boss[:rage])
       the_boss[:rage] -= rage
       blast = (rand(6..10) * rage - rand(player[:block])).clamp(1, 100)
-      player[:hp] -= blast
-      boss_speaks(player, the_boss, blast, :hit)
+      target = buddy ? [player, buddy].sample : player
+      target[:hp] -= blast
+      boss_speaks(target, the_boss, blast, :hit)
     else
       boss_speaks(player, the_boss, blast, :threat)
     end
