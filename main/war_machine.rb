@@ -2,13 +2,13 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 ENEMIES = [
-  "👺 Goblin", "👹 Ogre", "👾 Orc", "🤪 Village Idiot", "👳 Village Elder", "👑 Village King", "🦀 Milelurk",
+  "👺 Goblin", "👹 Ogre", "👾 Orc", "🧌 Troll", "🤪 Village Idiot", "👳 Village Elder", "🦞 Milelurk", "🕷️ Skulltula",
   "🧙 Wizard", "🧝 Druid", "🐺 Werewolf", "🧛 Vampire", "🧟 Zombie", "🦖 Dinosaur", "🤖 Robot from the Future",
   "🐉 Dragon", "👻 Banshee", "🦹 Arsehole", "🦍 King Kong", "🐍 Snake", "🦑 Crazy Squid", "🦂 Giant Scorpion",
 ]
 
 BOSSES = [
-  "💍 Lord of the Rings", "🧀 The Big Cheese", "🧥 The Godfather", "🚃 The Trailer Park Supervisor", "🤖 The Terminator", "😎 Dawsons Creek",
+  "👑 Village King", "🧀 The Big Cheese", "🎩 The Don", "🧥 The Godfather", "🤵 The Manager", "🎭 The Master", "👤 The Supreme Overlord"
 ]
 
 WEAPONS = [
@@ -17,7 +17,8 @@ WEAPONS = [
 ]
 
 SPECIAL_WEAPONS = [
-  "🔫 Gatling Laser", "🚀 Rocket Launcher", "🔥 Fireball", "💣 Bobomb", "🛫 Air Strike", "🦄 Unicorn", "🔥🐲 Charizard", "📓 Necronomicon",
+  "🪡 Gatling Laser", "🚀 Rocket Launcher", "🔥 Fireball", "💣 Bobomb", "🛫 Air Strike", "🪈 Magic Flute",
+  "🦄 Unicorn", "🪔🐲 Charizard", "📓 Necronomicon",
 ]
 
 ROOMS = [
