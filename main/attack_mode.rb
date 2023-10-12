@@ -3,7 +3,7 @@
 
 def strike(attacker, target, weapon = nil)
   source = attacker[:id] == :player ? weapon : attacker
-  damage = (rand(source[:attack]) - rand(target[:block])).clamp(1, 100)
+  damage = rand(source[:attack]) - (target[:id] == :boss ? 0 : rand(target[:block])).clamp(1, 100)
 
   if rand(source[:crit_ch]) == 1
     critical = (damage * rand(source[:crit_x])).to_i.clamp(1, 150)

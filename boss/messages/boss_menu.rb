@@ -4,7 +4,7 @@
 # Main Menu
 
 def boss_menu(player, boss_style)
-  magic = "[y] 📔🪄 Necromancy"
+  magic = "[y] 🪦🪄 Necromancy"
 
   puts SEPARATOR
   puts "     Decisions, decisions..."
@@ -35,8 +35,8 @@ def player_status(player)
     end
 
   "#{BARRIER}\n" +
-  "    #{wallet} [DEBUG #{player[:cash]}] #{'💵' * [player[:cash], 0].max}\n" +
-  "    #{drunk} [DEBUG #{player[:drunk]}] #{'🍺' * [player[:drunk], 0].max}"
+  "    #{wallet} #{'💵' * [player[:cash], 0].max}\n" +
+  "    #{drunk} #{'🍺' * [player[:drunk], 0].max}"
 end
 
 # boss rage bar

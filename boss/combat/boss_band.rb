@@ -102,6 +102,7 @@ def fight_the_band(player, buddy, weapon, the_boss, boss_style, load_boss)
     end
   end
 
+  strike(buddy, the_boss) if (buddy && buddy[:hp].positive?) && rand(2) == 1
   boss_walks(the_boss, boss_style, :reprise) unless player[:drunk].zero?
   player[:drunk] = (player[:drunk] - 1).clamp(0, 20)
   boss_style = the_boss[:style].sample
