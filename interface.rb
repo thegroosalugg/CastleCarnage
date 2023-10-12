@@ -89,7 +89,8 @@ def play_game
 
     tracked_enemy = enemies.sample if player[:hp] <= 0 && tracked_enemy[:id] != :boss # Player dies and last enemy is tracked
 
-    player[:awakened] = true if (enemies_defeated > 3 || rooms_explored > 14 || (enemies_defeated > 2 && rooms_explored > 9))
+    player[:awakened] = true if (enemies_defeated > 3 || rooms_explored > 14 || (enemies_defeated > 2 && rooms_explored > 9)) # unlock big boss
+
     state_of_game(enemies, player, weapon) unless tracked_enemy[:id] == :boss || weapon[:durability].zero?
   end
 
