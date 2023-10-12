@@ -18,11 +18,11 @@ def strike(attacker, target, weapon = nil)
   weapon[:durability] = [weapon[:durability] - 1, 0].max if attacker[:id] == :player
 end
 
-def somersault_attack(player, enemy, weapon)   # succeed and strike twice, fail and get struck thrice
+def somersault_attack(player, enemies, weapon)   # succeed and strike twice, fail and get struck thrice
   chance = rand(2)
   n = rand(2..3)
-  somersault(chance, enemy)
-  chance == 1 ? n.times { strike(player, enemy, weapon) } : n.times { strike(enemy, player) }
+  somersault(chance, n)
+  chance == 1 ? n.times { strike(player, enemies.sample, weapon) } : n.times { strike(enemies.sample, player) }
 end
 
 def mortal_kombat(enemies, player, weapon)
