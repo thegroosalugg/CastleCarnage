@@ -46,8 +46,10 @@ def big_boss_battle(player, weapon, the_boss)
     elsif user_choice == "y"
       if player[:turns] == 4
         buddy = random_enemy
+        enemy_speaks(buddy, :revive)
         player[:turns] = 0
         player[:hp] -= buddy[:hp] / 2
+        invoice(player, (buddy[:hp] / 2), :grave)
       else
         error_message
       end
