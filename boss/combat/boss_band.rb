@@ -87,7 +87,7 @@ def fight_the_band(player, buddy, weapon, the_boss, boss_style, load_boss)
     when 4
       print `clear`                                                        # band boss always strikes first
       the_boss[:rage] = (the_boss[:rage] - 1).clamp(0, 10)
-      cash_lost = boss_strikes_back(the_boss, boss_style, player, weapon)  # player damage decreased by cash lost and increased by drunkenness
+      cash_lost = boss_strikes_back(the_boss, boss_style, player, buddy, weapon)  # player damage decreased by cash lost and increased by drunkenness
       mosh_pit(the_boss, boss_style, player, cash_lost)
     when 5
       print `clear`
