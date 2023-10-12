@@ -3,10 +3,10 @@
 
 def strike(attacker, target, weapon = nil)
   source = attacker[:id] == :player ? weapon : attacker
-  damage = (rand(source[:attack]) - rand(target[:block])).clamp(0, 100)
+  damage = (rand(source[:attack]) - rand(target[:block])).clamp(1, 100)
 
   if rand(source[:crit_ch]) == 1
-    critical = (damage * rand(source[:crit_x])).to_i.clamp(0, 150)
+    critical = (damage * rand(source[:crit_x])).to_i.clamp(1, 150)
     target[:hp] -= critical
     shots_fired(attacker, target, critical, :critical)
   elsif rand(source[:accuracy]) == 1

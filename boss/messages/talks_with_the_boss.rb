@@ -47,7 +47,7 @@ def boss_walks(the_boss, boss_style, time)
   outro = [
     "#{the_boss[:name]} had enough of your shit as it prepares #{boss_style} stance",
     "#{the_boss[:name]} assumes the #{boss_style} fighting stance, watch out!",
-    "#{the_boss[:name]} is commerically trained in #{boss_style} style",
+    "#{the_boss[:name]} is commercially trained in #{boss_style} style",
     "#{the_boss[:name]} switches up to #{boss_style} style",
   ]
   reprise = [
