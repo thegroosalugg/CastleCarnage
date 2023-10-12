@@ -2,7 +2,7 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 ENEMIES = [
-  "👺 Goblin", "👹 Ogre", "👾 Orc", "🧌 Troll", "🧑‍🌾 Village Idiot", "👳 Village Elder", "🦞 Milelurk", "🕷️ Skulltula",
+  "👺 Goblin", "👹 Ogre", "👾 Orc", "🧌 Troll", "🤷 Village Idiot", "👳 Village Elder", "🦞 Milelurk", "🕷️ Skulltula",
   "🧙 Wizard", "🧝 Druid", "🐺 Werewolf", "🧛 Vampire", "🧟 Zombie", "🦖 Dinosaur", "🤖 Robot from the Future",
   "🐉 Dragon", "👻 Banshee", "🦹 Arsehole", "🦍 King Kong", "🐍 Snake", "🦑 Crazy Squid", "🦂 Giant Scorpion",
 ]

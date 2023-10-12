@@ -78,12 +78,14 @@ def play_game
       error_message
     end
 
-    enemies.each_with_index do |current_enemy, index| # check for enemy deaths, update counter, track last enemy for game over
-      if current_enemy && current_enemy[:hp] <= 0
+    enemies.reject! do |enemy|
+      if enemy[:hp] <= 0  # check for enemy deaths, update counter, track last enemy for game over
         enemies_defeated += 1
-        enemy_speaks(current_enemy, :pwned)
-        tracked_enemy = current_enemy
-        enemies.delete_at(index) # Remove the defeated enemy from the array
+        enemy_speaks(enemy, :pwned)
+        tracked_enemy = enemy
+        true  # This will remove the enemy from the array
+      else
+        false  # This will keep the enemy in the array
       end
     end
 
