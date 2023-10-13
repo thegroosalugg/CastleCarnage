@@ -5,11 +5,11 @@
 
 def cheat_menu(player, enemies, weapon, user_choice)
   case user_choice
-  when 'e'  then enemies.first[:hp] -= 100
+  when 'e'  then enemies.first[:hp] -= 100 unless enemies.empty?
   when 'ee' then enemies << random_enemy
   when "h"  then player[:hp] -= 100
   when "hh" then player[:hp] += 100
-  when "a"  then player[:awakened] = true
+  when "c"  then player[:chosen] = true
   when "w1" then weapon = pick_weapon
   when "w2" then weapon = special_weapon
   when "w"  then weapon[:durability] += 1
@@ -30,7 +30,7 @@ def cheat_menu_boss(user_choice, player, buddy, weapon, the_boss, boss_style)
   when "w2" then weapon = special_weapon
   when "w"  then weapon[:durability] += 1
   when "ww" then weapon[:durability] -= 1
-  when "b"  then the_boss[:hp] -= 200
+  when "b"  then the_boss[:hp] -= 100
   when "a"  then the_boss[:rage] += 1
   when "e"  then buddy[:hp] -= 100 if buddy
   when "ee" then buddy = random_enemy

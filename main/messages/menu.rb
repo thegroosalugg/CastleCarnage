@@ -90,10 +90,13 @@ def load_menu(player)
   ]
 
   puts "       Whatcha ya gonna do?"
-  puts t.sample
-  puts r.sample
-  puts y.sample
-  puts x.sample if player[:awakened]
+  if player[:chosen]
+    puts x.sample
+  else
+    puts t.sample
+    puts r.sample
+    puts y.sample
+  end
 end
 
 # Name your player
@@ -160,7 +163,7 @@ end
 def state_of_game(enemies, player, weapon)
   puts SEPARATOR
   puts "    #{health_bars(player)}\n" + "\n"
-  puts "    #{block_stats(player)}"
+  puts "    #{block_stats(player)} / 💀 #{player[:kills]}"
   puts "    #{weapon_bars(weapon)}" if weapon[:durability].positive?
   enemies.each { |enemy| puts "    #{enemy_bars(enemy)}" }
   puts SEPARATOR

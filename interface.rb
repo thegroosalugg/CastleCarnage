@@ -25,20 +25,18 @@ require_relative 'debug/cheat_mode'
 
 def play_game
   print `clear`
-  player = { id: :player, hp: rand(275..300), attack: (rand(25..30)..rand(35..40)), block: (1..10), cash: rand(3..10), drunk: 0 }
+  player = { id: :player, hp: rand(275..300), attack: (rand(25..30)..rand(35..40)), block: (1..10), cash: rand(3..10), drunk: 0, kills: 0, rooms: 0, drifter: true }
   name_player(player)
   enemies = []
   3.times { enemies << random_enemy }
   tracked_enemy = enemies.sample
   weapon = pick_weapon
-  enemies_defeated = 0
-  rooms_explored = 0
   the_boss = big_boss_awaits
 
   intro(player, weapon, tracked_enemy)
   state_of_game(enemies, player, weapon)
 
-  while !enemies.empty? && player[:hp].positive?
+  while player[:drifter] && player[:hp].positive?
 
     if weapon[:durability].positive?                              # Fight menu when weapon equipped
       weapon[:broken] = false
@@ -53,34 +51,38 @@ def play_game
       user_choice = "y"
     end
 
-    case user_choice
-    when "t"
-      print `clear`
-      mortal_kombat(enemies, player, weapon)
-    when "r"                                      # Target random enemy with somersault attack
-      print `clear`
-      somersault_attack(player, enemies, weapon)
-    when "y"                                      # Avoid combat and run through rooms. Counter records no. of rooms explored
-      print `clear` unless weapon[:broken]
-      escape_attempt(enemies, player, weapon) unless weapon[:broken]
-      rooms_explored += 1
-      enemies, weapon = explore_rooms(enemies, weapon, player) unless player[:hp] <= 0
-    when "4"
-      if player[:awakened]
-        enemies = []
-        tracked_enemy = the_boss
-        bonus(player, rooms_explored, enemies_defeated)
-        big_boss_battle(player, weapon, the_boss)
+    unless player[:chosen]
+      case user_choice
+      when "t"
+        print `clear`
+        mortal_kombat(enemies, player, weapon)
+      when "r"                                      # Target random enemy with somersault attack
+        print `clear`
+        somersault_attack(player, enemies, weapon)
+      when "y"                                      # Avoid combat and run through rooms. Counter records no. of rooms explored
+        print `clear` unless weapon[:broken]
+        escape_attempt(enemies, player, weapon) unless weapon[:broken]
+        player[:rooms] += 1
+        enemies, weapon = explore_rooms(enemies, weapon, player) unless player[:hp] <= 0
       else
         error_message
       end
     else
-      error_message
+      case user_choice
+      when "4"
+        enemies = []
+        tracked_enemy = the_boss
+        bonus(player)
+        big_boss_battle(player, weapon, the_boss)
+        player[:drifter] = false
+      else
+        error_message
+      end
     end
 
     enemies.reject! do |enemy|
       if enemy[:hp] <= 0  # check for enemy deaths, update counter, track last enemy for game over
-        enemies_defeated += 1
+        player[:kills] += 1
         enemy_speaks(enemy, :pwned)
         tracked_enemy = enemy
         true  # This will remove the enemy from the array
@@ -88,9 +90,9 @@ def play_game
         false  # This will keep the enemy in the array
       end
     end
-
+    
     tracked_enemy = enemies.sample if player[:hp] <= 0 && tracked_enemy[:id] != :boss # Player dies and last enemy is tracked
-    player[:awakened] = true if (enemies_defeated > 2 || rooms_explored > 12 || (enemies_defeated > 1 && rooms_explored > 9)) # unlock big boss
+    player[:chosen] = true if player[:kills] > 4 || enemies.empty? # unlock big boss
     state_of_game(enemies, player, weapon) unless tracked_enemy[:id] == :boss || weapon[:durability].zero?
   end
 
