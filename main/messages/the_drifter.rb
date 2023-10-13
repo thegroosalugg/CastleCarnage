@@ -61,7 +61,7 @@ def battlefield
     ASCII
   ]
 
-  battle = { id: :boss, art: art.sample }
+  battle = { id: :move, art: art.sample }
 end
 
 def room_with_a_view

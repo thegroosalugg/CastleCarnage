@@ -51,7 +51,7 @@ end
 # the boss moves!
 
 def move_ascii_art(load_boss) # added condition, if art is boss, it moves on each loop, if static, it centers art without hardcode
-  vertical_offset = load_boss[:id] == :boss ? rand(10..30) : 10
+  vertical_offset = load_boss[:id] == :move ? rand(10..30) : 10
   load_boss[:art].split("\n").map { |line| " " * vertical_offset + line }.join("\n")
 end
 
