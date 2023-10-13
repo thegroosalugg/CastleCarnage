@@ -156,7 +156,7 @@ end
 def state_of_game(enemies, player, weapon)
   puts SEPARATOR
   puts "    #{health_bars(player)}\n" + "\n"
-  puts "    #{block_stats(player)} / 💀 #{player[:kills]}"
+  puts "    #{block_stats(player)} / 💀 #{player[:kills]} / 🏰 #{player[:rooms]}"
   puts "    #{weapon_bars(weapon)}" if weapon[:durability].positive?
   enemies.each { |enemy| puts "    #{enemy_bars(enemy)}" }
   puts SEPARATOR
