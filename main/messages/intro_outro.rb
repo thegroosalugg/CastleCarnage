@@ -30,6 +30,7 @@ def game_over(enemy, player)
     "You stacked it and fell on a spike. #{enemy[:name]} laughs at your misfortune.",
     "#{enemy[:name]} ripped your head off. You won't be coming home for dinner.",
     "You Died! #{enemy[:name]} shall feast on your entrails.",
+    "Your living time has expired",
   ]
 
   puts SEPARATOR if enemy[:id] == :boss

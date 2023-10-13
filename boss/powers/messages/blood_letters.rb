@@ -8,13 +8,13 @@ def blood_ritual(player, user_choice, price_paid, multiplier, boost)
     "You sacked #{player[:emoji]} #{price_paid} HP to swole up your #{boost} by #{multiplier}.",
   ]
   get_money = [
-    "You bled #{player[:emoji]} #{price_paid} HP but you raked in #{multiplier} 💵 cash. Worth it.",
+    "You bled #{player[:emoji]} #{price_paid} HP but you raked in #{multiplier} 💵 bucks. Worth it.",
   ]
   sober_up = [
-    "🩸 is thicker than 💧. You sacked #{player[:emoji]} #{price_paid} HP and removed #{multiplier} 🍺 beers.",
+    "🩸 is thicker than 💧. You sacked #{player[:emoji]} #{price_paid} HP and exfoliated #{multiplier} 🍺",
   ]
   munch_out = [
-    "You got what you wanted and munched up #{player[:emoji]} #{price_paid} HP, but you're bloated, your #{boost} suffers by #{multiplier}."
+    "Your meal garnished you #{player[:emoji]} #{price_paid} HP, but the bloat nerfs your #{boost} by #{multiplier}.",
   ]
 
   messages = case user_choice

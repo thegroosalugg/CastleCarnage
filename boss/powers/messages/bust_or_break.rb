@@ -52,7 +52,7 @@ end
 
 def continue
   puts SEPARATOR
-  puts "    You want it?"
-  puts "[Y] Another!"
-  puts "[N] 'llow it"
+  puts "    What you want?"
+  puts "   🎰 [4] Another!"
+  puts "   💨 [5] 'llow it"
 end

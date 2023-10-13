@@ -2,10 +2,10 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 def bonus(player, rooms_explored, enemies_defeated)
-  health = rooms_explored * 45
+  health = rooms_explored * 30
   boost = [:attack, :block].sample
   multiplier = enemies_defeated * rand(1..2)
-  player[:hp] = [player[:hp] + health, 650].min
+  player[:hp] = [player[:hp] + health, 500].min
   player[boost] = (player[boost].min + multiplier)..(player[boost].max + multiplier)
   your_rewards(player, health, boost, multiplier)
 end
@@ -49,6 +49,7 @@ def big_boss_battle(player, weapon, the_boss)
         enemy_speaks(buddy, :revive)
         player[:turns] = 0
         player[:hp] -= buddy[:hp] / 2
+        the_boss[:rage] = (the_boss[:rage] + 1).clamp(0, 10)
         invoice(player, (buddy[:hp] / 2), :grave)
       else
         error_message
@@ -57,12 +58,11 @@ def big_boss_battle(player, weapon, the_boss)
       error_message
     end
 
+    boss_rage(player, buddy, the_boss) if user_choice == "t" && the_boss[:hp].positive?
     if buddy && buddy[:hp] <= 0
       enemy_speaks(buddy, :pwned)
       buddy = nil
     end
-
-    boss_rage(player, buddy, the_boss) if user_choice == "t" && the_boss[:hp].positive?
     game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
   end
 end

@@ -58,7 +58,10 @@ on_point = [
   ]
   counter = [
     "#{attacker[:name]} saw you try to pull a fast one and headbutted you for #{target[:emoji]} #{damage} damage.",
+    "#{attacker[:name]} 💬 'You're not getting in wearing that!' You take #{target[:emoji]} #{damage} damage.",
     "#{attacker[:name]} spotted you being a plank and served you for #{target[:emoji]} #{damage} damage.",
+    "#{attacker[:name]} 💬 'No trainers, bruv!' You take #{target[:emoji]} #{damage} damage.",
+    "#{attacker[:name]} 💬 'Not today, mate!' You take #{target[:emoji]} #{damage} damage.",
     ]
 
   messages = case outcome

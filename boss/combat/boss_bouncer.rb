@@ -82,6 +82,7 @@ def fight_the_bouncer(player, buddy, weapon, the_boss, boss_style, load_boss)
       print `clear`
       if weapon[:durability] > 2
         ranged_strike(player, weapon, the_boss, weapon_damage)
+        the_boss[:rage] = (the_boss[:rage] + 1).clamp(0, 10)
       else
         error_message
         redo

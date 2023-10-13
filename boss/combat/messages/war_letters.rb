@@ -6,7 +6,7 @@
 
 def invoice(player, amount, where)
   got_drunk = [ # bar fight
-    "Damn, that was a piss up, you feel #{amount[0]} 🍺 drunker.",
+    "Damn, that was a piss up, you feel #{amount[0]} 🍺 more wasted.",
   ]
   sober_up = [
     "That knocked some sense into ya, ya feel you feel #{amount[0].abs} 🍺 lighter!",
@@ -18,7 +18,7 @@ def invoice(player, amount, where)
     "You got mugged for #{amount[1].abs} 💵",
   ]
   bar = [ # pay the tab
-    "You doled out #{amount} 💵 and ate up #{amount} 🍺 drinks. Time for some dishing.",
+    "You doled out #{amount} 💵 and sunk #{amount} 🍺 bevvies. Time for some dishing.",
   ]
   skint = [
     "You're too skint to get a drink, the damage you deal is reduced.",
@@ -40,16 +40,16 @@ def invoice(player, amount, where)
     end
   ]
   guard = [ # not tonight
-    "Your weapon provided an extra #{amount} 🛡️ block, better use it wisely.",
+    "Your weapon shielded #{amount} 🛡️ better use it wisely.",
   ]
   life = [ # sneak attack
-    "Oi, oi, you lucky people, you swagged #{player[:emoji]} #{amount} HP along the way, you sneaky 👟 bastard!",
+    "Oi, oi, you lucky people, you swagged #{player[:emoji]} #{amount} HP, you sneaky 👟 bastard!",
   ]
   cash = [
     "You ganked a hefty bit of loot, #{amount} 💵 for your pocket. Spend it wisely!",
   ]
   grave = [
-    "You pay the price, you draw #{player[:emoji]} #{amount} HP.",
+    "You pay the price, you surrender #{player[:emoji]} #{amount} HP.",
   ]
 
   messages = case where
@@ -74,15 +74,15 @@ def step_on_up(method)
   puts SEPARATOR
   puts "    Show your moves..."
   if method == :dance
-    puts "[4] 🧊 Blue Steel"
-    puts "[5] 🐯 Le Tigre"
-    puts "[6] 🍦 Magnum"
+    puts "    [4] 🧊 Blue Steel"
+    puts "    [5] 🐯 Le Tigre"
+    puts "    [6] 🍦 Magnum"
   elsif method == :keg
-    puts "[4] ♨️ Firestarter"
-    puts "[5] ❄️ Cold as Ice"
+    puts "    [4] ♨️ Firestarter"
+    puts "    [5] ❄️ Cold as Ice"
   elsif method == :cards
-    puts "[4] 🃏 Hit me!"
-    puts "[5] 🪂 I'm out!"
+    puts "    [4] 🃏 Hit me!"
+    puts "    [5] 🪂 I'm out!"
   end
 end
 

@@ -17,7 +17,7 @@ def swing(attacker, target, method)
 end
 
 def dance_off(player, buddy, weapon, the_boss, boss_style, load_boss)
-  greeting
+  greeting(:combat)
   boss_moves = []
   user_moves = []
 
@@ -31,7 +31,7 @@ def dance_off(player, buddy, weapon, the_boss, boss_style, load_boss)
 
     until (4..6).include?(user_choice)
       user_choice = gets.chomp.to_i
-      error_message
+      error_message unless (4..6).include?(user_choice)
       game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
       step_on_up(:dance)
     end
@@ -46,7 +46,7 @@ def dance_off(player, buddy, weapon, the_boss, boss_style, load_boss)
 end
 
 def keg_stand(player, buddy, weapon, the_boss, boss_style, load_boss)
-  greeting
+  greeting(:combat)
 
   loop do
     boss_move = [4, 5].sample
@@ -56,7 +56,7 @@ def keg_stand(player, buddy, weapon, the_boss, boss_style, load_boss)
 
     until [4, 5].include?(user_choice)
       user_choice = gets.chomp.to_i
-      error_message
+      error_message unless [4, 5].include?(user_choice)
       game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
       step_on_up(:keg)
     end

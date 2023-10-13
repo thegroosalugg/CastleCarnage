@@ -25,7 +25,7 @@ require_relative 'debug/cheat_mode'
 
 def play_game
   print `clear`
-  player = { id: :player, hp: rand(300..350), attack: (rand(25..30)..rand(35..40)), block: (1..10), cash: rand(3..10), drunk: 0 }
+  player = { id: :player, hp: rand(275..300), attack: (rand(25..30)..rand(35..40)), block: (1..10), cash: rand(3..10), drunk: 0 }
   name_player(player)
   enemies = []
   3.times { enemies << random_enemy }
@@ -78,19 +78,19 @@ def play_game
       error_message
     end
 
-    enemies.each_with_index do |current_enemy, index| # check for enemy deaths, update counter, track last enemy for game over
-      if current_enemy && current_enemy[:hp] <= 0
+    enemies.reject! do |enemy|
+      if enemy[:hp] <= 0  # check for enemy deaths, update counter, track last enemy for game over
         enemies_defeated += 1
-        enemy_speaks(current_enemy, :pwned)
-        tracked_enemy = current_enemy
-        enemies.delete_at(index) # Remove the defeated enemy from the array
+        enemy_speaks(enemy, :pwned)
+        tracked_enemy = enemy
+        true  # This will remove the enemy from the array
+      else
+        false  # This will keep the enemy in the array
       end
     end
 
     tracked_enemy = enemies.sample if player[:hp] <= 0 && tracked_enemy[:id] != :boss # Player dies and last enemy is tracked
-
-    player[:awakened] = true if (enemies_defeated > 3 || rooms_explored > 14 || (enemies_defeated > 2 && rooms_explored > 9)) # unlock big boss
-
+    player[:awakened] = true if (enemies_defeated > 2 || rooms_explored > 12 || (enemies_defeated > 1 && rooms_explored > 9)) # unlock big boss
     state_of_game(enemies, player, weapon) unless tracked_enemy[:id] == :boss || weapon[:durability].zero?
   end
 

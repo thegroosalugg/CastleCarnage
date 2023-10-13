@@ -2,9 +2,9 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 ENEMIES = [
-  "👺 Goblin", "👹 Ogre", "👾 Orc", "🧌 Troll", "🤪 Village Idiot", "👳 Village Elder", "🦞 Milelurk", "🕷️ Skulltula",
+  "👺 Goblin", "👹 Ogre", "👾 Orc", "🧌 Troll", "🤷 Village Idiot", "👳 Village Elder", "🦞 The Crab", "🕷️ Hench Spider",
   "🧙 Wizard", "🧝 Druid", "🐺 Werewolf", "🧛 Vampire", "🧟 Zombie", "🦖 Dinosaur", "🤖 Robot from the Future",
-  "🐉 Dragon", "👻 Banshee", "🦹 Arsehole", "🦍 King Kong", "🐍 Snake", "🦑 Crazy Squid", "🦂 Giant Scorpion",
+  "🐉 Dragon", "👻 Banshee", "🦹 Arsehole", "🦍 King Kong", "🐍 Snake", "🦑 Bad Squid", "🦂 Giant Scorpion",
 ]
 
 BOSSES = [
@@ -47,7 +47,7 @@ def random_enemy
     id: :enemy,
     name: ENEMIES.sample,
     hp: rand(60..90),
-    attack: (rand(20..27)..rand(28..35)),
+    attack: (rand(20..30)..rand(31..40)),
     block: (rand(1..5)..rand(6..12)),
     accuracy: (1..rand(4..11)),
     crit_ch: (1..rand(4..11)),
@@ -59,7 +59,7 @@ def big_boss_awaits
   boss = {
     id: :boss,
     name: BOSSES.sample,
-    hp: rand(650..750),
+    hp: rand(580..650),
     attack: (rand(30..40)..rand(41..50)),
     accuracy: (1..rand(4..10)),
     rage: 0,

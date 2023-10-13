@@ -8,13 +8,14 @@ def your_rewards(player, health, boost, multiplier)
 
   messages = [
     "You've been blessed, dark magics grant you #{player[:emoji]} #{health} HP, your #{boost} grows by #{multiplier}. Go get 'em.",
+    "Years of living in the castle has earned you #{player[:emoji]} #{health} HP, your #{boost} grows by #{multiplier}.",
   ]
 
   puts text_break(messages.sample, " ", 80)
 end
 
-def greeting
-  messages = [
+def greeting(place)
+  enemy = [
     "Strike first, strike hard, no mercy",
     "Step on up and show who's the boss",
     "Will you get got, or you gone get?",
@@ -22,7 +23,11 @@ def greeting
     "Time for a thrashing",
     "Lay down the law",
   ]
+  shop = [
+    "🧞💬 'Welcome, Stranger...",
+  ]
 
+  messages = place == :combat ? enemy : shop
   puts text_break(messages.sample, " ", 80)
 end
 
@@ -68,8 +73,10 @@ def boss_speaks(player, the_boss, blast = 0, outcome)
   player = player[:id] == :player ? "you" : player[:name]
   hit = [
     "#{the_boss[:name]} has had enough of your crap, they blast #{player} for 💢 #{blast} damage!",
+    "#{the_boss[:name]} is on a mad one, they merk #{player} for 💢 #{blast} damage!",
   ]
   threat = [
+    "#{the_boss[:name]} notices your cowardly attempts, a thrashing is on the cards",
     "#{the_boss[:name]} is getting aggy, you better pick your moves carefully",
   ]
 
