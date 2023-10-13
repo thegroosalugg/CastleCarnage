@@ -77,6 +77,7 @@ end
 def fight_the_band(player, buddy, weapon, the_boss, boss_style, load_boss)
   user_choice = 0
   boss_walks(the_boss, boss_style, :intro)
+  load_boss = the_band
 
   until (4..6).include?(user_choice)
     game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
