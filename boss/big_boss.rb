@@ -10,6 +10,15 @@ def bonus(player)
   your_rewards(player, health, boost, multiplier)
 end
 
+def boss_orders(player, weapon, the_boss)
+  puts SEPARATOR
+  puts move_ascii_art(moving_on)
+  gets
+  print `clear`
+  bonus(player)
+  big_boss_battle(player, weapon, the_boss)
+end
+
 def big_boss_battle(player, weapon, the_boss)
   player[:turns] = 0
   buddy = nil

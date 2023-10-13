@@ -83,8 +83,7 @@ def play_game
     state_of_game(enemies, player, weapon) unless tracked_enemy[:id] == :boss || weapon[:durability].zero?
   end
 
-  bonus(player) unless player[:hp] <= 0
-  big_boss_battle(player, weapon, the_boss) unless player[:hp] <= 0
+  boss_orders(player, weapon, the_boss) unless player[:hp] <= 0
   state_of_game(enemies, player, weapon) if tracked_enemy[:id] == :enemy && weapon[:durability].zero?
   game_over(tracked_enemy, player)
 end
