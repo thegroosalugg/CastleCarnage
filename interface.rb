@@ -25,14 +25,12 @@ require_relative 'debug/cheat_mode'
 
 def play_game
   print `clear`
-  player = { id: :player, hp: rand(275..300), attack: (rand(25..30)..rand(35..40)), block: (1..10), cash: rand(3..10), drunk: 0 }
+  player = { id: :player, hp: rand(275..300), attack: (rand(25..30)..rand(35..40)), block: (1..10), cash: rand(3..10), drunk: 0, kills: 0, rooms: 0 }
   name_player(player)
   enemies = []
   3.times { enemies << random_enemy }
   tracked_enemy = enemies.sample
   weapon = pick_weapon
-  enemies_defeated = 0
-  rooms_explored = 0
   the_boss = big_boss_awaits
 
   intro(player, weapon, tracked_enemy)
@@ -42,7 +40,7 @@ def play_game
 
     if weapon[:durability].positive?                              # Fight menu when weapon equipped
       weapon[:broken] = false
-      load_menu(player)
+      load_menu
       user_choice = gets.chomp.downcase
       # DEBUG CHEAT MENU
       enemies, weapon = cheat_menu(player, enemies, weapon, user_choice)
@@ -63,24 +61,15 @@ def play_game
     when "y"                                      # Avoid combat and run through rooms. Counter records no. of rooms explored
       print `clear` unless weapon[:broken]
       escape_attempt(enemies, player, weapon) unless weapon[:broken]
-      rooms_explored += 1
+      player[:rooms] += 1
       enemies, weapon = explore_rooms(enemies, weapon, player) unless player[:hp] <= 0
-    when "4"
-      if player[:awakened]
-        enemies = []
-        tracked_enemy = the_boss
-        bonus(player, rooms_explored, enemies_defeated)
-        big_boss_battle(player, weapon, the_boss)
-      else
-        error_message
-      end
     else
       error_message
     end
 
     enemies.reject! do |enemy|
       if enemy[:hp] <= 0  # check for enemy deaths, update counter, track last enemy for game over
-        enemies_defeated += 1
+        player[:kills] += 1
         enemy_speaks(enemy, :pwned)
         tracked_enemy = enemy
         true  # This will remove the enemy from the array
@@ -89,11 +78,13 @@ def play_game
       end
     end
 
-    tracked_enemy = enemies.sample if player[:hp] <= 0 && tracked_enemy[:id] != :boss # Player dies and last enemy is tracked
-    player[:awakened] = true if (enemies_defeated > 2 || rooms_explored > 12 || (enemies_defeated > 1 && rooms_explored > 9)) # unlock big boss
+    tracked_enemy = enemies.sample if player[:hp] <= 0 # Player dies and last enemy is tracked
+    tracked_enemy = the_boss if enemies.empty?
     state_of_game(enemies, player, weapon) unless tracked_enemy[:id] == :boss || weapon[:durability].zero?
   end
 
+  bonus(player) unless player[:hp] <= 0
+  big_boss_battle(player, weapon, the_boss) unless player[:hp] <= 0
   state_of_game(enemies, player, weapon) if tracked_enemy[:id] == :enemy && weapon[:durability].zero?
   game_over(tracked_enemy, player)
 end

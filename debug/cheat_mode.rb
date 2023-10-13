@@ -9,7 +9,6 @@ def cheat_menu(player, enemies, weapon, user_choice)
   when 'ee' then enemies << random_enemy
   when "h"  then player[:hp] -= 100
   when "hh" then player[:hp] += 100
-  when "a"  then player[:awakened] = true
   when "w1" then weapon = pick_weapon
   when "w2" then weapon = special_weapon
   when "w"  then weapon[:durability] += 1

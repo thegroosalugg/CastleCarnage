@@ -1,10 +1,10 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-def bonus(player, rooms_explored, enemies_defeated)
-  health = rooms_explored * 30
+def bonus(player)
+  health = player[:rooms] * 30
   boost = [:attack, :block].sample
-  multiplier = enemies_defeated * rand(1..2)
+  multiplier = player[:kills] * rand(1..2)
   player[:hp] = [player[:hp] + health, 500].min
   player[boost] = (player[boost].min + multiplier)..(player[boost].max + multiplier)
   your_rewards(player, health, boost, multiplier)
