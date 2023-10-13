@@ -6,7 +6,7 @@
 def intro(player, weapon, enemy)
   enemy_intro = [
     "You got proper pissed 🍷 and ended up in some 🏰 castle, a #{enemy[:name]} jumped from the ceiling! 'You goon get it now boy!'",
-    "You got caught ganking 🍻 hooch from the 🏡 package store. The 🏇🏌️‍♀️ townsfolk set the #{enemy[:name]} on you!",
+    "You got caught ganking 🍻 hooch from the 🏡 package store. The 🏇👷🏼 townsfolk set the #{enemy[:name]} on you!",
     "#{enemy[:name]} busted through the 🚪 door, they're stark raving mad. They're out for 🔪 blood!",
   ]
   player_intro = [

@@ -50,9 +50,9 @@ end
 
 # the boss moves!
 
-def move_ascii_art(load_boss)
-  vertical_offset = rand(10..30)
-  load_boss.split("\n").map { |line| " " * vertical_offset + line }.join("\n")
+def move_ascii_art(load_boss) # added condition, if art is boss, it moves on each loop, if static, it centers art without hardcode
+  vertical_offset = load_boss[:id] == :boss ? rand(10..30) : 15
+  load_boss[:art].split("\n").map { |line| " " * vertical_offset + line }.join("\n")
 end
 
 # Same as state of game but exclusively for big boss
