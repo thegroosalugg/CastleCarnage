@@ -24,7 +24,7 @@ def greeting(place)
     "Lay down the law",
   ]
   shop = [
-    "🧞💬 'Welcome, Stranger...",
+    "🧞💬 Welcome, Stranger...",
   ]
 
   messages = place == :combat ? enemy : shop

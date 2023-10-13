@@ -167,7 +167,7 @@ def blood_menu(player)
   ]
 
   puts SEPARATOR
-  puts padding_generator(" 🧞💬 'Pay with Blood ❤️ Get Bargains 💰' ", "💠", 57)
+  puts padding_generator(" 🧞💬 Pay with Blood ❤️ Get Bargains 💰 ", "💠", 57)
   puts (player[:attack].max < 50 || player[:block].max < 20 ? buffout.sample : denied)
   puts (player[:cash] < 20 ? money.sample : denied)
   puts (player[:drunk].positive? ? drink.sample : denied)
