@@ -8,9 +8,10 @@ def your_rewards(player, health, boost, multiplier)
 
   messages = [
     "You've been blessed, dark magics grant you #{player[:emoji]} #{health} HP, your #{boost} grows by #{multiplier}. Go get 'em.",
-    "Years of living in the castle has earned you #{player[:emoji]} #{health} HP, your #{boost} grows by #{multiplier}.",
+    "Bodies all around you, you gorge #{player[:emoji]} #{health} HP, your #{boost} grows by #{multiplier}.",
   ]
 
+  puts SEPARATOR
   puts text_break(messages.sample, " ", 80)
 end
 

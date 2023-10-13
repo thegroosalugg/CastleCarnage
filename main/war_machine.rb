@@ -71,7 +71,7 @@ def pick_weapon
   weapon = {
     id: :weapon,
     name: WEAPONS.sample,
-    durability: rand(2..6),
+    durability: rand(2..5),
     broken: false,
     attack: (rand(20..30)..rand(31..60)),
     accuracy: (1..rand(4..11)),

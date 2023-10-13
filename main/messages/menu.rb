@@ -44,7 +44,7 @@ end
 
 # Main game menu
 
-def load_menu(player)
+def load_menu
   t = [
     "   🥷 [t] Strike first! Strike hard! No mercy!",
     "   🥷 [t] Punch 'em in their stupid ugly face",
@@ -85,15 +85,11 @@ def load_menu(player)
     "   💨 [y] Bounce",
     "   💨 [y] Mug it",
   ]
-  x = [
-    "   💀 [4] The Boss Awaits",
-  ]
 
   puts "       Whatcha ya gonna do?"
   puts t.sample
   puts r.sample
   puts y.sample
-  puts x.sample if player[:awakened]
 end
 
 # Name your player
@@ -160,7 +156,7 @@ end
 def state_of_game(enemies, player, weapon)
   puts SEPARATOR
   puts "    #{health_bars(player)}\n" + "\n"
-  puts "    #{block_stats(player)}"
+  puts "    #{block_stats(player)} / 💀 #{player[:kills]}"
   puts "    #{weapon_bars(weapon)}" if weapon[:durability].positive?
   enemies.each { |enemy| puts "    #{enemy_bars(enemy)}" }
   puts SEPARATOR
