@@ -2,6 +2,7 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 def big_boss_art
+  art = { id: :boss, art:
   <<-'ASCII'
                     / ___`\
          /|        ( (   \ \
@@ -19,9 +20,11 @@ def big_boss_art
  |    \  \ |   |  ``    | |
  |    |   |/   |        / /
     ASCII
+  }
 end
 
 def the_barkeep
+  art = { id: :boss, art:
   <<-'ASCII'
      __|___|__
       ('o_o')
@@ -38,9 +41,11 @@ def the_barkeep
      |_|  |_|
      /_\  /_\
     ASCII
+     }
 end
 
 def the_bouncer
+  art = { id: :boss, art:
   <<-'ASCII'
                      ______
                    <((((((\\\
@@ -58,9 +63,11 @@ def the_bouncer
        \  \       \ |     | /        /
         \  \      \        /
     ASCII
+   }
 end
 
 def the_band
+  art = { id: :boss, art:
     <<-'ASCII'
 
     #####\             _             /#####
@@ -72,10 +79,11 @@ def the_band
    /#####/    ######/     \######    \#####\
   /                                         \
       ASCII
+  }
 end
 
 def the_shop
-  shop = [
+  art = [
     # ASCII art 1
     <<-'ASCII',
             )            (
@@ -162,5 +170,5 @@ ____\_/___||_|_____((__^_))____________________\_\|/_/__ldb
     ASCII
   ]
 
-  shop.sample
+  shop = { id: :shop, art: art.sample }
 end

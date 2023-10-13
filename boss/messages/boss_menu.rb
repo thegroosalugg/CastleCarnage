@@ -68,7 +68,7 @@ def game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
   puts "    #{health_bars(the_boss)}\n" + "\n"          # weird looking code makes font red
   puts "    #{boss_style} / #{attack_stats(the_boss)} / \e[31m𝖗𝖆𝖌𝖊\e[0m #{rage(the_boss)}"
   puts SEPARATOR
-  puts move_ascii_art(load_boss)
+  puts load_boss[:id] == :shop ? load_boss[:art] : move_ascii_art(load_boss[:art])
 end
 
 # Menu when selecting Fight the Power
