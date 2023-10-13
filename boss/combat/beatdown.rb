@@ -51,7 +51,7 @@ end
 
 def boss_rage(player, buddy, the_boss)
   if the_boss[:rage] > 4
-    if rand(3) == 1
+    if rand(2) == 1
       rage = rand(3..the_boss[:rage])
       the_boss[:rage] -= rage
       blast = (rand(6..10) * rage - rand(player[:block])).clamp(1, 100)
