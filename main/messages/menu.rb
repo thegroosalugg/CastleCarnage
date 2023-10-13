@@ -4,7 +4,7 @@
 # various ASCII separators
 
 SEPARATOR = "⚔" * 80
-BARRIER = "〰" * 36
+BARRIER = "〰" * 38
 ENEMY_DIV = "🗡" * 76
 BOSS_DIV = " " * 4 + "▪" * 76
 
@@ -139,10 +139,10 @@ end
 # Display generators that combine above methods to create dynamic displays for enemy and weapon
 
 def enemy_bars(enemy)
-  "#{ENEMY_DIV}\n" +
-  "    #{health_bars(enemy)}\n" +
+  "#{health_bars(enemy)}\n" +
   "\n" +
-  "    #{percentage(enemy, :accuracy)}" + "#{percentage(enemy, :crit_ch)}" + "#{attack_stats(enemy)} / " + "#{block_stats(enemy)}"
+  "    #{percentage(enemy, :accuracy)}" + "#{percentage(enemy, :crit_ch)}" + "#{attack_stats(enemy)} / " + "#{block_stats(enemy)}\n" +
+  "    #{ENEMY_DIV}"
 end
 
 def weapon_bars(weapon)
@@ -153,12 +153,14 @@ end
 
 # Main UI that displays all current happenings, by chaining the above methods
 
-def state_of_game(enemies, player, weapon)
+def state_of_game(enemies, player, weapon, load_art)
   puts SEPARATOR
+  enemies.each { |enemy| puts "    #{enemy_bars(enemy)}" }
+  puts move_ascii_art(load_art)
+  puts "    #{BARRIER}"
   puts "    #{health_bars(player)}\n" + "\n"
   puts "    #{block_stats(player)} / 💀 #{player[:kills]} / 🏰 #{player[:rooms]}"
   puts "    #{weapon_bars(weapon)}" if weapon[:durability].positive?
-  enemies.each { |enemy| puts "    #{enemy_bars(enemy)}" }
   puts SEPARATOR
 end
 

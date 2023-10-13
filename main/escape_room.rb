@@ -8,7 +8,7 @@ def health_trap(entity)
   gifts(entity, operator, randomizer)
 end
 
-def explore_rooms(enemies, weapon, player)
+def explore_rooms(enemies, weapon, player, load_art)
   user_choice = 0
   chosen_rooms = room_vault
 
@@ -17,7 +17,7 @@ def explore_rooms(enemies, weapon, player)
 
     user_choice = gets.chomp.to_i
     error_message unless (4..7).include?(user_choice)
-    state_of_game(enemies, player, weapon)
+    state_of_game(enemies, player, weapon, load_art)
   end
 
   print `clear`
