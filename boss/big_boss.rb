@@ -13,6 +13,7 @@ end
 def boss_orders(player, weapon, the_boss)
   puts SEPARATOR
   puts move_ascii_art(moving_on)
+  puts SEPARATOR
   gets
   print `clear`
   bonus(player)

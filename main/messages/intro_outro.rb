@@ -118,14 +118,14 @@ def moving_on
                     dS$$S$S$S$S$S$S$$Sb
                    :$$S^S$S$S$S$S$S^S$$;
                    SSP   `^$S$S$^'   TSS
-                   $$       `"'       $$
-                  _SS ,-           -  SS_
+                   $$       `"'       $$      ㄚㄖㄩ 爪🝗尺长🝗ᗪ 
+                  _SS ,-           -  SS_       〸卄🝗 ﾁ㇄ㄩ𝓝长讠🝗丂
                  :-.|  _    - .-   _  |.-;
                  :\(; ' "-._.'._.-" ` |)/;
                   \`|  , o       o .  |'/
                    ":     -'   `-     ;"
-                     ;.              :  
-                     : `    ._.    ' ;
+                     ;.              :      ㄒ卄🝗 ⻏ㄖ丂丂 山闩𝓝〸丂
+                     : `    ._.    ' ;         闩 山ㄖ尺ᗪ 山讠セ卄 丫ㄖㄩ
                    .sSb   ._____.   dSs.
                 _.d8dSSb.   ._.   .SSbT8b._
             _.oOPd88SSSS T.     .P SSSS888OOo.
@@ -140,10 +140,6 @@ def moving_on
 MOOMMMMOMMOMMOOMMMOObTSSg._.SSS._.PdOPdMOOMMMMOMMMMOMMMMOOM
 MMOMMMMOMMMOMMOOMMbT8bTSSSSSSSSSPd8OPdOOOMMMMOOMMMMOMMMOOMM
 MMOMMMOMMMMMOMMOOMMMbT8bTSSSSSPd88PdOOOOMMMMOOMMMMMMMMOOMMM
-             ㄚㄖㄩ 爪🝗尺长🝗ᗪ 
-            〸卄🝗 ﾁ㇄ㄩ𝓝长讠🝗丂
-          ㄒ卄🝗 ⻏ㄖ丂丂 山闩𝓝〸丂
-          闩 山ㄖ尺ᗪ 山讠セ卄 丫ㄖㄩ
   ASCII
   }
 end
