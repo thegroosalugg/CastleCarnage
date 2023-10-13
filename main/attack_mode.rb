@@ -52,5 +52,4 @@ def escape_attempt(enemies, player, weapon, load_art)
     enemy_speaks(target_enemy, :surprise)
     strike(target_enemy, player)
   end
-  state_of_game(enemies, player, weapon, load_art = room_with_a_view) unless player[:hp] <= 0
 end
