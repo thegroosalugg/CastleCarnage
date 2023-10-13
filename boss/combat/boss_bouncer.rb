@@ -63,6 +63,7 @@ def fight_the_bouncer(player, buddy, weapon, the_boss, boss_style, load_boss)
   user_choice = 0
   player[:drunk] = (player[:drunk] + 1).clamp(0, 20)
   player[:sneaky] = false
+  load_boss = the_bouncer
   boss_walks(the_boss, boss_style, :intro)
 
   until (4..7).include?(user_choice)

@@ -92,7 +92,7 @@ def weapon_speaks(weapon, status)
     "While checking the drawers 🗄️, you found a #{weapon[:name]} hidden among the spoons!",
     "Gift 🎁 ! There's a #{weapon[:name]} here! Looks like the foot's on the other shoe!",
     "Mysterious Stranger 🕵️‍♂️ appeared, 'Hey kid, catch', he throws you a #{weapon[:name]}",
-    "No way, you just remembered you still have your #{weapon[:name]} in your sock 🧦 !",
+    "No way, you just remembered you still have your #{weapon[:name]} in your sock 🧦",
     "Under the bed 🛏️, you discovered a #{weapon[:name]} 👀. Time for some pummeling!",
   ]
   broke = [

@@ -31,6 +31,7 @@ end
 def fight_the_barkeep(player, buddy, weapon, the_boss, boss_style, load_boss)
   user_choice = 0
   player[:jacked] = true
+  load_boss = the_barkeep
   boss_walks(the_boss, boss_style, :intro)
 
   until (4..6).include?(user_choice)
