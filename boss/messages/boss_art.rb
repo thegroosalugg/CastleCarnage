@@ -2,7 +2,7 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 def big_boss_art
-  art = { id: :boss, art:
+  art = { id: :move, art:
   <<-'ASCII'
                     / ___`\
          /|        ( (   \ \
@@ -24,7 +24,7 @@ def big_boss_art
 end
 
 def the_barkeep
-  art = { id: :boss, art: # this art is a combination of 2 pieces
+  art = { id: :move, art: # this art is a combination of 2 pieces
   <<-'ASCII'              # spacing is warped here for correct display on terminal
                     _____
                   __|___|__
@@ -46,7 +46,7 @@ def the_barkeep
 end
 
 def the_bouncer
-  art = { id: :boss, art:
+  art = { id: :move, art:
   <<-'ASCII'
                      ______
                    <((((((\\\
@@ -68,7 +68,7 @@ def the_bouncer
 end
 
 def the_band
-  art = { id: :boss, art:
+  art = { id: :move, art:
     <<-'ASCII'
 
     #####\             _             /#####

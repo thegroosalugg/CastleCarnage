@@ -93,7 +93,7 @@ def weapon_speaks(weapon, status)
     "Gift 🎁 ! There's a #{weapon[:name]} here! Looks like the foot's on the other shoe!",
     "Mysterious Stranger 🕵️‍♂️ appeared, 'Hey kid, catch', he throws you a #{weapon[:name]}",
     "No way, you just remembered you still have your #{weapon[:name]} in your sock 🧦",
-    "Under the bed 🛏️, you discovered a #{weapon[:name]} 👀. Time for some pummeling!",
+    "Under the bed 🛏️, you discovered a #{weapon[:name]} 👀 Time for some pummeling!",
   ]
   broke = [
     "😲 Bollocks, your #{weapon[:name]} slipped out of your hand and flew out of the window. Time to split!",

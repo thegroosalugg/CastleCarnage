@@ -11,7 +11,6 @@ def your_rewards(player, health, boost, multiplier)
     "Bodies all around you, you gorge #{player[:emoji]} #{health} HP, your #{boost} grows by #{multiplier}.",
   ]
 
-  puts SEPARATOR
   puts text_break(messages.sample, " ", 80)
 end
 
