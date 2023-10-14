@@ -4,16 +4,17 @@
 # Main Menu
 
 def boss_menu(player, boss_style)
-  magic = "  🔥#{player[:emoji]} [y] 🪦🪄 Necromancy"
   t = 4 - player[:turns]
   n = t == 1 ? "next" : "in #{t}"
   s = t == 1 ? "" : "s"
+  magic = "   🔥#{player[:emoji]} \e[35m[̝̻͕Y͔̻̦]͔̞\e[0m 🪦 \e[35mⲚⲉⲥꞅⲟⲙⲁⲛⲥⲩ\e[0m  🪄"
+  wait = "⏱️ \e[35mAvailable #{n} turn#{s}\e[0m"
 
   puts SEPARATOR
-  puts "     Decisions, decisions..."
-  puts "    ⚔️ [t] 👊⚡ Fight the #{boss_style}"
-  puts "  🔥#{player[:emoji]} [r] 🩸🪄 Blood Magic"
-  puts player[:turns] == 4 ? magic : padding_generator("⏱️ Available #{n} turn#{s}", "-", 50)
+  puts "     \e[34mDecisions,\e[0m \e[36mdecisions...\e[0m"
+  puts "     ⚔️ \e[34m[̿̓͐T͆͑͘]̒͠\e[0m 💀 \e[34mFᴀᴄᴇ ᴛʜᴇ​#{boss_style}\e[0m 🌘"
+  puts "   🔥#{player[:emoji]} \e[31m[͋͊͒Ŕ́͝]͆̿\e[0m 🩸 \e[31mBʟᴏᴏᴅ Mᴀɢɪᴄ\e[0m 🪄"
+  puts player[:turns] == 4 ? magic : padding_generator(wait, "-", 50)
 end
 
 # Dynamic status for player cash & drunkness

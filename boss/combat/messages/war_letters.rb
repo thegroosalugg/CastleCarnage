@@ -120,12 +120,12 @@ def show_your_moves(player, the_boss, user_moves, boss_moves, method)
       when boss > user  then lose
       when boss == user then draw
       end
-      x = messages == win ? "✅" : "❌"
+      x = messages == win ? "#{SUCCESS}" : "#{STACKED_IT}"
       puts whitespace(player, " ", 16) + "#{player[:name]} 💬 #{moves[user]} #{x} #{moves[boss]} 🗨️ #{the_boss[:name]}"
     end
   elsif method == :keg
     messages = (user_moves == boss_moves ? win : lose)
-    x = user_moves == boss_moves ? "✅" : "❌"
+    x = user_moves == boss_moves ? "#{SUCCESS}" : "#{STACKED_IT}"
     puts whitespace(player, " ", 16) + "#{player[:name]} 💬 #{drinks[user_moves]} #{x} #{drinks[boss_moves]} 🗨️ #{the_boss[:name]}"
   end
   puts SEPARATOR
