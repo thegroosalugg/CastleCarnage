@@ -2,12 +2,11 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 def bonus(player)
-  health = player[:rooms] * 30
+  health = [player[:rooms] * 30, 500].min
   boost = [:attack, :block].sample
-  multiplier = player[:kills] * rand(1..2)
-  player[:hp] = [player[:hp] + health, 500].min
-  player[boost] = (player[boost].min + multiplier)..(player[boost].max + multiplier)
-  your_rewards(player, health, boost, multiplier)
+  player[:hp] += health
+  player[boost] = (player[boost].min + player[:kills] / 2)..(player[boost].max + player[:kills])
+  your_rewards(player, health, boost, player[:kills])
 end
 
 def boss_orders(player, weapon, the_boss)
