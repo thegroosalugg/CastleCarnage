@@ -6,9 +6,9 @@
 def your_rewards(player, health, boost, multiplier)
   boost = boost == :attack ? "💢 attack" : "🛡️ block"
 
-  messages = "#{HP_PLUS} +#{health} #{player[:emoji]} / #{BUFF} +#{multiplier} #{boost}"
+  messages = "#{HP_PLUS} +#{health} #{player[:emoji]}  #{BUFF} +#{multiplier} #{boost}"
 
-  puts text_break("#{BONUS}", " ", 80)
+  puts text_break("🎉🪅 #{BONUS} 🎊🎈", " ", 80)
   puts text_break(messages, " ", 80)
 end
 

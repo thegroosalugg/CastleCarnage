@@ -8,11 +8,11 @@ def get_buff(player)
     stats << :block if index == 1 && stat.max < 20
   end
   boost = stats.sample # nil value not possible, method call is guarded by same clause
-  price_paid = rand(boost == :attack ? (35..60) : (25..50)) # higher price for attack
-  multiplier = (price_paid / rand(15.0..25.0)).ceil # volume of boost also decided randomly .ceil rounds it up
+  price_paid = rand(boost == :attack ? (25..50) : (15..40)) # higher price for attack
+  multiplier = (price_paid / rand(7.5..15.0)).ceil # volume of boost also decided randomly .ceil rounds it up
   player[:hp] -= price_paid                                       # sets max range limits: attack: 50, block: 20
-  player[boost] = (player[boost].min + multiplier)..[player[boost].max + multiplier, (boost == :attack ? 50 : 20)].min
-  return price_paid, multiplier, boost
+  player[boost] = (player[boost].min + multiplier / 2.0).ceil..[player[boost].max + multiplier, (boost == :attack ? 50 : 20)].min
+  return price_paid, multiplier, boost             # minimum range gets 50% of maximum. 2.0 gives float and .ceil rounds floats up 1
 end
 
 def get_rich(player)
@@ -37,7 +37,7 @@ def munch_out(player)
   multiplier = player[boost].max > 1 ? rand(1..[player[boost].max - 1, 3].min) : 0
   player[boost] = [(player[boost].min - multiplier), 1].max..[player[boost].max - multiplier, 1].max
 
-  price_paid = (rand(1..5) == 1 ? rand(50..75) : rand(25..50)) * multiplier
+  price_paid = (rand(1..5) == 1 ? rand(40..60) : rand(20..40)) * multiplier
   player[:hp] = [player[:hp] + price_paid, 500].min
   return price_paid, multiplier, boost
 end
