@@ -4,16 +4,17 @@
 # Main Menu
 
 def boss_menu(player, boss_style)
-  magic = "  🔥#{player[:emoji]} [y] 🪦🪄 Necromancy"
   t = 4 - player[:turns]
-  n = t == 1 ? "next" : "in #{t}"
+  n = t == 1 ? "ɴᴇxᴛ" : "ɪɴ #{t}"
   s = t == 1 ? "" : "s"
+  magic = "   🔥#{player[:emoji]} \e[35m[̝̻͕Y͔̻̦]͔̞\e[0m 🪦 \e[35mⲚⲉⲥꞅⲟⲙⲁⲛⲥⲩ\e[0m  🪄"
+  wait = "⏱️ \e[35mAᴠᴀɪʟᴀʙʟᴇ #{n} ᴛᴜʀɴ#{s}\e[0m"
 
   puts SEPARATOR
-  puts "     Decisions, decisions..."
-  puts "    ⚔️ [t] 👊⚡ Fight the #{boss_style}"
-  puts "  🔥#{player[:emoji]} [r] 🩸🪄 Blood Magic"
-  puts player[:turns] == 4 ? magic : padding_generator("⏱️ Available #{n} turn#{s}", "-", 50)
+  puts "     \e[34mDᴇᴄɪsɪᴏɴs,\e[0m \e[36mᴅᴇᴄɪsɪᴏɴs...\e[0m"
+  puts "     ⚔️ \e[34m[̿̓͐T͆͑͘]̒͠\e[0m 💀 \e[34m𝓕ⲁⲥⲉ ⲧⲏⲉ​#{boss_style}\e[0m 🌘"
+  puts "   🔥#{player[:emoji]} \e[31m[͋͊͒Ŕ́͝]͆̿\e[0m 🩸 \e[31mⲂ𝓛ⲟⲟⲆ Ⲙⲁ𝓖ⲓⲕ\e[0m 🪄"
+  puts player[:turns] == 4 ? magic : padding_generator(wait, "-", 50)
 end
 
 # Dynamic status for player cash & drunkness
@@ -38,8 +39,8 @@ def player_status(player)
     end
 
   "#{BARRIER}\n" +
-  "    #{wallet} #{'💵' * [player[:cash], 0].max}\n" +
-  "    #{drunk} #{'🍺' * [player[:drunk], 0].max}"
+  "    \e[32m#{wallet}\e[0m #{'💵' * [player[:cash], 0].max}\n" +
+  "    \e[38;5;208m#{drunk}\e[0m #{'🍺' * [player[:drunk], 0].max}"
 end
 
 # boss rage bar
@@ -60,7 +61,7 @@ end
 def game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
   puts SEPARATOR
   puts "    #{health_bars(the_boss)}\n" + "\n"          # weird looking code makes font red
-  puts "    #{boss_style} / #{attack_stats(the_boss)} / \e[31m𝖗𝖆𝖌𝖊\e[0m #{rage(the_boss)}"
+  puts "    #{boss_style} / #{attack_stats(the_boss)} / #{RAGE} #{rage(the_boss)}"
   puts BOSS_DIV
   puts move_ascii_art(load_boss)
   puts "    #{BARRIER}"

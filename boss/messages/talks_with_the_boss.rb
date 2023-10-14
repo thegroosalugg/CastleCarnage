@@ -6,12 +6,10 @@
 def your_rewards(player, health, boost, multiplier)
   boost = boost == :attack ? "💢 attack" : "🛡️ block"
 
-  messages = [
-    "You've been blessed, dark magics grant you #{player[:emoji]} #{health} HP, your #{boost} grows by #{multiplier}. Go get 'em.",
-    "Bodies all around you, you gorge #{player[:emoji]} #{health} HP, your #{boost} grows by #{multiplier}.",
-  ]
+  messages = "#{HP_PLUS} +#{health} #{player[:emoji]} / #{BUFF} +#{multiplier} #{boost}"
 
-  puts text_break(messages.sample, " ", 80)
+  puts text_break("#{BONUS}", " ", 80)
+  puts text_break(messages, " ", 80)
 end
 
 def greeting(place)
@@ -19,12 +17,11 @@ def greeting(place)
     "Strike first, strike hard, no mercy",
     "Step on up and show who's the boss",
     "Will you get got, or you gone get?",
-    "Time to walk the dinosaur 🦕",
     "Time for a thrashing",
     "Lay down the law",
   ]
   shop = [
-    "🧞💬 Welcome, Stranger...",
+    "🧞💬 山🝗㇄⼕ㄖ爪🝗 丂〸尺闩𝓝Ꮆ🝗尺...",
   ]
 
   messages = place == :combat ? enemy : shop
@@ -40,26 +37,15 @@ def boss_walks(the_boss, boss_style, time)
     "The #{boss_style} is in the house 🛖 orders up",
     "#{the_boss[:name]} is the liquor 🍾",
   ]
-  bouncer = [
-    "#{the_boss[:name]} is excerting its pressure, you drink another beer 🍺",
-  ]
+  bouncer = [ "#{the_boss[:name]} is excerting its pressure #{HANGOVER} +1 🍺" ]
   band = [
-    "Some wanker just started playing dubstep 🎧 you're gonna take some serious damage this round.",
-    "#{the_boss[:name]} is two-stepping across the room 🤾, Parkway Drive 🎸 appear on stage!",
-    "#{the_boss[:name]} is smashing some banging tunes 🎸 a mosh pit is about to break out!",
-    "🎧 Sandstorm by Darude starts playing, shit's 'bout to get proper 🎶",
+    "#{the_boss[:name]} is two-stepping 🪜 in the pit. Parkway Drive 🎸 come out on stage!",
+    "#{the_boss[:name]} is smashing out banging tunes 🎸 A pit is 'bout to break out!",
+    "Some wanker just started playing dubstep 🎧 Get ready for damage",
+    "Darude Sandstorm 🎧 starts playing, shit's 'bout to go down",
   ]
-  outro = [
-    "#{the_boss[:name]} had enough of your shit as it prepares #{boss_style} stance",
-    "#{the_boss[:name]} assumes the #{boss_style} fighting stance, watch out!",
-    "#{the_boss[:name]} is commercially trained in #{boss_style} style",
-    "#{the_boss[:name]} switches up to #{boss_style} style",
-  ]
-  reprise = [
-    "You're slighly less wasted, your alcohol goes down one 🍺",
-    "That was quite a mash up, you're one 🍺 lighter.",
-    "You sweat out a 🍺 your hangover decreases",
-  ]
+  outro = [ "#{the_boss[:name]} ♻️ ▻◅▶▷ #{boss_style}" ]
+  reprise = [ "#{HANGOVER} -1 🍺" ]
 
   messages = case boss_style
   when "🍻 Barkeep" then time == :intro ? barkeep : outro
@@ -70,17 +56,14 @@ def boss_walks(the_boss, boss_style, time)
 end
 
 def boss_speaks(player, the_boss, blast = 0, outcome)
-  player = player[:id] == :player ? "you" : player[:name]
   hit = [
-    "#{the_boss[:name]} has had enough of your crap, they blast #{player} for 💢 #{blast} damage!",
-    "#{the_boss[:name]} is on a mad one, they merk #{player} for 💢 #{blast} damage!",
+    "#{the_boss[:name]} has had enough of your crap 🔥 #{RAGE} 💢 #{player[:name]} -#{blast} #{player[:emoji]}",
   ]
   threat = [
-    "#{the_boss[:name]} notices your cowardly attempts, a thrashing is on the cards",
-    "#{the_boss[:name]} is getting aggy, you better pick your moves carefully",
+    "#{the_boss[:name]} notices your cowardly attempts, a thrashing #{RAGE} is on the cards",
+    "#{the_boss[:name]} is getting aggy #{RAGE} You best tread lightly",
   ]
 
   messages = outcome == :hit ? hit : threat
-  puts SEPARATOR
   puts text_break(messages.sample, " ", 80)
 end

@@ -78,8 +78,8 @@ def step_on_up(method)
     puts "    [5] 🐯 Le Tigre"
     puts "    [6] 🍦 Magnum"
   elsif method == :keg
-    puts "    [4] ♨️ Firestarter"
-    puts "    [5] ❄️ Cold as Ice"
+    puts "    [4] 🦎Charmander🔥"
+    puts "    [5] 🐢 Squirtle 💧"
   elsif method == :cards
     puts "    [4] 🃏 Hit me!"
     puts "    [5] 🪂 I'm out!"
@@ -88,46 +88,30 @@ end
 
 def show_your_moves(player, the_boss, user_moves, boss_moves, method)
   moves = {
-    4 => "🧊 Blue Steel",
-    5 => "🐯  Le Tigre ",
-    6 => "🍦   Magnum  "
+    4 => "🧊 BlueSteel",
+    5 => "🐯 Le Tigre ",
+    6 => "🍦 Magnum   "
   }
   drinks = {
-    4 => "♨️ Firestarter",
-    5 => "❄️ Cold as Ice"
+    4 => "🦎Charmander🔥",
+    5 => "🐢 Squirtle 💧"
   }
-  lose = [
-    "#{the_boss[:name]} got mad style 💫 The crowd is going mental.",
-    "The crowd 🤺🏃🕴️ is chanting for #{the_boss[:name]}, they thirst for blood",
-  ]
-  win = [
-    "With the grace of a falcon 🦅 you're stealing the show",
-    "#{the_boss[:name]} is getting served with your mental moves",
-  ]
-  draw = [
-    "You both suck and slap 🤚 each other in the face mid spin."
-  ]
-
-  messages = ""
 
   if method == :dance
     boss_moves.each_with_index do |boss, round|
       user = user_moves[round]
-      messages = case
-      when boss == 4 && user == 6 then lose
-      when boss == 6 && user == 4 then win
-      when boss < user  then win
-      when boss > user  then lose
-      when boss == user then draw
+      x = case
+      when (user == 4 && boss == 6) then SUCCESS
+      when (user == 6 && boss == 4) then FLUNKED
+      when user > boss then SUCCESS
+      when user < boss then FLUNKED
+      else " #{MISSED}  "
       end
-      x = messages == win ? "✅" : "❌"
-      puts whitespace(player, " ", 16) + "#{player[:name]} 💬 ⟪#{moves[user]}⟫ #{x} ⟪#{moves[boss]}⟫ 🗨️ #{the_boss[:name]}"
+      puts whitespace(player, " ", 16) + "#{player[:name]} 💬 #{moves[user]} #{x} #{moves[boss]} 🗨️ #{the_boss[:name]}"
     end
   elsif method == :keg
-    messages = (user_moves == boss_moves ? lose : win)
-    x = user_moves == boss_moves ? "❌" : "✅"
-    puts whitespace(player, " ", 16) + "#{player[:name]} 💬 ⟪#{drinks[user_moves]}⟫ #{x} ⟪#{drinks[boss_moves]}⟫ 🗨️ #{the_boss[:name]}"
+    x = user_moves == boss_moves ? "#{SUCCESS}" : "#{FLUNKED}"
+    puts whitespace(player, " ", 16) + "#{player[:name]} 💬 #{drinks[user_moves]} #{x} #{drinks[boss_moves]} 🗨️ #{the_boss[:name]}"
   end
   puts SEPARATOR
-  puts text_break(messages.sample, " ", 80)
 end

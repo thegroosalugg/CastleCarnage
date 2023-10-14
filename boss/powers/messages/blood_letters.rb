@@ -4,18 +4,10 @@
 def blood_ritual(player, user_choice, price_paid, multiplier, boost)
   boost = boost == :attack ? "💢 attack" : "🛡️ block"
 
-  buff_up = [
-    "You sacked #{player[:emoji]} #{price_paid} HP to swole up your #{boost} by #{multiplier}.",
-  ]
-  get_money = [
-    "You bled #{player[:emoji]} #{price_paid} HP but you raked in #{multiplier} 💵 bucks. Worth it.",
-  ]
-  sober_up = [
-    "🩸 is thicker than 💧. You sacked #{player[:emoji]} #{price_paid} HP and exfoliated #{multiplier} 🍺",
-  ]
-  munch_out = [
-    "Your meal garnished you #{player[:emoji]} #{price_paid} HP, but the bloat nerfs your #{boost} by #{multiplier}.",
-  ]
+  buff_up = "#{BUFF} +#{multiplier} #{boost} / -#{price_paid} #{player[:emoji]}"
+  get_money = "#{CASH} +#{multiplier} 💵 / -#{price_paid} #{player[:emoji]}"
+  sober_up = "#{HANGOVER} -#{multiplier} 🍺 / -#{price_paid} #{player[:emoji]}"
+  munch_out = "#{HP_PLUS} +#{price_paid} #{player[:emoji]} / -#{multiplier} #{boost}"
 
   messages = case user_choice
   when 4 then buff_up
@@ -23,17 +15,17 @@ def blood_ritual(player, user_choice, price_paid, multiplier, boost)
   when 6 then sober_up
   when 7 then munch_out
   end
-  puts text_break(messages.sample, " ", 80)
+  puts text_break(messages, " ", 80)
 end
 
 def drained
   messages = [
+    " You had your chance, go fight now ‼ ",
     " Once per turn, you melt ‼ ",
     " Uh-uh! I don't think so ‼ ",
+    " You've given nuff blood ‼ ",
+    " Soz (but also no) ‼ ",
     " Don't get greedy ‼ ",
-    " You've donated enough blood ‼ ",
-    " You had your chance, go fight now ‼ ",
-    " Soz (Not sorry) ‼ ",
     " Next round buddy ‼ ",
   ]
 
