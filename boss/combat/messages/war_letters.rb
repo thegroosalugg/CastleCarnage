@@ -6,12 +6,12 @@
 
 def invoice(player, amount, where)
   messages = case where
-  when :brawl then "#{CASH} #{amount[0]} 💵  #{HANGOVER} #{amount[1]} 🍺"# bar fight
+  when :brawl then "#{CASH} #{amount[0].positive? ? "+" : ""}#{amount[0]} 💵  #{HANGOVER} #{amount[1].positive? ? "+" : ""}#{amount[1]} 🍺"# bar fight
   when :bar   then "#{CASH} -#{amount} 💵  #{HANGOVER} +#{amount} 🍺" # pay the tab
   when :guard then "#{WEAPON} #{BONUS} +#{amount} 🛡️" # not tonight
   when :cash  then "#{CASH} +#{amount} 💵" # sneak attack
   when :life  then "#{BONUS} #{HP_PLUS} #{player[:name]} +#{amount} #{player[:emoji]}" # sneak attack
-  when :xcore then "#{CASH} -#{amount} 💵"
+  when :xcore then "#{CASH} -#{amount} 💵" # xhardcorex
   when :grave then "#{HP_MINUS} #{player[:name]} -#{amount} #{player[:emoji]}" # nectromancy
   end
   puts text_break(messages, " ", 80)
