@@ -75,9 +75,9 @@ end
 # Menu when selecting Fight the Power
 
 def barkeep(player)
-  blackjack = "🔥💵 #{SIX} ♠️♥️ BlackJack ♦️♣️"
-  puts "  💵🍺 #{FOUR} 💴 Settle your Tabs 🗒️"
-  puts "❄️💵🍺 #{FIVE} 🪑 Old School Bar Fight 🤺"
+  blackjack = "🔥💵 #{SIX} ♠️♥️ \e[34mＢｌａｃｋＪａｃｋ\e[0m ♦️♣️"
+  puts "  💵🍺 #{FOUR} 💴 \e[38;5;208mＰａｙ ｙｏｕｒ ｔａｂｓ\e[0m 🗒️"
+  puts "❄️💵🍺 #{FIVE} 🪑 \e[32mＯｌｄ Ｓｃｈｏｏｌ Ｂａｒ Ｆｉｇｈｔ\e[0m 🤺"
   puts (player[:cash].positive? && player[:jacked] ? blackjack : denied)
 end
 
