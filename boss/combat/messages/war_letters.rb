@@ -4,28 +4,17 @@
 # Invoice for stat changes
 # Bar fight outcomes # .abs removes negatives so only positive integers displayed
 
-def invoice(player, amount, where, haul)
-  x, y, z = case haul
-  when :gained then ["+", "-", [BONUS, HP_PLUS].join(" ")]
-  when :lost   then ["-", "+", HP_MINUS]
-  end
-
-  drunk = ["#{HANGOVER} #{y}#{amount}"]
-  cash = ["#{CASH} #{x}#{amount} 💵"]
-  guard = ["#{WEAPON} #{BONUS} +#{amount} 🛡️"]
-  life = [ "#{z} #{player[:name]} #{x}#{amount} #{player[:emoji]}" ]
-
+def invoice(player, amount, where)
   messages = case where
-  when :brawl then # bar fight
-    # beers = amount[0].positive? ? got_drunk : sober_up
-    # cash = amount[1].positive? ? got_cash : got_mugged
-    # [[beers.sample, cash.sample].join(" ")]
-  when :bar   then [[cash, drunk].flatten.join(" ")]
-  when :cash  then cash # sneak attack / xhardcorex
-  when :guard then guard # not tonight
-  when :life  then life # sneak attack / necromancy
+  when :brawl then "#{CASH} #{amount[0]} 💵  #{HANGOVER} #{amount[1]} 🍺"# bar fight
+  when :bar   then "#{CASH} -#{amount} 💵  #{HANGOVER} +#{amount} 🍺" # pay the tab
+  when :guard then "#{WEAPON} #{BONUS} +#{amount} 🛡️" # not tonight
+  when :cash  then "#{CASH} +#{amount} 💵" # sneak attack
+  when :life  then "#{BONUS} #{HP_PLUS} #{player[:name]} +#{amount} #{player[:emoji]}" # sneak attack
+  when :xcore then "#{CASH} -#{amount} 💵"
+  when :grave then "#{HP_MINUS} #{player[:name]} -#{amount} #{player[:emoji]}" # nectromancy
   end
-  puts text_break(messages.sample, " ", 80)
+  puts text_break(messages, " ", 80)
 end
 
 # Band boss style > when 5 & 6. Barkeep boss style when 6.

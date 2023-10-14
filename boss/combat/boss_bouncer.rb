@@ -48,10 +48,10 @@ def sneak_attack(player, the_boss, damage)
     if rand(1..5) == 1
       life = (damage * rand(1.0..2.0)).to_i
       player[:hp] += life
-      invoice(player, life, :life, :gained)
+      invoice(player, life, :life)
     end
     shots_fired(player, the_boss, damage, :hit)
-    invoice(player, cash, :cash, :gained)
+    invoice(player, cash, :cash)
   else
     counter = (rand(the_boss[:attack]) - rand(player[:block])).clamp(1, 100)
     player[:hp] -= counter
