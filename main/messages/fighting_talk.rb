@@ -22,7 +22,7 @@ end
 
 def somersault(chance, n)
   success = "#{SUCCESS} " + "⚔️ " * n
-  failed = "#{STACKED_IT} " + "😓 " * n
+  failed = "#{FLUNKED} " + "😓 " * n
 
   messages = chance == 1 ? success : failed
   puts text_break(messages, " ", 80)
