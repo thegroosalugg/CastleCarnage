@@ -24,7 +24,7 @@ def game_over(enemy, player)
   win = [
     "You blasted #{enemy[:name]} to another dimension. Your power level has increased.",
     "#{enemy[:name]} had a sudden heart attack, you win by default.",
-    "You splatted the #{enemy[:name]} like a bug.",
+    "You splatted #{enemy[:name]} like a grape.",
   ]
   lose = [
     "You stacked it and fell on a spike. #{enemy[:name]} laughs at your misfortune.",
