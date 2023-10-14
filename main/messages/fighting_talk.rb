@@ -5,7 +5,7 @@
 
 def shots_fired(attacker, target, damage = 0, outcome)
   critical = "#{attacker[:name]} ⚔️ \e[38;5;208m𝙲𝚁𝙸𝚃𝙸𝙲𝙰𝙻\e[0m 💥 #{target[:name]} -#{damage} #{target[:emoji]}"
-  missed = "#{attacker[:name]} 💭❓ \e[34m𝘔𝘐𝘚𝘚\e[0m"
+  missed = "#{attacker[:name]} 💭❓ \e[34m𝙼𝙸𝚂𝚂\e[0m"
   on_point = "#{attacker[:name]} ⚔️ \e[31m𝙷𝙸𝚃\e[0m 💢 #{target[:name]} -#{damage} #{target[:emoji]}"
   counter = "#{attacker[:name]} 🗯️❗ ⚔️ \e[36mℂ𝕆𝕌ℕ𝕋𝔼ℝ\e[0m 💢 #{target[:name]} -#{damage} #{target[:emoji]}"
 
