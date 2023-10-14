@@ -5,7 +5,7 @@
 # Bar fight outcomes # .abs removes negatives so only positive integers displayed
 
 def invoice(player, amount, where)
-  messages = case where
+  messages = case where                             # this condition simply sets a + symbol in fron of positive integers
   when :brawl then "#{CASH} #{amount[0].positive? ? "+" : ""}#{amount[0]} 💵  #{HANGOVER} #{amount[1].positive? ? "+" : ""}#{amount[1]} 🍺"# bar fight
   when :bar   then "#{CASH} -#{amount} 💵  #{HANGOVER} +#{amount} 🍺" # pay the tab
   when :guard then "#{WEAPON} #{BONUS} +#{amount} 🛡️" # not tonight
