@@ -18,64 +18,58 @@ def enter_room(entered_room)
 end
 
 def gifts(entity, operator, randomizer)
-  g = "#{HP_PLUS}"
-  l = "#{HP_MINUS}"
-  eh = "#{ENEMY_HP}"
-  et = "#{ENEMY_TRAP}"
   plus = " #{entity[:name]} +#{randomizer} #{entity[:emoji]}"
   minus = " #{entity[:name]} -#{randomizer} #{entity[:emoji]}"
 
   gained_hp = [
-    "#{g} This milk 🍼 is well out of date, eh, let's drink it anyways",
-    "#{g} A Spaghetti Store? Here? Yeah, I'll have the spaghetti 🍝",
-    "#{g} Proper starvin'. These mouldy bananas 🍌 will have to do",
-    "#{g} Fuckin' A! Still some cold ones in the fridge 🍻",
-    "#{g} There's some chips 🍟 on the floor. 5 second rule!",
-    "#{g} Some muppet left a pizza 🍕 in the bin 🗑️",
-    "#{g} The Rock 🪨 awaits and high fives 🙏 you",
-    "#{g} Northern Lights 🌿 Sweet as!",
-    "#{g} Holy shit! A fucking cake 🎂",
-    "#{g} Heisenberg's 🕵️‍♂️ blue!",
-    "#{g} Chili Peppers 🌶️ Yum!",
-    "#{g} Shrooms 🍄",
+    " This milk 🍼 is well out of date, eh, let's drink it anyways",
+    " A Spaghetti Store? Here? Yeah, I'll have the spaghetti 🍝",
+    " Proper starvin'. These mouldy bananas 🍌 will have to do",
+    " Fuckin' A! Still some cold ones in the fridge 🍻",
+    " There's some chips 🍟 on the floor. 5 second rule!",
+    " Some muppet left a pizza 🍕 in the bin 🗑️",
+    " The Rock 🪨 awaits and high fives 🙏 you",
+    " Northern Lights 🌿 Sweet as!",
+    " Holy shit! A fucking cake 🎂",
+    " Heisenberg's 🕵️‍♂️ blue!",
+    " Chili Peppers 🌶️ Yum!",
+    " Shrooms 🍄",
   ]
   lost_hp = [
-    "#{l} An axe 🪓 flew across the room and hit you in the face!",
-    "#{l} There's a party 🎉 occuring, but you don't know anyone",
-    "#{l} You got a Take Away 🥡 but they got your order wrong",
-    "#{l} You walked into the bad part of the neighbourhood 🏘 ",
-    "#{l} You got a beer 🍺 But it was one beer too many",
-    "#{l} A bear 🐻 jumped out and ate some of you",
-    "#{l} As you walked in a fridge 🧳 fell on you",
-    "#{l} The bad music 🎵 up in here torments you",
-    "#{l} Bollocks, you stepped in a bear trap 🐻",
-    "#{l} KABLAMO! 💥 Bloody landmines 🕳",
-    "#{l} The Wi-Fi 📱 disconnected",
+    " An axe 🪓 flew across the room and hit you in the face!",
+    " There's a party 🎉 occuring, but you don't know anyone",
+    " You got a Take Away 🥡 but they got your order wrong",
+    " You walked into the bad part of the neighbourhood 🏘 ",
+    " You got a beer 🍺 But it was one beer too many",
+    " A bear 🐻 jumped out and ate some of you",
+    " As you walked in a fridge 🧳 fell on you",
+    " The bad music 🎵 up in here torments you",
+    " Bollocks, you stepped in a bear trap 🐻",
+    " KABLAMO! 💥 Bloody landmines 🕳",
+    " The Wi-Fi 📱 disconnected",
   ]
   enemy_hp = [
-    "#{eh} There's bare food 🍕🥞🥟 here, #{entity[:name]} ate all of it!",
-    "#{eh} #{entity[:name]} got to the fridge 🍶 before you!",
-    "#{eh} Your cowardice allowed #{entity[:name]} to recover!",
-    "#{eh} #{entity[:name]} found enlightenment ⛪",
-    "#{eh} 911 🚑 heals",
+    " There's bare food 🍕🥞🥟 here, #{entity[:name]} ate all of it!",
+    " #{entity[:name]} got to the fridge 🍶 before you!",
+    " Your cowardice allowed #{entity[:name]} to recover!",
+    " #{entity[:name]} found enlightenment ⛪",
+    " 911 🚑 heals",
   ]
   enemy_trap = [
-    "#{et} Booya 💥 #{entity[:name]} stepped on a land mine 🕳",
-    "#{et} #{entity[:name]} walked in front of a truck 🚚",
-    "#{et} Nobody suspects... the butterfly 🦋",
-    "#{et} Elevator 🛗 fell on",
+    " Booya 💥 #{entity[:name]} stepped on a land mine 🕳",
+    " #{entity[:name]} walked in front of a truck 🚚",
+    " Nobody suspects... the butterfly 🦋",
+    " Elevator 🛗 fell on",
   ]
 
   messages = case operator
-  when 0 then (entity[:id] == :player ? gained_hp.sample : enemy_hp.sample) + plus
-  when 1 then (entity[:id] == :player ? lost_hp.sample : enemy_trap.sample) + minus
+  when 0 then (entity[:id] == :player ? HP_PLUS + gained_hp.sample : ENEMY_HP + enemy_hp.sample) + plus
+  when 1 then (entity[:id] == :player ? HP_MINUS + lost_hp.sample : ENEMY_TRAP + enemy_trap.sample) + minus
   end
   puts text_break(messages, " ", 80)
 end
 
 def weapon_speaks(weapon, status)
-  g = "#{WEAPON}"
-  b = "#{BROKE}"
   got = [
     " There's enough useless crap 🛒 here to make a #{weapon[:name]}, your mad smithing skills allow it",
     " Father Christmas 🎅 brings your gift early, it's that #{weapon[:name]} you wished for",
@@ -102,6 +96,6 @@ def weapon_speaks(weapon, status)
     " Damn it! You dropped your #{weapon[:name]}!",
     " Your #{weapon[:name]} was too shoddy",
   ]
-  messages = status == :got ? (g + got.sample) : (b + broke.sample)
+  messages = status == :got ? (WEAPON + got.sample) : (BROKE + broke.sample)
   puts text_break(messages, " ", 80)
 end
