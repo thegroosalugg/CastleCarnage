@@ -5,15 +5,15 @@
 
 def boss_menu(player, boss_style)
   t = 4 - player[:turns]
-  n = t == 1 ? "next" : "in #{t}"
+  n = t == 1 ? "ɴᴇxᴛ" : "ɪɴ #{t}"
   s = t == 1 ? "" : "s"
   magic = "   🔥#{player[:emoji]} \e[35m[̝̻͕Y͔̻̦]͔̞\e[0m 🪦 \e[35mⲚⲉⲥꞅⲟⲙⲁⲛⲥⲩ\e[0m  🪄"
-  wait = "⏱️ \e[35mAvailable #{n} turn#{s}\e[0m"
+  wait = "⏱️ \e[35mAᴠᴀɪʟᴀʙʟᴇ #{n} ᴛᴜʀɴs#{s}\e[0m"
 
   puts SEPARATOR
-  puts "     \e[34mDecisions,\e[0m \e[36mdecisions...\e[0m"
-  puts "     ⚔️ \e[34m[̿̓͐T͆͑͘]̒͠\e[0m 💀 \e[34mFᴀᴄᴇ ᴛʜᴇ​#{boss_style}\e[0m 🌘"
-  puts "   🔥#{player[:emoji]} \e[31m[͋͊͒Ŕ́͝]͆̿\e[0m 🩸 \e[31mBʟᴏᴏᴅ Mᴀɢɪᴄ\e[0m 🪄"
+  puts "     \e[34mDᴇᴄɪsɪᴏɴs,\e[0m \e[36mᴅᴇᴄɪsɪᴏɴs...\e[0m"
+  puts "     ⚔️ \e[34m[̿̓͐T͆͑͘]̒͠\e[0m 💀 \e[34m𝓕ⲁⲥⲉ ⲧⲏⲉ​#{boss_style}\e[0m 🌘"
+  puts "   🔥#{player[:emoji]} \e[31m[͋͊͒Ŕ́͝]͆̿\e[0m 🩸 \e[31mⲂ𝓛ⲟⲟⲆ Ⲙⲁ𝓖ⲓⲕ\e[0m 🪄"
   puts player[:turns] == 4 ? magic : padding_generator(wait, "-", 50)
 end
 
