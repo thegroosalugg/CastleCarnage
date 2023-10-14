@@ -39,8 +39,6 @@ def play_game
 
   while !enemies.empty? && player[:hp].positive?
     load_art = battlefield
-    player[:kills] += 5  #DEBUG
-    player[:rooms] += 15 #DEBUG
 
     if weapon[:durability].positive?                              # Fight menu when weapon equipped
       weapon[:broken] = false
