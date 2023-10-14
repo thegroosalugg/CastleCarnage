@@ -89,8 +89,8 @@ end
 def show_your_moves(player, the_boss, user_moves, boss_moves, method)
   moves = {
     4 => "🧊 Blue Steel",
-    5 => "🐯  Le Tigre ",
-    6 => "🍦   Magnum  "
+    5 => "🐯 Le Tigre  ",
+    6 => "🍦 Magnum    "
   }
   drinks = {
     4 => "♨️ Firestarter",

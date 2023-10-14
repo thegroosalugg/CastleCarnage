@@ -46,7 +46,9 @@ def enemy_speaks(enemy, event)
     " got got 💀",
   ]
   revive = [
-    "#{spawns} #{enemy[:name]} 🪦 🧟"
+    " 💬 C'mon chief, give us a mission.",
+    " rises 🧟 from the loam 🪦",
+    " reporting for duty.",
   ]
 
   messages = case event
@@ -54,7 +56,7 @@ def enemy_speaks(enemy, event)
   when :escape   then escape.sample
   when :surprise then shock + " " + enemy[:name] + surprise.sample
   when :pwned    then pow + " " + enemy[:name] + pwned.sample
-  when :revive   then revive.sample
+  when :revive   then spawns + " " + enemy[:name] + revive.sample
   end
   puts text_break(messages, " ", 80)
 end
