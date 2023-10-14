@@ -9,32 +9,21 @@ def invoice(player, amount, where, haul)
   when :gained then ["+", "-", [BONUS, HP_PLUS].join(" ")]
   when :lost   then ["-", "+", HP_MINUS]
   end
-   got_drunk = [ # bar fight
-    "Damn, that was a piss up, you feel #{amount[0]} 🍺 more wasted.",
-  ]
-  sober_up = [
-    "That knocked some sense into ya, ya feel you feel #{amount[0].abs} 🍺 lighter!",
-  ]
-  got_cash = [
-    "You battered #{amount[1]} 💵 outta some poor sod!",
-  ]
-  got_mugged = [
-    "You got mugged for #{amount[1].abs} 💵",
-  ]
+
   drunk = ["#{HANGOVER} #{y}#{amount}"]
   cash = ["#{CASH} #{x}#{amount} 💵"]
   guard = ["#{WEAPON} #{BONUS} +#{amount} 🛡️"]
   life = [ "#{z} #{player[:name]} #{x}#{amount} #{player[:emoji]}" ]
 
   messages = case where
-  when :brawl # bar fight
-    beers = amount[0].positive? ? got_drunk : sober_up
-    cash = amount[1].positive? ? got_cash : got_mugged
-    [[beers.sample, cash.sample].join(" ")]
+  when :brawl then # bar fight
+    # beers = amount[0].positive? ? got_drunk : sober_up
+    # cash = amount[1].positive? ? got_cash : got_mugged
+    # [[beers.sample, cash.sample].join(" ")]
   when :bar   then [[cash, drunk].flatten.join(" ")]
-  when :cash  then cash
+  when :cash  then cash # sneak attack / xhardcorex
   when :guard then guard # not tonight
-  when :life  then life # sneak attack
+  when :life  then life # sneak attack / necromancy
   end
   puts text_break(messages.sample, " ", 80)
 end
