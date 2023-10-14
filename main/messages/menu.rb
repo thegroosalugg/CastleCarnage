@@ -111,7 +111,7 @@ def name_player(player)
   while your_name.empty?
     title_screen
     your_name = gets.chomp.strip.slice(0, 9).downcase.capitalize
-    player[:name] = "🥷 #{your_name}"
+    player[:name] = "\e[3#{rand(1..6)}m🥷 #{your_name}\e[0m"
     error_message
   end
 
