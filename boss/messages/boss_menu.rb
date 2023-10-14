@@ -39,8 +39,8 @@ def player_status(player)
     end
 
   "#{BARRIER}\n" +
-  "    #{wallet} #{'💵' * [player[:cash], 0].max}\n" +
-  "    #{drunk} #{'🍺' * [player[:drunk], 0].max}"
+  "    \e[32m#{wallet}\e[0m #{'💵' * [player[:cash], 0].max}\n" +
+  "    \e[38;5;208m#{drunk}\e[0m #{'🍺' * [player[:drunk], 0].max}"
 end
 
 # boss rage bar
