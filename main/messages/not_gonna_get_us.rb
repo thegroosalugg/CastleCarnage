@@ -18,52 +18,49 @@ def enter_room(entered_room)
 end
 
 def gifts(entity, operator, randomizer)
+  w = "\e[32m𝙃𝙋\e[0m"
+  l = "\e[31m𝙃𝙋\e[0m"
+  ew = "\e[31m𝕰𝖓𝖊𝖒𝖞\e[0m"
+  el = "\e[32m𝕰𝖓𝖊𝖒𝖞\e[0m"
   gained_hp = [
-    "✅ This milk 🍼 is well out of date, eh, let's drink it anyways #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "✅ A Spaghetti Store? Here? Yeah, I'll have the spaghetti 🍝 #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "✅ Proper starvin'. These mouldy bananas 🍌 will have to do #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "✅ Fuckin' A! Still some cold ones in the fridge 🍻 #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "✅ There's some chips 🍟 on the floor. 5 second rule! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "✅ Some muppet left a pizza 🍕 in the bin 🗑️ #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "✅ The Rock 🪨 awaits and high fives 🙏 you #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "✅ Northern Lights 🌿 Sweet as! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "✅ Holy shit! A fucking cake 🎂 #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "✅ Heisenberg's 🕵️‍♂️ blue! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "✅ Chili Peppers 🌶️ Yum! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "✅ Shrooms 🍄 #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{w} This milk 🍼 is well out of date, eh, let's drink it anyways #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{w} A Spaghetti Store? Here? Yeah, I'll have the spaghetti 🍝 #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{w} Proper starvin'. These mouldy bananas 🍌 will have to do #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{w} Fuckin' A! Still some cold ones in the fridge 🍻 #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{w} There's some chips 🍟 on the floor. 5 second rule! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{w} Some muppet left a pizza 🍕 in the bin 🗑️ #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{w} The Rock 🪨 awaits and high fives 🙏 you #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{w} Northern Lights 🌿 Sweet as! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{w} Holy shit! A fucking cake 🎂 #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{w} Heisenberg's 🕵️‍♂️ blue! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{w} Chili Peppers 🌶️ Yum! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{w} Shrooms 🍄 #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
   ]
   lost_hp = [
-    "❌ An axe 🪓 flew across the room and hit you in the face! #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
-    "❌ There's a party 🎉 occuring, but you don't know anyone #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
-    "❌ You got a Take Away 🥡 but they got your order wrong #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
-    "❌ You walked into the bad part of the neighbourhood 🏘  #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
-    "❌ You got a beer 🍺 But it was one beer too many #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
-    "❌ A bear 🐻 jumped out and ate some of you #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
-    "❌ As you walked in a fridge 🧳 fell on you #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
-    "❌ The bad music 🎵 up in here torments you #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
-    "❌ Bollocks, you stepped in a bear trap 🐻 #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
-    "❌ KABLAMO! 💥 Bloody landmines 🕳 #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
-    "❌ The Wi-Fi 📱 disconnected #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
+    "#{l} An axe 🪓 flew across the room and hit you in the face! #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
+    "#{l} There's a party 🎉 occuring, but you don't know anyone #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
+    "#{l} You got a Take Away 🥡 but they got your order wrong #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
+    "#{l} You walked into the bad part of the neighbourhood 🏘  #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
+    "#{l} You got a beer 🍺 But it was one beer too many #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
+    "#{l} A bear 🐻 jumped out and ate some of you #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
+    "#{l} As you walked in a fridge 🧳 fell on you #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
+    "#{l} The bad music 🎵 up in here torments you #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
+    "#{l} Bollocks, you stepped in a bear trap 🐻 #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
+    "#{l} KABLAMO! 💥 Bloody landmines 🕳 #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
+    "#{l} The Wi-Fi 📱 disconnected #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
   ]
   enemy_hp = [
-    "❌ You're practically feeding #{entity[:name]} with your poor decisions. They regain #{entity[:emoji]} #{randomizer} HP!",
-    "❌ 911 🚑 arrives and treats #{entity[:name]} for #{entity[:emoji]} #{randomizer} HP! Their prognosis is looking good.",
-    "❌ It's like you're working for #{entity[:name]}'s well-being. They polished off #{entity[:emoji]} #{randomizer} HP!",
-    "❌ Bad decision. #{entity[:name]} found enlightenment. #{entity[:name]} gained #{entity[:emoji]} #{randomizer} HP",
-    "❌ There's bare food 🍕🥞🥟 here, #{entity[:name]} ate all of it chowing down #{entity[:emoji]} #{randomizer} HP.",
-    "❌ #{entity[:name]} got to the fridge 🍶 before you, wolfing down #{entity[:emoji]} #{randomizer} HP!",
-    "❌ #{entity[:name]} laughs at your missteps and eats up #{entity[:emoji]} #{randomizer} HP!",
-    "❌ Your cowardice allowed #{entity[:name]} to recover #{entity[:emoji]} #{randomizer} HP",
+    "#{ew} There's bare food 🍕🥞🥟 here, #{entity[:name]} ate all of it! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{ew} #{entity[:name]} got to the fridge 🍶 before you! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{ew} Your cowardice allowed #{entity[:name]} to recover! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{ew} #{entity[:name]} found enlightenment ⛪ #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{ew} 911 🚑 heals #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
   ]
   enemy_trap = [
-    "✅ Chasing after you, #{entity[:name]} walked in front of a truck 🚚. #{entity[:name]} lost #{entity[:emoji]} #{randomizer} HP!",
-    "✅ Your level of swagger 😎 is too high, #{entity[:name]} just couldn't take it and lost #{entity[:emoji]} #{randomizer} HP!",
-    "✅ #{entity[:name]} just remembered they forgot to take the bins 🗑️ out costing them #{entity[:emoji]} #{randomizer} HP!",
-    "✅ You found a grenade 🍈, tossing it at #{entity[:name]} for #{entity[:emoji]} #{randomizer} damage! Kamblamo 💥",
-    "✅ Booya 💥, the #{entity[:name]} stepped on a land mine 🕳  dealing 'em #{entity[:emoji]} #{randomizer} damage!",
-    "✅ Nobody suspects... the butterfly 🦋 ! #{entity[:name]} got merked for #{entity[:emoji]} #{randomizer} damage!",
-    "✅ You got saved by Batman 🦇 !#{entity[:name]} going to prison 🏛️ for #{entity[:emoji]} #{randomizer} HP!",
-    "✅ #{entity[:name]} got weighed in on the way in, losing #{entity[:emoji]} #{randomizer} HP!",
+    "#{el} Booya 💥 #{entity[:name]} stepped on a land mine 🕳   #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
+    "#{el} #{entity[:name]} walked in front of a truck 🚚 #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
+    "#{el} Nobody suspects... the butterfly 🦋 #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
+    "#{el} Elevator 🛗 fell on #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
   ]
 
   messages = case operator
