@@ -10,7 +10,7 @@ def pay_the_tab(player, the_boss)
   player[:cash] -= cash_spent
   player[:drunk] = (player[:drunk] + cash_spent).clamp(0, 20)
 
-  invoice(player, cash_spent, :tab)
+  invoice(player, cash_spent, :bar, :lost) unless cash_spent.zero?
   shots_fired(player, the_boss, damage, :hit)
 end
 
