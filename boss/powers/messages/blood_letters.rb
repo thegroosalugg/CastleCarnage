@@ -4,9 +4,9 @@
 def blood_ritual(player, user_choice, price_paid, multiplier, boost)
   boost = boost == :attack ? "💢 attack" : "🛡️ block"
 
-  buff_up = "\e[37m𝓑𝓤𝓕𝓕\e[0m -#{price_paid} #{player[:emoji]} / +#{multiplier} #{boost}"
-  get_money = "\e[32m🄲🄰🅂🄷\e[0m -#{price_paid} #{player[:emoji]} / +#{multiplier} 💵"
-  sober_up = "\e[38;5;208mℍ𝔸ℕ𝔾𝕆𝕍𝔼ℝ\e[0m -#{price_paid} #{player[:emoji]} / -#{multiplier} 🍺"
+  buff_up = "\e[36m𝓑𝓤𝓕𝓕\e[0m +#{multiplier} #{boost} / -#{price_paid} #{player[:emoji]}"
+  get_money = "\e[32m🄲🄰🅂🄷\e[0m +#{multiplier} 💵 / -#{price_paid} #{player[:emoji]}"
+  sober_up = "\e[38;5;208mℍ𝔸ℕ𝔾𝕆𝕍𝔼ℝ\e[0m -#{multiplier} 🍺 / -#{price_paid} #{player[:emoji]}"
   munch_out = "\e[32m𝙃𝙋\e[0m +#{price_paid} #{player[:emoji]} / -#{multiplier} #{boost}"
 
   messages = case user_choice

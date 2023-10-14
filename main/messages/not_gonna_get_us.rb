@@ -78,11 +78,11 @@ def weapon_speaks(weapon, status)
   b = "\e[31m𝐁𝐑𝐎𝐊𝐄\e[0m"
   got = [
     " There's enough useless crap 🛒 here to make a #{weapon[:name]}, your mad smithing skills allow it",
-    " Santa Claus 🎅 brings your gift early, it's that #{weapon[:name]} you wished for",
+    " Father Christmas 🎅 brings your gift early, it's that #{weapon[:name]} you wished for",
     " Gift! There's a #{weapon[:name]} here! Looks like the foot's on the other shoe!",
     " You reach into your pocket for a snout 🚬 and pull out a #{weapon[:name]}!",
     " You remembered you still have your #{weapon[:name]} in your sock 🧦",
-    " Mysterious Stranger 🕵🏼💬 Hey kid, catch! #{weapon[:name]} acquired",
+    " 🕵🏼 Mysterious Stranger 💬 Hey kid, catch! #{weapon[:name]} acquired",
     " Package from Amazon 🎁 It's that #{weapon[:name]} you ordered!",
     " There's find a #{weapon[:name]} sandwiched between the pickles",
     " There's a #{weapon[:name]} inside this hollowed out book 📙",
@@ -103,6 +103,5 @@ def weapon_speaks(weapon, status)
     " Your #{weapon[:name]} was too shoddy",
   ]
   messages = status == :got ? (g + got.sample) : (b + broke.sample)
-  puts SEPARATOR if status == :broke
   puts text_break(messages, " ", 80)
 end
