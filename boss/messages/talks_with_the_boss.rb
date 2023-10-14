@@ -41,7 +41,7 @@ def boss_walks(the_boss, boss_style, time)
   band = [
     "#{the_boss[:name]} is two-stepping 🪜 in the pit. Parkway Drive 🎸 come out on stage!",
     "#{the_boss[:name]} is smashing out banging tunes 🎸 A pit is 'bout to break out!",
-    "Some wanker just started playing dubstep 🎧 Get damage ready",
+    "Some wanker just started playing dubstep 🎧 Get ready for damage",
     "Darude Sandstorm 🎧 starts playing, shit's 'bout to go down",
   ]
   outro = [ "#{the_boss[:name]} ♻️ ▻◅▶▷ #{boss_style}" ]
