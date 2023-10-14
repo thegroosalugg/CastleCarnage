@@ -83,7 +83,7 @@ end
 def special_weapon
   special_weapon = {
     id: :special_weapon,
-    name: "\e[38;5;208m3#{SPECIAL_WEAPONS.sample}\e[0m",
+    name: "\e[38;5;208m#{SPECIAL_WEAPONS.sample}\e[0m",
     durability: rand(2..3),
     attack: (rand(30..40)..rand(41..99)),
     accuracy: (1..rand(5..12)),
