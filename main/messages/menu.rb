@@ -1,6 +1,7 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
+
 # various ASCII separators
 
 SEPARATOR = "⚔" * 80
@@ -10,6 +11,11 @@ BOSS_DIV = " " * 4 + "▪" * 76
 
 # In game display tags
 
+FOUR = "\e[31m[̳4̳]̳\e[0m"
+FIVE = "\e[32m[̳5̳]̳\e[0m"
+SIX = "\e[34m̝̫[̳6̳]̳\e[0m"
+SEVEN = "\e[38;5;208m[̳7̳]̳\e[0m"
+NINE = "\e[36m̘[̳9̳]̳\e[0m"
 HANGOVER = "\e[38;5;208mℍ𝔸ℕ𝔾𝕆𝕍𝔼ℝ\e[0m"
 BONUS = "\e[33mℬ𝒪𝒩𝒰𝒮\e[0m"
 BUFF = "\e[36m𝓑𝓤𝓕𝓕\e[0m"

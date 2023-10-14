@@ -75,19 +75,10 @@ end
 # Menu when selecting Fight the Power
 
 def barkeep(player)
-  money_fight = [
-    "  💵🍺 [4] 💴🗒️ Settle your Tabs",
-  ]
-  bar_fight = [
-    "❄️💵🍺 [5] 🪑🤺 Old School Bar Fight",
-  ]
-  blackjack = [
-    "🔥💵   [6] ♠️♥️ BlackJack ♦️♣️",
-  ]
-
-  puts money_fight.sample
-  puts bar_fight.sample
-  puts (player[:cash].positive? && player[:jacked] ? blackjack.sample : denied)
+  blackjack = "🔥💵 #{SIX} ♠️♥️ BlackJack ♦️♣️"
+  puts "  💵🍺 #{FOUR} 💴 Settle your Tabs 🗒️"
+  puts "❄️💵🍺 #{FIVE} 🪑 Old School Bar Fight 🤺"
+  puts (player[:cash].positive? && player[:jacked] ? blackjack : denied)
 end
 
 def bouncer(player, weapon)
