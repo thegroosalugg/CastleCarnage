@@ -13,6 +13,7 @@ BOSS_DIV = " " * 4 + "▪" * 76
 HANGOVER = "\e[38;5;208mℍ𝔸ℕ𝔾𝕆𝕍𝔼ℝ\e[0m"
 BONUS = "\e[37mＢＯＮＵＳ\e[0m"
 BUFF = "\e[36m𝓑𝓤𝓕𝓕\e[0m"
+CASH = "\e[32m🄲🄰🅂🄷\e[0m"
 HP_PLUS = "\e[32m𝙃𝙋\e[0m"
 HP_MINUS = "\e[31m𝙃𝙋\e[0m"
 ENEMY_HP = "\e[31m𝕰𝖓𝖊𝖒𝖞\e[0m"
