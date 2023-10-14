@@ -69,36 +69,36 @@ end
 
 def load_menu
   t = [
-    "   🥷 [t] Strike first! Strike hard! No mercy!",
-    "   🥷 [t] Punch 'em in their stupid ugly face",
-    "   🥷 [t] Challenge 'em to a thrashing",
-    "   🥷 [t] Talk about Fight Club",
-    "   🥷 [t] T is for time to die!",
-    "   🥷 [t] Mash 'em up, innit",
-    "   🥷 [t] Pay 'em a beating",
-    "   🥷 [t] Choose violence",
-    "   🥷 [t] Do 'em in",
+    " Strike first! Strike hard! No mercy!",
+    " Punch 'em in their stupid ugly face",
+    " Challenge 'em to a thrashing",
+    " Talk about Fight Club",
+    " T is for time to die!",
+    " Mash 'em up, innit",
+    " Pay 'em a beating",
+    " Choose violence",
+    " Do 'em in",
   ]
 
   r = [
-    "   🐬 [r] Try a sommersault!",
-    "   🐬 [r] Do a Barrel Roll",
-    "   🐬 [r] Do a sick flip",
+    " Try a sommersault!",
+    " Do a Barrel Roll",
+    " Do a sick flip",
   ]
 
   y = [
-    "   💨 [y] Fuckin' leg it!",
-    "   💨 [y] Cheese it!",
-    "   💨 [y] 'llow it!",
-    "   💨 [y] Peg it!",
-    "   💨 [y] Bounce",
-    "   💨 [y] Mug it",
+    " Fuckin' leg it!",
+    " Cheese it!",
+    " 'llow it!",
+    " Peg it!",
+    " Bounce",
+    " Mug it",
   ]
 
-  puts "       Whatcha ya gonna do?"
-  puts t.sample
-  puts r.sample
-  puts y.sample
+  puts "         \e[35m Whatcha ya gonna do? \e[0m"
+  puts "     🥷 \e[31m[̼̟̞T͍̦͔]̻̟͜\e[0m \e[31m#{t.sample}\e[0m"
+  puts "     🐬 \e[38;5;208m[͌̈́͘R͌̈́͆]͋͑͠\e[0m \e[38;5;208m#{r.sample}\e[0m"
+  puts "     💨 \e[33m[̻͓͜Y͖͖̘]̫̼͚\e[0m \e[33m#{y.sample}\e[0m"
 end
 
 # Name your player
