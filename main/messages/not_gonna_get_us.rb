@@ -22,52 +22,55 @@ def gifts(entity, operator, randomizer)
   l = "\e[31m𝙃𝙋\e[0m"
   eh = "\e[31m𝕰𝖓𝖊𝖒𝖞\e[0m"
   et = "\e[32m𝕰𝖓𝖊𝖒𝖞\e[0m"
+  plus = " #{entity[:name]} +#{randomizer} #{entity[:emoji]}"
+  minus = " #{entity[:name]} -#{randomizer} #{entity[:emoji]}"
+
   gained_hp = [
-    "#{g} This milk 🍼 is well out of date, eh, let's drink it anyways #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{g} A Spaghetti Store? Here? Yeah, I'll have the spaghetti 🍝 #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{g} Proper starvin'. These mouldy bananas 🍌 will have to do #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{g} Fuckin' A! Still some cold ones in the fridge 🍻 #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{g} There's some chips 🍟 on the floor. 5 second rule! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{g} Some muppet left a pizza 🍕 in the bin 🗑️ #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{g} The Rock 🪨 awaits and high fives 🙏 you #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{g} Northern Lights 🌿 Sweet as! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{g} Holy shit! A fucking cake 🎂 #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{g} Heisenberg's 🕵️‍♂️ blue! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{g} Chili Peppers 🌶️ Yum! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{g} Shrooms 🍄 #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{g} This milk 🍼 is well out of date, eh, let's drink it anyways",
+    "#{g} A Spaghetti Store? Here? Yeah, I'll have the spaghetti 🍝",
+    "#{g} Proper starvin'. These mouldy bananas 🍌 will have to do",
+    "#{g} Fuckin' A! Still some cold ones in the fridge 🍻",
+    "#{g} There's some chips 🍟 on the floor. 5 second rule!",
+    "#{g} Some muppet left a pizza 🍕 in the bin 🗑️",
+    "#{g} The Rock 🪨 awaits and high fives 🙏 you",
+    "#{g} Northern Lights 🌿 Sweet as!",
+    "#{g} Holy shit! A fucking cake 🎂",
+    "#{g} Heisenberg's 🕵️‍♂️ blue!",
+    "#{g} Chili Peppers 🌶️ Yum!",
+    "#{g} Shrooms 🍄",
   ]
   lost_hp = [
-    "#{l} An axe 🪓 flew across the room and hit you in the face! #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
-    "#{l} There's a party 🎉 occuring, but you don't know anyone #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
-    "#{l} You got a Take Away 🥡 but they got your order wrong #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
-    "#{l} You walked into the bad part of the neighbourhood 🏘  #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
-    "#{l} You got a beer 🍺 But it was one beer too many #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
-    "#{l} A bear 🐻 jumped out and ate some of you #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
-    "#{l} As you walked in a fridge 🧳 fell on you #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
-    "#{l} The bad music 🎵 up in here torments you #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
-    "#{l} Bollocks, you stepped in a bear trap 🐻 #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
-    "#{l} KABLAMO! 💥 Bloody landmines 🕳 #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
-    "#{l} The Wi-Fi 📱 disconnected #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
+    "#{l} An axe 🪓 flew across the room and hit you in the face!",
+    "#{l} There's a party 🎉 occuring, but you don't know anyone",
+    "#{l} You got a Take Away 🥡 but they got your order wrong",
+    "#{l} You walked into the bad part of the neighbourhood 🏘 ",
+    "#{l} You got a beer 🍺 But it was one beer too many",
+    "#{l} A bear 🐻 jumped out and ate some of you",
+    "#{l} As you walked in a fridge 🧳 fell on you",
+    "#{l} The bad music 🎵 up in here torments you",
+    "#{l} Bollocks, you stepped in a bear trap 🐻",
+    "#{l} KABLAMO! 💥 Bloody landmines 🕳",
+    "#{l} The Wi-Fi 📱 disconnected",
   ]
   enemy_hp = [
-    "#{eh} There's bare food 🍕🥞🥟 here, #{entity[:name]} ate all of it! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{eh} #{entity[:name]} got to the fridge 🍶 before you! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{eh} Your cowardice allowed #{entity[:name]} to recover! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{eh} #{entity[:name]} found enlightenment ⛪ #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{eh} 911 🚑 heals #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{eh} There's bare food 🍕🥞🥟 here, #{entity[:name]} ate all of it!",
+    "#{eh} #{entity[:name]} got to the fridge 🍶 before you!",
+    "#{eh} Your cowardice allowed #{entity[:name]} to recover!",
+    "#{eh} #{entity[:name]} found enlightenment ⛪",
+    "#{eh} 911 🚑 heals",
   ]
   enemy_trap = [
-    "#{et} Booya 💥 #{entity[:name]} stepped on a land mine 🕳   #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
-    "#{et} #{entity[:name]} walked in front of a truck 🚚 #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
-    "#{et} Nobody suspects... the butterfly 🦋 #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
-    "#{et} Elevator 🛗 fell on #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
+    "#{et} Booya 💥 #{entity[:name]} stepped on a land mine 🕳",
+    "#{et} #{entity[:name]} walked in front of a truck 🚚",
+    "#{et} Nobody suspects... the butterfly 🦋",
+    "#{et} Elevator 🛗 fell on",
   ]
 
   messages = case operator
-  when 0 then entity[:id] == :player ? gained_hp : enemy_hp
-  when 1 then entity[:id] == :player ? lost_hp : enemy_trap
+  when 0 then (entity[:id] == :player ? gained_hp.sample : enemy_hp.sample) + plus
+  when 1 then (entity[:id] == :player ? lost_hp.sample : enemy_trap.sample) + minus
   end
-  puts text_break(messages.sample, " ", 80)
+  puts text_break(messages, " ", 80)
 end
 
 def weapon_speaks(weapon, status)
