@@ -18,23 +18,23 @@ def enter_room(entered_room)
 end
 
 def gifts(entity, operator, randomizer)
-  w = "\e[32m𝙃𝙋\e[0m"
+  g = "\e[32m𝙃𝙋\e[0m"
   l = "\e[31m𝙃𝙋\e[0m"
-  ew = "\e[31m𝕰𝖓𝖊𝖒𝖞\e[0m"
-  el = "\e[32m𝕰𝖓𝖊𝖒𝖞\e[0m"
+  eh = "\e[31m𝕰𝖓𝖊𝖒𝖞\e[0m"
+  et = "\e[32m𝕰𝖓𝖊𝖒𝖞\e[0m"
   gained_hp = [
-    "#{w} This milk 🍼 is well out of date, eh, let's drink it anyways #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{w} A Spaghetti Store? Here? Yeah, I'll have the spaghetti 🍝 #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{w} Proper starvin'. These mouldy bananas 🍌 will have to do #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{w} Fuckin' A! Still some cold ones in the fridge 🍻 #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{w} There's some chips 🍟 on the floor. 5 second rule! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{w} Some muppet left a pizza 🍕 in the bin 🗑️ #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{w} The Rock 🪨 awaits and high fives 🙏 you #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{w} Northern Lights 🌿 Sweet as! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{w} Holy shit! A fucking cake 🎂 #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{w} Heisenberg's 🕵️‍♂️ blue! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{w} Chili Peppers 🌶️ Yum! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{w} Shrooms 🍄 #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{g} This milk 🍼 is well out of date, eh, let's drink it anyways #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{g} A Spaghetti Store? Here? Yeah, I'll have the spaghetti 🍝 #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{g} Proper starvin'. These mouldy bananas 🍌 will have to do #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{g} Fuckin' A! Still some cold ones in the fridge 🍻 #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{g} There's some chips 🍟 on the floor. 5 second rule! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{g} Some muppet left a pizza 🍕 in the bin 🗑️ #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{g} The Rock 🪨 awaits and high fives 🙏 you #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{g} Northern Lights 🌿 Sweet as! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{g} Holy shit! A fucking cake 🎂 #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{g} Heisenberg's 🕵️‍♂️ blue! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{g} Chili Peppers 🌶️ Yum! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{g} Shrooms 🍄 #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
   ]
   lost_hp = [
     "#{l} An axe 🪓 flew across the room and hit you in the face! #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
@@ -50,17 +50,17 @@ def gifts(entity, operator, randomizer)
     "#{l} The Wi-Fi 📱 disconnected #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
   ]
   enemy_hp = [
-    "#{ew} There's bare food 🍕🥞🥟 here, #{entity[:name]} ate all of it! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{ew} #{entity[:name]} got to the fridge 🍶 before you! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{ew} Your cowardice allowed #{entity[:name]} to recover! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{ew} #{entity[:name]} found enlightenment ⛪ #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
-    "#{ew} 911 🚑 heals #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{eh} There's bare food 🍕🥞🥟 here, #{entity[:name]} ate all of it! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{eh} #{entity[:name]} got to the fridge 🍶 before you! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{eh} Your cowardice allowed #{entity[:name]} to recover! #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{eh} #{entity[:name]} found enlightenment ⛪ #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
+    "#{eh} 911 🚑 heals #{entity[:name]} +#{randomizer} #{entity[:emoji]}",
   ]
   enemy_trap = [
-    "#{el} Booya 💥 #{entity[:name]} stepped on a land mine 🕳   #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
-    "#{el} #{entity[:name]} walked in front of a truck 🚚 #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
-    "#{el} Nobody suspects... the butterfly 🦋 #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
-    "#{el} Elevator 🛗 fell on #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
+    "#{et} Booya 💥 #{entity[:name]} stepped on a land mine 🕳   #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
+    "#{et} #{entity[:name]} walked in front of a truck 🚚 #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
+    "#{et} Nobody suspects... the butterfly 🦋 #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
+    "#{et} Elevator 🛗 fell on #{entity[:name]} -#{randomizer} #{entity[:emoji]}",
   ]
 
   messages = case operator
@@ -71,39 +71,35 @@ def gifts(entity, operator, randomizer)
 end
 
 def weapon_speaks(weapon, status)
+  g = "\e[38;5;208m𝓦𝓔𝓐𝓟𝓞𝓝\e[0m"
+  b = "\e[31m𝐁𝐑𝐎𝐊𝐄\e[0m"
   got = [
-    "Rummaging through the fridge 🧊, you find a #{weapon[:name]} sandwiched between the pickles! Let's add some flavour to this thrashing!",
-    "You open a cookbook 📙, hollowed out there's a #{weapon[:name]} inside. You check your watch ⌚, it's 5 past throwdown o'clock.",
-    "A genie 🧞 appears and grants you 3 wishes, but you're only gonna need one: a #{weapon[:name]} for laying down the law.",
-    "What's this? 🤔 You find a hidden #{weapon[:name]} in the back of a dusty closet. Time to rewrite history!",
-    "There's enough useless crap 🛒 here to manfacture a #{weapon[:name]}, your mad smithing skills allow it.",
-    "Your Amazon 🎁 package has arrived, it's that #{weapon[:name]} you ordered. Time for beatdown!",
-    "Santa Claus 🎅 came to bring you your gift early, it's that #{weapon[:name]} you wished for",
-    "You reach into your pocket for a cigarette 🚬 and pull out a #{weapon[:name]}. Jackpot!",
-    "While checking the drawers 🗄️, you found a #{weapon[:name]} hidden among the spoons!",
-    "Gift 🎁 ! There's a #{weapon[:name]} here! Looks like the foot's on the other shoe!",
-    "Mysterious Stranger 🕵️‍♂️ appeared, 'Hey kid, catch', he throws you a #{weapon[:name]}",
-    "No way, you just remembered you still have your #{weapon[:name]} in your sock 🧦",
-    "Under the bed 🛏️, you discovered a #{weapon[:name]} 👀 Time for some pummeling!",
+    " There's enough useless crap 🛒 here to make a #{weapon[:name]}, your mad smithing skills allow it",
+    " Santa Claus 🎅 brings your gift early, it's that #{weapon[:name]} you wished for",
+    " Gift! There's a #{weapon[:name]} here! Looks like the foot's on the other shoe!",
+    " You reach into your pocket for a snout 🚬 and pull out a #{weapon[:name]}!",
+    " You remembered you still have your #{weapon[:name]} in your sock 🧦",
+    " Mysterious Stranger 🕵🏼💬 Hey kid, catch! #{weapon[:name]} acquired",
+    " Package from Amazon 🎁 It's that #{weapon[:name]} you ordered!",
+    " There's find a #{weapon[:name]} sandwiched between the pickles",
+    " There's a #{weapon[:name]} inside this hollowed out book 📙",
+    " A Djinn 🧞 grants you a wish, one #{weapon[:name]} please",
+    " You found a #{weapon[:name]} hidden among the spoons!",
   ]
   broke = [
-    "😲 Bollocks, your #{weapon[:name]} slipped out of your hand and flew out of the window. Time to split!",
-    "😲 You suddenly forgot how to wield your #{weapon[:name]}, it's useless now. You threw it away.",
-    "😲 The universe conspires against you. Your #{weapon[:name]} disintegrates into nothingness!",
-    "😲 Your #{weapon[:name]} made its final stand and fell to pieces. You'll need a new one.",
-    "😲 Well, that's a bummer! Your trusty #{weapon[:name]} just disintegrated into dust.",
-    "😲 Goddamn it! You dropped your #{weapon[:name]}! No time to nab it, gotta bolt!",
-    "😲 You used up your last shot, your #{weapon[:name]} is a paperweight.",
-    "😲 Your #{weapon[:name]} resigned from service. On your own now.",
-    "😲 Your #{weapon[:name]} jumped from your hand and legged it.",
-    "😲 Your #{weapon[:name]} was proper shoddy, sucks to be you.",
-    "😲 Your #{weapon[:name]} broke 💔, time to take a walk.",
-    "😲 Oh shit! Your #{weapon[:name]} broke. Better leg it!",
-    "😲 Poxy #{weapon[:name]} gone 'n' did a runner on you",
-    "😲 Your #{weapon[:name]} disappears into thin air",
-    "😲 Goodbye #{weapon[:name]}, you will be missed.",
+    " The universe conspires against you. Your #{weapon[:name]} melts!",
+    " Your #{weapon[:name]} jumps ouuta your hand and runs off",
+    " You suddenly forgot how to wield your #{weapon[:name]}",
+    " Oh shit! Your #{weapon[:name]} broke. Better leg it!",
+    " Poxy #{weapon[:name]} gon 'n' did a runner on you",
+    " Your #{weapon[:name]} disappears into thin air",
+    " Your #{weapon[:name]} flew out of the window!",
+    " Goodbye #{weapon[:name]}, you will be missed",
+    " Your #{weapon[:name]} resigned from service",
+    " Damn it! You dropped your #{weapon[:name]}!",
+    " Your #{weapon[:name]} was too shoddy",
   ]
-  messages = status == :got ? got : broke
+  messages = status == :got ? (g + got.sample) : (b + broke.sample)
   puts SEPARATOR if status == :broke
-  puts text_break(messages.sample, " ", 80)
+  puts text_break(messages, " ", 80)
 end
