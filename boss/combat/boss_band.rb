@@ -42,6 +42,7 @@ def dance_off(player, buddy, weapon, the_boss, boss_style, load_boss)
 
     swing(player, the_boss, :dance) if (user_choice > boss_moves[round]) || (user_choice == 4 && boss_moves[round] == 6) unless (boss_moves[round] == 4 && user_choice == 6)
     swing(the_boss, player, :dance) if (boss_moves[round] > user_choice) || (boss_moves[round] == 4 && user_choice == 6) unless (user_choice == 4 && boss_moves[round] == 6)
+    "#{shots_fired(player, the_boss, :missed)} #{shots_fired(the_boss, player, :missed)}" if user_choice == boss_moves[round]
   end
 end
 
