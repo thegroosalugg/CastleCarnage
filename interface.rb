@@ -33,10 +33,9 @@ def play_game
   tracked_enemy = enemies.sample
   weapon = pick_weapon
   the_boss = big_boss_awaits
-  load_art = battlefield
 
   intro(player, weapon, tracked_enemy)
-  state_of_game(enemies, player, weapon, load_art)
+  state_of_game(enemies, player, weapon, load_art = battlefield)
 
   while !enemies.empty? && player[:hp].positive?
     load_art = battlefield
