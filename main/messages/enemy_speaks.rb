@@ -10,18 +10,18 @@ def enemy_speaks(enemy, event)
     " Package from Amazon 🎁 but oh shit! It's #{enemy[:name]} with an order for bloodshed!",
     " Motherfucking #{enemy[:name]} sprung out the fridge 🧊, they coming right for ya!",
     " Wild #{enemy[:name]} appeared❗ #{enemy[:name]}'s exerting its pressure!",
-    " The phone 📞 ringing, it's #{enemy[:name]} calling for your death.",
+    " The phone 📞 is ringing, it's #{enemy[:name]} calling for your death.",
     " #{enemy[:name]} 💬 Yargh, yer stepped into the wrong castle matey",
-    " It's a full moon 🌕 #{enemy[:name]} rises from the ground 🪦",
+    " It's a full moon 🌕 #{enemy[:name]} rises from the dirt 🪦",
     " #{enemy[:name]} 💬 Step on up kiddies, thrashings for all!",
     " #{enemy[:name]} was waiting for you in the thrash can 🗑️",
   ]
   escape = [
-    "💬 Better leg it, don't wanna let #{enemy[:name]} get the drop on you.",
-    "💬 That bastard #{enemy[:name]} is right behing me, gotta cheese it!",
     "💬 Dammit, gotta dash to a gaff quick, or I'm #{enemy[:name]} food!",
+    "💬 That bastard #{enemy[:name]} is right behing me, leeegg it!",
     "💬 Damn, that #{enemy[:name]}'s a wasteman, time to scram!",
     "💬 Shit shit shit shit! Bloody cheese it!",
+    "💬 Bloody hell, what's with this place?",
   ]
   surprise = [
     " does a mental 🤸 backflip and landed in front of you!",
