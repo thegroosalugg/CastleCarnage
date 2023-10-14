@@ -2,9 +2,6 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 def enemy_speaks(enemy, event)
-  spawns = "\e[35m𝓢𝓤𝓜𝓜𝓞𝓝\e[0m"
-  shock = "\e[33m𝘚𝘜𝘙𝘗𝘙𝘐𝘚𝘌\e[0m"
-  pow = "\e[31m𝕡𝕨𝕟𝕖𝕕\e[0m"
   summon = [
     " You stare in the mirror 🔲 and slowly realise the #{enemy[:name]} staring back isn't you...",
     " Package from Amazon 🎁 but oh shit! It's #{enemy[:name]} with an order for bloodshed!",
@@ -52,11 +49,11 @@ def enemy_speaks(enemy, event)
   ]
 
   messages = case event
-  when :summon   then spawns + summon.sample
+  when :summon   then SUMMON + summon.sample
   when :escape   then escape.sample
-  when :surprise then shock + " " + enemy[:name] + surprise.sample
-  when :pwned    then pow + " " + enemy[:name] + pwned.sample
-  when :revive   then spawns + " " + enemy[:name] + revive.sample
+  when :surprise then SURPRISE + " " + enemy[:name] + surprise.sample
+  when :pwned    then PWNED + " " + enemy[:name] + pwned.sample
+  when :revive   then SUMMON + " " + enemy[:name] + revive.sample
   end
   puts text_break(messages, " ", 80)
 end

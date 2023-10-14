@@ -78,8 +78,8 @@ def step_on_up(method)
     puts "    [5] 🐯 Le Tigre"
     puts "    [6] 🍦 Magnum"
   elsif method == :keg
-    puts "    [4] ♨️ Firestarter"
-    puts "    [5] ❄️ Cold as Ice"
+    puts "    [4] 🦎Charmander🔥"
+    puts "    [5] 🐢 Squirtle 💧"
   elsif method == :cards
     puts "    [4] 🃏 Hit me!"
     puts "    [5] 🪂 I'm out!"
@@ -93,8 +93,8 @@ def show_your_moves(player, the_boss, user_moves, boss_moves, method)
     6 => "🍦 Magnum    "
   }
   drinks = {
-    4 => "♨️ Firestarter",
-    5 => "❄️ Cold as Ice"
+    4 => "🦎Charmander🔥",
+    5 => "🐢 Squirtle 💧"
   }
   lose = [
     "#{the_boss[:name]} got mad style 💫 The crowd is going mental.",
@@ -121,12 +121,12 @@ def show_your_moves(player, the_boss, user_moves, boss_moves, method)
       when boss == user then draw
       end
       x = messages == win ? "✅" : "❌"
-      puts whitespace(player, " ", 16) + "#{player[:name]} 💬 ⟪#{moves[user]}⟫ #{x} ⟪#{moves[boss]}⟫ 🗨️ #{the_boss[:name]}"
+      puts whitespace(player, " ", 16) + "#{player[:name]} 💬 #{moves[user]} #{x} #{moves[boss]} 🗨️ #{the_boss[:name]}"
     end
   elsif method == :keg
     messages = (user_moves == boss_moves ? win : lose)
     x = user_moves == boss_moves ? "✅" : "❌"
-    puts whitespace(player, " ", 16) + "#{player[:name]} 💬 ⟪#{drinks[user_moves]}⟫ #{x} ⟪#{drinks[boss_moves]}⟫ 🗨️ #{the_boss[:name]}"
+    puts whitespace(player, " ", 16) + "#{player[:name]} 💬 #{drinks[user_moves]} #{x} #{drinks[boss_moves]} 🗨️ #{the_boss[:name]}"
   end
   puts SEPARATOR
   puts text_break(messages.sample, " ", 80)

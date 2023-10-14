@@ -8,6 +8,28 @@ BARRIER = "〰" * 38
 ENEMY_DIV = "🗡" * 76
 BOSS_DIV = " " * 4 + "▪" * 76
 
+# In game display tags
+
+HANGOVER = "\e[38;5;208mℍ𝔸ℕ𝔾𝕆𝕍𝔼ℝ\e[0m"
+BONUS = "\e[37mＢＯＮＵＳ\e[0m"
+BUFF = "\e[36m𝓑𝓤𝓕𝓕\e[0m"
+HP_PLUS = "\e[32m𝙃𝙋\e[0m"
+HP_MINUS = "\e[31m𝙃𝙋\e[0m"
+ENEMY_HP = "\e[31m𝕰𝖓𝖊𝖒𝖞\e[0m"
+ENEMY_TRAP = "\e[32m𝕰𝖓𝖊𝖒𝖞\e[0m"
+WEAPON = "\e[38;5;208m𝓦𝓔𝓐𝓟𝓞𝓝\e[0m"
+BROKE = "\e[31m𝐁𝐑𝐎𝐊𝐄\e[0m"
+RAGE = "\e[38;5;208mR̷A̷G̷E̷\e[0m"
+CRITICAL = "\e[38;5;208m𝙲𝚁𝙸𝚃𝙸𝙲𝙰𝙻\e[0m"
+MISSED = "\e[34m𝙼𝙸𝚂𝚂\e[0m"
+HIT = "\e[31m𝙷𝙸𝚃\e[0m"
+COUNTER = "\e[36mℂ𝕆𝕌ℕ𝕋𝔼ℝ\e[0m"
+SUCCESS = "\e[32m𝓢𝓤𝓒𝓒𝓔𝓢𝓢\e[0m"
+STACKED_IT = "\e[31m𝓢𝓣𝓐𝓒𝓚𝓔𝓓 𝓘𝓣\e[0m"
+SUMMON = "\e[35m𝓢𝓤𝓜𝓜𝓞𝓝\e[0m"
+SURPRISE = "\e[33m𝘚𝘜𝘙𝘗𝘙𝘐𝘚𝘌\e[0m"
+PWNED = "\e[31m𝕡𝕨𝕟𝕖𝕕\e[0m"
+
 # Whitespace generator so display stays in same place regardless of name length
 
 def whitespace(entity, char, size)

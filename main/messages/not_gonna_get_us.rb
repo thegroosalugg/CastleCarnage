@@ -18,10 +18,10 @@ def enter_room(entered_room)
 end
 
 def gifts(entity, operator, randomizer)
-  g = "\e[32m𝙃𝙋\e[0m"
-  l = "\e[31m𝙃𝙋\e[0m"
-  eh = "\e[31m𝕰𝖓𝖊𝖒𝖞\e[0m"
-  et = "\e[32m𝕰𝖓𝖊𝖒𝖞\e[0m"
+  g = "#{HP_PLUS}"
+  l = "#{HP_MINUS}"
+  eh = "#{ENEMY_HP}"
+  et = "#{ENEMY_TRAP}"
   plus = " #{entity[:name]} +#{randomizer} #{entity[:emoji]}"
   minus = " #{entity[:name]} -#{randomizer} #{entity[:emoji]}"
 
@@ -74,8 +74,8 @@ def gifts(entity, operator, randomizer)
 end
 
 def weapon_speaks(weapon, status)
-  g = "\e[38;5;208m𝓦𝓔𝓐𝓟𝓞𝓝\e[0m"
-  b = "\e[31m𝐁𝐑𝐎𝐊𝐄\e[0m"
+  g = "#{WEAPON}"
+  b = "#{BROKE}"
   got = [
     " There's enough useless crap 🛒 here to make a #{weapon[:name]}, your mad smithing skills allow it",
     " Father Christmas 🎅 brings your gift early, it's that #{weapon[:name]} you wished for",

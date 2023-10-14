@@ -6,9 +6,9 @@
 def your_rewards(player, health, boost, multiplier)
   boost = boost == :attack ? "💢 attack" : "🛡️ block"
 
-  messages = "\e[32m𝙃𝙋\e[0m +#{health} #{player[:emoji]} / \e[36m𝓑𝓤𝓕𝓕\e[0m +#{multiplier} #{boost}"
+  messages = "#{HP_PLUS} +#{health} #{player[:emoji]} / #{BUFF} +#{multiplier} #{boost}"
 
-  puts text_break("\e[37mＢＯＮＵＳ\e[0m", " ", 80)
+  puts text_break("#{BONUS}", " ", 80)
   puts text_break(messages, " ", 80)
 end
 
@@ -37,7 +37,7 @@ def boss_walks(the_boss, boss_style, time)
     "The #{boss_style} is in the house 🛖 orders up",
     "#{the_boss[:name]} is the liquor 🍾",
   ]
-  bouncer = [ "#{the_boss[:name]} is excerting its pressure, you drink another beer +1 🍺" ]
+  bouncer = [ "#{the_boss[:name]} is excerting its pressure #{HANGOVER} +1 🍺" ]
   band = [
     "#{the_boss[:name]} is two-stepping 🪜 in the pit. Parkway Drive 🎸 come out on stage!",
     "#{the_boss[:name]} is smashing out banging tunes 🎸 A pit is 'bout to break out!",
@@ -45,7 +45,7 @@ def boss_walks(the_boss, boss_style, time)
     "Darude Sandstorm 🎧 starts playing, shit's 'bout to go down",
   ]
   outro = [ "#{the_boss[:name]} ♻️ ▻◅▶▷ #{boss_style}" ]
-  reprise = [ "\e[38;5;208mℍ𝔸ℕ𝔾𝕆𝕍𝔼ℝ\e[0m -1 🍺" ]
+  reprise = [ "#{HANGOVER} -1 🍺" ]
 
   messages = case boss_style
   when "🍻 Barkeep" then time == :intro ? barkeep : outro
@@ -56,13 +56,12 @@ def boss_walks(the_boss, boss_style, time)
 end
 
 def boss_speaks(player, the_boss, blast = 0, outcome)
-  rage = "\e[38;5;208mR̷A̷G̷E̷\e[0m"
   hit = [
-    "#{rage} #{the_boss[:name]} has had enough of your crap! 🔥 #{player[:name]} 💢 -#{blast} #{player[:emoji]}",
+    "#{the_boss[:name]} has had enough of your crap 🔥 #{RAGE} 💢 #{player[:name]} -#{blast} #{player[:emoji]}",
   ]
   threat = [
-    "#{rage} #{the_boss[:name]} notices your cowardly attempts, a thrashing is on the cards",
-    "#{rage} #{the_boss[:name]} is getting aggy, you better pick your moves carefully",
+    "#{the_boss[:name]} notices your cowardly attempts, a thrashing #{RAGE} is on the cards",
+    "#{the_boss[:name]} is getting aggy #{RAGE} You best tread lightly",
   ]
 
   messages = outcome == :hit ? hit : threat

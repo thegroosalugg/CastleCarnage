@@ -4,10 +4,10 @@
 # Player vs enemy strike
 
 def shots_fired(attacker, target, damage = 0, outcome)
-  critical = "#{attacker[:name]} ⚔️ \e[38;5;208m𝙲𝚁𝙸𝚃𝙸𝙲𝙰𝙻\e[0m 💥 #{target[:name]} -#{damage} #{target[:emoji]}"
-  missed = "#{attacker[:name]} 💭❓ \e[34m𝙼𝙸𝚂𝚂\e[0m"
-  on_point = "#{attacker[:name]} ⚔️ \e[31m𝙷𝙸𝚃\e[0m 💢 #{target[:name]} -#{damage} #{target[:emoji]}"
-  counter = "#{attacker[:name]} 🗯️❗ ⚔️ \e[36mℂ𝕆𝕌ℕ𝕋𝔼ℝ\e[0m 💢 #{target[:name]} -#{damage} #{target[:emoji]}"
+  critical = "#{attacker[:name]} ⚔️ #{CRITICAL} 💥 #{target[:name]} -#{damage} #{target[:emoji]}"
+  missed = "#{attacker[:name]} 💭❓ #{MISSED}"
+  on_point = "#{attacker[:name]} ⚔️ #{HIT} 💢 #{target[:name]} -#{damage} #{target[:emoji]}"
+  counter = "#{attacker[:name]} 🗯️❗ ⚔️ #{COUNTER} 💢 #{target[:name]} -#{damage} #{target[:emoji]}"
 
   messages = case outcome
   when :critical then critical
@@ -21,8 +21,8 @@ end
 # Sommersault attack
 
 def somersault(chance, n)
-  success = "\e[32m𝓢𝓤𝓒𝓒𝓔𝓢𝓢\e[0m " + "⚔️ " * n
-  failed = "\e[31m𝓢𝓣𝓐𝓒𝓚𝓔𝓓 𝓘𝓣\e[0m " + "😓 " * n
+  success = "#{SUCCESS} " + "⚔️ " * n
+  failed = "#{STACKED_IT} " + "😓 " * n
 
   messages = chance == 1 ? success : failed
   puts text_break(messages, " ", 80)
