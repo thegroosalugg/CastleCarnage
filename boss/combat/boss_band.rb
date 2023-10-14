@@ -9,7 +9,7 @@ def mosh_pit(the_boss, boss_style, player, cash_lost) # damage reduced by cash l
   shots_fired(player, the_boss, damage, :hit)
 end
 
-def swing(attacker, target, method)
+def swing(attacker, target, method) # boss does bonus damage on keg stand
   multiplier = method == :keg && attacker[:id] == :boss ? rand(1.0..1.5) : 0.7
   damage = (rand(attacker[:attack]) * multiplier).to_i.clamp(1, 100)
   target[:hp] -= damage
@@ -64,12 +64,12 @@ def keg_stand(player, buddy, weapon, the_boss, boss_style, load_boss)
     print `clear`
     show_your_moves(player, the_boss, user_choice, boss_move, :keg)
 
-    if user_choice != boss_move
+    if user_choice == boss_move
       swing(player, the_boss, :keg)
       player[:drunk] = (player[:drunk] + 2).clamp(0, 20)
     else
       swing(the_boss, player, :keg)
-      break # Exit loop if choices match
+      break # Exit loop if choices don't match
     end
   end
 end

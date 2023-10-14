@@ -124,8 +124,8 @@ def show_your_moves(player, the_boss, user_moves, boss_moves, method)
       puts whitespace(player, " ", 16) + "#{player[:name]} 💬 ⟪#{moves[user]}⟫ #{x} ⟪#{moves[boss]}⟫ 🗨️ #{the_boss[:name]}"
     end
   elsif method == :keg
-    messages = (user_moves == boss_moves ? lose : win)
-    x = user_moves == boss_moves ? "❌" : "✅"
+    messages = (user_moves == boss_moves ? win : lose)
+    x = user_moves == boss_moves ? "✅" : "❌"
     puts whitespace(player, " ", 16) + "#{player[:name]} 💬 ⟪#{drinks[user_moves]}⟫ #{x} ⟪#{drinks[boss_moves]}⟫ 🗨️ #{the_boss[:name]}"
   end
   puts SEPARATOR
