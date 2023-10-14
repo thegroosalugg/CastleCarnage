@@ -21,7 +21,7 @@ def not_tonight(the_boss, player, buddy, weapon)
     target = buddy ? [player, buddy].sample : player
     target[:hp] -= damage
     shots_fired(the_boss, target, damage, :hit)
-    invoice(player, guard, :club) unless player[:sneaky] || weapon[:durability].zero?
+    invoice(player, guard, :guard, :gained ) unless player[:sneaky] || weapon[:durability].zero?
   end
 end
 

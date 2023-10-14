@@ -24,13 +24,8 @@ def invoice(player, amount, where, haul)
   bar = [ # pay the tab
     "You doled out #{amount} 💵 and sunk #{amount} 🍺 bevvies. Time for some dishing.",
   ]
-  skint = [
-    "You're too skint to get a drink, the damage you deal is reduced.",
-  ]
-  cash = [ "#{CASH} #{x}#{amount} 💵" ]
-  guard = [ # not tonight
-    "Your weapon shielded #{amount} 🛡️ better use it wisely.",
-  ]
+  cash = ["#{CASH} #{x}#{amount} 💵"]
+  guard = ["#{WEAPON} #{BONUS} +#{amount} 🛡️"]
   life = [ "#{y} #{player[:name]} #{x}#{amount} #{player[:emoji]}" ]
 
   messages = case where
@@ -40,7 +35,7 @@ def invoice(player, amount, where, haul)
     [[beers.sample, cash.sample].join(' ')]
   when :tab   then amount.zero? ? skint : bar # pay the tab
   when :cash  then cash
-  when :club  then guard # not tonight
+  when :guard then guard # not tonight
   when :life  then life # sneak attack
   end
   puts text_break(messages.sample, " ", 80)
