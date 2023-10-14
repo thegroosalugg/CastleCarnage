@@ -30,6 +30,8 @@ FLUNKED = "\e[31mƑԼ𝓤ƝⲔƐƊ\e[0m"
 SUMMON = "\e[35m𝓢𝓟𝓐𝓦𝓝\e[0m"
 SURPRISE = "\e[33m𝘚𝘜𝘙𝘗𝘙𝘐𝘚𝘌\e[0m"
 PWNED = "\e[31m𝕡𝕨𝕟𝕖𝕕\e[0m"
+CARD = "\e[36m🅲🅰🆁🅳\e[0m"
+BLACKJACK = "\e[38;5;208m乃㇄闩⼕长丿闩⼕长\e[0m"
 
 # Whitespace generator so display stays in same place regardless of name length
 

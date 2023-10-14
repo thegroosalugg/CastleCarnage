@@ -4,7 +4,7 @@
 # Main Menu
 
 def boss_menu(player, boss_style)
-  t = 4 - player[:turns]
+  t = 4 - player[:turns] # this counts how many turns remaining and adjusts message on final turn
   n = t == 1 ? "ɴᴇxᴛ" : "ɪɴ #{t}"
   s = t == 1 ? "" : "s"
   magic = "   🔥#{player[:emoji]} \e[35m[̝̻͕Y͔̻̦]͔̞\e[0m 🪦 \e[35mⲚⲉⲥꞅⲟⲙⲁⲛⲥⲩ\e[0m  🪄"

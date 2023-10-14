@@ -36,7 +36,7 @@ def xhardcorex(the_boss, player, buddy)
     target = buddy ? [player, buddy].sample : player
     target[:hp] -= damage
     shots_fired(the_boss, target, damage, :hit)
-    invoice(player, cash_lost, :xcore) unless cash_lost.zero?
+    invoice(player, cash_lost, :loss) unless cash_lost.zero?
   end
   cash_lost # passes to mosh pit
 end
