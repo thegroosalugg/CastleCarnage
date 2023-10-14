@@ -111,7 +111,7 @@ def name_player(player)
   while your_name.empty?
     title_screen
     your_name = gets.chomp.strip.slice(0, 9).downcase.capitalize
-    player[:name] = "\e[3#{rand(1..6)}m🥷 #{your_name}\e[0m"
+    player[:name] = "\e[32m🥷 #{your_name}\e[0m"
     error_message
   end
 
@@ -158,8 +158,9 @@ end
 
 def weapon_bars(weapon)
   "#{BARRIER}\n" +
-  "    #{weapon[:name]} / " + "#{percentage(weapon, :accuracy)}" + "#{percentage(weapon, :crit_ch)}" + attack_stats(weapon) +
-  " / 🛠️ " + "🟦" * [weapon[:durability], 0].max
+  "    #{weapon[:name]} / " + "🛠️ " + "🟦" * [weapon[:durability], 0].max + "\n" +
+  "\n    #{percentage(weapon, :accuracy)}" + "#{percentage(weapon, :crit_ch)}" + attack_stats(weapon)
+
 end
 
 # Main UI that displays all current happenings, by chaining the above methods

@@ -45,7 +45,7 @@ DESC = [
 def random_enemy
   enemy = {        # \e[31m Text \e[0m  assigns a text color. values 1-8 represent different colors
     id: :enemy,    # rand(1..6) assigns a random color as all codes are the same in ranges 1..7. 7 is white (default)
-    name: "\e[3#{rand(1..6)}m#{ENEMIES.sample}\e[0m",
+    name: "\e[33m#{ENEMIES.sample}\e[0m",
     hp: rand(60..90),
     attack: (rand(20..30)..rand(31..40)),
     block: (rand(1..5)..rand(6..12)),
@@ -58,7 +58,7 @@ end
 def big_boss_awaits
   boss = {
     id: :boss,
-    name: "\e[3#{rand(1..6)}m#{BOSSES.sample}\e[0m",
+    name: "\e[35m#{BOSSES.sample}\e[0m",
     hp: rand(580..650),
     attack: (rand(30..40)..rand(41..50)),
     accuracy: (1..rand(4..10)),
@@ -70,7 +70,7 @@ end
 def pick_weapon
   weapon = {
     id: :weapon,
-    name: "\e[3#{rand(1..6)}m#{WEAPONS.sample}\e[0m",
+    name: "\e[36m#{WEAPONS.sample}\e[0m",
     durability: rand(2..5),
     broken: false,
     attack: (rand(20..30)..rand(31..60)),
