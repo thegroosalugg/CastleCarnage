@@ -35,8 +35,8 @@ def xhardcorex(the_boss, player, buddy)
     damage = (rand(the_boss[:attack]) * (cash_lost.zero? ? 1.5 : (0.8 + cash_lost * 0.2)) - rand(player[:block])).to_i.clamp(1, 100)
     target = buddy ? [player, buddy].sample : player
     target[:hp] -= damage
-    invoice(player, cash_lost, :xcore)
     shots_fired(the_boss, target, damage, :hit)
+    invoice(player, cash_lost, :cash, :lost) unless cash_lost.zero?
   end
   cash_lost # passes to mosh pit
 end

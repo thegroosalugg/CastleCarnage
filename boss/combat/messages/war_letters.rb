@@ -4,8 +4,12 @@
 # Invoice for stat changes
 # Bar fight outcomes # .abs removes negatives so only positive integers displayed
 
-def invoice(player, amount, where)
-  got_drunk = [ # bar fight
+def invoice(player, amount, where, haul)
+  x, y = case haul
+  when :gained then ["+", [BONUS, HP_PLUS].join(" ")]
+  when :lost   then ["-", HP_MINUS]
+  end
+   got_drunk = [ # bar fight
     "Damn, that was a piss up, you feel #{amount[0]} 🍺 more wasted.",
   ]
   sober_up = [
@@ -23,34 +27,11 @@ def invoice(player, amount, where)
   skint = [
     "You're too skint to get a drink, the damage you deal is reduced.",
   ]
-  xcore = [ # xhardcorex
-    "You got trampled and lost #{amount} 💵 your damage is reduced.",
-  ]
-  broke = [
-    "You're skint and got nothing to lose, but that don't mean you can't take extra damage!",
-  ]
-  pit = [ # mosh pit
-    case player[:drunk]
-    when 0..2   then "You're well knackered 😩 your damage is hemel."
-    when 3..5   then "Got a buzz on 😉 you start to headbang!"
-    when 6..9   then "One sixer sunk, getting the two-step on."
-    when 10..13 then "Whisky 🥃 armour on. Time to start windmilling ☠️"
-    when 14..17 then "You feel invincible, nothins guna stp u nw 🤤 "
-    when 18..20 then "🍺🍻😏🤪🥳😉🥴🤤😵"
-    end
-  ]
+  cash = [ "#{CASH} #{x}#{amount} 💵" ]
   guard = [ # not tonight
     "Your weapon shielded #{amount} 🛡️ better use it wisely.",
   ]
-  life = [ # sneak attack
-    "Oi, oi, you lucky people, you swagged #{player[:emoji]} #{amount} HP, you sneaky 👟 bastard!",
-  ]
-  cash = [
-    "You ganked a hefty bit of loot, #{amount} 💵 for your pocket. Spend it wisely!",
-  ]
-  grave = [
-    "You pay the price, you surrender #{player[:emoji]} #{amount} HP.",
-  ]
+  life = [ "#{y} #{player[:name]} #{x}#{amount} #{player[:emoji]}" ]
 
   messages = case where
   when :brawl # bar fight
@@ -58,12 +39,9 @@ def invoice(player, amount, where)
     cash = amount[1].positive? ? got_cash : got_mugged
     [[beers.sample, cash.sample].join(' ')]
   when :tab   then amount.zero? ? skint : bar # pay the tab
-  when :xcore then amount.zero? ? broke : xcore # xhardcorex
-  when :pit   then pit # mosh pit
+  when :cash  then cash
   when :club  then guard # not tonight
   when :life  then life # sneak attack
-  when :cash  then cash
-  when :grave then grave # necromancy
   end
   puts text_break(messages.sample, " ", 80)
 end

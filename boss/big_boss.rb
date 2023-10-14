@@ -60,7 +60,7 @@ def big_boss_battle(player, weapon, the_boss)
         player[:turns] = 0
         player[:hp] -= buddy[:hp] / 2
         the_boss[:rage] = (the_boss[:rage] + 1).clamp(0, 10)
-        invoice(player, (buddy[:hp] / 2), :grave)
+        invoice(player, (buddy[:hp] / 2), :life, :lost)
       else
         error_message
       end
