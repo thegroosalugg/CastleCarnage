@@ -2,11 +2,12 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 def bonus(player)
-  health = player[:rooms] * 30
+  health = [player[:rooms] * 30, 500].min - player[:hp]
   boost = [:attack, :block].sample
   multiplier = player[:kills] * rand(1..2)
-  player[:hp] = [player[:hp] + health, 500].min
+  player[:hp] += health
   player[boost] = (player[boost].min + multiplier)..(player[boost].max + multiplier)
+ # player[boost] = (player[boost].min + multiplier)..[player[boost].max + multiplier, (boost == :attack ? 50 : 20)].min
   your_rewards(player, health, boost, multiplier)
 end
 
