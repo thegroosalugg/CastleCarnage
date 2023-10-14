@@ -39,9 +39,8 @@ def enemy_speaks(enemy, event)
   pwned = [
     "#{enemy[:name]} took the 🚂 midnight train to slab city.",
     "#{enemy[:name]} is sleeping with the fishes 🐟",
-    "#{enemy[:name]} turned into a ghost, whooo 👻",
+    "#{enemy[:name]} turned to a ghost, boo 👻",
     "#{enemy[:name]} took a trip ✈️ to Belize.",
-    "#{enemy[:name]} died. 🎯 Bully for you!",
     "#{enemy[:name]} 💬 'Argh, yar got me!'",
     "#{enemy[:name]}'s head came clean off.",
     "#{enemy[:name]} was anhialated ☠",
