@@ -20,8 +20,8 @@ def not_tonight(the_boss, player, buddy, weapon)
     damage = (rand(the_boss[:attack]) + player[:drunk] - rand(player[:block]) + guard).clamp(1, 100)
     target = buddy ? [player, buddy].sample : player
     target[:hp] -= damage
-    shots_fired(the_boss, target, damage, :hit)
     invoice(player, guard, :guard, :gained ) unless player[:sneaky] || weapon[:durability].zero?
+    shots_fired(the_boss, target, damage, :hit)
   end
 end
 
