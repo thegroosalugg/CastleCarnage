@@ -16,16 +16,16 @@ def get_buff(player)
 end
 
 def get_rich(player)
-  multiplier = player[:cash] >= 20 ? 0 : rand(1..[20 - player[:cash], 12].min)
-  price_paid = (multiplier * rand(2.5..5.0)).to_i
+  multiplier = player[:cash] >= 20 ? 0 : rand(1..[20 - player[:cash], 8].min)
+  price_paid = (multiplier * rand(3.5..6.0)).to_i
   player[:hp] -= price_paid
   player[:cash] += multiplier
   return price_paid, multiplier
 end
 
 def sort_it_out(player)
-  multiplier = player[:drunk].zero? ? 0 : rand(1..player[:drunk])
-  price_paid = (multiplier * rand(1.5..2.5)).to_i
+  multiplier = player[:drunk].zero? ? 0 : rand(1..[player[:drunk], 8].min)
+  price_paid = (multiplier * rand(2.5..4.5)).to_i
   player[:hp] -= price_paid
   player[:drunk] = (player[:drunk] - multiplier).clamp(0, 20)
   return price_paid, multiplier
@@ -34,7 +34,7 @@ end
 def munch_out(player)
   boost = [:attack, :block].select { |stat| player[stat].max > 1 }.sample
 
-  multiplier = player[boost].max > 1 ? rand(1..[player[boost].max - 1, 4].min) : 0
+  multiplier = player[boost].max > 1 ? rand(1..[player[boost].max - 1, 3].min) : 0
   player[boost] = [(player[boost].min - multiplier), 1].max..[player[boost].max - multiplier, 1].max
 
   price_paid = (rand(1..5) == 1 ? rand(50..75) : rand(25..50)) * multiplier
@@ -75,7 +75,7 @@ def pay_with_blood(player, buddy, weapon, the_boss, boss_style, load_boss)
         redo
       end
     when 7 # sacrifice attack / block for HP: 1000 max
-      if (player[:attack].max > 1 || player[:block].max > 1) && player[:hp] < 500
+      if (player[:attack].max > 1 || player[:block].max > 1) && player[:hp] < 100
         price_paid, multiplier, boost = munch_out(player)
       else
         error_message
