@@ -43,9 +43,9 @@ end
 
 def boss_strikes_back(the_boss, boss_style, player, buddy, weapon)
   case boss_style
-  when "🍻 Barkeep" then youre_barred(the_boss, player, buddy)
-  when "🕶️ Bouncer" then not_tonight(the_boss, player, buddy, weapon)
-  when "🎶 Band"    then xhardcorex(the_boss, player, buddy)
+  when :barkeep then youre_barred(the_boss, player, buddy)
+  when :bouncer then not_tonight(the_boss, player, buddy, weapon)
+  when :band    then xhardcorex(the_boss, player, buddy)
   end
 end
 

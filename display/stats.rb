@@ -1,7 +1,7 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-# Main UI that displays all current happenings, by chaining the above methods
+# Main UI that displays all current happenings
 
 def state_of_game(enemies, player, weapon, load_art)
   puts BARRIER
@@ -19,14 +19,14 @@ end
 def game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
   puts BARRIER
   puts health_bars(the_boss) + "\n" + "\n"
-  puts " " * 4 + "#{boss_style} / #{attack_stats(the_boss)} / #{rage(the_boss)}"
+  puts " " * 4 + "#{STYLE[boss_style]} / #{attack_stats(the_boss)} / #{rage(the_boss)}"
   puts SHIELD_BS
   puts move_ascii_art(load_boss)
   puts SHIELD_PL
   puts enemy_bars(buddy) if buddy && buddy[:hp].positive?
   puts health_bars(player) + "\n" + "\n"
   puts " " * 4 + "#{attack_stats(player)} / #{block_stats(player)}"
-  puts weapon_bars(weapon) if weapon[:durability].positive? && boss_style == "🕶️ Bouncer"
+  puts weapon_bars(weapon) if weapon[:durability].positive? && boss_style == :bouncer
   puts player_status(player)
   puts BARRIER
 end
@@ -47,9 +47,9 @@ def whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_t
 end
 
 def whos_the_boss(your_hand, your_total, boss_total)
-  win = "#{SUCCESS}"
-  lose = "#{FLUNKED} now get out❗"
-  blackjack = "#{BLACKJACK}"
+  win =       SUCCESS
+  lose =      FLUNKED + " now get out❗"
+  blackjack = BLACKJACK
 
   messages = if your_total == 21 && your_hand.length == 2 && boss_total != 21
     blackjack

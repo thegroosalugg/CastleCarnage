@@ -33,9 +33,9 @@ def cheat_menu_boss(user_choice, player, buddy, weapon, the_boss, boss_style)
   when "a"  then the_boss[:rage] += 1
   when "e"  then buddy[:hp] -= 100 if buddy
   when "ee" then buddy = random_enemy
-  when "1"  then boss_style = "🍻 Barkeep"
-  when "2"  then boss_style = "🕶️ Bouncer"
-  when "3"  then boss_style = "🎶 Band"
+  when "1"  then boss_style = :barkeep
+  when "2"  then boss_style = :bouncer
+  when "3"  then boss_style = :band
   when "v"  then player[:cash] -= 1
   when "c"  then player[:cash] += 1
   when "f"  then player[:drunk] -= 1

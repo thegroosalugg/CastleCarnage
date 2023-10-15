@@ -39,9 +39,9 @@ def big_boss_battle(player, weapon, the_boss)
       player[:drained] = false
       player[:turns] = (player[:turns] + 1).clamp(0, 4)
       case boss_style
-      when "🍻 Barkeep" then boss_style = fight_the_barkeep(player, buddy, weapon, the_boss, boss_style, load_boss)
-      when "🕶️ Bouncer" then boss_style, weapon = fight_the_bouncer(player, buddy, weapon, the_boss, boss_style, load_boss)
-      when "🎶 Band"    then boss_style = fight_the_band(player, buddy, weapon, the_boss, boss_style, load_boss)
+      when :barkeep then boss_style = fight_the_barkeep(player, buddy, weapon, the_boss, boss_style, load_boss)
+      when :bouncer then boss_style, weapon = fight_the_bouncer(player, buddy, weapon, the_boss, boss_style, load_boss)
+      when :band    then boss_style = fight_the_band(player, buddy, weapon, the_boss, boss_style, load_boss)
       end
     elsif user_choice == "r"
       unless player[:drained]

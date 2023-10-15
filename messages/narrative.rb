@@ -80,9 +80,9 @@ end
 
 def boss_walks(the_boss, boss_style, time)
   barkeep = [
-    "The #{boss_style} is keeping the liquor flowng, its happy hour ⌚",
+    "The #{STYLE[boss_style]} is keeping the liquor flowng, its happy hour ⌚",
     "#{the_boss[:name]} is getting close to barring you, prepare!",
-    "The #{boss_style} is in the house 🛖 orders up",
+    "The #{STYLE[boss_style]} is in the house 🛖 orders up",
     "#{the_boss[:name]} is the liquor 🍾",
   ]
   bouncer = [ "#{the_boss[:name]} is excerting its pressure #{HANGOVER} +1 🍺" ]
@@ -92,13 +92,13 @@ def boss_walks(the_boss, boss_style, time)
     "Some wanker just started playing dubstep 🎧 Get ready for damage",
     "Darude Sandstorm 🎧 starts playing, shit's 'bout to go down",
   ]
-  outro = [ "#{the_boss[:name]} ♻️ ▻◅▶▷ #{boss_style}" ]
+  outro = [ "#{the_boss[:name]} ♻️ ▻◅▶▷ #{STYLE[boss_style]}" ]
   reprise = [ "#{HANGOVER} -1 🍺" ]
 
   x, messages = case boss_style
-  when "🍻 Barkeep" then time == :intro ? [80, barkeep] : [85, outro]
-  when "🕶️ Bouncer" then time == :intro ? [100, bouncer] : [85, outro]
-  when "🎶 Band"    then (time == :reprise) ? [90, reprise] : [85, (time == :intro) ? band : outro]
+  when :barkeep then time == :intro ? [80, barkeep] : [85, outro]
+  when :bouncer then time == :intro ? [100, bouncer] : [85, outro]
+  when :band    then (time == :reprise) ? [90, reprise] : [85, (time == :intro) ? band : outro]
   end
   puts text_break(messages.sample, " ", x)
 end
