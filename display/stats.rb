@@ -19,7 +19,7 @@ end
 def game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
   puts BARRIER
   puts "    #{health_bars(the_boss)}\n" + "\n"          # weird looking code makes font red
-  puts "    #{boss_style} / #{attack_stats(the_boss)} / #{RAGE} #{rage(the_boss)}"
+  puts "    #{boss_style} / #{attack_stats(the_boss)} / #{rage(the_boss)}"
   puts "    #{SHIELD_BS}"
   puts move_ascii_art(load_boss)
   puts "    #{SHIELD_PL}"

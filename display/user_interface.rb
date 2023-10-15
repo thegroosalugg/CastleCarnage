@@ -51,7 +51,7 @@ def percentage(entity, key) # determins accuracy and crit chance %
 end
 
 def rage(the_boss) # boss rage bar
-  "🐲" + "🔥" * [the_boss[:rage], 0].max
+  "#{RAGE} " + "🪔" * [the_boss[:rage], 0].max
 end
 
 # Display generators that combine above methods to create dynamic displays for enemy and weapon
