@@ -23,7 +23,7 @@ def dance_off(player, buddy, weapon, the_boss, boss_style, load_boss)
   4.times do |round|
     break if player[:hp] <= 0 || the_boss[:hp] <= 0
     game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
-    step_on_up(:dance)
+    game_menu(:dance)
 
     boss_moves << rand(4..6)
     user_choice = 0
@@ -32,7 +32,7 @@ def dance_off(player, buddy, weapon, the_boss, boss_style, load_boss)
       user_choice = gets.chomp.to_i
       error_message unless (4..6).include?(user_choice)
       game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
-      step_on_up(:dance)
+      game_menu(:dance)
     end
 
     user_moves << user_choice
@@ -52,13 +52,13 @@ def keg_stand(player, buddy, weapon, the_boss, boss_style, load_boss)
     boss_move = [4, 5].sample
     user_choice = 0
     game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
-    step_on_up(:keg)
+    game_menu(:keg)
 
     until [4, 5].include?(user_choice)
       user_choice = gets.chomp.to_i
       error_message unless [4, 5].include?(user_choice)
       game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
-      step_on_up(:keg)
+      game_menu(:keg)
     end
 
     print `clear`

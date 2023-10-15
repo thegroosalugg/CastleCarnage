@@ -54,7 +54,7 @@ def blackjack(player, buddy, weapon, the_boss, boss_style, load_boss)
     while your_total < 21
       deck = card_deck if deck.empty?
       game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
-      step_on_up(:cards)
+      game_menu(:cards)
       user_action = gets.chomp.to_i
 
       if user_action == 4
@@ -97,7 +97,7 @@ def blackjack(player, buddy, weapon, the_boss, boss_style, load_boss)
     loop do
       whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
       game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
-      continue
+      game_menu(:again)
       play_again = gets.chomp.to_i
       case play_again
       when 4
