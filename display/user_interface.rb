@@ -29,7 +29,7 @@ def health_bars(entity) # random emoji assigner for every entity
 
   entity[:emoji] ||= emojis.sample # Assigns an emoji only if the value is nil.
 
-  "#{entity[:name]} / #{entity[:hp].to_i} #{entity[:emoji]} / #{"#{entity[:emoji]}" * [(entity[:hp] - 1) / 40 + 1, 0].max}"
+  " " * 4 + "#{entity[:name]} / #{entity[:hp].to_i} #{entity[:emoji]} / #{"#{entity[:emoji]}" * [(entity[:hp] - 1) / 40 + 1, 0].max}"
 end
 
 def attack_stats(entity) # display for attack
@@ -60,11 +60,11 @@ def enemy_bars(enemy)
   "#{health_bars(enemy)}\n" +
   "\n" +
   "    #{percentage(enemy, :accuracy)}" + "#{percentage(enemy, :crit_ch)}" + "#{attack_stats(enemy)} / " + "#{block_stats(enemy)}\n" +
-  "    #{SHIELD_EN}"
+  SHIELD_EN
 end
 
 def weapon_bars(weapon)
-  "#{SHIELD_PL}\n" +
+  SHIELD_PL + "\n" +
   "    #{weapon[:name]} / " + "🛠️ " + "🟦" * [weapon[:durability], 0].max + "\n" +
   "\n    #{percentage(weapon, :accuracy)}" + "#{percentage(weapon, :crit_ch)}" + attack_stats(weapon)
 
@@ -91,7 +91,7 @@ def player_status(player)
     when 18..20 then " Fucking Wasted  😵 /"
     end
 
-  "#{SHIELD_PL}\n" +
+  SHIELD_PL + "\n" +
   "    #{GN}#{wallet}#{CL} #{'💵' * [player[:cash], 0].max}\n" +
   "    #{OR}#{drunk}#{CL} #{'🍺' * [player[:drunk], 0].max}"
 end
