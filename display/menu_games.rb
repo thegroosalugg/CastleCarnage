@@ -5,9 +5,9 @@
 
 def continue
   puts BARRIER
-  puts "    \e[32mWhat you want?\e[0m"
-  puts "   🎰 [4] \e[32m𝓐𝓖𝓐𝓘𝓝\e[0m"
-  puts "   💨 [5] \e[31mＮＡＨ\e[0m"
+  puts "    #{GN}𝕩𝕠𝕡𝕠𝕨𝕒я иг𝕡𝕒, 𝕜𝕒𝕜 ℍ𝕒𝕔ч𝕖т д𝕡𝕪г𝕠й❔#{CL}"
+  puts "   🎰 #{GN}[̳4̳]̳ Давай#{CL}"
+  puts "   💨 #{RD}[̳5̳]̳ Пиздᴇц#{CL}"
 end
 
 # Band > DanceOff && Band > KegStand && Barkeep > BlackJack
@@ -16,27 +16,27 @@ def step_on_up(method)
   puts BARRIER
   puts "    Show your moves..."
   if method == :dance
-    puts "    [4] 🧊 Blue Steel"
-    puts "    [5] 🐯 Le Tigre"
-    puts "    [6] 🍦 Magnum"
+    puts "    #{CN}[̳4̳]̳ 🧊 Blue Steel#{CL}"
+    puts "    #{OR}[̳5̳]̳ 🐯 Le Tigre#{CL}"
+    puts "    #{MG}[̳6̳]̳ 🍦 Magnum#{CL}"
   elsif method == :keg
-    puts "    [4] 🦎Charmander🔥"
-    puts "    [5] 🐢 Squirtle 💧"
+    puts "    #{RD}[̳4̳]̳ 🦎Charmander🔥#{CL}"
+    puts "    #{BL}[̳5̳]̳ 🐢 Squirtle 💧#{CL}"
   elsif method == :cards
-    puts "    [4] 🃏 Hit me!"
-    puts "    [5] 🪂 I'm out!"
+    puts "    [̳4̳]̳ 🃏 Hit me!"
+    puts "    [̳5̳]̳ 🪂 I'm out!"
   end
 end
 
 def show_your_moves(player, the_boss, user_moves, boss_moves, method)
   moves = {
-    4 => "🧊 BlueSteel",
-    5 => "🐯 Le Tigre ",
-    6 => "🍦 Magnum   "
+    4 => "#{CN}🧊 BlueSteel#{CL}",
+    5 => "#{OR}🐯 Le Tigre #{CL}",
+    6 => "#{MG}🍦 Magnum   #{CL}"
   }
   drinks = {
-    4 => "🦎Charmander🔥",
-    5 => "🐢 Squirtle 💧"
+    4 => "#{RD}🦎Charmander🔥#{CL}",
+    5 => "#{BL}🐢 Squirtle 💧#{CL}"
   }
 
   if method == :dance
@@ -47,7 +47,7 @@ def show_your_moves(player, the_boss, user_moves, boss_moves, method)
       when (user == 6 && boss == 4) then FLUNKED
       when user > boss then SUCCESS
       when user < boss then FLUNKED
-      else " #{MISSED}  "
+      else "🍃 #{MISSED}  🍂"
       end
       puts whitespace(player, " ", 16) + "#{player[:name]} 💬 #{moves[user]} #{x} #{moves[boss]} 🗨️ #{the_boss[:name]}"
     end
