@@ -24,8 +24,8 @@ def greeting(place)
     "🧞💬 山🝗㇄⼕ㄖ爪🝗 丂〸尺闩𝓝Ꮆ🝗尺...",
   ]
 
-  messages = place == :combat ? enemy : shop
-  puts text_break(messages.sample, " ", 80)
+  x, messages = place == :combat ? [75, enemy] : [70, shop]
+  puts text_break(messages.sample, " ", x)
 end
 
 # Intro outro messages for changes to boss fighting style
@@ -48,9 +48,9 @@ def boss_walks(the_boss, boss_style, time)
   reprise = [ "#{HANGOVER} -1 🍺" ]
 
   x, messages = case boss_style
-  when "🍻 Barkeep" then [85, time == :intro ? barkeep : outro]
+  when "🍻 Barkeep" then time == :intro ? [80, barkeep] : [85, outro]
   when "🕶️ Bouncer" then time == :intro ? [100, bouncer] : [85, outro]
-  when "🎶 Band"    then (time == :reprise) ? [85, reprise] : [85, (time == :intro) ? band : outro]
+  when "🎶 Band"    then (time == :reprise) ? [90, reprise] : [85, (time == :intro) ? band : outro]
   end
   puts text_break(messages.sample, " ", x)
 end
