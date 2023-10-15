@@ -31,12 +31,13 @@ def health_bars(entity) # random emoji assigner for every entity
 
   " " * 4 + "#{entity[:name]} / #{entity[:hp].to_i} #{"#{entity[:emoji]}" * [(entity[:hp] - 1) / 40 + 1, 0].max}"
 end
-
-def attack_stats(entity) # display for attack
-  "💢 " + ("🔸" * ((entity[:attack].min - 1) / 5 % 4 + 1)) + "🔶" * (entity[:attack].min / 20) +
-  " #{entity[:attack].minmax.join('-')} " +
-  "🔶" * (entity[:attack].max / 20) + ("🔸" * ((entity[:attack].max - 1) / 5 % 4 + 1))
+#🟧🟩🟦⬜🟥🟪
+def attack_stats(entity)
+  full = (entity[:attack].max / 10).clamp(0, 6)
+  empty = (6 - full).clamp(0, 6)
+  "💢 #{RD}#{entity[:attack].minmax.join('-')}#{CL} " + "🟥" * full + "⬜" * empty
 end
+
 
 def block_stats(entity) # display for block
   "🛡️ " + "🔹" * (entity[:block].min % 5) + "🔷" * (entity[:block].min / 5) +
