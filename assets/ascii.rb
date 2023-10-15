@@ -37,7 +37,7 @@ SHIELD_PL = "#{OR}#{ICONS.sample}#{CL}" * 76
 SHIELD_EN = "#{GN}#{ICONS.sample}#{CL}" * 76
 SHIELD_BS = "#{MG}#{ICONS.sample}#{CL}" * 76
 
-MENU_HEADER = "\n" + " " * 2 + "#{BL}T̿̽̈́H͛̾͌É͌R͋̔̈́E̽͌͑ C͆̔͌A̾͋͝N̿̐͝ B̔̒͛Ë́͠ O̿͊͘N̕̕͠L͆̾̾Y̒͝ O͑͆̒N͆͋͛E͆͛̈́.͐͝͝.̓͋̈́.́̐́#{CL}" + "\n" + "\n"
+MENU_HEADER = " " * 2 + "#{BL}T̿̽̈́H͛̾͌É͌R͋̔̈́E̽͌͑ C͆̔͌A̾͋͝N̿̐͝ B̔̒͛Ë́͠ O̿͊͘N̕̕͠L͆̾̾Y̒͝ O͑͆̒N͆͋͛E͆͛̈́.͐͝͝.̓͋̈́.́̐́#{CL}"
 
 # In game display tags
 
