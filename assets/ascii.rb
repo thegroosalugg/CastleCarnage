@@ -41,9 +41,9 @@ MENU_HEADER = " " * 2 + "#{BL}T̿̽̈́H͛̾͌É͌R͋̔̈́E̽͌͑ C͆̔͌A̾͋͝N�
 # In game display tags
 
 STYLE = {
-  :barkeep => "🍻 Barkeep",
-  :bouncer => "🕶️ Bouncer",
-  :band    => "🎶 Band"
+  :barkeep => "🍻 #{OR}𝔅𝔞𝔯𝔎𝔢𝔢𝔭#{CL}",
+  :bouncer => "🕶️ #{BL}Ⲃⲟ𐌵ⲛⲥⲉꞅ#{CL}",
+  :band    => "🎶 #{MG}𝓉𝒽ℯ ℬ𝒶𝓃𝒹#{CL}"
 }
 
 NUM = ["[̳0̳]̳", "[̳1̳]̳", "[̳2̳]̳", "[̳3̳]̳", "[̳4̳]̳", "[̳5̳]̳", "[̳6̳]̳", "[̳7̳]̳", "[̳8̳]̳", "[̳9̳]̳"]
