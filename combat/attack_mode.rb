@@ -63,9 +63,9 @@ def mortal_kombat(enemies, player, weapon, load_art)
 
   until user_choice >= 0 && user_choice < enemies.length
     state_of_game(enemies, player, weapon, load_art = battlefield)
-    puts "    Who yer gonna whack:"
-    enemies.each_with_index { |enemy, index| puts "    #{NUM[index + 4]} #{enemy[:name]}" }
-    user_choice = gets.chomp.to_i - 4
+    puts " " * 24 + "#{BL}𝕿𝖍𝖊𝖗𝖊 𝖈𝖆𝖓 𝖔𝖓𝖑𝖞 𝖇𝖊 𝖔𝖓𝖊...#{CL}" # Hard coded. Seems so pointless to refactor this as it won't be reused
+    enemies.each_with_index { |enemy, index| puts " " * 20 + "#{CN}#{NUM[index + 4]}#{CL} #{enemy[:name]}" }
+    user_choice = gets.chomp.to_i - 4                   # fetches and colors ASCII numbers
 
     if user_choice >= 0 && user_choice < enemies.length
       print `clear`
