@@ -29,7 +29,7 @@ def health_bars(entity) # random emoji assigner for every entity
 
   entity[:emoji] ||= emojis.sample # Assigns an emoji only if the value is nil.
 
-  " " * 4 + "#{entity[:name]} / #{entity[:hp].to_i} #{entity[:emoji]} / #{"#{entity[:emoji]}" * [(entity[:hp] - 1) / 40 + 1, 0].max}"
+  " " * 4 + "#{entity[:name]} / #{entity[:hp].to_i} #{"#{entity[:emoji]}" * [(entity[:hp] - 1) / 40 + 1, 0].max}"
 end
 
 def attack_stats(entity) # display for attack
