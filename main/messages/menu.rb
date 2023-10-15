@@ -42,7 +42,7 @@ BLACKJACK = "\e[38;5;208m乃㇄闩⼕长丿闩⼕长\e[0m"
 # Whitespace generator so display stays in same place regardless of name length
 
 def whitespace(entity, char, size)
-  char * (size - entity[:name].length)
+  char * [0, size - entity[:name].gsub(/\e\[[0-9;]*m/, "").length].max
 end
 
 # Padding Generator

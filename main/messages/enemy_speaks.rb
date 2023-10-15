@@ -55,5 +55,5 @@ def enemy_speaks(enemy, event)
   when :pwned    then PWNED + " " + enemy[:name] + pwned.sample
   when :revive   then SUMMON + " " + enemy[:name] + revive.sample
   end
-  puts text_break(messages, " ", 80)
+  puts text_break(messages, " ", 100)
 end

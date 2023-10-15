@@ -15,7 +15,7 @@ def invoice(player, amount, where)
   when :grave then "#{HP_MINUS} #{player[:name]} -#{amount} #{player[:emoji]}" # nectromancy
   when :cards then "#{player[:name]} drew #{CARD} #{amount.last[:suit]}" # blackjack
   end
-  puts text_break(messages, " ", 80)
+  puts text_break(messages, " ", 100)
 end
 
 # Band boss style > when 5 & 6. Barkeep boss style when 6.
