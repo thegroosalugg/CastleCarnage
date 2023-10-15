@@ -5,17 +5,17 @@
 # Bar fight outcomes # .abs removes negatives so only positive integers displayed
 
 def invoice(player, amount, where)
-  messages = case where                             # this condition simply sets a + symbol in fron of positive integers
-  when :brawl then "#{CASH} #{amount[0].positive? ? "+" : ""}#{amount[0]} 💵  #{HANGOVER} #{amount[1].positive? ? "+" : ""}#{amount[1]} 🍺"# bar fight
-  when :bar   then "#{CASH} -#{amount} 💵  #{HANGOVER} +#{amount} 🍺" # pay the tab
-  when :guard then "#{WEAPON} #{BONUS} +#{amount} 🛡️" # not tonight
-  when :cash  then "#{CASH} +#{amount} 💵" # sneak attack / blackjack
-  when :life  then "#{BONUS} #{HP_PLUS} #{player[:name]} +#{amount} #{player[:emoji]}" # sneak attack
-  when :loss  then "#{CASH} -#{amount} 💵" # xhardcorex / blackjack
-  when :grave then "#{HP_MINUS} #{player[:name]} -#{amount} #{player[:emoji]}" # nectromancy
-  when :cards then "#{player[:name]} drew #{CARD} #{amount.last[:suit]}" # blackjack
+  x, messages = case where                             # this condition simply sets a + symbol in fron of positive integers
+  when :brawl then [100, "#{CASH} #{amount[0].positive? ? "+" : ""}#{amount[0]} 💵  #{HANGOVER} #{amount[1].positive? ? "+" : ""}#{amount[1]} 🍺"] # bar fight
+  when :bar   then [100, "#{CASH} -#{amount} 💵  #{HANGOVER} +#{amount} 🍺"] # pay the tab
+  when :guard then [100, "#{WEAPON} #{BONUS} +#{amount} 🛡️"] # not tonight
+  when :cash  then [85, "#{CASH} +#{amount} 💵"] # sneak attack / blackjack
+  when :loss  then [85, "#{CASH} -#{amount} 💵"] # xhardcorex / blackjack
+  when :life  then [100, "#{BONUS} #{HP_PLUS} #{player[:name]} +#{amount} #{player[:emoji]}"] # sneak attack
+  when :grave then [100, "#{HP_MINUS} #{player[:name]} -#{amount} #{player[:emoji]}"] # nectromancy
+  when :cards then [110, "#{player[:name]} drew #{CARD} #{amount.last[:suit]}"] # blackjack
   end
-  puts text_break(messages, " ", 100)
+  puts text_break(messages, " ", x)
 end
 
 # Band boss style > when 5 & 6. Barkeep boss style when 6.

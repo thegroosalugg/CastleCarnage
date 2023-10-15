@@ -9,7 +9,7 @@ def your_rewards(player, health, boost, multiplier)
   messages = "#{HP_PLUS} +#{health} #{player[:emoji]}  #{BUFF} +#{multiplier} #{boost}"
 
   puts text_break("🎉🪅 #{BONUS} 🎊🎈", " ", 80)
-  puts text_break(messages, " ", 80)
+  puts text_break(messages, " ", 90)
 end
 
 def greeting(place)
@@ -65,5 +65,5 @@ def boss_speaks(player, the_boss, blast = 0, outcome)
   ]
 
   messages = outcome == :hit ? hit : threat
-  puts text_break(messages.sample, " ", 80)
+  puts text_break(messages.sample, " ", 100)
 end
