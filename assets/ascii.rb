@@ -32,11 +32,10 @@ ICONS = [
    '↝', '↜', '↗', '≉', '⋘', '⋙',
   ]
 
-
-SEPARATOR = "#{ML}#{ICONS.sample}#{CL}" * 80
-BARRIER = "#{OR}#{ICONS.sample}#{CL}" * 76
-ENEMY_DIV = "#{GN}#{ICONS.sample}#{CL}" * 76
-BOSS_DIV = "#{MG}#{ICONS.sample}#{CL}" * 76
+BARRIER =   "#{ML}#{ICONS.sample}#{CL}" * 80
+SHIELD_PL = "#{OR}#{ICONS.sample}#{CL}" * 76
+SHIELD_EN = "#{GN}#{ICONS.sample}#{CL}" * 76
+SHIELD_BS = "#{MG}#{ICONS.sample}#{CL}" * 76
 
 # In game display tags
 

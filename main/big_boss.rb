@@ -10,9 +10,9 @@ def bonus(player)
 end
 
 def boss_orders(player, weapon, the_boss)
-  puts SEPARATOR
+  puts BARRIER
   puts move_ascii_art(moving_on)
-  puts SEPARATOR
+  puts BARRIER
   gets
   print `clear`
   bonus(player)

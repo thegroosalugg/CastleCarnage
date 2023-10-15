@@ -50,7 +50,7 @@ def band
 end
 
 def fight_menu(player, boss_style, weapon)
-  puts SEPARATOR
+  puts BARRIER
   puts "    \e[31mⲰⲏⲁⲧ'𝛓 𐌵ⲣ, ⲱⲏⲁⲧ'𝛓 𐌵ⲣ...\e[0m"
   case boss_style
   when "🍻 Barkeep" then barkeep(player)
@@ -87,7 +87,7 @@ def blood_menu(player)
     "   #{player[:emoji]} [7] 🥣 Dodgy Looking Potion",
   ]
 
-  puts SEPARATOR
+  puts BARRIER
   puts padding_generator(" 🧞💬 Pay with Blood ❤️ Get Bargains 💰 ", "💠", 57)
   puts (player[:attack].max < 50 || player[:block].max < 20 ? buffout.sample : denied)
   puts (player[:cash] < 20 ? money.sample : denied)

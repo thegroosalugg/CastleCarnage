@@ -4,7 +4,7 @@
 # Blackjack continue?
 
 def continue
-  puts SEPARATOR
+  puts BARRIER
   puts "    \e[32mWhat you want?\e[0m"
   puts "   🎰 [4] \e[32m𝓐𝓖𝓐𝓘𝓝\e[0m"
   puts "   💨 [5] \e[31mＮＡＨ\e[0m"
@@ -13,7 +13,7 @@ end
 # Band > DanceOff && Band > KegStand && Barkeep > BlackJack
 
 def step_on_up(method)
-  puts SEPARATOR
+  puts BARRIER
   puts "    Show your moves..."
   if method == :dance
     puts "    [4] 🧊 Blue Steel"
@@ -55,5 +55,5 @@ def show_your_moves(player, the_boss, user_moves, boss_moves, method)
     x = user_moves == boss_moves ? "#{SUCCESS}" : "#{FLUNKED}"
     puts whitespace(player, " ", 16) + "#{player[:name]} 💬 #{drinks[user_moves]} #{x} #{drinks[boss_moves]} 🗨️ #{the_boss[:name]}"
   end
-  puts SEPARATOR
+  puts BARRIER
 end

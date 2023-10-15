@@ -4,25 +4,25 @@
 # Main UI that displays all current happenings, by chaining the above methods
 
 def state_of_game(enemies, player, weapon, load_art)
-  puts SEPARATOR
+  puts BARRIER
   enemies.each { |enemy| puts "    #{enemy_bars(enemy)}" }
   puts move_ascii_art(load_art)
-  puts "    #{BARRIER}"
+  puts "    #{SHIELD_PL}"
   puts "    #{health_bars(player)}\n" + "\n"
   puts "    #{block_stats(player)} / 💀 #{player[:kills]} / 🏰 #{player[:rooms]}"
   puts "    #{weapon_bars(weapon)}" if weapon[:durability].positive?
-  puts SEPARATOR
+  puts BARRIER
 end
 
 # Same as state of game but exclusively for big boss
 
 def game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
-  puts SEPARATOR
+  puts BARRIER
   puts "    #{health_bars(the_boss)}\n" + "\n"          # weird looking code makes font red
   puts "    #{boss_style} / #{attack_stats(the_boss)} / #{RAGE} #{rage(the_boss)}"
-  puts "    #{BOSS_DIV}"
+  puts "    #{SHIELD_BS}"
   puts move_ascii_art(load_boss)
-  puts "    #{BARRIER}"
+  puts "    #{SHIELD_PL}"
   puts "    #{enemy_bars(buddy)}" if buddy && buddy[:hp].positive?
   puts "    #{health_bars(player)}\n" + "\n"
   puts "    #{attack_stats(player)} / #{block_stats(player)}"
@@ -36,7 +36,7 @@ def whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_t
   boss_cards, your_cards = [boss_hand, your_hand].map { |hand| hand.map { |card| card[:suit] } }
   w, x, y = [boss_hand.first[:value], boss_total, your_total].map { |n| n >= 10 ? "" : " " } # adds a single whitespace for single integer display
 
-  puts SEPARATOR
+  puts BARRIER
   puts whitespace(the_boss, " ", 30) + # whitespace generator so display is consistent regardless of name length
   "#{the_boss[:name]} ⟪#{w}#{boss_hand.first[:value]}⟫ ʃ #{boss_cards[0]}  🃏" unless player[:stuck]
   puts whitespace(the_boss, " ", 30) +

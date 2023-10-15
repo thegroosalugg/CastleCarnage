@@ -32,11 +32,11 @@ def game_over(enemy, player)
     "You Died! #{enemy[:name]} shall feast on your entrails.",
   ]
 
-  puts SEPARATOR if enemy[:id] == :boss
+  puts BARRIER if enemy[:id] == :boss
   puts text_break((player[:hp].positive? ? win : lose).sample, " ", 80)
-  puts SEPARATOR
+  puts BARRIER
   player[:hp].positive? ? win_art : lose_art
-  puts SEPARATOR
+  puts BARRIER
   play_again
 end
 

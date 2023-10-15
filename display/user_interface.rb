@@ -60,11 +60,11 @@ def enemy_bars(enemy)
   "#{health_bars(enemy)}\n" +
   "\n" +
   "    #{percentage(enemy, :accuracy)}" + "#{percentage(enemy, :crit_ch)}" + "#{attack_stats(enemy)} / " + "#{block_stats(enemy)}\n" +
-  "    #{ENEMY_DIV}"
+  "    #{SHIELD_EN}"
 end
 
 def weapon_bars(weapon)
-  "#{BARRIER}\n" +
+  "#{SHIELD_PL}\n" +
   "    #{weapon[:name]} / " + "🛠️ " + "🟦" * [weapon[:durability], 0].max + "\n" +
   "\n    #{percentage(weapon, :accuracy)}" + "#{percentage(weapon, :crit_ch)}" + attack_stats(weapon)
 
@@ -91,7 +91,7 @@ def player_status(player)
     when 18..20 then " Fucking Wasted  😵 /"
     end
 
-  "#{BARRIER}\n" +
+  "#{SHIELD_PL}\n" +
   "    \e[32m#{wallet}\e[0m #{'💵' * [player[:cash], 0].max}\n" +
   "    \e[38;5;208m#{drunk}\e[0m #{'🍺' * [player[:drunk], 0].max}"
 end
