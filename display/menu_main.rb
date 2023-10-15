@@ -30,10 +30,10 @@ def load_menu
     " Mug it",
   ]
 
-  puts "          #{MG}Whatcha ya gonna do?#{CL}"
-  puts "     🥷 #{RD}[̼̟̞T͍̦͔]̻̟͜#{t.sample}#{CL}"
-  puts "     🐬 #{OR}[͌̈́͘R͌̈́͆]͋͑͠#{r.sample}#{CL}"
-  puts "     💨 #{YL}[̻͓͜Y͖͖̘]̫̼͚#{y.sample}#{CL}"
+  puts " " * 22 + "#{MG}Whatcha ya gonna do?#{CL}"
+  puts " " * 16 + "🥷 #{RD}[̼̟̞T͍̦͔]̻̟͜#{t.sample}#{CL}"
+  puts " " * 16 + "🐬 #{OR}[͌̈́͘R͌̈́͆]͋͑͠#{r.sample}#{CL}"
+  puts " " * 16 + "💨 #{YL}[̻͓͜Y͖͖̘]̫̼͚#{y.sample}#{CL}"
 end
 
 # Boss Menu
@@ -46,8 +46,8 @@ def boss_menu(player, boss_style)
   wait = "⏱️ #{MG}Aᴠᴀɪʟᴀʙʟᴇ #{n} ᴛᴜʀɴ#{s}#{CL}"
 
   puts BARRIER
-  puts "     #{ML}Dᴇᴄɪsɪᴏɴs, ᴅᴇᴄɪsɪᴏɴs...#{CL}"
-  puts "     ⚔️ #{BL}[̿̓͐T͆͑͘]̒͠ 💀 𝓕ⲁⲥⲉ ⲧⲏⲉ​#{boss_style}#{CL} 🌘"
-  puts "   🔥#{player[:emoji]} #{RD}[͋͊͒Ŕ́͝]͆̿ 🩸 Ⲃ𝓛ⲟⲟⲆ Ⲙⲁ𝓖ⲓⲕ#{CL} 🪄"
-  puts player[:turns] == 4 ? magic : padding_generator(wait, "#{MG}-#{CL}", 50)
+  puts " " * 24 + "#{ML}Dᴇᴄɪsɪᴏɴs, ᴅᴇᴄɪsɪᴏɴs...#{CL}"
+  puts " " * 20 + "⚔️ #{BL}[̿̓͐T͆͑͘]̒͠ 💀 𝓕ⲁⲥⲉ ⲧⲏⲉ​#{boss_style}#{CL} 🌘"
+  puts " " * 18 + "🔥#{player[:emoji]} #{RD}[͋͊͒Ŕ́͝]͆̿ 🩸 Ⲃ𝓛ⲟⲟⲆ Ⲙⲁ𝓖ⲓⲕ#{CL} 🪄"
+  puts " " * 15 + (player[:turns] == 4 ? magic : padding_generator(wait, "#{MG}-#{CL}", 50))
 end
