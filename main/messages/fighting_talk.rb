@@ -18,7 +18,7 @@ def shots_fired(attacker, target, damage = 0, outcome)
   when :hit      then on_point
   when :counter  then counter
   end
-  puts text_break(messages, " ", 80)
+  puts text_break(messages, " ", 100)
 end
 
 # Sommersault attack

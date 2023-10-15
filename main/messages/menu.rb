@@ -54,23 +54,51 @@ end
 
 # Created text break method to align messages
 # Automatically calls padding generator and takes same arguments
+# Original method kept but disabled since it handles ASCII tags above poorly
+
+# def text_break(message, char, size)
+#   words = message.split
+#   lines = []
+#   current_line = []
+
+#   words.each do |word|
+#     if current_line.join(' ').length + word.length + 1 <= size
+#       current_line << word
+#     else
+#       lines << current_line.join(' ')
+#       current_line = [word]
+#     end
+#   end
+
+#   lines << current_line.join(' ') unless current_line.empty?
+#   lines.map { |line| padding_generator(line, char, size) }
+# end
+
+# Added CHATGPT version of text break editor. ASCII tags were impelemented late development
+# The use of them didn't display correctly in the above method.
 
 def text_break(message, char, size)
-  words = message.split
   lines = []
-  current_line = []
+  current_line = ""
+  current_length = 0
 
-  words.each do |word|
-    if current_line.join(' ').length + word.length + 1 <= size
-      current_line << word
-    else
-      lines << current_line.join(' ')
-      current_line = [word]
+  message.split.each do |word|
+    word_with_ansi = word.gsub(/\e\[[0-9;]*m/, "")  # Remove ANSI escape codes for length calculations
+    word_length = word_with_ansi.length
+
+    if current_length + word_length + 1 > size
+      lines << padding_generator(current_line, char, size)
+      current_line = ""
+      current_length = 0
     end
+
+    current_line += " " if current_length > 0
+    current_line += word
+    current_length += word_length
   end
 
-  lines << current_line.join(' ') unless current_line.empty?
-  lines.map { |line| padding_generator(line, char, size) }
+  lines << padding_generator(current_line, char, size) unless current_line.empty?
+  lines
 end
 
 # Main game menu
