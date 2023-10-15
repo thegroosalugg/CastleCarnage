@@ -25,12 +25,18 @@ CL = "\e[0m"
 
 # various ASCII separators
 
-ICONS = [ '⇌', '⇺', ]
+ICONS = [
+  '⇍', '⇎', '⇏', '⇌', '⇖', '⇗', '⇘', '⇙', '⇚', '⇛', '⇜', '⇝', '⇞', '⇟', '⇠', '⇡', '⇢',
+   '⇣', '⇤', '⇥', '⇦', '⇧', '⇨', '⇩', '⇪', '⇫', '⇬', '⇭', '⇮', '⇯', '⇰', '⇱', '⇲', '⇳', '⇺',
+   '▢', '▣', '▭', '◊', '→', '←', '↟', '⌖', '⇽', '⇻', '⇺,' '⇏', '⇎', '⇄', '≉', '↖', '≌', '↤',
+   '↝', '↜', '↗', '≉', '⋘', '⋙',
+  ]
 
-SEPARATOR = "#{ML}⇺#{CL}" * 80
-BARRIER = "#{OR}〰#{CL}" * 38
-ENEMY_DIV = "#{GN}⇎#{CL}" * 76
-BOSS_DIV = " " * 4 + "#{MG}▪#{CL}" * 76
+
+SEPARATOR = "#{ML}#{ICONS.sample}#{CL}" * 80
+BARRIER = "#{OR}#{ICONS.sample}#{CL}" * 76
+ENEMY_DIV = "#{GN}#{ICONS.sample}#{CL}" * 76
+BOSS_DIV = "#{MG}#{ICONS.sample}#{CL}" * 76
 
 # In game display tags
 
