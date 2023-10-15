@@ -4,7 +4,6 @@
 # Band => [DanceOff, KegStand] && Barkeep => BlackJack
 
 def game_menu(method)
-  puts BARRIER
   if method == :dance
     puts "    #{ML}ℬℯ 𝓅𝓇ℴ𝒻ℯ𝓈𝓈𝒾ℴ𝓃𝒶𝓁𝓁𝓎 ℊℴℴ𝒹 𝓁ℴℴ𝓀𝒾𝓃ℊ...#{CL}"
     puts "    #{CN}#{NUM[4]} 🧊 𝔹𝕝𝕦𝕖𝕊𝕥𝕖𝕖𝕝#{CL}"
