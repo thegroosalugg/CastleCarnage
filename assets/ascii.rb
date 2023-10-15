@@ -25,9 +25,11 @@ CL = "\e[0m"
 
 # various ASCII separators
 
-SEPARATOR = "⚔" * 80
+ICONS = [ '⇌', '⇺', ]
+
+SEPARATOR = "#{ML}⇺#{CL}" * 80
 BARRIER = "#{ML}〰#{CL}" * 38
-ENEMY_DIV = "#{ML}🗡#{CL}" * 76
+ENEMY_DIV = "#{ML}⇎#{CL}" * 76
 BOSS_DIV = " " * 4 + "#{MG}▪#{CL}" * 76
 
 # In game display tags
