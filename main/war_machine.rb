@@ -17,7 +17,7 @@ end
 def big_boss_awaits
   boss = {
     id: :boss,
-    name: "#{MG}#{BOSSES.sample}#{CL}",
+    name: "#{OR}#{BOSSES.sample}#{CL}",
     hp: rand(580..650),
     attack: (rand(30..40)..rand(41..50)),
     accuracy: (1..rand(4..10)),
@@ -29,7 +29,7 @@ end
 def pick_weapon
   weapon = {
     id: :weapon,
-    name: "#{CN}#{WEAPONS.sample}#{CL}",
+    name: "#{YL}#{WEAPONS.sample}#{CL}",
     durability: rand(2..5),
     broken: false,
     attack: (rand(20..30)..rand(31..60)),

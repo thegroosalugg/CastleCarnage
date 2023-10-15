@@ -20,7 +20,7 @@ def game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
   puts BARRIER
   puts health_bars(the_boss) + "\n" + "\n"
   puts " " * 4 + "#{STYLE[boss_style]} / #{attack_stats(the_boss)} / #{rage(the_boss)}"
-  puts SHIELD_BS
+  puts SHIELD_EN
   puts move_ascii_art(load_boss)
   puts SHIELD_PL
   puts enemy_bars(buddy) if buddy && buddy[:hp].positive?
