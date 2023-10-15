@@ -30,7 +30,7 @@ def load_menu
     " Mug it",
   ]
 
-  puts " " * 22 + "#{MG}Whatcha ya gonna do?#{CL}"
+  puts " " * 22 + "#{MG}𝕎ℍ𝔸𝕋ℂℍ𝔸 𝔾𝕆ℕℕ𝔸 𝔻𝕆❔#{CL}"
   puts " " * 16 + "🥷 #{RD}[̼̟̞T͍̦͔]̻̟͜#{t.sample}#{CL}"
   puts " " * 16 + "🐬 #{OR}[͌̈́͘R͌̈́͆]͋͑͠#{r.sample}#{CL}"
   puts " " * 16 + "💨 #{YL}[̻͓͜Y͖͖̘]̫̼͚#{y.sample}#{CL}"
