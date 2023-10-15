@@ -37,6 +37,7 @@ def whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_t
   boss_cards, your_cards = [boss_hand, your_hand].map { |hand| hand.map { |card| card[:suit] } }
   w, x, y = [boss_hand.first[:value], boss_total, your_total].map { |n| n >= 10 ? "" : " " } # adds a single whitespace for single integer display
 
+  puts BARRIER
   puts whitespace(the_boss, " ", 30) + # whitespace generator so display is consistent regardless of name length
   "#{the_boss[:name]} #{MG}⟪#{w}#{boss_hand.first[:value]}⟫#{CL} ʃ #{boss_cards[0]}  🃏" unless player[:stuck]
   puts whitespace(the_boss, " ", 30) +

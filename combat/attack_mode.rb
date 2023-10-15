@@ -65,8 +65,8 @@ def mortal_kombat(enemies, player, weapon, load_art)
     state_of_game(enemies, player, weapon, load_art = battlefield)
     puts MENU_HEADER
     enemies.each_with_index { |enemy, index| puts " " * 28 + "#{CN}#{NUM[index + 4]}#{CL} #{enemy[:name]}" }
-    puts BARRIER
-    user_choice = gets.chomp.to_i - 4                   # fetches and colors ASCII numbers
+    puts BARRIER                                       # fetches and colors ASCII numbers
+    user_choice = gets.chomp.to_i - 4
 
     if user_choice >= 0 && user_choice < enemies.length
       print `clear`
