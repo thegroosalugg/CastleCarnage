@@ -65,7 +65,7 @@ def room_vault
       chosen_rooms << room
     end
   end
-
-  chosen_rooms.map { |room| room[:name] = "#{ML}#{DESC.sample} #{room[:name]}#{CL}" } # Give the rooms a unique desc
+                                          # ANSI color hard coded here or all rooms get same color
+  chosen_rooms.map { |room| room[:name] = "\e[3#{rand(1..6)}m#{DESC.sample} #{room[:name]}#{CL}" } # Give the rooms a unique desc
   chosen_rooms
 end
