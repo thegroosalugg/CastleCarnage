@@ -28,8 +28,8 @@ CL = "\e[0m"
 ICONS = [ '⇌', '⇺', ]
 
 SEPARATOR = "#{ML}⇺#{CL}" * 80
-BARRIER = "#{ML}〰#{CL}" * 38
-ENEMY_DIV = "#{ML}⇎#{CL}" * 76
+BARRIER = "#{OR}〰#{CL}" * 38
+ENEMY_DIV = "#{GN}⇎#{CL}" * 76
 BOSS_DIV = " " * 4 + "#{MG}▪#{CL}" * 76
 
 # In game display tags
