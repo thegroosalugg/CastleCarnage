@@ -122,7 +122,7 @@ end
 
 def fight_menu(player, boss_style, weapon)
   puts SEPARATOR
-  puts "    What's up, what's up..."
+  puts "    \e[31mⲰⲏⲁⲧ'𝛓 𐌵ⲣ, ⲱⲏⲁⲧ'𝛓 𐌵ⲣ...\e[0m"
   case boss_style
   when "🍻 Barkeep" then barkeep(player)
   when "🕶️ Bouncer" then bouncer(player, weapon)
