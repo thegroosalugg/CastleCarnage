@@ -7,7 +7,7 @@ def name_player(player) # Name your player
   while your_name.empty?
     title_screen
     your_name = gets.chomp.strip.slice(0, 9).downcase.capitalize
-    player[:name] = "\e[32m🥷 #{your_name}\e[0m"
+    player[:name] = "#{GN}🥷 #{your_name}#{CL}"
     error_message
   end
 
@@ -51,7 +51,7 @@ def percentage(entity, key) # determins accuracy and crit chance %
 end
 
 def rage(the_boss) # boss rage bar
-  "🐲" + "🔥" * [the_boss[:rage], 0].max
+  "#{RAGE}" + "🪔" * [the_boss[:rage], 0].max
 end
 
 # Display generators that combine above methods to create dynamic displays for enemy and weapon
@@ -60,11 +60,11 @@ def enemy_bars(enemy)
   "#{health_bars(enemy)}\n" +
   "\n" +
   "    #{percentage(enemy, :accuracy)}" + "#{percentage(enemy, :crit_ch)}" + "#{attack_stats(enemy)} / " + "#{block_stats(enemy)}\n" +
-  "    #{ENEMY_DIV}"
+  "    #{SHIELD_EN}"
 end
 
 def weapon_bars(weapon)
-  "#{BARRIER}\n" +
+  "#{SHIELD_PL}\n" +
   "    #{weapon[:name]} / " + "🛠️ " + "🟦" * [weapon[:durability], 0].max + "\n" +
   "\n    #{percentage(weapon, :accuracy)}" + "#{percentage(weapon, :crit_ch)}" + attack_stats(weapon)
 
@@ -91,7 +91,7 @@ def player_status(player)
     when 18..20 then " Fucking Wasted  😵 /"
     end
 
-  "#{BARRIER}\n" +
-  "    \e[32m#{wallet}\e[0m #{'💵' * [player[:cash], 0].max}\n" +
-  "    \e[38;5;208m#{drunk}\e[0m #{'🍺' * [player[:drunk], 0].max}"
+  "#{SHIELD_PL}\n" +
+  "    #{GN}#{wallet}#{CL} #{'💵' * [player[:cash], 0].max}\n" +
+  "    #{OR}#{drunk}#{CL} #{'🍺' * [player[:drunk], 0].max}"
 end

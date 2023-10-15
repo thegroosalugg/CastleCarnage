@@ -17,7 +17,7 @@ def error_message
   ]
 
   print `clear`
-  puts SEPARATOR
+  puts BARRIER
   puts padding_generator(messages.sample, "❌", 50)
 end
 
@@ -45,6 +45,6 @@ def drained
   ]
 
   print `clear`
-  puts SEPARATOR
+  puts BARRIER
   puts padding_generator(messages.sample, "🩸", 52)
 end

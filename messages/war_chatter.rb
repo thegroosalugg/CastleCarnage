@@ -64,7 +64,7 @@ end
 
 def boss_speaks(player, the_boss, blast = 0, outcome)
   hit = [
-    "#{the_boss[:name]} has had enough of your crap 🔥 #{RAGE} 💢 #{player[:name]} -#{blast} #{player[:emoji]}",
+    "#{the_boss[:name]} has had enough of your crap #{RAGE} 🪔 #{player[:name]} -#{blast} #{player[:emoji]}",
   ]
   threat = [
     "#{the_boss[:name]} notices your cowardly attempts, a thrashing #{RAGE} is on the cards",

@@ -1,42 +1,39 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-# Blackjack continue?
+# Band => [DanceOff, KegStand] && Barkeep => BlackJack
 
-def continue
-  puts SEPARATOR
-  puts "    \e[32mWhat you want?\e[0m"
-  puts "   🎰 [4] \e[32m𝓐𝓖𝓐𝓘𝓝\e[0m"
-  puts "   💨 [5] \e[31mＮＡＨ\e[0m"
-end
-
-# Band > DanceOff && Band > KegStand && Barkeep > BlackJack
-
-def step_on_up(method)
-  puts SEPARATOR
-  puts "    Show your moves..."
+def game_menu(method)
+  puts BARRIER
   if method == :dance
-    puts "    [4] 🧊 Blue Steel"
-    puts "    [5] 🐯 Le Tigre"
-    puts "    [6] 🍦 Magnum"
+    puts "    #{ML}ℬℯ 𝓅𝓇ℴ𝒻ℯ𝓈𝓈𝒾ℴ𝓃𝒶𝓁𝓁𝓎 ℊℴℴ𝒹 𝓁ℴℴ𝓀𝒾𝓃ℊ...#{CL}"
+    puts "    #{CN}#{FOUR} 🧊 𝔹𝕝𝕦𝕖𝕊𝕥𝕖𝕖𝕝#{CL}"
+    puts "    #{OR}#{FIVE} 🐯 Lᴇ Tɪɢʀᴇ#{CL}"
+    puts "    #{MG}#{SIX} 🍦 𝕄𝔸𝔾ℕ𝕌𝕄#{CL}"
   elsif method == :keg
-    puts "    [4] 🦎Charmander🔥"
-    puts "    [5] 🐢 Squirtle 💧"
+    puts "    #{ML}Ⲥⲏⲟⲟ𝛓ⲉ ⲩⲟ𐌵ꞅ ⲣⲟⲕⲉⲙⲟⲛ#{CL}"
+    puts "    #{RD}#{FOUR} 🦎𝕮𝖍𝖆𝖗𝖒𝖆𝖓𝖉𝖊𝖗🔥#{CL}"
+    puts "    #{BL}#{FIVE} 🐢 𝒮𝓆𝓊𝒾𝓇𝓉𝓁ℯ 💧#{CL}"
   elsif method == :cards
-    puts "    [4] 🃏 Hit me!"
-    puts "    [5] 🪂 I'm out!"
+    puts "    #{MG}поиграй в игру сука#{CL}"
+    puts "    #{GN}#{FOUR} 🃏 Eщё!#{CL}"
+    puts "    #{RD}#{FIVE} 🪂 Пиздᴇц!#{CL}"
+  elsif method == :again
+    puts "    #{MG}xᴏᴘᴏᴡᴀя игᴘᴀ, ᴋᴀᴋ xᴏчᴇᴡь ᴇщᴇ ᴏдʜʏ?#{CL}"
+    puts "    #{GN}#{FOUR} 🎰 Давай!#{CL}"
+    puts "    #{RD}#{FIVE} 💨 ᴏтʙᴀли!#{CL}"
   end
 end
 
 def show_your_moves(player, the_boss, user_moves, boss_moves, method)
   moves = {
-    4 => "🧊 BlueSteel",
-    5 => "🐯 Le Tigre ",
-    6 => "🍦 Magnum   "
+    4 => "#{CN}🧊 𝔹𝕝𝕦𝕖𝕊𝕥𝕖𝕖𝕝#{CL}",
+    5 => "#{OR}🐯 Lᴇ Tɪɢʀᴇ #{CL}",
+    6 => "#{MG}🍦 𝕄𝔸𝔾ℕ𝕌𝕄   #{CL}"
   }
-  drinks = {
-    4 => "🦎Charmander🔥",
-    5 => "🐢 Squirtle 💧"
+  pkmn = {
+    4 => "#{RD}🦎𝕮𝖍𝖆𝖗𝖒𝖆𝖓𝖉𝖊𝖗🔥#{CL}",
+    5 => "#{BL}🐢 𝒮𝓆𝓊𝒾𝓇𝓉𝓁ℯ 💧#{CL}"
   }
 
   if method == :dance
@@ -47,13 +44,13 @@ def show_your_moves(player, the_boss, user_moves, boss_moves, method)
       when (user == 6 && boss == 4) then FLUNKED
       when user > boss then SUCCESS
       when user < boss then FLUNKED
-      else " #{MISSED}  "
+      else "🍃 #{MISSED}  🍂"
       end
       puts whitespace(player, " ", 16) + "#{player[:name]} 💬 #{moves[user]} #{x} #{moves[boss]} 🗨️ #{the_boss[:name]}"
     end
   elsif method == :keg
     x = user_moves == boss_moves ? "#{SUCCESS}" : "#{FLUNKED}"
-    puts whitespace(player, " ", 16) + "#{player[:name]} 💬 #{drinks[user_moves]} #{x} #{drinks[boss_moves]} 🗨️ #{the_boss[:name]}"
+    puts whitespace(player, " ", 14) + "#{player[:name]} 💬 #{pkmn[user_moves]} #{x} #{pkmn[boss_moves]} 🗨️ #{the_boss[:name]}"
   end
-  puts SEPARATOR
+  puts BARRIER
 end

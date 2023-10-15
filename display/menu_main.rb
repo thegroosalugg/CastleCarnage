@@ -30,10 +30,10 @@ def load_menu
     " Mug it",
   ]
 
-  puts "         \e[35m Whatcha ya gonna do? \e[0m"
-  puts "     🥷 \e[31m[̼̟̞T͍̦͔]̻̟͜\e[0m \e[31m#{t.sample}\e[0m"
-  puts "     🐬 \e[38;5;208m[͌̈́͘R͌̈́͆]͋͑͠\e[0m \e[38;5;208m#{r.sample}\e[0m"
-  puts "     💨 \e[33m[̻͓͜Y͖͖̘]̫̼͚\e[0m \e[33m#{y.sample}\e[0m"
+  puts "          #{MG}Whatcha ya gonna do?#{CL}"
+  puts "     🥷 #{RD}[̼̟̞T͍̦͔]̻̟͜#{t.sample}#{CL}"
+  puts "     🐬 #{OR}[͌̈́͘R͌̈́͆]͋͑͠#{r.sample}#{CL}"
+  puts "     💨 #{YL}[̻͓͜Y͖͖̘]̫̼͚#{y.sample}#{CL}"
 end
 
 # Boss Menu
@@ -42,12 +42,12 @@ def boss_menu(player, boss_style)
   t = 4 - player[:turns] # this counts how many turns remaining and adjusts message on final turn
   n = t == 1 ? "ɴᴇxᴛ" : "ɪɴ #{t}"
   s = t == 1 ? "" : "s"
-  magic = "   🔥#{player[:emoji]} \e[35m[̝̻͕Y͔̻̦]͔̞\e[0m 🪦 \e[35mⲚⲉⲥꞅⲟⲙⲁⲛⲥⲩ\e[0m  🪄"
-  wait = "⏱️ \e[35mAᴠᴀɪʟᴀʙʟᴇ #{n} ᴛᴜʀɴ#{s}\e[0m"
+  magic = "   🔥#{player[:emoji]} #{MG}[̝̻͕Y͔̻̦]͔̞ 🪦 Ⲛⲉⲥꞅⲟⲙⲁⲛⲥⲩ#{CL}  🪄"
+  wait = "⏱️ #{MG}Aᴠᴀɪʟᴀʙʟᴇ #{n} ᴛᴜʀɴ#{s}#{CL}"
 
-  puts SEPARATOR
-  puts "     \e[34mDᴇᴄɪsɪᴏɴs,\e[0m \e[36mᴅᴇᴄɪsɪᴏɴs...\e[0m"
-  puts "     ⚔️ \e[34m[̿̓͐T͆͑͘]̒͠\e[0m 💀 \e[34m𝓕ⲁⲥⲉ ⲧⲏⲉ​#{boss_style}\e[0m 🌘"
-  puts "   🔥#{player[:emoji]} \e[31m[͋͊͒Ŕ́͝]͆̿\e[0m 🩸 \e[31mⲂ𝓛ⲟⲟⲆ Ⲙⲁ𝓖ⲓⲕ\e[0m 🪄"
-  puts player[:turns] == 4 ? magic : padding_generator(wait, "-", 50)
+  puts BARRIER
+  puts "     #{ML}Dᴇᴄɪsɪᴏɴs, ᴅᴇᴄɪsɪᴏɴs...#{CL}"
+  puts "     ⚔️ #{BL}[̿̓͐T͆͑͘]̒͠ 💀 𝓕ⲁⲥⲉ ⲧⲏⲉ​#{boss_style}#{CL} 🌘"
+  puts "   🔥#{player[:emoji]} #{RD}[͋͊͒Ŕ́͝]͆̿ 🩸 Ⲃ𝓛ⲟⲟⲆ Ⲙⲁ𝓖ⲓⲕ#{CL} 🪄"
+  puts player[:turns] == 4 ? magic : padding_generator(wait, "#{MG}-#{CL}", 50)
 end

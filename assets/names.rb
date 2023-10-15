@@ -35,9 +35,21 @@ ROOMS = [
 ]
 
 DESC = [
-  "💩 The Manky", "🗯 The Shoddy", "🧛 Dracula's", "🏢 The Swanky", "🐝 The Buzzing", "🍷 The Dodgy", "🩸 The Bloody",
+  "💩 The Manky", "⛏️ The Shoddy", "🧛 Dracula's", "🏢 The Swanky", "🐝 The Buzzing", "🍷 The Dodgy", "🩸 The Bloody",
   "🎉 The Reem", "🐴 The Pony", "🤬 The Bastard", "🤩 The Peng", "🤪 The Mental", "👹 The Wicked", "🎭 The Dramatic",
   "🎤 The Groovy", "🎃 The Spooky", "🚢 The Nautical", "🍔 The Greasy", "🌑 The Abandoned", "😵 The Bonkers", "🎸 The Rocking",
   "🍄 The Shroomy", "🦁 The Roaring", "🌵 The Deserted", "🤢 The Gnarly", "🏛️ The Presidential", "🔮 The Trippy", "🤮 The Minging",
   "🐒 The Cheeky", "🗣️ The Banter", "🅱️ The Bitchin'", "👻 The Haunted", "🐺 The Howling",
 ]
+
+# Combat Phrases
+
+RUDETALK = [
+  "Motherfucker!", "Bugger it!", "Bloody hell!", "Arses!", "Sod it!", "Bollocks!", "Shit!", "I call hacks!"
+]
+FIGHTTALK = [
+  "Ah yeah!", "I own it!", "Take that!", "I'm jus' too good", "Bow to me!",
+]
+BOUNCERTALK = [
+  "Not tonight!", "Not with that shirt!", "Piss off!", "Get lost!", "You can't afford it!",
+ ]
