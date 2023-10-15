@@ -14,11 +14,11 @@ def game_menu(method)
     puts " " * 26 + "#{RD}#{NUM[4]} 🦎𝕮𝖍𝖆𝖗𝖒𝖆𝖓𝖉𝖊𝖗🔥#{CL}"
     puts " " * 26 + "#{BL}#{NUM[5]} 🐢 𝒮𝓆𝓊𝒾𝓇𝓉𝓁ℯ 💧#{CL}"
   elsif method == :cards
-    puts " " * 28 + "#{MG}поиграй в игру сука#{CL}"
+    puts " " * 28 + "#{ML}поиграй в игру сука#{CL}"
     puts " " * 26 + "#{GN}#{NUM[4]} 🃏 Eщё!#{CL}"
     puts " " * 26 + "#{RD}#{NUM[5]} 🪂 Пиздᴇц!#{CL}"
   elsif method == :again
-    puts " " * 28 + "#{MG}xᴏᴘᴏᴡᴀя игᴘᴀ, ᴋᴀᴋ xᴏчᴇᴡь ᴇщᴇ ᴏдʜʏ?#{CL}"
+    puts " " * 28 + "#{ML}xᴏᴘᴏᴡᴀя игᴘᴀ, ᴋᴀᴋ xᴏчᴇᴡь ᴇщᴇ ᴏдʜʏ?#{CL}"
     puts " " * 26 + "#{GN}#{NUM[4]} 🎰 Давай!#{CL}"
     puts " " * 26 + "#{RD}#{NUM[5]} 💨 ᴏтʙᴀли!#{CL}"
   end
