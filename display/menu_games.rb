@@ -15,11 +15,11 @@ def game_menu(method)
     puts "    #{RD}[̳4̳]̳ 🦎𝕮𝖍𝖆𝖗𝖒𝖆𝖓𝖉𝖊𝖗🔥#{CL}"
     puts "    #{BL}[̳5̳]̳ 🐢 𝒮𝓆𝓊𝒾𝓇𝓉𝓁ℯ 💧#{CL}"
   elsif method == :cards
-    puts "    #{MG}поиграй в игру сука#{CL}
+    puts "    #{MG}поиграй в игру сука#{CL}"
     puts "    #{GN}[̳4̳]̳ 🃏 Eщё!#{CL}"
     puts "    #{RD}[̳5̳]̳ 🪂 Пиздᴇц!#{CL}"
   elsif method == :again
-    puts "    #{MG}xᴏᴘᴏᴡᴀя игᴘᴀ, ᴋᴀᴋ xᴏчᴇᴡь ᴇщᴇ ᴏдʜʏ?#{CL}
+    puts "    #{MG}xᴏᴘᴏᴡᴀя игᴘᴀ, ᴋᴀᴋ xᴏчᴇᴡь ᴇщᴇ ᴏдʜʏ?#{CL}"
     puts "    #{GN}[̳4̳]̳ 🎰 Давай!#{CL}"
     puts "    #{RD}[̳5̳]̳ 💨 ᴏтʙᴀли!#{CL}"
   end
@@ -31,7 +31,7 @@ def show_your_moves(player, the_boss, user_moves, boss_moves, method)
     5 => "#{OR}🐯 Lᴇ Tɪɢʀᴇ #{CL}",
     6 => "#{MG}🍦 𝕄𝔸𝔾ℕ𝕌𝕄   #{CL}"
   }
-  drinks = {
+  pkmn = {
     4 => "#{RD}🦎𝕮𝖍𝖆𝖗𝖒𝖆𝖓𝖉𝖊𝖗🔥#{CL}",
     5 => "#{BL}🐢 𝒮𝓆𝓊𝒾𝓇𝓉𝓁ℯ 💧#{CL}"
   }
@@ -50,7 +50,7 @@ def show_your_moves(player, the_boss, user_moves, boss_moves, method)
     end
   elsif method == :keg
     x = user_moves == boss_moves ? "#{SUCCESS}" : "#{FLUNKED}"
-    puts whitespace(player, " ", 16) + "#{player[:name]} 💬 #{drinks[user_moves]} #{x} #{drinks[boss_moves]} 🗨️ #{the_boss[:name]}"
+    puts whitespace(player, " ", 14) + "#{player[:name]} 💬 #{pkmn[user_moves]} #{x} #{pkmn[boss_moves]} 🗨️ #{the_boss[:name]}"
   end
   puts BARRIER
 end

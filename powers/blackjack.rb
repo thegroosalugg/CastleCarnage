@@ -10,14 +10,14 @@ def card_deck
   suits.each do |suit| # Add numbered cards to the deck
     values.each do |value|
       w = value == 10 ? "" : " " # <= creates a whitespace to even display between single & double digits
-      card = ["♥️", "♦️"].include?(suit) ? { suit: "\e[31m#{w}#{value}#{suit}\e[0m", value: value } : { suit: "\e[34m#{w}#{value}#{suit}\e[0m", value: value }
+      card = ["♥️", "♦️"].include?(suit) ? { suit: "#{RD}#{w}#{value}#{suit}#{CL}", value: value } : { suit: "#{BL}#{w}#{value}#{suit}#{CL}", value: value }
       deck << card                # card = { suit: "#{w}#{value}#{suit}", value: value }
     end
   end
                                   # ^ original card code. I added a condition to color card name by suit
   suits.each do |suit| # Add suit cards to the deck
     royals.each do |name, value|
-      card = ["♥️", "♦️"].include?(suit) ? { suit: "\e[31m #{name}#{suit}\e[0m", value: value } : { suit: "\e[34m #{name}#{suit}\e[0m", value: value }
+      card = ["♥️", "♦️"].include?(suit) ? { suit: "#{RD} #{name}#{suit}#{CL}", value: value } : { suit: "#{BL} #{name}#{suit}#{CL}", value: value }
       deck << card                # card = { suit: " #{name}#{suit}", value: value }
     end
   end
