@@ -1,24 +1,16 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-# Invoice for stat changes
-# Bar fight outcomes # .abs removes negatives so only positive integers displayed
+# Blackjack continue?
 
-def invoice(player, amount, where)
-  x, messages = case where                             # this condition simply sets a + symbol in fron of positive integers
-  when :brawl then [100, "#{CASH} #{amount[0].positive? ? "+" : ""}#{amount[0]} 💵  #{HANGOVER} #{amount[1].positive? ? "+" : ""}#{amount[1]} 🍺"] # bar fight
-  when :bar   then [100, "#{CASH} -#{amount} 💵  #{HANGOVER} +#{amount} 🍺"] # pay the tab
-  when :guard then [100, "#{WEAPON} #{BONUS} +#{amount} 🛡️"] # not tonight
-  when :cash  then [85, "#{CASH} +#{amount} 💵"] # sneak attack / blackjack
-  when :loss  then [85, "#{CASH} -#{amount} 💵"] # xhardcorex / blackjack
-  when :life  then [100, "#{BONUS} #{HP_PLUS} #{player[:name]} +#{amount} #{player[:emoji]}"] # sneak attack
-  when :grave then [100, "#{HP_MINUS} #{player[:name]} -#{amount} #{player[:emoji]}"] # nectromancy
-  when :cards then [110, "#{player[:name]} drew #{CARD} #{amount.last[:suit]}"] # blackjack
-  end
-  puts text_break(messages, " ", x)
+def continue
+  puts SEPARATOR
+  puts "    \e[32mWhat you want?\e[0m"
+  puts "   🎰 [4] \e[32m𝓐𝓖𝓐𝓘𝓝\e[0m"
+  puts "   💨 [5] \e[31mＮＡＨ\e[0m"
 end
 
-# Band boss style > when 5 & 6. Barkeep boss style when 6.
+# Band > DanceOff && Band > KegStand && Barkeep > BlackJack
 
 def step_on_up(method)
   puts SEPARATOR

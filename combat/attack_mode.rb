@@ -1,6 +1,26 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
+# Player vs enemy strike
+
+def shots_fired(attacker, target, damage = 0, outcome)
+  x = rand(3) == 1 ? [ "Motherfucker!", "Bugger it!", "Bloody hell!", "Arses!", "Sod it!", "Bollocks!", "Shit!", "I call hacks!" ].sample : ""
+  y = rand(3) == 1 ? [ "🗯️ Ah yeah!", "🗯️ I own it!", "🗯️ Take that!", "🗯️ I'm jus' too good", "🗯️ Bow to me!" ].sample : ""
+  z = rand(3) == 1 ? [ "Not tonight!", "Not with that shirt!", "Piss off!", "Get lost!", "You can't afford it!" ].sample : ""
+  critical = "#{attacker[:name]} #{y} ⚔️ #{CRITICAL} 💥 #{target[:name]} -#{damage} #{target[:emoji]}"
+  missed = "#{attacker[:name]} 💭❓ #{x} #{MISSED}"
+  on_point = "#{attacker[:name]} #{y} ⚔️ #{HIT} 💢 #{target[:name]} -#{damage} #{target[:emoji]}"
+  counter = "#{attacker[:name]} 🗯️❗ #{z} ⚔️ #{COUNTER} 💢 #{target[:name]} -#{damage} #{target[:emoji]}"
+
+  x, messages = case outcome
+  when :critical then [100, critical]
+  when :missed   then [85, missed]
+  when :hit      then [100, on_point]
+  when :counter  then [100, counter]
+  end
+  puts text_break(messages, " ", x)
+end
+
 def strike(attacker, target, weapon = nil)
   source = attacker[:id] == :player ? weapon : attacker
   damage = rand(source[:attack]) - (target[:id] == :boss ? 0 : rand(target[:block])).clamp(1, 100)
@@ -18,12 +38,24 @@ def strike(attacker, target, weapon = nil)
   weapon[:durability] = [weapon[:durability] - 1, 0].max if attacker[:id] == :player
 end
 
+# Sommersault attack
+
+def somersault(chance, n)
+  success = "#{SUCCESS} " + "⚔️ " * n
+  failed = "#{FLUNKED} " + "😓 " * n
+
+  messages = chance == 1 ? success : failed
+  puts text_break(messages, " ", 85)
+end
+
 def somersault_attack(player, enemies, weapon)   # succeed and strike twice, fail and get struck thrice
   chance = rand(2)
   n = rand(2..3)
   somersault(chance, n)
   chance == 1 ? n.times { strike(player, enemies.sample, weapon) } : n.times { strike(enemies.sample, player) }
 end
+
+# Main game combat
 
 def mortal_kombat(enemies, player, weapon, load_art)
   greeting(:combat)
@@ -44,6 +76,8 @@ def mortal_kombat(enemies, player, weapon, load_art)
     end
   end
 end
+
+# activates when exploring rooms
 
 def escape_attempt(enemies, player, weapon, load_art)
   target_enemy = enemies.sample

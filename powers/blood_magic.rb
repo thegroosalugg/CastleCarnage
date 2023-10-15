@@ -1,7 +1,24 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-def get_buff(player)
+def blood_ritual(player, user_choice, price_paid, multiplier, boost)
+  boost = boost == :attack ? "💢 attack" : "🛡️ block"
+
+  buff =     "#{BUFF} +#{multiplier} #{boost}  #{HP_MINUS} -#{price_paid} #{player[:emoji]}"
+  cash =     "#{CASH} +#{multiplier} 💵  #{HP_MINUS} -#{price_paid} #{player[:emoji]}"
+  hangover = "#{HANGOVER} -#{multiplier} 🍺  #{HP_MINUS} -#{price_paid} #{player[:emoji]}"
+  health =   "#{HP_PLUS} +#{price_paid} #{player[:emoji]}  #{HP_MINUS}  -#{multiplier} #{boost}"
+
+  messages = case user_choice
+  when 4 then buff
+  when 5 then cash
+  when 6 then hangover
+  when 7 then health
+  end
+  puts text_break(messages, " ", 90)
+end
+
+def buffout(player)
   stats = []
   [player[:attack], player[:block]].each_with_index do |stat, index| # selects stats when attack < 50 || block < 20
     stats << :attack if index == 0 && stat.max < 50
@@ -15,7 +32,7 @@ def get_buff(player)
   return price_paid, multiplier, boost             # minimum range gets 50% of maximum. 2.0 gives float and .ceil rounds floats up 1
 end
 
-def get_rich(player)
+def devils_deal(player)
   multiplier = player[:cash] >= 20 ? 0 : rand(1..[20 - player[:cash], 8].min)
   price_paid = (multiplier * rand(3.5..6.0)).to_i
   player[:hp] -= price_paid
@@ -23,7 +40,7 @@ def get_rich(player)
   return price_paid, multiplier
 end
 
-def sort_it_out(player)
+def hangover(player)
   multiplier = player[:drunk].zero? ? 0 : rand(1..[player[:drunk], 8].min)
   price_paid = (multiplier * rand(2.5..4.5)).to_i
   player[:hp] -= price_paid
@@ -31,7 +48,7 @@ def sort_it_out(player)
   return price_paid, multiplier
 end
 
-def munch_out(player)
+def dodgy_potion(player)
   boost = [:attack, :block].select { |stat| player[stat].max > 1 }.sample
 
   multiplier = player[boost].max > 1 ? rand(1..[player[boost].max - 1, 3].min) : 0
@@ -55,28 +72,28 @@ def pay_with_blood(player, buddy, weapon, the_boss, boss_style, load_boss)
     case user_choice
     when 4 # pay HP to increase player attack / block at random. Max 50 attack / 20 block range
       if player[:attack].max < 50 || player[:block].max < 20
-      price_paid, multiplier, boost = get_buff(player)
+      price_paid, multiplier, boost = buffout(player)
     else
       error_message
       redo
     end
     when 5 # pay HP for cash: 0-20
       if player[:cash] < 20
-        price_paid, multiplier = get_rich(player)
+        price_paid, multiplier = devils_deal(player)
       else
         error_message
         redo
       end
     when 6 # pay HP to decrease toxicity: 20-0
       if player[:drunk].positive?
-        price_paid, multiplier = sort_it_out(player)
+        price_paid, multiplier = hangover(player)
       else
         error_message
         redo
       end
     when 7 # sacrifice attack / block for HP: 1000 max
       if (player[:attack].max > 1 || player[:block].max > 1) && player[:hp] < 100
-        price_paid, multiplier, boost = munch_out(player)
+        price_paid, multiplier, boost = dodgy_potion(player)
       else
         error_message
         redo
