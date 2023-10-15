@@ -80,9 +80,9 @@ end
 
 def boss_walks(the_boss, boss_style, time)
   barkeep = [
-    "The #{boss_style} is keeping the liquor flowng, its happy hour ⌚",
+    "The #{STYLE[boss_style]} is keeping the liquor flowng, its happy hour ⌚",
     "#{the_boss[:name]} is getting close to barring you, prepare!",
-    "The #{boss_style} is in the house 🛖 orders up",
+    "The #{STYLE[boss_style]} is in the house 🛖 orders up",
     "#{the_boss[:name]} is the liquor 🍾",
   ]
   bouncer = [ "#{the_boss[:name]} is excerting its pressure #{HANGOVER} +1 🍺" ]
@@ -92,7 +92,7 @@ def boss_walks(the_boss, boss_style, time)
     "Some wanker just started playing dubstep 🎧 Get ready for damage",
     "Darude Sandstorm 🎧 starts playing, shit's 'bout to go down",
   ]
-  outro = [ "#{the_boss[:name]} ♻️ ▻◅▶▷ #{boss_style}" ]
+  outro = [ "#{the_boss[:name]} ♻️ ▻◅▶▷ #{STYLE[boss_style]}" ]
   reprise = [ "#{HANGOVER} -1 🍺" ]
 
   x, messages = case boss_style
