@@ -39,11 +39,8 @@ SHIELD_BS = "#{MG}#{ICONS.sample}#{CL}" * 76
 
 # In game display tags
 
-FOUR =       "[̳4̳]̳" # Add different colors in different places
-FIVE =       "[̳5̳]̳"
-SIX =        "[̳6̳]̳"
-SEVEN =      "[̳7̳]̳"
-NINE =       "[̳9̳]̳"
+NUM = ["[̳0̳]̳", "[̳1̳]̳", "[̳2̳]̳", "[̳3̳]̳", "[̳4̳]̳", "[̳5̳]̳", "[̳6̳]̳", "[̳7̳]̳", "[̳8̳]̳", "[̳9̳]̳"]
+
 HANGOVER =   "#{OR}ℍ𝔸ℕ𝔾𝕆𝕍𝔼ℝ#{CL}"
 BONUS =      "#{YL}🪅 ℬ𝒪𝒩𝒰𝒮 🎊#{CL}"
 BUFF =       "#{CN}𝓑𝓤𝓕𝓕🪶#{CL}"

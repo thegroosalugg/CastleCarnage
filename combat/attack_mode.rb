@@ -64,7 +64,7 @@ def mortal_kombat(enemies, player, weapon, load_art)
   until user_choice >= 0 && user_choice < enemies.length
     state_of_game(enemies, player, weapon, load_art = battlefield)
     puts "    Who yer gonna whack:"
-    enemies.each_with_index { |enemy, index| puts "    [#{index + 4}] #{enemy[:name]}" }
+    enemies.each_with_index { |enemy, index| puts "    #{NUM[index + 4]} #{enemy[:name]}" }
     user_choice = gets.chomp.to_i - 4
 
     if user_choice >= 0 && user_choice < enemies.length
