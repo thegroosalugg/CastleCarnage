@@ -7,7 +7,7 @@ def name_player(player) # Name your player
   while your_name.empty?
     title_screen
     your_name = gets.chomp.strip.slice(0, 9).downcase.capitalize
-    player[:name] = "\e[32m🥷 #{your_name}\e[0m"
+    player[:name] = "#{GN}🥷 #{your_name}#{CL}"
     error_message
   end
 
@@ -92,6 +92,6 @@ def player_status(player)
     end
 
   "#{SHIELD_PL}\n" +
-  "    \e[32m#{wallet}\e[0m #{'💵' * [player[:cash], 0].max}\n" +
-  "    \e[38;5;208m#{drunk}\e[0m #{'🍺' * [player[:drunk], 0].max}"
+  "    #{GN}#{wallet}#{CL} #{'💵' * [player[:cash], 0].max}\n" +
+  "    #{OR}#{drunk}#{CL} #{'🍺' * [player[:drunk], 0].max}"
 end
