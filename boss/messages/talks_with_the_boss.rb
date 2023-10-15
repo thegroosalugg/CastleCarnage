@@ -47,12 +47,12 @@ def boss_walks(the_boss, boss_style, time)
   outro = [ "#{the_boss[:name]} ♻️ ▻◅▶▷ #{boss_style}" ]
   reprise = [ "#{HANGOVER} -1 🍺" ]
 
-  messages = case boss_style
-  when "🍻 Barkeep" then time == :intro ? barkeep : outro
-  when "🕶️ Bouncer" then time == :intro ? bouncer : outro
-  when "🎶 Band"    then (time == :reprise) ? reprise : (time == :intro) ? band : outro
+  x, messages = case boss_style
+  when "🍻 Barkeep" then [85, time == :intro ? barkeep : outro]
+  when "🕶️ Bouncer" then time == :intro ? [100, bouncer] : [85, outro]
+  when "🎶 Band"    then (time == :reprise) ? [85, reprise] : [85, (time == :intro) ? band : outro]
   end
-  puts text_break(messages.sample, " ", 80)
+  puts text_break(messages.sample, " ", x)
 end
 
 def boss_speaks(player, the_boss, blast = 0, outcome)
