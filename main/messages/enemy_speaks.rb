@@ -48,12 +48,14 @@ def enemy_speaks(enemy, event)
     " reporting for duty.",
   ]
 
-  messages = case event
-  when :summon   then SUMMON + summon.sample
-  when :escape   then escape.sample
-  when :surprise then SURPRISE + " " + enemy[:name] + surprise.sample
-  when :pwned    then PWNED + " " + enemy[:name] + pwned.sample
-  when :revive   then SUMMON + " " + enemy[:name] + revive.sample
+  x, messages = case event
+  when :summon   then [100, SUMMON + summon.sample]
+  when :escape   then [80, escape.sample]
+  when :surprise then [100, SURPRISE + " " + enemy[:name] + surprise.sample]
+  when :pwned    then [100, PWNED + " " + enemy[:name] + pwned.sample]
+  when :revive   then [100, SUMMON + " " + enemy[:name] + revive.sample]
   end
-  puts text_break(messages, " ", 100)
+
+  puts text_break(messages, " ", x)
+
 end
