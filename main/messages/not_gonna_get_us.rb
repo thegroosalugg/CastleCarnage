@@ -66,7 +66,7 @@ def gifts(entity, operator, randomizer)
   when 0 then (entity[:id] == :player ? HP_PLUS + gained_hp.sample : ENEMY_HP + enemy_hp.sample) + plus
   when 1 then (entity[:id] == :player ? HP_MINUS + lost_hp.sample : ENEMY_TRAP + enemy_trap.sample) + minus
   end
-  puts text_break(messages, " ", 80)
+  puts text_break(messages, " ", 100)
 end
 
 def weapon_speaks(weapon, status)
@@ -97,5 +97,5 @@ def weapon_speaks(weapon, status)
     " Your #{weapon[:name]} was too shoddy",
   ]
   messages = status == :got ? (WEAPON + got.sample) : (BROKE + broke.sample)
-  puts text_break(messages, " ", 80)
+  puts text_break(messages, " ", 100)
 end

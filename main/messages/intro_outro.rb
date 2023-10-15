@@ -15,7 +15,7 @@ def intro(player, weapon, enemy)
     "There's a #{weapon[:name]} on the floor, better get that. 💬 We won't get got, we gone get!",
   ]
 
-  puts text_break([enemy_intro.sample, player_intro.sample].join(' '), " ", 80)
+  puts text_break([enemy_intro.sample, player_intro.sample].join(' '), " ", 65)
 end
 
 # END OF GAME MESSAGES

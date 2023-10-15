@@ -47,3 +47,14 @@ def cheat_menu_boss(user_choice, player, buddy, weapon, the_boss, boss_style)
   player[:drunk] = player[:drunk].clamp(0, 20)
   return buddy, weapon, boss_style
 end
+
+# change text color in terminal with these codes
+
+# Red:     \e[31mText\e[0m
+# Green:   \e[32mText\e[0m
+# Yellow:  \e[33mText\e[0m
+# Blue:    \e[34mText\e[0m
+# Magenta: \e[35mText\e[0m
+# Cyan:    \e[36mText\e[0m
+# White:   \e[37mText\e[0m
+# Orange:  \e[38;5;208mText\e[0m

@@ -9,7 +9,7 @@ def your_rewards(player, health, boost, multiplier)
   messages = "#{HP_PLUS} +#{health} #{player[:emoji]}  #{BUFF} +#{multiplier} #{boost}"
 
   puts text_break("🎉🪅 #{BONUS} 🎊🎈", " ", 80)
-  puts text_break(messages, " ", 80)
+  puts text_break(messages, " ", 90)
 end
 
 def greeting(place)
@@ -24,8 +24,8 @@ def greeting(place)
     "🧞💬 山🝗㇄⼕ㄖ爪🝗 丂〸尺闩𝓝Ꮆ🝗尺...",
   ]
 
-  messages = place == :combat ? enemy : shop
-  puts text_break(messages.sample, " ", 80)
+  x, messages = place == :combat ? [75, enemy] : [70, shop]
+  puts text_break(messages.sample, " ", x)
 end
 
 # Intro outro messages for changes to boss fighting style
@@ -47,12 +47,12 @@ def boss_walks(the_boss, boss_style, time)
   outro = [ "#{the_boss[:name]} ♻️ ▻◅▶▷ #{boss_style}" ]
   reprise = [ "#{HANGOVER} -1 🍺" ]
 
-  messages = case boss_style
-  when "🍻 Barkeep" then time == :intro ? barkeep : outro
-  when "🕶️ Bouncer" then time == :intro ? bouncer : outro
-  when "🎶 Band"    then (time == :reprise) ? reprise : (time == :intro) ? band : outro
+  x, messages = case boss_style
+  when "🍻 Barkeep" then time == :intro ? [80, barkeep] : [85, outro]
+  when "🕶️ Bouncer" then time == :intro ? [100, bouncer] : [85, outro]
+  when "🎶 Band"    then (time == :reprise) ? [90, reprise] : [85, (time == :intro) ? band : outro]
   end
-  puts text_break(messages.sample, " ", 80)
+  puts text_break(messages.sample, " ", x)
 end
 
 def boss_speaks(player, the_boss, blast = 0, outcome)
@@ -65,5 +65,5 @@ def boss_speaks(player, the_boss, blast = 0, outcome)
   ]
 
   messages = outcome == :hit ? hit : threat
-  puts text_break(messages.sample, " ", 80)
+  puts text_break(messages.sample, " ", 100)
 end
