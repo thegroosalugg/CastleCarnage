@@ -17,8 +17,8 @@ def whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_t
 end
 
 def whos_the_boss(your_hand, your_total, boss_total)
-  win = "🎈 #{SUCCESS} 🎉"
-  lose = "🫵🏼😅 #{FLUNKED} Now Get out❗"
+  win = "#{SUCCESS}"
+  lose = "#{FLUNKED} now get out❗"
   blackjack = "🎌 #{BLACKJACK} 🎌"
 
   messages = if your_total == 21 && your_hand.length == 2 && boss_total != 21

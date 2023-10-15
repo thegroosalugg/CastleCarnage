@@ -12,13 +12,13 @@ def shots_fired(attacker, target, damage = 0, outcome)
   on_point = "#{attacker[:name]} #{y} ⚔️ #{HIT} 💢 #{target[:name]} -#{damage} #{target[:emoji]}"
   counter = "#{attacker[:name]} 🗯️❗ #{z} ⚔️ #{COUNTER} 💢 #{target[:name]} -#{damage} #{target[:emoji]}"
 
-  messages = case outcome
-  when :critical then critical
-  when :missed   then missed
-  when :hit      then on_point
-  when :counter  then counter
+  x, messages = case outcome
+  when :critical then [100, critical]
+  when :missed   then [85, missed]
+  when :hit      then [100, on_point]
+  when :counter  then [100, counter]
   end
-  puts text_break(messages, " ", 100)
+  puts text_break(messages, " ", x)
 end
 
 # Sommersault attack
@@ -28,5 +28,5 @@ def somersault(chance, n)
   failed = "#{FLUNKED} " + "😓 " * n
 
   messages = chance == 1 ? success : failed
-  puts text_break(messages, " ", 80)
+  puts text_break(messages, " ", 85)
 end
