@@ -1,27 +1,5 @@
 # rubocop:disable all
-require_relative 'main/attack_mode'
-require_relative 'main/war_machine'
-require_relative 'main/escape_room'
-require_relative 'boss/big_boss'
-require_relative 'boss/powers/blood_magic'
-require_relative 'boss/powers/blackjack'
-require_relative 'boss/combat/boss_barkeep'
-require_relative 'boss/combat/boss_bouncer'
-require_relative 'boss/combat/boss_band'
-require_relative 'boss/combat/beatdown'
-require_relative 'main/messages/enemy_speaks'
-require_relative 'main/messages/fighting_talk'
-require_relative 'main/messages/not_gonna_get_us'
-require_relative 'main/messages/intro_outro'
-require_relative 'main/messages/the_drifter'
-require_relative 'main/messages/menu'
-require_relative 'boss/messages/boss_art'
-require_relative 'boss/messages/boss_menu'
-require_relative 'boss/messages/talks_with_the_boss'
-require_relative 'boss/combat/messages/war_letters'
-require_relative 'boss/powers/messages/blood_letters'
-require_relative 'boss/powers/messages/bust_or_break'
-require_relative 'debug/cheat_mode'
+require_relative 'imports'
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 def play_game

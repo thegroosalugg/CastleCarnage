@@ -1,6 +1,35 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
+# Main UI that displays all current happenings, by chaining the above methods
+
+def state_of_game(enemies, player, weapon, load_art)
+  puts SEPARATOR
+  enemies.each { |enemy| puts "    #{enemy_bars(enemy)}" }
+  puts move_ascii_art(load_art)
+  puts "    #{BARRIER}"
+  puts "    #{health_bars(player)}\n" + "\n"
+  puts "    #{block_stats(player)} / 💀 #{player[:kills]} / 🏰 #{player[:rooms]}"
+  puts "    #{weapon_bars(weapon)}" if weapon[:durability].positive?
+  puts SEPARATOR
+end
+
+# Same as state of game but exclusively for big boss
+
+def game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
+  puts SEPARATOR
+  puts "    #{health_bars(the_boss)}\n" + "\n"          # weird looking code makes font red
+  puts "    #{boss_style} / #{attack_stats(the_boss)} / #{RAGE} #{rage(the_boss)}"
+  puts BOSS_DIV
+  puts move_ascii_art(load_boss)
+  puts "    #{BARRIER}"
+  puts "    #{enemy_bars(buddy)}" if buddy && buddy[:hp].positive?
+  puts "    #{health_bars(player)}\n" + "\n"
+  puts "    #{attack_stats(player)} / #{block_stats(player)}"
+  puts "    #{weapon_bars(weapon)}" if weapon[:durability].positive? && boss_style == "🕶️ Bouncer"
+  puts "    #{player_status(player)}"
+end
+
 # Blackjack state of game
 
 def whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
@@ -19,7 +48,7 @@ end
 def whos_the_boss(your_hand, your_total, boss_total)
   win = "#{SUCCESS}"
   lose = "#{FLUNKED} now get out❗"
-  blackjack = "🎌 #{BLACKJACK} 🎌"
+  blackjack = "#{BLACKJACK}"
 
   messages = if your_total == 21 && your_hand.length == 2 && boss_total != 21
     blackjack
@@ -29,11 +58,4 @@ def whos_the_boss(your_hand, your_total, boss_total)
     lose
   end
   puts text_break(messages, " ", 80)
-end
-
-def continue
-  puts SEPARATOR
-  puts "    \e[32mWhat you want?\e[0m"
-  puts "   🎰 [4] \e[32m𝓐𝓖𝓐𝓘𝓝\e[0m"
-  puts "   💨 [5] \e[31mＮＡＨ\e[0m"
 end

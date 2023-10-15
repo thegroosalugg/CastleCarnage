@@ -11,7 +11,7 @@ end
 def explore_rooms(enemies, weapon, player, load_art)
   user_choice = 0
   chosen_rooms = room_vault
-  load_art = room_with_a_view
+  load_art = room_service
   state_of_game(enemies, player, weapon, load_art)
 
   until (4..7).include?(user_choice) # index +4 / -4 to set user choice to (4..7) instead of (0..3)
