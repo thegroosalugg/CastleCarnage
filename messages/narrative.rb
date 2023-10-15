@@ -96,9 +96,9 @@ def boss_walks(the_boss, boss_style, time)
   reprise = [ "#{HANGOVER} -1 🍺" ]
 
   x, messages = case boss_style
-  when "🍻 Barkeep" then time == :intro ? [80, barkeep] : [85, outro]
-  when "🕶️ Bouncer" then time == :intro ? [100, bouncer] : [85, outro]
-  when "🎶 Band"    then (time == :reprise) ? [90, reprise] : [85, (time == :intro) ? band : outro]
+  when :barkeep then time == :intro ? [80, barkeep] : [85, outro]
+  when :bouncer then time == :intro ? [100, bouncer] : [85, outro]
+  when :band    then (time == :reprise) ? [90, reprise] : [85, (time == :intro) ? band : outro]
   end
   puts text_break(messages.sample, " ", x)
 end

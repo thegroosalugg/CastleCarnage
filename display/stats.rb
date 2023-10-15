@@ -26,7 +26,7 @@ def game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
   puts enemy_bars(buddy) if buddy && buddy[:hp].positive?
   puts health_bars(player) + "\n" + "\n"
   puts " " * 4 + "#{attack_stats(player)} / #{block_stats(player)}"
-  puts weapon_bars(weapon) if weapon[:durability].positive? && boss_style == "🕶️ Bouncer"
+  puts weapon_bars(weapon) if weapon[:durability].positive? && boss_style == :bouncer
   puts player_status(player)
   puts BARRIER
 end

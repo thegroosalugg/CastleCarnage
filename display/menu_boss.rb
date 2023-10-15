@@ -52,9 +52,9 @@ end
 def fight_menu(player, boss_style, weapon)
   puts "    #{RD}Ⲱⲏⲁⲧ'𝛓 𐌵ⲣ, ⲱⲏⲁⲧ'𝛓 𐌵ⲣ...#{CL}"
   case boss_style
-  when "🍻 Barkeep" then barkeep(player)
-  when "🕶️ Bouncer" then bouncer(player, weapon)
-  when "🎶 Band"    then band
+  when :barkeep then barkeep(player)
+  when :bouncer then bouncer(player, weapon)
+  when :band    then band
   end
 end
 
