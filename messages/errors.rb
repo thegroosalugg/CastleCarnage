@@ -17,7 +17,7 @@ def error_message
   ]
 
   print `clear`
-  puts padding_generator(messages.sample, " ", 50)
+  puts padding_generator("#{RD}#{messages.sample}#{CL}", " ", 50)
 end
 
 def denied
@@ -29,7 +29,7 @@ def denied
     "You Can't Have That ⛔",
   ]
 
-  padding_generator(messages.sample, "-", 50)
+  padding_generator("#{RD}#{messages.sample}#{CL}", "-", 50)
 end
 
 def drained
