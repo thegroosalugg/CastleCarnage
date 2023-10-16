@@ -32,17 +32,14 @@ def explore_rooms(enemies, player, load_art)
   case gift
   when 1
     health_trap([player, enemies.sample].sample) # choose a random enemy and then sample enemy & player
-  when 2 # Get a new weapon; 20% for special weapon
-    #weapon = rand(1..5) == 1 ? special_weapon : pick_weapon
-    #weapon_speaks(weapon, :got)
+  when 2
+    target = rand(4) == 1 ? equip_weapon(enemies.sample) : equip_weapon(player)
   when 3 # New enemy spawns in empty slot
     if enemies.length < 4
       enemies << random_enemy
       enemy_speaks(enemies[-1], :summon)
     else
-      #weapon = rand(1..4) == 1 ? special_weapon : pick_weapon
-      #weapon[:durability] = rand(4..5)
-      #weapon_speaks(weapon, :got)
+      equip_weapon(player)
     end
   end
   return enemies

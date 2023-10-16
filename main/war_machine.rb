@@ -88,6 +88,7 @@ def equip_weapon(wielder)
   wielder[:accuracy] += wielder[:weapon_accuracy]
   wielder[:crit_ch] += wielder[:weapon_crit_ch]
   wielder[:crit_x] += wielder[:weapon_crit_x]
+  weapon_speaks(wielder[:equipped], :got) if wielder[:id] == :player
 end
 
 # Method to handle when the weapon breaks
