@@ -11,15 +11,15 @@ def shots_fired(raider, target, damage = 0, shot)
   critical = "#{raider[:name]} #{y} #{CRITICAL} #{target[:name]} -#{damage} #{target[:emoji]}"
   missed =   "#{raider[:name]} 🗯️❓ #{x} #{MISSED}"
 
-  n, messages, comeback = case shot
+  n, shout, comeback = case shot
   when :hit      then [100, hit, HIT_BACK]
   when :critical then [100, critical, HIT_BACK]
   when :missed   then [85, missed, TALK_BACK]
   end
 
-  puts text_break(messages, " ", n)
+  puts text_break(shout, " ", n)
   if !x.empty? && !y.empty?
-    puts text_break("#{target[:name]} 🗯️ #{comeback.sample}", " ", 85) if rand(1) == 0
+    puts text_break("#{target[:name]} 🗯️ #{comeback.sample}", " ", 85) if rand(2) == 1
   end
 end
 
@@ -27,7 +27,7 @@ def strike(raider, target)
   damage = (raider[:attack] - target[:block]).clamp(1, 100)
 
   if rand(1..raider[:crit_ch]) == 1
-    critical = (damage * raider[:crit_x]).to_i.clamp(1, 100)
+    critical = (damage * raider[:crit_x]).ceil.clamp(1, 100)
     target[:hp] -= critical
     shots_fired(raider, target, critical, :critical)
   elsif rand(1..raider[:accuracy]) == 1
