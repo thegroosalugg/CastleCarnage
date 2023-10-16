@@ -1,16 +1,32 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
+def wake_up
+  player = {
+    id: :player,
+    hp: 150,
+    attack: 10,
+    block: 2,
+    accuracy: 5,
+    crit_ch: 10,
+    crit_x: 1.5,
+    cash: 0,
+    drunk: 0,
+    kills: 0,
+    rooms: 0
+  }
+end
+
 def random_enemy
   enemy = {
     id: :enemy,
     name: "#{YL}#{ENEMIES.sample}#{CL}",
-    hp: rand(60..90),
-    attack: (rand(20..30)..rand(31..40)),
-    block: (rand(1..5)..rand(6..12)),
-    accuracy: (1..rand(4..11)),
-    crit_ch: (1..rand(4..11)),
-    crit_x: (rand(1.5..2.0)..rand(2.1..3.5))
+    hp: rand(60..99),
+    attack: rand(8..20),
+    block: rand(1..5),
+    accuracy: rand(3..11),
+    crit_ch: rand(3..11),
+    crit_x: rand(1.5..2.5)
   }
 end
 
@@ -18,9 +34,12 @@ def big_boss_awaits
   boss = {
     id: :boss,
     name: "#{OR}#{BOSSES.sample}#{CL}",
-    hp: rand(580..650),
-    attack: (rand(30..40)..rand(41..50)),
-    accuracy: (1..rand(4..10)),
+    hp: 200,
+    attack: rand(8..20),
+    block: rand(2..10),
+    accuracy: rand(3..11),
+    crit_ch: rand(3..11),
+    crit_x: rand(2.0..2.5),
     rage: 0,
     style: [ :barkeep, :bouncer, :band ]
   }
@@ -32,10 +51,10 @@ def pick_weapon
     name: "#{YL}#{WEAPONS.sample}#{CL}",
     durability: rand(2..5),
     broken: false,
-    attack: (rand(20..30)..rand(31..60)),
-    accuracy: (1..rand(4..11)),
-    crit_ch: (1..rand(4..11)),
-    crit_x: (rand(1.5..2.5)..rand(2.6..5.0))
+    attack: rand(10..25),
+    accuracy: rand(1..3),
+    crit_ch: rand(1..3),
+    crit_x: rand(0.5..1.5)
   }
 end
 
@@ -44,10 +63,11 @@ def special_weapon
     id: :special_weapon,
     name: "#{OR}#{SPECIAL_WEAPONS.sample}#{CL}",
     durability: rand(2..3),
-    attack: (rand(30..40)..rand(41..99)),
-    accuracy: (1..rand(5..12)),
-    crit_ch: (1..rand(5..8)),
-    crit_x: (rand(2.0..3.0)..rand(3.1..5.0))
+    broken: false,
+    attack: rand(10..25),
+    accuracy: rand(1..3),
+    crit_ch: rand(1..3),
+    crit_x: rand(0.5..1.5)
   }
 end
 

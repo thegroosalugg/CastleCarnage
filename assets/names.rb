@@ -2,9 +2,9 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 ENEMIES = [
-  "👺 Goblin", "👹 Ogre", "👾 Orc", "🧌 Troll", "🤷 Village Idiot", "👳 Village Elder", "🦞 The Crab", "🕷️ Hench Spider",
-  "🧙 Wizard", "🧝 Druid", "🐺 Werewolf", "🧛 Vampire", "🧟 Zombie", "🦖 Dinosaur", "🤖 Future Robot",
-  "🐉 Dragon", "👻 Banshee", "🦹 Bastard", "🦍 King Kong", "🐍 Snake", "🦑 Bad Squid", "🦂 Giant Scorpion",
+  "👺 Goblin", "👹 Ogre", "👾 Orc", "🧌 Troll", "🤷 Villager", "🕷️ Spider", "🐊 Croc", "🦈 Shark",
+  "🧙 Wizard", "🧝 Druid", "🐺 Werewolf", "🧛 Vampire", "🧟 Zombie", "🦖 Dinosaur", "🤖 Robot", "🐦‍⬛ The Crow",
+  "🐉 Dragon", "👻 Banshee", "🦹 Bastard", "🦍 Gorilla", "🐍 Snake", "🦑 Kraken", "🦂 Scorpion",
 ]
 
 BOSSES = [
