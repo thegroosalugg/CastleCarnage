@@ -3,22 +3,22 @@
 
 ENEMIES = [
   "👺 Goblin", "👹 Ogre", "👾 Orc", "🧌 Troll", "🤷 Village Idiot", "👳 Village Elder", "🦞 The Crab", "🕷️ Hench Spider",
-  "🧙 Wizard", "🧝 Druid", "🐺 Werewolf", "🧛 Vampire", "🧟 Zombie", "🦖 Dinosaur", "🤖 Robot from the Future",
-  "🐉 Dragon", "👻 Banshee", "🦹 Arsehole", "🦍 King Kong", "🐍 Snake", "🦑 Bad Squid", "🦂 Giant Scorpion",
+  "🧙 Wizard", "🧝 Druid", "🐺 Werewolf", "🧛 Vampire", "🧟 Zombie", "🦖 Dinosaur", "🤖 Future Robot",
+  "🐉 Dragon", "👻 Banshee", "🦹 Bastard", "🦍 King Kong", "🐍 Snake", "🦑 Bad Squid", "🦂 Giant Scorpion",
 ]
 
 BOSSES = [
-  "👑 Village King", "🧀 The Big Cheese", "🎩 The Don", "🧥 The Godfather", "🤵 The Manager", "🎭 The Master", "👤 The Supreme Overlord"
+  "👑 Village King", "🧀 The Big Cheese", "🎩 The Don", "🧥 The Godfather", "🤵 The Manager", "🎭 The Master", "👤 Supreme Overlord"
 ]
 
 WEAPONS = [
-  "🏏 Baseball Bat", "🥊 Punching Glove", "🔪 Switchblade", "🗡 Dagger", "🗡️ Sword", "🎇 Mace", "🍢 Giant Club", "🛠️ Wrench",
-  "🪄 Magic Scepter", "🏹 Crossbow", "🪚 Chainsaw", "🔫 Revolver", "🪃 Boomerang", "⚔️ Battle Axe", "🪓 Hatchet", "🧨 Dynamite",
+  "🏏 Baseball Bat", "🥊 Punch Glove", "🔪 Machete", "🔱 Spear", "🗡️ Sword", "🎇 Mace", "🍢 Giant Club", "🔧 Wrench",
+  "🪄 Magic Scepter", "🏹 Crossbow", "🪚 Chainsaw", "🔫 MAC-11", "🪃 Boomerang", "⚔️ Battle Axe", "🪓 Hatchet", "🧨 Dynamite",
 ]
 
 SPECIAL_WEAPONS = [
   "🪡 Gatling Laser", "🚀 Rocket Launcher", "🔥 Fireball", "💣 Bobomb", "🛫 Air Strike", "🪈 Magic Flute",
-  "🦄 Unicorn", "🪔🐲 Charizard", "📓 Necronomicon",
+  "🦄 Unicorn", "🪔🐲 Charizard", "📓 Necronomicon", "🐺🥄 Alakazam"
 ]
 
 ROOMS = [

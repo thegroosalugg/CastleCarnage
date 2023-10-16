@@ -50,7 +50,7 @@ def band
 end
 
 def fight_menu(player, boss_style, weapon)
-  puts "    #{RD}Ⲱⲏⲁⲧ'𝛓 𐌵ⲣ, ⲱⲏⲁⲧ'𝛓 𐌵ⲣ...#{CL}"
+  puts "    #{ML}Ⲱⲏⲁⲧ'𝛓 𐌵ⲣ, ⲱⲏⲁⲧ'𝛓 𐌵ⲣ...#{CL}"
   case boss_style
   when :barkeep then barkeep(player)
   when :bouncer then bouncer(player, weapon)
