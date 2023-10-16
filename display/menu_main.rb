@@ -49,6 +49,6 @@ def boss_menu(player, boss_style)
   puts " " * 24 + "#{ML}Dᴇᴄɪsɪᴏɴs, ᴅᴇᴄɪsɪᴏɴs...#{CL}"
   puts " " * 20 + "⚔️ #{BL}[̿̓͐T͆͑͘]̒͠ 💀 𝓕ⲁⲥⲉ ⲧⲏⲉ​#{CL}#{STYLE[boss_style]} 🌘"
   puts " " * 18 + "🔥#{player[:emoji]} #{RD}[͋͊͒Ŕ́͝]͆̿ 🩸 Ⲃ𝓛ⲟⲟⲆ Ⲙⲁ𝓖ⲓⲕ#{CL} 🪄"
-  puts " " * 15 + (player[:turns] == 4 ? magic : padding_generator(wait, "#{MG}-#{CL}", 50))
+  puts " " * 15 + (player[:turns] == 4 ? magic : padding_generator(wait, "#{MG}#{ICONS.sample}#{CL}", 50))
   puts BARRIER
 end
