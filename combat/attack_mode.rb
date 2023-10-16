@@ -4,7 +4,7 @@
 # Player vs enemy strike
 
 def shots_fired(raider, target, damage = 0, shot)
-  x = rand(3) == 1 ? (shot == :hit ? "🗯️ " + HIT_TALK.sample : BACK_TALK.sample) : ""
+  x = rand(3) == 1 ? (shot == :missed ? BACK_TALK.sample : "🗯️ " + HIT_TALK.sample) : ""
 
   hit = "#{raider[:name]} #{x} #{HIT} #{target[:name]} -#{damage} #{target[:emoji]}"
   critical = "#{raider[:name]} #{x} #{CRITICAL} #{target[:name]} -#{damage} #{target[:emoji]}"
@@ -71,6 +71,7 @@ def mortal_kombat(enemies, player, load_art)
       print `clear`
       strike(player, enemies[choice])
       strike(enemies[choice], player) if enemies[choice][:hp].positive?
+      escape_attempt(enemies, player, load_art) # random attack on player possible
     else
       error(:input)
     end
