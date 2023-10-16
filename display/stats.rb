@@ -8,8 +8,7 @@ def state_of_game(enemies, player, weapon, load_art)
   enemies.each { |enemy| puts enemy_bars(enemy) }
   puts move_ascii_art(load_art)
   puts SHIELD_PL
-  puts health_bars(player) + "\n"
-  puts " " * 4 + "#{stats(player, :block)} 💀 #{player[:kills]} 🏰 #{player[:rooms]}"
+  puts "#{health_bars(player)} #{stats(player, :block)} 💀 #{player[:kills]} 🏰 #{player[:rooms]}"
   puts weapon_bars(weapon) if weapon[:durability].positive?
   puts BARRIER
 end
@@ -24,8 +23,7 @@ def game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
   puts move_ascii_art(load_boss)
   puts SHIELD_PL
   puts enemy_bars(buddy) if buddy && buddy[:hp].positive?
-  puts health_bars(player) + "\n"
-  puts " " * 4 + "#{stats(player, :attack)} #{stats(player, :block)}"
+  puts "#{health_bars(player)} #{stats(player, :attack)} #{stats(player, :block)}"
   puts weapon_bars(weapon) if weapon[:durability].positive? && boss_style == :bouncer
   puts player_status(player)
   puts BARRIER

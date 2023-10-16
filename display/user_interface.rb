@@ -52,8 +52,9 @@ end
 # Display generators that combine above methods to create dynamic displays for enemy and weapon
 
 def enemy_bars(enemy)
-  "#{health_bars(enemy)}" + "\n" +
-  " " * 4 + "#{percentage(enemy, :accuracy)}" + "#{percentage(enemy, :crit_ch)}" + "#{stats(enemy, :attack)} " + "#{stats(enemy, :block)}\n" +
+  "#{health_bars(enemy)}  " +
+  "#{percentage(enemy, :accuracy)}" + "#{percentage(enemy, :crit_ch)}" +
+  "#{stats(enemy, :attack)} " + "#{stats(enemy, :block)}\n" +
   SHIELD_EN
 end
 
