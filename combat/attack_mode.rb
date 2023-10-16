@@ -22,11 +22,11 @@ def shots_fired(raider, target, damage = 0, shot)
   end
 end
 
-def strike(raider, target)
-  damage = (raider[:attack] - target[:block]).clamp(1, 100)
+def strike(raider, target)                        # dynamic damage multiplier
+  damage = ((raider[:attack] - target[:block]) * rand(0.6..1.4)).ceil.clamp(1, 100)
 
   if rand(1..raider[:crit_ch]) == 1
-    critical = (damage * raider[:crit_x]).ceil.clamp(1, 100)
+    critical = (damage * raider[:crit_x]).ceil.clamp(1, 100) # rounds any floating number up
     target[:hp] -= critical
     shots_fired(raider, target, critical, :critical)
   elsif rand(1..raider[:accuracy]) == 1

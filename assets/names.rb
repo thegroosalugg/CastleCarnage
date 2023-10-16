@@ -2,8 +2,8 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 ENEMIES = [
-  "👺 Goblin", "👹 Ogre", "👾 Orc", "🧌 Troll", "🤷 Villager", "🕷️ Spider", "🐊 Croc", "🦈 Shark",
-  "🧙 Wizard", "🧝 Druid", "🐺 Werewolf", "🧛 Vampire", "🧟 Zombie", "🦖 Dinosaur", "🤖 Robot", "🐦‍⬛ The Crow",
+  "👺 Goblin", "👹 Ogre", "👾 Orc", "🧌 Troll", "🤷 Villager", "🦟 Cazador", "🐊 Croc", "🦈 Shark",
+  "🧙 Wizard", "🧝 Druid", "🐺 Werewolf", "🧛 Vampire", "🧟 Zombie", "🦖 Dinosaur", "🤖 Robot", "🪿 Goose",
   "🐉 Dragon", "👻 Banshee", "🦹 Bastard", "🦍 Gorilla", "🐍 Snake", "🦑 Kraken", "🦂 Scorpion",
 ]
 
