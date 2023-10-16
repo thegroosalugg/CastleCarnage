@@ -104,6 +104,13 @@ def weapon_speaks(weapon, status)
     " Damn it! You dropped your #{weapon}!",
     " Your #{weapon} was too shoddy",
   ]
-  messages = status == :got ? (WEAPON + got.sample) : (BROKE + broke.sample)
+  enemy = [
+    "Enemy acquired weapon"
+  ]
+  messages = case status
+  when :got then WEAPON + got.sample
+  when :broke then BROKE + broke.sample
+  when :enemy then enemy.sample
+  end
   puts text_break(messages, " ", 100)
 end
