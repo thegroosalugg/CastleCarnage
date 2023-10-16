@@ -3,8 +3,8 @@
 
 ENEMIES = [
   "👺 Goblin", "👹 Ogre", "👾 Orc", "🧌 Troll", "🤷 Village Idiot", "👳 Village Elder", "🦞 The Crab", "🕷️ Hench Spider",
-  "🧙 Wizard", "🧝 Druid", "🐺 Werewolf", "🧛 Vampire", "🧟 Zombie", "🦖 Dinosaur", "🤖 Robot Future",
-  "🐉 Dragon", "👻 Banshee", "🦹 Arsehole", "🦍 King Kong", "🐍 Snake", "🦑 Bad Squid", "🦂 Giant Scorpion",
+  "🧙 Wizard", "🧝 Druid", "🐺 Werewolf", "🧛 Vampire", "🧟 Zombie", "🦖 Dinosaur", "🤖 Future Robot",
+  "🐉 Dragon", "👻 Banshee", "🦹 Bastard", "🦍 King Kong", "🐍 Snake", "🦑 Bad Squid", "🦂 Giant Scorpion",
 ]
 
 BOSSES = [
