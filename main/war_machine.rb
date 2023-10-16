@@ -61,6 +61,7 @@ end
 
 # Method to equip a weapon to the wielder
 def equip_weapon(wielder)
+  wielder[:uses] = 0 if wielder[:equipped]
   weapon_breaks(wielder)
   weapon = pick_weapon
   wielder[:equipped] = weapon[:name]

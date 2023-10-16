@@ -17,6 +17,12 @@ def play_game
   while !enemies.empty? && player[:hp].positive?
     load_art = battlefield
     load_menu
+
+    # DEBUG
+    player.each do |key, value|
+      puts text_break("#{YL}#{key}: #{value}#{CL}", " ", 80)
+    end
+
     choice = gets.chomp.downcase
 
     # DEBUG CHEAT MENU
@@ -47,11 +53,6 @@ def play_game
       else
         false  # This will keep the enemy in the array
       end
-    end
-
-    # DEBUG
-    player.each do |key, value|
-      puts "#{key}: #{value}"
     end
 
     tracked_enemy = enemies.sample if player[:hp] <= 0 # Player dies and last enemy is tracked
