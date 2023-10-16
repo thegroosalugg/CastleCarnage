@@ -57,6 +57,17 @@ def pick_weapon
     crit_ch: rand(-7..3),
     crit_x: rand(-0.3..1.5)
   }
+  special_weapon = {
+    name: "#{MG}#{SPECIAL_WEAPONS.sample}#{CL}",
+    uses: rand(3..5),
+    attack: rand(10..15),
+    block: rand(4..8),
+    accuracy: rand(-2..7),
+    crit_ch: rand(-7..2),
+    crit_x: rand(0.0..1.5)
+  }
+
+  rand(4) == 1 ? special_weapon : weapon
 end
 
 # Method to equip a weapon to the wielder
@@ -99,19 +110,6 @@ def weapon_breaks(wielder)
     wielder[:equipped] = nil
   end
 end
-
-# def special_weapon
-#   special_weapon = {
-#     id: :special_weapon,
-#     name: "#{OR}#{SPECIAL_WEAPONS.sample}#{CL}",
-#     durability: rand(2..3),
-#     broken: false,
-#     attack: rand(10..25),
-#     accuracy: rand(1..3),
-#     crit_ch: rand(1..3),
-#     crit_x: rand(0.5..1.5)
-#   }
-# end
 
 def room_vault
   chosen_rooms = []
