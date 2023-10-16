@@ -33,16 +33,16 @@ def health_bars(entity) # random emoji assigner for every entity
 end
 
 def stats(entity, stat)
-  icn, sq, max, div = stat == :attack ? ["💢", "🟥", 6, 10] : ["🛡️", "🟦", 4, 5]
+  icn, sq, max, div = stat == :attack ? ["💢", "🟧", 6, 10] : ["🛡️", "🟦", 4, 5]
   full = (entity[stat].max / div).clamp(0, max)
   empty = (max - full).clamp(0, max)
-  "#{icn} #{entity[stat].minmax.join('-')} " + "#{sq}" * full + "⬜" * empty
+  "#{icn}" + "#{sq}" * full + "⬜" * empty + " #{entity[stat].minmax.join('-')} "
 end
 
 def percentage(entity, key) # determins accuracy and crit chance %
   accuracy = 100 - (100 / (entity[key.to_sym].max))
   crit_ch = 100 - accuracy
-  key == :accuracy ? "🎯 #{accuracy}% " : "💥 #{crit_ch}% "
+  key == :accuracy ? "🎯#{accuracy}% " : "💥#{crit_ch}% "
 end
 
 def rage(the_boss) # boss rage bar
@@ -60,30 +60,29 @@ end
 
 def weapon_bars(weapon)
   SHIELD_PL + "\n" +
-  "    #{weapon[:name]}" + " 🛠️ " + "🟩" * weapon[:durability].clamp(0, 5) + "⬜" * (5 - weapon[:durability]).clamp(0, 5) + "\n" +
-  "\n    #{percentage(weapon, :accuracy)}" + "#{percentage(weapon, :crit_ch)}" + stats(weapon, :attack)
-
+  " " * 4 + "#{weapon[:name]} " + "#{percentage(weapon, :accuracy)}" + "#{percentage(weapon, :crit_ch)}" + stats(weapon, :attack) +
+  " 🛠️" + "🟩" * weapon[:durability].clamp(0, 5) + "⬜" * (5 - weapon[:durability]).clamp(0, 5)
 end
 
 # Dynamic status for player cash & drunkness
 
 def player_status(player)
   wallet = case player[:cash]
-    when 0..2   then "    Skint AF     🫥 /"
-    when 3..5   then "  Pocket Money   🤔 /"
-    when 6..9   then " Got some Moolah 😐 /"
-    when 10..13 then "     Sorted      🫠 /"
-    when 14..17 then "  Filthy Rich    🤑 /"
-    when 18..20 then " Totally Minted  😈 /"
+    when 0..2   then "    Skint AF     🫥"
+    when 3..5   then "  Pocket Money   🤔"
+    when 6..9   then " Got some Moolah 😐"
+    when 10..13 then "     Sorted      🫠"
+    when 14..17 then "  Filthy Rich    🤑"
+    when 18..20 then " Totally Minted  😈"
     end
 
   drunk = case player[:drunk]
-    when 0..2   then "Sober as a Judge ⚖️ /"
-    when 3..5   then " Got a Buzz on   😉 /"
-    when 6..9   then " Feeling Tipsy   😏 /"
-    when 10..13 then " Out on the Razz 🥴 /"
-    when 14..17 then " Proper Pissed   🤤 /"
-    when 18..20 then " Fucking Wasted  😵 /"
+    when 0..2   then "Sober as a Judge ⚖️"
+    when 3..5   then " Got a Buzz on   😉"
+    when 6..9   then " Feeling Tipsy   😏"
+    when 10..13 then " Out on the Razz 🥴"
+    when 14..17 then " Proper Pissed   🤤"
+    when 18..20 then " Fucking Wasted  😵"
     end
 
   SHIELD_PL + "\n" +
