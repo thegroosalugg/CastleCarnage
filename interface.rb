@@ -40,7 +40,7 @@ def play_game
       somersault_attack(player, enemies)
     when "y"                                      # Avoid combat and run through rooms. Counter records no. of rooms explored
       print `clear` #unless weapon[:broken]
-      escape_attempt(enemies, player, load_art) #unless weapon[:broken]
+      escape_attempt(enemies, player) #unless weapon[:broken]
       player[:rooms] += 1
       enemies = explore_rooms(enemies, player, load_art) unless player[:hp] <= 0
     else
