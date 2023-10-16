@@ -42,8 +42,8 @@ end
 def percentage(entity, key) # determins accuracy and crit chance %
   accuracy = 100 - (100 / (entity[key.to_sym].max))
   crit_ch = 100 - accuracy
-  key == :accuracy ? "🎯#{accuracy}% " : "💥#{crit_ch}% "
-end
+  key == :accuracy ? "🎯#{"%02d" % accuracy}% " : "💥#{"%02d" % crit_ch}%  "
+end                       # "%02d" % adds a leading zero to single digits
 
 def rage(the_boss) # boss rage bar
   "#{RAGE}" + "🪔" * [the_boss[:rage], 0].max
