@@ -50,6 +50,10 @@ def percentage(who, key) # determins accuracy and crit chance %
   key == :accuracy ? "🎯#{"%02d" % accuracy}%" : "💥#{"%02d" % crit_ch}%"
 end                       # "%02d" % adds a leading zero to single digits
 
+def durability(who)
+  " " * 4 + "#{who[:equipped]}" + " " * (60 - who[:equipped].length) + "🛠️" + "🟩" * who[:uses].clamp(0, 5) + "⬜" * (5 - who[:uses]).clamp(0, 5)
+end
+
 def rage(the_boss) # boss rage bar
   "#{RAGE}" + "🪔" * [the_boss[:rage], 0].max
 end
@@ -59,14 +63,9 @@ end
 def display_bars(who)
   puts SHIELD if who[:id] == :player
   puts "#{health_bars(who)} #{percentage(who, :accuracy)} #{percentage(who, :crit_ch)} #{stats(who, :attack)} #{stats(who, :block)}"
+  puts "#{durability(who)}" if who[:equipped]
   puts SHIELD_EN if who[:id] == :enemy
 end
-
-# def weapon_bars(weapon) # kill
-#   SHIELD + "\n" +
-#   " " * 4 + "#{weapon[:name]} " + "#{percentage(weapon, :accuracy)}" + "#{percentage(weapon, :crit_ch)}" + stats(weapon, :attack) +
-#   " 🛠️" + "🟩" * weapon[:durability].clamp(0, 5) + "⬜" * (5 - weapon[:durability]).clamp(0, 5)
-# end
 
 # Dynamic status for player cash & drunkness
 
