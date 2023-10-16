@@ -4,11 +4,10 @@
 # Player vs enemy strike
 
 def shots_fired(raider, target, damage = 0, shot)
-  x = rand(3) == 1 ? BACK_TALK.sample : ""
-  y = rand(3) == 1 ? "🗯️ " + HIT_TALK.sample : ""
+  x = rand(3) == 1 ? (shot == :hit ? "🗯️ " + HIT_TALK.sample : BACK_TALK.sample) : ""
 
-  hit = "#{raider[:name]} #{y} #{HIT} #{target[:name]} -#{damage} #{target[:emoji]}"
-  critical = "#{raider[:name]} #{y} #{CRITICAL} #{target[:name]} -#{damage} #{target[:emoji]}"
+  hit = "#{raider[:name]} #{x} #{HIT} #{target[:name]} -#{damage} #{target[:emoji]}"
+  critical = "#{raider[:name]} #{x} #{CRITICAL} #{target[:name]} -#{damage} #{target[:emoji]}"
   missed =   "#{raider[:name]} 🗯️❓ #{x} #{MISSED}"
 
   n, shout, comeback = case shot
@@ -18,7 +17,7 @@ def shots_fired(raider, target, damage = 0, shot)
   end
 
   puts text_break(shout, " ", n)
-  if !x.empty? && !y.empty?
+  if !x.empty?
     puts text_break("#{target[:name]} 🗯️ #{comeback.sample}", " ", 85) if rand(2) == 1
   end
 end
