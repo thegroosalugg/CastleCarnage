@@ -19,9 +19,9 @@ def play_game
     load_menu
 
     # DEBUG
-    player.each do |key, value|
-      puts text_break("#{YL}#{key}: #{value}#{CL}", " ", 80)
-    end
+    # player.each do |key, value|
+    #   puts text_break("#{YL}#{key}: #{value}#{CL}", " ", 80)
+    # end
 
     choice = gets.chomp.downcase
 

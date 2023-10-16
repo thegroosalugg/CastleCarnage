@@ -17,6 +17,7 @@ def cheat_menu(player, enemies, choice)
   when "q" then player[:uses] -= 1 if player[:equipped]
   when "3" then player[:uses]  = 0 if player[:equipped]
   when "2" then equip_weapon(player)
+  when "4" then equip_weapon(enemies.sample)
   when "1" then weapon_breaks(player)
   end
   print `clear`

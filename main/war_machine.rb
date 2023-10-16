@@ -24,8 +24,8 @@ def random_enemy
     hp: rand(60..99),
     attack: rand(8..20),
     block: rand(1..5),
-    accuracy: rand(3..11),
-    crit_ch: rand(3..11),
+    accuracy: rand(4..11),
+    crit_ch: rand(8..11),
     crit_x: rand(1.5..2.5)
   }
 end
@@ -55,7 +55,7 @@ def pick_weapon
     block: rand(1..8),
     accuracy: rand(-3..7),
     crit_ch: rand(-7..3),
-    crit_x: rand(-0.2..1.5)
+    crit_x: rand(-0.3..1.5)
   }
 end
 

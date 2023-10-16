@@ -45,7 +45,7 @@ def stats(who, stat)
 end
 
 def percentage(who, key) # determins accuracy and crit chance %
-  accuracy = 100 - (100 / (who[key.to_sym]))
+  accuracy = 100 - (100 / [1, (who[key.to_sym])].max)
   crit_ch = 100 - accuracy
   key == :accuracy ? "🎯#{"%02d" % accuracy}%" : "💥#{"%02d" % crit_ch}%"
 end                       # "%02d" % adds a leading zero to single digits
