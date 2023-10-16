@@ -2,9 +2,9 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 ENEMIES = [
-  "👺 Goblin", "👹 Ogre", "👾 Orc", "🧌 Troll", "🤷 Villager", "🦟 Cazador", "🐊 Croc", "🦈 Shark",
-  "🧙 Wizard", "🧝 Druid", "🐺 Werewolf", "🧛 Vampire", "🧟 Zombie", "🦖 Dinosaur", "🤖 Robot", "🪿 Goose",
-  "🐉 Dragon", "👻 Banshee", "🦹 Bastard", "🦍 Gorilla", "🐍 Snake", "🦑 Kraken", "🦂 Scorpion",
+  "👺 Goblin", "👹 Ogre", "👾 Orc", "🧌 Troll", "🤷 Villager", "🦟 Cazador", "🐊 Croc", "🦈 Shark", "🚁 Chopper",
+  "🧙 Wizard", "🧝 Druid", "🐺 Werewolf", "🧛 Vampire", "🧟 Zombie", "🦖 Dinosaur", "🤖 Robot", "🪿 Goose", "🦏 Rhino",
+  "🐉 Dragon", "👻 Banshee", "🦹 Bastard", "🦍 Gorilla", "🐍 Snake", "🦑 Kraken", "🦂 Scorpion", "🎠 Knight",
 ]
 
 BOSSES = [
@@ -12,8 +12,8 @@ BOSSES = [
 ]
 
 WEAPONS = [
-  "🏏 Fungo Bat", "🥊 Bx Gloves", "🔪 Machete", "🔱 Spear", "🗡️ Sword", "🎇 Mace", "🍢 Club", "🔧 Wrench",
-  "🪄 Scepter", "🏹 Crossbow", "🪚 Chainsaw", "🔫 MAC-11", "🪃 Boomerang", "⚔️ Battle Ax", "🪓 Hatchet", "🧨 Dynamite",
+  "🏏 Fungo Bat", "🥊 Bx Gloves", "🔪 Machete", "🔱 Spear", "🗡️ Sword", "🎇 Mace", "🍢 Club", "🔧 Wrench", "🪤 Trap", "🦯 Staff",
+  "🪄 Scepter", "🏹 Crossbow", "🪚 Chainsaw", "🔫 MAC-11", "🪃 Boomerang", "⚔️ Battle Axe", "🪓 Hatchet", "🧨 Dynamite",
 ]
 
 SPECIAL_WEAPONS = [
