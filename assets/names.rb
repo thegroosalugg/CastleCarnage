@@ -12,13 +12,12 @@ BOSSES = [
 ]
 
 WEAPONS = [
-  "🏏 Baseball Bat", "🥊 Punch Glove", "🔪 Machete", "🔱 Spear", "🗡️ Sword", "🎇 Mace", "🍢 Giant Club", "🔧 Wrench",
-  "🪄 Magic Scepter", "🏹 Crossbow", "🪚 Chainsaw", "🔫 MAC-11", "🪃 Boomerang", "⚔️ Battle Axe", "🪓 Hatchet", "🧨 Dynamite",
+  "🏏 Fungo Bat", "🥊 Bx Gloves", "🔪 Machete", "🔱 Spear", "🗡️ Sword", "🎇 Mace", "🍢 Club", "🔧 Wrench",
+  "🪄 Scepter", "🏹 Crossbow", "🪚 Chainsaw", "🔫 MAC-11", "🪃 Boomerang", "⚔️ Battle Ax", "🪓 Hatchet", "🧨 Dynamite",
 ]
 
 SPECIAL_WEAPONS = [
-  "🪡 Gatling Laser", "🚀 Rocket Launcher", "🔥 Fireball", "💣 Bobomb", "🛫 Air Strike", "🪈 Magic Flute",
-  "🦄 Unicorn", "🪔🐲 Charizard", "📓 Necronomicon", "🐺🥄 Alakazam"
+  "🪡 Laser Gun", "🚀 RPG", "🔥 Fireball", "💣 Bo-Bomb", "🛫 AirStrike","🦄 Unicorn"
 ]
 
 ROOMS = [
@@ -41,15 +40,3 @@ DESC = [
   "🍄 The Shroomy", "🦁 The Roaring", "🌵 The Deserted", "🤢 The Gnarly", "🏛️ The Presidential", "🔮 The Trippy", "🤮 The Minging",
   "🐒 The Cheeky", "🗣️ The Banter", "🅱️ The Bitchin'", "👻 The Haunted", "🐺 The Howling",
 ]
-
-# Combat Phrases
-
-RUDETALK = [
-  "Motherfucker!", "Bugger it!", "Bloody hell!", "Arses!", "Sod it!", "Bollocks!", "Shit!", "I call hacks!"
-]
-FIGHTTALK = [
-  "Ah yeah!", "I own it!", "Take that!", "I'm jus' too good", "Bow to me!",
-]
-BOUNCERTALK = [
-  "Not tonight!", "Not with that shirt!", "Piss off!", "Get lost!", "You can't afford it!", "Come back with some money",
- ]

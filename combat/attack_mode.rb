@@ -3,39 +3,39 @@
 
 # Player vs enemy strike
 
-def shots_fired(attacker, target, damage = 0, outcome)
-  x = rand(3) == 1 ? RUDETALK.sample : ""
-  y = rand(3) == 1 ? "🗯️ " + FIGHTTALK.sample : ""
-  z = rand(3) == 1 ? + BOUNCERTALK.sample : ""
-  critical = "#{attacker[:name]} #{y} #{CRITICAL} #{target[:name]} -#{damage} #{target[:emoji]}"
-  missed =   "#{attacker[:name]} 🗯️❓ #{x} #{MISSED}"
-  on_point = "#{attacker[:name]} #{y} #{HIT} #{target[:name]} -#{damage} #{target[:emoji]}"
-  counter =  "#{attacker[:name]} 🗯️❗ #{z} #{COUNTER} #{target[:name]} -#{damage} #{target[:emoji]}"
+def shots_fired(raider, target, damage = 0, shot)
+  x = rand(3) == 1 ? BACK_TALK.sample : ""
+  y = rand(3) == 1 ? "🗯️ " + HIT_TALK.sample : ""
 
-  x, messages = case outcome
-  when :critical then [100, critical]
-  when :missed   then [85, missed]
-  when :hit      then [100, on_point]
-  when :counter  then [100, counter]
+  hit = "#{raider[:name]} #{y} #{HIT} #{target[:name]} -#{damage} #{target[:emoji]}"
+  critical = "#{raider[:name]} #{y} #{CRITICAL} #{target[:name]} -#{damage} #{target[:emoji]}"
+  missed =   "#{raider[:name]} 🗯️❓ #{x} #{MISSED}"
+
+  n, messages, comeback = case shot
+  when :hit      then [100, hit, HIT_BACK]
+  when :critical then [100, critical, HIT_BACK]
+  when :missed   then [85, missed, TALK_BACK]
   end
-  puts text_break(messages, " ", x)
+
+  puts text_break(messages, " ", n)
+  if !x.empty? && !y.empty?
+    puts text_break("#{target[:name]} 🗯️ #{comeback.sample}", " ", 85) if rand(1) == 0
+  end
 end
 
-def strike(attacker, target, weapon = nil)
-  source = attacker[:id] == :player ? weapon : attacker
-  damage = rand(source[:attack]) - (target[:id] == :boss ? 0 : rand(target[:block])).clamp(1, 100)
+def strike(raider, target)
+  damage = (raider[:attack] - target[:block]).clamp(1, 100)
 
-  if rand(source[:crit_ch]) == 1
-    critical = (damage * rand(source[:crit_x])).to_i.clamp(1, 150)
+  if rand(1..raider[:crit_ch]) == 1
+    critical = (damage * raider[:crit_x]).to_i.clamp(1, 100)
     target[:hp] -= critical
-    shots_fired(attacker, target, critical, :critical)
-  elsif rand(source[:accuracy]) == 1
-    shots_fired(attacker, target, :missed)
+    shots_fired(raider, target, critical, :critical)
+  elsif rand(1..raider[:accuracy]) == 1
+    shots_fired(raider, target, :missed)
   else
     target[:hp] -= damage
-    shots_fired(attacker, target, damage, :hit)
+    shots_fired(raider, target, damage, :hit)
   end
-  weapon[:durability] = [weapon[:durability] - 1, 0].max if attacker[:id] == :player
 end
 
 # Sommersault attack
@@ -48,21 +48,21 @@ def somersault(chance, n)
   puts text_break(messages, " ", 85)
 end
 
-def somersault_attack(player, enemies, weapon)   # succeed and strike twice, fail and get struck thrice
+def somersault_attack(player, enemies)   # succeed and strike twice, fail and get struck thrice
   chance = rand(2)
   n = rand(2..3)
   somersault(chance, n)
-  chance == 1 ? n.times { strike(player, enemies.sample, weapon) } : n.times { strike(enemies.sample, player) }
+  chance == 1 ? n.times { strike(player, enemies.sample ) } : n.times { strike(enemies.sample, player) }
 end
 
 # Main game combat
 
-def mortal_kombat(enemies, player, weapon, load_art)
+def mortal_kombat(enemies, player, load_art)
   greeting(:combat)
   choice = -1
 
   until choice >= 0 && choice < enemies.length
-    state_of_game(enemies, player, weapon, load_art = battlefield)
+    state_of_game(enemies, player, load_art = battlefield)
     puts MENU_HEADER
     enemies.each_with_index { |enemy, index| puts " " * 28 + "#{ML}#{NUM[index + 4]}#{CL} #{enemy[:name]}" }
     puts BARRIER                                       # fetches and colors ASCII numbers
@@ -70,7 +70,7 @@ def mortal_kombat(enemies, player, weapon, load_art)
 
     if choice >= 0 && choice < enemies.length
       print `clear`
-      strike(player, enemies[choice], weapon)
+      strike(player, enemies[choice])
       strike(enemies[choice], player) if enemies[choice][:hp].positive?
     else
       error(:input)
@@ -80,7 +80,7 @@ end
 
 # activates when exploring rooms
 
-def escape_attempt(enemies, player, weapon, load_art)
+def escape_attempt(enemies, player, load_art)
   target_enemy = enemies.sample
   enemy_speaks(target_enemy, :escape)
   if rand(1..4) == 1

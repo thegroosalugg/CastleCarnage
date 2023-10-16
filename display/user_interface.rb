@@ -2,12 +2,13 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 def name_player(player) # Name your player
-  your_name = ""
+  name = ""
 
-  while your_name.empty?
+  while name.empty?
     title_screen
-    your_name = gets.chomp.strip.slice(0, 9).downcase.capitalize
-    player[:name] = "#{GN}🥷 #{your_name}#{CL}"
+    name = gets.chomp.strip.slice(0, 9).downcase.capitalize
+    x = name.length < 5 ? "Dr. " : ""
+    player[:name] = "#{GN}🥷 #{x}#{name}#{CL}"
     error(:name)
   end
 
@@ -16,9 +17,9 @@ end
 
 # move ASCII art
 
-def move_ascii_art(load_boss) # added condition, if art is boss, it moves on each loop, if static, it centers art without hardcode
-  vertical_offset = load_boss[:id] == :move ? rand(10..30) : 10
-  load_boss[:art].split("\n").map { |line| " " * vertical_offset + line }.join("\n")
+def move_ascii_art(art) # added condition, if art is boss, it moves on each loop, if static, it centers art without hardcode
+  vertical_offset = art[:id] == :move ? rand(10..30) : 10
+  art[:art].split("\n").map { |line| " " * vertical_offset + line }.join("\n")
 end
 
 # UI Elements for Health, Attack, Block, Accuracy and Crit Chance for any entity
@@ -61,11 +62,11 @@ def display_bars(who)
   puts SHIELD_EN if who[:id] == :enemy
 end
 
-def weapon_bars(weapon) # kill
-  SHIELD + "\n" +
-  " " * 4 + "#{weapon[:name]} " + "#{percentage(weapon, :accuracy)}" + "#{percentage(weapon, :crit_ch)}" + stats(weapon, :attack) +
-  " 🛠️" + "🟩" * weapon[:durability].clamp(0, 5) + "⬜" * (5 - weapon[:durability]).clamp(0, 5)
-end
+# def weapon_bars(weapon) # kill
+#   SHIELD + "\n" +
+#   " " * 4 + "#{weapon[:name]} " + "#{percentage(weapon, :accuracy)}" + "#{percentage(weapon, :crit_ch)}" + stats(weapon, :attack) +
+#   " 🛠️" + "🟩" * weapon[:durability].clamp(0, 5) + "⬜" * (5 - weapon[:durability]).clamp(0, 5)
+# end
 
 # Dynamic status for player cash & drunkness
 

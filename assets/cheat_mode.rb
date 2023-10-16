@@ -3,20 +3,20 @@
 
 # debug cheat menu for interface
 
-def cheat_menu(player, enemies, weapon, choice)
+def cheat_menu(player, enemies, choice)
   case choice
   when 'e'  then enemies.first[:hp] -= 100
   when 'ee' then enemies << random_enemy
   when "h"  then player[:hp] -= 100
   when "hh" then player[:hp] += 100
-  when "w1" then weapon = pick_weapon
-  when "w2" then weapon = special_weapon
-  when "w"  then weapon[:durability] += 1
-  when "ww" then weapon[:durability] -= 1
+  #when "w1" then weapon = pick_weapon
+  #when "w2" then weapon = special_weapon
+  #when "w"  then weapon[:durability] += 1
+  #when "ww" then weapon[:durability] -= 1
   end
   print `clear`
-  weapon[:durability] = weapon[:durability].clamp(0, 10)
-  return enemies, weapon
+  #weapon[:durability] = weapon[:durability].clamp(0, 10)
+  return enemies
 end
 
 # boss menu cheat interface. Not possible to combine the 2
