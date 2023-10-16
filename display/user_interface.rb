@@ -33,7 +33,7 @@ def health_bars(who) # random emoji assigner for every entity
   empty = (5 - full).clamp(0, 5)
   life = "#{who[:emoji]}" * full + "🤍" * empty
 
-  " " * 4 + "#{who[:name]}  #{who[:hp].to_i} #{life}"
+  " " * 4 + "#{who[:name]}" + "#{whitespace(who, " ", 20)}" + "#{who[:hp].to_i} #{life}"
 end
 
 def stats(who, stat)
@@ -69,7 +69,7 @@ end
 
 # Dynamic status for player cash & drunkness
 
-def player_status(player)
+def status(player)
   wallet = case player[:cash]
     when 0 then "    Skint AF     🫥"
     when 1 then "  Pocket Money   🤔"
@@ -88,7 +88,7 @@ def player_status(player)
     when 5 then " Fucking Wasted  😵"
     end
 
-  SHIELD + "\n" +
-  "    #{GN}#{wallet}#{CL} #{'💵' * [player[:cash], 0].max}\n" +
-  "    #{OR}#{drunk}#{CL} #{'🍺' * [player[:drunk], 0].max}"
+  puts SHIELD
+  puts " " * 4 + "#{GN}#{wallet}#{CL} #{'💵' * [player[:cash], 0].max}"
+  puts " " * 4 + "#{OR}#{drunk}#{CL} #{'🍺' * [player[:drunk], 0].max}"
 end

@@ -8,6 +8,7 @@ def state_of_game(enemies, player, weapon, load_art)
   enemies.each { |enemy| display_bars(enemy) }
   puts move_ascii_art(load_art)
   display_bars(player)
+  status(player)
   #puts "#{health_bars(player)} #{stats(player, :block)} 💀 #{player[:kills]} 🏰 #{player[:rooms]}"
   #puts weapon_bars(weapon) if weapon[:durability].positive?
   puts BARRIER
