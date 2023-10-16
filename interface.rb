@@ -4,7 +4,7 @@ require_relative 'imports'
 
 def play_game
   print `clear`
-  player = { id: :player, hp: rand(275..300), attack: (rand(25..30)..rand(35..40)), block: (1..10), cash: rand(3..10), drunk: 0, kills: 0, rooms: 0 }
+  player = wake_up
   name_player(player)
   enemies = []
   3.times { enemies << random_enemy }
@@ -63,7 +63,7 @@ def play_game
     state_of_game(enemies, player, weapon, load_art) unless tracked_enemy[:id] == :boss || weapon[:durability].zero?
   end
 
-  boss_orders(player, weapon, the_boss) unless player[:hp] <= 0
+  # boss_orders(player, weapon, the_boss) unless player[:hp] <= 0
   state_of_game(enemies, player, weapon, load_art) if tracked_enemy[:id] == :enemy && weapon[:durability].zero?
   game_over(tracked_enemy, player)
 end

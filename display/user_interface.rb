@@ -24,23 +24,27 @@ end
 # UI Elements for Health, Attack, Block, Accuracy and Crit Chance for any entity
 # \n represents line break when concatenating strings
 
-def health_bars(entity) # random emoji assigner for every entity
-  emojis = ["❤️", "🧡", "💛", "💚", "💙", "💜", "🤍", "🖤", "🤎", "💔", "❣️", "💕", "💞", "💓", "💗", "💖", "💘", "💝"]
+def health_bars(who) # random emoji assigner for every entity
+  emojis = ["❤️", "🧡", "💛", "💚", "💙", "💜", "❣️", "💕", "💞", "💓", "💗", "💖", "💘", "💝"]
+  n = who[:id] == :player ? 50 : 25
 
-  entity[:emoji] ||= emojis.sample # Assigns an emoji only if the value is nil.
+  who[:emoji] ||= emojis.sample # Assigns an emoji only if the value is nil.
+  full = ((who[:hp] - 1) / n + 1).clamp(0, 5)
+  empty = (8 - full).clamp(0, 5)
+  life = "#{who[:emoji]}" * full + "🤍" * empty
 
-  " " * 4 + "#{entity[:name]}  #{entity[:hp].to_i} #{"#{entity[:emoji]}" * ((entity[:hp] - 1) / 40 + 1).clamp(0, 5) }"
+  " " * 4 + "#{who[:name]}  #{who[:hp].to_i} #{life}"
 end
 
-def stats(entity, stat)
-  icn, sq, max, div = stat == :attack ? ["💢", "🟧", 6, 10] : ["🛡️", "🟦", 4, 5]
-  full = (entity[stat].max / div).clamp(0, max)
+def stats(who, stat)
+  icn, sq, max, div = stat == :attack ? ["💢", "🟧", 5, 4] : ["🛡️", "🟦", 5, 2]
+  full = (who[stat] / div).clamp(0, max)
   empty = (max - full).clamp(0, max)
-  "#{icn}" + "#{sq}" * full + "⬜" * empty + " #{entity[stat].minmax.join('-')} "
+  "#{icn}" + "#{sq}" * full + "⬜" * empty
 end
 
-def percentage(entity, key) # determins accuracy and crit chance %
-  accuracy = 100 - (100 / (entity[key.to_sym].max))
+def percentage(who, key) # determins accuracy and crit chance %
+  accuracy = 100 - (100 / (who[key.to_sym]))
   crit_ch = 100 - accuracy
   key == :accuracy ? "🎯#{"%02d" % accuracy}% " : "💥#{"%02d" % crit_ch}%  "
 end                       # "%02d" % adds a leading zero to single digits
@@ -51,14 +55,13 @@ end
 
 # Display generators that combine above methods to create dynamic displays for enemy and weapon
 
-def enemy_bars(enemy)
-  "#{health_bars(enemy)}  " +
-  "#{percentage(enemy, :accuracy)}" + "#{percentage(enemy, :crit_ch)}" +
-  "#{stats(enemy, :attack)} " + "#{stats(enemy, :block)}\n" +
-  SHIELD_EN
+def display_bars(who)
+  puts SHIELD if who[:id] == :player
+  puts "#{health_bars(who)} #{percentage(who, :accuracy)} #{percentage(who, :crit_ch)} #{stats(who, :attack)} #{stats(who, :block)}"
+  puts SHIELD_EN if who[:id] == :enemy
 end
 
-def weapon_bars(weapon)
+def weapon_bars(weapon) # kill
   SHIELD + "\n" +
   " " * 4 + "#{weapon[:name]} " + "#{percentage(weapon, :accuracy)}" + "#{percentage(weapon, :crit_ch)}" + stats(weapon, :attack) +
   " 🛠️" + "🟩" * weapon[:durability].clamp(0, 5) + "⬜" * (5 - weapon[:durability]).clamp(0, 5)
@@ -68,21 +71,21 @@ end
 
 def player_status(player)
   wallet = case player[:cash]
-    when 0..2   then "    Skint AF     🫥"
-    when 3..5   then "  Pocket Money   🤔"
-    when 6..9   then " Got some Moolah 😐"
-    when 10..13 then "     Sorted      🫠"
-    when 14..17 then "  Filthy Rich    🤑"
-    when 18..20 then " Totally Minted  😈"
+    when 0 then "    Skint AF     🫥"
+    when 1 then "  Pocket Money   🤔"
+    when 2 then " Got some Moolah 😐"
+    when 3 then "     Sorted      🫠"
+    when 4 then "  Filthy Rich    🤑"
+    when 5 then " Totally Minted  😈"
     end
 
   drunk = case player[:drunk]
-    when 0..2   then "Sober as a Judge ⚖️"
-    when 3..5   then " Got a Buzz on   😉"
-    when 6..9   then " Feeling Tipsy   😏"
-    when 10..13 then " Out on the Razz 🥴"
-    when 14..17 then " Proper Pissed   🤤"
-    when 18..20 then " Fucking Wasted  😵"
+    when 0 then "Sober as a Judge ⚖️"
+    when 1 then " Got a Buzz on   😉"
+    when 2 then " Feeling Tipsy   😏"
+    when 3 then " Out on the Razz 🥴"
+    when 4 then " Proper Pissed   🤤"
+    when 5 then " Fucking Wasted  😵"
     end
 
   SHIELD + "\n" +
