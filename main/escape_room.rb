@@ -39,7 +39,7 @@ def explore_rooms(enemies, weapon, player, load_art)
       enemy_speaks(enemies[-1], :summon)
     else
       weapon = rand(1..4) == 1 ? special_weapon : pick_weapon
-      weapon[:durability] += 2
+      weapon[:durability] = rand(4..5)
       weapon_speaks(weapon, :got)
     end
   end

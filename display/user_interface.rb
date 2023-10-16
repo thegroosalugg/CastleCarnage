@@ -29,26 +29,20 @@ def health_bars(entity) # random emoji assigner for every entity
 
   entity[:emoji] ||= emojis.sample # Assigns an emoji only if the value is nil.
 
-  " " * 4 + "#{entity[:name]} / #{entity[:hp].to_i} #{"#{entity[:emoji]}" * [(entity[:hp] - 1) / 40 + 1, 0].max}"
-end
-#🟧🟩🟦⬜🟥🟪
-def attack_stats(entity)
-  full = (entity[:attack].max / 10).clamp(0, 6)
-  empty = (6 - full).clamp(0, 6)
-  "💢 #{RD}#{entity[:attack].minmax.join('-')}#{CL} " + "🟥" * full + "⬜" * empty
+  " " * 4 + "#{entity[:name]} #{entity[:hp].to_i} #{"#{entity[:emoji]}" * [(entity[:hp] - 1) / 40 + 1, 0].max}"
 end
 
-
-def block_stats(entity) # display for block
-  "🛡️ " + "🔹" * (entity[:block].min % 5) + "🔷" * (entity[:block].min / 5) +
-  " #{entity[:block].minmax.join('-')} " +
-  "🔷" * (entity[:block].max / 5) + "🔹" * (entity[:block].max % 5)
+def stats(entity, stat)
+  icn, sq, max, div = stat == :attack ? ["💢", "🟥", 6, 10] : ["🛡️", "🟦", 4, 5]
+  full = (entity[stat].max / div).clamp(0, max)
+  empty = (max - full).clamp(0, max)
+  "#{icn} #{entity[stat].minmax.join('-')} " + "#{sq}" * full + "⬜" * empty
 end
 
 def percentage(entity, key) # determins accuracy and crit chance %
   accuracy = 100 - (100 / (entity[key.to_sym].max))
   crit_ch = 100 - accuracy
-  key == :accuracy ? "🎯 #{accuracy}%" : " / 💥 #{crit_ch}% / "
+  key == :accuracy ? "🎯 #{accuracy}% " : "💥 #{crit_ch}% "
 end
 
 def rage(the_boss) # boss rage bar
@@ -60,14 +54,14 @@ end
 def enemy_bars(enemy)
   "#{health_bars(enemy)}\n" +
   "\n" +
-  "    #{percentage(enemy, :accuracy)}" + "#{percentage(enemy, :crit_ch)}" + "#{attack_stats(enemy)} / " + "#{block_stats(enemy)}\n" +
+  "    #{percentage(enemy, :accuracy)}" + "#{percentage(enemy, :crit_ch)}" + "#{stats(enemy, :attack)} " + "#{stats(enemy, :block)}\n" +
   SHIELD_EN
 end
 
 def weapon_bars(weapon)
   SHIELD_PL + "\n" +
-  "    #{weapon[:name]} / " + "🛠️ " + "🟦" * [weapon[:durability], 0].max + "\n" +
-  "\n    #{percentage(weapon, :accuracy)}" + "#{percentage(weapon, :crit_ch)}" + attack_stats(weapon)
+  "    #{weapon[:name]}" + " 🛠️ " + "🟩" * weapon[:durability].clamp(0, 5) + "⬜" * (5 - weapon[:durability]).clamp(0, 5) + "\n" +
+  "\n    #{percentage(weapon, :accuracy)}" + "#{percentage(weapon, :crit_ch)}" + stats(weapon, :attack)
 
 end
 
