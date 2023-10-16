@@ -82,7 +82,7 @@ end
 # Method to handle when the weapon breaks
 def weapon_breaks(wielder)
   if wielder[:uses] == 0
-    weapon_speaks(wielder[:equipped], :broke)
+    weapon_speaks(wielder[:equipped], :broke) if wielder[:id] == :player
 
     wielder[:attack] -= wielder[:weapon_attack]
     wielder[:block] -= wielder[:weapon_block]

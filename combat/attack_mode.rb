@@ -35,6 +35,8 @@ def strike(raider, target)                        # dynamic damage multiplier
     target[:hp] -= damage
     shots_fired(raider, target, damage, :hit)
   end
+  raider[:uses] = (raider[:uses] - 1).clamp(0, 5) if raider[:equipped]
+  weapon_breaks(raider) if raider[:equipped]
 end
 
 # Sommersault attack
