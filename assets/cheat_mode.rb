@@ -5,16 +5,22 @@
 
 def cheat_menu(player, enemies, choice)
   case choice
-  when 'e'  then enemies.first[:hp] -= 100
-  when 'ee' then enemies << random_enemy
-  when "h"  then player[:hp] -= 100
-  when "hh" then player[:hp] += 100
+  when 'e' then enemies.first[:hp] -= 100
+  when 's' then enemies << random_enemy
+  when "h" then player[:hp] -= 100
+  when "j" then player[:hp] += 100
+  when "v" then player[:cash] -= 1
+  when "c" then player[:cash] += 1
+  when "f" then player[:drunk] -= 1
+  when "d" then player[:drunk] += 1
   #when "w1" then weapon = pick_weapon
   #when "w2" then weapon = special_weapon
   #when "w"  then weapon[:durability] += 1
   #when "ww" then weapon[:durability] -= 1
   end
   print `clear`
+  player[:drunk] = player[:drunk].clamp(0, 5)
+  player[:cash] = player[:cash].clamp(0, 5)
   #weapon[:durability] = weapon[:durability].clamp(0, 10)
   return enemies
 end

@@ -72,24 +72,24 @@ end
 
 def status(player)
   wallet = case player[:cash]
-    when 0 then "    Skint AF     🫥"
-    when 1 then "  Pocket Money   🤔"
-    when 2 then " Got some Moolah 😐"
-    when 3 then "     Sorted      🫠"
-    when 4 then "  Filthy Rich    🤑"
-    when 5 then " Totally Minted  😈"
+    when 0 then "    Skint AF 🤒"
+    when 1 then "Pocket Money 🤔"
+    when 2 then " Weekend Job 😐"
+    when 3 then "      Sorted 🫠"
+    when 4 then " Filthy Rich 🤑"
+    when 5 then "      Minted 😈"
     end
 
   drunk = case player[:drunk]
-    when 0 then "Sober as a Judge ⚖️"
-    when 1 then " Got a Buzz on   😉"
-    when 2 then " Feeling Tipsy   😏"
-    when 3 then " Out on the Razz 🥴"
-    when 4 then " Proper Pissed   🤤"
-    when 5 then " Fucking Wasted  😵"
+    when 0 then "      Abstinent ⚖️"
+    when 1 then "  Got a Buzz on 😉"
+    when 2 then "  Feeling Tipsy 😏"
+    when 3 then "Out on the Razz 🥴"
+    when 4 then "  Proper Pissed 🤤"
+    when 5 then " Fucking Wasted 😵"
     end
 
+  left = " " * 3 + "#{GN}#{wallet} #{CL}#{"💵" * [player[:cash], 0].max}" + "💷" * [0, (5 - player[:cash])].max + " " * 11
   puts SHIELD
-  puts " " * 4 + "#{GN}#{wallet}#{CL} #{'💵' * [player[:cash], 0].max}"
-  puts " " * 4 + "#{OR}#{drunk}#{CL} #{'🍺' * [player[:drunk], 0].max}"
+  puts "#{left}#{OR}#{drunk}#{CL} #{"🍺" * [player[:drunk], 0].max}"
 end
