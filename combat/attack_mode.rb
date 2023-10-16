@@ -71,7 +71,7 @@ def mortal_kombat(enemies, player, load_art)
       print `clear`
       strike(player, enemies[choice])
       strike(enemies[choice], player) if enemies[choice][:hp].positive?
-      escape_attempt(enemies, player) # random attack on player possible
+      surprise(enemies, player, :combat) # random attack on player possible
     else
       error(:input)
     end
@@ -80,9 +80,9 @@ end
 
 # activates when exploring rooms
 
-def escape_attempt(enemies, player)
+def surprise(enemies, player, event)
   target_enemy = enemies.sample
-  enemy_speaks(target_enemy, :escape)
+  enemy_speaks(target_enemy, :escape) if event == :escape
   if rand(1..4) == 1
     enemy_speaks(target_enemy, :surprise)
     strike(target_enemy, player)

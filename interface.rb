@@ -9,7 +9,6 @@ def play_game
   enemies = []
   3.times { enemies << random_enemy }
   tracked_enemy = enemies.sample
-  #weapon = pick_weapon
   the_boss = big_boss_awaits
 
   intro(player, tracked_enemy)
@@ -17,30 +16,22 @@ def play_game
 
   while !enemies.empty? && player[:hp].positive?
     load_art = battlefield
+    load_menu
+    choice = gets.chomp.downcase
 
-    #if weapon[:durability].positive?                              # Fight menu when weapon equipped
-    # weapon[:broken] = false
-      load_menu
-      choice = gets.chomp.downcase
-      # DEBUG CHEAT MENU
-      enemies = cheat_menu(player, enemies, choice)
-    # else                                                          # Player must run through rooms if weapon broken
-    #   weapon_speaks(weapon, :broke) unless weapon[:broken]
-    #   weapon[:broken] = true
-    #   escape_attempt(enemies, player, weapon, load_art)
-    #   choice = "y"
-    # end
+    # DEBUG CHEAT MENU
+    enemies = cheat_menu(player, enemies, choice)
 
     case choice
     when "t"
       print `clear`
       mortal_kombat(enemies, player, load_art)
-    when "r"                                      # Target random enemy with somersault attack
+    when "r"
       print `clear`
       somersault_attack(player, enemies)
-    when "y"                                      # Avoid combat and run through rooms. Counter records no. of rooms explored
-      print `clear` #unless weapon[:broken]
-      escape_attempt(enemies, player) #unless weapon[:broken]
+    when "y"
+      print `clear`
+      surprise(enemies, player, :escape)
       player[:rooms] += 1
       enemies = explore_rooms(enemies, player, load_art) unless player[:hp] <= 0
     else
@@ -59,7 +50,7 @@ def play_game
     end
 
     tracked_enemy = enemies.sample if player[:hp] <= 0 # Player dies and last enemy is tracked
-    tracked_enemy = the_boss if enemies.empty?
+    # tracked_enemy = the_boss if enemies.empty?
     state_of_game(enemies, player, load_art) #unless tracked_enemy[:id] == :boss || weapon[:durability].zero?
   end
 
