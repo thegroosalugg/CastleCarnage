@@ -33,7 +33,7 @@ def health_bars(who) # random emoji assigner for every entity
   empty = (5 - full).clamp(0, 5)
   life = "#{who[:emoji]}" * full + "🤍" * empty
 
-  " " * 4 + "#{who[:name]}" + "#{whitespace(who, " ", 20)}" + "#{who[:hp].to_i} #{life}"
+  " " * 4 + "#{who[:name]}" + "#{whitespace(who, " ", 11)}" + "#{who[:hp].to_i} #{life}"
 end
 
 def stats(who, stat)
