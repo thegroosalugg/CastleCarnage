@@ -26,11 +26,11 @@ end
 
 def health_bars(who) # random emoji assigner for every entity
   emojis = ["❤️", "🧡", "💛", "💚", "💙", "💜", "❣️", "💕", "💞", "💓", "💗", "💖", "💘", "💝"]
-  n = who[:id] == :player ? 50 : 25
+  n = who[:id] == :player ? 40 : 20
 
   who[:emoji] ||= emojis.sample # Assigns an emoji only if the value is nil.
   full = ((who[:hp] - 1) / n + 1).clamp(0, 5)
-  empty = (8 - full).clamp(0, 5)
+  empty = (5 - full).clamp(0, 5)
   life = "#{who[:emoji]}" * full + "🤍" * empty
 
   " " * 4 + "#{who[:name]}  #{who[:hp].to_i} #{life}"
@@ -46,7 +46,7 @@ end
 def percentage(who, key) # determins accuracy and crit chance %
   accuracy = 100 - (100 / (who[key.to_sym]))
   crit_ch = 100 - accuracy
-  key == :accuracy ? "🎯#{"%02d" % accuracy}% " : "💥#{"%02d" % crit_ch}%  "
+  key == :accuracy ? "🎯#{"%02d" % accuracy}%" : "💥#{"%02d" % crit_ch}%"
 end                       # "%02d" % adds a leading zero to single digits
 
 def rage(the_boss) # boss rage bar
