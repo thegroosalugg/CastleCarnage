@@ -29,7 +29,7 @@ def health_bars(entity) # random emoji assigner for every entity
 
   entity[:emoji] ||= emojis.sample # Assigns an emoji only if the value is nil.
 
-  " " * 4 + "#{entity[:name]} #{entity[:hp].to_i} #{"#{entity[:emoji]}" * [(entity[:hp] - 1) / 40 + 1, 0].max}"
+  " " * 4 + "#{entity[:name]}  #{entity[:hp].to_i} #{"#{entity[:emoji]}" * [(entity[:hp] - 1) / 40 + 1, 0].max}"
 end
 
 def stats(entity, stat)
@@ -52,9 +52,8 @@ end
 # Display generators that combine above methods to create dynamic displays for enemy and weapon
 
 def enemy_bars(enemy)
-  "#{health_bars(enemy)}\n" +
-  "\n" +
-  "    #{percentage(enemy, :accuracy)}" + "#{percentage(enemy, :crit_ch)}" + "#{stats(enemy, :attack)} " + "#{stats(enemy, :block)}\n" +
+  "#{health_bars(enemy)}" + "\n" +
+  " " * 4 + "#{percentage(enemy, :accuracy)}" + "#{percentage(enemy, :crit_ch)}" + "#{stats(enemy, :attack)} " + "#{stats(enemy, :block)}\n" +
   SHIELD_EN
 end
 
