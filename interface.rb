@@ -44,7 +44,7 @@ def play_game
       player[:rooms] += 1
       enemies, weapon = explore_rooms(enemies, weapon, player, load_art) unless player[:hp] <= 0
     else
-      error_message
+      error_message(:error)
     end
 
     enemies.reject! do |enemy|

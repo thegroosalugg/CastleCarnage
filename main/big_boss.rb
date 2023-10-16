@@ -50,7 +50,7 @@ def big_boss_battle(player, weapon, the_boss)
         boss_style = pay_with_blood(player, buddy, weapon, the_boss, boss_style, load_boss)
         player[:drained] = true
       else
-        drained
+        error_message(:drain)
       end
     elsif user_choice == "y"
       if player[:turns] == 4
@@ -61,10 +61,10 @@ def big_boss_battle(player, weapon, the_boss)
         the_boss[:rage] = (the_boss[:rage] + 1).clamp(0, 10)
         invoice(player, (buddy[:hp] / 2), :grave)
       else
-        error_message
+        error_message(:error)
       end
     else
-      error_message
+      error_message(:error)
     end
 
     boss_rage(player, buddy, the_boss) if user_choice == "t" && the_boss[:hp].positive?

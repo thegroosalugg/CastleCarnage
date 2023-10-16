@@ -73,7 +73,7 @@ def mortal_kombat(enemies, player, weapon, load_art)
       strike(player, enemies[user_choice], weapon)
       strike(enemies[user_choice], player) if enemies[user_choice][:hp].positive?
     else
-      error_message
+      error_message(:error)
     end
   end
 end

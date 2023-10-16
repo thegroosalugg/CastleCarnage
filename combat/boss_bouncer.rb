@@ -85,7 +85,7 @@ def fight_the_bouncer(player, buddy, weapon, the_boss, boss_style, load_boss)
         ranged_strike(player, weapon, the_boss, weapon_damage)
         the_boss[:rage] = (the_boss[:rage] + 1).clamp(0, 10)
       else
-        error_message
+        error_message(:error)
         redo
       end
     when 6
@@ -95,7 +95,7 @@ def fight_the_bouncer(player, buddy, weapon, the_boss, boss_style, load_boss)
         the_boss[:rage] = (the_boss[:rage] + 1).clamp(0, 10)
         redo
       else
-        error_message
+        error_message(:error)
         redo
       end
     when 7
@@ -104,7 +104,7 @@ def fight_the_bouncer(player, buddy, weapon, the_boss, boss_style, load_boss)
       sneak_attack(player, the_boss, damage)
       the_boss[:rage] = (the_boss[:rage] + 1).clamp(0, 10)
     else
-      error_message
+      error_message(:error)
     end
   end
 

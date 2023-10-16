@@ -54,11 +54,11 @@ def fight_the_barkeep(player, buddy, weapon, the_boss, boss_style, load_boss)
         blackjack(player, buddy, weapon, the_boss, boss_style, load_boss)
         redo
       else
-        error_message
+        error_message(:error)
         redo
       end
     else
-      error_message
+      error_message(:error)
     end
   end
 

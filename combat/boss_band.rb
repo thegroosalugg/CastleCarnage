@@ -30,7 +30,7 @@ def dance_off(player, buddy, weapon, the_boss, boss_style, load_boss)
 
     until (4..6).include?(user_choice)
       user_choice = gets.chomp.to_i
-      error_message unless (4..6).include?(user_choice)
+      error_message(:error) unless (4..6).include?(user_choice)
       game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
       game_menu(:dance)
     end
@@ -56,7 +56,7 @@ def keg_stand(player, buddy, weapon, the_boss, boss_style, load_boss)
 
     until [4, 5].include?(user_choice)
       user_choice = gets.chomp.to_i
-      error_message unless [4, 5].include?(user_choice)
+      error_message(:error) unless [4, 5].include?(user_choice)
       game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
       game_menu(:keg)
     end
@@ -99,7 +99,7 @@ def fight_the_band(player, buddy, weapon, the_boss, boss_style, load_boss)
       the_boss[:rage] = (the_boss[:rage] + 1).clamp(0, 10)
       keg_stand(player, buddy, weapon, the_boss, boss_style, load_boss)
     else
-      error_message
+      error_message(:error)
     end
   end
 

@@ -3,8 +3,8 @@
 
 # ERROR MESSAGES
 
-def error_message
-  messages = [
+def error_message(reason)
+  error = [
     " Don't be a pillock ‼ ",
     " Don't be a plonker ‼ ",
     " Don't be a plank ‼ ",
@@ -15,25 +15,7 @@ def error_message
     " Quit faffing around ‼ ",
     " Quit being a melon ‼ ",
   ]
-
-  print `clear`
-  puts padding_generator("#{RD}#{messages.sample}#{CL}", " ", 50)
-end
-
-def denied
-  messages = [
-    "Just No ⛔",
-    "Get Lost ⛔",
-    "Out of Stock ⛔",
-    "We Don't Have It ⛔",
-    "You Can't Have That ⛔",
-  ]
-
-  padding_generator("#{RD}#{messages.sample}#{CL}", "-", 50)
-end
-
-def drained
-  messages = [
+  drained = [
     " You had your chance, go fight now ‼ ",
     " Once per turn, you melt ‼ ",
     " Uh-uh! I don't think so ‼ ",
@@ -42,7 +24,23 @@ def drained
     " Don't get greedy ‼ ",
     " Next round buddy ‼ ",
   ]
+  denied = [
+    "Just No ⛔",
+    "Get Lost ⛔",
+    "Out of Stock ⛔",
+    "We Don't Have It ⛔",
+    "You Can't Have That ⛔",
+  ]
 
-  print `clear`
-  puts padding_generator(messages.sample, " ", 52)
+  char, n, messages = case reason
+  when :error  then [" ", 70, error]
+  when :drain  then [" ", 70, drained]
+  when :denied then ["#{ML}#{ICONS.sample}#{CL}", 50, "#{ML}#{denied.sample}#{CL}"]
+  end
+  if reason == :denied
+    padding_generator(messages, char, n)
+  else
+    print `clear`
+    puts padding_generator("#{RD}#{messages.sample}#{CL}", char, n)
+  end
 end

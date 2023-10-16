@@ -74,33 +74,33 @@ def pay_with_blood(player, buddy, weapon, the_boss, boss_style, load_boss)
       if player[:attack].max < 50 || player[:block].max < 20
       price_paid, multiplier, boost = buffout(player)
     else
-      error_message
+      error_message(:error)
       redo
     end
     when 5 # pay HP for cash: 0-20
       if player[:cash] < 20
         price_paid, multiplier = devils_deal(player)
       else
-        error_message
+        error_message(:error)
         redo
       end
     when 6 # pay HP to decrease toxicity: 20-0
       if player[:drunk].positive?
         price_paid, multiplier = hangover(player)
       else
-        error_message
+        error_message(:error)
         redo
       end
     when 7 # sacrifice attack / block for HP: 1000 max
       if (player[:attack].max > 1 || player[:block].max > 1) && player[:hp] < 100
         price_paid, multiplier, boost = dodgy_potion(player)
       else
-        error_message
+        error_message(:error)
         redo
       end
     when 9 then break
     else
-      error_message
+      error_message(:error)
     end
   end
 

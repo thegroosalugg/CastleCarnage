@@ -20,7 +20,7 @@ def explore_rooms(enemies, weapon, player, load_art)
     puts BARRIER
 
     user_choice = gets.chomp.to_i
-    error_message unless (4..7).include?(user_choice)
+    error_message(:error) unless (4..7).include?(user_choice)
     state_of_game(enemies, player, weapon, load_art)
   end
 

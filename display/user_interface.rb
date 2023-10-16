@@ -8,7 +8,7 @@ def name_player(player) # Name your player
     title_screen
     your_name = gets.chomp.strip.slice(0, 9).downcase.capitalize
     player[:name] = "#{GN}🥷 #{your_name}#{CL}"
-    error_message
+    error_message(:error)
   end
 
   print `clear`
