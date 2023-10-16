@@ -4,7 +4,7 @@
 def bonus(player)
   health = [player[:rooms] * 30, 500].min
   boost = [:attack, :block].sample
-  player[:hp] += health
+  player[:hp] =  (player[:hp] + health).clamp(0, 500)
   player[boost] = (player[boost].min + player[:kills] / 2)..(player[boost].max + player[:kills])
   your_rewards(player, health, boost, player[:kills])
 end
@@ -29,12 +29,12 @@ def big_boss_battle(player, weapon, the_boss)
   while the_boss[:hp].positive? && player[:hp].positive?
     boss_menu(player, boss_style)
 
-    user_choice = gets.chomp.downcase
+    choice = gets.chomp.downcase
 
     # DEBUG CHEAT MENU
-    buddy, weapon, boss_style = cheat_menu_boss(user_choice, player, buddy, weapon, the_boss, boss_style)
+    buddy, weapon, boss_style = cheat_menu_boss(choice, player, buddy, weapon, the_boss, boss_style)
 
-    if user_choice == "t"
+    if choice == "t"
       print `clear`
       player[:drained] = false
       player[:turns] = (player[:turns] + 1).clamp(0, 4)
@@ -43,16 +43,16 @@ def big_boss_battle(player, weapon, the_boss)
       when :bouncer then boss_style, weapon = fight_the_bouncer(player, buddy, weapon, the_boss, boss_style, load_boss)
       when :band    then boss_style = fight_the_band(player, buddy, weapon, the_boss, boss_style, load_boss)
       end
-    elsif user_choice == "r"
+    elsif choice == "r"
       unless player[:drained]
         print `clear`
         the_boss[:rage] = (the_boss[:rage] + 1).clamp(0, 10)
         boss_style = pay_with_blood(player, buddy, weapon, the_boss, boss_style, load_boss)
         player[:drained] = true
       else
-        drained
+        error(:wait)
       end
-    elsif user_choice == "y"
+    elsif choice == "y"
       if player[:turns] == 4
         buddy = random_enemy
         enemy_speaks(buddy, :revive)
@@ -61,13 +61,13 @@ def big_boss_battle(player, weapon, the_boss)
         the_boss[:rage] = (the_boss[:rage] + 1).clamp(0, 10)
         invoice(player, (buddy[:hp] / 2), :grave)
       else
-        error_message
+        error(:wait)
       end
     else
-      error_message
+      error(:input)
     end
 
-    boss_rage(player, buddy, the_boss) if user_choice == "t" && the_boss[:hp].positive?
+    boss_rage(player, buddy, the_boss) if choice == "t" && the_boss[:hp].positive?
     if buddy && buddy[:hp] <= 0
       enemy_speaks(buddy, :pwned)
       buddy = nil

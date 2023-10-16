@@ -51,5 +51,5 @@ FIGHTTALK = [
   "Ah yeah!", "I own it!", "Take that!", "I'm jus' too good", "Bow to me!",
 ]
 BOUNCERTALK = [
-  "Not tonight!", "Not with that shirt!", "Piss off!", "Get lost!", "You can't afford it!",
+  "Not tonight!", "Not with that shirt!", "Piss off!", "Get lost!", "You can't afford it!", "Come back with some money",
  ]

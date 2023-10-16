@@ -21,17 +21,17 @@ def play_game
     if weapon[:durability].positive?                              # Fight menu when weapon equipped
       weapon[:broken] = false
       load_menu
-      user_choice = gets.chomp.downcase
+      choice = gets.chomp.downcase
       # DEBUG CHEAT MENU
-      enemies, weapon = cheat_menu(player, enemies, weapon, user_choice)
+      enemies, weapon = cheat_menu(player, enemies, weapon, choice)
     else                                                          # Player must run through rooms if weapon broken
       weapon_speaks(weapon, :broke) unless weapon[:broken]
       weapon[:broken] = true
       escape_attempt(enemies, player, weapon, load_art)
-      user_choice = "y"
+      choice = "y"
     end
 
-    case user_choice
+    case choice
     when "t"
       print `clear`
       mortal_kombat(enemies, player, weapon, load_art)
@@ -44,7 +44,7 @@ def play_game
       player[:rooms] += 1
       enemies, weapon = explore_rooms(enemies, weapon, player, load_art) unless player[:hp] <= 0
     else
-      error_message
+      error(:input)
     end
 
     enemies.reject! do |enemy|
@@ -70,6 +70,6 @@ end
 
 loop do
   play_game
-  user_choice = gets.chomp.downcase
-  break if user_choice != "y"
+  choice = gets.chomp.downcase
+  break if choice != "y"
 end

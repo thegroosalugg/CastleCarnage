@@ -3,8 +3,8 @@
 
 # debug cheat menu for interface
 
-def cheat_menu(player, enemies, weapon, user_choice)
-  case user_choice
+def cheat_menu(player, enemies, weapon, choice)
+  case choice
   when 'e'  then enemies.first[:hp] -= 100
   when 'ee' then enemies << random_enemy
   when "h"  then player[:hp] -= 100
@@ -21,8 +21,8 @@ end
 
 # boss menu cheat interface. Not possible to combine the 2
 
-def cheat_menu_boss(user_choice, player, buddy, weapon, the_boss, boss_style)
-  case user_choice
+def cheat_menu_boss(choice, player, buddy, weapon, the_boss, boss_style)
+  case choice
   when "h"  then player[:hp] -= 100
   when "hh" then player[:hp] += 100
   when "w1" then weapon = pick_weapon

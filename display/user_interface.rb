@@ -8,7 +8,7 @@ def name_player(player) # Name your player
     title_screen
     your_name = gets.chomp.strip.slice(0, 9).downcase.capitalize
     player[:name] = "#{GN}🥷 #{your_name}#{CL}"
-    error_message
+    error(:name)
   end
 
   print `clear`
@@ -29,7 +29,7 @@ def health_bars(entity) # random emoji assigner for every entity
 
   entity[:emoji] ||= emojis.sample # Assigns an emoji only if the value is nil.
 
-  " " * 4 + "#{entity[:name]}  #{entity[:hp].to_i} #{"#{entity[:emoji]}" * [(entity[:hp] - 1) / 40 + 1, 0].max}"
+  " " * 4 + "#{entity[:name]}  #{entity[:hp].to_i} #{"#{entity[:emoji]}" * ((entity[:hp] - 1) / 40 + 1).clamp(0, 5) }"
 end
 
 def stats(entity, stat)
@@ -59,7 +59,7 @@ def enemy_bars(enemy)
 end
 
 def weapon_bars(weapon)
-  SHIELD_PL + "\n" +
+  SHIELD + "\n" +
   " " * 4 + "#{weapon[:name]} " + "#{percentage(weapon, :accuracy)}" + "#{percentage(weapon, :crit_ch)}" + stats(weapon, :attack) +
   " 🛠️" + "🟩" * weapon[:durability].clamp(0, 5) + "⬜" * (5 - weapon[:durability]).clamp(0, 5)
 end
@@ -85,7 +85,7 @@ def player_status(player)
     when 18..20 then " Fucking Wasted  😵"
     end
 
-  SHIELD_PL + "\n" +
+  SHIELD + "\n" +
   "    #{GN}#{wallet}#{CL} #{'💵' * [player[:cash], 0].max}\n" +
   "    #{OR}#{drunk}#{CL} #{'🍺' * [player[:drunk], 0].max}"
 end

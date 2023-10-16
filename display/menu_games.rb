@@ -52,5 +52,5 @@ def show_your_moves(player, the_boss, user_moves, boss_moves, method)
     x = user_moves == boss_moves ? "#{SUCCESS}" : "#{FLUNKED}"
     puts whitespace(player, " ", 14) + "#{player[:name]} 💬 #{pkmn[user_moves]} #{x} #{pkmn[boss_moves]} 🗨️ #{the_boss[:name]}"
   end
-  puts BARRIER
+  puts BARRIER_EN
 end

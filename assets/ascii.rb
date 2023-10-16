@@ -30,8 +30,9 @@ ICONS = [
   '→', '←', '⇽', '⇻', '⇏', '⇎', '⇄', '≉', '↤', '↝', '↜', '⋘', '⋙',
   ]
 
-BARRIER =   "#{ML}#{ICONS.sample}#{CL}" * 80
-SHIELD_PL = " " *4 + "#{ML}#{ICONS.sample}#{CL}" * 72
+BARRIER =            "#{ML}#{ICONS.sample}#{CL}" * 80
+BARRIER_EN =         "#{RD}#{ICONS.sample}#{CL}" * 80
+SHIELD =    " " *4 + "#{ML}#{ICONS.sample}#{CL}" * 72
 SHIELD_EN = " " *4 + "#{RD}#{ICONS.sample}#{CL}" * 72
 
 MENU_HEADER = " " * 2 + "#{ML}T̿̽̈́H͛̾͌É͌R͋̔̈́E̽͌͑ C͆̔͌A̾͋͝N̿̐͝ B̔̒͛Ë́͠ O̿͊͘N̕̕͠L͆̾̾Y̒͝ O͑͆̒N͆͋͛E͆͛̈́.͐͝͝.̓͋̈́.́̐́#{CL}"
@@ -46,6 +47,7 @@ STYLE = {
 
 NUM = ["[̳0̳]̳", "[̳1̳]̳", "[̳2̳]̳", "[̳3̳]̳", "[̳4̳]̳", "[̳5̳]̳", "[̳6̳]̳", "[̳7̳]̳", "[̳8̳]̳", "[̳9̳]̳"]
 
+WRONG =      "#{RD}💯𝖂𝕽𝕺𝕹𝕲#{CL}"
 HANGOVER =   "#{OR}ℍ𝔸ℕ𝔾𝕆𝕍𝔼ℝ#{CL}"
 BONUS =      "#{YL}🪅 ℬ𝒪𝒩𝒰𝒮 🎊#{CL}"
 BUFF =       "#{CN}𝓑𝓤𝓕𝓕🪶#{CL}"
