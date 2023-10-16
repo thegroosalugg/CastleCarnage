@@ -17,8 +17,7 @@ def error_message
   ]
 
   print `clear`
-  puts BARRIER
-  puts padding_generator(messages.sample, "❌", 50)
+  puts padding_generator(messages.sample, " ", 50)
 end
 
 def denied
@@ -45,6 +44,5 @@ def drained
   ]
 
   print `clear`
-  puts BARRIER
-  puts padding_generator(messages.sample, "🩸", 52)
+  puts padding_generator(messages.sample, " ", 52)
 end

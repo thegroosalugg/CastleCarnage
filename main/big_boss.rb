@@ -4,7 +4,7 @@
 def bonus(player)
   health = [player[:rooms] * 30, 500].min
   boost = [:attack, :block].sample
-  player[:hp] += health
+  player[:hp] =  (player[:hp] + health).clamp(0, 500)
   player[boost] = (player[boost].min + player[:kills] / 2)..(player[boost].max + player[:kills])
   your_rewards(player, health, boost, player[:kills])
 end
