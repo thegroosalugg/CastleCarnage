@@ -38,7 +38,7 @@ def health_bars(who) # random emoji assigner for every entity
 end
 
 def stats(who, stat)
-  icn, sq, max, div = stat == :attack ? ["💢", "🟧", 5, 4] : ["🛡️", "🟦", 5, 2]
+  icn, sq, max, div = stat == :attack ? ["💢", "🟧", 5, 5] : ["🛡️", "🟦", 5, 2]
   full = (who[stat] / div).clamp(0, max)
   empty = (max - full).clamp(0, max)
   "#{icn}" + "#{sq}" * full + "⬜" * empty

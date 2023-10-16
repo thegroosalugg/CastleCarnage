@@ -9,7 +9,7 @@ def play_game
   enemies = []
   3.times { enemies << random_enemy }
   tracked_enemy = enemies.sample
-  the_boss = big_boss_awaits
+  #the_boss = big_boss_awaits
 
   intro(player, tracked_enemy)
   state_of_game(enemies, player, load_art = battlefield)
@@ -47,6 +47,11 @@ def play_game
       else
         false  # This will keep the enemy in the array
       end
+    end
+
+    # DEBUG
+    player.each do |key, value|
+      puts "#{key}: #{value}"
     end
 
     tracked_enemy = enemies.sample if player[:hp] <= 0 # Player dies and last enemy is tracked
