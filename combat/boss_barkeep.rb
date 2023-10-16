@@ -29,17 +29,17 @@ def bar_fight(player, the_boss)
 end
 
 def fight_the_barkeep(player, buddy, weapon, the_boss, boss_style, load_boss)
-  user_choice = 0
+  choice = 0
   player[:jacked] = true
   load_boss = the_barkeep
   boss_walks(the_boss, boss_style, :intro)
 
-  until (4..6).include?(user_choice)
+  until (4..6).include?(choice)
     game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
     fight_menu(player, boss_style, weapon)
 
-    user_choice = gets.chomp.to_i
-    case user_choice
+    choice = gets.chomp.to_i
+    case choice
     when 4
       print `clear`
       pay_the_tab(player, the_boss)
@@ -54,11 +54,11 @@ def fight_the_barkeep(player, buddy, weapon, the_boss, boss_style, load_boss)
         blackjack(player, buddy, weapon, the_boss, boss_style, load_boss)
         redo
       else
-        error_message(:error)
+        error(:money)
         redo
       end
     else
-      error_message(:error)
+      error(:input)
     end
   end
 

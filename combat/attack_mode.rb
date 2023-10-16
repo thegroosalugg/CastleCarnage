@@ -59,21 +59,21 @@ end
 
 def mortal_kombat(enemies, player, weapon, load_art)
   greeting(:combat)
-  user_choice = -1
+  choice = -1
 
-  until user_choice >= 0 && user_choice < enemies.length
+  until choice >= 0 && choice < enemies.length
     state_of_game(enemies, player, weapon, load_art = battlefield)
     puts MENU_HEADER
     enemies.each_with_index { |enemy, index| puts " " * 28 + "#{ML}#{NUM[index + 4]}#{CL} #{enemy[:name]}" }
     puts BARRIER                                       # fetches and colors ASCII numbers
-    user_choice = gets.chomp.to_i - 4
+    choice = gets.chomp.to_i - 4
 
-    if user_choice >= 0 && user_choice < enemies.length
+    if choice >= 0 && choice < enemies.length
       print `clear`
-      strike(player, enemies[user_choice], weapon)
-      strike(enemies[user_choice], player) if enemies[user_choice][:hp].positive?
+      strike(player, enemies[choice], weapon)
+      strike(enemies[choice], player) if enemies[choice][:hp].positive?
     else
-      error_message(:error)
+      error(:input)
     end
   end
 end

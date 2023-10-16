@@ -60,21 +60,21 @@ def sneak_attack(player, the_boss, damage)
 end
 
 def fight_the_bouncer(player, buddy, weapon, the_boss, boss_style, load_boss)
-  user_choice = 0
+  choice = 0
   player[:drunk] = (player[:drunk] + 1).clamp(0, 20)
   player[:sneaky] = false
   load_boss = the_bouncer
   boss_walks(the_boss, boss_style, :intro)
 
-  until (4..7).include?(user_choice)
+  until (4..7).include?(choice)
     game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
     fight_menu(player, boss_style, weapon)
 
     unarmed_damage = { id: :unarmed, value: (rand(player[:attack]) * (100 - player[:drunk] * 5) / 100).to_i.clamp(1, 100) }
     weapon_damage = { id: :weapon, value: ((rand(player[:attack]) + rand(weapon[:attack])) * (100 - player[:drunk] * 5) / 100).to_i.clamp(1, 100) }
-    user_choice = gets.chomp.to_i
+    choice = gets.chomp.to_i
 
-    case user_choice
+    case choice
     when 4
       print `clear`
       damage = weapon[:durability].positive? ? weapon_damage : unarmed_damage
@@ -85,7 +85,7 @@ def fight_the_bouncer(player, buddy, weapon, the_boss, boss_style, load_boss)
         ranged_strike(player, weapon, the_boss, weapon_damage)
         the_boss[:rage] = (the_boss[:rage] + 1).clamp(0, 10)
       else
-        error_message(:error)
+        error(:weapon_empty)
         redo
       end
     when 6
@@ -95,7 +95,7 @@ def fight_the_bouncer(player, buddy, weapon, the_boss, boss_style, load_boss)
         the_boss[:rage] = (the_boss[:rage] + 1).clamp(0, 10)
         redo
       else
-        error_message(:error)
+        error(:weapon_full)
         redo
       end
     when 7
@@ -104,12 +104,12 @@ def fight_the_bouncer(player, buddy, weapon, the_boss, boss_style, load_boss)
       sneak_attack(player, the_boss, damage)
       the_boss[:rage] = (the_boss[:rage] + 1).clamp(0, 10)
     else
-      error_message(:error)
+      error(:input)
     end
   end
 
   strike(buddy, the_boss) if buddy && rand(2) == 1
-  boss_strikes_back(the_boss, boss_style, player, buddy, weapon) unless the_boss[:hp] <= 0 || [5, 7].include?(user_choice)
+  boss_strikes_back(the_boss, boss_style, player, buddy, weapon) unless the_boss[:hp] <= 0 || [5, 7].include?(choice)
   boss_style = the_boss[:style].sample
   boss_walks(the_boss, boss_style, :outro) if the_boss[:hp].positive?
   return boss_style, weapon

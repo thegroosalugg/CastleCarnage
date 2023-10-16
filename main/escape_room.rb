@@ -9,23 +9,23 @@ def health_trap(entity)
 end
 
 def explore_rooms(enemies, weapon, player, load_art)
-  user_choice = 0
+  choice = 0
   chosen_rooms = room_vault
   load_art = room_service
   state_of_game(enemies, player, weapon, load_art)
 
-  until (4..7).include?(user_choice) # index +4 / -4 to set user choice to (4..7) instead of (0..3)
+  until (4..7).include?(choice) # index +4 / -4 to set user choice to (4..7) instead of (0..3)
     puts MENU_HEADER
     chosen_rooms.each_with_index { |room, i| puts " " * 22 + "#{ML}#{NUM[i + 4]}#{CL} #{room[:name]}" }
     puts BARRIER
 
-    user_choice = gets.chomp.to_i
-    error_message(:error) unless (4..7).include?(user_choice)
+    choice = gets.chomp.to_i
+    error(:input) unless (4..7).include?(choice)
     state_of_game(enemies, player, weapon, load_art)
   end
 
   print `clear`
-  entered_room = chosen_rooms[user_choice - 4]
+  entered_room = chosen_rooms[choice - 4]
   enter_room(entered_room)
   gift = entered_room[:chance].sample
 

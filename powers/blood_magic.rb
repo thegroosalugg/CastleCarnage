@@ -1,7 +1,7 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-def blood_ritual(player, user_choice, price_paid, multiplier, boost)
+def blood_ritual(player, choice, price_paid, multiplier, boost)
   boost = boost == :attack ? "💢 attack" : "🛡️ block"
 
   buff =     "#{BUFF} +#{multiplier} #{boost}  #{HP_MINUS} -#{price_paid} #{player[:emoji]}"
@@ -9,7 +9,7 @@ def blood_ritual(player, user_choice, price_paid, multiplier, boost)
   hangover = "#{HANGOVER} -#{multiplier} 🍺  #{HP_MINUS} -#{price_paid} #{player[:emoji]}"
   health =   "#{HP_PLUS} +#{price_paid} #{player[:emoji]}  #{HP_MINUS}  -#{multiplier} #{boost}"
 
-  messages = case user_choice
+  messages = case choice
   when 4 then buff
   when 5 then cash
   when 6 then hangover
@@ -60,54 +60,54 @@ def dodgy_potion(player)
 end
 
 def pay_with_blood(player, buddy, weapon, the_boss, boss_style, load_boss)
-  user_choice = 0
+  choice = 0
   greeting(:shop)
   load_boss = the_shop
 
-  until (4..7).include?(user_choice)
+  until (4..7).include?(choice)
     game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
     blood_menu(player)
 
-    user_choice = gets.chomp.to_i
-    case user_choice
+    choice = gets.chomp.to_i
+    case choice
     when 4 # pay HP to increase player attack / block at random. Max 50 attack / 20 block range
       if player[:attack].max < 50 || player[:block].max < 20
       price_paid, multiplier, boost = buffout(player)
     else
-      error_message(:error)
+      error(:wait)
       redo
     end
     when 5 # pay HP for cash: 0-20
       if player[:cash] < 20
         price_paid, multiplier = devils_deal(player)
       else
-        error_message(:error)
+        error(:wait)
         redo
       end
     when 6 # pay HP to decrease toxicity: 20-0
       if player[:drunk].positive?
         price_paid, multiplier = hangover(player)
       else
-        error_message(:error)
+        error(:wait)
         redo
       end
     when 7 # sacrifice attack / block for HP: 1000 max
       if (player[:attack].max > 1 || player[:block].max > 1) && player[:hp] < 100
         price_paid, multiplier, boost = dodgy_potion(player)
       else
-        error_message(:error)
+        error(:wait)
         redo
       end
     when 9 then break
     else
-      error_message(:error)
+      error(:input)
     end
   end
 
   print `clear`
-  blood_ritual(player, user_choice, price_paid, multiplier, boost) unless user_choice == 9
-  boss_style = user_choice == 9 ? boss_style : the_boss[:style].sample
-  boss_walks(the_boss, boss_style, :outro) unless user_choice == 9
-  boss_rage(player, buddy, the_boss) unless user_choice == 9
+  blood_ritual(player, choice, price_paid, multiplier, boost) unless choice == 9
+  boss_style = choice == 9 ? boss_style : the_boss[:style].sample
+  boss_walks(the_boss, boss_style, :outro) unless choice == 9
+  boss_rage(player, buddy, the_boss) unless choice == 9
   return boss_style
 end

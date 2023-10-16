@@ -55,20 +55,20 @@ def blackjack(player, buddy, weapon, the_boss, boss_style, load_boss)
       deck = card_deck if deck.empty?
       game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
       game_menu(:cards)
-      user_action = gets.chomp.to_i
+      choice = gets.chomp.to_i
 
-      if user_action == 4
+      if choice == 4
         print `clear`
         your_hand << deck.shift
         your_total = your_hand.sum { |card| card[:value] }
         your_hand, your_total = check_ace(your_hand, your_total)
         invoice(player, your_hand, :cards)
         whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
-      elsif user_action == 5
+      elsif choice == 5
         player[:stuck] = true
         break
       else
-        error_message(:error)
+        error(:input)
         whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
       end
     end
@@ -87,7 +87,7 @@ def blackjack(player, buddy, weapon, the_boss, boss_style, load_boss)
       player[:cash] = (player[:cash] + 3).clamp(0, 20)
       invoice(player, 3, :cash)
     else
-      invoice(player, your_hand, :cards) unless your_hand.length < 3 || user_action == 5
+      invoice(player, your_hand, :cards) unless your_hand.length < 3 || choice == 5
       whos_the_boss(your_hand, your_total, boss_total)
       player[:stuck] = true if boss_total == 21
       whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
@@ -106,7 +106,7 @@ def blackjack(player, buddy, weapon, the_boss, boss_style, load_boss)
         print `clear`
         return
       else
-        error_message(:error)
+        error(play_again, :input)
       end
     end
   end

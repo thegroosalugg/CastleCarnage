@@ -7,7 +7,7 @@ def barkeep(player)
   blackjack = "🔥💵   #{BL}#{NUM[6]} ♠️♥️ ＢｌａｃｋＪａｃｋ ♦️♣️#{GN}"
   puts "  💵🍺 #{OR}#{NUM[4]}  💴  Ｐａｙ ｙｏｕｒ ｔａｂｓ 🗒️#{GN}"
   puts "❄️💵🍺 #{GN}#{NUM[5]}  🪑  Ｏｌｄ Ｓｃｈｏｏｌ Ｂａｒ Ｆｉｇｈｔ 🚬#{GN}"
-  puts (player[:cash].positive? && player[:jacked] ? blackjack : error_message(:denied))
+  puts (player[:cash].positive? && player[:jacked] ? blackjack : error(:denied))
 end
 
 def bouncer(player, weapon)
@@ -28,8 +28,8 @@ def bouncer(player, weapon)
   ]
 
   puts (weapon[:durability].positive? ? weapon_strike.sample : unarmed_strike.sample)
-  puts (weapon[:durability] > 2 ? ranged_strike.sample : error_message(:denied))
-  puts (weapon[:durability].zero? && player[:cash] > 4 ? get_weapon.sample : error_message(:denied))
+  puts (weapon[:durability] > 2 ? ranged_strike.sample : error(:denied))
+  puts (weapon[:durability].zero? && player[:cash] > 4 ? get_weapon.sample : error(:denied))
   puts sneak_attack.sample
 end
 
@@ -87,9 +87,9 @@ def blood_menu(player)
   ]
 
   puts padding_generator(" 🧞💬 Pay with Blood ❤️ Get Bargains 💰 ", "💠", 57)
-  puts (player[:attack].max < 50 || player[:block].max < 20 ? buffout.sample : error_message(:denied))
-  puts (player[:cash] < 20 ? money.sample : error_message(:denied))
-  puts (player[:drunk].positive? ? drink.sample : error_message(:denied))
-  puts ((player[:attack].max > 1 || player[:block].max > 1) && player[:hp] < 100 ? health.sample : error_message(:denied))
+  puts (player[:attack].max < 50 || player[:block].max < 20 ? buffout.sample : error(:denied))
+  puts (player[:cash] < 20 ? money.sample : error(:denied))
+  puts (player[:drunk].positive? ? drink.sample : error(:denied))
+  puts ((player[:attack].max > 1 || player[:block].max > 1) && player[:hp] < 100 ? health.sample : error(:denied))
   puts "   💨 [9] 🏃 Geeeet ooooout!"
 end
