@@ -15,7 +15,9 @@ def explore_rooms(enemies, weapon, player, load_art)
   state_of_game(enemies, player, weapon, load_art)
 
   until (4..7).include?(user_choice) # index +4 / -4 to set user choice to (4..7) instead of (0..3)
-    chosen_rooms.each_with_index { |room, i| puts "    [#{i + 4}] #{room[:name]}" }
+    puts MENU_HEADER
+    chosen_rooms.each_with_index { |room, i| puts " " * 26 + "#{ML}#{NUM[i + 4]}#{CL} #{room[:name]}" }
+    puts BARRIER
 
     user_choice = gets.chomp.to_i
     error_message unless (4..7).include?(user_choice)
