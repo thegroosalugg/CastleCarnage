@@ -8,10 +8,9 @@ def play_game
   name_player(player)
   enemies = []
   3.times { enemies << random_enemy }
-  tracked_enemy = enemies.sample
-  #the_boss = big_boss_awaits
+  player[:tracking] = enemies.sample
 
-  intro(player, tracked_enemy)
+  intro(player)
   state_of_game(enemies, player)
 
   while !enemies.empty? && player[:hp].positive?
@@ -48,21 +47,17 @@ def play_game
       if enemy[:hp] <= 0  # check for enemy deaths, update counter, track last enemy for game over
         player[:kills] += 1
         enemy_speaks(enemy, :pwned)
-        tracked_enemy = enemy
+        player[:tracking] = enemy
         true  # This will remove the enemy from the array
       else
         false  # This will keep the enemy in the array
       end
     end
 
-    tracked_enemy = enemies.sample if player[:hp] <= 0 # Player dies and last enemy is tracked
-    # tracked_enemy = the_boss if enemies.empty?
-    state_of_game(enemies, player) #unless tracked_enemy[:id] == :boss || weapon[:durability].zero?
+    player[:tracking] = enemies.sample if player[:hp] <= 0 # Player dies and last enemy is tracked
+    state_of_game(enemies, player)
   end
-
-  # boss_orders(player, weapon, the_boss) unless player[:hp] <= 0
-  #state_of_game(enemies, player, weapon) if tracked_enemy[:id] == :enemy && weapon[:durability].zero?
-  game_over(tracked_enemy, player)
+  game_over(player)
 end
 
 loop do

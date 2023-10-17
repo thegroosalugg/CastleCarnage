@@ -3,15 +3,15 @@
 
 # INTRO MESSAGES
 
-def intro(player, enemy)
+def intro(player)
   enemy_intro = [
-    "You got well pissed 🍷 and ended up in some 🏰 castle, #{enemy[:name]} jumps from the ceiling! 💬 You goon get it now boy!",
-    "You got caught ganking 🍻 hooch from the 🏡 package store. The 🏇👷🏼 townsfolk set the #{enemy[:name]} on you!",
-    "#{enemy[:name]} busted through the 🚪 door, they're stark raving mad. They're out for 🔪 blood!",
+    "You got well pissed 🍷 and ended up in some 🏰 castle, #{player[:tracking][:name]} jumps from the ceiling! 💬 You goon get it now boy!",
+    "You got caught ganking 🍻 hooch from the 🏡 package store. The 🏇👷🏼 townsfolk set the #{player[:tracking][:name]} on you!",
+    "#{player[:tracking][:name]} busted through the 🚪 door, they're stark raving mad. They're out for 🔪 blood!",
   ]
   player_intro = [
     "You pull out your trusty katana from your trench coat and tip your fedora. #{player[:name]} 💬 The only thing sharper than my katana is my wit m'lady",
-    "#{player[:name]} ✨ teleports behind #{enemy[:name]}. #{player[:name]} 💬 Nothing personnel, kid",
+    "#{player[:name]} ✨ teleports behind #{player[:tracking][:name]}. #{player[:name]} 💬 Nothing personnel, kid",
     "There's like, stuff, everywhere, better get that. 💬 We won't get got, we gone get!",
   ]
 
@@ -20,16 +20,16 @@ end
 
 # END OF GAME MESSAGES
 
-def game_over(enemy, player)
+def game_over(player)
   win = [
-    "You blasted #{enemy[:name]} to another dimension. Your power level has increased.",
-    "#{enemy[:name]} had a sudden heart attack, you win by default.",
-    "You splatted #{enemy[:name]} like a grape.",
+    "You blasted #{player[:tracking][:name]} to another dimension. Your power level has increased.",
+    "#{player[:tracking][:name]} had a sudden heart attack, you win by default.",
+    "You splatted #{player[:tracking][:name]} like a grape.",
   ]
   lose = [
-    "You stacked it and fell on a spike. #{enemy[:name]} laughs at your misfortune.",
-    "#{enemy[:name]} ripped your head off. You won't be coming home for dinner.",
-    "You Died! #{enemy[:name]} shall feast on your entrails.",
+    "You stacked it and fell on a spike. #{player[:tracking][:name]} laughs at your misfortune.",
+    "#{player[:tracking][:name]} ripped your head off. You won't be coming home for dinner.",
+    "You Died! #{player[:tracking][:name]} shall feast on your entrails.",
   ]
 
   puts text_break((player[:hp].positive? ? win : lose).sample, " ", 80)
@@ -59,17 +59,17 @@ end
 
 # When exploring rooms
 
-def enter_room(entered_room)
+def enter_room(room)
   messages = [
-    "💭 Think I smelled some nosh 🍔 in #{entered_room[:name]}, better check that.",
-    "💭 Got a good feeling about #{entered_room[:name]}, let's 'ave a butcher's!",
-    "💭 Oi, this #{entered_room[:name]} looks like a proper gaff, doesn't it?",
-    "💭 I reckon #{entered_room[:name]} might 'ave a hidden treasure or two!",
-    "💭 Need a slash so bad! Bugger it, #{entered_room[:name]} will do.",
-    "💭 They won't find me in #{entered_room[:name]}, I'm golden 🥇",
-    "💭 #{entered_room[:name]} seems like most logical choice.",
-    "💭 In we go to #{entered_room[:name]}, let's 'ave it!",
-    "💭 #{entered_room[:name]} is the place to be, mate!",
+    "💭 Think I smelled some nosh 🍔 in #{room[:name]}, better check that.",
+    "💭 Got a good feeling about #{room[:name]}, let's 'ave a butcher's!",
+    "💭 Oi, this #{room[:name]} looks like a proper gaff, doesn't it?",
+    "💭 I reckon #{room[:name]} might 'ave a hidden treasure or two!",
+    "💭 Need a slash so bad! Bugger it, #{room[:name]} will do.",
+    "💭 They won't find me in #{room[:name]}, I'm golden 🥇",
+    "💭 #{room[:name]} seems like most logical choice.",
+    "💭 In we go to #{room[:name]}, let's 'ave it!",
+    "💭 #{room[:name]} is the place to be, mate!",
   ]
 
   puts text_break(messages.sample, " ", 80)
