@@ -6,7 +6,7 @@
 def shots_fired(raider, target, damage = 0, shot)
   x = rand(3) == 1 ? (shot == :missed ? BACK_TALK.sample : "🗯️ " + SMACK_TALK.sample) : ""
 
-  hit = "#{raider[:name]} #{x} #{HIT} #{target[:name]} -#{damage} #{target[:emoji]}"
+  hit =      "#{raider[:name]} #{x}#{HIT} #{target[:name]} -#{damage} #{target[:emoji]}"
   critical = "#{raider[:name]} #{x}#{CRITICAL} #{target[:name]} -#{damage} #{target[:emoji]}"
   missed =   "#{raider[:name]} 🗯️❓ #{x}#{MISSED}"
 
@@ -22,7 +22,7 @@ def shots_fired(raider, target, damage = 0, shot)
   end
 end
 
-def strike(raider, target)                        # dynamic damage multiplier
+def strike(enemies, raider, target)                        # dynamic damage multiplier
   damage = ((raider[:attack] - target[:block]) * rand(0.6..1.4)).ceil.clamp(1, 100)
 
   if rand(1..raider[:crit_ch]) == 1
@@ -37,6 +37,7 @@ def strike(raider, target)                        # dynamic damage multiplier
   end
   raider[:uses] = (raider[:uses] - 1).clamp(0, 5) if raider[:equipped]
   weapon_breaks(raider) if raider[:equipped]
+  graveyard(enemies, raider, target)
 end
 
 # Sommersault attack
@@ -53,28 +54,30 @@ def somersault_attack(player, enemies)   # succeed and strike twice, fail and ge
   chance = rand(2)
   n = rand(2..3)
   somersault(chance, n)
-  chance == 1 ? n.times { strike(player, enemies.sample ) } : n.times { strike(enemies.sample, player) }
+  chance == 1 ? n.times { strike(enemies, player, enemies.sample ) unless enemies.empty? } : n.times { strike(enemies, enemies.sample, player) }
 end
 
 # Main game combat
 
 def mortal_kombat(enemies, player)
   greeting(:combat)
-  choice = -1
 
-  until choice >= 0 && choice < enemies.length
+  loop do
     state_of_game(enemies, player)
     player[:land] = { id: :move, art: BATTLEFIELD.sample }
     puts MENU_HEADER
     enemies.each_with_index { |enemy, index| puts " " * 28 + "#{ML}#{NUM[index + 4]}#{CL} #{enemy[:name]}" }
-    puts BARRIER                                       # fetches and colors ASCII numbers
+    puts BARRIER
+
     choice = gets.chomp.to_i - 4
 
-    if choice >= 0 && choice < enemies.length
+    if enemies.any? && (0...enemies.length).include?(choice)
       print `clear`
-      strike(player, enemies[choice])
-      strike(enemies[choice], player) if enemies[choice][:hp].positive?
-      surprise(enemies, player, :combat) # random attack on player possible
+      target = enemies[choice]
+      strike(enemies, player, target)
+      strike(enemies, target, player) if target[:hp].positive?
+      surprise(enemies, player, :combat) unless enemies.empty? # random attack on player possible
+      break
     else
       error(:input)
     end
@@ -90,9 +93,25 @@ def surprise(enemies, player, event)
     enemy_speaks(target_enemy, :surprise)
     if rand(3) == 1
       enemy_speaks(player, :counter)
-      strike(player, target_enemy)
+      strike(enemies, player, target_enemy)
     else
-      strike(target_enemy, player)
+      strike(enemies, target_enemy, player)
+    end
+  end
+end
+
+def graveyard(enemies, raider, target)
+  if target[:hp] <= 0  # check for enemy deaths, update counter, track last enemy for game over
+    enemy_speaks(target, :pwned)
+    if raider[:id] == :player
+      raider[:kills] += 1
+      raider[:hp] = (raider[:hp] + 10).clamp(0, 200)
+      raider[:cash] = (raider[:cash] + 1).clamp(0, 5)
+      raider[:tracking] = target
+      enemies.delete(target)
+      puts text_break("#{BONUS} #{raider[:name]} +10 #{raider[:emoji]} + 1 💵", " ", 90)
+    elsif target[:id] == :player
+      target[:tracking] = raider
     end
   end
 end

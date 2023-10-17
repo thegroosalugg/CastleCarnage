@@ -17,11 +17,12 @@ def enemy_speaks(enemy, event)
     "💬 Dammit, gotta dash to a gaff quick, or I'm #{enemy[:name]} food!",
     "💬 That bastard #{enemy[:name]} is right behing me, leeegg it!",
     "💬 Damn, that #{enemy[:name]}'s a wasteman, time to scram!",
+    "💬 Where's the Macky D's when you need one?",
     "💬 Shit shit shit shit! Bloody cheese it!",
     "💬 Bloody hell, what's with this place?",
   ]
   surprise = [
-    " does a mental 🤸 backflip and landed in front of you!",
+    " does a mental 🤸 backflip and lands in front of you!",
     " is faster 💨 than you. You get merked.",
     " 💬 Yar think ye can get away from me?",
     " ✨ teleports in front of the door",
@@ -70,14 +71,15 @@ end
 
 def weapon_speaks(wielder, weapon, status)
   got = [
-    " There's enough useless crap 🛒 here to make a #{weapon}, your mad smithing skills allow it",
-    " Father Christmas 🎅 brings your gift early, it's that #{weapon} you wished for",
     " Gift! There's a #{weapon} here! Looks like the foot's on the other shoe!",
+    " Father Christmas 🎅 brings your gift early, the #{weapon} on your list",
     " You reach into your pocket for a snout 🚬 and pull out a #{weapon}!",
     " You remembered you still have your #{weapon} in your sock 🧦",
     " 🕵🏼 Mysterious Stranger 💬 Hey kid, catch! #{weapon} acquired",
     " Package from Amazon 🎁 It's that #{weapon} you ordered!",
+    " There's enough useless crap 🛒 here to make a #{weapon}",
     " There's find a #{weapon} sandwiched between the pickles",
+    " You need a #{weapon}, your mad smithing skills allow it",
     " There's a #{weapon} inside this hollowed out book 📙",
     " A Djinn 🧞 grants you a wish, one #{weapon} please",
     " You found a #{weapon} hidden among the spoons!",
@@ -97,6 +99,8 @@ def weapon_speaks(wielder, weapon, status)
   ]
   enemy = [
     "#{THIEF} #{wielder[:name]} takes their #{weapon} out of their sock 🧦",
+    "#{THIEF} #{wielder[:name]} fashions a #{weapon} from their trenchcoat 🧥 pocket",
+    "#{THIEF} #{wielder[:name]} picks up the #{weapon} lying in the sink 🛁",
   ]
   messages = case status
   when :got then WEAPON + got.sample

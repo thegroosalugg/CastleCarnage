@@ -33,7 +33,7 @@ def explore_rooms(enemies, player)
   when 1
     health_trap([player, enemies.sample].sample) # choose a random enemy and then sample enemy & player
   when 2
-    target = rand(3) == 1 ? equip_weapon(enemies.sample) : equip_weapon(player)
+    rand(2) == 1 ? equip_weapon(enemies.sample) : equip_weapon(player)
   when 3 # New enemy spawns in empty slot
     if enemies.length < 4
       enemies << random_enemy
