@@ -16,7 +16,7 @@ WEAPONS = [
   "🪄 Scepter", "🏹 Crossbow", "🪚 Chainsaw", "🔫 MAC-11", "🪃 Boomerang", "⚔️ Battle Axe", "🪓 Hatchet", "🧨 Dynamite",
 ]
 
-SPECIAL_WEAPONS = [
+SPECIAL = [
   "🪡 Laser Gun", "🚀 RPG", "🔥 Fireball", "💣 Bo-Bomb", "🛫 AirStrike","🦄 Unicorn"
 ]
 

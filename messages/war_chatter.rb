@@ -68,7 +68,7 @@ end
 
 # Weapon Messages
 
-def weapon_speaks(weapon, status)
+def weapon_speaks(wielder, weapon, status)
   got = [
     " There's enough useless crap 🛒 here to make a #{weapon}, your mad smithing skills allow it",
     " Father Christmas 🎅 brings your gift early, it's that #{weapon} you wished for",

@@ -22,53 +22,30 @@ def random_enemy
   enemy = {
     id: :enemy,
     name: "#{YL}#{ENEMIES.sample}#{CL}",
-    hp: rand(60..99),
+    hp: rand(50..80),
     attack: rand(8..15),
     block: rand(1..5),
-    accuracy: rand(5..11),
-    crit_ch: rand(9..11),
+    accuracy: rand(5..10),
+    crit_ch: rand(9..10),
     crit_x: rand(1.5..2.5)
   }
 end
 
-# def big_boss_awaits
-#   boss = {
-#     id: :boss,
-#     name: "#{OR}#{BOSSES.sample}#{CL}",
-#     hp: 200,
-#     attack: rand(8..20),
-#     block: rand(2..10),
-#     accuracy: rand(3..11),
-#     crit_ch: rand(3..11),
-#     crit_x: rand(2.0..2.5),
-#     rage: 0,
-#     style: [ :barkeep, :bouncer, :band ]
-#   }
-# end
-
-
 # Method to pick a weapon
 def pick_weapon
-  weapon = {
-    name: "#{YL}#{WEAPONS.sample}#{CL}",
-    uses: rand(2..5),
-    attack: rand(5..15),
-    block: rand(1..8),
-    accuracy: rand(-3..7),
-    crit_ch: rand(-7..3),
-    crit_x: rand(-0.3..1.5)
-  }
-  special_weapon = {
-    name: "#{MG}#{SPECIAL_WEAPONS.sample}#{CL}",
-    uses: rand(3..5),
-    attack: rand(10..15),
-    block: rand(4..8),
-    accuracy: rand(-2..7),
-    crit_ch: rand(-7..2),
-    crit_x: rand(0.0..1.5)
-  }
+  regular = ["#{YL}#{WEAPONS.sample}", 2, 5, 1, 5, -5, -0.3]
+  special = ["#{MG}#{SPECIAL.sample}", 3, 10, 4, 7, -7, 0.0]
+  name, us, at, bk, ac, ch, x = rand(4) == 1 ? special : regular
 
-  rand(4) == 1 ? special_weapon : weapon
+  weapon = {
+    name: "#{name}#{CL}",
+    uses: rand(us..5),
+    attack: rand(at..15),
+    block: rand(bk..8),
+    accuracy: rand(-3..ac),
+    crit_ch: rand(ch..1),
+    crit_x: rand(x..1.5)
+  }
 end
 
 # Method to equip a weapon to the wielder
@@ -91,13 +68,13 @@ def equip_weapon(wielder)
   wielder[:accuracy] += wielder[:weapon_accuracy]
   wielder[:crit_ch] += wielder[:weapon_crit_ch]
   wielder[:crit_x] += wielder[:weapon_crit_x]
-  weapon_speaks(wielder[:equipped], (wielder[:id] == :player ? :got : :enemy))
+  weapon_speaks(wielder, wielder[:equipped], (wielder[:id] == :player ? :got : :enemy))
 end
 
 # Method to handle when the weapon breaks
 def weapon_breaks(wielder)
   if wielder[:uses] == 0
-    weapon_speaks(wielder[:equipped], :broke) if wielder[:id] == :player
+    weapon_speaks(wielder, wielder[:equipped], :broke) if wielder[:id] == :player
 
     wielder[:attack] -= wielder[:weapon_attack]
     wielder[:block] -= wielder[:weapon_block]

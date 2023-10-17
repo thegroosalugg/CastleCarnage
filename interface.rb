@@ -17,15 +17,11 @@ def play_game
     player[:land] = { id: :move, art: BATTLEFIELD.sample }
     load_menu
 
-    # DEBUG
-    # player.each do |key, value|
-    #   puts text_break("#{YL}#{key}: #{value}#{CL}", " ", 80)
-    # end
+    player.each { |key, value| puts text_break("#{YL}#{key}: #{value}#{CL}", " ", 80) } # DEBUG
 
     player[:choice] = gets.chomp.downcase # choice is passed as an argument to cheat menu
 
-    # DEBUG CHEAT MENU
-    enemies = cheat_menu(player, enemies)
+    enemies = cheat_menu(player, enemies) # DEBUG CHEAT MENU
 
     case player[:choice]
     when "t"
