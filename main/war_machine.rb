@@ -48,46 +48,44 @@ def pick_weapon
   }
 end
 
-# Method to equip a weapon to the wielder
 def equip_weapon(wielder)
   if wielder[:equipped]
     wielder[:uses] = 0
     weapon_breaks(wielder)
   end
+  preset = [:attack, :block, :accuracy, :crit_ch, :crit_x]
+  boost = [:weapon_attack, :weapon_block, :weapon_accuracy, :weapon_crit_ch, :weapon_crit_x]
+
   weapon = pick_weapon
   wielder[:equipped] = weapon[:name]
   wielder[:uses] = weapon[:uses]
-  wielder[:weapon_attack] = weapon[:attack]
-  wielder[:weapon_block] = weapon[:block]
-  wielder[:weapon_accuracy] = weapon[:accuracy]
-  wielder[:weapon_crit_ch] = weapon[:crit_ch]
-  wielder[:weapon_crit_x] = weapon[:crit_x]
 
-  wielder[:attack] += wielder[:weapon_attack]
-  wielder[:block] += wielder[:weapon_block]
-  wielder[:accuracy] += wielder[:weapon_accuracy]
-  wielder[:crit_ch] += wielder[:weapon_crit_ch]
-  wielder[:crit_x] += wielder[:weapon_crit_x]
+  preset.each_with_index do |stat, i1|
+    boost.each_with_index do |boost, i2|
+      if i1 == i2
+        wielder[boost] = weapon[stat]
+        wielder[stat] += weapon[stat]
+      end
+    end
+  end
   weapon_speaks(wielder, wielder[:equipped], (wielder[:id] == :player ? :got : :enemy))
 end
 
-# Method to handle when the weapon breaks
 def weapon_breaks(wielder)
   if wielder[:uses] == 0
     weapon_speaks(wielder, wielder[:equipped], :broke) if wielder[:id] == :player
 
-    wielder[:attack] -= wielder[:weapon_attack]
-    wielder[:block] -= wielder[:weapon_block]
-    wielder[:accuracy] -= wielder[:weapon_accuracy]
-    wielder[:crit_ch] -= wielder[:weapon_crit_ch]
-    wielder[:crit_x] -= wielder[:weapon_crit_x]
+    preset = [:attack, :block, :accuracy, :crit_ch, :crit_x]
+    boost = [:weapon_attack, :weapon_block, :weapon_accuracy, :weapon_crit_ch, :weapon_crit_x]
 
-    wielder[:weapon_attack] = 0
-    wielder[:weapon_block] = 0
-    wielder[:weapon_accuracy] = 0
-    wielder[:weapon_crit_ch] = 0
-    wielder[:weapon_crit_x] = 0
-
+    preset.each_with_index do |stat, i1|
+      boost.each_with_index do |boost, i2|
+        if i1 == i2
+          wielder[stat] -= wielder[boost]
+          wielder[boost] = 0
+        end
+      end
+    end
     wielder[:equipped] = nil
   end
 end
