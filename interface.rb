@@ -22,12 +22,12 @@ def play_game
     #   puts text_break("#{YL}#{key}: #{value}#{CL}", " ", 80)
     # end
 
-    choice = gets.chomp.downcase
+    player[:choice] = gets.chomp.downcase # choice is passed as an argument to cheat menu
 
     # DEBUG CHEAT MENU
-    enemies = cheat_menu(player, enemies, choice)
+    enemies = cheat_menu(player, enemies)
 
-    case choice
+    case player[:choice]
     when "t"
       print `clear`
       mortal_kombat(enemies, player)
