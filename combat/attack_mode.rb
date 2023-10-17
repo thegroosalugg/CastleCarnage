@@ -88,7 +88,7 @@ def surprise(enemies, player, event)
   if rand(4) == 1
     enemy_speaks(target_enemy, :surprise)
     if rand(3) == 1
-      puts text_break("NOT TODAY", " ", 70)
+      enemy_speaks(player, :counter)
       strike(player, target_enemy)
     else
       strike(target_enemy, player)

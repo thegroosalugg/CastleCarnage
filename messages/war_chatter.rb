@@ -47,6 +47,9 @@ def enemy_speaks(enemy, event)
     " rises 🧟 from the loam 🪦",
     " reporting for duty.",
   ]
+  counter = [
+    "Not this time!",
+  ]
 
   x, messages = case event
   when :summon   then [100, SUMMON + summon.sample]
@@ -54,6 +57,7 @@ def enemy_speaks(enemy, event)
   when :surprise then [100, SURPRISE + " " + enemy[:name] + surprise.sample]
   when :pwned    then [100, PWNED + " " + enemy[:name] + pwned.sample]
   when :revive   then [100, SUMMON + " " + enemy[:name] + revive.sample]
+  when :counter  then [100, COUNTER + " " + enemy[:name] + " 💬 " + counter.sample ]
   end
 
   puts text_break(messages, " ", x)
