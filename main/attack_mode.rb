@@ -58,12 +58,13 @@ end
 
 # Main game combat
 
-def mortal_kombat(enemies, player, load_art)
+def mortal_kombat(enemies, player)
   greeting(:combat)
   choice = -1
 
   until choice >= 0 && choice < enemies.length
-    state_of_game(enemies, player, load_art = battlefield)
+    state_of_game(enemies, player)
+    player[:land] = { id: :move, art: BATTLEFIELD.sample }
     puts MENU_HEADER
     enemies.each_with_index { |enemy, index| puts " " * 28 + "#{ML}#{NUM[index + 4]}#{CL} #{enemy[:name]}" }
     puts BARRIER                                       # fetches and colors ASCII numbers

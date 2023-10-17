@@ -17,9 +17,9 @@ end
 
 # move ASCII art
 
-def move_ascii_art(art) # added condition, if art is boss, it moves on each loop, if static, it centers art without hardcode
-  vertical_offset = art[:id] == :move ? rand(10..30) : 10
-  art[:art].split("\n").map { |line| " " * vertical_offset + line }.join("\n")
+def move_ascii_art(player) # added condition, if art is boss, it moves on each loop, if static, it centers art without hardcode
+  vertical_offset = player[:land][:id] == :move ? rand(10..30) : 10
+  player[:land][:art].split("\n").map { |line| " " * vertical_offset + line }.join("\n")
 end
 
 # UI Elements for Health, Attack, Block, Accuracy and Crit Chance for any entity
