@@ -4,7 +4,7 @@
 def wake_up
   player = {
     id: :player,
-    hp: 150,
+    hp: 175,
     attack: 10,
     block: 2,
     accuracy: 5,
@@ -22,10 +22,10 @@ def random_enemy
     id: :enemy,
     name: "#{YL}#{ENEMIES.sample}#{CL}",
     hp: rand(60..99),
-    attack: rand(8..20),
+    attack: rand(8..15),
     block: rand(1..5),
-    accuracy: rand(4..11),
-    crit_ch: rand(8..11),
+    accuracy: rand(5..11),
+    crit_ch: rand(9..11),
     crit_x: rand(1.5..2.5)
   }
 end
@@ -72,8 +72,10 @@ end
 
 # Method to equip a weapon to the wielder
 def equip_weapon(wielder)
-  wielder[:uses] = 0 if wielder[:equipped]
-  weapon_breaks(wielder)
+  if wielder[:equipped]
+    wielder[:uses] = 0
+    weapon_breaks(wielder)
+  end
   weapon = pick_weapon
   wielder[:equipped] = weapon[:name]
   wielder[:uses] = weapon[:uses]

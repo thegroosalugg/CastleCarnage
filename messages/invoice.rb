@@ -10,8 +10,8 @@ def invoice(player, amount, where)
   when :guard then [100, "#{WEAPON} #{BONUS} +#{amount} 🛡️"] # not tonight
   when :cash  then [85, "#{CASH} +#{amount} 💵"] # sneak attack / blackjack
   when :loss  then [85, "#{CASH} -#{amount} 💵"] # xhardcorex / blackjack
-  when :life  then [100, "#{BONUS} #{HP_PLUS} #{player[:name]} +#{amount} #{player[:emoji]}"] # sneak attack
-  when :grave then [100, "#{HP_MINUS} #{player[:name]} -#{amount} #{player[:emoji]}"] # nectromancy
+  when :life  then [100, "#{BONUS} #{MUNCH} #{player[:name]} +#{amount} #{player[:emoji]}"] # sneak attack
+  when :grave then [100, "#{DEBT} #{player[:name]} -#{amount} #{player[:emoji]}"] # nectromancy
   when :cards then [110, "#{player[:name]} drew #{CARD} #{amount.last[:suit]}"] # blackjack
   end
   puts text_break(messages, " ", x)
@@ -22,7 +22,7 @@ end
 def your_rewards(player, health, boost, multiplier)
   boost = boost == :attack ? "💢 attack" : "🛡️ block"
 
-  messages = "#{HP_PLUS} +#{health} #{player[:emoji]}  #{BUFF} +#{multiplier} #{boost}"
+  messages = "#{MUNCH} +#{health} #{player[:emoji]}  #{BUFF} +#{multiplier} #{boost}"
 
   puts text_break("#{BONUS}", " ", 80)
   puts text_break(messages, " ", 90)
@@ -76,8 +76,8 @@ def gifts(entity, operator, randomizer)
   ]
 
   messages = case operator
-  when 0 then (entity[:id] == :player ? HP_PLUS + gained_hp.sample : ENEMY_HP + enemy_hp.sample) + plus
-  when 1 then (entity[:id] == :player ? HP_MINUS + lost_hp.sample : ENEMY_TRAP + enemy_trap.sample) + minus
+  when 0 then (entity[:id] == :player ? MUNCH + gained_hp.sample : THIEF + enemy_hp.sample) + plus
+  when 1 then (entity[:id] == :player ? DEBT + lost_hp.sample : TRAP + enemy_trap.sample) + minus
   end
   puts text_break(messages, " ", 100)
 end

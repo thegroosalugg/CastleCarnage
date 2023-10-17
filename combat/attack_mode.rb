@@ -7,8 +7,8 @@ def shots_fired(raider, target, damage = 0, shot)
   x = rand(3) == 1 ? (shot == :missed ? BACK_TALK.sample : "🗯️ " + SMACK_TALK.sample) : ""
 
   hit = "#{raider[:name]} #{x} #{HIT} #{target[:name]} -#{damage} #{target[:emoji]}"
-  critical = "#{raider[:name]} #{x} #{CRITICAL} #{target[:name]} -#{damage} #{target[:emoji]}"
-  missed =   "#{raider[:name]} 🗯️❓ #{x} #{MISSED}"
+  critical = "#{raider[:name]} #{x}#{CRITICAL} #{target[:name]} -#{damage} #{target[:emoji]}"
+  missed =   "#{raider[:name]} 🗯️❓ #{x}#{MISSED}"
 
   n, shout, comeback = case shot
   when :hit      then [100, hit, SMACK_BACK]
@@ -85,8 +85,13 @@ end
 def surprise(enemies, player, event)
   target_enemy = enemies.sample
   enemy_speaks(target_enemy, :escape) if event == :escape
-  if rand(1..4) == 1
+  if rand(4) == 1
     enemy_speaks(target_enemy, :surprise)
-    strike(target_enemy, player)
+    if rand(3) == 1
+      enemy_speaks(player, :counter)
+      strike(player, target_enemy)
+    else
+      strike(target_enemy, player)
+    end
   end
 end
