@@ -3,16 +3,16 @@
 
 # INTRO MESSAGES
 
-def intro(player, weapon, enemy)
+def intro(player, enemy)
   enemy_intro = [
-    "You got proper pissed 🍷 and ended up in some 🏰 castle, #{enemy[:name]} jumps from the ceiling! 💬 You goon get it now boy!",
+    "You got well pissed 🍷 and ended up in some 🏰 castle, #{enemy[:name]} jumps from the ceiling! 💬 You goon get it now boy!",
     "You got caught ganking 🍻 hooch from the 🏡 package store. The 🏇👷🏼 townsfolk set the #{enemy[:name]} on you!",
     "#{enemy[:name]} busted through the 🚪 door, they're stark raving mad. They're out for 🔪 blood!",
   ]
   player_intro = [
-    "You pull out your trusty #{weapon[:name]} from your trench coat and tip your fedora. #{player[:name]} 💬 The only thing sharper than my #{weapon[:name]} is my wit m'lady",
-    "You ✨ teleport behind #{enemy[:name]} and withdraw your #{weapon[:name]}. #{player[:name]} 💬 Nothing personnel, kid",
-    "There's a #{weapon[:name]} on the floor, better get that. 💬 We won't get got, we gone get!",
+    "You pull out your trusty katana from your trench coat and tip your fedora. #{player[:name]} 💬 The only thing sharper than my katana is my wit m'lady",
+    "#{player[:name]} ✨ teleports behind #{enemy[:name]}. #{player[:name]} 💬 Nothing personnel, kid",
+    "There's like, stuff, everywhere, better get that. 💬 We won't get got, we gone get!",
   ]
 
   puts text_break([enemy_intro.sample, player_intro.sample].join(' '), " ", 65)

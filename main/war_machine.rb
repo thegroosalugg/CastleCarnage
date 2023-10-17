@@ -24,51 +24,92 @@ def random_enemy
     hp: rand(60..99),
     attack: rand(8..20),
     block: rand(1..5),
-    accuracy: rand(3..11),
-    crit_ch: rand(3..11),
+    accuracy: rand(4..11),
+    crit_ch: rand(8..11),
     crit_x: rand(1.5..2.5)
   }
 end
 
-def big_boss_awaits
-  boss = {
-    id: :boss,
-    name: "#{OR}#{BOSSES.sample}#{CL}",
-    hp: 200,
-    attack: rand(8..20),
-    block: rand(2..10),
-    accuracy: rand(3..11),
-    crit_ch: rand(3..11),
-    crit_x: rand(2.0..2.5),
-    rage: 0,
-    style: [ :barkeep, :bouncer, :band ]
-  }
-end
+# def big_boss_awaits
+#   boss = {
+#     id: :boss,
+#     name: "#{OR}#{BOSSES.sample}#{CL}",
+#     hp: 200,
+#     attack: rand(8..20),
+#     block: rand(2..10),
+#     accuracy: rand(3..11),
+#     crit_ch: rand(3..11),
+#     crit_x: rand(2.0..2.5),
+#     rage: 0,
+#     style: [ :barkeep, :bouncer, :band ]
+#   }
+# end
 
+
+# Method to pick a weapon
 def pick_weapon
   weapon = {
-    id: :weapon,
     name: "#{YL}#{WEAPONS.sample}#{CL}",
-    durability: rand(2..5),
-    broken: false,
-    attack: rand(10..25),
-    accuracy: rand(1..3),
-    crit_ch: rand(1..3),
-    crit_x: rand(0.5..1.5)
+    uses: rand(2..5),
+    attack: rand(5..15),
+    block: rand(1..8),
+    accuracy: rand(-3..7),
+    crit_ch: rand(-7..3),
+    crit_x: rand(-0.3..1.5)
   }
+  special_weapon = {
+    name: "#{MG}#{SPECIAL_WEAPONS.sample}#{CL}",
+    uses: rand(3..5),
+    attack: rand(10..15),
+    block: rand(4..8),
+    accuracy: rand(-2..7),
+    crit_ch: rand(-7..2),
+    crit_x: rand(0.0..1.5)
+  }
+
+  rand(4) == 1 ? special_weapon : weapon
 end
 
-def special_weapon
-  special_weapon = {
-    id: :special_weapon,
-    name: "#{OR}#{SPECIAL_WEAPONS.sample}#{CL}",
-    durability: rand(2..3),
-    broken: false,
-    attack: rand(10..25),
-    accuracy: rand(1..3),
-    crit_ch: rand(1..3),
-    crit_x: rand(0.5..1.5)
-  }
+# Method to equip a weapon to the wielder
+def equip_weapon(wielder)
+  wielder[:uses] = 0 if wielder[:equipped]
+  weapon_breaks(wielder)
+  weapon = pick_weapon
+  wielder[:equipped] = weapon[:name]
+  wielder[:uses] = weapon[:uses]
+  wielder[:weapon_attack] = weapon[:attack]
+  wielder[:weapon_block] = weapon[:block]
+  wielder[:weapon_accuracy] = weapon[:accuracy]
+  wielder[:weapon_crit_ch] = weapon[:crit_ch]
+  wielder[:weapon_crit_x] = weapon[:crit_x]
+
+  wielder[:attack] += wielder[:weapon_attack]
+  wielder[:block] += wielder[:weapon_block]
+  wielder[:accuracy] += wielder[:weapon_accuracy]
+  wielder[:crit_ch] += wielder[:weapon_crit_ch]
+  wielder[:crit_x] += wielder[:weapon_crit_x]
+  weapon_speaks(wielder[:equipped], (wielder[:id] == :player ? :got : :enemy))
+end
+
+# Method to handle when the weapon breaks
+def weapon_breaks(wielder)
+  if wielder[:uses] == 0
+    weapon_speaks(wielder[:equipped], :broke) if wielder[:id] == :player
+
+    wielder[:attack] -= wielder[:weapon_attack]
+    wielder[:block] -= wielder[:weapon_block]
+    wielder[:accuracy] -= wielder[:weapon_accuracy]
+    wielder[:crit_ch] -= wielder[:weapon_crit_ch]
+    wielder[:crit_x] -= wielder[:weapon_crit_x]
+
+    wielder[:weapon_attack] = 0
+    wielder[:weapon_block] = 0
+    wielder[:weapon_accuracy] = 0
+    wielder[:weapon_crit_ch] = 0
+    wielder[:weapon_crit_x] = 0
+
+    wielder[:equipped] = nil
+  end
 end
 
 def room_vault

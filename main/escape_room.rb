@@ -8,11 +8,11 @@ def health_trap(entity)
   gifts(entity, operator, randomizer)
 end
 
-def explore_rooms(enemies, weapon, player, load_art)
+def explore_rooms(enemies, player, load_art)
   choice = 0
   chosen_rooms = room_vault
   load_art = room_service
-  state_of_game(enemies, player, weapon, load_art)
+  state_of_game(enemies, player, load_art)
 
   until (4..7).include?(choice) # index +4 / -4 to set user choice to (4..7) instead of (0..3)
     puts MENU_HEADER
@@ -21,7 +21,7 @@ def explore_rooms(enemies, weapon, player, load_art)
 
     choice = gets.chomp.to_i
     error(:input) unless (4..7).include?(choice)
-    state_of_game(enemies, player, weapon, load_art)
+    state_of_game(enemies, player, load_art)
   end
 
   print `clear`
@@ -32,18 +32,15 @@ def explore_rooms(enemies, weapon, player, load_art)
   case gift
   when 1
     health_trap([player, enemies.sample].sample) # choose a random enemy and then sample enemy & player
-  when 2 # Get a new weapon; 20% for special weapon
-    weapon = rand(1..5) == 1 ? special_weapon : pick_weapon
-    weapon_speaks(weapon, :got)
+  when 2
+    target = rand(4) == 1 ? equip_weapon(enemies.sample) : equip_weapon(player)
   when 3 # New enemy spawns in empty slot
     if enemies.length < 4
       enemies << random_enemy
       enemy_speaks(enemies[-1], :summon)
     else
-      weapon = rand(1..4) == 1 ? special_weapon : pick_weapon
-      weapon[:durability] = rand(4..5)
-      weapon_speaks(weapon, :got)
+      equip_weapon(player)
     end
   end
-  return enemies, weapon
+  return enemies
 end
