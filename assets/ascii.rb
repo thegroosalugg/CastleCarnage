@@ -39,15 +39,16 @@ MENU_HEADER = " " * 2 + "#{ML}T̿̽̈́H͛̾͌É͌R͋̔̈́E̽͌͑ C͆̔͌A̾͋͝N�
 
 # In game display tags
 
-STYLE = {
+BOSSES = {
   :barkeep => "🍻 #{OR}𝔅𝔞𝔯𝔎𝔢𝔢𝔭#{CL}",
   :bouncer => "🕶️ #{BL}Ⲃⲟ𐌵ⲛⲥⲉꞅ#{CL}",
-  :band    => "🎶 #{MG}𝓉𝒽ℯ ℬ𝒶𝓃𝒹#{CL}"
+  :band    => "🎶 #{MG}𝓉𝒽ℯ ℬ𝒶𝓃𝒹#{CL}",
+  :village => "👑 #{OR}Village King#{CL}"
 }
 
 NUM = ["[̳0̳]̳", "[̳1̳]̳", "[̳2̳]̳", "[̳3̳]̳", "[̳4̳]̳", "[̳5̳]̳", "[̳6̳]̳", "[̳7̳]̳", "[̳8̳]̳", "[̳9̳]̳"]
 
-WRONG =      "#{RD}💯𝖂𝕽𝕺𝕹𝕲#{CL}"
+WRONG =      "#{RD}𝖂𝕽𝕺𝕹𝕲💯#{CL}"
 HANGOVER =   "#{OR}ℍ𝔸ℕ𝔾𝕆𝕍𝔼ℝ#{CL}"
 BONUS =      "#{YL}🪅 ℬ𝒪𝒩𝒰𝒮 🎊#{CL}"
 BUFF =       "#{CN}𝓑𝓤𝓕𝓕🪶#{CL}"

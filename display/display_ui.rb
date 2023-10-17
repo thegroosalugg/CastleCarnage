@@ -27,7 +27,7 @@ end
 
 def health_bars(who) # random emoji assigner for every entity
   emojis = ["❤️", "🧡", "💛", "💚", "💙", "💜", "❣️", "💕", "💞", "💓", "💗", "💖", "💘", "💝"]
-  n = who[:id] == :player ? 40 : 20
+  n = who[:id] == :player ? 40 : 16
 
   who[:emoji] ||= emojis.sample # Assigns an emoji only if the value is nil.
   full = ((who[:hp] - 1) / n + 1).clamp(0, 5)

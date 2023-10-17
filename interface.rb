@@ -16,16 +16,7 @@ def play_game
   while !enemies.empty? && player[:hp].positive?
     player[:land] = { id: :move, art: BATTLEFIELD.sample }
     load_menu
-
-    # DEBUG
-    # player.each do |key, value|
-    #   puts text_break("#{YL}#{key}: #{value}#{CL}", " ", 80)
-    # end
-
     player[:choice] = gets.chomp.downcase # choice is passed as an argument to cheat menu
-
-    # DEBUG CHEAT MENU
-    enemies = cheat_menu(player, enemies)
 
     case player[:choice]
     when "t"
@@ -38,23 +29,24 @@ def play_game
       print `clear`
       surprise(enemies, player, :escape)
       player[:rooms] += 1
-      enemies = explore_rooms(enemies, player) unless player[:hp] <= 0
+      explore_rooms(enemies, player) unless player[:hp] <= 0
     else
       error(:input)
     end
 
-    enemies.reject! do |enemy|
-      if enemy[:hp] <= 0  # check for enemy deaths, update counter, track last enemy for game over
-        player[:kills] += 1
-        enemy_speaks(enemy, :pwned)
-        player[:tracking] = enemy
-        true  # This will remove the enemy from the array
-      else
-        false  # This will keep the enemy in the array
-      end
-    end
+    # enemies.reject! do |enemy|
+    #   if enemy[:hp] <= 0  # check for enemy deaths, update counter, track last enemy for game over
+    #     player[:kills] += 1
+    #     enemy_speaks(enemy, :pwned)
+    #     player[:tracking] = enemy
+    #     true  # This will remove the enemy from the array
+    #   else
+    #     false  # This will keep the enemy in the array
+    #   end
+    # end
+    # player[:tracking] = enemies.sample if player[:hp] <= 0 # Player dies and last enemy is tracked
 
-    player[:tracking] = enemies.sample if player[:hp] <= 0 # Player dies and last enemy is tracked
+    enemies = cheat_menu(player, enemies) # DEBUG CHEAT MENU
     state_of_game(enemies, player)
   end
   game_over(player)

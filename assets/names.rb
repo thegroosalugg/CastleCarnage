@@ -7,16 +7,12 @@ ENEMIES = [
   "🐉 Dragon", "👻 Banshee", "🦹 Bastard", "🦍 Gorilla", "🐍 Snake", "🦑 Kraken", "🦂 Scorpion", "🎠 Knight",
 ]
 
-BOSSES = [
-  "👑 Village King", "🧀 The Big Cheese", "🎩 The Don", "🧥 The Godfather", "🤵 The Manager", "🎭 The Master", "👤 Supreme Overlord"
-]
-
 WEAPONS = [
   "🏏 Fungo Bat", "🥊 Bx Gloves", "🔪 Machete", "🔱 Spear", "🗡️ Sword", "🎇 Mace", "🍢 Club", "🔧 Wrench", "🪤 Trap", "🦯 Staff",
   "🪄 Scepter", "🏹 Crossbow", "🪚 Chainsaw", "🔫 MAC-11", "🪃 Boomerang", "⚔️ Battle Axe", "🪓 Hatchet", "🧨 Dynamite",
 ]
 
-SPECIAL_WEAPONS = [
+SPECIAL = [
   "🪡 Laser Gun", "🚀 RPG", "🔥 Fireball", "💣 Bo-Bomb", "🛫 AirStrike","🦄 Unicorn"
 ]
 
