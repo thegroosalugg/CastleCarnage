@@ -17,17 +17,6 @@ def invoice(player, amount, where)
   puts text_break(messages, " ", x)
 end
 
-# end of main game rewards message
-
-def your_rewards(player, health, boost, multiplier)
-  boost = boost == :attack ? "💢 attack" : "🛡️ block"
-
-  messages = "#{MUNCH} +#{health} #{player[:emoji]}  #{BUFF} +#{multiplier} #{boost}"
-
-  puts text_break("#{BONUS}", " ", 80)
-  puts text_break(messages, " ", 90)
-end
-
 # gift messages from exploring rooms
 
 def gifts(entity, operator, randomizer)

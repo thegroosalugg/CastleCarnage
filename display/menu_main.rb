@@ -36,19 +36,3 @@ def load_menu
   puts " " * 20 + "💨 #{YL}[̻͓͜Y͖͖̘]̫̼͚#{y.sample}#{CL}"
   puts BARRIER
 end
-
-# Boss Menu
-
-def boss_menu(player, boss_style)
-  turns = 4 - player[:turns] # this counts how many turns remaining and adjusts message on final turn
-  word = turns == 1 ? "ɴᴇxᴛ" : "ɪɴ #{turns}"
-  s = turns == 1 ? "" : "s"
-  magic = "🔥#{player[:emoji]} #{MG}[̝̻͕Y͔̻̦]͔̞ 🪦 Ⲛⲉⲥꞅⲟⲙⲁⲛⲥⲩ#{CL}  🪄"
-  wait =  "⏱️ #{MG}Aᴠᴀɪʟᴀʙʟᴇ #{word} ᴛᴜʀɴ#{s}#{CL}"
-
-  puts " " * 24 + "#{ML}Dᴇᴄɪsɪᴏɴs, ᴅᴇᴄɪsɪᴏɴs...#{CL}"
-  puts " " * 20 + "⚔️ #{BL}[̿̓͐T͆͑͘]̒͠ 💀 𝓕ⲁⲥⲉ ⲧⲏⲉ​#{CL}#{STYLE[boss_style]} 🌘"
-  puts " " * 18 + "🔥#{player[:emoji]} #{RD}[͋͊͒Ŕ́͝]͆̿ 🩸 Ⲃ𝓛ⲟⲟⲆ Ⲙⲁ𝓖ⲓⲕ#{CL} 🪄"
-  puts " " * 18 + (player[:turns] == 4 ? magic : padding_generator(wait, "#{MG}#{ICONS.sample}#{CL}", 50))
-  puts BARRIER
-end

@@ -54,10 +54,6 @@ def durability(who)
   " " * 4 + "#{who[:equipped]}" + " " * (60 - who[:equipped].length) + "🛠️" + "🟩" * who[:uses].clamp(0, 5) + "⬜" * (5 - who[:uses]).clamp(0, 5)
 end
 
-def rage(the_boss) # boss rage bar
-  "#{RAGE}" + "🪔" * [the_boss[:rage], 0].max
-end
-
 # Display generators that combine above methods to create dynamic displays for enemy and weapon
 
 def display_bars(who)
