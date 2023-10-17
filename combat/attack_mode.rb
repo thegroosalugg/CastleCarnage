@@ -85,8 +85,13 @@ end
 def surprise(enemies, player, event)
   target_enemy = enemies.sample
   enemy_speaks(target_enemy, :escape) if event == :escape
-  if rand(1..4) == 1
+  if rand(4) == 1
     enemy_speaks(target_enemy, :surprise)
-    strike(target_enemy, player)
+    if rand(3) == 1
+      puts text_break("NOT TODAY", " ", 70)
+      strike(player, target_enemy)
+    else
+      strike(target_enemy, player)
+    end
   end
 end
