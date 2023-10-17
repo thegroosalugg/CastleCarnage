@@ -42,5 +42,4 @@ def explore_rooms(enemies, player)
       equip_weapon(player)
     end
   end
-  return enemies
 end
