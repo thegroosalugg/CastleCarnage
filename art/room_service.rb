@@ -1,8 +1,7 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-def room_service
-  art = [
+ROOM_SERVICE = [
     # ASCII art 1
     <<-'ASCII',
                     __            ================================
@@ -86,6 +85,3 @@ __|_*_|__%%%%%%%%%%%%__|_*_|__|__*__|__
     |.'.'.','        /%%%%%%%%%%%\        ','.'.'.|
     ASCII
   ]
-
-  room = { id: :room, art: art.sample }
-end

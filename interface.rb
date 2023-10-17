@@ -12,10 +12,10 @@ def play_game
   #the_boss = big_boss_awaits
 
   intro(player, tracked_enemy)
-  state_of_game(enemies, player, load_art = battlefield)
+  state_of_game(enemies, player)
 
   while !enemies.empty? && player[:hp].positive?
-    load_art = battlefield
+    player[:land] = { id: :move, art: BATTLEFIELD.sample }
     load_menu
 
     # DEBUG
@@ -31,7 +31,7 @@ def play_game
     case choice
     when "t"
       print `clear`
-      mortal_kombat(enemies, player, load_art)
+      mortal_kombat(enemies, player)
     when "r"
       print `clear`
       somersault_attack(player, enemies)
@@ -39,7 +39,7 @@ def play_game
       print `clear`
       surprise(enemies, player, :escape)
       player[:rooms] += 1
-      enemies = explore_rooms(enemies, player, load_art) unless player[:hp] <= 0
+      enemies = explore_rooms(enemies, player) unless player[:hp] <= 0
     else
       error(:input)
     end
@@ -57,11 +57,11 @@ def play_game
 
     tracked_enemy = enemies.sample if player[:hp] <= 0 # Player dies and last enemy is tracked
     # tracked_enemy = the_boss if enemies.empty?
-    state_of_game(enemies, player, load_art) #unless tracked_enemy[:id] == :boss || weapon[:durability].zero?
+    state_of_game(enemies, player) #unless tracked_enemy[:id] == :boss || weapon[:durability].zero?
   end
 
   # boss_orders(player, weapon, the_boss) unless player[:hp] <= 0
-  #state_of_game(enemies, player, weapon, load_art) if tracked_enemy[:id] == :enemy && weapon[:durability].zero?
+  #state_of_game(enemies, player, weapon) if tracked_enemy[:id] == :enemy && weapon[:durability].zero?
   game_over(tracked_enemy, player)
 end
 

@@ -8,11 +8,11 @@ def health_trap(entity)
   gifts(entity, operator, randomizer)
 end
 
-def explore_rooms(enemies, player, load_art)
+def explore_rooms(enemies, player)
   choice = 0
   chosen_rooms = room_vault
-  load_art = room_service
-  state_of_game(enemies, player, load_art)
+  player[:land] = { id: :room, art: ROOM_SERVICE.sample }
+  state_of_game(enemies, player)
 
   until (4..7).include?(choice) # index +4 / -4 to set user choice to (4..7) instead of (0..3)
     puts MENU_HEADER
@@ -21,7 +21,7 @@ def explore_rooms(enemies, player, load_art)
 
     choice = gets.chomp.to_i
     error(:input) unless (4..7).include?(choice)
-    state_of_game(enemies, player, load_art)
+    state_of_game(enemies, player)
   end
 
   print `clear`

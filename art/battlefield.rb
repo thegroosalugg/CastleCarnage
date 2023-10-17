@@ -1,8 +1,7 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-def battlefield
-  art = [
+BATTLEFIELD = [
     # ASCII art 1
     <<-'ASCII',
 
@@ -60,6 +59,3 @@ def battlefield
                  ` \
     ASCII
   ]
-
-  battle = { id: :move, art: art.sample }
-end

@@ -3,10 +3,10 @@
 
 # Main UI that displays all current happenings
 
-def state_of_game(enemies, player, load_art)
+def state_of_game(enemies, player)
   puts BARRIER_EN
   enemies.each { |enemy| display_bars(enemy) }
-  puts move_ascii_art(load_art)
+  puts move_ascii_art(player)
   display_bars(player)
   status(player)
   #puts "#{health_bars(player)} #{stats(player, :block)} 💀 #{player[:kills]} 🏰 #{player[:rooms]}"
