@@ -14,22 +14,6 @@ def state_of_game(enemies, player)
   puts BARRIER
 end
 
-# Same as state of game but exclusively for big boss
-
-# def game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
-#   puts BARRIER_EN
-#   puts health_bars(the_boss) + "\n"
-#   puts " " * 4 + "#{STYLE[boss_style]} #{stats(the_boss, :attack)} #{rage(the_boss)}"
-#   puts SHIELD_EN
-#   puts move_ascii_art(load_boss)
-#   puts SHIELD
-#   puts display_bars(buddy) if buddy && buddy[:hp].positive?
-#   puts "#{health_bars(player)} #{stats(player, :attack)} #{stats(player, :block)}"
-#   puts weapon_bars(weapon) if weapon[:durability].positive? && boss_style == :bouncer
-#   puts player_status(player)
-#   puts BARRIER
-# end
-
 # Blackjack state of game
 
 def whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)

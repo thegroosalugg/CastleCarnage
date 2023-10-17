@@ -66,21 +66,6 @@ def enemy_speaks(enemy, event)
 
 end
 
-# Boss Rage
-
-def boss_speaks(player, the_boss, blast = 0, outcome)
-  hit = [
-    "#{the_boss[:name]} has had enough of your crap #{RAGE} 🪔 #{player[:name]} -#{blast} #{player[:emoji]}",
-  ]
-  threat = [
-    "#{the_boss[:name]} notices your cowardly attempts, a thrashing #{RAGE} is on the cards",
-    "#{the_boss[:name]} is getting aggy #{RAGE} You best tread lightly",
-  ]
-
-  messages = outcome == :hit ? hit : threat
-  puts text_break(messages.sample, " ", 100)
-end
-
 # Weapon Messages
 
 def weapon_speaks(weapon, status)
