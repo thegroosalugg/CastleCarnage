@@ -4,30 +4,30 @@
 def wake_up
   player = {
     id: :player,
-    hp: 175,
-    attack: 10,
-    block: 2,
+    hp:     175,
+    attack:  10,
+    block:    2,
     accuracy: 5,
     crit_ch: 10,
     crit_x: 1.5,
-    cash: 0,
-    drunk: 0,
-    kills: 0,
-    rooms: 0,
+    cash:     0,
+    drunk:    0,
+    kills:    0,
+    rooms:    0,
     land: { id: :move, art: BATTLEFIELD.sample }
   }
 end
 
 def random_enemy
   enemy = {
-    id: :enemy,
-    name: "#{YL}#{ENEMIES.sample}#{CL}",
-    hp: rand(50..80),
-    attack: rand(8..15),
-    block: rand(1..5),
+    id:       :enemy,
+    name:     "#{YL}#{ENEMIES.sample}#{CL}",
+    hp:       rand(50..80),
+    attack:   rand(8..15),
+    block:    rand(1..5),
     accuracy: rand(5..10),
-    crit_ch: rand(9..10),
-    crit_x: rand(1.5..2.5)
+    crit_ch:  rand(9..10),
+    crit_x:   rand(1.5..2.5)
   }
 end
 
@@ -57,13 +57,13 @@ def pick_weapon
   name, us, at, bk, ac, ch, x = rand(4) == 1 ? special : regular
 
   weapon = {
-    name: "#{name}#{CL}",
-    uses: rand(us..5),
-    attack: rand(at..15),
-    block: rand(bk..8),
+    name:     "#{name}#{CL}",
+    uses:     rand(us..5),
+    attack:   rand(at..15),
+    block:    rand(bk..8),
     accuracy: rand(-3..ac),
-    crit_ch: rand(ch..1),
-    crit_x: rand(x..1.5)
+    crit_ch:  rand(ch..1),
+    crit_x:   rand(x..1.5)
   }
 end
 
