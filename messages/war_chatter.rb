@@ -96,7 +96,7 @@ def weapon_speaks(wielder, weapon, status)
     " Your #{weapon} was too shoddy",
   ]
   enemy = [
-    "#{THIEF} Oh-oh! Enemy acquired #{weapon}",
+    "#{THIEF} #{wielder[:name]} takes their #{weapon} out of their sock 🧦",
   ]
   messages = case status
   when :got then WEAPON + got.sample

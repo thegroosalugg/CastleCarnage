@@ -74,7 +74,7 @@ def mortal_kombat(enemies, player)
       print `clear`
       strike(player, enemies[choice])
       strike(enemies[choice], player) if enemies[choice][:hp].positive?
-      surprise(enemies, player, :combat) # random attack on player possible
+      surprise(enemies, player, :combat) if enemies[choice][:hp].positive? # random attack on player possible
     else
       error(:input)
     end
