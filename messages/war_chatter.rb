@@ -49,6 +49,8 @@ def enemy_speaks(enemy, event)
   ]
   counter = [
     "Not this time!",
+    "Ha, I don't think so!",
+    "#{POW}",
   ]
 
   x, messages = case event
@@ -57,7 +59,7 @@ def enemy_speaks(enemy, event)
   when :surprise then [100, SURPRISE + " " + enemy[:name] + surprise.sample]
   when :pwned    then [100, PWNED + " " + enemy[:name] + pwned.sample]
   when :revive   then [100, SUMMON + " " + enemy[:name] + revive.sample]
-  when :counter  then [100, COUNTER + " " + enemy[:name] + " 💬 " + counter.sample ]
+  when :counter  then [100, COUNTER + " " + enemy[:name] + " 🗯️ " + counter.sample ]
   end
 
   puts text_break(messages, " ", x)
@@ -109,7 +111,7 @@ def weapon_speaks(weapon, status)
     " Your #{weapon} was too shoddy",
   ]
   enemy = [
-    "Enemy acquired weapon"
+    "#{THIEF} Oh-oh! Enemy acquired #{weapon}",
   ]
   messages = case status
   when :got then WEAPON + got.sample
