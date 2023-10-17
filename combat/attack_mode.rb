@@ -7,8 +7,8 @@ def shots_fired(raider, target, damage = 0, shot)
   x = rand(3) == 1 ? (shot == :missed ? BACK_TALK.sample : "🗯️ " + SMACK_TALK.sample) : ""
 
   hit = "#{raider[:name]} #{x} #{HIT} #{target[:name]} -#{damage} #{target[:emoji]}"
-  critical = "#{raider[:name]} #{x} #{CRITICAL} #{target[:name]} -#{damage} #{target[:emoji]}"
-  missed =   "#{raider[:name]} 🗯️❓ #{x} #{MISSED}"
+  critical = "#{raider[:name]} #{x}#{CRITICAL} #{target[:name]} -#{damage} #{target[:emoji]}"
+  missed =   "#{raider[:name]} 🗯️❓ #{x}#{MISSED}"
 
   n, shout, comeback = case shot
   when :hit      then [100, hit, SMACK_BACK]

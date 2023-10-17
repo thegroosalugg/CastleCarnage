@@ -4,7 +4,7 @@
 # Combat Phrases
 
 BACK_TALK = [
-  "Motherfucker!", "Bugger it!", "Bloody hell!", "Arses!", "Sod it!", "Bollocks!", "Shit!", "I call hacks!"
+  "Motherfucker! ", "Bugger it! ", "Bloody hell! ", "Arses! ", "Sod it! ", "Bollocks! ", "Shit! ", "I call hacks! "
 ]
 TALK_BACK = [
 "Ha! What a douche!", "Did you miss me?", "Loser!", "Nice shot bro!", "What a joker!",
