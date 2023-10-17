@@ -109,7 +109,7 @@ def graveyard(enemies, raider, target)
       raider[:cash] = (raider[:cash] + 1).clamp(0, 5)
       raider[:tracking] = target
       enemies.delete(target)
-      puts text_break("#{BONUS} #{raider[:name]} +10 #{raider[:emoji]} + 1 💵", " ", 90)
+      invoice(raider, 0, :bounty) # amounts hardcoded as its always the same
     elsif target[:id] == :player
       target[:tracking] = raider
     end
