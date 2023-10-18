@@ -6,8 +6,8 @@
 def invoice(who, what, where)
   pouch_item = what     == :pouch  ? "#{who[:pouch].last[:phrase]}" : "#{ITEMS.sample[:phrase]} +#{what} #{who[:emoji]}"
   pouch_trap = what     == :pouch  ? "#{who[:pouch].last[:phrase]}" : "#{TRAPS.sample[:phrase]} -#{what} #{who[:emoji]}"
-  item_tag   = who[:id] == :player ?             "#{ITEM}"            :             "#{THIEF}"
-  trap_tag   = who[:id] == :player ?             "#{DEBT}"            :             "#{TRAP}"
+  item_tag   = who[:id] == :player ?            "#{ITEM}"           :             "#{THIEF}"
+  trap_tag   = who[:id] == :player ?            "#{DEBT}"           :             "#{TRAP}"
 
   x, messages = case where
   when :bounty then [90, "#{BONUS} #{who[:name]} +10 #{who[:emoji]} + 1 💵"]
