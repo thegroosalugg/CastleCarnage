@@ -45,8 +45,9 @@ def crap_factory(enemies, player)
     target[:hp] = target[:hp].clamp(0, 150)
     invoice(target, boost, type)
   else
-    name = type == :trap ? TRAPS.sample : ITEMS.sample
-    target[:pouch] << { name: name, stat: stat, type: type }
+    x, y = TRAPS.sample, ITEMS.sample
+    item = type == :trap ? x : y
+    target[:pouch] << { name: item[:name], phrase: item[:phrase], stat: stat, type: type }
     invoice(target, :pouch, type)
   end
 end
