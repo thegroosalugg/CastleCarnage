@@ -21,7 +21,7 @@ def explore_rooms(enemies, player)
 
     choice = gets.chomp.to_i
     error(:input) unless (4..7).include?(choice)
-    state_of_game(enemies, player)
+    state_of_game(enemies, player) unless (4..7).include?(choice)
   end
 
   print `clear`
