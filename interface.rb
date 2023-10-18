@@ -51,6 +51,15 @@ player = wake_up
 loop do
   player = ctrl_s(player) # Update player using ctrl_s
   play_game(player)
-  choice = gets.chomp.downcase
-  break if choice != "y"
+
+  loop do
+    choice = gets.chomp.downcase
+    if choice == "n"
+      exit # Exit the program if 'n' is selected
+    elsif choice == "y"
+      break # Restart the game
+    # else
+    #   error(:input)
+    end
+  end
 end
