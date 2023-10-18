@@ -34,19 +34,8 @@ def play_game
       error(:input)
     end
 
-    # enemies.reject! do |enemy|
-    #   if enemy[:hp] <= 0  # check for enemy deaths, update counter, track last enemy for game over
-    #     player[:kills] += 1
-    #     enemy_speaks(enemy, :pwned)
-    #     player[:tracking] = enemy
-    #     true  # This will remove the enemy from the array
-    #   else
-    #     false  # This will keep the enemy in the array
-    #   end
-    # end
-    # player[:tracking] = enemies.sample if player[:hp] <= 0 # Player dies and last enemy is tracked
-
-    enemies = cheat_menu(player, enemies) # DEBUG CHEAT MENU
+    cheat_menu(player, enemies) # DEBUG CHEAT MENU
+    soul_checker(enemies, player)
     state_of_game(enemies, player)
   end
   game_over(player)

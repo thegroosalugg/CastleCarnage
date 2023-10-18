@@ -3,12 +3,12 @@
 
 # Player vs enemy strike
 
-def shots_fired(raider, target, damage = 0, shot)
+def shots_fired(hunter, target, damage = 0, shot)
   x = rand(3) == 1 ? (shot == :missed ? BACK_TALK.sample : "🗯️ " + SMACK_TALK.sample) : ""
 
-  hit =      "#{raider[:name]} #{x}#{HIT} #{target[:name]} -#{damage} #{target[:emoji]}"
-  critical = "#{raider[:name]} #{x}#{CRITICAL} #{target[:name]} -#{damage} #{target[:emoji]}"
-  missed =   "#{raider[:name]} 🗯️❓ #{x}#{MISSED}"
+  hit =      "#{hunter[:name]} #{x}#{HIT} #{target[:name]} -#{damage} #{target[:emoji]}"
+  critical = "#{hunter[:name]} #{x}#{CRITICAL} #{target[:name]} -#{damage} #{target[:emoji]}"
+  missed =   "#{hunter[:name]} 🗯️❓ #{x}#{MISSED}"
 
   n, shout, comeback = case shot
   when :hit      then [100, hit, SMACK_BACK]
@@ -22,22 +22,22 @@ def shots_fired(raider, target, damage = 0, shot)
   end
 end
 
-def strike(enemies, raider, target)                        # dynamic damage multiplier
-  damage = ((raider[:attack] - target[:block]) * rand(0.6..1.4)).ceil.clamp(1, 100)
+def strike(enemies, hunter, target)                        # dynamic damage multiplier
+  damage = ((hunter[:attack] - target[:block]) * rand(0.6..1.4)).ceil.clamp(1, 100)
 
-  if rand(1..raider[:crit_ch]) == 1
-    critical = (damage * raider[:crit_x]).ceil.clamp(1, 100) # rounds any floating number up
+  if rand(1..hunter[:crit_ch]) == 1
+    critical = (damage * hunter[:crit_x]).ceil.clamp(1, 100) # rounds any floating number up
     target[:hp] -= critical
-    shots_fired(raider, target, critical, :critical)
-  elsif rand(1..raider[:accuracy]) == 1
-    shots_fired(raider, target, :missed)
+    shots_fired(hunter, target, critical, :critical)
+  elsif rand(1..hunter[:accuracy]) == 1
+    shots_fired(hunter, target, :missed)
   else
     target[:hp] -= damage
-    shots_fired(raider, target, damage, :hit)
+    shots_fired(hunter, target, damage, :hit)
   end
-  raider[:uses] = (raider[:uses] - 1).clamp(0, 5) if raider[:equipped]
-  weapon_breaks(raider) if raider[:equipped]
-  graveyard(enemies, raider, target)
+  hunter[:uses] = (hunter[:uses] - 1).clamp(0, 5) if hunter[:equipped]
+  weapon_breaks(hunter) if hunter[:equipped]
+  graveyard(enemies, hunter, target)
 end
 
 # Sommersault attack
@@ -100,18 +100,35 @@ def surprise(enemies, player, event)
   end
 end
 
-def graveyard(enemies, raider, target)
+def bounty(hunter, target)
+  hunter[:kills] += 1
+  hunter[:hp] = (hunter[:hp] + 10).clamp(0, 200)
+  hunter[:cash] = (hunter[:cash] + 1).clamp(0, 5)
+  hunter[:tracking] = target
+  invoice(hunter, 0, :bounty) # amounts hardcoded as its always the same
+end
+
+def graveyard(enemies, hunter, target)
   if target[:hp] <= 0  # check for enemy deaths, update counter, track last enemy for game over
     enemy_speaks(target, :pwned)
-    if raider[:id] == :player
-      raider[:kills] += 1
-      raider[:hp] = (raider[:hp] + 10).clamp(0, 200)
-      raider[:cash] = (raider[:cash] + 1).clamp(0, 5)
-      raider[:tracking] = target
+    if hunter[:id] == :player
+      bounty(hunter, target)
       enemies.delete(target)
-      invoice(raider, 0, :bounty) # amounts hardcoded as its always the same
     elsif target[:id] == :player
-      target[:tracking] = raider
+      target[:tracking] = hunter
     end
   end
+end
+
+def soul_checker(enemies, player)
+  enemies.reject! do |enemy|
+    if enemy[:hp] <= 0  # check for enemy deaths, update counter, track last enemy for game over
+      enemy_speaks(enemy, :pwned)
+      bounty(player, enemy)
+      true  # This will remove the enemy from the array
+    else
+      false  # This will keep the enemy in the array
+    end
+  end
+  player[:tracking] = enemies.sample if player[:hp] <= 0 && player[:tracking][:hp] <= 0 # Player dies and last enemy is tracked
 end
