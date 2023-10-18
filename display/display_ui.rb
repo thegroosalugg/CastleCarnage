@@ -84,8 +84,11 @@ def status(player)
     when 5 then " 𝙁𝙪𝙘𝙠𝙞𝙣𝙜𝙒𝙖𝙨𝙩𝙚𝙙 😵"
     end
 
+  s1 = player[:kills] < 10 ? " " : "" # creating leading whitespace instead of leading zero
+  s2 = player[:rooms] < 10 ? " " : ""
+
   left = " " * 3 + "#{GN}#{wallet} #{CL}#{"💵" * [player[:cash], 0].max}" + "💷" * [0, (5 - player[:cash])].max + " " * 4 +
-  "💀#{"%02d" % player[:kills]}  🏰#{"%02d" % player[:rooms]}"
+  "💀#{s1}#{player[:kills]}  🏰#{s2}#{player[:rooms]}"
   puts SHIELD
   puts "#{left}#{OR}#{drunk}#{CL} #{"🍺" * [player[:drunk], 0].max}"
 end
