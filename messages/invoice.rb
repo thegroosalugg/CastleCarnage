@@ -5,14 +5,10 @@
 
 def invoice(player, amount, where)
   x, messages = case where                             # this condition simply sets a + symbol in fron of positive integers
-  when :brawl then [100, "#{CASH} #{amount[0].positive? ? "+" : ""}#{amount[0]} 💵  #{HANGOVER} #{amount[1].positive? ? "+" : ""}#{amount[1]} 🍺"] # bar fight
-  when :bar   then [100, "#{CASH} -#{amount} 💵  #{HANGOVER} +#{amount} 🍺"] # pay the tab
-  when :guard then [100, "#{WEAPON} #{BONUS} +#{amount} 🛡️"] # not tonight
-  when :cash  then [85, "#{CASH} +#{amount} 💵"] # sneak attack / blackjack
-  when :loss  then [85, "#{CASH} -#{amount} 💵"] # xhardcorex / blackjack
-  when :life  then [100, "#{BONUS} #{MUNCH} #{player[:name]} +#{amount} #{player[:emoji]}"] # sneak attack
-  when :grave then [100, "#{DEBT} #{player[:name]} -#{amount} #{player[:emoji]}"] # nectromancy
-  when :cards then [110, "#{player[:name]} drew #{CARD} #{amount.last[:suit]}"] # blackjack
+  when :bounty then [90, "#{BONUS} #{player[:name]} +10 #{player[:emoji]} + 1 💵"]
+  when :cash  then  [85, "#{CASH} +#{amount} 💵"] # blackjack
+  when :loss  then  [85, "#{CASH} -#{amount} 💵"] # blackjack
+  when :cards then  [110, "#{player[:name]} drew #{CARD} #{amount.last[:suit]}"] # blackjack
   end
   puts text_break(messages, " ", x)
 end
