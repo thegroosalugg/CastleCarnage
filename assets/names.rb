@@ -36,3 +36,15 @@ DESC = [
   "🍄 The Shroomy", "🦁 The Roaring", "🌵 The Deserted", "🤢 The Gnarly", "🏛️ The Presidential", "🔮 The Trippy", "🤮 The Minging",
   "🐒 The Cheeky", "🗣️ The Banter", "🅱️ The Bitchin'", "👻 The Haunted", "🐺 The Howling",
 ]
+
+ITEMS = [
+  "🍕 Trash Pizza", "🍌 Mouldy Bananas", "🥛 Out of date Milk", "🍔 Low Quality Burger", "🍟 Cold Chips",
+  "🍩 Stale Donut", "🍗 Undercooked Chicken", "🌶️ Really Spicy Pepper", "🌿 Northern Lights", "🔷 Heisenberg's Blue",
+  "🥟 Questionnable Taco", "🍋 Lemons", "🌭 Tinned Hot Dogs", "☕ Instant Coffee", "🥞 Burnt Pancakes",
+]
+
+TRAPS =[
+  "🥬 Kale", "🐻 Bear Trap", "🏀 Sports", "☢️ Radiation", "☄️ Comet", "🛸 Aliens", "📬 Bills",
+   "🪓 Ax", "🧳 Fridge", "🎉 Bad Party", "🚌 Bus", "🚛 Truck", "🪫 Low Battery", "📶 Poor Reception", "🪇 Bad Music",
+   "💥 Landmines",
+]
