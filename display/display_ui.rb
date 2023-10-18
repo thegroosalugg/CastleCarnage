@@ -30,9 +30,9 @@ def health_bars(who) # random emoji assigner for every entity
   n = who[:id] == :player ? 20 : 16
 
   who[:emoji] ||= emojis.sample # Assigns an emoji only if the value is nil.
-  full = ((who[:hp] - 1) / n + 1).clamp(0, 5)
+  full  = ((who[:hp] - 1) / n + 1).clamp(0, 5)
   empty = (5 - full)
-  life = "#{who[:emoji]}" * full + "🤍" * empty
+  life  = "#{who[:emoji]}" * full + "🤍" * empty
 
   " " * 4 + "#{who[:name]}" + "#{whitespace(who, " ", 11)}" + "#{who[:emoji]}#{who[:hp].to_i} #{life}"
 end
@@ -46,7 +46,7 @@ end
 
 def percentage(who, key) # determins accuracy and crit chance %
   accuracy = 100 - (100 / [1, (who[key.to_sym])].max)
-  crit_ch = 100 - accuracy
+  crit_ch  = 100 - accuracy
   key == :accuracy ? "🎯#{"%02d" % accuracy}%" : "💥#{"%02d" % crit_ch}%"
 end                       # "%02d" % adds a leading zero to single digits
 
@@ -67,24 +67,28 @@ end
 
 def status(player)
   wallet = case player[:cash]
-    when 0 then "    Skint AF 🤒"
-    when 1 then "Pocket Money 🤔"
-    when 2 then " Weekend Job 😐"
-    when 3 then "      Sorted 🫠"
-    when 4 then " Filthy Rich 🤑"
-    when 5 then "      Minted 😈"
+    when 0 then "    𝙎𝙠𝙞𝙣𝙩 𝘼𝙁 🤒"
+    when 1 then " 𝙋𝙤𝙘𝙠𝙚𝙩𝙈𝙤𝙣𝙚𝙮 🤔"
+    when 2 then "  𝙒𝙚𝙚𝙠𝙚𝙣𝙙𝙅𝙤𝙗 😐"
+    when 3 then "      𝙎𝙤𝙧𝙩𝙚𝙙 🫠"
+    when 4 then "  𝔽𝕚𝕝𝕥𝕙𝕪ℝ𝕚𝕔𝕙 🤑"
+    when 5 then "      𝑀𝑖𝑛𝑡𝑒𝑑 😈"
     end
 
   drunk = case player[:drunk]
-    when 0 then "      Abstinent ⚖️"
-    when 1 then "  Got a Buzz on 😉"
-    when 2 then "  Feeling Tipsy 😏"
-    when 3 then "Out on the Razz 🥴"
-    when 4 then "  Proper Pissed 🤤"
-    when 5 then " Fucking Wasted 😵"
+    when 0 then "     𝔸𝕓𝕤𝕥𝕚𝕟𝕖𝕟𝕥 ⚖️"
+    when 1 then "   𝔾𝕠𝕥𝔸𝔹𝕦𝕫𝕫𝕆𝕟  😉"
+    when 2 then "  𝔽𝕖𝕖𝕝𝕚𝕟𝕘𝕋𝕚𝕡𝕤𝕪 😏"
+    when 3 then "  𝙊𝙪𝙩𝙊𝙣𝙏𝙝𝙚𝙍𝙖𝙯𝙯 🥴"
+    when 4 then "  ℙ𝕣𝕠𝕡𝕖𝕣ℙ𝕚𝕤𝕤𝕖𝕕 🤤"
+    when 5 then " 𝙁𝙪𝙘𝙠𝙞𝙣𝙜𝙒𝙖𝙨𝙩𝙚𝙙 😵"
     end
 
-  left = " " * 3 + "#{GN}#{wallet} #{CL}#{"💵" * [player[:cash], 0].max}" + "💷" * [0, (5 - player[:cash])].max + " " * 11
+  s1 = player[:kills] < 10 ? " " : "" # creating leading whitespace instead of leading zero
+  s2 = player[:rooms] < 10 ? " " : ""
+
+  left = " " * 3 + "#{GN}#{wallet} #{CL}#{"💵" * [player[:cash], 0].max}" + "💷" * [0, (5 - player[:cash])].max + " " * 4 +
+  "💀#{s1}#{player[:kills]}  🏰#{s2}#{player[:rooms]}"
   puts SHIELD
   puts "#{left}#{OR}#{drunk}#{CL} #{"🍺" * [player[:drunk], 0].max}"
 end

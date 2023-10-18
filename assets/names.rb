@@ -4,7 +4,7 @@
 ENEMIES = [
   "👺 Goblin", "👹 Ogre", "👾 Orc", "🧌 Troll", "🤷 Villager", "🦟 Cazador", "🐊 Croc", "🦈 Shark", "🚁 Chopper",
   "🧙 Wizard", "🧝 Druid", "🐺 Werewolf", "🧛 Vampire", "🧟 Zombie", "🦖 Dinosaur", "🤖 Robot", "🪿 Goose", "🦏 Rhino",
-  "🐉 Dragon", "👻 Banshee", "🦹 Bastard", "🦍 Gorilla", "🐍 Snake", "🦑 Kraken", "🦂 Scorpion", "🎠 Knight",
+  "🐉 Dragon", "👻 Banshee", "🦹 Chris R", "🦍 Gorilla", "🐍 Snake", "🦑 Kraken", "🦂 Scorpion", "🎠 Knight",
 ]
 
 WEAPONS = [

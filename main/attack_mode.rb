@@ -4,7 +4,7 @@
 # Player vs enemy strike
 
 def shots_fired(hunter, target, shot)
-  text = rand(3) == 1 ? (shot == :missed ? BACK_TALK.sample : "🗯️ " + SMACK_TALK.sample) : ""
+  text = rand(3) == 1 ? (shot == :miss ? BACK_TALK.sample : "🗯️ " + SMACK_TALK.sample) : ""
 
   hit  = "#{hunter[:name]} #{text}#{HIT} #{target[:name]} -#{hunter[:damage]} #{target[:emoji]}"
   crit = "#{hunter[:name]} #{text}#{CRIT} #{target[:name]} -#{hunter[:damage]} #{target[:emoji]}"
@@ -67,7 +67,7 @@ def mortal_kombat(enemies, player)
   greeting(:combat)
 
   loop do
-    state_of_game(enemies, player)
+    game_info(enemies, player)
     player[:land] = { id: :move, art: BATTLEFIELD.sample }
     puts MENU_HEADER
     enemies.each_with_index { |enemy, index| puts " " * 28 + "#{ML}#{NUM[index + 4]}#{CL} #{enemy[:name]}" }
@@ -106,7 +106,7 @@ end
 
 def bounty(hunter, target)
   hunter[:kills] += 1
-  hunter[:hp] = (hunter[:hp] + 10).clamp(0, 200)
+  hunter[:hp] = (hunter[:hp] + 10).clamp(0, 150)
   hunter[:cash] = (hunter[:cash] + 1).clamp(0, 5)
   hunter[:tracking] = target
   invoice(hunter, 0, :bounty) # amounts hardcoded as they're static

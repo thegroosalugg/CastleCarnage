@@ -14,6 +14,7 @@ def wake_up
     drunk:    0,
     kills:    0,
     rooms:    0,
+    pouch:    []
   }
 end
 
@@ -26,8 +27,29 @@ def random_enemy
     block:    rand(1..5),
     accuracy: rand(5..10),
     crit_ch:  rand(9..10),
-    crit_x:   rand(1.5..2.5)
+    crit_x:   rand(1.5..2.5),
+    pouch:    []
   }
+end
+
+def crap_factory(enemies, player)
+  buffs  = [:hp, :attack, :block, :crit_ch]
+  nerfs  = [:hp, :attack, :block, :accuracy]
+  target = [player, enemies.sample].sample
+  type   = (target[:id] == :player) ? (rand(3) == 1 ? :trap : :item) : (rand(3) == 1 ? :item : :trap)
+  stat   = type == :item ? buffs.sample : nerfs.sample
+
+  if stat == :hp
+    boost = rand(7..15)
+    type == :trap ? target[:hp] -= boost : target[:hp] += boost
+    target[:hp] = target[:hp].clamp(0, 150)
+    invoice(target, boost, type)
+  else
+    x, y = TRAPS.sample, ITEMS.sample
+    item = type == :trap ? x : y
+    target[:pouch] << { name: item[:name], phrase: item[:phrase], stat: stat, type: type }
+    invoice(target, :pouch, type)
+  end
 end
 
 def room_vault
@@ -56,7 +78,7 @@ def pick_weapon
   name, us, at, bk, ac, ch, x = rand(4) == 1 ? special : regular
 
   weapon = {
-    name:     "#{name}#{CL}",
+    name:    "#{name}#{CL}",
     uses:     rand(us..5),
     attack:   rand(at..15),
     block:    rand(bk..8),
@@ -67,18 +89,18 @@ def pick_weapon
 end
 
 def adjust_stats(wielder, request, weapon = nil) # takes player/enemy & saves weapon stats as new keys
-  preset = [:attack, :block, :accuracy, :crit_ch, :crit_x] # based on request saved stats are added or removed and reset
-  boost = [:weapon_attack, :weapon_block, :weapon_accuracy, :weapon_crit_ch, :weapon_crit_x]
+  preset = [       :attack,        :block,        :accuracy,        :crit_ch,        :crit_x] # based on request saved stats are added or removed and reset
+  boost  = [:weapon_attack, :weapon_block, :weapon_accuracy, :weapon_crit_ch, :weapon_crit_x]
 
   preset.each_with_index do |stat, i1|
     boost.each_with_index do |boost, i2|
       if i1 == i2
         if request == :add
-          wielder[boost] = weapon[stat]
-          wielder[stat] += wielder[boost]
+          wielder[boost]  =  weapon[stat ]
+          wielder[stat ] += wielder[boost]
         else
-          wielder[stat] -= wielder[boost]
-          wielder[boost] = 0
+          wielder[stat ] -= wielder[boost]
+          wielder[boost]  = 0
         end
       end
     end
@@ -92,7 +114,7 @@ def equip_weapon(wielder)
   end
   weapon = pick_weapon # create weapon and assign to player
   wielder[:equipped] = weapon[:name]
-  wielder[:uses] = weapon[:uses]
+  wielder[:uses    ] = weapon[:uses]
 
   adjust_stats(wielder, :add, weapon) # saves weapon stats as new keys and adds them to player stats
   weapon_speaks(wielder, wielder[:equipped], (wielder[:id] == :player ? :got : :enemy)) # decides whose message plays

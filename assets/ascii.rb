@@ -46,21 +46,30 @@ BOSSES = {
   :village => "👑 #{OR}Village King#{CL}"
 }
 
-NUM = ["[̳0̳]̳", "[̳1̳]̳", "[̳2̳]̳", "[̳3̳]̳", "[̳4̳]̳", "[̳5̳]̳", "[̳6̳]̳", "[̳7̳]̳", "[̳8̳]̳", "[̳9̳]̳"]
+BUFFS = {
+  :attack   => { plus: "#{OR}𝙍𝘼𝙂𝙀#{CL}", minus: "#{YL}ᙡ∈Ꭿⲕ∈ᖇⲙᎯﬡ#{CL}" },
+  :block    => { plus: "#{BL}𝓖ⴑⲀꞄⲆ#{CL}", minus: "#{RD}𝕄𝕖𝕒𝕥𝕊𝕙𝕚𝕖𝕝𝕕#{CL}" },
+  :crit_ch  => "#{BL}ⲥꞅⲓⲧ %#{CL}",
+  :accuracy => "#{RD}𝓛ⲁⲙⲉ𝛓ⲏⲟⲧ#{CL}",
+}
+
+
+NUM       = ["[̳0̳]̳", "[̳1̳]̳", "[̳2̳]̳", "[̳3̳]̳", "[̳4̳]̳", "[̳5̳]̳", "[̳6̳]̳", "[̳7̳]̳", "[̳8̳]̳", "[̳9̳]̳"]
 
 WRONG     = "#{RD}𝖂𝕽𝕺𝕹𝕲💯#{CL}"
 HANGOVER  = "#{OR}ℍ𝔸ℕ𝔾𝕆𝕍𝔼ℝ#{CL}"
 BONUS     = "#{YL}🪅 ℬ𝒪𝒩𝒰𝒮 🎊#{CL}"
 BUFF      = "#{CN}𝓑𝓤𝓕𝓕🪶#{CL}"
-CASH      = "#{GN}🄲🄰🅂🄷#{CL}"
-MUNCH     = "#{GN}🥐ＭＵＮＣＨ#{CL}"
-DEBT      = "#{RD}ᗪ㠪乃ㄒ💲#{CL}"
+CASH      = "#{GN}💲🄲🄰🅂🄷#{CL}"
+ITEM      = "#{GN}📦𝕀𝕋𝔼𝕄#{CL}"
+DEBT      = "#{RD}ᗪ㠪乃ㄒ#{CL}"
 THIEF     = "#{RD}👤 🆃🅷🅸🅴🅵#{CL}"
-TRAP      = "#{GN}ƬᖇᎯᕈ🪤#{CL}"
+TRAP      = "#{YL}ƬᖇᎯᕈ🪤#{CL}"
 WEAPON    = "#{OR}🔪𝓦𝓔𝓐𝓟𝓞𝓝#{CL}"
 BROKE     = "#{RD}𝐁𝐑𝐎𝐊𝐄💔#{CL}"
-RAGE      = "#{OR}R̷A̷G̷E̷🐲#{CL}"
+RAGE      = "#{OR}𝙍𝘼𝙂𝙀🐲#{CL}"
 POW       = "#{OR}👊🏼ℙ𝕆𝕎💥#{CL}"
+KABLAMO   = "#{RD}𝐾𝐴𝐵𝐿𝐴𝑀𝑂!💥#{CL}"
 CRIT      = "#{OR}⚔️ 𝙲𝚁𝙸𝚃𝙸𝙲𝙰𝙻 💥#{CL}"
 MISS      = "#{BL}𝙼𝙸𝚂𝚂💤#{CL}"
 HIT       = "#{RD}⚔️ 𝙷𝙸𝚃 💢#{CL}"
