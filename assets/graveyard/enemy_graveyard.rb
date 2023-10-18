@@ -32,3 +32,11 @@ def graveyard(enemies, hunter, target)
     end
   end
 end
+
+# SIMPLE INTERFACE REPLAY METHOD. WRONG INPUT WILL BREAK LOOP
+loop do
+  player = ctrl_s(player) # Update player using ctrl_s
+  play_game(player)
+  choice = gets.chomp.downcase
+  break if choice != "y"
+end

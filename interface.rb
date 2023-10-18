@@ -2,9 +2,8 @@
 require_relative 'imports'
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-def play_game
+def play_game(player)
   print `clear`
-  player = wake_up
   name_player(player)
   enemies = []
   3.times { enemies << random_enemy }
@@ -41,8 +40,26 @@ def play_game
   game_over(player)
 end
 
+def ctrl_s(player)
+  player = player.dup
+  player[:hp] = 100 if player[:hp] <= 0
+  player[:land] = { id: :move, art: BATTLEFIELD.sample }
+  return player
+end
+
+player = wake_up
 loop do
-  play_game
-  choice = gets.chomp.downcase
-  break if choice != "y"
+  player = ctrl_s(player) # Update player using ctrl_s
+  play_game(player)
+
+  loop do
+    choice = gets.chomp.downcase
+    if choice == "n"
+      exit # Exit the program if 'n' is selected
+    elsif choice == "y"
+      break # Restart the game
+    # else
+    #   error(:input)
+    end
+  end
 end
