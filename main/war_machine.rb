@@ -4,7 +4,7 @@
 def wake_up
   player = {
     id: :player,
-    hp:     175,
+    hp:     100,
     attack:  10,
     block:    2,
     accuracy: 5,
@@ -14,7 +14,6 @@ def wake_up
     drunk:    0,
     kills:    0,
     rooms:    0,
-    land: { id: :move, art: BATTLEFIELD.sample }
   }
 end
 
