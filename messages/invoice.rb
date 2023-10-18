@@ -61,8 +61,8 @@ def gifts(entity, operator, randomizer)
   ]
 
   messages = case operator
-  when 0 then (entity[:id] == :player ? MUNCH + gained_hp.sample : THIEF + enemy_hp.sample) + plus
-  when 1 then (entity[:id] == :player ? DEBT + lost_hp.sample : TRAP + enemy_trap.sample) + minus
+  when 0 then (entity[:id] == :player ? ITEM + gained_hp.sample : THIEF +   enemy_hp.sample) + plus
+  when 1 then (entity[:id] == :player ? DEBT +   lost_hp.sample : TRAP  + enemy_trap.sample) + minus
   end
   puts text_break(messages, " ", 100)
 end
