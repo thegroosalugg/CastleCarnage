@@ -35,7 +35,7 @@ def play_game
     end
 
     cheat_menu(player, enemies) # DEBUG CHEAT MENU
-    soul_checker(enemies, player)
+    graveyard(enemies, player)
     state_of_game(enemies, player)
   end
   game_over(player)

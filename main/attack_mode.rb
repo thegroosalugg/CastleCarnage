@@ -35,9 +35,15 @@ def strike(enemies, hunter, target)                        # dynamic damage mult
     target[:hp] -= damage
     shots_fired(hunter, target, damage, :hit)
   end
+
   hunter[:uses] = (hunter[:uses] - 1).clamp(0, 5) if hunter[:equipped]
   weapon_breaks(hunter) if hunter[:equipped]
-  graveyard(enemies, hunter, target)
+  graveyard(enemies, (hunter[:id] == :player ? hunter : target)) # graveyard checks for enemy deaths and collects bounty
+
+  if target[:id] == :player && target[:hp] <= 0
+    target[:tracking] = hunter   # if player dies tracks enemy who dealt lethal blow
+    enemy_speaks(target, :pwned) # sends same pwned message to the player
+  end
 end
 
 # Sommersault attack
@@ -75,8 +81,8 @@ def mortal_kombat(enemies, player)
       print `clear`
       target = enemies[choice]
       strike(enemies, player, target)
-      strike(enemies, target, player) if target[:hp].positive?
-      surprise(enemies, player, :combat) unless enemies.empty? # random attack on player possible
+      strike(enemies, target, player) if target[:hp].positive? && player[:hp].positive?
+      surprise(enemies, player, :combat) unless enemies.empty? || player[:hp] <= 0 # random attack on player possible
       break
     else
       error(:input)
@@ -86,9 +92,9 @@ end
 
 # activates when exploring rooms
 
-def surprise(enemies, player, event)
+def surprise(enemies, player, event) # surprise attack
   target_enemy = enemies.sample
-  enemy_speaks(target_enemy, :escape) if event == :escape
+  enemy_speaks(target_enemy, :escape) if event == :escape # only when exploring rooms
   if rand(4) == 1
     enemy_speaks(target_enemy, :surprise)
     if rand(3) == 1
@@ -105,22 +111,10 @@ def bounty(hunter, target)
   hunter[:hp] = (hunter[:hp] + 10).clamp(0, 200)
   hunter[:cash] = (hunter[:cash] + 1).clamp(0, 5)
   hunter[:tracking] = target
-  invoice(hunter, 0, :bounty) # amounts hardcoded as its always the same
+  invoice(hunter, 0, :bounty) # amounts hardcoded as they're static
 end
 
-def graveyard(enemies, hunter, target)
-  if target[:hp] <= 0  # check for enemy deaths, update counter, track last enemy for game over
-    enemy_speaks(target, :pwned)
-    if hunter[:id] == :player
-      bounty(hunter, target)
-      enemies.delete(target)
-    elsif target[:id] == :player
-      target[:tracking] = hunter
-    end
-  end
-end
-
-def soul_checker(enemies, player)
+def graveyard(enemies, player) # graveyard checks for enemy deaths and collects bounty
   enemies.reject! do |enemy|
     if enemy[:hp] <= 0  # check for enemy deaths, update counter, track last enemy for game over
       enemy_speaks(enemy, :pwned)
@@ -129,6 +123,6 @@ def soul_checker(enemies, player)
     else
       false  # This will keep the enemy in the array
     end
-  end
-  player[:tracking] = enemies.sample if player[:hp] <= 0 && player[:tracking][:hp] <= 0 # Player dies and last enemy is tracked
+  end # Player dies and last enemy is tracked if current tracked enemy is already dead
+  player[:tracking] = enemies.sample if player[:hp] <= 0 && player[:tracking][:hp] <= 0
 end
