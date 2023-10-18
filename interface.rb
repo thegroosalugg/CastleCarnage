@@ -27,7 +27,6 @@ def play_game(player)
     when "y"
       print `clear`
       surprise(enemies, player, :escape)
-      player[:rooms] += 1
       explore_rooms(enemies, player) unless player[:hp] <= 0
     else
       error(:input)

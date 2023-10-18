@@ -10,13 +10,13 @@ end
 
 def explore_rooms(enemies, player)
   choice = 0
-  chosen_rooms = room_vault
+  rooms = room_vault
   player[:land] = { id: :room, art: ROOM_SERVICE.sample }
   game_info(enemies, player)
 
   until (4..7).include?(choice) # index +4 / -4 to set user choice to (4..7) instead of (0..3)
     puts MENU_HEADER
-    chosen_rooms.each_with_index { |room, i| puts " " * 22 + "#{ML}#{NUM[i + 4]}#{CL} #{room[:name]}" }
+    rooms.each_with_index { |room, i| puts " " * 22 + "#{ML}#{NUM[i + 4]}#{CL} #{room[:name]}" }
     puts BARRIER
 
     choice = gets.chomp.to_i
@@ -25,9 +25,10 @@ def explore_rooms(enemies, player)
   end
 
   print `clear`
-  entered_room = chosen_rooms[choice - 4]
-  enter_room(entered_room)
-  gift = entered_room[:chance].sample
+  room = rooms[choice - 4]
+  enter_room(room)
+  player[:rooms] += 1
+  gift = room[:chance].sample
 
   case gift
   when 1
