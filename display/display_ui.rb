@@ -31,17 +31,17 @@ def health_bars(who) # random emoji assigner for every entity
 
   who[:emoji] ||= emojis.sample # Assigns an emoji only if the value is nil.
   full = ((who[:hp] - 1) / n + 1).clamp(0, 5)
-  empty = (5 - full).clamp(0, 5)
+  empty = (5 - full)
   life = "#{who[:emoji]}" * full + "🤍" * empty
 
-  " " * 4 + "#{who[:name]}" + "#{whitespace(who, " ", 11)}" + "#{who[:hp].to_i} #{life}"
+  " " * 4 + "#{who[:name]}" + "#{whitespace(who, " ", 11)}" + "#{who[:emoji]}#{who[:hp].to_i} #{life}"
 end
 
 def stats(who, stat)
-  icn, sq, max, div = stat == :attack ? ["💢", "🟧", 5, 5] : ["🛡️", "🟦", 5, 2]
-  full = (who[stat] / div).clamp(0, max)
-  empty = (max - full).clamp(0, max)
-  "#{icn}" + "#{sq}" * full + "⬜" * empty
+  icon, square, div = stat == :attack ? ["💢", "🟧", 5] : ["🛡️", "🟦", 2]
+  full = (who[stat] / div).clamp(0, 5)
+  empty = (5 - full)
+  "#{icon}" + "#{square}" * full + "⬜" * empty
 end
 
 def percentage(who, key) # determins accuracy and crit chance %
@@ -51,7 +51,7 @@ def percentage(who, key) # determins accuracy and crit chance %
 end                       # "%02d" % adds a leading zero to single digits
 
 def durability(who)
-  " " * 4 + "#{who[:equipped]}" + " " * (60 - who[:equipped].length) + "🛠️" + "🟩" * who[:uses].clamp(0, 5) + "⬜" * (5 - who[:uses]).clamp(0, 5)
+  " " * 4 + "#{who[:equipped]}" + " " * (62 - who[:equipped].length) + "🛠️" + "🟩" * who[:uses].clamp(0, 5) + "⬜" * (5 - who[:uses]).clamp(0, 5)
 end
 
 # Display generators that combine above methods to create dynamic displays for enemy and weapon
