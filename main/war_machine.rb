@@ -14,6 +14,7 @@ def wake_up
     drunk:    0,
     kills:    0,
     rooms:    0,
+    pouch:    []
   }
 end
 
@@ -26,16 +27,28 @@ def random_enemy
     block:    rand(1..5),
     accuracy: rand(5..10),
     crit_ch:  rand(9..10),
-    crit_x:   rand(1.5..2.5)
+    crit_x:   rand(1.5..2.5),
+    pouch:    []
   }
 end
 
 def crap_factory(enemies, player)
-  stats = [:hp, :attack, :block, :accuracy, :crit_ch]
-  target = rand(2) == 1 ? player : enemies.sample
-  chance = rand(3)
-  gift = (target[:id] == :player) ? (chance == 1 ? traps : items) : (chance == 1 ? items : traps)
+  buffs  = [:hp, :attack, :block, :crit_ch]
+  nerfs  = [:hp, :attack, :block, :accuracy]
+  target = [player, enemies.sample].sample
+  type   = (target[:id] == :player) ? (rand(3) == 1 ? :trap : :item) : (rand(3) == 1 ? :item : :trap)
+  stat   = type == :item ? buffs.sample : nerfs.sample
 
+  if stat == :hp
+    boost = rand(7..15)
+    type == :trap ? target[:hp] -= boost : target[:hp] += boost
+    target[:hp] = target[:hp].clamp(0, 150)
+    invoice(target, boost, type)
+  else
+    name = type == :trap ? TRAPS.sample : ITEMS.sample
+    target[:pouch] << { name: name, stat: stat, type: type }
+    invoice(target, :stuff, type)
+  end
 end
 
 def room_vault
@@ -64,7 +77,7 @@ def pick_weapon
   name, us, at, bk, ac, ch, x = rand(4) == 1 ? special : regular
 
   weapon = {
-    name:     "#{name}#{CL}",
+    name:    "#{name}#{CL}",
     uses:     rand(us..5),
     attack:   rand(at..15),
     block:    rand(bk..8),
@@ -75,8 +88,8 @@ def pick_weapon
 end
 
 def adjust_stats(wielder, request, weapon = nil) # takes player/enemy & saves weapon stats as new keys
-  preset = [:attack, :block, :accuracy, :crit_ch, :crit_x] # based on request saved stats are added or removed and reset
-  boost = [:weapon_attack, :weapon_block, :weapon_accuracy, :weapon_crit_ch, :weapon_crit_x]
+  preset = [       :attack,        :block,        :accuracy,        :crit_ch,        :crit_x] # based on request saved stats are added or removed and reset
+  boost  = [:weapon_attack, :weapon_block, :weapon_accuracy, :weapon_crit_ch, :weapon_crit_x]
 
   preset.each_with_index do |stat, i1|
     boost.each_with_index do |boost, i2|

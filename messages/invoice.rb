@@ -3,12 +3,14 @@
 
 # Invoice for stat changes
 
-def invoice(player, amount, where)
+def invoice(who, what, where)
   x, messages = case where                             # this condition simply sets a + symbol in fron of positive integers
-  when :bounty then [90, "#{BONUS} #{player[:name]} +10 #{player[:emoji]} + 1 💵"]
-  when :cash  then  [85, "#{CASH} +#{amount} 💵"] # blackjack
-  when :loss  then  [85, "#{CASH} -#{amount} 💵"] # blackjack
-  when :cards then  [110, "#{player[:name]} drew #{CARD} #{amount.last[:suit]}"] # blackjack
+  when :bounty then [90, "#{BONUS} #{who[:name]} +10 #{who[:emoji]} + 1 💵"]
+  when :item   then [90, "#{ITEM} #{who[:name]} #{ITEMS.SAMPLE} +#{what} #{who[:emoji]}"]
+  when :trap   then [90, "#{TRAP} #{who[:name]} #{TRAPS.SAMPLE} -#{what} #{who[:emoji]}"]
+  # when :cash  then  [85, "#{CASH} +#{what} 💵"] # blackjack
+  # when :loss  then  [85, "#{CASH} -#{what} 💵"] # blackjack
+  # when :cards then  [110, "#{who[:name]} drew #{CARD} #{what.last[:suit]}"] # blackjack
   end
   puts text_break(messages, " ", x)
 end
