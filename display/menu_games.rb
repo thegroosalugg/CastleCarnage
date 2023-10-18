@@ -44,7 +44,7 @@ def show_your_moves(player, the_boss, user_moves, boss_moves, method)
       when (user == 6 && boss == 4) then FLUNKED
       when user > boss then SUCCESS
       when user < boss then FLUNKED
-      else "🍃 #{MISSED}  🍂"
+      else "🍃 #{MISS}  🍂"
       end
       puts whitespace(player, " ", 16) + "#{player[:name]} 💬 #{moves[user]} #{x} #{moves[boss]} 🗨️ #{the_boss[:name]}"
     end

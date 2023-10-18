@@ -3,37 +3,35 @@
 
 # Player vs enemy strike
 
-def shots_fired(hunter, target, damage = 0, shot)
-  x = rand(3) == 1 ? (shot == :missed ? BACK_TALK.sample : "🗯️ " + SMACK_TALK.sample) : ""
+def shots_fired(hunter, target, shot)
+  text = rand(3) == 1 ? (shot == :missed ? BACK_TALK.sample : "🗯️ " + SMACK_TALK.sample) : ""
 
-  hit =      "#{hunter[:name]} #{x}#{HIT} #{target[:name]} -#{damage} #{target[:emoji]}"
-  critical = "#{hunter[:name]} #{x}#{CRITICAL} #{target[:name]} -#{damage} #{target[:emoji]}"
-  missed =   "#{hunter[:name]} 🗯️❓ #{x}#{MISSED}"
+  hit  = "#{hunter[:name]} #{text}#{HIT} #{target[:name]} -#{hunter[:damage]} #{target[:emoji]}"
+  crit = "#{hunter[:name]} #{text}#{CRIT} #{target[:name]} -#{hunter[:damage]} #{target[:emoji]}"
+  miss = "#{hunter[:name]} 🗯️❓ #{text}#{MISS} #{target[:name]}"
 
-  n, shout, comeback = case shot
-  when :hit      then [100, hit, SMACK_BACK]
-  when :critical then [100, critical, SMACK_BACK]
-  when :missed   then [85, missed, TALK_BACK]
+  shout, comeback = case shot
+  when :hit  then [hit,  SMACK_BACK]
+  when :crit then [crit, SMACK_BACK]
+  when :miss then [miss,  TALK_BACK]
   end
 
-  puts text_break(shout, " ", n)
-  if !x.empty?
-    puts text_break("#{target[:name]} 🗯️ #{comeback.sample}", " ", 85) if rand(2) == 1
-  end
+  puts text_break(shout, " ", 100)
+  puts text_break("#{target[:name]} 🗯️ #{comeback.sample}", " ", 85) if !text.empty? && rand(2) == 1
 end
 
 def strike(enemies, hunter, target)                        # dynamic damage multiplier
-  damage = ((hunter[:attack] - target[:block]) * rand(0.6..1.4)).ceil.clamp(1, 100)
+  hunter[:damage] = ((hunter[:attack] - target[:block]) * rand(0.6..1.4)).ceil.clamp(1, 100)
 
   if rand(1..hunter[:crit_ch]) == 1
-    critical = (damage * hunter[:crit_x]).ceil.clamp(1, 100) # rounds any floating number up
-    target[:hp] -= critical
-    shots_fired(hunter, target, critical, :critical)
+    hunter[:damage] = (hunter[:damage] * hunter[:crit_x]).ceil.clamp(1, 100) # rounds any floating number up
+    target[:hp] -= hunter[:damage]
+    shots_fired(hunter, target, :crit)
   elsif rand(1..hunter[:accuracy]) == 1
-    shots_fired(hunter, target, :missed)
+    shots_fired(hunter, target, :miss)
   else
-    target[:hp] -= damage
-    shots_fired(hunter, target, damage, :hit)
+    target[:hp] -= hunter[:damage]
+    shots_fired(hunter, target, :hit)
   end
 
   hunter[:uses] = (hunter[:uses] - 1).clamp(0, 5) if hunter[:equipped]
