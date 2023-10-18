@@ -67,7 +67,7 @@ def mortal_kombat(enemies, player)
   greeting(:combat)
 
   loop do
-    state_of_game(enemies, player)
+    game_info(enemies, player)
     player[:land] = { id: :move, art: BATTLEFIELD.sample }
     puts MENU_HEADER
     enemies.each_with_index { |enemy, index| puts " " * 28 + "#{ML}#{NUM[index + 4]}#{CL} #{enemy[:name]}" }

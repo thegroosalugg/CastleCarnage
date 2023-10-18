@@ -10,7 +10,7 @@ def play_game(player)
   player[:tracking] = enemies.sample
 
   intro(player)
-  state_of_game(enemies, player)
+  game_info(enemies, player)
 
   while !enemies.empty? && player[:hp].positive?
     player[:land] = { id: :move, art: BATTLEFIELD.sample }
@@ -35,7 +35,7 @@ def play_game(player)
 
     cheat_menu(player, enemies) # DEBUG CHEAT MENU
     graveyard(enemies, player)
-    state_of_game(enemies, player)
+    game_info(enemies, player)
   end
   game_over(player)
 end

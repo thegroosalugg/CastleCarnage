@@ -12,7 +12,7 @@ def explore_rooms(enemies, player)
   choice = 0
   chosen_rooms = room_vault
   player[:land] = { id: :room, art: ROOM_SERVICE.sample }
-  state_of_game(enemies, player)
+  game_info(enemies, player)
 
   until (4..7).include?(choice) # index +4 / -4 to set user choice to (4..7) instead of (0..3)
     puts MENU_HEADER
@@ -21,7 +21,7 @@ def explore_rooms(enemies, player)
 
     choice = gets.chomp.to_i
     error(:input) unless (4..7).include?(choice)
-    state_of_game(enemies, player) unless (4..7).include?(choice)
+    game_info(enemies, player) unless (4..7).include?(choice)
   end
 
   print `clear`
