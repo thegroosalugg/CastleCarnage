@@ -74,11 +74,11 @@ def adjust_stats(wielder, request, weapon = nil) # takes player/enemy & saves we
     boost.each_with_index do |boost, i2|
       if i1 == i2
         if request == :add
-          wielder[boost] = weapon[stat]
-          wielder[stat] += wielder[boost]
+          wielder[boost]  =  weapon[stat ]
+          wielder[stat ] += wielder[boost]
         else
-          wielder[stat] -= wielder[boost]
-          wielder[boost] = 0
+          wielder[stat ] -= wielder[boost]
+          wielder[boost]  = 0
         end
       end
     end
@@ -92,7 +92,7 @@ def equip_weapon(wielder)
   end
   weapon = pick_weapon # create weapon and assign to player
   wielder[:equipped] = weapon[:name]
-  wielder[:uses] = weapon[:uses]
+  wielder[:uses    ] = weapon[:uses]
 
   adjust_stats(wielder, :add, weapon) # saves weapon stats as new keys and adds them to player stats
   weapon_speaks(wielder, wielder[:equipped], (wielder[:id] == :player ? :got : :enemy)) # decides whose message plays
