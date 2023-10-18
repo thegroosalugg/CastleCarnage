@@ -32,7 +32,8 @@ def explore_rooms(enemies, player)
 
   case gift
   when 1
-    health_trap([player, enemies.sample].sample) # choose a random enemy and then sample enemy & player
+    #health_trap([player, enemies.sample].sample) # choose a random enemy and then sample enemy & player
+    crap_factory(enemies, player)
   when 2
     rand(2) == 1 ? equip_weapon(enemies.sample) : equip_weapon(player)
   when 3 # New enemy spawns in empty slot

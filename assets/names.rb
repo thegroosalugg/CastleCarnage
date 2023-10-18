@@ -4,7 +4,7 @@
 ENEMIES = [
   "👺 Goblin", "👹 Ogre", "👾 Orc", "🧌 Troll", "🤷 Villager", "🦟 Cazador", "🐊 Croc", "🦈 Shark", "🚁 Chopper",
   "🧙 Wizard", "🧝 Druid", "🐺 Werewolf", "🧛 Vampire", "🧟 Zombie", "🦖 Dinosaur", "🤖 Robot", "🪿 Goose", "🦏 Rhino",
-  "🐉 Dragon", "👻 Banshee", "🦹 Bastard", "🦍 Gorilla", "🐍 Snake", "🦑 Kraken", "🦂 Scorpion", "🎠 Knight",
+  "🐉 Dragon", "👻 Banshee", "🦹 Chris R", "🦍 Gorilla", "🐍 Snake", "🦑 Kraken", "🦂 Scorpion", "🎠 Knight",
 ]
 
 WEAPONS = [
@@ -43,7 +43,7 @@ ITEMS = [
   "🥟 Questionnable Taco", "🍋 Lemons", "🌭 Tinned Hot Dogs", "☕ Instant Coffee", "🥞 Burnt Pancakes",
 ]
 
-TRAPS =[
+TRAPS = [
   "🥬 Kale", "🐻 Bear Trap", "🏀 Sports", "☢️ Radiation", "☄️ Comet", "🛸 Aliens", "📬 Bills",
    "🪓 Ax", "🧳 Fridge", "🎉 Bad Party", "🚌 Bus", "🚛 Truck", "🪫 Low Battery", "📶 Poor Reception", "🪇 Bad Music",
    "💥 Landmines",

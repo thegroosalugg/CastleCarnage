@@ -30,6 +30,14 @@ def random_enemy
   }
 end
 
+def crap_factory(enemies, player)
+  stats = [:hp, :attack, :block, :accuracy, :crit_ch]
+  target = rand(2) == 1 ? player : enemies.sample
+  chance = rand(3)
+  gift = (target[:id] == :player) ? (chance == 1 ? traps : items) : (chance == 1 ? items : traps)
+
+end
+
 def room_vault
   chosen_rooms = []
 
