@@ -47,7 +47,7 @@ def crap_factory(enemies, player)
   else
     name = type == :trap ? TRAPS.sample : ITEMS.sample
     target[:pouch] << { name: name, stat: stat, type: type }
-    invoice(target, :stuff, type)
+    invoice(target, :pouch, type)
   end
 end
 
