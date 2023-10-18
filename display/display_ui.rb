@@ -67,12 +67,12 @@ end
 
 def status(player)
   wallet = case player[:cash]
-    when 0 then "    Skint AF 🤒"
-    when 1 then "Pocket Money 🤔"
-    when 2 then " Weekend Job 😐"
-    when 3 then "      Sorted 🫠"
-    when 4 then " Filthy Rich 🤑"
-    when 5 then "      Minted 😈"
+    when 0 then "    𝙎𝙠𝙞𝙣𝙩 𝘼𝙁 🤒"
+    when 1 then " 𝙋𝙤𝙘𝙠𝙚𝙩𝙈𝙤𝙣𝙚𝙮 🤔"
+    when 2 then "  𝙒𝙚𝙚𝙠𝙚𝙣𝙙𝙅𝙤𝙗 😐"
+    when 3 then "      𝙎𝙤𝙧𝙩𝙚𝙙 🫠"
+    when 4 then "  𝔽𝕚𝕝𝕥𝕙𝕪ℝ𝕚𝕔𝕙 🤑"
+    when 5 then "      𝑀𝑖𝑛𝑡𝑒𝑑 😈"
     end
 
   drunk = case player[:drunk]
