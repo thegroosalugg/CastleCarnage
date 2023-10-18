@@ -42,7 +42,7 @@ end
 
 def ctrl_s(player)
   player = player.dup
-  player[:hp] = 100 if player[:hp] <= 0
+  player[:hp] = 100 if player[:hp] < 100
   player[:land] = { id: :move, art: BATTLEFIELD.sample }
   return player
 end
