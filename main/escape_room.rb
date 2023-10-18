@@ -1,13 +1,6 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-def health_trap(entity)
-  operator = rand(2) # Operator decides (+) or (-) Randomizer nerfed for player trap & enemy health gain
-  randomizer = (entity[:id] == :player && operator == 1) || (entity[:id] == :enemy && operator == 0) ? rand(10..20) : (rand(1..5) == 1 ? rand(50..99) : rand(20..50))
-  operator == 0 ? entity[:hp] += randomizer : entity[:hp] -= randomizer
-  gifts(entity, operator, randomizer)
-end
-
 def explore_rooms(enemies, player)
   choice = 0
   rooms = room_vault
@@ -28,11 +21,10 @@ def explore_rooms(enemies, player)
   room = rooms[choice - 4]
   enter_room(room)
   player[:rooms] += 1
-  gift = room[:chance].sample
+  gift = 1#room[:chance].sample
 
   case gift
   when 1
-    #health_trap([player, enemies.sample].sample) # choose a random enemy and then sample enemy & player
     crap_factory(enemies, player)
   when 2
     rand(2) == 1 ? equip_weapon(enemies.sample) : equip_weapon(player)
