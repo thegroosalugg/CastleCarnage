@@ -36,7 +36,7 @@ def explore_rooms(enemies, player)
   when 2
     rand(2) == 1 ? equip_weapon(enemies.sample) : equip_weapon(player)
   when 3 # New enemy spawns in empty slot
-    if enemies.length < 4
+    if enemies.length < 5
       enemies << random_enemy
       enemy_speaks(enemies[-1], :summon)
     else
