@@ -48,22 +48,22 @@ def crap_factory(enemies, player)
 end
 
 def room_vault
-  chosen_rooms = []
+  rooms = []
 
-  while chosen_rooms.length < 4
+  while rooms.length < 4
     room = {
       name: ROOMS.sample,
       chance: Array.new(rand(4..12)) { rand(1..3) } # creates an array with 4-12 integers, each with a value between 0-6
     }
 
-    # Check if the generated room's name is unique within the chosen_rooms array
-    unless chosen_rooms.any? { |chosen_room| chosen_room[:name] == room[:name] }
-      chosen_rooms << room
+    # Check if the generated room's name is unique within the rooms array
+    unless rooms.any? { |decider| decider[:name] == room[:name] }
+      rooms << room
     end
   end
                                           # ANSI color hard coded here or all rooms get same color
-  chosen_rooms.map { |room| room[:name] = "\e[3#{rand(1..6)}m#{DESC.sample} #{room[:name]}#{CL}" } # Give the rooms a unique desc
-  chosen_rooms
+  rooms.map { |room| room[:name] = "\e[3#{rand(1..6)}m#{DESC.sample} #{room[:name]}#{CL}" } # Give the rooms a unique desc
+  rooms
 end
 
 # Method to create a weapon
