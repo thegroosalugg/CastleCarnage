@@ -50,7 +50,7 @@ def room_vault
 end
 
 # Method to create a weapon
-def equip_weapon(wielder)
+def weapon_wakes(wielder)
   regular = ["#{YL}#{WEAPONS.sample}", 2..5,  10..20,  2..6,  5..9,   2..3,  1.5..2.0]
   special = ["#{MG}#{SPECIAL.sample}", 3..5,  15..25,  4..10, 5..10,  2..4,  2.0..2.5]
                                  name, uses,  attack,  block,  aim, chance,  crit = rand(4) == 1 ? special : regular
@@ -77,30 +77,19 @@ def weapon_breaks(wielder)
   end
 end
 
-def crap_factory()
+def crap_factory(wielder)
+  name =  ITEMS.sample
   item = {
-    name:  "#{name}#{CL}",
-    uses:   rand(uses),
-    attack: rand(attack),
-    block:  rand(block),
-    aim:    rand(aim),
-    chance: rand(chance),
-    crit:   rand(crit)
+    name:  "#{BL}#{name[:name]}#{CL}",
+    shout:      "#{name[:shout]}",
+    hp:     rand(2..8)     * [1, -1].sample,
+    attack: rand(1..5)     * [1, -1].sample,
+    block:  rand(1..3)     * [1, -1].sample,
+    aim:    rand(1..2)     * [1, -1].sample,
+    chance: rand(1..2)     * [1, -1].sample,
+    crit:   rand(0.3..0.5) * [1, -1].sample,
   }
-end
 
-def crap_factory(enemies, player)
-  buff   = [:hp, :xattack, :xblock, :xaim, :xchance].sample
-  target = [player,                  enemies.sample].sample
-
-  if buff == :hp
-    hp = rand(5..12) * [1, -1].sample
-    invoice(target, hp, buff)
-  else
-    target[buff] ||= 0  # Initialize the key if it doesn't exist, then accumulate the boost
-    boost = [1, -1].sample
-    item  = boost.positive? ? :item : :trap # set outcome
-    target[buff] += boost # apply boost
-    invoice(target, buff, item)
-  end
+  wielder[:item] = item
+  invoice(wielder, :item)
 end
