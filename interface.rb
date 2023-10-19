@@ -32,7 +32,7 @@ def play_game(player)
       error(:input)
     end
 
-    cheat_menu(player, enemies) # DEBUG CHEAT MENU
+    cheat_mode(player, enemies) # DEBUG CHEAT MENU
     graveyard(enemies, player)
     game_info(enemies, player)
   end
