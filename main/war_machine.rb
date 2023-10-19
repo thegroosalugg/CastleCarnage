@@ -23,7 +23,7 @@ def random_enemy
     name:     "#{YL}#{ENEMIES.sample}#{CL}",
     hp:       rand(50..80),
     attack:   rand(8..15),
-    block:    rand(1..5),
+    block:    rand(1..6),
     accuracy: rand(5..8),
     crit_ch:  rand(5..8),
     crit_x:   rand(1.5..2.5),
@@ -71,7 +71,7 @@ def equip_weapon(wielder)
   weapon = {
     name:    "#{YL}#{WEAPONS.sample}#{CL}",
     uses:     rand(2..5),
-    attack:   rand(10..15),
+    attack:   rand(10..20),
     block:    rand(2..6),
     accuracy: rand(5..9),
     crit_ch:  rand(2..3),
@@ -82,60 +82,10 @@ def equip_weapon(wielder)
   weapon_speaks(wielder, wielder[:weapon][:name], (wielder[:id] == :player ? :got : :enemy))
 end
 
-
-# Method to create a weapon
-# def pick_weapon
-#   regular = ["#{YL}#{WEAPONS.sample}", 2, 5, 1, 5, -5, -0.3]
-#   special = ["#{MG}#{SPECIAL.sample}", 3, 10, 4, 7, -7, 0.0]
-#   name, us, at, bk, ac, ch, x = rand(4) == 1 ? special : regular
-
-#   weapon = {
-#     name:    "#{name}#{CL}",
-#     uses:     rand(us..5),
-#     attack:   rand(at..15),
-#     block:    rand(bk..5),
-#     accuracy: rand(ac..5),
-#     crit_ch:  rand(ch..5),
-#     crit_x:   rand(x..1.5)
-#   }
-# end
-
-# def adjust_stats(wielder, request, weapon = nil) # takes player/enemy & saves weapon stats as new keys
-#   preset = [       :attack,        :block,        :accuracy,        :crit_ch,        :crit_x] # based on request saved stats are added or removed and reset
-#   boost  = [:weapon_attack, :weapon_block, :weapon_accuracy, :weapon_crit_ch, :weapon_crit_x]
-
-#   preset.each_with_index do |stat, i1|
-#     boost.each_with_index do |boost, i2|
-#       if i1 == i2
-#         if request == :add
-#           wielder[boost]  =  weapon[stat ]
-#           wielder[stat ] += wielder[boost]
-#         else
-#           wielder[stat ] -= wielder[boost]
-#           wielder[boost]  = 0
-#         end
-#       end
-#     end
-#   end
-# end
-
-# def equip_weapon(wielder)
-#   if wielder[:equipped] # first thing check for and destroy existing weapon
-#     wielder[:uses] = 0
-#     weapon_breaks(wielder)
-#   end
-#   weapon = pick_weapon # create weapon and assign to player
-#   wielder[:equipped] = weapon[:name]
-#   wielder[:uses    ] = weapon[:uses]
-
-#   adjust_stats(wielder, :add, weapon) # saves weapon stats as new keys and adds them to player stats
-#   weapon_speaks(wielder, wielder[:equipped], (wielder[:id] == :player ? :got : :enemy)) # decides whose message plays
-# end
-
 def weapon_breaks(wielder)
+  wielder[:weapon][:uses] = (wielder[:weapon][:uses] - 1).clamp(0, 5)
   if wielder[:weapon][:uses] == 0
     weapon_speaks(wielder, wielder[:weapon][:name], :broke) if wielder[:id] == :player # don't care about enemy weapons breaking
-    # adjust_stats(wielder, :remove) # no weapon required to remove weapon stats, we use newly created keys to change values back
     wielder[:weapon] = nil # delete weapon
   end
 end
