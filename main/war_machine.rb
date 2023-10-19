@@ -38,7 +38,7 @@ def crap_factory(enemies, player)
   buff = buffs,sample
 
   target[buff] ||= 0  # Initialize the key if it doesn't exist, then accumulate the boost
-  boost = (rand(1..3) * [1, -1].sample)
+  boost = (rand(1..2) * [1, -1].sample)
   target[buff] += boost
 end
 
