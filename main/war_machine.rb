@@ -33,23 +33,13 @@ def random_enemy
 end
 
 def crap_factory(enemies, player)
-  buffs  = [:hp, :attack, :block, :crit_ch]
-  nerfs  = [:hp, :attack, :block, :accuracy]
+  buffs = [:xhp, :xattack, :xblock, :xaccuracy, :xcrit_ch]
   target = [player, enemies.sample].sample
-  type   = (target[:id] == :player) ? (rand(3) == 1 ? :trap : :item) : (rand(3) == 1 ? :item : :trap)
-  stat   = type == :item ? buffs.sample : nerfs.sample
+  buff = buffs,sample
 
-  if stat == :hp
-    boost = rand(7..15)
-    type == :trap ? target[:hp] -= boost : target[:hp] += boost
-    target[:hp] = target[:hp].clamp(0, 150)
-    invoice(target, boost, type)
-  else
-    x, y = TRAPS.sample, ITEMS.sample
-    item = type == :trap ? x : y
-    target[:pouch] << { name: item[:name], phrase: item[:phrase], stat: stat, type: type }
-    invoice(target, :pouch, type)
-  end
+  target[buff] ||= 0  # Initialize the key if it doesn't exist, then accumulate the boost
+  boost = (rand(1..3) * [1, -1].sample)
+  target[buff] += boost
 end
 
 def room_vault
