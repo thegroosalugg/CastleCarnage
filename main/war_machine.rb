@@ -83,7 +83,7 @@ def equip_weapon(wielder)
 end
 
 def weapon_breaks(wielder)
-  wielder[:weapon][:uses] = (wielder[:weapon][:uses] - 1).clamp(0, 5)
+  wielder[:weapon][:uses] = (wielder[:weapon][:uses] - 1)
   if wielder[:weapon][:uses] == 0
     weapon_speaks(wielder, wielder[:weapon][:name], :broke) if wielder[:id] == :player # don't care about enemy weapons breaking
     wielder[:weapon] = nil # delete weapon
