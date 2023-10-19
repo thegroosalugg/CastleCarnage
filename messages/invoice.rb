@@ -3,7 +3,7 @@
 
 # Invoice for stat changes
 
-def invoice(who, what, where)
+def invoice(who, what, why)
   # item = who[:pouch].last # last added item
   # item[:tag] = if item[:stat] == :attack || item[:stat] == :block # checks if item is attack/block
   #   item[:type] == :trap ? BUFFS[item[:stat]][:minus] : BUFFS[item[:stat]][:plus] # attack/block can be positive/negative
@@ -15,7 +15,7 @@ def invoice(who, what, where)
   # item_tag   = who[:id] == :player ?            "#{ITEM}"           :             "#{THIEF}"
   # trap_tag   = who[:id] == :player ?            "#{DEBT}"           :             "#{TRAP}"
 
-  x, messages = case where
+  x, messages = case why
   when :bounty then [90, "#{BONUS} #{who[:name]} +10 #{who[:emoji]} + 1 💵"]
   when :item   then [90, "#{item_tag} #{who[:name]} #{pouch_item}"]
   when :trap   then [90, "#{trap_tag} #{who[:name]} #{pouch_trap}"]

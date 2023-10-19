@@ -31,19 +31,18 @@ def random_enemy
 end
 
 def crap_factory(enemies, player)
-  buffs = [:hp, :xattack, :xblock, :xaim, :xchance]
-  target = [player, enemies.sample].sample
-  buff = buffs.sample
-
-  target[buff] ||= 0  # Initialize the key if it doesn't exist, then accumulate the boost
-  boost = (rand(1..2) * [1, -1].sample)
-  gains = boost.positive? ? :item : :trap # set outcome
-  target[buff] += boost # apply boost
+  buff   = [:hp, :xattack, :xblock, :xaim, :xchance].sample
+  target = [player,                  enemies.sample].sample
 
   if buff == :hp
-    invoice(target, buff, gains)
+    hp = rand(5..12) * [1, -1].sample
+    invoice(target, hp, buff)
   else
-    invoice(target, buff, gains)
+    target[buff] ||= 0  # Initialize the key if it doesn't exist, then accumulate the boost
+    boost = [1, -1].sample
+    item  = boost.positive? ? :item : :trap # set outcome
+    target[buff] += boost # apply boost
+    invoice(target, buff, item)
   end
 end
 
