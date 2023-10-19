@@ -36,8 +36,8 @@ def strike(enemies, hunter, target)                        # dynamic damage mult
     shots_fired(hunter, target, :miss)
   end
 
-  hunter[:uses] = (hunter[:uses] - 1).clamp(0, 5) if hunter[:equipped]
-  weapon_breaks(hunter) if hunter[:equipped]
+  hunter[:weapon][:uses] = (hunter[:weapon][:uses] - 1).clamp(0, 5) if hunter[:weapon]
+  weapon_breaks(hunter) if hunter[:weapon]
   graveyard(enemies, (hunter[:id] == :player ? hunter : target)) # graveyard checks for enemy deaths and collects bounty
 
   if target[:id] == :player && target[:hp] <= 0

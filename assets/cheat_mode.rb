@@ -15,16 +15,16 @@ def cheat_menu(player, enemies)
   when "d" then player[:drunk] +=   1
   when "i" then player[:kills] +=   1
   when "o" then player[:rooms] +=   1
-  when "2" then player[:uses ] +=   1 if player[:equipped]
-  when "1" then player[:uses ] -=   1 if player[:equipped]
-  when "0" then player[:uses ]  =   0 if player[:equipped]
+  when "2" then player[:weapon][:uses ] +=   1 if player[:weapon]
+  when "1" then player[:weapon][:uses ] -=   1 if player[:weapon]
+  when "0" then player[:weapon][:uses ]  =   0 if player[:weapon]
   when "b" then weapon_breaks(player)
   when "w" then  equip_weapon(player)
   when "e" then  equip_weapon(enemies.sample)
   when "g" then  player.each { |key, value| puts text_break("#{YL}#{key}: #{value}#{CL}", " ", 80) unless [:land, :tracking].include?(key) }
   when "h" then enemies.each { |enemy| enemy.each { |key, value| puts text_break("#{YL}#{key}: #{value}#{CL}", " ", 80) } }
   end
-  player[:uses ] = player[:uses ].clamp(0, 5) if player[:equipped]
+  player[:weapon][:uses ] = player[:weapon][:uses ].clamp(0, 5) if player[:weapon]
   player[:drunk] = player[:drunk].clamp(0, 5)
   player[:cash ] = player[:cash ].clamp(0, 5)
 end
