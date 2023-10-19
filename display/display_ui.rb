@@ -18,11 +18,11 @@ end
 # move ASCII art
 
 def move_ascii_art(player) # added condition, if art is boss, it moves on each loop, if static, it centers art without hardcode
-  vertical_offset = player[:land][:id] == :move ? rand(10..30) : 10
-  player[:land][:art].split("\n").map { |line| " " * vertical_offset + line }.join("\n")
+  offset = player[:land][:id] == :move ? rand(10..30) : 10
+  player[:land][:art].split("\n").map { |line| " " * offset + line }.join("\n")
 end
 
-# UI Elements for Health, Attack, Block, Accuracy and Crit Chance for any entity
+# UI Elements for Health, Attack, Block, aim and Crit Chance for any entity
 # \n represents line break when concatenating strings
 
 def health_bars(who) # random emoji assigner for every entity
@@ -45,16 +45,16 @@ def stats(who, stat)
   "#{icon}" + "#{square}" * full + "⬜" * empty
 end
 
-# def percentage(who, key) # determins accuracy and crit chance %
-#   accuracy = 100 - (100 / [1, (who[key.to_sym])].max)
-#   crit_ch  = 100 - accuracy
-#   key == :accuracy ? "🎯#{"%02d" % accuracy}%" : "💥#{"%02d" % crit_ch}%"
+# def percentage(who, key) # determins aim and crit chance %
+#   aim = 100 - (100 / [1, (who[key.to_sym])].max)
+#   chance  = 100 - aim
+#   key == :aim ? "🎯#{"%02d" % aim}%" : "💥#{"%02d" % chance}%"
 # end                       # "%02d" % adds a leading zero to single digits
 
 def percentage(who, key)
   who = who[:weapon] ? who[:weapon] : who
   chance = (who[key.to_sym] * 10).clamp(0, 100)
-  icon = key == :crit_ch ? "💥" : "🎯"
+  icon = key == :chance ? "💥" : "🎯"
   "#{icon}#{chance}%"
 end
 
@@ -67,7 +67,7 @@ end
 
 def display_bars(who)
   puts SHIELD if who[:id] == :player
-  puts "#{health_bars(who)} #{percentage(who, :accuracy)} #{percentage(who, :crit_ch)} #{stats(who, :attack)} #{stats(who, :block)}"
+  puts "#{health_bars(who)} #{percentage(who, :aim)} #{percentage(who, :chance)} #{stats(who, :attack)} #{stats(who, :block)}"
   puts "#{durability(who)}" if who[:weapon]
   puts SHIELD_EN if who[:id] == :enemy
 end

@@ -7,9 +7,9 @@ def wake_up
     hp:     100,
     attack:  10,
     block:    2,
-    accuracy: 7,
-    crit_ch:  2,
-    crit_x: 1.5,
+    aim:      7,
+    chance:   2,
+    crit:   1.5,
     cash:     0,
     drunk:    0,
     kills:    0,
@@ -19,19 +19,19 @@ end
 
 def random_enemy
   enemy = {
-    id:       :enemy,
-    name:     "#{YL}#{ENEMIES.sample}#{CL}",
-    hp:       rand(50..80),
-    attack:   rand(8..15),
-    block:    rand(1..6),
-    accuracy: rand(5..8),
-    crit_ch:  rand(5..8),
-    crit_x:   rand(1.5..2.5),
+    id:     :enemy,
+    name:   "#{YL}#{ENEMIES.sample}#{CL}",
+    hp:     rand(50..80),
+    attack: rand(8..15),
+    block:  rand(1..6),
+    aim:    rand(5..8),
+    chance: rand(5..8),
+    crit:   rand(1.5..2.5),
   }
 end
 
 def crap_factory(enemies, player)
-  buffs = [:hp, :xattack, :xblock, :xaccuracy, :xcrit_ch]
+  buffs = [:hp, :xattack, :xblock, :xaim, :xchance]
   target = [player, enemies.sample].sample
   buff = buffs.sample
 
@@ -68,18 +68,18 @@ end
 
 # Method to create a weapon
 def equip_weapon(wielder)
-  regular = ["#{YL}#{WEAPONS.sample}", 2..5,  10..20,  2..6,     5..9,     2..3,  1.5..2.0]
-  special = ["#{MG}#{SPECIAL.sample}", 3..5,  15..25,  4..10,    5..10,    2..4,  2.0..2.5]
-                                 name, uses,  attack,  block,  accuracy, crit_ch,   crit_x = rand(4) == 1 ? special : regular
+  regular = ["#{YL}#{WEAPONS.sample}", 2..5,  10..20,  2..6,  5..9,   2..3,  1.5..2.0]
+  special = ["#{MG}#{SPECIAL.sample}", 3..5,  15..25,  4..10, 5..10,  2..4,  2.0..2.5]
+                                 name, uses,  attack,  block,  aim, chance,  crit = rand(4) == 1 ? special : regular
 
   weapon = {
-    name:    "#{name}#{CL}",
-    uses:     rand(uses),
-    attack:   rand(attack),
-    block:    rand(block),
-    accuracy: rand(accuracy),
-    crit_ch:  rand(crit_ch),
-    crit_x:   rand(crit_x)
+    name:  "#{name}#{CL}",
+    uses:   rand(uses),
+    attack: rand(attack),
+    block:  rand(block),
+    aim:    rand(aim),
+    chance: rand(chance),
+    crit:   rand(crit)
   }
 
   wielder[:weapon] = weapon

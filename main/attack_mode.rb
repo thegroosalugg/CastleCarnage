@@ -25,9 +25,9 @@ def strike(enemies, hunter, target)                        # dynamic damage mult
   block  = target[:weapon] ? target[:weapon][:block] : target[:block]
   hunter[:damage] = ((source[:attack] - block) * rand(0.6..1.4)).ceil.clamp(1, 100)
 
-  if source[:accuracy] > rand(0..9)
-    if source[:crit_ch] > rand(0..9)
-      hunter[:damage] = (hunter[:damage] * source[:crit_x]).ceil.clamp(1, 100) # rounds any floating number up
+  if source[:aim] > rand(0..9)
+    if source[:chance] > rand(0..9)
+      hunter[:damage] = (hunter[:damage] * source[:crit]).ceil.clamp(1, 100) # rounds any floating number up
       shots_fired(hunter, target, :crit)
     else
       shots_fired(hunter, target, :hit)
