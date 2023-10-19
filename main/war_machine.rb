@@ -78,10 +78,9 @@ def weapon_breaks(wielder)
 end
 
 def crap_factory(wielder)
-  name =  ITEMS.sample
   item = {
-    name:  "#{BL}#{name[:name]}#{CL}",
-    shout:      "#{name[:shout]}",
+    name:  "#{GN}#{ITEMS.sample}#{CL}",
+    shout:      "#{SHOUTS.sample}",
     hp:     rand(2..8)     * [1, -1].sample,
     attack: rand(1..5)     * [1, -1].sample,
     block:  rand(1..3)     * [1, -1].sample,

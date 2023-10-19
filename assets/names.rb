@@ -38,21 +38,8 @@ DESC = [
 ]
 
 ITEMS = [
-  { name: "🍋 Lemons",              shout: "💬 Delicious!" },
-  { name: "🥛 Old Milk",            shout: "💬 Meh! Drink it anyway" },
-  { name: "🥬 Egh! Kale",           shout: "🗯️ Egh! Kale!" },
-  { name: "🍔 Mackie D's",          shout: "💬 Fucking A!" },
-  { name: "🍟 Cold Chips",          shout: "💬 What idiot left this here!" },
-  { name: "🍕 Floor Pizza",         shout: "💬 5 second rule!" },
-  { name: "🍩 Stale Donut",         shout: "💬 Fuck it" },
-  { name: "🎂 Fucking Cake",        shout: "💬 Holy shit! A fucking cake!" },
-  { name: "🍌 Mouldy Bananas",      shout: "💬 These will have to do" },
-  { name: "☕ Instant Coffee",      shout: "💬 I prefer instant!" },
-  { name: "🥞 Burnt Pancakes",      shout: "💬 I'll still eat these" },
-  { name: "🌿 Northern Lights",     shout: "💬 Sweet as!" },
-  { name: "🌭 Tinned Hot Dogs",     shout: "💬 Dinner sorted!" },
-  { name: "🔷 Heisenberg's Blue",   shout: "💬 No way! Is it back?" },
-  { name: "🥟 Questionnable Taco",  shout: "💬 Who left this 'ere?" },
-  { name: "🌶️ Really Spicy Pepper", shout: "💬 These will do!" },
-  { name: "🍗 Undercooked Chicken", shout: "💬 Too hungry to care" },
+  "🍋 Lemons", "🥛 Old Milk", "🥬 Kale", "🍔 Mackie D's", "🍟 Cold Chips",
+  "🍕 Floor Pizza", "🍩 Stale Donut", "🎂 Fucking Cake", "🍌 Mouldy Bananas",
+  "☕ Instant Coffee", "🥞 Burnt Pancakes", "🌿 Northern Lights", "🌭 Tinned Hot Dogs",
+  "🔷 Heisenberg's Blue", "🥟 Questionnable Taco", "🌶️ Really Spicy Pepper", "🍗 Undercooked Chicken"
 ]
