@@ -54,7 +54,7 @@ end
 def percentage(who, key)
   who = who[:weapon] ? who[:weapon] : who
   chance = (who[key.to_sym] * 10).clamp(0, 100)
-  icon = key == :crit_ch ? "🎯" : "💥"
+  icon = key == :crit_ch ? "💥" : "🎯"
   "#{icon}#{chance}%"
 end
 
