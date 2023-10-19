@@ -7,14 +7,13 @@ def wake_up
     hp:     100,
     attack:  10,
     block:    2,
-    accuracy: 5,
-    crit_ch: 10,
+    accuracy: 8,
+    crit_ch:  2,
     crit_x: 1.5,
     cash:     0,
     drunk:    0,
     kills:    0,
     rooms:    0,
-    pouch:    []
   }
 end
 
@@ -25,10 +24,9 @@ def random_enemy
     hp:       rand(50..80),
     attack:   rand(8..15),
     block:    rand(1..5),
-    accuracy: rand(5..10),
-    crit_ch:  rand(9..10),
+    accuracy: rand(5..8),
+    crit_ch:  rand(5..8),
     crit_x:   rand(1.5..2.5),
-    pouch:    []
   }
 end
 
@@ -39,7 +37,7 @@ def crap_factory(enemies, player)
 
   target[buff] ||= 0  # Initialize the key if it doesn't exist, then accumulate the boost
   boost = (rand(1..2) * [1, -1].sample)
-  gains = boost.positive? :item : :trap # set outcome
+  gains = boost.positive? ? :item : :trap # set outcome
   target[buff] += boost # apply boost
 
   if buff == :hp
@@ -78,9 +76,9 @@ def pick_weapon
     name:    "#{name}#{CL}",
     uses:     rand(us..5),
     attack:   rand(at..15),
-    block:    rand(bk..8),
-    accuracy: rand(-3..ac),
-    crit_ch:  rand(ch..1),
+    block:    rand(bk..5),
+    accuracy: rand(ac..5),
+    crit_ch:  rand(ch..5),
     crit_x:   rand(x..1.5)
   }
 end
