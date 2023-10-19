@@ -38,7 +38,7 @@ def strike(enemies, hunter, target)                        # dynamic damage mult
   end
 
   weapon_breaks(hunter) if hunter[:weapon]
-  graveyard(enemies, (hunter[:id] == :player ? hunter : target)) # graveyard checks for enemy deaths and collects bounty
+  graveyard(enemies, (hunter[:id] == :player ? hunter : target)) # checks for enemy deaths and collects bounty
 
   if target[:id] == :player && target[:hp] <= 0
     target[:tracking] = hunter   # if player dies tracks enemy who dealt lethal blow
@@ -50,13 +50,13 @@ end
 
 def somersault(chance, n)
   success = "#{SUCCESS} " + "⚔️ " * n
-  failed = "#{FLUNKED} " + "😓 " * n
+  failed  = "#{FLUNKED} " + "😓 " * n
 
   messages = chance == 1 ? success : failed
   puts text_break(messages, " ", 85)
 end
 
-def somersault_attack(player, enemies)   # succeed and strike twice, fail and get struck thrice
+def somersault_attack(player, enemies) # winner strikes loser 2-3 times, targets random
   chance = rand(2)
   n = rand(2..3)
   somersault(chance, n)
@@ -114,7 +114,7 @@ def bounty(hunter, target)
   invoice(hunter, 0, :bounty) # amounts hardcoded as they're static
 end
 
-def graveyard(enemies, player) # graveyard checks for enemy deaths and collects bounty
+def graveyard(enemies, player)
   enemies.reject! do |enemy|
     if enemy[:hp] <= 0  # check for enemy deaths, update counter, track last enemy for game over
       enemy_speaks(enemy, :pwned)
