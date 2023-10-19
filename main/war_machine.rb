@@ -68,14 +68,18 @@ end
 
 # Method to create a weapon
 def equip_weapon(wielder)
+  regular = ["#{YL}#{WEAPONS.sample}", 2..5,  10..20,  2..6,     5..9,     2..3,  1.5..2.0]
+  special = ["#{MG}#{SPECIAL.sample}", 3..5,  15..25,  4..10,    5..10,    2..4,  2.0..2.5]
+                                 name, uses,  attack,  block,  accuracy, crit_ch,   crit_x = rand(4) == 1 ? special : regular
+
   weapon = {
-    name:    "#{YL}#{WEAPONS.sample}#{CL}",
-    uses:     rand(2..5),
-    attack:   rand(10..20),
-    block:    rand(2..6),
-    accuracy: rand(5..9),
-    crit_ch:  rand(2..3),
-    crit_x:   rand(1.5..2.0)
+    name:    "#{name}#{CL}",
+    uses:     rand(uses),
+    attack:   rand(attack),
+    block:    rand(block),
+    accuracy: rand(accuracy),
+    crit_ch:  rand(crit_ch),
+    crit_x:   rand(crit_x)
   }
 
   wielder[:weapon] = weapon
