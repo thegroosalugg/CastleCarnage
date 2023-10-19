@@ -53,7 +53,7 @@ end
 def percentage(who, key)
   chance = (who[key.to_sym] * 10).clamp(0, 100)
   icon = key == :crit_ch ? "🎯" : "💥"
-  "#{icon}#{chance}"
+  "#{icon}#{chance}%"
 end
 
 def durability(who)
