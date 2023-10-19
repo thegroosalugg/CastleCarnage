@@ -30,22 +30,6 @@ def random_enemy
   }
 end
 
-def crap_factory(enemies, player)
-  buff   = [:hp, :xattack, :xblock, :xaim, :xchance].sample
-  target = [player,                  enemies.sample].sample
-
-  if buff == :hp
-    hp = rand(5..12) * [1, -1].sample
-    invoice(target, hp, buff)
-  else
-    target[buff] ||= 0  # Initialize the key if it doesn't exist, then accumulate the boost
-    boost = [1, -1].sample
-    item  = boost.positive? ? :item : :trap # set outcome
-    target[buff] += boost # apply boost
-    invoice(target, buff, item)
-  end
-end
-
 def room_vault
   rooms = []
 
@@ -90,5 +74,33 @@ def weapon_breaks(wielder)
   if wielder[:weapon][:uses] == 0
     weapon_speaks(wielder, wielder[:weapon][:name], :broke) if wielder[:id] == :player # don't care about enemy weapons breaking
     wielder[:weapon] = nil # delete weapon
+  end
+end
+
+def crap_factory()
+  item = {
+    name:  "#{name}#{CL}",
+    uses:   rand(uses),
+    attack: rand(attack),
+    block:  rand(block),
+    aim:    rand(aim),
+    chance: rand(chance),
+    crit:   rand(crit)
+  }
+end
+
+def crap_factory(enemies, player)
+  buff   = [:hp, :xattack, :xblock, :xaim, :xchance].sample
+  target = [player,                  enemies.sample].sample
+
+  if buff == :hp
+    hp = rand(5..12) * [1, -1].sample
+    invoice(target, hp, buff)
+  else
+    target[buff] ||= 0  # Initialize the key if it doesn't exist, then accumulate the boost
+    boost = [1, -1].sample
+    item  = boost.positive? ? :item : :trap # set outcome
+    target[buff] += boost # apply boost
+    invoice(target, buff, item)
   end
 end

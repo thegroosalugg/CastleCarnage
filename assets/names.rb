@@ -36,3 +36,23 @@ DESC = [
   "🍄 The Shroomy", "🦁 The Roaring", "🌵 The Deserted", "🤢 The Gnarly", "🏛️ The Presidential", "🔮 The Trippy", "🤮 The Minging",
   "🐒 The Cheeky", "🗣️ The Banter", "🅱️ The Bitchin'", "👻 The Haunted", "🐺 The Howling",
 ]
+
+ITEMS = [
+  { name: "🍋 Lemons",              shout: "💬 Delicious!" },
+  { name: "🥛 Old Milk",            shout: "💬 This milk is well out of date, meh, drink it anyway" },
+  { name: "🥬 Egh! Kale",           shout: "🗯️ Egh! Kale!" },
+  { name: "🍔 Mackie D's",          shout: "💬 Mackie D's! Fucking A!" },
+  { name: "🍟 Cold Chips",          shout: "💬 there's chips on the floor, 5 second rule!" },
+  { name: "🍕 Trash Pizza",         shout: "💬 Ha! What idiot left this pizza here!" },
+  { name: "🍩 Stale Donut",         shout: "💬 this got flies on it, fuck it" },
+  { name: "🎂 Fucking Cake",        shout: "💬 Holy shit! A fucking cake!" },
+  { name: "🍌 Mouldy Bananas",      shout: "💬 These mouldy bananas will have to do" },
+  { name: "☕ Instant Coffee",      shout: "💬 I prefer instant!" },
+  { name: "🥞 Burnt Pancakes",      shout: "💬 I'll still eat these" },
+  { name: "🌿 Northern Lights",     shout: "💬 Sweet as!" },
+  { name: "🌭 Tinned Hot Dogs",     shout: "💬 Dinner Sorted!" },
+  { name: "🔷 Heisenberg's Blue",   shout: "💬 WHHOA! River Dance!" },
+  { name: "🥟 Questionnable Taco",  shout: "💬 Who left this 'ere?" },
+  { name: "🌶️ Really Spicy Pepper", shout: "💬 This chilli p will give me the quick energy I need!" },
+  { name: "🍗 Undercooked Chicken", shout: "💬 Shoulda cooked this first, hungry tho" },
+]
