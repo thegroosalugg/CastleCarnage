@@ -98,6 +98,6 @@ def status(player)
 
   left = " " * 3 + "#{GN}#{wallet} #{CL}#{"💵" * [player[:cash], 0].max}" + "💷" * [0, (5 - player[:cash])].max + " " * 4 +
   "💀#{s1}#{player[:kills]}  🏰#{s2}#{player[:rooms]}"
-  puts SHIELD
+  puts STATUS_BAR
   puts "#{left}#{OR}#{drunk}#{CL} #{"🍺" * [player[:drunk], 0].max}"
 end
