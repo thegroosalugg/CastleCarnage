@@ -23,15 +23,17 @@ end
 def strike(enemies, hunter, target)                        # dynamic damage multiplier
   hunter[:damage] = ((hunter[:attack] - target[:block]) * rand(0.6..1.4)).ceil.clamp(1, 100)
 
-  if rand(1..hunter[:crit_ch]) == 1
-    hunter[:damage] = (hunter[:damage] * hunter[:crit_x]).ceil.clamp(1, 100) # rounds any floating number up
-    target[:hp] -= hunter[:damage]
-    shots_fired(hunter, target, :crit)
-  elsif rand(1..hunter[:accuracy]) == 1
-    shots_fired(hunter, target, :miss)
+  if hunter[:accuracy] > rand(0..9)
+    if hunter[:crit_ch] > rand(0..9)
+      hunter[:damage] = (hunter[:damage] * hunter[:crit_x]).ceil.clamp(1, 100) # rounds any floating number up
+      target[:hp] -= hunter[:damage]
+      shots_fired(hunter, target, :crit)
+    else
+      target[:hp] -= hunter[:damage]
+      shots_fired(hunter, target, :hit)
+    end
   else
-    target[:hp] -= hunter[:damage]
-    shots_fired(hunter, target, :hit)
+    shots_fired(hunter, target, :miss)
   end
 
   hunter[:uses] = (hunter[:uses] - 1).clamp(0, 5) if hunter[:equipped]

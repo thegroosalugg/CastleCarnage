@@ -44,11 +44,17 @@ def stats(who, stat)
   "#{icon}" + "#{square}" * full + "⬜" * empty
 end
 
-def percentage(who, key) # determins accuracy and crit chance %
-  accuracy = 100 - (100 / [1, (who[key.to_sym])].max)
-  crit_ch  = 100 - accuracy
-  key == :accuracy ? "🎯#{"%02d" % accuracy}%" : "💥#{"%02d" % crit_ch}%"
-end                       # "%02d" % adds a leading zero to single digits
+# def percentage(who, key) # determins accuracy and crit chance %
+#   accuracy = 100 - (100 / [1, (who[key.to_sym])].max)
+#   crit_ch  = 100 - accuracy
+#   key == :accuracy ? "🎯#{"%02d" % accuracy}%" : "💥#{"%02d" % crit_ch}%"
+# end                       # "%02d" % adds a leading zero to single digits
+
+def percentage(who, key)
+  chance = (who[key.to_sym] * 10).clamp(0, 100)
+  icon = key == :crit_ch ? "🎯" : "💥"
+  "#{icon}#{chance}%"
+end
 
 def durability(who)
   " " * 4 + "#{who[:equipped]}" + " " * (62 - who[:equipped].length) + "🛠️" + "🟩" * who[:uses].clamp(0, 5) + "⬜" * (5 - who[:uses]).clamp(0, 5)
