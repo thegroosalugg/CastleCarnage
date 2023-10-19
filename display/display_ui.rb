@@ -39,6 +39,7 @@ end
 
 def stats(who, stat)
   icon, square, div = stat == :attack ? ["💢", "🟧", 5] : ["🛡️", "🟦", 2]
+  who = who[:weapon] ? who[:weapon] : who
   full = (who[stat] / div).clamp(0, 5)
   empty = (5 - full)
   "#{icon}" + "#{square}" * full + "⬜" * empty
@@ -51,13 +52,15 @@ end
 # end                       # "%02d" % adds a leading zero to single digits
 
 def percentage(who, key)
+  who = who[:weapon] ? who[:weapon] : who
   chance = (who[key.to_sym] * 10).clamp(0, 100)
-  icon = key == :crit_ch ? "🎯" : "💥"
+  icon = key == :crit_ch ? "💥" : "🎯"
   "#{icon}#{chance}%"
 end
 
 def durability(who)
-  " " * 4 + "#{who[:equipped]}" + " " * (62 - who[:equipped].length) + "🛠️" + "🟩" * who[:uses].clamp(0, 5) + "⬜" * (5 - who[:uses]).clamp(0, 5)
+  " " * 4 + "#{who[:weapon][:name]}" + " " * (62 - who[:weapon][:name].length) +
+  "🛠️" + "🟩" * who[:weapon][:uses].clamp(0, 5) + "⬜" * (5 - who[:weapon][:uses]).clamp(0, 5)
 end
 
 # Display generators that combine above methods to create dynamic displays for enemy and weapon
@@ -65,7 +68,7 @@ end
 def display_bars(who)
   puts SHIELD if who[:id] == :player
   puts "#{health_bars(who)} #{percentage(who, :accuracy)} #{percentage(who, :crit_ch)} #{stats(who, :attack)} #{stats(who, :block)}"
-  puts "#{durability(who)}" if who[:equipped]
+  puts "#{durability(who)}" if who[:weapon]
   puts SHIELD_EN if who[:id] == :enemy
 end
 
@@ -95,6 +98,6 @@ def status(player)
 
   left = " " * 3 + "#{GN}#{wallet} #{CL}#{"💵" * [player[:cash], 0].max}" + "💷" * [0, (5 - player[:cash])].max + " " * 4 +
   "💀#{s1}#{player[:kills]}  🏰#{s2}#{player[:rooms]}"
-  puts SHIELD
+  puts STATUS_BAR
   puts "#{left}#{OR}#{drunk}#{CL} #{"🍺" * [player[:drunk], 0].max}"
 end

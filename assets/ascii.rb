@@ -30,10 +30,12 @@ ICONS = [
   '→', '←', '⇽', '⇻', '⇏', '⇎', '⇄', '≉', '↤', '↝', '↜', '⋘', '⋙',
   ]
 
-BARRIER    =          "#{ML}#{ICONS.sample}#{CL}" * 80
-BARRIER_EN =          "#{RD}#{ICONS.sample}#{CL}" * 80
-SHIELD     = " " *4 + "#{ML}#{ICONS.sample}#{CL}" * 72
-SHIELD_EN  = " " *4 + "#{RD}#{ICONS.sample}#{CL}" * 72
+BARRIER    =           "#{ML}#{ICONS.sample}#{CL}" * 80
+BARRIER_EN =           "#{RD}#{ICONS.sample}#{CL}" * 80
+SHIELD     = " " * 4 + "#{ML}#{ICONS.sample}#{CL}" * 72
+SHIELD_EN  = " " * 4 + "#{RD}#{ICONS.sample}#{CL}" * 72
+STATUS_BAR = " " * 4 + "#{ML}#{ICONS.sample}#{CL}" * 17 + " " * 37 + "#{ML}#{ICONS.sample}#{CL}" * 18 + " " * 4
+# STATUS_BAR = " " * 4 + "#{ML}#{ICONS.sample}#{CL}" * 27 + " " * 16 + "#{ML}#{ICONS.sample}#{CL}" * 29 + " " * 4
 
 MENU_HEADER = " " * 2 + "#{ML}T̿̽̈́H͛̾͌É͌R͋̔̈́E̽͌͑ C͆̔͌A̾͋͝N̿̐͝ B̔̒͛Ë́͠ O̿͊͘N̕̕͠L͆̾̾Y̒͝ O͑͆̒N͆͋͛E͆͛̈́.͐͝͝.̓͋̈́.́̐́#{CL}"
 
