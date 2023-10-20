@@ -13,7 +13,6 @@ def play_game(player)
   game_info(enemies, player)
 
   while !enemies.empty? && player[:hp].positive?
-    player[:land] = { id: :move, art: BATTLEFIELD.sample }
     load_menu
     player[:choice] = gets.chomp.downcase # choice is passed as an argument to cheat menu
 
@@ -32,6 +31,7 @@ def play_game(player)
       error(:input)
     end
 
+    player[:land] = { id: :move, art: BATTLEFIELD.sample }
     cheat_mode(player, enemies) # DEBUG CHEAT MENU
     graveyard(enemies, player)
     game_info(enemies, player)
