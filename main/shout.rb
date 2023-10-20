@@ -4,7 +4,7 @@
 def shout(who, what) # controls all messages in the game except for combat
   tag = (who[:id] == :player ? (what == :got ? WEAPON : ITEM ) : THIEF)
   size, messages = case what
-  when :name     then [ 90, ERRORS.sample       + " " +    WRONG]
+  when :name     then [ 85, ERRORS.sample       + " " +    WRONG]
   when :intro    then [ 60,[who[:tracks][:name] + " " + INTRO_SHOUT.sample, who[:name] + " " + INTRO_CALLBACK.sample].join("\n")]
   when :outro    then [ 80, who[:tracks][:name] + " " +   (who[:hp].positive? ? WIN_SHOUT :       LOSE_SHOUT).sample]
   when :escape   then [ 80, who[:name]        +" 💬 "+ RUN_SHOUT.sample]
