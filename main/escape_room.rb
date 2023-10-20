@@ -3,7 +3,7 @@
 
 def escape_room(enemies, player)
   choice = 0
-  rooms = room_vault
+  rooms  = room_vault
   player[:land] = { id: :room, art: ROOM_SERVICE.sample }
   shout(player, :escape)
   game_info(enemies, player)
@@ -19,10 +19,10 @@ def escape_room(enemies, player)
   end
 
   print `clear`
-  player[:room] = rooms[choice - 4]
+  player[:room]   = rooms[choice - 4]
   player[:rooms] += 1
-  player[:roll] = player[:room][:chance].sample
-  target = [player, enemies.sample].sample
+  player[:roll]   = player[:room][:chance].sample
+  target          = [player, enemies.sample].sample
   shout(player, :room)
 
   case player[:roll]

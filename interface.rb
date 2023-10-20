@@ -8,15 +8,14 @@ def play_game(player)
   enemies = []
   3.times { enemies << random_enemy }
   player[:tracking] = enemies.sample
-
   shout(player, :intro)
   game_info(enemies, player)
 
   while !enemies.empty? && player[:hp].positive?
     load_menu
     player[:choice] = gets.chomp.downcase # choice is passed as an argument to cheat menu
-    print `clear`
 
+    print `clear`
     case player[:choice]
     when "t" then mortal_kombat(enemies, player)
     when "r" then somersault(player, enemies)
