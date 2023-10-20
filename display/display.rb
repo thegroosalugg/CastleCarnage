@@ -25,7 +25,7 @@ end                        # \n represents line break when concatenating strings
 # UI Elements for Health, Attack, Block, Aim and Crit Chance for any entity
 def health_bars(who) # random emoji assigner for every entity
   emojis = ["❤️", "🧡", "💛", "💚", "💙", "💜", "❣️", "💕", "💞", "💓", "💗", "💖", "💘", "💝"]
-  n = who[:id] == :player ? 20 : 16
+  n = who[:id] == :player ? 20 : 10
 
   who[:emoji] ||= emojis.sample # Assigns an emoji only if the value is nil.
   full  = ((who[:hp] - 1) / n + 1).clamp(0, 5)

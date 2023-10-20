@@ -1,7 +1,7 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-def load_menu
+def load_menu(player)
   t = [
     " Strike first! Strike hard! No mercy!",
     " Punch 'em in their stupid ugly face",
@@ -31,7 +31,7 @@ def load_menu
 
   puts " " * 27 + "#{ML}𝕎ℍ𝔸𝕋ℂℍ𝔸 𝔾𝕆ℕℕ𝔸 𝔻𝕆❔#{CL}"
   puts " " * 20 + "🥷 #{RD}[̼̟̞T͍̦͔]̻̟͜#{t.sample}#{CL}"
-  puts " " * 20 + "🐬 #{OR}[͌̈́͘R͌̈́͆]͋͑͠#{r.sample}#{CL}"
+  puts " " * 20 + "🐬 #{OR}[͌̈́͘R͌̈́͆]͋͑͠#{r.sample}#{CL}" if player[:weapon] && player[:weapon][:bonus] == :somersault
   puts " " * 20 + "💨 #{YL}[̻͓͜Y͖͖̘]̫̼͚#{y.sample}#{CL}"
   puts BARRIER
 end

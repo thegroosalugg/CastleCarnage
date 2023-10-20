@@ -12,13 +12,13 @@ def play_game(player)
   game_info(enemies, player)
 
   while !enemies.empty? && player[:hp].positive?
-    load_menu
+    load_menu(player)
     player[:choice] = gets.chomp.downcase # choice is passed as an argument to cheat menu
 
     print `clear`
     case player[:choice]
     when "t" then mortal_kombat(enemies, player)
-    when "r" then somersault(enemies, player)
+    when "r" then player[:weapon] && player[:weapon][:bonus] == :somersault ? somersault(enemies, player) : shout(player, :error)
     when "y" then escape_room(enemies, player)
     else shout(player, :error)
     end

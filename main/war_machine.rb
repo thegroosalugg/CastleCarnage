@@ -21,17 +21,17 @@ def random_enemy
   enemy = {
     id:     :enemy,
     name:   "#{YL}#{ENEMIES.sample}#{CL}",
-    hp:     rand(50..80),
+    hp:     rand(30..50),
     attack: rand(8..15),
     block:  rand(1..6),
-    aim:    rand(5..8),
-    chance: rand(5..8),
+    aim:    rand(6..8),
+    chance: rand(2..6),
     crit:   rand(1.5..2.5).round(1),
   }
 end
 
 def spawn_enemy(enemies, player)
-  if enemies.length < 5
+  if enemies.length < 4
     enemies << random_enemy
     shout(enemies[-1], :summon)
   else
@@ -59,9 +59,10 @@ def room_vault
 end
 
 def weapon_wakes(wielder)
-  regular = ["#{YL}#{WEAPONS.sample}", 2..5, 10..20, 2..6,  5..9,   2..3, 1.5..2.0]
-  special = ["#{MG}#{SPECIAL.sample}", 3..5, 15..25, 4..10, 5..10,  2..4, 2.0..2.5]
+  regular = ["#{YL}#{WEAPONS.sample}", 2..5, 10..20, 2..6,  6..9,   2..4, 1.6..2.0]
+  special = ["#{MG}#{SPECIAL.sample}", 3..5, 15..25, 4..10, 6..10,  2..5, 2.0..2.5]
                                  name, uses, attack, block,   aim, chance, crit = rand(4) == 1 ? special : regular
+   bonus = rand(2) == 1 ? [:somersault].sample : ""
 
   weapon = {
     name:  "#{name}#{CL}",
@@ -70,7 +71,8 @@ def weapon_wakes(wielder)
     block:  rand(block),
     aim:    rand(aim),
     chance: rand(chance),
-    crit:   rand(crit).round(1)
+    crit:   rand(crit).round(1),
+    bonus:  bonus
   }
 
   wielder[:weapon] = weapon
