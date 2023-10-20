@@ -41,7 +41,7 @@ def strike(enemies, hunter, target)
   graveyard(enemies, (hunter[:id] == :player ? hunter : target)) # checks for enemy deaths and collects bounty
 
   if target[:id] == :player && target[:hp] <= 0
-    target[:tracking] = hunter   # if player dies tracks enemy who dealt lethal blow
+    target[:tracks] = hunter   # if player dies tracks enemy who dealt lethal blow
     shout(target, :pwned) # sends same pwned message to the player
   end
 end
@@ -98,10 +98,10 @@ def surprise(enemies, player) # surprise attack
 end
 
 def bounty(hunter, target)
-  hunter[:tracking] = target
-  hunter[:kills]   += 1
-  hunter[:cash]     = (hunter[:cash] + 1).clamp(0, 5)
-  hunter[:hp]       = (hunter[:hp] + 10).clamp(0, 150)
+  hunter[:tracks] = target
+  hunter[:kills] += 1
+  hunter[:cash]   = (hunter[:cash] + 1).clamp(0, 5)
+  hunter[:hp]     = (hunter[:hp] + 10).clamp(0, 150)
   shout(hunter, :bounty) # amounts hardcoded as they're static
 end
 
@@ -115,5 +115,5 @@ def graveyard(enemies, player)
       false  # This will keep the enemy in the array
     end
   end # Player dies and last enemy is tracked if current tracked enemy is already dead
-  player[:tracking] = enemies.sample if player[:hp] <= 0 && player[:tracking][:hp] <= 0
+  player[:tracks] = enemies.sample if player[:hp] <= 0 && player[:tracks][:hp] <= 0
 end

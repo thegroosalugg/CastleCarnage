@@ -21,7 +21,7 @@ def cheat_mode(player, enemies)
   when "b" then  weapon_wakes(enemies.sample)
   when "p" then    cheat_menu(enemies, player)
   when ","
-    player.each { |key, value| puts  " " * 30 + "#{BL}#{key}:" + " " * (9 - key.length) + "#{value}#{CL}" unless [:land, :tracking].include?(key) }
+    player.each { |key, value| puts  " " * 30 + "#{BL}#{key}:" + " " * (9 - key.length) + "#{value}#{CL}" unless [:land, :tracks].include?(key) }
     gets
     print `clear`
   when "m"

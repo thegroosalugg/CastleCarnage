@@ -7,7 +7,7 @@ def play_game(player)
   name_player(player)
   enemies = []
   3.times { enemies << random_enemy }
-  player[:tracking] = enemies.sample
+  player[:tracks] = enemies.sample
   shout(player, :intro)
   game_info(enemies, player)
 
