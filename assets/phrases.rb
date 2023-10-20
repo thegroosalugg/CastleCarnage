@@ -37,7 +37,7 @@ SPAWN_SHOUT = [
   "sprung out the fridge 🧊, they coming right for ya!", "has an order for bloodshed!", "💬 Reporting for duty",
 ]
 RUN_SHOUT = [
-  "Dammit, gotta dash to a gaff quick, or I'm food!", "Those bastards are right behing me, leeegg it!", "Damn, them a wasteman, time to scram!",
+  "Dammit, gotta dash to a gaff quick, or I'm food!", "Those bastards are right behing me, leeegg it!", "Damn, them wasteman, time to scram!",
   "Where's a Mackie D's when you need one?", "Shit shit shit shit! Bloody cheese it!", "Bloody hell, what's with this place?",
 ]
 SURPRISE_SHOUT = [

@@ -39,8 +39,8 @@ end
 
 def stats(who, stat)
   icon, square, div = stat == :attack ? ["💢", "🟧", 5] : ["🛡️", "🟦", 2]
-  who = who[:weapon] ? who[:weapon] : who
-  full = (who[stat] / div).clamp(0, 5)
+  who   = who[:weapon] ? who[:weapon] : who
+  full  = (who[stat] / div).clamp(0, 5)
   empty = (5 - full)
   "#{icon}" + "#{square}" * full + "⬜" * empty
 end
@@ -59,8 +59,9 @@ def percentage(who, key)
 end
 
 def durability(who)
-  " " * 4 + "#{who[:weapon][:name]}" + " " * (62 - who[:weapon][:name].length) +
-  "🛠️" + "🟩" * who[:weapon][:uses].clamp(0, 5) + "⬜" * (5 - who[:weapon][:uses]).clamp(0, 5)
+    " " * 4 + "#{who[:weapon][:name]}" + " " * (62 - who[:weapon][:name].length) +
+  "🛠️" + "🟩" * who[:weapon][:uses].clamp(0, 5) +
+        + "⬜" * (5 - who[:weapon][:uses]).clamp(0, 5)
 end
 
 # Display generators that combine above methods to create dynamic displays for enemy and weapon

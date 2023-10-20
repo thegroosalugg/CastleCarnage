@@ -14,8 +14,7 @@ def padding_generator(message, char, size)
   "#{padding} #{message} #{padding}"
 end
 
-# Added ChatGPT version of text_break. ASCII/ANSI tags were impelemented late during development
-# Their use didn't created invisble characters the original added to the count. Find original in graveyard
+# text break methods to align all messages
 
 def text_break(message, char, size)
   lines = []
