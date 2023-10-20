@@ -17,8 +17,8 @@ def cheat_mode(player, enemies)
   when "v" then player[:rooms] +=   1
   when "h" then player[:weapon][:uses ] += 1 if player[:weapon]
   when "j" then weapon_breaks(player) if player[:weapon]
-  when "n" then  equip_weapon(player)
-  when "b" then  equip_weapon(enemies.sample)
+  when "n" then  weapon_wakes(player)
+  when "b" then  weapon_wakes(enemies.sample)
   when "p" then    cheat_menu(enemies, player)
   when ","
     player.each { |key, value| puts  " " * 30 + "#{BL}#{key}:" + " " * (9 - key.length) + "#{value}#{CL}" unless [:land, :tracking].include?(key) }
@@ -41,16 +41,16 @@ def cheat_menu(enemies, player)
     { code: ',', description: "#{player[:name]} 📒" },
     { code: 'n', description: "#{player[:name]} #{WEAPON}" },
     { code: 'j', description: "#{player[:name]} 🔪#{BROKE}" },
-    { code: 'x', description: "#{player[:name]} -1💵" },
-    { code: 'c', description: "#{player[:name]} +1💵" },
-    { code: 'f', description: "#{player[:name]} -1🍺" },
-    { code: 'd', description: "#{player[:name]} +1🍺" },
-    { code: 'g', description: "#{player[:name]} +1💀" },
-    { code: 'v', description: "#{player[:name]} +1🏰" },
-    { code: 'h', description: "#{player[:name]} +1🛠️" },
-    { code: ';', description: "#{player[:name]} +100#{player[:emoji]}" },
-    { code: '/', description: "#{player[:name]} -50#{player[:emoji]}" },
-    { code: '.', description: "#{enemies.first[:name]} -25#{enemies.first[:emoji]}" },
+    { code: 'x', description: "#{player[:name]} -1 💵" },
+    { code: 'c', description: "#{player[:name]} +1 💵" },
+    { code: 'f', description: "#{player[:name]} -1 🍺" },
+    { code: 'd', description: "#{player[:name]} +1 🍺" },
+    { code: 'g', description: "#{player[:name]} +1 💀" },
+    { code: 'v', description: "#{player[:name]} +1 🏰" },
+    { code: 'h', description: "#{player[:name]} +1 🛠️" },
+    { code: ';', description: "#{player[:name]} +100 #{player[:emoji]}" },
+    { code: '/', description: "#{player[:name]} -50 #{player[:emoji]}" },
+    { code: '.', description: "#{enemies.first[:name]} -25 #{enemies.first[:emoji]}" },
     { code: 'b', description: "#{enemies.first[:name]} #{WEAPON}" },
     { code: 'l', description: "#{enemies.map { |enemy| enemy[:name] }.join(' ')} << 🙈 #{YL}Random#{CL}" },
     { code: 'm', description: "#{enemies.map { |enemy| enemy[:name] }.join(' ')} 📒" },

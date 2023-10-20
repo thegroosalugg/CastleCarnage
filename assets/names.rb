@@ -36,3 +36,10 @@ DESC = [
   "🍄 The Shroomy", "🦁 The Roaring", "🌵 The Deserted", "🤢 The Gnarly", "🏛️ The Presidential", "🔮 The Trippy", "🤮 The Minging",
   "🐒 The Cheeky", "🗣️ The Banter", "🅱️ The Bitchin'", "👻 The Haunted", "🐺 The Howling",
 ]
+
+ITEMS = [
+  "🍋 Lemons", "🥛 Old Milk", "🥬 Kale", "🍔 Mackie D's", "🍟 Cold Chips",
+  "🍕 Floor Pizza", "🍩 Stale Donut", "🎂 Fucking Cake", "🍌 Mouldy Bananas",
+  "☕ Instant Coffee", "🥞 Burnt Pancakes", "🌿 Northern Lights", "🌭 Tinned Hot Dogs",
+  "🔷 Heisenberg's Blue", "🥟 Questionnable Taco", "🌶️ Really Spicy Pepper", "🍗 Undercooked Chicken"
+]

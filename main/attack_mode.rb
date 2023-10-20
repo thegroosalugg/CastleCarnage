@@ -111,7 +111,7 @@ def bounty(hunter, target)
   hunter[:hp] = (hunter[:hp] + 10).clamp(0, 150)
   hunter[:cash] = (hunter[:cash] + 1).clamp(0, 5)
   hunter[:tracking] = target
-  invoice(hunter, 0, :bounty) # amounts hardcoded as they're static
+  invoice(hunter, :bounty) # amounts hardcoded as they're static
 end
 
 def graveyard(enemies, player)
