@@ -42,7 +42,7 @@ def strike(enemies, hunter, target)                        # dynamic damage mult
 
   if target[:id] == :player && target[:hp] <= 0
     target[:tracking] = hunter   # if player dies tracks enemy who dealt lethal blow
-    invoice(target, :pwned) # sends same pwned message to the player
+    shout(target, :pwned) # sends same pwned message to the player
   end
 end
 
@@ -51,7 +51,7 @@ end
 def somersault_attack(player, enemies) # winner strikes loser 2-3 times, targets random
   player[:flip] = rand(2)
   player[:roll] = rand(2..3)
-  invoice(player, :bounce)
+  shout(player, :bounce)
   player[:flip] == 1 ? player[:roll].times { strike(enemies, player, enemies.sample ) unless enemies.empty? } : player[:roll].times { strike(enemies, enemies.sample, player) }
 end
 
@@ -77,7 +77,7 @@ def mortal_kombat(enemies, player)
       surprise(enemies, player, :combat) unless enemies.empty? || player[:hp] <= 0 # random attack on player possible
       break
     else
-      invoice(player, :error)
+      shout(player, :error)
     end
   end
 end
@@ -86,11 +86,11 @@ end
 
 def surprise(enemies, player, event) # surprise attack
   target = enemies.sample
-  invoice(player, :escape) if event == :escape # only when exploring rooms
+  shout(player, :escape) if event == :escape # only when exploring rooms
   if rand(4) == 1
-    invoice(target, :surprise)
+    shout(target, :surprise)
     if rand(3) == 1
-      invoice(player, :counter)
+      shout(player, :counter)
       strike(enemies, player, target)
     else
       strike(enemies, target, player)
@@ -103,13 +103,13 @@ def bounty(hunter, target)
   hunter[:kills]   += 1
   hunter[:cash]     = (hunter[:cash] + 1).clamp(0, 5)
   hunter[:hp]       = (hunter[:hp] + 10).clamp(0, 150)
-  invoice(hunter, :bounty) # amounts hardcoded as they're static
+  shout(hunter, :bounty) # amounts hardcoded as they're static
 end
 
 def graveyard(enemies, player)
   enemies.reject! do |enemy|
     if enemy[:hp] <= 0  # check for enemy deaths, update counter, track last enemy for game over
-      invoice(enemy, :pwned)
+      shout(enemy, :pwned)
       bounty(player, enemy)
       true  # This will remove the enemy from the array
     else

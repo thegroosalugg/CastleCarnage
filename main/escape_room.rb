@@ -13,13 +13,13 @@ def explore_rooms(enemies, player)
     puts BARRIER
 
     choice = gets.chomp.to_i
-    invoice(player, :error)    unless (4..7).include?(choice)
+    shout(player, :error)    unless (4..7).include?(choice)
     game_info(enemies, player) unless (4..7).include?(choice)
   end
 
   print `clear`
   room = rooms[choice - 4]
-  invoice([player, room], :room)
+  shout([player, room], :room)
   player[:rooms] += 1
   gift = room[:chance].sample
   target = [player, enemies.sample].sample
@@ -30,7 +30,7 @@ def explore_rooms(enemies, player)
   when 3 # New enemy spawns in empty slot
     if enemies.length < 5
       enemies << random_enemy
-      invoice(enemies[-1], :summon)
+      shout(enemies[-1], :summon)
     else
       weapon_wakes(player)
     end

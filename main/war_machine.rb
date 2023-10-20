@@ -65,13 +65,13 @@ def weapon_wakes(wielder)
   }
 
   wielder[:weapon] = weapon
-  invoice(wielder, :got)
+  shout(wielder, :got)
 end
 
 def weapon_breaks(wielder)
   wielder[:weapon][:uses] = (wielder[:weapon][:uses] - 1)
   if wielder[:weapon][:uses] == 0
-    invoice(wielder, :broke)
+    shout(wielder, :broke)
     wielder[:weapon] = nil
   end
 end
@@ -88,5 +88,5 @@ def crap_factory(wielder)
   }
 
   wielder[:item] = item
-  invoice(wielder, :item)
+  shout(wielder, :item)
 end

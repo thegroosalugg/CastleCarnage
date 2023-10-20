@@ -24,7 +24,7 @@ def play_game(player)
       surprise(enemies, player, :escape)
       explore_rooms(enemies, player) unless player[:hp] <= 0
     else
-      invoice(player, :error)
+      shout(player, :error)
     end
 
     player[:land] = { id: :move, art: BATTLEFIELD.sample }
@@ -54,7 +54,7 @@ loop do
     elsif choice == "y"
       break # Restart the game
     # else
-    # invoice(player, :error)
+    # shout(player, :error)
   end
   end
 end
