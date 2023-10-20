@@ -48,19 +48,11 @@ end
 
 # Sommersault attack
 
-def somersault(chance, n)
-  success = "#{SUCCESS} " + "⚔️ " * n
-  failed  = "#{FLUNKED} " + "😓 " * n
-
-  messages = chance == 1 ? success : failed
-  puts text_break(messages, " ", 85)
-end
-
 def somersault_attack(player, enemies) # winner strikes loser 2-3 times, targets random
-  chance = rand(2)
-  n = rand(2..3)
-  somersault(chance, n)
-  chance == 1 ? n.times { strike(enemies, player, enemies.sample ) unless enemies.empty? } : n.times { strike(enemies, enemies.sample, player) }
+  player[:flip] = rand(2)
+  player[:roll] = rand(2..3)
+  invoice(player, :bounce)
+  player[:flip] == 1 ? player[:roll].times { strike(enemies, player, enemies.sample ) unless enemies.empty? } : player[:roll].times { strike(enemies, enemies.sample, player) }
 end
 
 # Main game combat

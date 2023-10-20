@@ -2,7 +2,7 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 def invoice(who, what) # controls all messages in the game except for combat
-  tag = (who[:id] == :player ? (what == :got ? WEAPON : ITEM ) : THIEF) unless what == :room
+  tag = (who[:id] == :player ? (what == :got ? WEAPON : ITEM ) : THIEF) unless what == :room # room passes an array of 2 hashes instead of 1 hash
   size, messages = case what
   when :escape   then [ 80, who[:name]    +" 💬 "+   RUN_SHOUT.sample]
   when :room     then [ 80, who[0][:name] +" 💬 "+   ROOM_SHOUT.sample + " " + who[1][:name]]
@@ -15,6 +15,7 @@ def invoice(who, what) # controls all messages in the game except for combat
   when :surprise then [100, SURPRISE + " " + who[:name] +         SURPRISE_SHOUT.sample]
   when :pwned    then [100, PWNED    + " " + who[:name] +            PWNED_SHOUT.sample]
   when :counter  then [100, COUNTER  + " " + who[:name] +" 🗯️ "+   COUNTER_SHOUT.sample]
+  when :bounce   then [ 85, who[:flip]  == 1 ? "#{SUCCESS} "   + "⚔️ " * who[:roll] : "#{FLUNKED} " + "😓 " * who[:roll]]
   end
   print `clear` if what == :error
   puts text_break(messages, " ", size)
