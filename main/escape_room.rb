@@ -18,13 +18,13 @@ def explore_rooms(enemies, player)
   end
 
   print `clear`
-  room = rooms[choice - 4]
-  shout([player, room], :room)
+  player[:room] = rooms[choice - 4]
   player[:rooms] += 1
-  gift = room[:chance].sample
+  player[:roll] = player[:room][:chance].sample
   target = [player, enemies.sample].sample
+  shout(player, :room)
 
-  case gift
+  case player[:roll]
   when 1 then crap_factory(target)
   when 2 then weapon_wakes(target)
   when 3 # New enemy spawns in empty slot
