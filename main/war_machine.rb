@@ -51,9 +51,9 @@ end
 
 # Method to create a weapon
 def weapon_wakes(wielder)
-  regular = ["#{YL}#{WEAPONS.sample}", 2..5,  10..20,  2..6,  5..9,   2..3,  1.5..2.0]
-  special = ["#{MG}#{SPECIAL.sample}", 3..5,  15..25,  4..10, 5..10,  2..4,  2.0..2.5]
-                                 name, uses,  attack,  block,  aim, chance,  crit = rand(4) == 1 ? special : regular
+  regular = ["#{YL}#{WEAPONS.sample}", 2..5, 10..20, 2..6,  5..9,   2..3, 1.5..2.0]
+  special = ["#{MG}#{SPECIAL.sample}", 3..5, 15..25, 4..10, 5..10,  2..4, 2.0..2.5]
+                                 name, uses, attack, block,   aim, chance, crit = rand(4) == 1 ? special : regular
 
   weapon = {
     name:  "#{name}#{CL}",
