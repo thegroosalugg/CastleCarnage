@@ -30,6 +30,15 @@ def random_enemy
   }
 end
 
+def spawn_enemy(enemies, player)
+  if enemies.length < 5
+    enemies << random_enemy
+    shout(enemies[-1], :summon)
+  else
+    weapon_wakes(player)
+  end
+end
+
 def room_vault
   rooms = []
 
