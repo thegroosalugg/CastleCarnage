@@ -20,6 +20,7 @@ def shout(who, what) # controls all messages in the game except for combat
   when :error    then [ 90, WRONG    + " " + who[:name] +" 🗯️ "+          ERRORS.sample]
   when :counter  then [100, COUNTER  + " " + who[:name] +" 🗯️ "+   COUNTER_SHOUT.sample]
   when :combat   then [100, COMBAT   + " " + who[:name] +" 🗯️ "+    COMBAT_SHOUT.sample]
+  when :used     then [ 80, "#{who[:name]} 🥄#{who[:item][:name]} #{who[:item][:hp]} #{who[:item][:attack]} #{who[:item][:aim]} #{who[:item][:chance]} #{who[:item][:crit].round(1)}"]
   end
   print `clear` if [:name, :error].include?(what)
   puts text_break(messages, " ", size)

@@ -21,21 +21,22 @@ def shots_fired(hunter, target, shot)
 end
 
 def load_ammo(hunter)
-  source = hunter[:weapon] ? hunter[:weapon] : hunter
-  if hunter[:item]
+  source = hunter[:weapon] ? hunter[:weapon] : hunter # assigns unarmed or weapon as combat source
+  if hunter[:item] # if item exists, all of the source's stats is added to item's stats except HP
+    shout(hunter, :used) # item stats declared before any calculations affect it
     source.each do |key, value|
       if hunter[:item].key?(key)
         hunter[:item][key] += value unless key == :hp
       end
     end
-    source       = hunter[:item]
-    hunter[:hp] += hunter[:item][:hp]
+    source       = hunter[:item] # source becomes item for strike, as we do not want to alter wielder/weapon stats
+    hunter[:hp] += hunter[:item][:hp] # HP adds separately
   end
   return source
 end
 
 def strike(enemies, hunter, target)
-  source = load_ammo(hunter)
+  source = load_ammo(hunter) # check for items and weapons
   block  = target[:weapon] ? target[:weapon][:block] : target[:block]
   hunter[:damage] = ((source[:attack] - block) * rand(0.6..1.4)).ceil.clamp(1, 100) # dynamic damage multiplier
 
@@ -53,6 +54,7 @@ def strike(enemies, hunter, target)
 
   weapon_breaks(hunter) if hunter[:weapon]
   graveyard(enemies, (hunter[:id] == :player ? hunter : target)) # checks for enemy deaths and collects bounty
+  hunter[:item] = nil # item is used up and destroyed
 
   if target[:id] == :player && target[:hp] <= 0
     target[:tracks] = hunter   # if player dies tracks enemy who dealt lethal blow
@@ -109,7 +111,7 @@ def surprise(enemies, player) # surprise attack
   end
 end
 
-def bounty(hunter, target) # collect bounty 
+def bounty(hunter, target) # collect bounty
   hunter[:tracks] = target
   hunter[:kills] += 1
   hunter[:cash]   = (hunter[:cash] + 1).clamp(0, 5)
