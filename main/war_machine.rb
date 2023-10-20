@@ -62,7 +62,7 @@ def weapon_wakes(wielder)
   regular = ["#{YL}#{WEAPONS.sample}", 2..5, 10..20, 2..6,  6..9,   2..4, 1.6..2.0]
   special = ["#{MG}#{SPECIAL.sample}", 3..5, 15..25, 4..10, 6..10,  2..5, 2.0..2.5]
                                  name, uses, attack, block,   aim, chance, crit = rand(4) == 1 ? special : regular
-   bonus = rand(2) == 1 ? [:somersault].sample : ""
+   bonus = rand(2) == 1 ? [:somersault, :gambler, :stylish, :psychic].sample : ""
 
   weapon = {
     name:  "#{name}#{CL}",

@@ -51,9 +51,9 @@ def percentage(who, key) # aim and crit %
 end
 
 def durability(who) # weapon durability
-  " "  * 4 + "#{who[:weapon][:name]}"          + " " * (62 - who[:weapon][:name].length) + "🛠️" +
+  " "  * 4 + "#{who[:weapon][:name]}"          + " " * (49 - who[:weapon][:name].length) + "🛠️" +
   "🟩" *       who[:weapon][:uses].clamp(0, 5) +
-  "⬜" * (5 - who[:weapon][:uses]).clamp(0, 5)
+  "⬜" * (5 - who[:weapon][:uses]).clamp(0, 5) + " " * 3 + "#{ATTACKS[who[:weapon][:bonus]]}"
 end
 
 def status(player) # Dynamic status for player cash & drunkness
