@@ -25,7 +25,7 @@ end                        # \n represents line break when concatenating strings
 # UI Elements for Health, Attack, Block, Aim and Crit Chance for any entity
 def health_bars(who) # random emoji assigner for every entity
   emojis = ["❤️", "🧡", "💛", "💚", "💙", "💜", "❣️", "💕", "💞", "💓", "💗", "💖", "💘", "💝"]
-  n = who[:id] == :player ? 20 : 16
+  n = who[:id] == :player ? 20 : 10
 
   who[:emoji] ||= emojis.sample # Assigns an emoji only if the value is nil.
   full  = ((who[:hp] - 1) / n + 1).clamp(0, 5)
@@ -51,9 +51,9 @@ def percentage(who, key) # aim and crit %
 end
 
 def durability(who) # weapon durability
-  " "  * 4 + "#{who[:weapon][:name]}"          + " " * (62 - who[:weapon][:name].length) + "🛠️" +
+  " "  * 4 + "#{who[:weapon][:name]}"          + " " * (49 - who[:weapon][:name].length) + "🛠️" +
   "🟩" *       who[:weapon][:uses].clamp(0, 5) +
-  "⬜" * (5 - who[:weapon][:uses]).clamp(0, 5)
+  "⬜" * (5 - who[:weapon][:uses]).clamp(0, 5) + " " * 3 + "#{ATTACKS[who[:weapon][:bonus]]}"
 end
 
 def status(player) # Dynamic status for player cash & drunkness
