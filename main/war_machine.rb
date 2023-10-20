@@ -80,7 +80,7 @@ end
 def crap_factory(wielder)
   item = {
     name:  "#{GN}#{ITEMS.sample}#{CL}",
-    shout:     "#{SHOUTS.sample}",
+    shout:     "#{ITEM_SHOUT.sample}",
     hp:     rand(2..8)     * [1, -1].sample,
     attack: rand(1..5)     * [1, -1].sample,
     block:  rand(1..3)     * [1, -1].sample,

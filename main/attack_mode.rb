@@ -42,7 +42,7 @@ def strike(enemies, hunter, target)                        # dynamic damage mult
 
   if target[:id] == :player && target[:hp] <= 0
     target[:tracking] = hunter   # if player dies tracks enemy who dealt lethal blow
-    enemy_speaks(target, :pwned) # sends same pwned message to the player
+    invoice(target, :pwned) # sends same pwned message to the player
   end
 end
 
@@ -94,11 +94,11 @@ end
 
 def surprise(enemies, player, event) # surprise attack
   target_enemy = enemies.sample
-  enemy_speaks(target_enemy, :escape) if event == :escape # only when exploring rooms
+  invoice(target_enemy, :escape) if event == :escape # only when exploring rooms
   if rand(4) == 1
-    enemy_speaks(target_enemy, :surprise)
+    invoice(target_enemy, :surprise)
     if rand(3) == 1
-      enemy_speaks(player, :counter)
+      invoice(player, :counter)
       strike(enemies, player, target_enemy)
     else
       strike(enemies, target_enemy, player)
@@ -117,7 +117,7 @@ end
 def graveyard(enemies, player)
   enemies.reject! do |enemy|
     if enemy[:hp] <= 0  # check for enemy deaths, update counter, track last enemy for game over
-      enemy_speaks(enemy, :pwned)
+      invoice(enemy, :pwned)
       bounty(player, enemy)
       true  # This will remove the enemy from the array
     else

@@ -21,7 +21,7 @@ def explore_rooms(enemies, player)
   room = rooms[choice - 4]
   enter_room(room)
   player[:rooms] += 1
-  gift = 1#room[:chance].sample
+  gift = room[:chance].sample
   target = [player, enemies.sample].sample
 
   case gift
@@ -32,7 +32,7 @@ def explore_rooms(enemies, player)
   when 3 # New enemy spawns in empty slot
     if enemies.length < 5
       enemies << random_enemy
-      enemy_speaks(enemies[-1], :summon)
+      invoice(enemies[-1], :summon)
     else
       weapon_wakes(player)
     end
