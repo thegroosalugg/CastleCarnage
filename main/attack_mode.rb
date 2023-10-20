@@ -28,6 +28,8 @@ def load_ammo(hunter)
         hunter[:item][key] += value unless key == :hp
       end
     end
+    source       = hunter[:item]
+    hunter[:hp] += hunter[:item][:hp]
   end
   return source
 end
@@ -94,8 +96,6 @@ def mortal_kombat(enemies, player)
   end
 end
 
-# activates when exploring rooms
-
 def surprise(enemies, player) # surprise attack
   target = enemies.sample
   if rand(4) == 1
@@ -109,7 +109,7 @@ def surprise(enemies, player) # surprise attack
   end
 end
 
-def bounty(hunter, target)
+def bounty(hunter, target) # collect bounty 
   hunter[:tracks] = target
   hunter[:kills] += 1
   hunter[:cash]   = (hunter[:cash] + 1).clamp(0, 5)
