@@ -7,32 +7,24 @@ def play_game(player)
   name_player(player)
   enemies = []
   3.times { enemies << random_enemy }
-  player[:tracking] = enemies.sample
-
-  intro(player)
+  player[:tracks] = enemies.sample
+  shout(player, :intro)
   game_info(enemies, player)
 
   while !enemies.empty? && player[:hp].positive?
-    player[:land] = { id: :move, art: BATTLEFIELD.sample }
     load_menu
     player[:choice] = gets.chomp.downcase # choice is passed as an argument to cheat menu
 
+    print `clear`
     case player[:choice]
-    when "t"
-      print `clear`
-      mortal_kombat(enemies, player)
-    when "r"
-      print `clear`
-      somersault_attack(player, enemies)
-    when "y"
-      print `clear`
-      surprise(enemies, player, :escape)
-      explore_rooms(enemies, player) unless player[:hp] <= 0
-    else
-      error(:input)
+    when "t" then mortal_kombat(enemies, player)
+    when "r" then somersault(player, enemies)
+    when "y" then escape_room(enemies, player)
+    else shout(player, :error)
     end
 
-    cheat_mode(player, enemies) # DEBUG CHEAT MENU
+    player[:land] = { id: :move, art: BATTLEFIELD.sample }
+    cheat_mode(enemies, player) # DEBUG CHEAT MENU
     graveyard(enemies, player)
     game_info(enemies, player)
   end
@@ -58,7 +50,7 @@ loop do
     elsif choice == "y"
       break # Restart the game
     # else
-    #   error(:input)
+    # shout(player, :error)
     end
   end
 end

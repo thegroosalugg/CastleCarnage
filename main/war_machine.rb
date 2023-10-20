@@ -30,6 +30,15 @@ def random_enemy
   }
 end
 
+def spawn_enemy(enemies, player)
+  if enemies.length < 5
+    enemies << random_enemy
+    shout(enemies[-1], :summon)
+  else
+    weapon_wakes(player)
+  end
+end
+
 def room_vault
   rooms = []
 
@@ -49,7 +58,6 @@ def room_vault
   rooms
 end
 
-# Method to create a weapon
 def weapon_wakes(wielder)
   regular = ["#{YL}#{WEAPONS.sample}", 2..5, 10..20, 2..6,  5..9,   2..3, 1.5..2.0]
   special = ["#{MG}#{SPECIAL.sample}", 3..5, 15..25, 4..10, 5..10,  2..4, 2.0..2.5]
@@ -66,21 +74,20 @@ def weapon_wakes(wielder)
   }
 
   wielder[:weapon] = weapon
-  weapon_speaks(wielder, wielder[:weapon][:name], (wielder[:id] == :player ? :got : :enemy))
+  shout(wielder, :got)
 end
 
 def weapon_breaks(wielder)
   wielder[:weapon][:uses] = (wielder[:weapon][:uses] - 1)
   if wielder[:weapon][:uses] == 0
-    weapon_speaks(wielder, wielder[:weapon][:name], :broke) if wielder[:id] == :player # don't care about enemy weapons breaking
-    wielder[:weapon] = nil # delete weapon
+    shout(wielder, :broke)
+    wielder[:weapon] = nil
   end
 end
 
 def crap_factory(wielder)
   item = {
     name:  "#{GN}#{ITEMS.sample}#{CL}",
-    shout:     "#{SHOUTS.sample}",
     hp:     rand(2..8)     * [1, -1].sample,
     attack: rand(1..5)     * [1, -1].sample,
     block:  rand(1..3)     * [1, -1].sample,
@@ -90,5 +97,5 @@ def crap_factory(wielder)
   }
 
   wielder[:item] = item
-  invoice(wielder, :item)
+  shout(wielder, :item)
 end

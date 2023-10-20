@@ -20,10 +20,10 @@ def shots_fired(hunter, target, shot)
   puts text_break("#{target[:name]} 🗯️ #{comeback.sample}", " ", 85) if !text.empty? && rand(2) == 1
 end
 
-def strike(enemies, hunter, target)                        # dynamic damage multiplier
+def strike(enemies, hunter, target)
   source = hunter[:weapon] ? hunter[:weapon]         : hunter
   block  = target[:weapon] ? target[:weapon][:block] : target[:block]
-  hunter[:damage] = ((source[:attack] - block) * rand(0.6..1.4)).ceil.clamp(1, 100)
+  hunter[:damage] = ((source[:attack] - block) * rand(0.6..1.4)).ceil.clamp(1, 100) # dynamic damage multiplier
 
   if source[:aim] > rand(0..9)
     if source[:chance] > rand(0..9)
@@ -41,32 +41,24 @@ def strike(enemies, hunter, target)                        # dynamic damage mult
   graveyard(enemies, (hunter[:id] == :player ? hunter : target)) # checks for enemy deaths and collects bounty
 
   if target[:id] == :player && target[:hp] <= 0
-    target[:tracking] = hunter   # if player dies tracks enemy who dealt lethal blow
-    enemy_speaks(target, :pwned) # sends same pwned message to the player
+    target[:tracks] = hunter   # if player dies tracks enemy who dealt lethal blow
+    shout(target, :pwned) # sends same pwned message to the player
   end
 end
 
 # Sommersault attack
 
-def somersault(chance, n)
-  success = "#{SUCCESS} " + "⚔️ " * n
-  failed  = "#{FLUNKED} " + "😓 " * n
-
-  messages = chance == 1 ? success : failed
-  puts text_break(messages, " ", 85)
-end
-
-def somersault_attack(player, enemies) # winner strikes loser 2-3 times, targets random
-  chance = rand(2)
-  n = rand(2..3)
-  somersault(chance, n)
-  chance == 1 ? n.times { strike(enemies, player, enemies.sample ) unless enemies.empty? } : n.times { strike(enemies, enemies.sample, player) }
+def somersault(player, enemies) # winner strikes loser 2-3 times, targets random
+  player[:flip] = rand(2)
+  player[:roll] = rand(2..3)
+  shout(player, :bounce)
+  player[:flip] == 1 ? player[:roll].times { strike(enemies, player, enemies.sample ) unless enemies.empty? } : player[:roll].times { strike(enemies, enemies.sample, player) }
 end
 
 # Main game combat
 
 def mortal_kombat(enemies, player)
-  greeting(:combat)
+  shout(player, :combat)
 
   loop do
     game_info(enemies, player)
@@ -82,47 +74,46 @@ def mortal_kombat(enemies, player)
       target = enemies[choice]
       strike(enemies, player, target)
       strike(enemies, target, player) if target[:hp].positive? && player[:hp].positive?
-      surprise(enemies, player, :combat) unless enemies.empty? || player[:hp] <= 0 # random attack on player possible
+      surprise(enemies, player) unless enemies.empty? || player[:hp] <= 0 # random attack on player possible
       break
     else
-      error(:input)
+      shout(player, :error)
     end
   end
 end
 
 # activates when exploring rooms
 
-def surprise(enemies, player, event) # surprise attack
-  target_enemy = enemies.sample
-  enemy_speaks(target_enemy, :escape) if event == :escape # only when exploring rooms
+def surprise(enemies, player) # surprise attack
+  target = enemies.sample
   if rand(4) == 1
-    enemy_speaks(target_enemy, :surprise)
+    shout(target, :surprise)
     if rand(3) == 1
-      enemy_speaks(player, :counter)
-      strike(enemies, player, target_enemy)
+      shout(player, :counter)
+      strike(enemies, player, target)
     else
-      strike(enemies, target_enemy, player)
+      strike(enemies, target, player)
     end
   end
 end
 
 def bounty(hunter, target)
+  hunter[:tracks] = target
   hunter[:kills] += 1
-  hunter[:hp] = (hunter[:hp] + 10).clamp(0, 150)
-  hunter[:cash] = (hunter[:cash] + 1).clamp(0, 5)
-  hunter[:tracking] = target
-  invoice(hunter, :bounty) # amounts hardcoded as they're static
+  hunter[:cash]   = (hunter[:cash] + 1).clamp(0, 5)
+  hunter[:hp]     = (hunter[:hp] + 10).clamp(0, 150)
+  shout(hunter, :bounty) # amounts hardcoded as they're static
 end
 
 def graveyard(enemies, player)
   enemies.reject! do |enemy|
     if enemy[:hp] <= 0  # check for enemy deaths, update counter, track last enemy for game over
-      enemy_speaks(enemy, :pwned)
+      shout(enemy, :pwned)
       bounty(player, enemy)
       true  # This will remove the enemy from the array
     else
       false  # This will keep the enemy in the array
     end
   end # Player dies and last enemy is tracked if current tracked enemy is already dead
-  player[:tracking] = enemies.sample if player[:hp] <= 0 && player[:tracking][:hp] <= 0
+  player[:tracks] = enemies.sample if player[:hp] <= 0 && player[:tracks][:hp] <= 0
 end

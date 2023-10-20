@@ -1,10 +1,11 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-def explore_rooms(enemies, player)
+def escape_room(enemies, player)
   choice = 0
-  rooms = room_vault
+  rooms  = room_vault
   player[:land] = { id: :room, art: ROOM_SERVICE.sample }
+  shout(player, :escape)
   game_info(enemies, player)
 
   until (4..7).include?(choice) # index +4 / -4 to set user choice to (4..7) instead of (0..3)
@@ -13,28 +14,21 @@ def explore_rooms(enemies, player)
     puts BARRIER
 
     choice = gets.chomp.to_i
-    error(:input) unless (4..7).include?(choice)
+    shout(player, :error)      unless (4..7).include?(choice)
     game_info(enemies, player) unless (4..7).include?(choice)
   end
 
   print `clear`
-  room = rooms[choice - 4]
-  enter_room(room)
+  player[:room]   = rooms[choice - 4]
   player[:rooms] += 1
-  gift = 1#room[:chance].sample
-  target = [player, enemies.sample].sample
+  player[:roll]   = player[:room][:chance].sample
+  target          = [player, enemies.sample].sample
+  shout(player, :room)
 
-  case gift
-  when 1
-    crap_factory(target)
-  when 2
-    weapon_wakes(target)
-  when 3 # New enemy spawns in empty slot
-    if enemies.length < 5
-      enemies << random_enemy
-      enemy_speaks(enemies[-1], :summon)
-    else
-      weapon_wakes(player)
-    end
+  case player[:roll]
+  when 1 then crap_factory(target)
+  when 2 then weapon_wakes(target)
+  when 3 then spawn_enemy(enemies, player)
   end
+  surprise(enemies, player)
 end

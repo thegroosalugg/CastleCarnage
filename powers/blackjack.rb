@@ -37,10 +37,10 @@ def blackjack(player, buddy, weapon, the_boss, boss_style, load_boss)
   loop do
     print `clear`
 
-    player[:cash] -= 1
+    #player[:cash] -= 1
     player[:stuck] = false
-    invoice(player, 1, :loss)
-    greeting(:combat)
+    #shout(player, 1, :loss) # TBD
+    #shout(:cards) # need to implement some phrases
     deck = card_deck
     boss_hand, your_hand = [], []
 
@@ -62,13 +62,13 @@ def blackjack(player, buddy, weapon, the_boss, boss_style, load_boss)
         your_hand << deck.shift
         your_total = your_hand.sum { |card| card[:value] }
         your_hand, your_total = check_ace(your_hand, your_total)
-        invoice(player, your_hand, :cards)
+        shout(player, your_hand, :cards)
         whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
       elsif choice == 5
         player[:stuck] = true
         break
       else
-        error(:input)
+        shout(player, :error)
         whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
       end
     end
@@ -80,14 +80,14 @@ def blackjack(player, buddy, weapon, the_boss, boss_style, load_boss)
     end
 
     print `clear`
-    invoice(the_boss, boss_hand, :cards) unless your_total >= 21 || boss_hand.length < 3
+    shout(the_boss, boss_hand, :cards) unless your_total >= 21 || boss_hand.length < 3
 
     if your_total <= 21 && (your_total > boss_total || boss_total > 21) # Who's the winner
       whos_the_boss(your_hand, your_total, boss_total)
       player[:cash] = (player[:cash] + 3).clamp(0, 20)
-      invoice(player, 3, :cash)
+      shout(player, 3, :cash)
     else
-      invoice(player, your_hand, :cards) unless your_hand.length < 3 || choice == 5
+      shout(player, your_hand, :cards) unless your_hand.length < 3 || choice == 5
       whos_the_boss(your_hand, your_total, boss_total)
       player[:stuck] = true if boss_total == 21
       whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
@@ -106,7 +106,7 @@ def blackjack(player, buddy, weapon, the_boss, boss_style, load_boss)
         print `clear`
         return
       else
-        error(play_again, :input)
+        shout(player, :error)
       end
     end
   end
