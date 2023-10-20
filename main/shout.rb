@@ -29,15 +29,15 @@ def name_player(player) # Name your player
   name = ""
   while name.empty?
     title_screen
-    name = gets.chomp.strip.slice(0, 8).downcase.capitalize
-    x = name.length < 4 ? TITLES.sample : ""
+             name = gets.chomp.strip.slice(0, 8).downcase.capitalize
+                x = name.length < 4 ? TITLES.sample : ""
     player[:name] = "#{GN}#{EMOJIS.sample} #{x}#{name}#{CL}"
     shout(player, :name)
   end
   print `clear`
 end
 
-def game_over(player)
+def game_over(player) # game over message and art
   shout(player, :outro)
   puts BARRIER
   player[:hp].positive? ? win_art : lose_art
@@ -45,7 +45,7 @@ def game_over(player)
   play_again
 end
 
-def replay
+def replay # unique error message art for continue screen
   print `clear`
   continue
   play_again
