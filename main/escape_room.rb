@@ -14,7 +14,7 @@ def escape_room(enemies, player)
     puts BARRIER
 
     choice = gets.chomp.to_i
-    shout(player, :error)    unless (4..7).include?(choice)
+    shout(player, :error)      unless (4..7).include?(choice)
     game_info(enemies, player) unless (4..7).include?(choice)
   end
 
@@ -28,13 +28,7 @@ def escape_room(enemies, player)
   case player[:roll]
   when 1 then crap_factory(target)
   when 2 then weapon_wakes(target)
-  when 3 # New enemy spawns in empty slot
-    if enemies.length < 5
-      enemies << random_enemy
-      shout(enemies[-1], :summon)
-    else
-      weapon_wakes(player)
-    end
+  when 3 then spawn_enemy(enemies, player)
   end
   surprise(enemies, player)
 end
