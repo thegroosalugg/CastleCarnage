@@ -66,13 +66,13 @@ def weapon_wakes(wielder)
   }
 
   wielder[:weapon] = weapon
-  weapon_speaks(wielder, wielder[:weapon][:name], (wielder[:id] == :player ? :got : :enemy))
+  invoice(wielder, :got)
 end
 
 def weapon_breaks(wielder)
   wielder[:weapon][:uses] = (wielder[:weapon][:uses] - 1)
   if wielder[:weapon][:uses] == 0
-    weapon_speaks(wielder, wielder[:weapon][:name], :broke) if wielder[:id] == :player # don't care about enemy weapons breaking
+    invoice(wielder, :broke)
     wielder[:weapon] = nil # delete weapon
   end
 end
