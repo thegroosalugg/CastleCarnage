@@ -4,7 +4,7 @@
 def shout(who, what) # controls all messages in the game except for combat
   tag = (who[:id] == :player ? (what == :got ? WEAPON : ITEM ) : THIEF) unless what == :room # room passes an array (of 2 hashes) instead of a hash
   size, messages = case what
-  when :bounce   then [ 85, who[:flip] == 1 ?        "#{SUCCESS} "     +"⚔️ "* who[:roll] : "#{FLUNKED} " + "😓 " * who[:roll]]
+  when :bounce   then [ 85, who[:flip] == 1      ?   "#{SUCCESS} "     +"⚔️ "* who[:roll] : "#{FLUNKED} " + "😓 " * who[:roll]]
   when :escape   then [ 80, who[:name]    +" 💬 "+   RUN_SHOUT.sample]
   when :room     then [ 80, who[0][:name] +" 💬 "+   ROOM_SHOUT.sample + " " + who[1][:name]]
   when :item     then [ 90, tag      + " " + who[:item][:name]          + " " + who[:name]         +" 💬 "+ ITEM_SHOUT.sample ]
