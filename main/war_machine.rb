@@ -26,7 +26,7 @@ def random_enemy
     block:  rand(1..6),
     aim:    rand(5..8),
     chance: rand(5..8),
-    crit:   rand(1.5..2.5),
+    crit:   rand(1.5..2.5).round(1),
   }
 end
 
@@ -70,7 +70,7 @@ def weapon_wakes(wielder)
     block:  rand(block),
     aim:    rand(aim),
     chance: rand(chance),
-    crit:   rand(crit)
+    crit:   rand(crit).round(1)
   }
 
   wielder[:weapon] = weapon
@@ -87,13 +87,12 @@ end
 
 def crap_factory(wielder)
   item = {
-    name:  "#{GN}#{ITEMS.sample}#{CL}",
-    hp:     rand(2..8)     * [1, -1].sample,
-    attack: rand(1..5)     * [1, -1].sample,
-    block:  rand(1..3)     * [1, -1].sample,
-    aim:    rand(1..2)     * [1, -1].sample,
-    chance: rand(1..2)     * [1, -1].sample,
-    crit:   rand(0.3..0.5) * [1, -1].sample,
+    name:  "#{GN}#{ITEMS.sample}#{CL}", # items are for offense only and do not nourish block
+    hp:     rand(2..8)              * [1, -1].sample,
+    attack: rand(1..5)              * [1, -1].sample,
+    aim:    rand(1..2)              * [1, -1].sample,
+    chance: rand(1..2)              * [1, -1].sample,
+    crit:   rand(0.3..0.5).round(1) * [1, -1].sample,
   }
 
   wielder[:item] = item
