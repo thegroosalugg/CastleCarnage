@@ -15,6 +15,5 @@ require_relative 'main/attack_mode'
 require_relative 'main/escape_room'
 require_relative 'main/shout'
 require_relative 'main/war_machine'
-require_relative 'messages/narrative'
 require_relative 'powers/blackjack'
 #----------------------------- IMPORTS ---------------------------------------->

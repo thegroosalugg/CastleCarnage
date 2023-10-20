@@ -24,7 +24,7 @@ def play_game(player)
     end
 
     player[:land] = { id: :move, art: BATTLEFIELD.sample }
-    cheat_mode(player, enemies) # DEBUG CHEAT MENU
+    cheat_mode(enemies, player) # DEBUG CHEAT MENU
     graveyard(enemies, player)
     game_info(enemies, player)
   end

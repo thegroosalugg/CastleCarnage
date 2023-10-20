@@ -3,7 +3,7 @@
 
 # debug cheat menu for interface
 
-def cheat_mode(player, enemies)
+def cheat_mode(enemies, player)
   case player[:choice]
   when "l" then enemies << random_enemy
   when "." then enemies.first[:hp] -= 25
@@ -20,16 +20,8 @@ def cheat_mode(player, enemies)
   when "n" then  weapon_wakes(player)
   when "b" then  weapon_wakes(enemies.sample)
   when "p" then    cheat_menu(enemies, player)
-  when ","
-    player.each { |key, value| puts  " " * 30 + "#{BL}#{key}:" + " " * (9 - key.length) + "#{value}#{CL}" unless [:land, :tracks].include?(key) }
-    gets
-    print `clear`
-  when "m"
-    enemies.each { |enemy| enemy.each { |key, value|
-      puts  " " * 30 + "#{YL}#{key}:" + " " * (9 - key.length) + "#{value}#{CL}" }
-      puts BARRIER }
-    gets
-    print `clear`
+  when "," then  print_player(player)
+  when "m" then print_enemies(enemies)
   end
   player[:weapon][:uses ] = player[:weapon][:uses ].clamp(0, 5) if player[:weapon]
   player[:drunk] = player[:drunk].clamp(0, 5)
@@ -58,6 +50,23 @@ def cheat_menu(enemies, player)
 
   commands.each do |command|
     puts " " * 30 + "#{ML}[#{command[:code]}] #{command[:description]}#{CL}"
+  end
+  gets
+  print `clear`
+end
+
+def print_player(player)
+  player.each { |key, value| puts  " " * 30 + "#{BL}#{key}:" + " " * (9 - key.length) + "#{value}#{CL}" unless [:land, :tracks].include?(key) }
+  gets
+  print `clear`
+end
+
+def print_enemies(enemies)
+  enemies.each do |enemy|
+    enemy.each do |key, value|
+      puts  " " * 30 + "#{YL}#{key}:" + " " * (9 - key.length) + "#{value}#{CL}"
+    end
+    puts BARRIER
   end
   gets
   print `clear`
