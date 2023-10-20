@@ -1,6 +1,10 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
+TITLES = [
+  "Dr. ", "Mr. ", "Mrs. ", "Ms. ", "Prof ", "Rev. ", "Capt ", "Lt. ", "Sgt. ", "Sir ",
+]
+
 ENEMIES = [
   "👺 Goblin", "👹 Ogre", "👾 Orc", "🧌 Troll", "🤷 Villager", "🦟 Cazador", "🐊 Croc", "🦈 Shark", "🚁 Chopper",
   "🧙 Wizard", "🧝 Druid", "🐺 Werewolf", "🧛 Vampire", "🧟 Zombie", "🦖 Dinosaur", "🤖 Robot", "🪿 Goose", "🦏 Rhino",
