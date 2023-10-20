@@ -1,8 +1,6 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-# Combat Phrases
-
 BACK_TALK = [
   "Motherfucker! ", "Bugger it! ", "Bloody hell! ", "Arses! ", "Sod it! ", "Bollocks! ", "Shit! ", "I call hacks! "
 ]
@@ -42,7 +40,7 @@ RUN_SHOUT = [
 ]
 SURPRISE_SHOUT = [
   " 💬 Oi, give us 5 bucks!", " 💬 Get back 'ere yer scum!", " 💬 Lend us ur phone 📱 bruv!", " 💬 Oi, stop and I'll shoot yar!",
-  " ✨ teleports in front of the door", " 💬 Yar think ye can get away from me?", " is faster 💨 than you. You get merked.",
+  " #{TELEPORT} in front of the door", " 💬 Yar think ye can get away from me?", " is faster 💨 than you. You get merked.",
   " does a mental 🤸 backflip and lands in front of you!",
 ]
 PWNED_SHOUT = [
@@ -63,4 +61,12 @@ ERRORS = [
 COMBAT_SHOUT = [
   "Let's mash 'em up", "Am gonna do 'em in!", "C'mon let's 'ave it!", "Let's do this now!", "C'mon 'ave a go!", "Staines massive!",
   "No mercy!", "Charge!", "Watch it geez!"
+]
+INTRO_SHOUT = [
+  "jumps 🥏 from the ceiling! 💬 You goon get it now boy!",
+  "busted through the 🚪 door, they're stark raving mad. They're out for 🔪 blood!",
+]
+INTRO_CALLBACK = [
+  "#{TELEPORT} behind 'em'. 💬 Nothing personnel, kid", "💬 We won't get got, we gone get!",
+  "pulls out their trusty 🔪 #{YL}katana#{CL} from their trench coat tips their fedora.",
 ]
