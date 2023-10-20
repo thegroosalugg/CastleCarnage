@@ -1,10 +1,11 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-def explore_rooms(enemies, player)
+def escape_room(enemies, player)
   choice = 0
   rooms = room_vault
   player[:land] = { id: :room, art: ROOM_SERVICE.sample }
+  shout(player, :escape)
   game_info(enemies, player)
 
   until (4..7).include?(choice) # index +4 / -4 to set user choice to (4..7) instead of (0..3)
@@ -35,4 +36,5 @@ def explore_rooms(enemies, player)
       weapon_wakes(player)
     end
   end
+  surprise(enemies, player)
 end

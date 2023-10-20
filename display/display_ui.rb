@@ -17,7 +17,7 @@ end
 
 # move ASCII art
 
-def move_ascii_art(player) # added condition, if art is boss, it moves on each loop, if static, it centers art without hardcode
+def move_ascii_art(player) # checks if art moves on each loop or if static it centers art without hardcode
   offset = player[:land][:id] == :move ? rand(10..30) : 10
   player[:land][:art].split("\n").map { |line| " " * offset + line }.join("\n")
 end

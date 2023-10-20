@@ -48,7 +48,7 @@ end
 
 # Sommersault attack
 
-def somersault_attack(player, enemies) # winner strikes loser 2-3 times, targets random
+def somersault(player, enemies) # winner strikes loser 2-3 times, targets random
   player[:flip] = rand(2)
   player[:roll] = rand(2..3)
   shout(player, :bounce)
@@ -74,7 +74,7 @@ def mortal_kombat(enemies, player)
       target = enemies[choice]
       strike(enemies, player, target)
       strike(enemies, target, player) if target[:hp].positive? && player[:hp].positive?
-      surprise(enemies, player, :combat) unless enemies.empty? || player[:hp] <= 0 # random attack on player possible
+      surprise(enemies, player) unless enemies.empty? || player[:hp] <= 0 # random attack on player possible
       break
     else
       shout(player, :error)
@@ -84,9 +84,8 @@ end
 
 # activates when exploring rooms
 
-def surprise(enemies, player, event) # surprise attack
+def surprise(enemies, player) # surprise attack
   target = enemies.sample
-  shout(player, :escape) if event == :escape # only when exploring rooms
   if rand(4) == 1
     shout(target, :surprise)
     if rand(3) == 1

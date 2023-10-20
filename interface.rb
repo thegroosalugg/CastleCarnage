@@ -9,7 +9,7 @@ def play_game(player)
   3.times { enemies << random_enemy }
   player[:tracking] = enemies.sample
 
-  intro(player)
+  shout(player, :intro)
   game_info(enemies, player)
 
   while !enemies.empty? && player[:hp].positive?
@@ -19,12 +19,9 @@ def play_game(player)
 
     case player[:choice]
     when "t" then mortal_kombat(enemies, player)
-    when "r" then somersault_attack(player, enemies)
-    when "y"
-      surprise(enemies, player, :escape)
-      explore_rooms(enemies, player) unless player[:hp] <= 0
-    else
-      shout(player, :error)
+    when "r" then somersault(player, enemies)
+    when "y" then escape_room(enemies, player)
+    else shout(player, :error)
     end
 
     player[:land] = { id: :move, art: BATTLEFIELD.sample }
@@ -55,6 +52,6 @@ loop do
       break # Restart the game
     # else
     # shout(player, :error)
-  end
+    end
   end
 end
