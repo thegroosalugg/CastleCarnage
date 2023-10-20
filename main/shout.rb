@@ -16,6 +16,7 @@ def shout(who, what) # controls all messages in the game except for combat
   when :surprise then [100, SURPRISE + " " + who[:name] +         SURPRISE_SHOUT.sample]
   when :pwned    then [100, PWNED    + " " + who[:name] +            PWNED_SHOUT.sample]
   when :counter  then [100, COUNTER  + " " + who[:name] +" 🗯️ "+   COUNTER_SHOUT.sample]
+  when :combat   then [100, COMBAT   + " " + who[:name] +" 🗯️ "+    COMBAT_SHOUT.sample]
   end
   print `clear` if what == :error
   puts text_break(messages, " ", size)

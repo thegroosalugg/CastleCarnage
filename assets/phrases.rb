@@ -60,3 +60,7 @@ ERRORS = [
   "Don't be a pillock! ", "Don't be a plonker! ", "Don't be a plank! ", "Don't be a plum! ", "Don't be a fool! ",
   "Nobody likes a joker! ", "Quit clowning around! ", "Quit faffing around! ", "Quit being a melon! ",
     ]
+COMBAT_SHOUT = [
+  "Let's mash 'em up", "Am gonna do 'em in!", "C'mon let's 'ave it!", "Let's do this now!", "C'mon 'ave a go!", "Staines massive!",
+  "No mercy!", "Charge!", "Watch it geez!"
+]
