@@ -48,7 +48,7 @@ end
 
 # Sommersault attack
 
-def somersault(player, enemies) # winner strikes loser 2-3 times, targets random
+def somersault(enemies, player) # winner strikes loser 2-3 times, targets random
   player[:flip] = rand(2)
   player[:roll] = rand(2..3)
   shout(player, :bounce)

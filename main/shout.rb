@@ -44,3 +44,9 @@ def game_over(player)
   puts BARRIER
   play_again
 end
+
+def replay
+  print `clear`
+  continue
+  play_again
+end
