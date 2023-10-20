@@ -9,7 +9,7 @@ def name_player(player) # Name your player
     name = gets.chomp.strip.slice(0, 8).downcase.capitalize
     x = name.length < 4 ? TITLES.sample : ""
     player[:name] = "#{GN}#{EMOJIS.sample} #{x}#{name}#{CL}"
-    shout(player, :error)
+    shout(player, :name)
   end
 
   print `clear`
