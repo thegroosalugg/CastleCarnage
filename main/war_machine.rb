@@ -87,10 +87,9 @@ end
 
 def crap_factory(wielder)
   item = {
-    name:  "#{GN}#{ITEMS.sample}#{CL}",
+    name:  "#{GN}#{ITEMS.sample}#{CL}", # items are for offense only and do not nourish block
     hp:     rand(2..8)     * [1, -1].sample,
     attack: rand(1..5)     * [1, -1].sample,
-    block:  rand(1..3)     * [1, -1].sample,
     aim:    rand(1..2)     * [1, -1].sample,
     chance: rand(1..2)     * [1, -1].sample,
     crit:   rand(0.3..0.5) * [1, -1].sample,

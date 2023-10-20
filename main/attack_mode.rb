@@ -20,8 +20,20 @@ def shots_fired(hunter, target, shot)
   puts text_break("#{target[:name]} 🗯️ #{comeback.sample}", " ", 85) if !text.empty? && rand(2) == 1
 end
 
+def load_ammo(hunter)
+  source = hunter[:weapon] ? hunter[:weapon] : hunter
+  if hunter[:item]
+    source.each do |key, value|
+      if hunter[:item].key?(key)
+        hunter[:item][key] += value unless key == :hp
+      end
+    end
+  end
+  return source
+end
+
 def strike(enemies, hunter, target)
-  source = hunter[:weapon] ? hunter[:weapon]         : hunter
+  source = load_ammo(hunter)
   block  = target[:weapon] ? target[:weapon][:block] : target[:block]
   hunter[:damage] = ((source[:attack] - block) * rand(0.6..1.4)).ceil.clamp(1, 100) # dynamic damage multiplier
 
