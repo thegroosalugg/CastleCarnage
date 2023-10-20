@@ -1,6 +1,18 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
+def item_used(who) # display for used item effects
+  tags = who[:item].map do |key, value|
+    if key == :name # name displays only value
+      "#{who[:name]} 🥄#{value} 🥣 "
+    else # everything else is checked for positive so + can be displayed
+      gain = value.positive? ? "+#{value}" : value
+      "#{BUFFS[key]} #{gain}" # each key corresponds to lambda hash and prints an ASCII tag
+    end
+  end
+  tags.join(" ")
+end
+
 def shout(who, what) # controls all messages in the game except for combat
   tag = (who[:id] == :player ? (what == :got ? WEAPON : ITEM ) : THIEF)
   size, messages = case what
@@ -20,7 +32,7 @@ def shout(who, what) # controls all messages in the game except for combat
   when :error    then [ 90, WRONG    + " " + who[:name] +" 🗯️ "+          ERRORS.sample]
   when :counter  then [100, COUNTER  + " " + who[:name] +" 🗯️ "+   COUNTER_SHOUT.sample]
   when :combat   then [100, COMBAT   + " " + who[:name] +" 🗯️ "+    COMBAT_SHOUT.sample]
-  when :used     then [ 80, "#{who[:name]} 🥄#{who[:item][:name]} #{who[:item][:hp]} #{who[:item][:attack]} #{who[:item][:aim]} #{who[:item][:chance]} #{who[:item][:crit].round(1)}"]
+  when :used     then [ 80, item_used(who)]
   end
   print `clear` if [:name, :error].include?(what)
   puts text_break(messages, " ", size)

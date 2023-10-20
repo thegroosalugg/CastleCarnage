@@ -41,18 +41,12 @@ MENU_HEADER = " " * 2 + "#{ML}T̿̽̈́H͛̾͌É͌R͋̔̈́E̽͌͑ C͆̔͌A̾͋͝N�
 
 # In game display tags
 
-BOSSES = {
-  :barkeep => "🍻 #{OR}𝔅𝔞𝔯𝔎𝔢𝔢𝔭#{CL}",
-  :bouncer => "🕶️ #{BL}Ⲃⲟ𐌵ⲛⲥⲉꞅ#{CL}",
-  :band    => "🎶 #{MG}𝓉𝒽ℯ ℬ𝒶𝓃𝒹#{CL}",
-  :village => "👑 #{OR}Village King#{CL}"
-}
-
 BUFFS = {
-  :attack  => { plus: "#{OR}𝙍𝘼𝙂𝙀#{CL}",      minus: "#{RD}ᙡ∈Ꭿⲕ∈ᖇⲙᎯﬡ#{CL}"  },
-  :block   => { plus: "#{BL}𝓖ⴑⲀꞄⲆ#{CL}",      minus: "#{RD}𝕄𝕖𝕒𝕥𝕊𝕙𝕚𝕖𝕝𝕕#{CL}" },
-  :chance  => { plus: "#{BL}ⲥꞅⲓⲧ %#{CL}",       minus: "#{RD}🄲🄸🅅🄸🄻🄸🄰🄽#{CL}" },
-  :aim     => { plus: "#{BL}🆂🅽🅸🅿🅴🆁#{CL}", minus: "#{RD}𝓛ⲁⲙⲉ𝛓ⲏⲟⲧ#{CL}"   },
+  :hp     => "#{CN}𝓖ⴑⲀꞄⲆ#{CL}",
+  :attack => "#{RD}𝙍𝘼𝙂𝙀#{CL}",
+  :aim    => "#{BL}🆂🅽🅸🅿🅴🆁#{CL}",
+  :chance => "#{OR}ⲥꞅⲓⲧ%#{CL}",
+  :crit   => "#{MG}ⲤꞅⲓⲧⲬ#{CL}",
 }
 
 NUM       = ["[̳0̳]̳", "[̳1̳]̳", "[̳2̳]̳", "[̳3̳]̳", "[̳4̳]̳", "[̳5̳]̳", "[̳6̳]̳", "[̳7̳]̳", "[̳8̳]̳", "[̳9̳]̳"]
@@ -84,3 +78,14 @@ SURPRISE  = "#{YL}⚡𝘚𝘜𝘙𝘗𝘙𝘐𝘚𝘌#{CL}"
 PWNED     = "#{RD}☠️𝕡𝕨𝕟𝕖𝕕#{CL}"
 CARD      = "#{OR}ⲤⲀꞄⲆ#{CL}"
 BLACKJACK = "#{OR}🎌 乃㇄闩⼕长丿闩⼕长 🎌#{CL}"
+
+
+# Incase I need them later
+# "#{OR}𝙍𝘼𝙂𝙀#{CL}"
+# "#{RD}ᙡ∈Ꭿⲕ∈ᖇⲙᎯﬡ#{CL}"
+# "#{BL}𝓖ⴑⲀꞄⲆ#{CL}"
+# "#{RD}𝕄𝕖𝕒𝕥𝕊𝕙𝕚𝕖𝕝𝕕#{CL}"
+# "#{BL}ⲥꞅⲓⲧ %#{CL}"
+# "#{RD}🄲🄸🅅🄸🄻🄸🄰🄽#{CL}"
+# "#{BL}🆂🅽🅸🅿🅴🆁#{CL}"
+# "#{RD}𝓛ⲁⲙⲉ𝛓ⲏⲟⲧ#{CL}"
