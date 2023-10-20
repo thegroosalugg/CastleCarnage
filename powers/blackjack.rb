@@ -37,10 +37,10 @@ def blackjack(player, buddy, weapon, the_boss, boss_style, load_boss)
   loop do
     print `clear`
 
-    player[:cash] -= 1
+    #player[:cash] -= 1
     player[:stuck] = false
-    #shout(player, 1, :loss)
-    greeting(:combat)
+    #shout(player, 1, :loss) # TBD
+    #shout(:cards) # need to implement some phrases
     deck = card_deck
     boss_hand, your_hand = [], []
 

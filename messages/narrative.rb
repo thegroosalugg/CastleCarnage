@@ -38,21 +38,3 @@ def game_over(player)
   puts BARRIER
   play_again
 end
-
-# Greeting to various methods
-
-def greeting(place)
-  enemy = [
-    "Strike first, strike hard, no mercy",
-    "Step on up and show who's the boss",
-    "Will you get got, or you gone get?",
-    "Time for a thrashing",
-    "Lay down the law",
-  ]
-  shop = [
-    "🧞💬 山🝗㇄⼕ㄖ爪🝗 丂〸尺闩𝓝Ꮆ🝗尺...",
-  ]
-
-  x, messages = place == :combat ? [75, enemy] : [70, shop]
-  puts text_break(messages.sample, " ", x)
-end

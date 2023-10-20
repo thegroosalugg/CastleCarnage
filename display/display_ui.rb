@@ -6,8 +6,8 @@ def name_player(player) # Name your player
 
   while name.empty?
     title_screen
-    name = gets.chomp.strip.slice(0, 9).downcase.capitalize
-    x = name.length < 5 ? TITLES.sample : ""
+    name = gets.chomp.strip.slice(0, 8).downcase.capitalize
+    x = name.length < 4 ? TITLES.sample : ""
     player[:name] = "#{GN}🥷 #{x}#{name}#{CL}"
     shout(player, :error)
   end

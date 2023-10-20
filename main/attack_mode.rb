@@ -20,10 +20,10 @@ def shots_fired(hunter, target, shot)
   puts text_break("#{target[:name]} 🗯️ #{comeback.sample}", " ", 85) if !text.empty? && rand(2) == 1
 end
 
-def strike(enemies, hunter, target)                        # dynamic damage multiplier
+def strike(enemies, hunter, target)
   source = hunter[:weapon] ? hunter[:weapon]         : hunter
   block  = target[:weapon] ? target[:weapon][:block] : target[:block]
-  hunter[:damage] = ((source[:attack] - block) * rand(0.6..1.4)).ceil.clamp(1, 100)
+  hunter[:damage] = ((source[:attack] - block) * rand(0.6..1.4)).ceil.clamp(1, 100) # dynamic damage multiplier
 
   if source[:aim] > rand(0..9)
     if source[:chance] > rand(0..9)
@@ -58,7 +58,7 @@ end
 # Main game combat
 
 def mortal_kombat(enemies, player)
-  greeting(:combat)
+  shout(player, :combat)
 
   loop do
     game_info(enemies, player)
