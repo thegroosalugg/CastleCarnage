@@ -68,7 +68,7 @@ def blackjack(player, buddy, weapon, the_boss, boss_style, load_boss)
         player[:stuck] = true
         break
       else
-        error(:input)
+        invoice(player, :error)
         whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
       end
     end
@@ -106,7 +106,7 @@ def blackjack(player, buddy, weapon, the_boss, boss_style, load_boss)
         print `clear`
         return
       else
-        error(play_again, :input)
+        invoice(player, :error)
       end
     end
   end

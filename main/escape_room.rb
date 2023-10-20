@@ -13,7 +13,7 @@ def explore_rooms(enemies, player)
     puts BARRIER
 
     choice = gets.chomp.to_i
-    error(:input) unless (4..7).include?(choice)
+    invoice(player, :error)    unless (4..7).include?(choice)
     game_info(enemies, player) unless (4..7).include?(choice)
   end
 

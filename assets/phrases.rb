@@ -56,3 +56,7 @@ ROOM_SHOUT = [
   "Deffos smelled some nosh in", "Got a massively good feeling about", "Fuck it, let's have a look around", "Saw some shit in",
   "Need a slash so bad! Bugger it, in we go to", "They won't find me in", "Let's 'ave it! In we go to", "Always wanted to see",
 ]
+ERRORS = [
+  "Don't be a pillock! ", "Don't be a plonker! ", "Don't be a plank! ", "Don't be a plum! ", "Don't be a fool! ",
+  "Nobody likes a joker! ", "Quit clowning around! ", "Quit faffing around! ", "Quit being a melon! ",
+    ]

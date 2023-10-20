@@ -85,7 +85,7 @@ def mortal_kombat(enemies, player)
       surprise(enemies, player, :combat) unless enemies.empty? || player[:hp] <= 0 # random attack on player possible
       break
     else
-      error(:input)
+      invoice(player, :error)
     end
   end
 end
