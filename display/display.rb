@@ -17,18 +17,6 @@ def display_bars(who) # generator that combines methods to create dynamic displa
   puts SHIELD_EN if who[:id] == :enemy
 end
 
-def name_player(player) # Name your player
-  name = ""
-  while name.empty?
-    title_screen
-    name = gets.chomp.strip.slice(0, 8).downcase.capitalize
-    x = name.length < 4 ? TITLES.sample : ""
-    player[:name] = "#{GN}#{EMOJIS.sample} #{x}#{name}#{CL}"
-    shout(player, :name)
-  end
-  print `clear`
-end
-
 def move_ascii_art(player) # move ASCII art
   offset = player[:land][:id] == :move ? rand(10..30) : 10 # checks if art moves on each loop or if static it centers art without hardcode
   player[:land][:art].split("\n").map { |line| " " * offset + line }.join("\n")

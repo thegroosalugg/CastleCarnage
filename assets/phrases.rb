@@ -70,3 +70,10 @@ INTRO_CALLBACK = [
   "#{TELEPORT} behind 'em'. 💬 Nothing personnel, kid", "💬 We won't get got, we gone get!",
   "pulls out their trusty 🔪 #{YL}katana#{CL} from their trench coat tips their fedora.",
 ]
+WIN_SHOUT = [
+  "had a sudden heart attack, you win by default.", "got blasted to another dimension. Your power level has increased.",
+  "was splatted like a grape.",
+]
+LOSE_SHOUT = [
+  "laughs at your misfortune.", "ripped your head off. You won't be coming home for dinner.", "shall feast on your entrails.",
+]
