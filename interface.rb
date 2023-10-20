@@ -15,16 +15,12 @@ def play_game(player)
   while !enemies.empty? && player[:hp].positive?
     load_menu
     player[:choice] = gets.chomp.downcase # choice is passed as an argument to cheat menu
+    print `clear`
 
     case player[:choice]
-    when "t"
-      print `clear`
-      mortal_kombat(enemies, player)
-    when "r"
-      print `clear`
-      somersault_attack(player, enemies)
+    when "t" then mortal_kombat(enemies, player)
+    when "r" then somersault_attack(player, enemies)
     when "y"
-      print `clear`
       surprise(enemies, player, :escape)
       explore_rooms(enemies, player) unless player[:hp] <= 0
     else
