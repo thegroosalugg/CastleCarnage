@@ -93,15 +93,15 @@ end
 # activates when exploring rooms
 
 def surprise(enemies, player, event) # surprise attack
-  target_enemy = enemies.sample
-  invoice(target_enemy, :escape) if event == :escape # only when exploring rooms
+  target = enemies.sample
+  invoice(player, :escape) if event == :escape # only when exploring rooms
   if rand(4) == 1
-    invoice(target_enemy, :surprise)
+    invoice(target, :surprise)
     if rand(3) == 1
       invoice(player, :counter)
-      strike(enemies, player, target_enemy)
+      strike(enemies, player, target)
     else
-      strike(enemies, target_enemy, player)
+      strike(enemies, target, player)
     end
   end
 end

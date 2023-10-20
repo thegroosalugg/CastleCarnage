@@ -56,21 +56,3 @@ def greeting(place)
   x, messages = place == :combat ? [75, enemy] : [70, shop]
   puts text_break(messages.sample, " ", x)
 end
-
-# When exploring rooms
-
-def enter_room(room)
-  messages = [
-    "💭 Think I smelled some nosh 🍔 in #{room[:name]}, better check that.",
-    "💭 Got a good feeling about #{room[:name]}, let's 'ave a butcher's!",
-    "💭 Oi, this #{room[:name]} looks like a proper gaff, doesn't it?",
-    "💭 I reckon #{room[:name]} might 'ave a hidden treasure or two!",
-    "💭 Need a slash so bad! Bugger it, #{room[:name]} will do.",
-    "💭 They won't find me in #{room[:name]}, I'm golden 🥇",
-    "💭 #{room[:name]} seems like most logical choice.",
-    "💭 In we go to #{room[:name]}, let's 'ave it!",
-    "💭 #{room[:name]} is the place to be, mate!",
-  ]
-
-  puts text_break(messages.sample, " ", 80)
-end

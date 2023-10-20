@@ -49,7 +49,6 @@ def room_vault
   rooms
 end
 
-# Method to create a weapon
 def weapon_wakes(wielder)
   regular = ["#{YL}#{WEAPONS.sample}", 2..5, 10..20, 2..6,  5..9,   2..3, 1.5..2.0]
   special = ["#{MG}#{SPECIAL.sample}", 3..5, 15..25, 4..10, 5..10,  2..4, 2.0..2.5]
@@ -73,14 +72,13 @@ def weapon_breaks(wielder)
   wielder[:weapon][:uses] = (wielder[:weapon][:uses] - 1)
   if wielder[:weapon][:uses] == 0
     invoice(wielder, :broke)
-    wielder[:weapon] = nil # delete weapon
+    wielder[:weapon] = nil
   end
 end
 
 def crap_factory(wielder)
   item = {
     name:  "#{GN}#{ITEMS.sample}#{CL}",
-    shout:     "#{ITEM_SHOUT.sample}",
     hp:     rand(2..8)     * [1, -1].sample,
     attack: rand(1..5)     * [1, -1].sample,
     block:  rand(1..3)     * [1, -1].sample,

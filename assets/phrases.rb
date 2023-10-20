@@ -52,3 +52,7 @@ PWNED_SHOUT = [
 COUNTER_SHOUT = [
   "Ha, I don't think so!", "Not this time!", "#{POW}",
 ]
+ROOM_SHOUT = [
+  "Deffos smelled some nosh in", "Got a massively good feeling about", "Fuck it, let's have a look around", "Saw some shit in",
+  "Need a slash so bad! Bugger it, in we go to", "They won't find me in", "Let's 'ave it! In we go to", "Always wanted to see",
+]
