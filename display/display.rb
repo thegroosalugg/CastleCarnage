@@ -88,17 +88,17 @@ def whos_holding_what(dealer, player) # blackjack game info
   dealer[:cards] = dealer[:hand].map { |card| card[:suit] }
   player[:cards] = player[:hand].map { |card| card[:suit] }
 
-
   puts BARRIER_EN
+  puts                    " " * 21 + REVEAL                                                              if player[:stuck]
   puts whitespace(dealer, " ", 30) + # whitespace generator so display is consistent regardless of name length
-  "#{dealer[:name]} #{YL}#{"%02d" % dealer[:hand].first[:value]}#{CL}  #{dealer[:cards][0]}  🃏" unless player[:stuck]
+  "#{dealer[:name]}  🃏#{YL}#{"%02d" % dealer[:hand].first[:value]}#{CL}  #{dealer[:cards][0]}  🃏" unless player[:stuck]
   puts whitespace(dealer, " ", 30) +
-  "#{dealer[:name]} #{YL}#{"%02d" % dealer[:score]}#{CL}  #{dealer[:cards].join(' ')}" if player[:stuck]
+  "#{dealer[:name]}  🃏#{YL}#{"%02d" % dealer[:score]}#{CL}  #{dealer[:cards].join(' ')}"                if player[:stuck]
   puts whitespace(player, " ", 30) +
-  "#{player[:name]} #{GN}#{"%02d" % player[:score]}#{CL}  #{player[:cards].join(' ')}"
-end                      # "%02d" % adds a leading zero to single digits
+  "#{player[:name]}  🃏#{GN}#{"%02d" % player[:score]}#{CL}  #{player[:cards].join(' ')}"
+end                       # "%02d" % adds a leading zero to single digits
 
-def whos_the_winner(dealer, player) #blackjack victory messages
+def whos_the_winner(dealer, player) # blackjack shouts => require too many conditions to combine with shout method
   messages = if player[:score] == 21 && player[:hand].length == 2 && dealer[:score] != 21
     BLACKJACK
   elsif player[:score] <= 21 && (player[:score] > dealer[:score] || dealer[:score] > 21)
