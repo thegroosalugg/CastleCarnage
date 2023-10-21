@@ -70,7 +70,7 @@ def blackjack(enemies, player, dealer)
       end
     end
 
-    while dealer[:score] < 16 # unless (player[:score] == 21 && player[:hand].length == 2)
+    while dealer[:score] < 16 && !(player[:score] == 21 && player[:hand].length == 2)
       dealer[:hand] << deck.shift
       dealer[:score] = dealer[:hand].sum { |card| card[:value] }
       check_ace(dealer)

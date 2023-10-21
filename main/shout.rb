@@ -33,7 +33,7 @@ def shout(who, what) # controls all messages in the game except for combat
   when :error    then [ 90,            WRONG    +   " "  + who[:name] + " 🗯️ " +          ERRORS.sample ]
   when :counter  then [100,            COUNTER  +   " "  + who[:name] + " 🗯️ " +   COUNTER_SHOUT.sample ]
   when :combat   then [100,            COMBAT   +   " "  + who[:name] + " 🗯️ " +    COMBAT_SHOUT.sample ]
-  when :gamblore then [100,   ATTACKS[:gambler] +   " "  + who[:name] + " 🗯️ " +      GAME_SHOUT.sample ]
+  when :gamblore then [ 90,   ATTACKS[:gambler] +   " "  + who[:name] + " 🗯️ " +      GAME_SHOUT.sample ]
   when :used     then [ 80, item_used(who)]
   end
   print `clear` if [:name, :error].include?(what)
