@@ -22,6 +22,7 @@ def cheat_mode(enemies, player)
   when "p" then    cheat_menu(enemies, player)
   when "," then  print_player(player)
   when "m" then print_enemies(enemies)
+  when "4" then blackjack(enemies, player, enemies.sample)
   end
   player[:weapon][:uses ] = player[:weapon][:uses ].clamp(0, 5) if player[:weapon]
   player[:drunk] = player[:drunk].clamp(0, 5)

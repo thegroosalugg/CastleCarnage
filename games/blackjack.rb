@@ -25,79 +25,73 @@ def card_deck
   deck.shuffle! # Shuffle the deck
 end
 
-def check_ace(hand, total)
-  if hand.last[:value] == 11 && total > 21
-    hand.last[:value] = 1
-    total -= 10
+def check_ace(player)
+  if player[:hand].last[:value] == 11 && player[:score] > 21
+    player[:hand].last[:value] = 1
+    player[:score] -= 10
   end
-  [hand, total]
 end
 
-def blackjack(player, buddy, weapon, the_boss, boss_style, load_boss)
+def blackjack(enemies, player, dealer)
   loop do
     print `clear`
 
-    #player[:cash] -= 1
     player[:stuck] = false
-    #shout(player, 1, :loss) # TBD
     #shout(:cards) # need to implement some phrases
     deck = card_deck
-    boss_hand, your_hand = [], []
+    dealer[:hand], player[:hand] = [], []
 
-    [boss_hand, your_hand].each { |hand| 2.times { hand << deck.shift } }
-    boss_total, your_total = [boss_hand, your_hand].map { |hand| hand.sum { |card| card[:value] } }
+    [dealer[:hand], player[:hand]].each { |hand| 2.times { hand << deck.shift } }
+    dealer[:score], player[:score] = [dealer[:hand], player[:hand]].map { |hand| hand.sum { |card| card[:value] } }
 
-    your_hand, your_total = check_ace(your_hand, your_total)
-    boss_hand, boss_total = check_ace(boss_hand, boss_total)
-    whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
+    check_ace(player); check_ace(dealer)
+    whos_holding_what(dealer, player)
 
-    while your_total < 21
+    while player[:score] < 21
       deck = card_deck if deck.empty?
-      game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
-      game_menu(:cards)
+      game_info(enemies, player)
+      load_menu(player, :cards)
       choice = gets.chomp.to_i
 
       if choice == 4
         print `clear`
-        your_hand << deck.shift
-        your_total = your_hand.sum { |card| card[:value] }
-        your_hand, your_total = check_ace(your_hand, your_total)
-        shout(player, your_hand, :cards)
-        whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
+        player[:hand] << deck.shift
+        player[:score] = player[:hand].sum { |card| card[:value] }
+        check_ace(player)
+        shout(player, :cards)
+        whos_holding_what(dealer, player)
       elsif choice == 5
         player[:stuck] = true
         break
       else
         shout(player, :error)
-        whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
+        whos_holding_what(dealer, player)
       end
     end
 
-    while boss_total < 16
-      boss_hand << deck.shift
-      boss_total = boss_hand.sum { |card| card[:value] }
-      boss_hand, boss_total = check_ace(boss_hand, boss_total)
+    while dealer[:score] < 16
+      dealer[:hand] << deck.shift
+      dealer[:score] = dealer[:hand].sum { |card| card[:value] }
+      check_ace(dealer)
     end
 
     print `clear`
-    shout(the_boss, boss_hand, :cards) unless your_total >= 21 || boss_hand.length < 3
+    shout(dealer, :cards) unless player[:score] >= 21 || dealer[:hand].length < 3
 
-    if your_total <= 21 && (your_total > boss_total || boss_total > 21) # Who's the winner
-      whos_the_boss(your_hand, your_total, boss_total)
-      player[:cash] = (player[:cash] + 3).clamp(0, 20)
-      shout(player, 3, :cash)
+    if player[:score] <= 21 && (player[:score] > dealer[:score] || dealer[:score] > 21) # Who's the winner
+      whos_the_winner(dealer, player)
     else
-      shout(player, your_hand, :cards) unless your_hand.length < 3 || choice == 5
-      whos_the_boss(your_hand, your_total, boss_total)
-      player[:stuck] = true if boss_total == 21
-      whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
+      shout(player, :cards) unless player[:hand].length < 3 || choice == 5
+      whos_the_winner(dealer, player)
+      player[:stuck] = true if dealer[:score] == 21
+      whos_holding_what(dealer, player)
       break # Game ends if you lose
     end
 
     loop do
-      whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total)
-      game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
-      game_menu(:again)
+      whos_holding_what(dealer, player)
+      game_info(enemies, player)
+      load_menu(player, :again)
       play_again = gets.chomp.to_i
       case play_again
       when 4
