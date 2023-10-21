@@ -48,7 +48,7 @@ def blackjack(enemies, player, dealer)
     check_ace(player); check_ace(dealer)
     whos_holding_what(dealer, player)
 
-    while player[:score] < 21 #unless (player[:score] == 21 && player[:hand].length == 2)
+    while player[:score] < 21
       deck = card_deck if deck.empty?
       game_info(enemies, player)
       load_menu(player, :cards)
@@ -70,7 +70,7 @@ def blackjack(enemies, player, dealer)
       end
     end
 
-    while dealer[:score] < 16
+    while dealer[:score] < 16 # unless (player[:score] == 21 && player[:hand].length == 2)
       dealer[:hand] << deck.shift
       dealer[:score] = dealer[:hand].sum { |card| card[:value] }
       check_ace(dealer)
