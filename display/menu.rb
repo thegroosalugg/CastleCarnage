@@ -2,37 +2,10 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 def load_menu(player)
-  t = [
-    " Strike first! Strike hard! No mercy!",
-    " Punch 'em in their stupid ugly face",
-    " Challenge 'em to a thrashing",
-    " Talk about Fight Club",
-    " T is for time to die!",
-    " Mash 'em up, innit",
-    " Pay 'em a beating",
-    " Choose violence",
-    " Do 'em in",
-  ]
-
-  r = [
-    " Try a sommersault!",
-    " Do a Barrel Roll",
-    " Do a sick flip",
-  ]
-
-  y = [
-    " Fuckin' leg it!",
-    " Cheese it!",
-    " 'llow it!",
-    " Peg it!",
-    " Bounce",
-    " Mug it",
-  ]
-
-  puts " " * 27 + "#{ML}𝕎ℍ𝔸𝕋ℂℍ𝔸 𝔾𝕆ℕℕ𝔸 𝔻𝕆❔#{CL}"
-  puts " " * 20 + "🥷 #{RD}[̼̟̞T͍̦͔]̻̟͜#{t.sample}#{CL}"
-  puts " " * 20 + "🐬 #{OR}[͌̈́͘R͌̈́͆]͋͑͠#{r.sample}#{CL}" if player[:weapon] && player[:weapon][:bonus] == :somersault
-  puts " " * 20 + "💨 #{YL}[̻͓͜Y͖͖̘]̫̼͚#{y.sample}#{CL}"
+  puts " " * 30 + "#{ML}𝕎ℍ𝔸𝕋ℂℍ𝔸 𝔾𝕆ℕℕ𝔸 𝔻𝕆❔#{CL}"
+  puts " " * 23 + "🥷 #{RD}[̼̟̞T͍̦͔]̻̟͜S͛ᴛⷮRͬIͥᴋⷦEͤ#{CL}"
+  puts " " * 23 + "🐬 #{YL}[͌̈́͘R͌̈́͆]͋͑͠}Sᴏᴍᴇʀsᴀᴜʟᴛ#{CL}" if player[:weapon] && player[:weapon][:bonus] == :somersault
+  puts " " * 23 + "💨 #{OR}[̻͓͜Y͖͖̘]̫̼͚Rͬoͦoͦmͫs͛#{CL}"
   puts BARRIER
 end
 
