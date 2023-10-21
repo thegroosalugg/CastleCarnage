@@ -23,7 +23,7 @@ def play_game(player)
     else shout(player, :error)
     end
 
-    player[:land] = { id: :move, art: BATTLEFIELD.sample }
+    player[:land] = { id: :move, art: BATTLEFIELD.sample } # resets ASCII art to this arena
     cheat_mode(enemies, player) # DEBUG CHEAT MENU
     graveyard(enemies, player)
     game_info(enemies, player)

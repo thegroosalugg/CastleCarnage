@@ -1,8 +1,7 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-def big_boss_art
-  art = { id: :move, art:
+VILLAGE_KING = { id: :move, art:
   <<-'ASCII'
                     / ___`\
          /|        ( (   \ \
@@ -21,10 +20,9 @@ def big_boss_art
  |    |   |/   |        / /
     ASCII
   }
-end
 
-def the_barkeep
-  art = { id: :move, art: # this art is a combination of 2 pieces
+
+BARKEEP = { id: :move, art: # this art is a combination of 2 pieces
   <<-'ASCII'              # spacing is warped here for correct display on terminal
                     _____
                   __|___|__
@@ -42,11 +40,9 @@ def the_barkeep
 ⢸⣧⣤⣤⣤⣤⣤⣤⣤⣤⣤⣾⡇     |_|  |_|     ⠀⢸⣷⣤⣤⣤⣤⣤⣤⣤⣤⣷⡇
                   /_\  /_\
     ASCII
-     }
-end
+  }
 
-def the_bouncer
-  art = { id: :move, art:
+BOUNCER = { id: :move, art:
   <<-'ASCII'
                      ______
                    <((((((\\\
@@ -64,11 +60,9 @@ def the_bouncer
        \  \       \ |     | /        /
         \  \       \       /        /
     ASCII
-   }
-end
+  }
 
-def the_band
-  art = { id: :move, art:
+THE_BAND = { id: :move, art:
     <<-'ASCII'
 
     #####\             _             /#####
@@ -81,4 +75,3 @@ def the_band
   /                                         \
       ASCII
   }
-end

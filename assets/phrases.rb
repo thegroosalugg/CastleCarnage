@@ -77,3 +77,7 @@ WIN_SHOUT = [
 LOSE_SHOUT = [
   "laughs at your misfortune.", "ripped your head off. You won't be coming home for dinner.", "shall feast on your entrails.",
 ]
+GAME_SHOUT = [
+  "Line 'em Frankie, line 'em up", "You's about to go dooooown!", "Don't fuck with the master", "Your life total is about to get shuffled!",
+  "You will be judged,", "Are you willing to stand with the righteous?",
+]

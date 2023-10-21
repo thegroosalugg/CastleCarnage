@@ -84,30 +84,27 @@ def status(player) # Dynamic status for player cash & drunkness
   puts "#{left}#{OR}#{drunk}#{CL} #{"🍺" * [player[:drunk], 0].max}"
 end
 
-def whos_holding_what(player, the_boss, boss_hand, boss_total, your_hand, your_total) # blackjack game info
-  boss_cards, your_cards = [boss_hand, your_hand].map { |hand| hand.map { |card| card[:suit] } }
-  w, x, y = [boss_hand.first[:value], boss_total, your_total].map { |n| n >= 10 ? "" : " " } # adds a single whitespace for single integer display
-  # "%02d" % adds a leading zero to single digits
+def whos_holding_what(dealer, player) # blackjack game info
+  dealer[:cards] = dealer[:hand].map { |card| card[:suit] }
+  player[:cards] = player[:hand].map { |card| card[:suit] }
+
   puts BARRIER_EN
-  puts whitespace(the_boss, " ", 30) + # whitespace generator so display is consistent regardless of name length
-  "#{the_boss[:name]} #{MG}⟪#{w}#{boss_hand.first[:value]}⟫#{CL} ʃ #{boss_cards[0]}  🃏" unless player[:stuck]
-  puts whitespace(the_boss, " ", 30) +
-  "#{the_boss[:name]} #{MG}⟪#{x}#{boss_total}⟫#{CL} ʃ #{boss_cards.join(' ')}" if player[:stuck]
+  puts                    " " * 21 + REVEAL                                                              if player[:stuck]
+  puts whitespace(dealer, " ", 30) + # whitespace generator so display is consistent regardless of name length
+  "#{dealer[:name]}  🃏#{YL}#{"%02d" % dealer[:hand].first[:value]}#{CL}  #{dealer[:cards][0]}  🃏" unless player[:stuck]
+  puts whitespace(dealer, " ", 30) +
+  "#{dealer[:name]}  🃏#{YL}#{"%02d" % dealer[:score]}#{CL}  #{dealer[:cards].join(' ')}"                if player[:stuck]
   puts whitespace(player, " ", 30) +
-  "#{player[:name]} #{GN}⟪#{y}#{your_total}⟫#{CL} ʃ #{your_cards.join(' ')}"
-end
+  "#{player[:name]}  🃏#{GN}#{"%02d" % player[:score]}#{CL}  #{player[:cards].join(' ')}"
+end                       # "%02d" % adds a leading zero to single digits
 
-def whos_the_boss(your_hand, your_total, boss_total) #blackjack victory messages
-  win =       SUCCESS
-  lose =      FLUNKED + " now get out❗"
-  blackjack = BLACKJACK
-
-  messages = if your_total == 21 && your_hand.length == 2 && boss_total != 21
-    blackjack
-  elsif your_total <= 21 && (your_total > boss_total || boss_total > 21)
-    win
+def whos_the_winner(dealer, player) # blackjack shouts => require too many conditions to combine with shout method
+  messages = if player[:score] == 21 && player[:hand].length == 2 && dealer[:score] != 21
+    BLACKJACK
+  elsif player[:score] <= 21 && (player[:score] > dealer[:score] || dealer[:score] > 21)
+    SUCCESS
   else
-    lose
+    FLUNKED + " now get out❗"
   end
   puts text_break(messages, " ", 80)
 end
