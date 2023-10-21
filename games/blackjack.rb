@@ -102,6 +102,7 @@ def blackjack(enemies, player, dealer)
         break
       when 5
         print `clear`
+        shout(dealer, :goodbye)
         return
       else
         shout(dealer, :error)

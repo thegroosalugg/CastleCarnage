@@ -85,3 +85,6 @@ GAME_TAUNT = [
   "I'm gonna enjoys this", "You're gonna get it now!", "Oh-ho-ho-ho-ho!", "This is gonna be sweet!", "Time for your beating!",
   "Get ready to quit life!", "I'is gonna ctrl, shift 'n' do you in!", "Clobbering time!",
 ]
+GOODBYE = [
+  "Good riddance!", "Don't hurry back!", "Ha, loser!", "Only cause I was gonna beat ya"
+]
