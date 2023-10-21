@@ -84,10 +84,10 @@ def blackjack(enemies, player, dealer)
       n.times { strike(enemies, player, dealer) }
     else
       shout(player, :cards) unless player[:hand].length < 3 || choice == 5
-      whos_the_winner(dealer, player)
-      strike(enemies, dealer, player)
-      player[:stuck] = true if dealer[:score] == 21
-      whos_holding_what(dealer, player)
+      whos_the_winner(dealer, player) # end of game message
+      strike(enemies, dealer, player)  # player struck
+      player[:stuck] = true if dealer[:score] == 21 # dealer only reveals hand if they get 21 if they didn't draw
+      whos_holding_what(dealer, player) # display showed here as above must run first in that order
       player[:land] = { id: :move, art: BATTLEFIELD.sample }
       break # Game ends if you lose
     end
