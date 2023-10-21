@@ -32,6 +32,12 @@ def check_ace(player)
   end
 end
 
+def draw_card(player, deck)
+  player[:hand] << deck.shift
+  player[:score] = player[:hand].sum { |card| card[:value] }
+  check_ace(player)
+end
+
 def blackjack(enemies, player, dealer)
   loop do
     print `clear`
@@ -46,19 +52,17 @@ def blackjack(enemies, player, dealer)
 
     check_ace(player); check_ace(dealer)
     shout(dealer, :gamblore)
-    whos_holding_what(dealer, player)
 
     while player[:score] < 21
       deck = card_deck if deck.empty?
+      whos_holding_what(dealer, player)
       game_info(enemies, player)
       load_menu(player, :cards)
       choice = gets.chomp.to_i
 
       if choice == 4
         print `clear`
-        player[:hand] << deck.shift
-        player[:score] = player[:hand].sum { |card| card[:value] }
-        check_ace(player)
+        draw_card(player, deck)
         shout(player, :cards)
       elsif choice == 5
         player[:stuck] = true
@@ -66,16 +70,12 @@ def blackjack(enemies, player, dealer)
       else
         shout(dealer, :error)
       end
-      whos_holding_what(dealer, player)
-    end
-
-    while dealer[:score] < 16 && !(player[:score] == 21 && player[:hand].length == 2)
-      dealer[:hand] << deck.shift
-      dealer[:score] = dealer[:hand].sum { |card| card[:value] }
-      check_ace(dealer)
     end
 
     print `clear`
+    while dealer[:score] < 16 && !(player[:score] == 21 && player[:hand].length == 2)
+      draw_card(dealer, deck)
+    end
     shout(dealer, :cards) unless player[:score] >= 21 || dealer[:hand].length < 3
 
     if player[:score] <= 21 && (player[:score] > dealer[:score] || dealer[:score] > 21) # Who's the winner
