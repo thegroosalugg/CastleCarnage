@@ -64,7 +64,7 @@ def blackjack(enemies, player, dealer)
         player[:stuck] = true
         break
       else
-        shout(player, :error)
+        shout(dealer, :error)
       end
       whos_holding_what(dealer, player)
     end
@@ -104,7 +104,7 @@ def blackjack(enemies, player, dealer)
         print `clear`
         return
       else
-        shout(player, :error)
+        shout(dealer, :error)
       end
     end
   end

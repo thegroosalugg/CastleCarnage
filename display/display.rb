@@ -96,15 +96,16 @@ def whos_holding_what(dealer, player) # blackjack game info
   "#{dealer[:name]}  🃏#{YL}#{"%02d" % dealer[:score]}#{CL}  #{dealer[:cards].join(' ')}"                if player[:stuck]
   puts whitespace(player, " ", 30) +
   "#{player[:name]}  🃏#{GN}#{"%02d" % player[:score]}#{CL}  #{player[:cards].join(' ')}"
-end                       # "%02d" % adds a leading zero to single digits
+end                         # "%02d" % adds a leading zero to single digits
 
 def whos_the_winner(dealer, player) # blackjack shouts => require too many conditions to combine with shout method
+  taunt = " 💬 " + GAME_TAUNT.sample
   messages = if player[:score] == 21 && player[:hand].length == 2 && dealer[:score] != 21
-    BLACKJACK
+    BLACKJACK + " " + player[:name] + taunt
   elsif player[:score] <= 21 && (player[:score] > dealer[:score] || dealer[:score] > 21)
-    SUCCESS
+    SUCCESS   + " " + player[:name] + taunt
   else
-    FLUNKED + " now get out❗"
+    FLUNKED   + " " + dealer[:name] + taunt
   end
   puts text_break(messages, " ", 80)
 end

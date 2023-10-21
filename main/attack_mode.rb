@@ -72,7 +72,7 @@ end
 # Main game combat
 
 def mortal_kombat(enemies, player)
-  shout(player, :combat)
+  shout(enemies.sample, :combat)
 
   loop do
     game_info(enemies, player)
