@@ -65,7 +65,8 @@ def somersault(enemies, player) # winner strikes loser 2-3 times, targets random
   player[:flip] = rand(2)
   player[:roll] = rand(2..3)
   shout(player, :bounce)
-  player[:flip] == 1 ? player[:roll].times { strike(enemies, player, enemies.sample ) unless enemies.empty? } : player[:roll].times { strike(enemies, enemies.sample, player) }
+  hunter, target = player[:flip] == 1 ? [ [player], enemies ] : [ enemies, [player] ]
+  player[:roll].times { strike(enemies, hunter.sample, target.sample) unless enemies.empty? }
 end
 
 # Main game combat
