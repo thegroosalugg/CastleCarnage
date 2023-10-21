@@ -92,6 +92,7 @@ def blackjack(enemies, player, dealer)
     end
 
     loop do
+      return if dealer[:hp] <= 0
       # player[:land] = { id: :move, art: BATTLEFIELD.sample } # come back to this
       whos_holding_what(dealer, player)
       game_info(enemies, player)
