@@ -38,6 +38,12 @@ def draw_card(player, deck)
   check_ace(player)
 end
 
+def blackjack_menu(enemies, dealer, player, menu)
+  whos_holding_what(dealer, player)
+  game_info(enemies, player)
+  load_menu(player, menu)
+end
+
 def blackjack(enemies, player, dealer)
   loop do
     print `clear`
@@ -55,9 +61,7 @@ def blackjack(enemies, player, dealer)
 
     while player[:score] < 21
       deck = card_deck if deck.empty?
-      whos_holding_what(dealer, player)
-      game_info(enemies, player)
-      load_menu(player, :cards)
+      blackjack_menu(enemies, dealer, player, :play)
       choice = gets.chomp.to_i
 
       if choice == 4
@@ -94,9 +98,7 @@ def blackjack(enemies, player, dealer)
 
     loop do
       return if dealer[:hp] <= 0
-      whos_holding_what(dealer, player)
-      game_info(enemies, player)
-      load_menu(player, :again)
+      blackjack_menu(enemies, dealer, player, :replay)
       play_again = gets.chomp.to_i
       case play_again
       when 4
