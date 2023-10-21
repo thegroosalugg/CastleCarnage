@@ -79,5 +79,5 @@ LOSE_SHOUT = [
 ]
 GAME_SHOUT = [
   "Line 'em Frankie, line 'em up", "You's about to go dooooown!", "Don't fuck with the master", "Your life total is about to get shuffled!",
-  "You will be judged,", "Are you willing to stand with the righteous?",
+  "You will be judged", "Are you willing to stand with the righteous?",
 ]

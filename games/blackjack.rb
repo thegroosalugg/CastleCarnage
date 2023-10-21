@@ -36,9 +36,8 @@ def blackjack(enemies, player, dealer)
   loop do
     print `clear`
 
-    player[:stuck] = false
     # player[:land] = BARKEEP # come back to this
-    shout(dealer, :gamblore)
+    player[:stuck] = false
     deck = card_deck
     dealer[:hand], player[:hand] = [], []
 
@@ -46,6 +45,7 @@ def blackjack(enemies, player, dealer)
     dealer[:score], player[:score] = [dealer[:hand], player[:hand]].map { |hand| hand.sum { |card| card[:value] } }
 
     check_ace(player); check_ace(dealer)
+    shout(dealer, :gamblore)
     whos_holding_what(dealer, player)
 
     while player[:score] < 21
@@ -60,14 +60,13 @@ def blackjack(enemies, player, dealer)
         player[:score] = player[:hand].sum { |card| card[:value] }
         check_ace(player)
         shout(player, :cards)
-        whos_holding_what(dealer, player)
       elsif choice == 5
         player[:stuck] = true
         break
       else
         shout(player, :error)
-        whos_holding_what(dealer, player)
       end
+      whos_holding_what(dealer, player)
     end
 
     while dealer[:score] < 16 && !(player[:score] == 21 && player[:hand].length == 2)
@@ -81,7 +80,8 @@ def blackjack(enemies, player, dealer)
 
     if player[:score] <= 21 && (player[:score] > dealer[:score] || dealer[:score] > 21) # Who's the winner
       whos_the_winner(dealer, player)
-      strike(enemies, player, dealer)
+      n = player[:score] == 21 && player[:hand].length == 2 ? 2 : 1
+      n.times { strike(enemies, player, dealer) }
     else
       shout(player, :cards) unless player[:hand].length < 3 || choice == 5
       whos_the_winner(dealer, player)
