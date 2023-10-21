@@ -53,8 +53,8 @@ end
 def durability(who) # weapon durability
   " "  * 4 + "#{who[:weapon][:name]}"          + " " * (49 - who[:weapon][:name].length) + "🛠️" +
   "🟩" *       who[:weapon][:uses].clamp(0, 5) +
-  "⬜" * (5 - who[:weapon][:uses]).clamp(0, 5) + " " * 3 + "#{ATTACKS[who[:weapon][:bonus]]}"
-end
+  "⬜" * (5 - who[:weapon][:uses]).clamp(0, 5) + " " * 3 + (who[:id] == :player ? "#{ATTACKS[who[:weapon][:bonus]]}" : "")
+end                                                          # specials display only for player weapons
 
 def status(player) # Dynamic status for player cash & drunkness
   wallet = case player[:cash]
@@ -96,15 +96,16 @@ def whos_holding_what(dealer, player) # blackjack game info
   "#{dealer[:name]}  🃏#{YL}#{"%02d" % dealer[:score]}#{CL}  #{dealer[:cards].join(' ')}"                if player[:stuck]
   puts whitespace(player, " ", 30) +
   "#{player[:name]}  🃏#{GN}#{"%02d" % player[:score]}#{CL}  #{player[:cards].join(' ')}"
-end                       # "%02d" % adds a leading zero to single digits
+end                         # "%02d" % adds a leading zero to single digits
 
 def whos_the_winner(dealer, player) # blackjack shouts => require too many conditions to combine with shout method
+  taunt = " 💬 " + GAME_TAUNT.sample
   messages = if player[:score] == 21 && player[:hand].length == 2 && dealer[:score] != 21
-    BLACKJACK
+    BLACKJACK + " " + player[:name] + taunt
   elsif player[:score] <= 21 && (player[:score] > dealer[:score] || dealer[:score] > 21)
-    SUCCESS
+    SUCCESS   + " " + player[:name] + taunt
   else
-    FLUNKED + " now get out❗"
+    FLUNKED   + " " + dealer[:name] + taunt
   end
   puts text_break(messages, " ", 80)
 end

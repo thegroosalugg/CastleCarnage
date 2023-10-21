@@ -32,13 +32,24 @@ def check_ace(player)
   end
 end
 
+def draw_card(player, deck)
+  player[:hand] << deck.shift
+  player[:score] = player[:hand].sum { |card| card[:value] }
+  check_ace(player)
+end
+
+def blackjack_menu(enemies, dealer, player, menu)
+  whos_holding_what(dealer, player)
+  game_info(enemies, player)
+  load_menu(player, menu)
+end
+
 def blackjack(enemies, player, dealer)
   loop do
     print `clear`
 
+    player[:land] = BARKEEP # change the scenery
     player[:stuck] = false
-    # player[:land] = BARKEEP # come back to this
-    shout(dealer, :gamblore)
     deck = card_deck
     dealer[:hand], player[:hand] = [], []
 
@@ -46,65 +57,59 @@ def blackjack(enemies, player, dealer)
     dealer[:score], player[:score] = [dealer[:hand], player[:hand]].map { |hand| hand.sum { |card| card[:value] } }
 
     check_ace(player); check_ace(dealer)
-    whos_holding_what(dealer, player)
+    shout(dealer, :gamblore)
 
     while player[:score] < 21
       deck = card_deck if deck.empty?
-      game_info(enemies, player)
-      load_menu(player, :cards)
+      blackjack_menu(enemies, dealer, player, :play)
       choice = gets.chomp.to_i
 
       if choice == 4
         print `clear`
-        player[:hand] << deck.shift
-        player[:score] = player[:hand].sum { |card| card[:value] }
-        check_ace(player)
+        draw_card(player, deck)
         shout(player, :cards)
-        whos_holding_what(dealer, player)
       elsif choice == 5
         player[:stuck] = true
         break
       else
-        shout(player, :error)
-        whos_holding_what(dealer, player)
+        shout(dealer, :error)
       end
     end
 
-    while dealer[:score] < 16 # unless (player[:score] == 21 && player[:hand].length == 2)
-      dealer[:hand] << deck.shift
-      dealer[:score] = dealer[:hand].sum { |card| card[:value] }
-      check_ace(dealer)
-    end
-
     print `clear`
+    while dealer[:score] < 16 && !(player[:score] == 21 && player[:hand].length == 2)
+      draw_card(dealer, deck)
+    end
     shout(dealer, :cards) unless player[:score] >= 21 || dealer[:hand].length < 3
 
     if player[:score] <= 21 && (player[:score] > dealer[:score] || dealer[:score] > 21) # Who's the winner
       whos_the_winner(dealer, player)
-      strike(enemies, player, dealer)
+      n = player[:score] == 21 && player[:hand].length == 2 ? 2 : 1
+      n.times { strike(enemies, player, dealer) }
     else
       shout(player, :cards) unless player[:hand].length < 3 || choice == 5
-      whos_the_winner(dealer, player)
-      strike(enemies, dealer, player)
-      player[:stuck] = true if dealer[:score] == 21
-      whos_holding_what(dealer, player)
+      whos_the_winner(dealer, player) # end of game message
+      strike(enemies, dealer, player)  # player struck
+      player[:stuck] = true if dealer[:score] == 21 # dealer only reveals hand if they get 21 if they didn't draw
+      whos_holding_what(dealer, player) # display showed here as above must run first in that order
+      player[:land] = { id: :move, art: BATTLEFIELD.sample }
       break # Game ends if you lose
     end
 
     loop do
-      # player[:land] = { id: :move, art: BATTLEFIELD.sample } # come back to this
-      whos_holding_what(dealer, player)
-      game_info(enemies, player)
-      load_menu(player, :again)
+      return if dealer[:hp] <= 0
+      blackjack_menu(enemies, dealer, player, :replay)
       play_again = gets.chomp.to_i
       case play_again
       when 4
         break
       when 5
         print `clear`
+        shout(dealer, :goodbye)
+        player[:land] = { id: :move, art: BATTLEFIELD.sample }
         return
       else
-        shout(player, :error)
+        shout(dealer, :error)
       end
     end
   end

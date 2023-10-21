@@ -59,7 +59,7 @@ ATTACKS = {
 NUM       = ["[̼̟̞0̳  ]̻̟͜", "[̼̟̞1̳  ]̻̟͜", "[̼̟̞2̳  ]̻̟͜", "[̼̟̞3̳  ]̻̟͜", "[̼̟̞4̳  ]̻̟͜", "[̼̟̞5̳  ]̻̟͜", "[̼̟̞6̳  ]̻̟͜", "[̼̟̞7̳  ]̻̟͜", "[̼̟̞8̳  ]̻̟͜", "[̼̟̞9̳  ]̻̟͜"]
 
 WRONG     = "#{RD}𝖂𝕽𝕺𝕹𝕲💯#{CL}"
-COMBAT    = "#{RD}𝕂𝕆𝕄𝔹𝔸𝕋💀#{CL}"
+COMBAT    = "#{RD}⚔️𝕂𝕆𝕄𝔹𝔸𝕋💀#{CL}"
 BONUS     = "#{YL}🪅 ℬ𝒪𝒩𝒰𝒮 🎊#{CL}"
 ITEM      = "#{GN}📦𝕀𝕋𝔼𝕄#{CL}"
 THIEF     = "#{RD}👤 🆃🅷🅸🅴🅵#{CL}"
@@ -79,7 +79,7 @@ SURPRISE  = "#{YL}⚡𝘚𝘜𝘙𝘗𝘙𝘐𝘚𝘌#{CL}"
 PWNED     = "#{RD}☠️𝕡𝕨𝕟𝕖𝕕#{CL}"
 CARD      = "#{OR}ⲤⲀꞄⲆ#{CL}"
 BLACKJACK = "#{OR}🎌 乃㇄闩⼕长丿闩⼕长 🎌#{CL}"
-REVEAL    = "#{BL}DͩEͤAͣLEͤRͬ👁️‍🗨️RͬEͤVͮEͤAͣLEͤDͩ#{CL}"
+REVEAL    = "#{BL}DͩEͤAͣLEͤRͬ👁️‍🗨️RͬEͤVͮEͤAͣL#{CL}"
 
 
 # Incase I need them later

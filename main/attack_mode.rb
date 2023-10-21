@@ -21,42 +21,39 @@ def shots_fired(hunter, target, shot)
 end
 
 def load_ammo(hunter)
-  source = hunter[:weapon] ? hunter[:weapon] : hunter # assigns unarmed or weapon as combat source
+ hunter[:source] = hunter[:weapon] ? hunter[:weapon] : hunter # assigns unarmed or weapon as combat source
   if hunter[:item] # if item exists, all of the source's stats is added to item's stats except HP
     shout(hunter, :used) # item stats declared before any calculations affect it
-    source.each do |key, value|
+   hunter[:source].each do |key, value|
       if hunter[:item].key?(key)
         hunter[:item][key] += value unless key == :hp
       end
     end
-    source       = hunter[:item] # source becomes item for strike, as we do not want to alter wielder/weapon stats
-    hunter[:hp] += hunter[:item][:hp] # HP adds separately
+    hunter[:source]         = hunter[:item] # source becomes item for strike, as we do not want to alter wielder/weapon stats
+    hunter[:hp]            += hunter[:item][:hp] # HP adds separately
   end
-  return source
 end
 
 def strike(enemies, hunter, target)
-  source = load_ammo(hunter) # check for items and weapons
-  block  = target[:weapon] ? target[:weapon][:block] : target[:block]
-  hunter[:damage] = ((source[:attack] - block) * rand(0.6..1.4)).ceil.clamp(1, 100) # dynamic damage multiplier
+  load_ammo(hunter) # check for items and weapons
+  block = target[:weapon] ? target[:weapon][:block] : target[:block]
+  hunter[:damage] = ((hunter[:source][:attack] - block) * rand(0.6..1.4)).ceil.clamp(1, 100) # dynamic damage multiplier
 
-  if source[:aim] > rand(0..9)
-    if source[:chance] > rand(0..9)
-      hunter[:damage] = (hunter[:damage] * source[:crit]).ceil.clamp(1, 100) # rounds any floating number up
+  if hunter[:source][:aim] > rand(0..9)
+    if hunter[:source][:chance] > rand(0..9)
+      hunter[:damage] = (hunter[:damage] * hunter[:source][:crit]).ceil.clamp(1, 100) # rounds any floating number up
       shots_fired(hunter, target, :crit)
-    else
-      shots_fired(hunter, target, :hit)
+    else shots_fired(hunter, target, :hit)
     end
     target[:hp] -= hunter[:damage]
-  else
-    shots_fired(hunter, target, :miss)
+  else shots_fired(hunter, target, :miss)
   end
 
   weapon_breaks(hunter) if hunter[:weapon]
   graveyard(enemies, (hunter[:id] == :player ? hunter : target)) # checks for enemy deaths and collects bounty
-  hunter[:item] = nil # item is used up and destroyed
+  hunter[:item]     = nil # item is used up and destroyed
 
-  if target[:id] == :player && target[:hp] <= 0
+  if target[:id]   == :player && target[:hp] <= 0
     target[:tracks] = hunter   # if player dies tracks enemy who dealt lethal blow
     shout(target, :pwned) # sends same pwned message to the player
   end
@@ -68,13 +65,14 @@ def somersault(enemies, player) # winner strikes loser 2-3 times, targets random
   player[:flip] = rand(2)
   player[:roll] = rand(2..3)
   shout(player, :bounce)
-  player[:flip] == 1 ? player[:roll].times { strike(enemies, player, enemies.sample ) unless enemies.empty? } : player[:roll].times { strike(enemies, enemies.sample, player) }
+  hunter, target = player[:flip] == 1 ? [ [player], enemies ] : [ enemies, [player] ]
+  player[:roll].times { strike(enemies, hunter.sample, target.sample) unless enemies.empty? }
 end
 
 # Main game combat
 
 def mortal_kombat(enemies, player)
-  shout(player, :combat)
+  shout(enemies.sample, :combat)
 
   loop do
     game_info(enemies, player)

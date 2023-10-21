@@ -48,7 +48,7 @@ PWNED_SHOUT = [
   "'s head came clean off.", " 💬 Argh, yar got me!", " was anhialated ☠️", " got shanked 🗡", " got got 💀",
 ]
 COUNTER_SHOUT = [
-  "Ha, I don't think so!", "Not this time!", "#{POW}",
+  "Ha, I don't think so!", "Not this time!", "#{POW}", "#{KABLAMO}",
 ]
 ROOM_SHOUT = [
   "Deffos smelled some nosh in", "Got a massively good feeling about", "Fuck it, let's have a look around", "Saw some shit in",
@@ -59,7 +59,7 @@ ERRORS = [
   "Nobody likes a joker! ", "Quit clowning around! ", "Quit faffing around! ", "Quit being a melon! ",
     ]
 COMBAT_SHOUT = [
-  "Let's mash 'em up", "Am gonna do 'em in!", "C'mon let's 'ave it!", "Let's do this now!", "C'mon 'ave a go!", "Staines massive!",
+  "Gonna mash you up", "Am gonna do yous in!", "C'mon let's 'ave it!", "Let's do this now!", "C'mon 'ave a go!", "Staines massive!",
   "No mercy!", "Charge!", "Watch it geez!"
 ]
 INTRO_SHOUT = [
@@ -79,5 +79,12 @@ LOSE_SHOUT = [
 ]
 GAME_SHOUT = [
   "Line 'em Frankie, line 'em up", "You's about to go dooooown!", "Don't fuck with the master", "Your life total is about to get shuffled!",
-  "You will be judged,", "Are you willing to stand with the righteous?",
+  "You will be judged", "Are you willing to stand with the righteous?",
+]
+GAME_TAUNT = [
+  "I'm gonna enjoys this", "You're gonna get it now!", "Oh-ho-ho-ho-ho!", "This is gonna be sweet!", "Time for your beating!",
+  "Get ready to quit life!", "I'is gonna ctrl, shift 'n' do you in!", "Clobbering time!",
+]
+GOODBYE = [
+  "Good riddance!", "Don't hurry back!", "Ha, loser!", "Only cause I was gonna beat ya"
 ]
