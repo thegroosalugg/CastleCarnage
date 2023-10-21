@@ -36,7 +36,7 @@ def blackjack(enemies, player, dealer)
   loop do
     print `clear`
 
-    # player[:land] = BARKEEP # come back to this
+    player[:land] = BARKEEP # change the scenery
     player[:stuck] = false
     deck = card_deck
     dealer[:hand], player[:hand] = [], []
@@ -88,12 +88,12 @@ def blackjack(enemies, player, dealer)
       strike(enemies, dealer, player)
       player[:stuck] = true if dealer[:score] == 21
       whos_holding_what(dealer, player)
+      player[:land] = { id: :move, art: BATTLEFIELD.sample }
       break # Game ends if you lose
     end
 
     loop do
       return if dealer[:hp] <= 0
-      # player[:land] = { id: :move, art: BATTLEFIELD.sample } # come back to this
       whos_holding_what(dealer, player)
       game_info(enemies, player)
       load_menu(player, :again)
@@ -104,6 +104,7 @@ def blackjack(enemies, player, dealer)
       when 5
         print `clear`
         shout(dealer, :goodbye)
+        player[:land] = { id: :move, art: BATTLEFIELD.sample }
         return
       else
         shout(dealer, :error)
