@@ -12,7 +12,7 @@ def play_game(player)
   game_info(enemies, player)
 
   while !enemies.empty? && player[:hp].positive?
-    load_menu(player)
+    load_menu(player, :main)
     player[:choice] = gets.chomp.downcase # choice is passed as an argument to cheat menu
 
     print `clear`
