@@ -10,6 +10,7 @@ def play_game(player)
   player[:tracks] = enemies.sample
   shout(player, :intro)
   game_info(enemies, player)
+  target = 0
 
   while !enemies.empty? && player[:hp].positive?
     load_menu(player, :main)
@@ -17,7 +18,9 @@ def play_game(player)
 
     print `clear`
     case player[:choice]
-    when "t" then mortal_kombat(enemies, player)
+    when "5" then target = (target - 1) % enemies.length; shout(enemies[target], :target)
+    when "6" then target = (target + 1) % enemies.length; shout(enemies[target], :target)
+    when "t" then brawl(enemies, player, enemies[target])
     when "r" then player[:weapon] && player[:weapon][:bonus] == :somersault ? somersault(enemies, player) : shout(player, :error)
     when "y" then escape_room(enemies, player)
     else shout(player, :error)

@@ -11,11 +11,11 @@ def blackjack(enemies, player, dealer)
       blackjack_menu(enemies, dealer, player, :play)
       player[:choice] = gets.chomp.to_i
 
-      if player[:choice] == 4
+      if player[:choice] == 5
         print `clear`
         draw_card(player, player) # second argument required as player holds the deck, and dealer needs to access it
         shout(player, :cards)
-      elsif player[:choice] == 5
+      elsif player[:choice] == 6
         player[:stuck] = true
         break
       else shout(dealer, :error)
@@ -36,8 +36,8 @@ def blackjack(enemies, player, dealer)
       blackjack_menu(enemies, dealer, player, :replay)
       play_again = gets.chomp.to_i
       case play_again
-      when 4 then break # play again
-      when 5
+      when 5 then break # play again
+      when 6
         print `clear`
         shout(dealer, :goodbye)
         player[:land] = { id: :move, art: BATTLEFIELD.sample } # reset art back to main menu
