@@ -80,7 +80,7 @@ PWNED     = "#{RD}☠️𝕡𝕨𝕟𝕖𝕕#{CL}"
 CARD      = "#{OR}ⲤⲀꞄⲆ#{CL}"
 BLACKJACK = "#{OR}🎌 乃㇄闩⼕长丿闩⼕长 🎌#{CL}"
 REVEAL    = "#{BL}DͩEͤAͣLEͤRͬ👁️‍🗨️RͬEͤVͮEͤAͣL#{CL}"
-TARGET    = "#{OR}🎯 ㇄龱⼕长 龱𝓝#{CL}"
+TARGET    = "#{RD}🎯 ㇄龱⼕长 龱𝓝#{CL}"
 
 # Incase I need them later
 # TRAP      = "#{YL}ƬᖇᎯᕈ🪤#{CL}"

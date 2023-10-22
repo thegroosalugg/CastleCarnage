@@ -6,26 +6,26 @@
 def cheat_mode(enemies, player, target)
   case player[:choice]
   when "l" then enemies << random_enemy
-  when "." then target[:hp]          -=  20
-  when "/" then player[:hp   ]       -=  45
-  when ";" then player[:hp   ]       += 100
-  when "x" then player[:cash ]       -=   1
-  when "c" then player[:cash ]       +=   1
-  when "f" then player[:drunk]       -=   1
-  when "d" then player[:drunk]       +=   1
-  when "g" then player[:kills]       +=   1
-  when "v" then player[:rooms]       +=   1
-  when "k" then player[:attack]      +=  10; player[:aim] = 10
-  when "h" then player[:weapon][:uses] += 1 if player[:weapon]
-  when "j" then weapon_breaks(player)       if player[:weapon]
+  when "." then target[:hp]            -=  20
+  when "/" then player[:hp   ]         -=  45
+  when ";" then player[:hp   ]         += 100
+  when "x" then player[:cash ]         -=   1
+  when "c" then player[:cash ]         +=   1
+  when "f" then player[:drunk]         -=   1
+  when "d" then player[:drunk]         +=   1
+  when "g" then player[:kills]         +=   1
+  when "v" then player[:rooms]         +=   1
+  when "k" then player[:attack]        +=  10; player[:aim] = 10
+  when "h" then player[:weapon][:uses] +=   1 if player[:weapon]
+  when "j" then weapon_breaks(player)         if player[:weapon]
   when "n" then  weapon_wakes(player)
   when "b" then  weapon_wakes(target)
-  when "p" then    cheat_menu(enemies, player, target)
   when "," then  print_player(player)
   when "m" then print_enemies(enemies)
-  when "1" then blackjack(enemies, player, target)
+  when "p" then cheat_menu(enemies, player, target)
   when "2" then rochambeau(enemies, player, target)
-  when "3" then coin_flip(enemies, player, target)
+  when "1" then  blackjack(enemies, player, target)
+  when "3" then  coin_flip(enemies, player, target)
   end
   player[:weapon][:uses] = player[:weapon][:uses].clamp(0, 5) if player[:weapon]
   player[:drunk]         = player[:drunk].clamp(0, 5)

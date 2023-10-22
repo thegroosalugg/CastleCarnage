@@ -13,8 +13,7 @@ end
 def surprise(enemies, player) # surprise attack
   target = enemies.sample
   if rand(4) == 1 then shout(target, :surprise)
-    if rand(3) == 1
-      shout(player, :counter)
+    if rand(3) == 1 then shout(player, :counter)
       strike(enemies, player, target)
     else strike(enemies, target, player)
     end
@@ -73,7 +72,7 @@ def coin_flip(enemies, player, target)
 
     if player[:choice] == target[:move]
       strike(enemies, player, target)
-      #break if target[:hp] <= 0
+      break if target[:hp] <= 0
     else
       strike(enemies, target, player)
       break # Exit loop if choices don't match

@@ -40,8 +40,8 @@ def specials(enemies, player, target)
   if player[:weapon] && !player[:weapon][:bonus].empty?
     case player[:weapon][:bonus]
     when :somersault then somersault(enemies, player)
-    when :gambler    then blackjack(enemies, player, target)
-    when :psychic    then coin_flip(enemies, player, target)
+    when :gambler    then  blackjack(enemies, player, target)
+    when :psychic    then  coin_flip(enemies, player, target)
     when :stylish    then rochambeau(enemies, player, target)
     end
   else shout(player, :error)
