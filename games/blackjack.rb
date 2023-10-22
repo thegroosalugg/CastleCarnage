@@ -7,7 +7,6 @@ def blackjack(enemies, player, dealer)
     set_the_scene(dealer, player)
 
     while player[:score] < 21
-      card_deck(player) if player[:deck].empty?
       blackjack_menu(enemies, dealer, player, :play)
       player[:choice] = gets.chomp.to_i
 
@@ -99,7 +98,8 @@ def blackjack_menu(enemies, dealer, player, menu)
   load_menu(player, menu)
 end
 
-def draw_card(player, deck)
+def draw_card(player, deck) # deck is stored in player, +1 parameter must also exist for the dealer to draw
+  card_deck(deck) if deck[:deck].empty?
   player[:hand] << deck[:deck].shift
   player[:score] = player[:hand].sum { |card| card[:value] }
   check_ace(player)

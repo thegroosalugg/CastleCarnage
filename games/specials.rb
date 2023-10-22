@@ -4,7 +4,7 @@
 # possibly also sneak attack - steal enemy weapons
 # possibly summon buddies
 
-def brawl(enemies, player, target) # Regular brawl will take place without specials
+def brawl(enemies, player, target) # Regular brawl when player strikes
   strike(enemies, player, target)
   strike(enemies, target, player) if target[:hp].positive? && player[:hp].positive?
   surprise(enemies, player) unless enemies.empty? || player[:hp] <= 0 # random attack on player possible
