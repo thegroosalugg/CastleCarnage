@@ -8,7 +8,7 @@ def mortal_kombat(enemies, player) # Main game combat
     game_info(enemies, player)
     player[:land] = { id: :move, art: BATTLEFIELD.sample }
     puts MENU_HEADER
-    enemies.each_with_index { |enemy, index| puts " " * 28 + "#{ML}#{NUM[index + 4]}#{CL} #{enemy[:name]}" }
+    enemies.each_with_index { |enemy, index| puts " " * 26 + "#{ML}#{NUM[index + 4]}#{CL} #{enemy[:name]}" }
     puts BARRIER
 
     choice = gets.chomp.to_i - 4
@@ -20,7 +20,7 @@ def mortal_kombat(enemies, player) # Main game combat
       else brawl(enemies, player, target)
       end
       break # ends combat
-    else shout(player, :error)
+    else shout(enemies.sample, :error)
     end
   end
 end
