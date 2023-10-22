@@ -22,7 +22,7 @@ def play_game(player)
     when "5" then target = (target - 1) % enemies.length
     when "6" then target = (target + 1) % enemies.length
     when "t" then brawl(enemies, player, enemies[target])
-    when "r" then player[:weapon] && player[:weapon][:bonus] == :somersault ? somersault(enemies, player) : shout(player, :error)
+    when "r" then specials(enemies, player, enemies[target])
     when "y" then escape_room(enemies, player)
     else shout(player, :error)
     end
@@ -33,6 +33,16 @@ def play_game(player)
     game_info(enemies, player)
   end
   game_over(player)
+end
+
+def specials(enemies, player, target)
+  if player[:weapon] && !player[:weapon][:bonus].empty?
+    case player[:weapon][:bonus]
+    when :somersault then somersault(enemies, player)
+    when :gambler    then blackjack(enemies, player, target)
+    end
+  else shout(player, :error)
+  end
 end
 
 def ctrl_s(player) # player is saved on game over and can be used again on replay

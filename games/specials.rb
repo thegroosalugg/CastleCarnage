@@ -4,6 +4,23 @@
 # possibly also sneak attack - steal enemy weapons
 # possibly summon buddies
 
+def brawl(enemies, player, target) # Regular brawl will take place without specials
+  strike(enemies, player, target)
+  strike(enemies, target, player) if target[:hp].positive? && player[:hp].positive?
+  surprise(enemies, player) unless enemies.empty? || player[:hp] <= 0 # random attack on player possible
+end
+
+def surprise(enemies, player) # surprise attack
+  target = enemies.sample
+  if rand(4) == 1 then shout(target, :surprise)
+    if rand(3) == 1
+      shout(player, :counter)
+      strike(enemies, player, target)
+    else strike(enemies, target, player)
+    end
+  end
+end
+
 def dance_off(player, buddy, weapon, the_boss, boss_style, load_boss)
   greeting(:combat)
   boss_moves = []
