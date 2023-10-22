@@ -13,7 +13,7 @@ def play_game(player)
   target = 0
 
   while !enemies.empty? && player[:hp].positive?
-    shout(enemies[target], :target)
+    shout(enemies[target], :target) # this randomly conflicted with shout's declaration of tag variable with nil class. Keep an eye on it, unable to recreate error atm
     load_menu(player, :main)
     player[:choice] = gets.chomp.downcase # choice is passed as an argument to cheat menu
 

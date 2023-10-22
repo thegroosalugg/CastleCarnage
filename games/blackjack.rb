@@ -109,7 +109,7 @@ def bust_or_break(enemies, dealer, player)
   if player[:score] <= 21 && (player[:score] > dealer[:score] || dealer[:score] > 21) # Who's the winner
     whos_the_winner(dealer, player)
     n = player[:score] == 21 && player[:hand].length == 2 ? 2 : 1
-    n.times { strike(enemies, player, dealer) }
+    n.times { break if dealer[:hp] <= 0; strike(enemies, player, dealer) } # blackjack gives 2 strikes, unless 1st strike deals lethal
   else
     shout(player, :cards) unless player[:hand].length < 3 || player[:choice] == 5
     whos_the_winner(dealer, player) # end of game message
