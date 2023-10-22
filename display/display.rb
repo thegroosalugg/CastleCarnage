@@ -99,7 +99,7 @@ def whos_holding_what(dealer, player) # blackjack game info
 end                         # "%02d" % adds a leading zero to single digits
 
 def whos_the_winner(dealer, player) # blackjack shouts => require too many conditions to combine with shout method
-    tag, speaker = if player[:score] == 21 && player[:hand].length == 2 && dealer[:score] != 21
+  tag, speaker = if player[:score] == 21 && player[:hand].length == 2 && dealer[:score] != 21
     [BLACKJACK, player[:name]]
   elsif player[:score] <= 21 && (player[:score] > dealer[:score] || dealer[:score] > 21)
     [SUCCESS, player[:name]]
