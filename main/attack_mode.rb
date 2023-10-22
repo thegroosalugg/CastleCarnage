@@ -1,40 +1,69 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-# Player vs enemy strike
+def mortal_kombat(enemies, player) # Main game combat
+  shout(enemies.sample, :combat)
 
-def shots_fired(hunter, target, shot)
-  text = rand(3) == 1 ? (shot == :miss ? BACK_TALK.sample : "🗯️ " + SMACK_TALK.sample) : ""
+  loop do
+    game_info(enemies, player)
+    player[:land] = { id: :move, art: BATTLEFIELD.sample }
+    puts MENU_HEADER
+    enemies.each_with_index { |enemy, index| puts " " * 28 + "#{ML}#{NUM[index + 4]}#{CL} #{enemy[:name]}" }
+    puts BARRIER
 
-  hit  = "#{hunter[:name]} #{text}#{HIT} #{target[:name]} -#{hunter[:damage]} #{target[:emoji]}"
-  crit = "#{hunter[:name]} #{text}#{CRIT} #{target[:name]} -#{hunter[:damage]} #{target[:emoji]}"
-  miss = "#{hunter[:name]} 🗯️❓ #{text}#{MISS} #{target[:name]}"
+    choice = gets.chomp.to_i - 4
 
-  shout, comeback = case shot
-  when :hit  then [hit,  SMACK_BACK]
-  when :crit then [crit, SMACK_BACK]
-  when :miss then [miss,  TALK_BACK]
-  end
-
-  puts text_break(shout, " ", 100)
-  puts text_break("#{target[:name]} 🗯️ #{comeback.sample}", " ", 85) if !text.empty? && rand(2) == 1
-end
-
-def load_ammo(hunter)
- hunter[:source] = hunter[:weapon] ? hunter[:weapon] : hunter # assigns unarmed or weapon as combat source
-  if hunter[:item] # if item exists, all of the source's stats is added to item's stats except HP
-    shout(hunter, :used) # item stats declared before any calculations affect it
-   hunter[:source].each do |key, value|
-      if hunter[:item].key?(key)
-        hunter[:item][key] += value unless key == :hp
+    if enemies.any? && (0...enemies.length).include?(choice)
+      print `clear`
+      target = enemies[choice]
+      if player[:weapon] && !player[:weapon][:bonus].empty? && player[:weapon][:bonus] != :somersault then combat_menu(enemies, player, target)
+      else brawl(enemies, player, target)
       end
+      break # ends combat
+    else shout(player, :error)
     end
-    hunter[:source]         = hunter[:item] # source becomes item for strike, as we do not want to alter wielder/weapon stats
-    hunter[:hp]            += hunter[:item][:hp] # HP adds separately
   end
 end
 
-def strike(enemies, hunter, target)
+def combat_menu(enemies, player, target) # second menu if special attacks present
+  shout(target, :combat)
+  choice = 0
+
+  until[4, 5].include?(choice)
+    player[:land] = { id: :move, art: BATTLEFIELD.sample }
+    game_info(enemies, player)
+    load_menu(player, :combat)
+    choice = gets.chomp.to_i
+    print `clear`
+
+    if choice == 4 then brawl(enemies, player, target)
+    elsif choice == 5
+      if player[:weapon][:bonus] == :gambler then blackjack(enemies, player, target)
+      else shout(target, :error); redo
+      end
+    else shout(target, :error)
+    end
+  end
+end
+
+def brawl(enemies, player, target) # Regular brawl will take place without specials
+  strike(enemies, player, target)
+  strike(enemies, target, player) if target[:hp].positive? && player[:hp].positive?
+  surprise(enemies, player) unless enemies.empty? || player[:hp] <= 0 # random attack on player possible
+end
+
+def surprise(enemies, player) # surprise attack
+  target = enemies.sample
+  if rand(4) == 1 then shout(target, :surprise)
+    if rand(3) == 1
+      shout(player, :counter)
+      strike(enemies, player, target)
+    else strike(enemies, target, player)
+    end
+  end
+end
+
+def strike(enemies, hunter, target) # all entities use this to fight
   load_ammo(hunter) # check for items and weapons
   block = target[:weapon] ? target[:weapon][:block] : target[:block]
   hunter[:damage] = ((hunter[:source][:attack] - block) * rand(0.6..1.4)).ceil.clamp(1, 100) # dynamic damage multiplier
@@ -59,89 +88,35 @@ def strike(enemies, hunter, target)
   end
 end
 
-# Sommersault attack
-
-def somersault(enemies, player) # winner strikes loser 2-3 times, targets random
-  player[:flip] = rand(2)
-  player[:roll] = rand(2..3)
-  shout(player, :bounce)
-  hunter, target = player[:flip] == 1 ? [ [player], enemies ] : [ enemies, [player] ]
-  player[:roll].times { strike(enemies, hunter.sample, target.sample) unless enemies.empty? }
-end
-
-# Regular weaponless brawl
-
-def brawl(enemies, player, target)
-  strike(enemies, player, target)
-  strike(enemies, target, player) if target[:hp].positive? && player[:hp].positive?
-  surprise(enemies, player) unless enemies.empty? || player[:hp] <= 0 # random attack on player possible
-end
-
-# with special attacks
-
-def combat_menu(enemies, hunter, target)
-  shout(target, :combat)
-  choice = 0
-
-  until[4, 5].include?(choice)
-    game_info(enemies, hunter)
-    load_menu(hunter, :combat)
-    choice = gets.chomp.to_i
-    print `clear`
-
-    if choice == 4 then brawl(enemies, hunter, target)
-    elsif choice == 5
-      if hunter[:weapon][:bonus] == :gambler then blackjack(enemies, hunter, target)
-      else shout(hunter, :error); redo
+def load_ammo(hunter)
+ hunter[:source] = hunter[:weapon] ? hunter[:weapon] : hunter # assigns unarmed or weapon as combat source
+  if hunter[:item] # if item exists, all of the source's stats is added to item's stats except HP
+    shout(hunter, :used) # item stats declared before any calculations affect it
+   hunter[:source].each do |key, value|
+      if hunter[:item].key?(key)
+        hunter[:item][key] += value unless key == :hp
       end
-    else shout(hunter, :error)
     end
+    hunter[:source]         = hunter[:item] # source becomes item for strike, as we do not want to alter wielder/weapon stats
+    hunter[:hp]            += hunter[:item][:hp] # HP adds separately
   end
 end
 
-# Main game combat
+def shots_fired(hunter, target, shot) # Player vs enemy strike
+  text = rand(3) == 1 ? (shot == :miss ? BACK_TALK.sample : "🗯️ " + SMACK_TALK.sample) : ""
 
-def mortal_kombat(enemies, player)
-  shout(enemies.sample, :combat)
+  hit  = "#{hunter[:name]} #{text}#{HIT} #{target[:name]} -#{hunter[:damage]} #{target[:emoji]}"
+  crit = "#{hunter[:name]} #{text}#{CRIT} #{target[:name]} -#{hunter[:damage]} #{target[:emoji]}"
+  miss = "#{hunter[:name]} 🗯️❓ #{text}#{MISS} #{target[:name]}"
 
-  loop do
-    game_info(enemies, player)
-    player[:land] = { id: :move, art: BATTLEFIELD.sample }
-    puts MENU_HEADER
-    enemies.each_with_index { |enemy, index| puts " " * 28 + "#{ML}#{NUM[index + 4]}#{CL} #{enemy[:name]}" }
-    puts BARRIER
-
-    choice = gets.chomp.to_i - 4
-
-    if enemies.any? && (0...enemies.length).include?(choice)
-      print `clear`
-      target = enemies[choice]
-      if player[:weapon] && !player[:weapon][:bonus].empty? && player[:weapon][:bonus] != :somersault then combat_menu(enemies, player, target)
-      else brawl(enemies, player, target)
-      end
-      break # ends combat
-    else shout(player, :error)
-    end
+  shout, comeback = case shot
+  when :hit  then [hit,  SMACK_BACK]
+  when :crit then [crit, SMACK_BACK]
+  when :miss then [miss,  TALK_BACK]
   end
-end
 
-def surprise(enemies, player) # surprise attack
-  target = enemies.sample
-  if rand(4) == 1 then shout(target, :surprise)
-    if rand(3) == 1
-      shout(player, :counter)
-      strike(enemies, player, target)
-    else strike(enemies, target, player)
-    end
-  end
-end
-
-def bounty(hunter, target) # collect bounty
-  hunter[:tracks] = target
-  hunter[:kills] += 1
-  hunter[:cash]   = (hunter[:cash] + 1).clamp(0, 5)
-  hunter[:hp]     = (hunter[:hp] + 10).clamp(0, 150)
-  shout(hunter, :bounty) # amounts hardcoded as they're static
+  puts text_break(shout, " ", 100)
+  puts text_break("#{target[:name]} 🗯️ #{comeback.sample}", " ", 85) if !text.empty? && rand(2) == 1
 end
 
 def graveyard(enemies, player)
@@ -154,4 +129,20 @@ def graveyard(enemies, player)
     end
   end # Player dies and last enemy is tracked if current tracked enemy is already dead
   player[:tracks] = enemies.sample if player[:hp] <= 0 && player[:tracks][:hp] <= 0
+end
+
+def bounty(hunter, target) # collect bounty
+  hunter[:tracks] = target
+  hunter[:kills] += 1
+  hunter[:cash]   = (hunter[:cash] + 1).clamp(0, 5)
+  hunter[:hp]     = (hunter[:hp] + 10).clamp(0, 150)
+  shout(hunter, :bounty) # amounts hardcoded as they're static
+end
+
+def somersault(enemies, player) # Sommersault attack
+  player[:flip] = rand(2)    # winner strikes loser 2-3 times, targets random
+  player[:roll] = rand(2..3)
+  shout(player, :bounce)
+  hunter, target = player[:flip] == 1 ? [ [player], enemies ] : [ enemies, [player] ]
+  player[:roll].times { strike(enemies, hunter.sample, target.sample) unless enemies.empty? }
 end
