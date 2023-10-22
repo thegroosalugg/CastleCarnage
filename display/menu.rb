@@ -5,7 +5,7 @@ def load_menu(player, menu)
   if menu == :main
     puts " " * 30 + "#{ML}𝕎ℍ𝔸𝕋ℂℍ𝔸 𝔾𝕆ℕℕ𝔸 𝔻𝕆❔#{CL}"
     puts " " * 23 + "🥷 #{RD}[̼̟̞T͍̦͔]̻̟͜S͛ᴛⷮRͬIͥᴋⷦEͤ#{CL}"
-    puts " " * 23 + "🐬 #{YL}[͌̈́͘R͌̈́͆]͋͑͠#{ATTACKS[player[:weapon][:bonus]]}#{CL}" if player[:weapon] && player[:weapon][:bonus]
+    puts " " * 23 + "🐬 #{YL}[͌̈́͘R͌̈́͆]͋͑͠#{ATTACKS[player[:weapon][:bonus]]}#{CL}" if player[:weapon] && !player[:weapon][:bonus].empty?
     puts " " * 23 + "💨 #{OR}[̻͓͜Y͖͖̘]̫̼͚Rͬoͦoͦmͫs͛#{CL}"
     puts " " * 23 + "🎯 #{MG}[̳5̳-̳6̳]̳  ᑕჄᑕしᕮ Ꮆ〇〇Ɲ⟆#{CL}"
   elsif menu == :combat

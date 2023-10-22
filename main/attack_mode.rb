@@ -1,68 +1,6 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-def mortal_kombat(enemies, player) # Main game combat
-  shout(enemies.sample, :combat)
-
-  loop do
-    game_info(enemies, player)
-    player[:land] = { id: :move, art: BATTLEFIELD.sample }
-    puts MENU_HEADER
-    enemies.each_with_index { |enemy, index| puts " " * 26 + "#{ML}#{NUM[index + 4]}#{CL} #{enemy[:name]}" }
-    puts BARRIER
-
-    choice = gets.chomp.to_i - 4
-
-    if enemies.any? && (0...enemies.length).include?(choice)
-      print `clear`
-      target = enemies[choice]
-      if player[:weapon] && !player[:weapon][:bonus].empty? && player[:weapon][:bonus] != :somersault then combat_menu(enemies, player, target)
-      else brawl(enemies, player, target)
-      end
-      break # ends combat
-    else shout(enemies.sample, :error)
-    end
-  end
-end
-
-def combat_menu(enemies, player, target) # second menu if special attacks present
-  shout(target, :combat)
-  choice = 0
-
-  until[4, 5].include?(choice)
-    player[:land] = { id: :move, art: BATTLEFIELD.sample }
-    game_info(enemies, player)
-    load_menu(player, :combat)
-    choice = gets.chomp.to_i
-    print `clear`
-
-    if choice == 4 then brawl(enemies, player, target)
-    elsif choice == 5
-      if player[:weapon][:bonus] == :gambler then blackjack(enemies, player, target)
-      else shout(target, :error); redo
-      end
-    else shout(target, :error)
-    end
-  end
-end
-
-def brawl(enemies, player, target) # Regular brawl will take place without specials
-  strike(enemies, player, target)
-  strike(enemies, target, player) if target[:hp].positive? && player[:hp].positive?
-  surprise(enemies, player) unless enemies.empty? || player[:hp] <= 0 # random attack on player possible
-end
-
-def surprise(enemies, player) # surprise attack
-  target = enemies.sample
-  if rand(4) == 1 then shout(target, :surprise)
-    if rand(3) == 1
-      shout(player, :counter)
-      strike(enemies, player, target)
-    else strike(enemies, target, player)
-    end
-  end
-end
-
 def strike(enemies, hunter, target) # all entities use this to fight
   load_ammo(hunter) # check for items and weapons
   block = target[:weapon] ? target[:weapon][:block] : target[:block]
