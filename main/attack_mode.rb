@@ -69,6 +69,36 @@ def somersault(enemies, player) # winner strikes loser 2-3 times, targets random
   player[:roll].times { strike(enemies, hunter.sample, target.sample) unless enemies.empty? }
 end
 
+# Regular weaponless brawl
+
+def brawl(enemies, player, target)
+  strike(enemies, player, target)
+  strike(enemies, target, player) if target[:hp].positive? && player[:hp].positive?
+  surprise(enemies, player) unless enemies.empty? || player[:hp] <= 0 # random attack on player possible
+end
+
+# with special attacks
+
+def combat_menu(enemies, hunter, target)
+  shout(target, :combat)
+  choice = 0
+
+  until[4, 5].include?(choice)
+    game_info(enemies, hunter)
+    load_menu(hunter, :combat)
+    choice = gets.chomp.to_i
+    print `clear`
+
+    if choice == 4 then brawl(enemies, hunter, target)
+    elsif choice == 5
+      if hunter[:weapon][:bonus] == :gambler then blackjack(enemies, hunter, target)
+      else shout(hunter, :error); redo
+      end
+    else shout(hunter, :error)
+    end
+  end
+end
+
 # Main game combat
 
 def mortal_kombat(enemies, player)
@@ -86,25 +116,22 @@ def mortal_kombat(enemies, player)
     if enemies.any? && (0...enemies.length).include?(choice)
       print `clear`
       target = enemies[choice]
-      strike(enemies, player, target)
-      strike(enemies, target, player) if target[:hp].positive? && player[:hp].positive?
-      surprise(enemies, player) unless enemies.empty? || player[:hp] <= 0 # random attack on player possible
-      break
-    else
-      shout(player, :error)
+      if player[:weapon] && !player[:weapon][:bonus].empty? && player[:weapon][:bonus] != :somersault then combat_menu(enemies, player, target)
+      else brawl(enemies, player, target)
+      end
+      break # ends combat
+    else shout(player, :error)
     end
   end
 end
 
 def surprise(enemies, player) # surprise attack
   target = enemies.sample
-  if rand(4) == 1
-    shout(target, :surprise)
+  if rand(4) == 1 then shout(target, :surprise)
     if rand(3) == 1
       shout(player, :counter)
       strike(enemies, player, target)
-    else
-      strike(enemies, target, player)
+    else strike(enemies, target, player)
     end
   end
 end
@@ -123,8 +150,7 @@ def graveyard(enemies, player)
       shout(enemy, :pwned)
       bounty(player, enemy)
       true  # This will remove the enemy from the array
-    else
-      false  # This will keep the enemy in the array
+    else false  # This will keep the enemy in the array
     end
   end # Player dies and last enemy is tracked if current tracked enemy is already dead
   player[:tracks] = enemies.sample if player[:hp] <= 0 && player[:tracks][:hp] <= 0
