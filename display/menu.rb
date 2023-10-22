@@ -8,10 +8,9 @@ def load_menu(player, menu)
     puts " " * 23 + "🐬 #{YL}[͌̈́͘R͌̈́͆]͋͑͠Sᴏᴍᴇʀsᴀᴜʟᴛ#{CL}" if player[:weapon] && player[:weapon][:bonus] == :somersault
     puts " " * 23 + "💨 #{OR}[̻͓͜Y͖͖̘]̫̼͚Rͬoͦoͦmͫs͛#{CL}"
   elsif menu == :combat
-    puts " " * 28 + "#{ML}ℬℯ 𝓅𝓇ℴ𝒻ℯ𝓈𝓈𝒾ℴ𝓃𝒶𝓁𝓁𝓎 ℊℴℴ𝒹 𝓁ℴℴ𝓀𝒾𝓃ℊ...#{CL}"
-    puts " " * 26 + "#{CN}#{NUM[4]} 🧊 𝔹𝕝𝕦𝕖𝕊𝕥𝕖𝕖𝕝#{CL}"
-    puts " " * 26 + "#{OR}#{NUM[5]} 🐯 Lᴇ Tɪɢʀᴇ#{CL}"
-    puts " " * 26 + "#{MG}#{NUM[6]} 🍦 𝕄𝔸𝔾ℕ𝕌𝕄#{CL}"
+    puts " " * 26 + "#{ML}丂卄ㄖ山 丫ㄖㄩ尺 爪ㄖᐯ🝗丂#{CL}"
+    puts " " * 26 + "#{RD}#{NUM[4]}S͛ᴛⷮRͬIͥᴋⷦEͤ#{CL}"
+    puts " " * 26 + "#{OR}#{NUM[5]}#{ATTACKS[player[:weapon][:bonus]]}#{CL}"
   elsif menu == :style
     puts " " * 28 + "#{ML}ℬℯ 𝓅𝓇ℴ𝒻ℯ𝓈𝓈𝒾ℴ𝓃𝒶𝓁𝓁𝓎 ℊℴℴ𝒹 𝓁ℴℴ𝓀𝒾𝓃ℊ...#{CL}"
     puts " " * 26 + "#{CN}#{NUM[4]} 🧊 𝔹𝕝𝕦𝕖𝕊𝕥𝕖𝕖𝕝#{CL}"
@@ -22,7 +21,7 @@ def load_menu(player, menu)
     puts " " * 26 + "#{RD}#{NUM[4]} 🦎𝕮𝖍𝖆𝖗𝖒𝖆𝖓𝖉𝖊𝖗🔥#{CL}"
     puts " " * 26 + "#{BL}#{NUM[5]} 🐢 𝒮𝓆𝓊𝒾𝓇𝓉𝓁ℯ 💧#{CL}"
   elsif menu == :play
-    puts " " * 28 + "#{ML}поиграй в игру сука#{CL}"
+    puts " " * 26 + "#{ML}поиграй в игру сука#{CL}"
     puts " " * 26 + "#{GN}#{NUM[4]} 🃏 Давай!#{CL}"
     puts " " * 26 + "#{RD}#{NUM[5]} 🪂 Пиздᴇц!#{CL}"
   elsif menu == :replay
@@ -44,7 +43,7 @@ def show_your_moves(player, the_boss, user_moves, boss_moves, menu)
     5 => "#{BL}🐢 𝒮𝓆𝓊𝒾𝓇𝓉𝓁ℯ 💧#{CL}"
   }
 
-  if menu == :dance
+  if menu == :style
     boss_moves.each_with_index do |boss, round|
       user = user_moves[round]
       x = case
@@ -56,7 +55,7 @@ def show_your_moves(player, the_boss, user_moves, boss_moves, menu)
       end
       puts whitespace(player, " ", 16) + "#{player[:name]} 💬 #{moves[user]} #{x} #{moves[boss]} 🗨️ #{the_boss[:name]}"
     end
-  elsif menu == :keg
+  elsif menu == :match
     x = user_moves == boss_moves ? "#{SUCCESS}" : "#{FLUNKED}"
     puts whitespace(player, " ", 14) + "#{player[:name]} 💬 #{pkmn[user_moves]} #{x} #{pkmn[boss_moves]} 🗨️ #{the_boss[:name]}"
   end

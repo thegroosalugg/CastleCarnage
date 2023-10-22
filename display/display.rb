@@ -4,7 +4,7 @@
 def game_info(enemies, player) # Main UI that displays all current happenings
   puts BARRIER_EN
   enemies.each { |enemy| display_bars(enemy) }
-  puts move_ascii_art(player)
+  puts wallpaper(player)
   display_bars(player)
   status(player)
   puts BARRIER
@@ -17,7 +17,7 @@ def display_bars(who) # generator that combines methods to create dynamic displa
   puts SHIELD_EN if who[:id] == :enemy
 end
 
-def move_ascii_art(player) # move ASCII art
+def wallpaper(player) # move ASCII art
   offset = player[:land][:id] == :move ? rand(10..30) : 10 # checks if art moves on each loop or if static it centers art without hardcode
   player[:land][:art].split("\n").map { |line| " " * offset + line }.join("\n")
 end                        # \n represents line break when concatenating strings
@@ -89,7 +89,7 @@ def whos_holding_what(dealer, player) # blackjack game info
   player[:cards] = player[:hand].map { |card| card[:suit] }
 
   puts BARRIER_EN
-  puts                    " " * 21 + REVEAL                                                              if player[:stuck]
+  puts                    " " * 25 + REVEAL                                                              if player[:stuck]
   puts whitespace(dealer, " ", 30) + # whitespace generator so display is consistent regardless of name length
   "#{dealer[:name]}  🃏#{YL}#{"%02d" % dealer[:hand].first[:value]}#{CL}  #{dealer[:cards][0]}  🃏" unless player[:stuck]
   puts whitespace(dealer, " ", 30) +
