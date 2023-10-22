@@ -40,6 +40,7 @@ def shout(who, what) # controls all messages in the game except for combat
   end
   print `clear` if [:name, :error].include?(what)
   puts text_break(messages, " ", size)
+  puts SHIELD if what == :target
 end
 
 def name_player(player) # Name your player

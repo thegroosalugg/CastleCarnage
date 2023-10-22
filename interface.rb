@@ -13,13 +13,14 @@ def play_game(player)
   target = 0
 
   while !enemies.empty? && player[:hp].positive?
+    shout(enemies[target], :target)
     load_menu(player, :main)
     player[:choice] = gets.chomp.downcase # choice is passed as an argument to cheat menu
 
     print `clear`
     case player[:choice]
-    when "5" then target = (target - 1) % enemies.length; shout(enemies[target], :target)
-    when "6" then target = (target + 1) % enemies.length; shout(enemies[target], :target)
+    when "5" then target = (target - 1) % enemies.length
+    when "6" then target = (target + 1) % enemies.length
     when "t" then brawl(enemies, player, enemies[target])
     when "r" then player[:weapon] && player[:weapon][:bonus] == :somersault ? somersault(enemies, player) : shout(player, :error)
     when "y" then escape_room(enemies, player)
