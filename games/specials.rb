@@ -21,60 +21,61 @@ def surprise(enemies, player) # surprise attack
   end
 end
 
-def dance_off(player, buddy, weapon, the_boss, boss_style, load_boss)
-  greeting(:combat)
-  boss_moves = []
-  user_moves = []
+def somersault(enemies, player) # Sommersault attack
+  player[:flip] = rand(2)    # winner strikes loser 2-3 times, targets random
+  player[:roll] = rand(2..3)
+  shout(player, :bounce)
+  hunter, target = player[:flip] == 1 ? [ [player], enemies ] : [ enemies, [player] ]
+  player[:roll].times { strike(enemies, hunter.sample, target.sample) unless enemies.empty? }
+end
 
-  4.times do |round|
-    break if player[:hp] <= 0 || the_boss[:hp] <= 0
-    game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
-    game_menu(:dance)
+def rochambeau(enemies, player, target)
+  shout(target, :combat)
+  target[:moves] = []
+  player[:moves] = []
 
-    boss_moves << rand(4..6)
+  3.times do |round|
+    break if player[:hp] <= 0 || target[:hp] <= 0
+    target[:moves] << rand(5..7)
     choice = 0
 
-    until (4..6).include?(choice)
+    until (5..7).include?(choice)
+      loop_menu(enemies, player, target, :style)
       choice = gets.chomp.to_i
-      error(:input) unless (4..6).include?(choice)
-      game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
-      game_menu(:dance)
+      shout(target, :error) unless [5, 6].include?(choice)
     end
 
-    user_moves << choice
     print `clear`
-    show_your_moves(player, the_boss, user_moves, boss_moves, :dance)
+    player[:moves] << choice
+    show_your_moves(player, target, :style)
 
-    swing(player, the_boss, :dance) if (choice > boss_moves[round]) || (choice == 4 && boss_moves[round] == 6) unless (boss_moves[round] == 4 && choice == 6)
-    swing(the_boss, player, :dance) if (boss_moves[round] > choice) || (boss_moves[round] == 4 && choice == 6) unless (choice == 4 && boss_moves[round] == 6)
-    "#{shots_fired(player, the_boss, :missed)} #{shots_fired(the_boss, player, :missed)}" if choice == boss_moves[round]
+    strike(enemies, player, target) if (choice > target[:moves][round]) || (choice == 5 && target[:moves][round] == 7) unless (target[:moves][round] == 5 && choice == 7)
+    strike(enemies, target, player) if (target[:moves][round] > choice) || (target[:moves][round] == 5 && choice == 7) unless (choice == 5 && target[:moves][round] == 7)
+    "#{shots_fired(player, target, :miss)} #{shots_fired(target, player, :miss)}" if choice == target[:moves][round]
   end
 end
 
-def keg_stand(player, buddy, weapon, the_boss, boss_style, load_boss)
-  greeting(:combat)
+def coin_flip(enemies, player, target)
+  shout(target, :combat)
 
   loop do
-    boss_move = [4, 5].sample
-    choice = 0
-    game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
-    game_menu(:keg)
+    target[:move] = [5, 6].sample
+    player[:choice] = 0
 
-    until [4, 5].include?(choice)
-      choice = gets.chomp.to_i
-      error(:input) unless [4, 5].include?(choice)
-      game_info(player, buddy, weapon, the_boss, boss_style, load_boss)
-      game_menu(:keg)
+    until [5, 6].include?(player[:choice])
+      loop_menu(enemies, player, target, :flip)
+      player[:choice] = gets.chomp.to_i
+      shout(target, :error) unless [5, 6].include?(player[:choice])
     end
 
     print `clear`
-    show_your_moves(player, the_boss, choice, boss_move, :keg)
+    show_your_moves(player, target, :flip)
 
-    if choice == boss_move
-      swing(player, the_boss, :keg)
-      player[:drunk] = (player[:drunk] + 2).clamp(0, 20)
+    if player[:choice] == target[:move]
+      strike(enemies, player, target)
+      #break if target[:hp] <= 0
     else
-      swing(the_boss, player, :keg)
+      strike(enemies, target, player)
       break # Exit loop if choices don't match
     end
   end

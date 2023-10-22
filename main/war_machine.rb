@@ -80,7 +80,7 @@ def weapon_wakes(wielder)
 end
 
 def weapon_breaks(wielder)
-  wielder[:weapon][:uses] = (wielder[:weapon][:uses] - 1)
+  wielder[:weapon][:uses] -= 1
   if wielder[:weapon][:uses] == 0
     shout(wielder, :broke)
     wielder[:weapon] = nil

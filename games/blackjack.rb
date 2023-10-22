@@ -7,7 +7,7 @@ def blackjack(enemies, player, dealer)
     set_the_scene(dealer, player)
 
     while player[:score] < 21
-      blackjack_menu(enemies, dealer, player, :play)
+      loop_menu(enemies, player, dealer, :play)
       player[:choice] = gets.chomp.to_i
 
       if player[:choice] == 5
@@ -32,7 +32,7 @@ def blackjack(enemies, player, dealer)
 
     loop do
       return if dealer[:hp] <= 0
-      blackjack_menu(enemies, dealer, player, :replay)
+      loop_menu(enemies, player, dealer, :replay)
       play_again = gets.chomp.to_i
       case play_again
       when 5 then break # play again
@@ -90,12 +90,6 @@ def check_ace(player)
     player[:hand].last[:value] = 1
     player[:score] -= 10
   end
-end
-
-def blackjack_menu(enemies, dealer, player, menu)
-  whos_holding_what(dealer, player)
-  game_info(enemies, player)
-  load_menu(player, menu)
 end
 
 def draw_card(player, deck) # deck is stored in player, +1 parameter must also exist for the dealer to draw

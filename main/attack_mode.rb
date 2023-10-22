@@ -76,11 +76,3 @@ def bounty(hunter, target) # collect bounty
   hunter[:hp]     = (hunter[:hp] + 10).clamp(0, 150)
   shout(hunter, :bounty) # amounts hardcoded as they're static
 end
-
-def somersault(enemies, player) # Sommersault attack
-  player[:flip] = rand(2)    # winner strikes loser 2-3 times, targets random
-  player[:roll] = rand(2..3)
-  shout(player, :bounce)
-  hunter, target = player[:flip] == 1 ? [ [player], enemies ] : [ enemies, [player] ]
-  player[:roll].times { strike(enemies, hunter.sample, target.sample) unless enemies.empty? }
-end
