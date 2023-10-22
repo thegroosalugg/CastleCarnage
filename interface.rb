@@ -19,8 +19,8 @@ def play_game(player)
 
     print `clear`
     case player[:choice]
-    when "5" then target = (target - 1) % enemies.length
-    when "6" then target = (target + 1) % enemies.length
+    when "5" then target = (target - 1) % enemies.length; shout(enemies[target], :combat)
+    when "6" then target = (target + 1) % enemies.length; shout(enemies[target], :combat)
     when "t" then brawl(enemies, player, enemies[target])
     when "r" then specials(enemies, player, enemies[target])
     when "y" then escape_room(enemies, player)
