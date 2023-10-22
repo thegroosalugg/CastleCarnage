@@ -3,35 +3,36 @@
 
 # debug cheat menu for interface
 
-def cheat_mode(enemies, player)
+def cheat_mode(enemies, player, target)
   case player[:choice]
   when "l" then enemies << random_enemy
-  when "." then enemies.first[:hp] -= 25
-  when "/" then player[:hp   ] -=  50
-  when ";" then player[:hp   ] += 100
-  when "x" then player[:cash ] -=   1
-  when "c" then player[:cash ] +=   1
-  when "f" then player[:drunk] -=   1
-  when "d" then player[:drunk] +=   1
-  when "g" then player[:kills] +=   1
-  when "v" then player[:rooms] +=   1
-  when "h" then player[:weapon][:uses ] += 1 if player[:weapon]
-  when "j" then weapon_breaks(player) if player[:weapon]
+  when "." then target[:hp]            -=  20
+  when "/" then player[:hp   ]         -=  45
+  when ";" then player[:hp   ]         += 100
+  when "x" then player[:cash ]         -=   1
+  when "c" then player[:cash ]         +=   1
+  when "f" then player[:drunk]         -=   1
+  when "d" then player[:drunk]         +=   1
+  when "g" then player[:kills]         +=   1
+  when "v" then player[:rooms]         +=   1
+  when "k" then player[:attack]        +=  10; player[:aim] = 10
+  when "h" then player[:weapon][:uses] +=   1 if player[:weapon]
+  when "j" then weapon_breaks(player)         if player[:weapon]
   when "n" then  weapon_wakes(player)
-  when "b" then  weapon_wakes(enemies.sample)
-  when "p" then    cheat_menu(enemies, player)
+  when "b" then  weapon_wakes(target)
   when "," then  print_player(player)
   when "m" then print_enemies(enemies)
-  when "1" then blackjack(enemies, player, enemies.sample)
-  when "2" then rochambeau(enemies, player, enemies.sample)
-  when "3" then coin_flip(enemies, player, enemies.sample)
+  when "p" then cheat_menu(enemies, player, target)
+  when "2" then rochambeau(enemies, player, target)
+  when "1" then  blackjack(enemies, player, target)
+  when "3" then  coin_flip(enemies, player, target)
   end
-  player[:weapon][:uses ] = player[:weapon][:uses ].clamp(0, 5) if player[:weapon]
-  player[:drunk] = player[:drunk].clamp(0, 5)
-  player[:cash ] = player[:cash ].clamp(0, 5)
+  player[:weapon][:uses] = player[:weapon][:uses].clamp(0, 5) if player[:weapon]
+  player[:drunk]         = player[:drunk].clamp(0, 5)
+  player[:cash ]         = player[:cash ].clamp(0, 5)
 end
 
-def cheat_menu(enemies, player)
+def cheat_menu(enemies, player, target)
   commands = [
     { code: ',', description: "#{player[:name]} 📒" },
     { code: 'n', description: "#{player[:name]} #{WEAPON}" },
@@ -45,8 +46,8 @@ def cheat_menu(enemies, player)
     { code: 'h', description: "#{player[:name]} +1 🛠️" },
     { code: ';', description: "#{player[:name]} +100 #{player[:emoji]}" },
     { code: '/', description: "#{player[:name]} -50 #{player[:emoji]}" },
-    { code: '.', description: "#{enemies.first[:name]} -25 #{enemies.first[:emoji]}" },
-    { code: 'b', description: "#{enemies.first[:name]} #{WEAPON}" },
+    { code: '.', description: "#{target[:name]} -20 #{target[:emoji]}" },
+    { code: 'b', description: "#{target[:name]} #{WEAPON}" },
     { code: 'l', description: "#{enemies.map { |enemy| enemy[:name] }.join(' ')} << 🙈 #{YL}Random#{CL}" },
     { code: 'm', description: "#{enemies.map { |enemy| enemy[:name] }.join(' ')} 📒" },
   ]

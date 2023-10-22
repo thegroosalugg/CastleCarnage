@@ -27,10 +27,10 @@ def strike(enemies, hunter, target) # all entities use this to fight
 end
 
 def load_ammo(hunter)
- hunter[:source] = hunter[:weapon] ? hunter[:weapon] : hunter # assigns unarmed or weapon as combat source
+  hunter[:source] = hunter[:weapon] ? hunter[:weapon] : hunter # assigns unarmed or weapon as combat source
   if hunter[:item] # if item exists, all of the source's stats is added to item's stats except HP
     shout(hunter, :used) # item stats declared before any calculations affect it
-   hunter[:source].each do |key, value|
+    hunter[:source].each do |key, value|
       if hunter[:item].key?(key)
         hunter[:item][key] += value unless key == :hp
       end

@@ -60,7 +60,7 @@ def show_your_moves(player, target, menu)
     end
   elsif menu == :flip
     x = player[:choice] == target[:move] ? "#{SUCCESS}" : "#{FLUNKED}"
-    puts whitespace(player, " ", 20) + "#{player[:name]} 💬 #{flip[player[:choice]]} #{x} #{flip[target[:move]]} 🗨️ #{target[:name]}"
+    puts whitespace(player, " ", 14) + "#{player[:name]} 💬 #{flip[player[:choice]]} #{x} #{flip[target[:move]]} 🗨️ #{target[:name]}"
   end
   puts BARRIER_EN
 end
