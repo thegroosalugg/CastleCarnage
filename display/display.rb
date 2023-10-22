@@ -99,13 +99,14 @@ def whos_holding_what(dealer, player) # blackjack game info
 end                         # "%02d" % adds a leading zero to single digits
 
 def whos_the_winner(dealer, player) # blackjack shouts => require too many conditions to combine with shout method
-  taunt = " 💬 " + GAME_TAUNT.sample
-  messages = if player[:score] == 21 && player[:hand].length == 2 && dealer[:score] != 21
-    BLACKJACK + " " + player[:name] + taunt
+    tag, speaker = if player[:score] == 21 && player[:hand].length == 2 && dealer[:score] != 21
+    [BLACKJACK, player[:name]]
   elsif player[:score] <= 21 && (player[:score] > dealer[:score] || dealer[:score] > 21)
-    SUCCESS   + " " + player[:name] + taunt
+    [SUCCESS, player[:name]]
   else
-    FLUNKED   + " " + dealer[:name] + taunt
+    [FLUNKED, dealer[:name]]
   end
-  puts text_break(messages, " ", 80)
+  taunt = speaker + " 💬 " + GAME_TAUNT.sample
+  puts padding_generator(tag, " ", 80)
+  puts text_break(taunt, " ", 80)
 end
