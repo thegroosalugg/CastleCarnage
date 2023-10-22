@@ -7,10 +7,10 @@ def play_game(player)
   name_player(player)
   enemies = []
   3.times { enemies << random_enemy }
-  player[:tracks] = enemies.sample
+  target = 0
+  player[:tracks] = enemies[target]
   shout(player, :intro)
   game_info(enemies, player)
-  target = 0
 
   while !enemies.empty? && player[:hp].positive?
     target = 0 if enemies[target].nil?
@@ -29,7 +29,7 @@ def play_game(player)
     end
 
     player[:land] = { id: :move, art: BATTLEFIELD.sample } # resets ASCII art to this arena
-    cheat_mode(enemies, player) # DEBUG CHEAT MENU
+    cheat_mode(enemies, player, enemies[target]) # DEBUG CHEAT MENU
     graveyard(enemies, player)
     game_info(enemies, player)
   end
