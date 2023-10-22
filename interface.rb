@@ -10,6 +10,7 @@ def play_game(player)
   player[:tracks] = enemies.sample
   shout(player, :intro)
   game_info(enemies, player)
+  index = 0
 
   while !enemies.empty? && player[:hp].positive?
     load_menu(player, :main)
@@ -17,11 +18,14 @@ def play_game(player)
 
     print `clear`
     case player[:choice]
-    when "t" then mortal_kombat(enemies, player)
+    when "5" then index = (index - 1) % enemies.length
+    when "6" then index = (index + 1) % enemies.length
+    when "t" then brawl(enemies, player, enemies[index])
     when "r" then player[:weapon] && player[:weapon][:bonus] == :somersault ? somersault(enemies, player) : shout(player, :error)
     when "y" then escape_room(enemies, player)
     else shout(player, :error)
     end
+    target = enemies[index]
 
     player[:land] = { id: :move, art: BATTLEFIELD.sample } # resets ASCII art to this arena
     cheat_mode(enemies, player) # DEBUG CHEAT MENU
