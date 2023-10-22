@@ -14,8 +14,8 @@ def item_used(who) # display for used item effects
 end
 
 def shout(who, what) # controls all messages in the game except for combat
-  tag = (who[:id] == :player ? (what == :got ? WEAPON : ITEM ) : THIEF) if [:item, :got].include?(what) # need to watch this
-  size, messages = case what                                             # got a nil class error cause of this line, unable to recreate it so far
+  tag = (who[:id] == :player ? (what == :got ? WEAPON : ITEM ) : THIEF)
+  size, messages = case what                                             
   when :name     then [ 85,      ERRORS.sample  +   " "  + WRONG ]
   when :goodbye  then [ 85,          who[:name] + " 💬 " + GOODBYE.sample ]
   when :bounce   then [ 85, who[:flip]  == 1 ? "#{SUCCESS} " + "⚔️ " * who[:roll] : "#{FLUNKED}" + "😓 " * who[:roll] ]
