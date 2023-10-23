@@ -82,6 +82,7 @@ BLACKJACK = "#{OR}🎌 乃㇄闩⼕长丿闩⼕长 🎌#{CL}"
 REVEAL    = "#{BL}DͩEͤAͣLEͤRͬ👁️‍🗨️RͬEͤVͮEͤAͣL#{CL}"
 TARGET    = "#{RD}🎯 ㇄龱⼕长 龱𝓝#{CL}"
 HANGOVER  = "#{OR}ℍ𝔸ℕ𝔾𝕆𝕍𝔼ℝ#{CL}"
+DRAINED   = "#{RD}𝕯𝖗𝖆𝖎𝖓𝖊𝖉#{CL}"
 
 # Incase I need them later
 # TRAP      = "#{YL}ƬᖇᎯᕈ🪤#{CL}"

@@ -49,4 +49,5 @@ def parting_gift(enemies, player)
     rand(2) == 1 ? crap_factory(enemies.sample) : weapon_wakes(enemies.sample)
   end
   surprise(enemies, player)
+  player[:drain] = false
 end

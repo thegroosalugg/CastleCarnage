@@ -23,7 +23,7 @@ def play_game(player)
     when "5" then target = (target - 1) % enemies.length; shout(enemies[target], :combat)
     when "6" then target = (target + 1) % enemies.length; shout(enemies[target], :combat)
     when "t" then brawl(enemies, player, enemies[target])
-    when "r" then specials(enemies, player, enemies[target])
+    when "r" then player[:drain] ? shout(player, :error) : specials(enemies, player, enemies[target])
     when "y" then escape_room(enemies, player)
     else shout(player, :error)
     end
@@ -44,6 +44,7 @@ def specials(enemies, player, target)
     when :psychic    then  coin_flip(enemies, player, target)
     when :stylish    then rochambeau(enemies, player, target)
     end
+    player[:drain] = true
   else shout(player, :error)
   end
 end

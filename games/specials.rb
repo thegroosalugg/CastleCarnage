@@ -8,6 +8,7 @@ def brawl(enemies, player, target) # Regular brawl when player strikes
   strike(enemies, player, target)
   strike(enemies, target, player) if target[:hp].positive? && player[:hp].positive?
   surprise(enemies, player) unless enemies.empty? || player[:hp] <= 0 # random attack on player possible
+  player[:drain] = false
 end
 
 def surprise(enemies, player) # surprise attack
