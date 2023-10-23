@@ -55,6 +55,7 @@ def rochambeau(enemies, player, target)
 end
 
 def coin_flip(enemies, player, target)
+  player[:sight] = room_vault(2)
   shout(target, :combat)
 
   loop do

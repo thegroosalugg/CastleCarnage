@@ -3,7 +3,7 @@
 
 def escape_room(enemies, player)
   choice = 0
-  rooms  = room_vault
+  rooms  = room_vault(4)
   player[:land] = { id: :room, art: ROOM_SERVICE.sample }
   shout(player, :escape)
   game_info(enemies, player)

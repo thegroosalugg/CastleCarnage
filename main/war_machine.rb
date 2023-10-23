@@ -39,10 +39,10 @@ def spawn_enemy(enemies, player)
   end
 end
 
-def room_vault
+def room_vault(n)
   rooms = []
 
-  while rooms.length < 4
+  while rooms.length < n
     room = {
       name: ROOMS.sample,
       chance: Array.new(rand(4..12)) { rand(1..3) } # creates an array with 4-12 integers, each with a value between 0-6

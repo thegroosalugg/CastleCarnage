@@ -20,9 +20,9 @@ def load_menu(player, menu)
     puts " " * 26 + "#{OR}#{NUM[6]} 🐯 Lᴇ Tɪɢʀᴇ#{CL}"
     puts " " * 26 + "#{MG}#{NUM[7]} 🍦 𝕄𝔸𝔾ℕ𝕌𝕄#{CL}"
   elsif menu == :flip
-    puts " " * 28 + "#{ML}Ⲥⲏⲟⲟ𝛓ⲉ ⲩⲟ𐌵ꞅ ⲣⲟⲕⲉⲙⲟⲛ#{CL}"
-    puts " " * 26 + "#{RD}#{NUM[5]} 🦎𝕮𝖍𝖆𝖗𝖒𝖆𝖓𝖉𝖊𝖗🔥#{CL}"
-    puts " " * 26 + "#{BL}#{NUM[6]} 🐢 𝒮𝓆𝓊𝒾𝓇𝓉𝓁ℯ 💧#{CL}"
+    puts " " * 28 + "#{ML}F̅i̅n̅d̅ '̅e̅m̅#{CL}"
+    puts " " * 26 + "#{RD}#{NUM[5]} #{player[:sight][0][:name]}#{CL}"
+    puts " " * 26 + "#{BL}#{NUM[6]} #{player[:sight][1][:name]}#{CL}"
   elsif menu == :play
     puts " " * 28 + "#{ML}поиграй в игру сука#{CL}"
     puts " " * 26 + "#{GN}#{NUM[5]} 🃏 Давай!#{CL}"
@@ -41,10 +41,12 @@ def show_your_moves(player, target, menu)
     6 => "#{OR}🐯 Lᴇ Tɪɢʀᴇ #{CL}",
     7 => "#{MG}🍦 𝕄𝔸𝔾ℕ𝕌𝕄   #{CL}"
   }
-  flip = {
-    5 => "#{RD}🦎𝕮𝖍𝖆𝖗𝖒𝖆𝖓𝖉𝖊𝖗🔥#{CL}",
-    6 => "#{BL}🐢 𝒮𝓆𝓊𝒾𝓇𝓉𝓁ℯ 💧#{CL}"
-  }
+  if player[:sight]
+    flip = {
+      5 => "#{RD}#{player[:sight][0][:name]}#{CL}",
+      6 => "#{BL}#{player[:sight][1][:name]}#{CL}"
+    }
+  end
 
   if menu == :style
     target[:moves].each_with_index do |them, round|
@@ -60,7 +62,8 @@ def show_your_moves(player, target, menu)
     end
   elsif menu == :flip
     x = player[:choice] == target[:move] ? "#{SUCCESS}" : "#{FLUNKED}"
-    puts whitespace(player, " ", 14) + "#{player[:name]} 💬 #{flip[player[:choice]]} #{x} #{flip[target[:move]]} 🗨️ #{target[:name]}"
+    puts "#{player[:name]} 💬 " + whitespace(player, " ", 10) + "#{flip[player[:choice]]}"
+    puts "#{target[:name]} 💬 " + whitespace(player, " ", 10) + "#{flip[target[:move]]}"
   end
   puts BARRIER_EN
 end
