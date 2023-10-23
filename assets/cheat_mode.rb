@@ -11,8 +11,8 @@ def cheat_mode(enemies, player, target)
   when ";" then player[:hp   ]         += 100
   when "x" then player[:cash ]         -=   1
   when "c" then player[:cash ]         +=   1
-  when "f" then player[:drunk]         -=   1
-  when "d" then player[:drunk]         +=   1
+  when "f" then player[:beers]         -=   1
+  when "d" then player[:beers]         +=   1
   when "g" then player[:kills]         +=   1
   when "v" then player[:scout]         +=   1
   when "k" then player[:attack]        +=  10; player[:aim] = 10
@@ -28,7 +28,7 @@ def cheat_mode(enemies, player, target)
   when "3" then  coin_flip(enemies, player, target)
   end
   player[:weapon][:uses] = player[:weapon][:uses].clamp(0, 5) if player[:weapon]
-  player[:drunk]         = player[:drunk].clamp(0, 5)
+  player[:beers]         = player[:beers].clamp(0, 5)
   player[:cash ]         = player[:cash ].clamp(0, 5)
 end
 

@@ -26,8 +26,8 @@ end
 
 def run_away(player)
   player[:choice] = 0
-               n  = (6 - player[:drunk]).clamp(1, 4) # fewer rooms available if player drunk
-  player[:rooms]  = room_vault(n) # creates n room
+               n  = (6 - player[:beers]).clamp(1, 4) # fewer rooms available if player drunk
+  player[:rooms]  = room_vault(n) # creates n rooms
   player[:land]   = { id: :room, art: ROOM_SERVICE.sample } # sets the scene
   shout(player, :escape)
 end
@@ -35,14 +35,17 @@ end
 def open_door(player)
   player[:room]   = player[:rooms][player[:choice] - 4] # -4 to correct index
   player[:scout] += 1 # updates visited counter
-  player[:drunk].times { player[:room][:chance] << 3 } # 1 extra chance to meet an enemy per level of drunk
+  player[:beers].times { player[:room][:chance] << 3 } # 1 extra chance to meet an enemy per beer
   player[:roll]   = player[:room][:chance].sample # final outcome is then sampled
   shout(player, :room)
 end
 
 def parting_gift(enemies, player)
-  player[:drunk] = (player[:drunk] + 1).clamp(0, 5) if rand(2) == 1
-  if rand(2) == 1
+  if rand(2) == 1 # 50% player gets beer
+    player[:beers] = (player[:beers] + 1).clamp(0, 5)
+    shout(player, :beers)
+  end
+  if rand(2) == 1 # 50% for enemy to get item or weapon
     rand(2) == 1 ? crap_factory(enemies.sample) : weapon_wakes(enemies.sample)
   end
   surprise(enemies, player)

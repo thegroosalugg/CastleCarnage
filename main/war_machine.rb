@@ -11,7 +11,7 @@ def wake_up
     chance:   2,
     crit:   1.5,
     cash:     0,
-    drunk:    0,
+    beers:    0,
     kills:    0,
     scout:    0,
   }

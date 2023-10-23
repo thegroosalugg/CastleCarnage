@@ -34,6 +34,10 @@ SPAWN_SHOUT = [
    "💬 Yargh, yer stepped into the wrong castle matey", "appeared! It's exerting its pressure!", "💬 C'mon chief, give us a mission",
   "sprung out the fridge 🧊, they coming right for ya!", "has an order for bloodshed!", "💬 Reporting for duty",
 ]
+BEER_SHOUT = [
+  " 💬 Sweet as!", " 💬 These are going down like skittles", " 💬 Egh, fosters", " 💬 How many calories is this?",
+  " 💬 Sunk!", " 💬 *burp", " 💬 On a day like this, why not",
+]
 RUN_SHOUT = [
   "Dammit, gotta dash to a gaff quick, or I'm munched!", "Those bastards are right behing me, leeegg it!", "Damn, them wasteman, time to scram!",
   "Where's a Mackie D's when you need one?", "Shit shit shit shit! Bloody cheese it!", "Bloody hell, what's with this place?",
