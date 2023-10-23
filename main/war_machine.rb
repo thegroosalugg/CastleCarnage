@@ -13,7 +13,7 @@ def wake_up
     cash:     0,
     drunk:    0,
     kills:    0,
-    rooms:    0,
+    scout:    0,
   }
 end
 

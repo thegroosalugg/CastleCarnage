@@ -23,7 +23,7 @@ def shout(who, what) # controls all messages in the game except for combat
   when :outro    then [ 80, who[:tracks][:name] +   " "  + (who[:hp].positive? ? WIN_SHOUT : LOSE_SHOUT).sample ]
   when :escape   then [ 80,          who[:name] + " 💬 " + RUN_SHOUT.sample ]
   when :room     then [ 80,          who[:name] + " 💬 " + ROOM_SHOUT.sample  + " " +  who[:room][:name] ]
-  when :bounty   then [ 90,          BONUS      +   " "  + who[:name] + " +10 "+       who[:emoji]         + " +1 💵" ]
+  when :bounty   then [ 90,          BONUS      +   " "  + who[:name] + " +10 "+       who[:emoji]         + " +1 💵" + " -1 🍺"]
   when :cards    then [110,          CARD       +   " "  + who[:name] +  " "   +       who[:hand].last[:suit] ]
   when :broke    then [ 90,          BROKE      +   " "  + who[:name] +  "'s"  + " " + who[:weapon][:name] +  " "   + BROKE_SHOUT.sample ]
   when :item     then [ 90,          tag        +   " "  + who[:item][:name]   + " " + who[:name]          + " 💬 " +  ITEM_SHOUT.sample ]

@@ -2,33 +2,48 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 def escape_room(enemies, player)
-  choice = 0
-  rooms  = room_vault(4)
-  player[:land] = { id: :room, art: ROOM_SERVICE.sample }
-  shout(player, :escape)
-  game_info(enemies, player)
+  run_away(player)
 
-  until (4..7).include?(choice) # index +4 / -4 to set user choice to (4..7) instead of (0..3)
+  until (4..(3 + player[:rooms].length)).include?(player[:choice]) # 4..(3 + rooms length are set to the indexes are 4-7 instead of 0-3
+    game_info(enemies, player)
     puts MENU_HEADER
-    rooms.each_with_index { |room, i| puts " " * 22 + "#{ML}#{NUM[i + 4]}#{CL} #{room[:name]}" }
+    player[:rooms].each_with_index { |room, i| puts " " * 22 + "#{ML}#{NUM[i + 4]}#{CL} #{room[:name]}" } # +4 to index
     puts BARRIER
-
-    choice = gets.chomp.to_i
-    shout(player, :error)      unless (4..7).include?(choice)
-    game_info(enemies, player) unless (4..7).include?(choice)
+    player[:choice] = gets.chomp.to_i
+    shout(player, :error)
   end
 
   print `clear`
-  player[:room]   = rooms[choice - 4]
-  player[:rooms] += 1
-  player[:roll]   = player[:room][:chance].sample
-  target          = [player, enemies.sample].sample
-  shout(player, :room)
+  open_door(player)
 
   case player[:roll]
-  when 1 then crap_factory(target)
-  when 2 then weapon_wakes(target)
+  when 1 then crap_factory(player)
+  when 2 then weapon_wakes(player)
   when 3 then spawn_enemy(enemies, player)
+  end
+  parting_gift(enemies, player)
+end
+
+def run_away(player)
+  player[:choice] = 0
+               n  = (6 - player[:drunk]).clamp(1, 4) # fewer rooms available if player drunk
+  player[:rooms]  = room_vault(n) # creates n room
+  player[:land]   = { id: :room, art: ROOM_SERVICE.sample } # sets the scene
+  shout(player, :escape)
+end
+
+def open_door(player)
+  player[:room]   = player[:rooms][player[:choice] - 4] # -4 to correct index
+  player[:scout] += 1 # updates visited counter
+  player[:drunk].times { player[:room][:chance] << 3 } # 1 extra chance to meet an enemy per level of drunk
+  player[:roll]   = player[:room][:chance].sample # final outcome is then sampled
+  shout(player, :room)
+end
+
+def parting_gift(enemies, player)
+  player[:drunk] = (player[:drunk] + 1).clamp(0, 5) if rand(2) == 1
+  if rand(2) == 1
+    rand(2) == 1 ? crap_factory(enemies.sample) : weapon_wakes(enemies.sample)
   end
   surprise(enemies, player)
 end

@@ -14,7 +14,7 @@ def cheat_mode(enemies, player, target)
   when "f" then player[:drunk]         -=   1
   when "d" then player[:drunk]         +=   1
   when "g" then player[:kills]         +=   1
-  when "v" then player[:rooms]         +=   1
+  when "v" then player[:scout]         +=   1
   when "k" then player[:attack]        +=  10; player[:aim] = 10
   when "h" then player[:weapon][:uses] +=   1 if player[:weapon]
   when "j" then weapon_breaks(player)         if player[:weapon]

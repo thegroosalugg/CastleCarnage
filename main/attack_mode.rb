@@ -72,7 +72,8 @@ end
 def bounty(hunter, target) # collect bounty
   hunter[:tracks] = target
   hunter[:kills] += 1
-  hunter[:cash]   = (hunter[:cash] + 1).clamp(0, 5)
-  hunter[:hp]     = (hunter[:hp] + 10).clamp(0, 150)
+  hunter[:cash]   = (hunter[:cash]  + 1).clamp(0,   5)
+  hunter[:drunk]  = (hunter[:drunk] - 1).clamp(0,   5)
+  hunter[:hp]     = (hunter[:hp]   + 10).clamp(0, 100)
   shout(hunter, :bounty) # amounts hardcoded as they're static
 end

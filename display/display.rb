@@ -76,10 +76,10 @@ def status(player) # Dynamic status for player cash & drunkness
     end
 
   s1 = player[:kills] < 10 ? " " : "" # creating leading whitespace instead of leading zero
-  s2 = player[:rooms] < 10 ? " " : ""
+  s2 = player[:scout] < 10 ? " " : ""
 
   left = " " * 3 + "#{GN}#{wallet} #{CL}#{"💵" * [player[:cash], 0].max}" + "💷" * [0, (5 - player[:cash])].max + " " * 4 +
-  "💀#{s1}#{player[:kills]}  🏰#{s2}#{player[:rooms]}"
+  "💀#{s1}#{player[:kills]}  🏰#{s2}#{player[:scout]}"
   puts STATUS_BAR
   puts "#{left}#{OR}#{drunk}#{CL} #{"🍺" * [player[:drunk], 0].max}"
 end
