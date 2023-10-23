@@ -13,7 +13,7 @@ def load_menu(player, menu)
     puts " " * 23 + "🥷 #{RD}[̼̟̞T͍̦͔]̻̟͜S͛ᴛⷮRͬIͥᴋⷦEͤ#{CL}"
     if player[:weapon] && !player[:weapon][:bonus].empty?
       if player[:drain]
-        puts " " * 23 + "🐬 #{YL}[͌̈́͘R͌̈́͆]͋͑͠#{DRAINED}#{CL}"
+        puts " " * 23 + "⭕ #{YL}[͌̈́͘R͌̈́͆]͋͑͠#{DRAINED}#{CL}"
       else
         puts " " * 23 + "🐬 #{YL}[͌̈́͘R͌̈́͆]͋͑͠#{ATTACKS[player[:weapon][:bonus]]}#{CL}"
       end
