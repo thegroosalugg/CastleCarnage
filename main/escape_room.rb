@@ -2,16 +2,17 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 def escape_room(enemies, player)
-  choice = 0
-  n = (6 - player[:drunk]).clamp(1, 4) # fewer rooms available if player drunk
+  choice          = 0
+  n               = (6 - player[:drunk]).clamp(1, 4) # fewer rooms available if player drunk
   player[:rooms]  = room_vault(n) # creates n room
-  player[:land] = { id: :room, art: ROOM_SERVICE.sample } # sets the scene
+  player[:land]   = { id: :room, art: ROOM_SERVICE.sample } # sets the scene
+
   shout(player, :escape)
   game_info(enemies, player)
 
-  until ((4..(4 + player[:rooms].length - 1)).include?(choice))
+  until (4..(3 + player[:rooms].length)).include?(choice) # 4..(3 + rooms length are set to the indexes are 4-7 instead of 0-3
     puts MENU_HEADER
-    player[:rooms].each_with_index { |room, i| puts " " * 22 + "#{ML}#{NUM[i + 4]}#{CL} #{room[:name]}" }
+    player[:rooms].each_with_index { |room, i| puts " " * 22 + "#{ML}#{NUM[i + 4]}#{CL} #{room[:name]}" } # +4 to index
     puts BARRIER
     choice = gets.chomp.to_i
 
@@ -20,7 +21,7 @@ def escape_room(enemies, player)
   end
 
   print `clear`
-  player[:room]   = player[:rooms][choice - 4]
+  player[:room]   = player[:rooms][choice - 4] # -4 to correct index
   #p player[:rooms]
   player[:scout] += 1 # updates visited counter
   player[:drunk].times { player[:room][:chance] << 3 } # 1 extra chance to meet an enemy per level of drunk
