@@ -35,6 +35,8 @@ def shout(who, what) # controls all messages in the game except for combat
   when :counter  then [100,          COUNTER    +   " "  + who[:name] + " 🗯️ " +  COUNTER_SHOUT.sample ]
   when :combat   then [100,          COMBAT     +   " "  + who[:name] + " 🗯️ " +   COMBAT_SHOUT.sample ]
   when :gamblore then [ 90,   ATTACKS[:gambler] +   " "  + who[:name] + " 🗯️ " +     GAME_SHOUT.sample ]
+  when :psychic  then [ 90,   ATTACKS[:psychic] +   " "  + who[:name] + " 🗯️ " +     GAME_SHOUT.sample ]
+  when :style    then [ 90,   ATTACKS[:stylish] +   " "  + who[:name] + " 🗯️ " +     GAME_SHOUT.sample ]
   when :target   then [ 90,          TARGET     +   " "  + who[:name] ]
   when :used     then [ 80, item_used(who)]
   end

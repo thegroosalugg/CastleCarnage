@@ -29,7 +29,7 @@ def somersault(enemies, player) # Sommersault attack
 end
 
 def rochambeau(enemies, player, target)
-  shout(target, :combat)
+  shout(target, :style)
   target[:moves] = []
   player[:moves] = []
 
@@ -56,7 +56,7 @@ end
 
 def coin_flip(enemies, player, target)
   player[:sight] = room_vault(2)
-  shout(target, :combat)
+  shout(target, :psychic)
 
   loop do
     target[:move] = [5, 6].sample

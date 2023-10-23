@@ -38,9 +38,3 @@ ITEMS = [
   "☕ Instant Coffee", "🥞 Burnt Pancakes", "🌿 Northern Lights", "🌭 Tinned Hot Dogs",
   "🔷 Heisenberg's Blue", "🥟 Questionnable Taco", "🌶️ Really Spicy Pepper", "🍗 Undercooked Chicken"
 ]
-COLUMN_A = [
-  "🥏🪁🛢️⚱️💫☄️🌟♨️🪔",
-]
-COLUMN_B = [
-  "🥏🗑️🪞🚽🛏️🛋️🛁🚿🪁🛢️⚱️💫☄️🌟♨️🪔",
-]
