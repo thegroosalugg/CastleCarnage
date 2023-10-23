@@ -18,8 +18,9 @@ def cheat_mode(enemies, player, target)
   when "k" then player[:attack]        +=  10; player[:aim] = 10
   when "h" then player[:weapon][:uses] +=   1 if player[:weapon]
   when "j" then weapon_breaks(player)         if player[:weapon]
-  when "n" then  weapon_wakes(player)
-  when "b" then  weapon_wakes(target)
+  when "'" then crap_factory(player, :bonus)
+  when "n" then  weapon_wakes(player, :bonus)
+  when "b" then  weapon_wakes(target, :bonus)
   when "," then  print_player(player)
   when "m" then print_enemies(enemies)
   when "p" then cheat_menu(enemies, player, target)
@@ -34,22 +35,23 @@ end
 
 def cheat_menu(enemies, player, target)
   commands = [
-    { code: ',', description: "#{player[:name]} 📒" },
-    { code: 'n', description: "#{player[:name]} #{WEAPON}" },
-    { code: 'j', description: "#{player[:name]} 🔪#{BROKE}" },
-    { code: 'x', description: "#{player[:name]} -1 💵" },
-    { code: 'c', description: "#{player[:name]} +1 💵" },
-    { code: 'f', description: "#{player[:name]} -1 🍺" },
-    { code: 'd', description: "#{player[:name]} +1 🍺" },
-    { code: 'g', description: "#{player[:name]} +1 💀" },
-    { code: 'v', description: "#{player[:name]} +1 🏰" },
-    { code: 'h', description: "#{player[:name]} +1 🛠️" },
-    { code: ';', description: "#{player[:name]} +100 #{player[:emoji]}" },
-    { code: '/', description: "#{player[:name]} -50 #{player[:emoji]}" },
-    { code: '.', description: "#{target[:name]} -20 #{target[:emoji]}" },
-    { code: 'b', description: "#{target[:name]} #{WEAPON}" },
-    { code: 'l', description: "#{enemies.map { |enemy| enemy[:name] }.join(' ')} << 🙈 #{YL}Random#{CL}" },
-    { code: 'm', description: "#{enemies.map { |enemy| enemy[:name] }.join(' ')} 📒" },
+    { code:  ",",  description: "#{player[:name]} 📒" },
+    { code:  "n",  description: "#{player[:name]} #{WEAPON}" },
+    { code:  "j",  description: "#{player[:name]} 🔪#{BROKE}" },
+    { code:  "x",  description: "#{player[:name]} -1 💵" },
+    { code:  "c",  description: "#{player[:name]} +1 💵" },
+    { code:  "f",  description: "#{player[:name]} -1 🍺" },
+    { code:  "d",  description: "#{player[:name]} +1 🍺" },
+    { code:  "g",  description: "#{player[:name]} +1 💀" },
+    { code:  "v",  description: "#{player[:name]} +1 🏰" },
+    { code:  "h",  description: "#{player[:name]} +1 🛠️" },
+    { code:  ";",  description: "#{player[:name]} +100 #{player[:emoji]}" },
+    { code:  "/",  description: "#{player[:name]} -50 #{player[:emoji]}" },
+    { code:  ".",  description: "#{target[:name]} -20 #{target[:emoji]}" },
+    { code:  "'",  description: "#{player[:name]} #{ITEM}"   },
+    { code:  "b",  description: "#{target[:name]} #{WEAPON}" },
+    { code:  "l",  description: "#{enemies.map { |enemy| enemy[:name] }.join(" ")} << 🙈 #{YL}Random#{CL}" },
+    { code:  "m",  description: "#{enemies.map { |enemy| enemy[:name] }.join(" ")} 📒" },
   ]
 
   commands.each do |command|

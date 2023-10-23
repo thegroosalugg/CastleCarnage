@@ -83,6 +83,7 @@ REVEAL    = "#{BL}DͩEͤAͣLEͤRͬ👁️‍🗨️RͬEͤVͮEͤAͣL#{CL}"
 TARGET    = "#{RD}🎯 ㇄龱⼕长 龱𝓝#{CL}"
 HANGOVER  = "#{OR}ℍ𝔸ℕ𝔾𝕆𝕍𝔼ℝ#{CL}"
 DRAINED   = "#{RD}𝕯𝖗𝖆𝖎𝖓𝖊𝖉#{CL}"
+SHOP      = "#{GN}𝕋𝕙𝕖 𝕊𝕙𝕠𝕡#{CL}"
 
 # Incase I need them later
 # TRAP      = "#{YL}ƬᖇᎯᕈ🪤#{CL}"

@@ -25,6 +25,7 @@ def play_game(player)
     when "t" then brawl(enemies, player, enemies[target])
     when "r" then specials(enemies, player, enemies[target])
     when "y" then escape_room(enemies, player)
+    when "e" then the_shop(player)
     else shout(player, :error)
     end
 

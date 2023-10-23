@@ -4,11 +4,11 @@
 def strike(enemies, hunter, target) # all entities use this to fight
   load_ammo(hunter) # check for items and weapons
   block = target[:weapon] ? target[:weapon][:block] : target[:block]
-  hunter[:damage] = ((hunter[:source][:attack] - block) * rand(0.6..1.4)).ceil.clamp(1, 100) # dynamic damage multiplier
+  hunter[:damage] = ((hunter[:source][:attack] - block) * rand(0.6..1.4)).ceil.clamp(2, 100) # dynamic damage multiplier
 
   if hunter[:source][:aim] > rand(0..9)
     if hunter[:source][:chance] > rand(0..9)
-      hunter[:damage] = (hunter[:damage] * hunter[:source][:crit]).ceil.clamp(1, 100) # rounds any floating number up
+      hunter[:damage] = (hunter[:damage] * hunter[:source][:crit]).ceil.clamp(2, 100) # rounds any floating number up
       shots_fired(hunter, target, :crit)
     else shots_fired(hunter, target, :hit)
     end
@@ -36,7 +36,7 @@ def load_ammo(hunter)
       end
     end
     hunter[:source]         = hunter[:item] # source becomes item for strike, as we do not want to alter wielder/weapon stats
-    hunter[:hp]            += hunter[:item][:hp] # HP adds separately
+    hunter[:hp]             = (hunter[:hp] + hunter[:item][:hp]).clamp(0, 100) # HP adds separately
   end
 end
 
