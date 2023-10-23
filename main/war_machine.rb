@@ -88,14 +88,14 @@ def weapon_breaks(wielder)
 end
 
 def crap_factory(wielder, request)
-  x = request == :bonus ? 1 : [1, -1].sample
+  x = request == :bonus ? 1 : -1
   item = {
     name:  "#{GN}#{ITEMS.sample}#{CL}", # items are for offense only and do not nourish block
-    hp:     rand(2..8)              * x,
-    attack: rand(1..5)              * x,
-    aim:    rand(1..2)              * x,
-    chance: rand(1..2)              * x,
-    crit:   rand(0.3..0.5).round(1) * x,
+    hp:     rand(2..8)              * [1, x].sample,
+    attack: rand(1..5)              * [1, x].sample,
+    aim:    rand(1..2)              * [1, x].sample,
+    chance: rand(1..2)              * [1, x].sample,
+    crit:   rand(0.3..0.5).round(1) * [1, x].sample,
   }
 
   wielder[:item] = item
