@@ -11,15 +11,16 @@ def cheat_mode(enemies, player, target)
   when ";" then player[:hp   ]         += 100
   when "x" then player[:cash ]         -=   1
   when "c" then player[:cash ]         +=   1
-  when "f" then player[:drunk]         -=   1
-  when "d" then player[:drunk]         +=   1
+  when "f" then player[:beers]         -=   1
+  when "d" then player[:beers]         +=   1
   when "g" then player[:kills]         +=   1
   when "v" then player[:scout]         +=   1
   when "k" then player[:attack]        +=  10; player[:aim] = 10
   when "h" then player[:weapon][:uses] +=   1 if player[:weapon]
   when "j" then weapon_breaks(player)         if player[:weapon]
-  when "n" then  weapon_wakes(player)
-  when "b" then  weapon_wakes(target)
+  when "'" then crap_factory(player, :bonus)
+  when "n" then  weapon_wakes(player, :bonus)
+  when "b" then  weapon_wakes(target, :bonus)
   when "," then  print_player(player)
   when "m" then print_enemies(enemies)
   when "p" then cheat_menu(enemies, player, target)
@@ -28,28 +29,29 @@ def cheat_mode(enemies, player, target)
   when "3" then  coin_flip(enemies, player, target)
   end
   player[:weapon][:uses] = player[:weapon][:uses].clamp(0, 5) if player[:weapon]
-  player[:drunk]         = player[:drunk].clamp(0, 5)
+  player[:beers]         = player[:beers].clamp(0, 5)
   player[:cash ]         = player[:cash ].clamp(0, 5)
 end
 
 def cheat_menu(enemies, player, target)
   commands = [
-    { code: ',', description: "#{player[:name]} 📒" },
-    { code: 'n', description: "#{player[:name]} #{WEAPON}" },
-    { code: 'j', description: "#{player[:name]} 🔪#{BROKE}" },
-    { code: 'x', description: "#{player[:name]} -1 💵" },
-    { code: 'c', description: "#{player[:name]} +1 💵" },
-    { code: 'f', description: "#{player[:name]} -1 🍺" },
-    { code: 'd', description: "#{player[:name]} +1 🍺" },
-    { code: 'g', description: "#{player[:name]} +1 💀" },
-    { code: 'v', description: "#{player[:name]} +1 🏰" },
-    { code: 'h', description: "#{player[:name]} +1 🛠️" },
-    { code: ';', description: "#{player[:name]} +100 #{player[:emoji]}" },
-    { code: '/', description: "#{player[:name]} -50 #{player[:emoji]}" },
-    { code: '.', description: "#{target[:name]} -20 #{target[:emoji]}" },
-    { code: 'b', description: "#{target[:name]} #{WEAPON}" },
-    { code: 'l', description: "#{enemies.map { |enemy| enemy[:name] }.join(' ')} << 🙈 #{YL}Random#{CL}" },
-    { code: 'm', description: "#{enemies.map { |enemy| enemy[:name] }.join(' ')} 📒" },
+    { code:  ",",  description: "#{player[:name]} 📒" },
+    { code:  "n",  description: "#{player[:name]} #{WEAPON}" },
+    { code:  "j",  description: "#{player[:name]} 🔪#{BROKE}" },
+    { code:  "x",  description: "#{player[:name]} -1 💵" },
+    { code:  "c",  description: "#{player[:name]} +1 💵" },
+    { code:  "f",  description: "#{player[:name]} -1 🍺" },
+    { code:  "d",  description: "#{player[:name]} +1 🍺" },
+    { code:  "g",  description: "#{player[:name]} +1 💀" },
+    { code:  "v",  description: "#{player[:name]} +1 🏰" },
+    { code:  "h",  description: "#{player[:name]} +1 🛠️" },
+    { code:  ";",  description: "#{player[:name]} +100 #{player[:emoji]}" },
+    { code:  "/",  description: "#{player[:name]} -50 #{player[:emoji]}" },
+    { code:  ".",  description: "#{target[:name]} -20 #{target[:emoji]}" },
+    { code:  "'",  description: "#{player[:name]} #{ITEM}"   },
+    { code:  "b",  description: "#{target[:name]} #{WEAPON}" },
+    { code:  "l",  description: "#{enemies.map { |enemy| enemy[:name] }.join(" ")} << 🙈 #{YL}Random#{CL}" },
+    { code:  "m",  description: "#{enemies.map { |enemy| enemy[:name] }.join(" ")} 📒" },
   ]
 
   commands.each do |command|

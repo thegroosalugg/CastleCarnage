@@ -56,32 +56,32 @@ def durability(who) # weapon durability
   "⬜" * (5 - who[:weapon][:uses]).clamp(0, 5) + " " * 3 + (who[:id] == :player ? "#{ATTACKS[who[:weapon][:bonus]]}" : "")
 end                                                          # specials display only for player weapons
 
-def status(player) # Dynamic status for player cash & drunkness
-  wallet = case player[:cash]
-    when 0 then "    𝙎𝙠𝙞𝙣𝙩 𝘼𝙁 🤒"
-    when 1 then " 𝙋𝙤𝙘𝙠𝙚𝙩𝙈𝙤𝙣𝙚𝙮 🤔"
-    when 2 then "  𝙒𝙚𝙚𝙠𝙚𝙣𝙙𝙅𝙤𝙗 😐"
-    when 3 then "      𝙎𝙤𝙧𝙩𝙚𝙙 🫠"
-    when 4 then "  𝔽𝕚𝕝𝕥𝕙𝕪ℝ𝕚𝕔𝕙 🤑"
-    when 5 then "      𝑀𝑖𝑛𝑡𝑒𝑑 😈"
-    end
+def status(player) # Dynamic status for player cash & beers
+  cash = case player[:cash]
+  when 0 then "    𝙎𝙠𝙞𝙣𝙩 𝘼𝙁 🤒"
+  when 1 then " 𝙋𝙤𝙘𝙠𝙚𝙩𝙈𝙤𝙣𝙚𝙮 🤔"
+  when 2 then "  𝙒𝙚𝙚𝙠𝙚𝙣𝙙𝙅𝙤𝙗 😐"
+  when 3 then "      𝙎𝙤𝙧𝙩𝙚𝙙 🫠"
+  when 4 then "  𝔽𝕚𝕝𝕥𝕙𝕪ℝ𝕚𝕔𝕙 🤑"
+  when 5 then "      𝑀𝑖𝑛𝑡𝑒𝑑 😈"
+  end
 
-  drunk = case player[:drunk]
-    when 0 then "     𝔸𝕓𝕤𝕥𝕚𝕟𝕖𝕟𝕥 ⚖️"
-    when 1 then "   𝔾𝕠𝕥𝔸𝔹𝕦𝕫𝕫𝕆𝕟  😉"
-    when 2 then "  𝔽𝕖𝕖𝕝𝕚𝕟𝕘𝕋𝕚𝕡𝕤𝕪 😏"
-    when 3 then "  𝙊𝙪𝙩𝙊𝙣𝙏𝙝𝙚𝙍𝙖𝙯𝙯 🥴"
-    when 4 then "  ℙ𝕣𝕠𝕡𝕖𝕣ℙ𝕚𝕤𝕤𝕖𝕕 🤤"
-    when 5 then " 𝙁𝙪𝙘𝙠𝙞𝙣𝙜𝙒𝙖𝙨𝙩𝙚𝙙 😵"
-    end
+  beers = case player[:beers]
+  when 0 then "     𝔸𝕓𝕤𝕥𝕚𝕟𝕖𝕟𝕥 ⚖️"
+  when 1 then "   𝔾𝕠𝕥𝔸𝔹𝕦𝕫𝕫𝕆𝕟  😉"
+  when 2 then "  𝔽𝕖𝕖𝕝𝕚𝕟𝕘𝕋𝕚𝕡𝕤𝕪 😏"
+  when 3 then "  𝙊𝙪𝙩𝙊𝙣𝙏𝙝𝙚𝙍𝙖𝙯𝙯 🥴"
+  when 4 then "  ℙ𝕣𝕠𝕡𝕖𝕣ℙ𝕚𝕤𝕤𝕖𝕕 🤤"
+  when 5 then " 𝙁𝙪𝙘𝙠𝙞𝙣𝙜𝙒𝙖𝙨𝙩𝙚𝙙 😵"
+  end
 
   s1 = player[:kills] < 10 ? " " : "" # creating leading whitespace instead of leading zero
   s2 = player[:scout] < 10 ? " " : ""
 
-  left = " " * 3 + "#{GN}#{wallet} #{CL}#{"💵" * [player[:cash], 0].max}" + "💷" * [0, (5 - player[:cash])].max + " " * 4 +
+  left = " " * 3 + "#{GN}#{cash} #{CL}#{"💵" * [player[:cash], 0].max}" + "💷" * [0, (5 - player[:cash])].max + " " * 4 +
   "💀#{s1}#{player[:kills]}  🏰#{s2}#{player[:scout]}"
   puts STATUS_BAR
-  puts "#{left}#{OR}#{drunk}#{CL} #{"🍺" * [player[:drunk], 0].max}"
+  puts "#{left}#{OR}#{beers}#{CL} #{"🍺" * [player[:beers], 0].max}"
 end
 
 def whos_holding_what(dealer, player) # blackjack game info

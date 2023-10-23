@@ -8,6 +8,8 @@ def brawl(enemies, player, target) # Regular brawl when player strikes
   strike(enemies, player, target)
   strike(enemies, target, player) if target[:hp].positive? && player[:hp].positive?
   surprise(enemies, player) unless enemies.empty? || player[:hp] <= 0 # random attack on player possible
+  player[:drain] = false
+  player[:shop]  = true if player[:cash] > rand(6)
 end
 
 def surprise(enemies, player) # surprise attack
@@ -41,7 +43,7 @@ def rochambeau(enemies, player, target)
     until (5..7).include?(choice)
       loop_menu(enemies, player, target, :style)
       choice = gets.chomp.to_i
-      shout(target, :error) unless [5, 6].include?(choice)
+      shout(target, :error) unless (5..7).include?(choice)
     end
 
     print `clear`
@@ -78,5 +80,28 @@ def coin_flip(enemies, player, target)
       strike(enemies, target, player)
       break # Exit loop if choices don't match
     end
+  end
+end
+
+def the_shop(player)
+  if player[:shop] && player[:cash].positive?
+    player[:gains] = rand(8..12)
+    case player[:cash]
+    when 1 then player[:hp] = (player[:hp] += player[:gains]).clamp(0, 100)
+    when 2 then crap_factory(player, :bonus)
+    when 3
+      player[:hp] = (player[:hp] += player[:gains]).clamp(0, 100)
+      weapon_wakes(player, :usual)
+    when 4
+      crap_factory(player, :bonus)
+      weapon_wakes(player, :usual)
+    when 5
+      player[:hp] = (player[:hp] += player[:gains]).clamp(0, 100)
+      weapon_wakes(player, :bonus)
+    end
+    shout(player, :shop)
+    player[:cash] = 0
+    player[:shop] = false
+  else shout(player, :error)
   end
 end

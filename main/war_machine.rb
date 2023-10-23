@@ -11,7 +11,7 @@ def wake_up
     chance:   2,
     crit:   1.5,
     cash:     0,
-    drunk:    0,
+    beers:    0,
     kills:    0,
     scout:    0,
   }
@@ -35,7 +35,7 @@ def spawn_enemy(enemies, player)
     enemies << random_enemy
     shout(enemies[-1], :summon)
   else
-    weapon_wakes(player)
+    weapon_wakes(player, :usual)
   end
 end
 
@@ -58,11 +58,11 @@ def room_vault(n)
   rooms
 end
 
-def weapon_wakes(wielder)
+def weapon_wakes(wielder, request)
   regular = ["#{YL}#{WEAPONS.sample}", 2..5, 10..20, 2..6,  6..9,   2..4, 1.6..2.0]
   special = ["#{MG}#{SPECIAL.sample}", 3..5, 15..25, 4..10, 6..10,  2..5, 2.0..2.5]
-                                 name, uses, attack, block,   aim, chance, crit = rand(4) == 1 ? special : regular
-  bonus   = rand(2) == 1 ? [:somersault, :gambler, :stylish, :psychic].sample : ""
+                                 name, uses, attack, block,   aim, chance, crit = request == :bonus || rand(4) == 1 ? special : regular
+  bonus   = request == :bonus || rand(2) == 1 ? [:somersault, :gambler, :stylish, :psychic].sample : ""
 
   weapon = {
     name:  "#{name}#{CL}",
@@ -87,14 +87,15 @@ def weapon_breaks(wielder)
   end
 end
 
-def crap_factory(wielder)
+def crap_factory(wielder, request)
+  x = request == :bonus ? 1 : [1, -1].sample
   item = {
     name:  "#{GN}#{ITEMS.sample}#{CL}", # items are for offense only and do not nourish block
-    hp:     rand(2..8)              * [1, -1].sample,
-    attack: rand(1..5)              * [1, -1].sample,
-    aim:    rand(1..2)              * [1, -1].sample,
-    chance: rand(1..2)              * [1, -1].sample,
-    crit:   rand(0.3..0.5).round(1) * [1, -1].sample,
+    hp:     rand(2..8)              * x,
+    attack: rand(1..5)              * x,
+    aim:    rand(1..2)              * x,
+    chance: rand(1..2)              * x,
+    crit:   rand(0.3..0.5).round(1) * x,
   }
 
   wielder[:item] = item

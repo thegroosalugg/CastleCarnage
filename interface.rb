@@ -25,6 +25,7 @@ def play_game(player)
     when "t" then brawl(enemies, player, enemies[target])
     when "r" then specials(enemies, player, enemies[target])
     when "y" then escape_room(enemies, player)
+    when "e" then the_shop(player)
     else shout(player, :error)
     end
 
@@ -37,13 +38,14 @@ def play_game(player)
 end
 
 def specials(enemies, player, target)
-  if player[:weapon] && !player[:weapon][:bonus].empty?
+  if player[:weapon] && !player[:weapon][:bonus].empty? && !player[:drain]
     case player[:weapon][:bonus]
     when :somersault then somersault(enemies, player)
     when :gambler    then  blackjack(enemies, player, target)
     when :psychic    then  coin_flip(enemies, player, target)
     when :stylish    then rochambeau(enemies, player, target)
     end
+    player[:drain] = true
   else shout(player, :error)
   end
 end
