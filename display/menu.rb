@@ -61,9 +61,9 @@ def show_your_moves(player, target, menu)
       puts whitespace(player, " ", 14) + "#{player[:name]} 💬 #{style[you]} #{x} #{style[them]} 🗨️ #{target[:name]}"
     end
   elsif menu == :flip
-    x = player[:choice] == target[:move] ? "#{SUCCESS}" : "#{FLUNKED}"
-    puts "#{player[:name]} 💬 " + whitespace(player, " ", 10) + "#{flip[player[:choice]]}"
-    puts "#{target[:name]} 💬 " + whitespace(player, " ", 10) + "#{flip[target[:move]]}"
+    puts  padding_generator(player[:choice] == target[:move] ? "#{SUCCESS}" : "#{FLUNKED}", " ", 80)
+    puts  " " * 14 + whitespace(player, " ", 10) + "#{player[:name]} 💬 " + "#{flip[player[:choice]]}"
+    puts  " " * 14 + whitespace(target, " ", 10) + "#{target[:name]} 💬 " + "#{flip[target[:move]]}"
   end
   puts BARRIER_EN
 end
