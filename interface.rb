@@ -23,7 +23,7 @@ def play_game(player)
     when "5" then target = (target - 1) % enemies.length; shout(enemies[target], :combat)
     when "6" then target = (target + 1) % enemies.length; shout(enemies[target], :combat)
     when "t" then brawl(enemies, player, enemies[target])
-    when "r" then player[:drain] ? shout(player, :error) : specials(enemies, player, enemies[target])
+    when "r" then specials(enemies, player, enemies[target])
     when "y" then escape_room(enemies, player)
     else shout(player, :error)
     end
@@ -37,7 +37,7 @@ def play_game(player)
 end
 
 def specials(enemies, player, target)
-  if player[:weapon] && !player[:weapon][:bonus].empty?
+  if player[:weapon] && !player[:weapon][:bonus].empty? && !player[:drain]
     case player[:weapon][:bonus]
     when :somersault then somersault(enemies, player)
     when :gambler    then  blackjack(enemies, player, target)
