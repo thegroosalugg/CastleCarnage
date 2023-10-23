@@ -12,6 +12,7 @@ def escape_room(enemies, player)
     player[:choice] = gets.chomp.to_i
     shout(player, :error)
   end
+
   print `clear`
   open_door(player)
 
@@ -20,8 +21,7 @@ def escape_room(enemies, player)
   when 2 then weapon_wakes(player)
   when 3 then spawn_enemy(enemies, player)
   end
-  target          = [player, enemies.sample].sample
-  surprise(enemies, player)
+  parting_gift(enemies, player)
 end
 
 def run_away(player)
@@ -38,4 +38,12 @@ def open_door(player)
   player[:drunk].times { player[:room][:chance] << 3 } # 1 extra chance to meet an enemy per level of drunk
   player[:roll]   = player[:room][:chance].sample # final outcome is then sampled
   shout(player, :room)
+end
+
+def parting_gift(enemies, player)
+  player[:drunk] = (player[:drunk] + 1).clamp(0, 5) if rand(2) == 1
+  if rand(2) == 1
+    rand(2) == 1 ? crap_factory(enemies.sample) : weapon_wakes(enemies.sample)
+  end
+  surprise(enemies, player)
 end
