@@ -10,6 +10,10 @@ def brawl(enemies, player, target) # Regular brawl when player strikes
   surprise(enemies, player) unless enemies.empty? || player[:hp] <= 0 # random attack on player possible
   player[:drain] = false
   player[:shop]  = true if player[:cash] > rand(6)
+  if rand(4) == 1 && player[:hp].positive?
+    player[:beers] = (player[:beers] - 1).clamp(0, 5)
+    shout(player, :sober)
+  end
 end
 
 def surprise(enemies, player) # surprise attack
