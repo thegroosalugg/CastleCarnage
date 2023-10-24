@@ -13,7 +13,7 @@ def load_menu(player, menu)
     puts " " * 23 + "🥷 #{RD}[̼̟̞T͍̦͔]̻̟͜S͛ᴛⷮRͬIͥᴋⷦEͤ#{CL}"
     if player[:weapon] && !player[:weapon][:bonus].empty?
       if player[:drain]
-        puts " " * 23 + "🐬 #{YL}[͌̈́͘R͌̈́͆]͋͑͠#{DRAINED}#{CL}"
+        puts " " * 23 + "⭕ #{RD}[͌̈́͘R͌̈́͆]͋͑͠#{DRAINED}#{CL}"
       else
         puts " " * 23 + "🐬 #{YL}[͌̈́͘R͌̈́͆]͋͑͠#{ATTACKS[player[:weapon][:bonus]]}#{CL}"
       end
@@ -31,7 +31,7 @@ def load_menu(player, menu)
     puts " " * 22 + "#{RD}#{NUM[5]} #{player[:sight][0][:name]}#{CL}"
     puts " " * 22 + "#{BL}#{NUM[6]} #{player[:sight][1][:name]}#{CL}"
   elsif menu == :play
-    puts " " * 28 + "#{ML}поиграй в игру сука#{CL}"
+    puts " " * 28 + "#{ML}Hʏжʜᴀ ᴇщᴇ ᴏдʜᴀ ᴋᴀᴘтᴀ?#{CL}"
     puts " " * 26 + "#{GN}#{NUM[5]} 🃏 Давай!#{CL}"
     puts " " * 26 + "#{RD}#{NUM[6]} 🪂 Пиздᴇц!#{CL}"
   elsif menu == :replay

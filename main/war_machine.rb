@@ -25,7 +25,7 @@ def random_enemy
     attack: rand(8..15),
     block:  rand(1..6),
     aim:    rand(6..8),
-    chance: rand(2..6),
+    chance: rand(2..5),
     crit:   rand(1.5..2.5).round(1),
   }
 end
@@ -62,7 +62,7 @@ def weapon_wakes(wielder, request)
   regular = ["#{YL}#{WEAPONS.sample}", 2..5, 10..20, 2..6,  6..9,   2..4, 1.6..2.0]
   special = ["#{MG}#{SPECIAL.sample}", 3..5, 15..25, 4..10, 6..10,  2..5, 2.0..2.5]
                                  name, uses, attack, block,   aim, chance, crit = request == :bonus || rand(4) == 1 ? special : regular
-  bonus   = request == :bonus || rand(2) == 1 ? [:somersault, :gambler, :stylish, :psychic].sample : ""
+  bonus   = request == :bonus || rand(2) == 1 ? [:somersault, :gambler, :stylish, :sneaky, :psychic].sample : ""
 
   weapon = {
     name:  "#{name}#{CL}",
@@ -88,14 +88,15 @@ def weapon_breaks(wielder)
 end
 
 def crap_factory(wielder, request)
-  x = request == :bonus ? 1 : [1, -1].sample
+  x  = request      == :bonus  ?   1 : -1 # default items can be positive or negative, pure-positive can be bought
+  hp = wielder[:id] == :player ?  10 :  5 # nerf enemy hp gain
   item = {
     name:  "#{GN}#{ITEMS.sample}#{CL}", # items are for offense only and do not nourish block
-    hp:     rand(2..8)              * x,
-    attack: rand(1..5)              * x,
-    aim:    rand(1..2)              * x,
-    chance: rand(1..2)              * x,
-    crit:   rand(0.3..0.5).round(1) * x,
+    hp:     rand(hp),
+    attack: rand(1..5)              * [1, x].sample,
+    aim:    rand(1..2)              * [1, x].sample,
+    chance: rand(1..2)              * [1, x].sample,
+    crit:   rand(0.3..0.5).round(1) * [1, x].sample,
   }
 
   wielder[:item] = item

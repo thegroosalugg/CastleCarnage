@@ -7,9 +7,14 @@
 def brawl(enemies, player, target) # Regular brawl when player strikes
   strike(enemies, player, target)
   strike(enemies, target, player) if target[:hp].positive? && player[:hp].positive?
-  surprise(enemies, player) unless enemies.empty? || player[:hp] <= 0 # random attack on player possible
+  surprise(enemies, player) unless enemies.empty? || player[:hp] <= 0 || (player[:weapon] && player[:weapon][:bonus] == :sneaky)
   player[:drain] = false
-  player[:shop]  = true if player[:cash] > rand(6)
+  player[:shop]  = false #  shop is disabled each round whether accessed or not
+  player[:shop]  = true if player[:cash].positive && rand(5) == 1
+  if rand(5) == 1 && player[:hp].positive?
+    player[:beers] = (player[:beers] - 1).clamp(0, 5)
+    shout(player, :sober)
+  end
 end
 
 def surprise(enemies, player) # surprise attack
@@ -30,8 +35,29 @@ def somersault(enemies, player) # Sommersault attack
   player[:roll].times { strike(enemies, hunter.sample, target.sample) unless enemies.empty? }
 end
 
-def rochambeau(enemies, player, target)
+def sneak_attack(enemies, player, target) # sneaky attack
+  if rand(7) > player[:beers] # too many beers lower success
+
+    if target[:item] # steal item
+      target[:ganked], player[:item] = target[:item], target[:item]
+      shout(target, :ganked)
+      target[:item] = nil
+    end
+    if player[:weapon][:uses] == 1 && target[:weapon] # steal weapon and use it on final use
+      target[:ganked], player[:weapon] = target[:weapon], target[:weapon]
+      shout(target, :ganked)
+      target[:weapon] = nil
+    end
+    strike(enemies, player, target)
+  else shout(player, :wasted)
+  end
+
+  strike(enemies, target, player)
+end
+
+def rochambeau(enemies, player, target) # stylish attack
   shout(target, :style)
+  player[:land]  = WALK_OFF # change the scenery
   target[:moves] = []
   player[:moves] = []
 
@@ -54,9 +80,10 @@ def rochambeau(enemies, player, target)
     strike(enemies, target, player) if (target[:moves][round] > choice) || (target[:moves][round] == 5 && choice == 7) unless (choice == 5 && target[:moves][round] == 7)
     "#{shots_fired(player, target, :miss)} #{shots_fired(target, player, :miss)}" if choice == target[:moves][round]
   end
+  player[:land] = { id: :move, art: BATTLEFIELD.sample } # resets ASCII art to this arena
 end
 
-def coin_flip(enemies, player, target)
+def coin_flip(enemies, player, target) # psychic attack
   player[:sight] = room_vault(2)
   shout(target, :psychic)
 
@@ -83,7 +110,7 @@ def coin_flip(enemies, player, target)
   end
 end
 
-def the_shop(player)
+def the_shop(player) # the shop appears randomly and will disappear next round
   if player[:shop] && player[:cash].positive?
     player[:gains] = rand(8..12)
     case player[:cash]

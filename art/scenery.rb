@@ -62,7 +62,7 @@ BOUNCER = { id: :move, art:
     ASCII
   }
 
-THE_BAND = { id: :move, art:
+WALK_OFF = { id: :move, art:
     <<-'ASCII'
 
     #####\             _             /#####

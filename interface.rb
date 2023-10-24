@@ -40,11 +40,13 @@ end
 def specials(enemies, player, target)
   if player[:weapon] && !player[:weapon][:bonus].empty? && !player[:drain]
     case player[:weapon][:bonus]
-    when :somersault then somersault(enemies, player)
-    when :gambler    then  blackjack(enemies, player, target)
-    when :psychic    then  coin_flip(enemies, player, target)
-    when :stylish    then rochambeau(enemies, player, target)
+    when :somersault then   somersault(enemies, player)
+    when :gambler    then    blackjack(enemies, player, target)
+    when :psychic    then    coin_flip(enemies, player, target)
+    when :stylish    then   rochambeau(enemies, player, target)
+    when :sneaky     then sneak_attack(enemies, player, target)
     end
+    player[:shop]  = false #  shop is disabled each round whether accessed or not
     player[:drain] = true
   else shout(player, :error)
   end

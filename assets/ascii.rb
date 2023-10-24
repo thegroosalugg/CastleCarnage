@@ -54,6 +54,7 @@ ATTACKS = {
   :somersault => "#{YL}Sᴏᴍᴇʀsᴀᴜʟᴛ#{CL}",
   :stylish    => "#{CN}🆂🆃🆈🅻🅸🆂🅷#{CL}",
   :psychic    => "#{MG}𝙋𝙎𝙮𝘾𝙝𝙞𝙘#{CL}",
+  :sneaky     => "#{BL}S̷N̷E̷A̷K̷Y̷#{CL}",
 }
 
 NUM       = ["[̼̟̞0̳  ]̻̟͜", "[̼̟̞1̳  ]̻̟͜", "[̼̟̞2̳  ]̻̟͜", "[̼̟̞3̳  ]̻̟͜", "[̼̟̞4̳  ]̻̟͜", "[̼̟̞5̳  ]̻̟͜", "[̼̟̞6̳  ]̻̟͜", "[̼̟̞7̳  ]̻̟͜", "[̼̟̞8̳  ]̻̟͜", "[̼̟̞9̳  ]̻̟͜"]
@@ -82,14 +83,16 @@ BLACKJACK = "#{OR}🎌 乃㇄闩⼕长丿闩⼕长 🎌#{CL}"
 REVEAL    = "#{BL}DͩEͤAͣLEͤRͬ👁️‍🗨️RͬEͤVͮEͤAͣL#{CL}"
 TARGET    = "#{RD}🎯 ㇄龱⼕长 龱𝓝#{CL}"
 HANGOVER  = "#{OR}ℍ𝔸ℕ𝔾𝕆𝕍𝔼ℝ#{CL}"
+CASH      = "#{GN}🄲🄰🅂🄷#{CL}"
 DRAINED   = "#{RD}𝕯𝖗𝖆𝖎𝖓𝖊𝖉#{CL}"
 SHOP      = "#{GN}𝕋𝕙𝕖 𝕊𝕙𝕠𝕡#{CL}"
+GANKED    = "#{BL}ＧＡＮＫＥＤ#{CL}"
+WASTED    = "#{OR}𝕎𝔸𝕊𝕋𝔼𝔻#{CL}"
 
 # Incase I need them later
 # TRAP      = "#{YL}ƬᖇᎯᕈ🪤#{CL}"
 # DEBT      = "#{RD}ᗪ㠪乃ㄒ#{CL}"
 # BUFF      = "#{CN}𝓑𝓤𝓕𝓕🪶#{CL}"
-# CASH      = "#{GN}💲🄲🄰🅂🄷#{CL}"
 # "#{RD}ᙡ∈Ꭿⲕ∈ᖇⲙᎯﬡ#{CL}"
 # "#{RD}𝕄𝕖𝕒𝕥𝕊𝕙𝕚𝕖𝕝𝕕#{CL}"
 # "#{RD}🄲🄸🅅🄸🄻🄸🄰🄽#{CL}"
