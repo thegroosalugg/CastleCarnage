@@ -14,6 +14,8 @@ def wake_up
     beers:    0,
     kills:    0,
     scout:    0,
+    xp:       0,
+    level:    0,
   }
 end
 
@@ -24,7 +26,7 @@ def random_enemy
     hp:     rand(30..50),
     attack: rand(8..15),
     block:  rand(1..6),
-    aim:    rand(6..8),
+    aim:    rand(6..9),
     chance: rand(2..5),
     crit:   rand(1.5..2.5).round(1),
   }
@@ -34,9 +36,8 @@ def spawn_enemy(enemies, player)
   if enemies.length < 4
     enemies << random_enemy
     shout(enemies[-1], :summon)
-  else
-    weapon_wakes(player, :usual)
-  end
+  else rand(2) == 1 ? weapon_wakes(player, :usual) : crap_factory(player, :usual)
+  end             # chance 3 has same outcome as 1 or 2 when enemies full
 end
 
 def room_vault(n)

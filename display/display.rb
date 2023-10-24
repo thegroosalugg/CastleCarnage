@@ -81,6 +81,7 @@ def status(player) # Dynamic status for player cash & beers
   left = " " * 3 + "#{GN}#{cash} #{CL}#{"💵" * [player[:cash], 0].max}" + "💷" * [0, (5 - player[:cash])].max + " " * 4 +
   "💀#{s1}#{player[:kills]}  🏰#{s2}#{player[:scout]}"
   puts STATUS_BAR
+  puts " " * 26 + "DEBUG XP#{player[:xp]}  LEVEL #{player[:level]}" 
   puts "#{left}#{OR}#{beers}#{CL} #{"🍺" * [player[:beers], 0].max}"
 end
 

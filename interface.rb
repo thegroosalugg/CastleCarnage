@@ -32,9 +32,15 @@ def play_game(player)
     player[:land] = { id: :move, art: BATTLEFIELD.sample } # resets ASCII art to this arena
     cheat_mode(enemies, player, enemies[target]) # DEBUG CHEAT MENU
     graveyard(enemies, player)
+    level_up(player)
     game_info(enemies, player)
   end
   game_over(player)
+end
+
+def level_up(player)
+  player[:xp] = player[:kills] * 10 + player[:scout]
+  player[:level] = (player[:xp] / 50).to_i
 end
 
 def specials(enemies, player, target)
