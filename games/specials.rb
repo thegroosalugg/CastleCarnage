@@ -9,7 +9,7 @@ def brawl(enemies, player, target) # Regular brawl when player strikes
   surprise(enemies, player) unless enemies.empty? || player[:hp] <= 0 || (player[:weapon] && player[:weapon][:bonus] == :sneaky)
   player[:drain] = false
   player[:shop]  = false #  shop is disabled each round whether accessed or not
-  player[:shop]  = true if player[:cash].positive && rand(5) == 1 # shop opens for one round
+  player[:shop]  = true if player[:cash].positive? && rand(5) == 1 # shop opens for one round
   if rand(5) == 1 && player[:hp].positive?
     player[:beers] = (player[:beers] - 1).clamp(0, 5)
     shout(player, :sober)

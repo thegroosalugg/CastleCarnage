@@ -89,6 +89,7 @@ DRAINED   = "#{RD}𝕯𝖗𝖆𝖎𝖓𝖊𝖉#{CL}"
 SHOP      = "#{GN}𝕋𝕙𝕖 𝕊𝕙𝕠𝕡#{CL}"
 GANKED    = "#{BL}ＧＡＮＫＥＤ#{CL}"
 WASTED    = "#{OR}𝕎𝔸𝕊𝕋𝔼𝔻#{CL}"
+LEVEL     = "#{BL}LEͤVͮEͤL UͧРⷬ#{CL}"
 
 # Incase I need them later
 # TRAP      = "#{YL}ƬᖇᎯᕈ🪤#{CL}"

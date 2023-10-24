@@ -24,8 +24,8 @@ def shout(who, what) # controls all messages in the game except for combat
   when :escape   then [ 80,          who[:name] + " 💬 " + RUN_SHOUT.sample ]
   when :room     then [ 80,          who[:name] + " 💬 " + ROOM_SHOUT.sample  + " " + who[:room][:name] ]
   when :cards    then [110,          CARD       +   " "  + who[:name] +  " "   +       who[:hand].last[:suit] ]
-  when :bounty   then [ 90,          BONUS      +   " "  + who[:name] + " +10 "+       who[:emoji]          + " +1 💵" + " -1 🍺 +10 #{XP}"]
-  when :broke    then [ 90,          BROKE      +   " "  + who[:name] +  "'s " +       who[:weapon][:name]  +  " "   + BROKE_SHOUT.sample ]
+  when :bounty   then [ 90,          BONUS      +   " "  + who[:name] + " +10 "+       who[:emoji]          + " +1 💵" + " -1 🍺 #{GN}+10#{CL} #{XP}"]
+  when :broke    then [ 90,          BROKE      +   " "  + who[:name] +  "'s " +       who[:weapon][:name]  +  " "    + BROKE_SHOUT.sample ]
   when :item     then [ 90,          tag        +   " "  + who[:item][:name]   + " " + who[:name]           + " 💬 " +  ITEM_SHOUT.sample ]
   when :got      then [ 90,          tag        +   " "  + who[:name] +  " "   +        GOT_SHOUT.sample    +  " "   + who[:weapon][:name] ]
   when :ganked   then [ 90,          GANKED     +   " "  + who[:name] + " 🗯️ " +     GANKED_SHOUT.sample   +  " "   +  who[:ganked][:name] ]
@@ -43,6 +43,7 @@ def shout(who, what) # controls all messages in the game except for combat
   when :target   then [ 90,          TARGET     +   " "  + who[:name] ]
   when :wasted   then [ 90,          WASTED     +   " "  + who[:name] ]
   when :shop     then [ 90,          SHOP       +   " "  + who[:name] + " -#{who[:cash]} 💵 " + ([1, 3, 5].include?(who[:cash]) ? "+#{who[:gains]} #{who[:emoji]}" : "") ]
+  when :level    then [ 90,          LEVEL      +   " "  + who[:name] +   " "  + NUM[who[:level]]     + " " +     "#{who[:boost]}" + " " + "#{who[:gains]}" ]
   when :used     then [ 80, item_used(who)]
   end
   print `clear`                            if [:error, :name].include?(what)

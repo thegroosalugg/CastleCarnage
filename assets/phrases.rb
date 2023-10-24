@@ -21,7 +21,7 @@ ITEM_SHOUT = [
 ]
 GOT_SHOUT = [
   "looks in the fridge 🗒️ and prepares a", "🪔🧞 Djinn 💬 Here you go mate! Acquired", "This cookbook 📙 contains a recipe for a",
-  "'s mad smithing skills allow 'em to craft a ", "🚪🎁 Amazon 💬 delivery geez! Acquired", " There's enough useless crap 🛒 here to make a",
+  "'s mad smithing skills allow 'em to craft a ", "🚪🎁 Amazon 💬 delivery! Acquired", " There's enough useless crap 🛒 here to make a",
   "checks their socks and withdraws a ", "🚪🕵🏼 Mysterious Stranger 💬 Hey kid, catch! Acquired", "💬 Looks like the foot's on the other shoe!",
   "reaches for a snout 🚬 and pulls out a", "🚪🎅 Father Xmas 💬 Ho-ho-ho! Acquired",
 ]

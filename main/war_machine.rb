@@ -16,6 +16,7 @@ def wake_up
     scout:    0,
     xp:       0,
     level:    0,
+    boosts:   []
   }
 end
 
