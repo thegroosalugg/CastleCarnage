@@ -38,20 +38,6 @@ def play_game(player)
   game_over(player)
 end
 
-def level_up(player)
-  player[:xp] = player[:kills] * 10 + player[:scout]
-  player[:level] = (player[:xp] / 50).to_i
-
-  if player[:level]         > player[:boosts].length # check which levels have been boosted
-    player[:boost]          = [:attack, :block].sample
-    player[:gains]          = player[:boost] == :attack ? rand(3..5) : rand(1..3) # all records stored as hash keys
-    player[player[:boost]] += player[:gains] # less data to pass on, always updates without fail, easier to keep track of all at once
-    player[:boosts]        << player[:level] # records and stores boosted level values
-    shout(player, :level)
-  end
-end
-
-
 def specials(enemies, player, target)
   if player[:weapon] && !player[:weapon][:bonus].empty? && !player[:drain]
     case player[:weapon][:bonus]
