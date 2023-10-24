@@ -54,6 +54,7 @@ ATTACKS = {
   :somersault => "#{YL}Sᴏᴍᴇʀsᴀᴜʟᴛ#{CL}",
   :stylish    => "#{CN}🆂🆃🆈🅻🅸🆂🅷#{CL}",
   :psychic    => "#{MG}𝙋𝙎𝙮𝘾𝙝𝙞𝙘#{CL}",
+  :sneaky     => "#{BL}S̷N̷E̷A̷K̷Y̷#{CL}",
 }
 
 NUM       = ["[̼̟̞0̳  ]̻̟͜", "[̼̟̞1̳  ]̻̟͜", "[̼̟̞2̳  ]̻̟͜", "[̼̟̞3̳  ]̻̟͜", "[̼̟̞4̳  ]̻̟͜", "[̼̟̞5̳  ]̻̟͜", "[̼̟̞6̳  ]̻̟͜", "[̼̟̞7̳  ]̻̟͜", "[̼̟̞8̳  ]̻̟͜", "[̼̟̞9̳  ]̻̟͜"]
@@ -85,6 +86,8 @@ HANGOVER  = "#{OR}ℍ𝔸ℕ𝔾𝕆𝕍𝔼ℝ#{CL}"
 CASH      = "#{GN}🄲🄰🅂🄷#{CL}"
 DRAINED   = "#{RD}𝕯𝖗𝖆𝖎𝖓𝖊𝖉#{CL}"
 SHOP      = "#{GN}𝕋𝕙𝕖 𝕊𝕙𝕠𝕡#{CL}"
+GANKED    = "#{BL}ＧＡＮＫＥＤ#{CL}"
+WASTED    = "#{OR}𝕎𝔸𝕊𝕋𝔼𝔻#{CL}"
 
 # Incase I need them later
 # TRAP      = "#{YL}ƬᖇᎯᕈ🪤#{CL}"

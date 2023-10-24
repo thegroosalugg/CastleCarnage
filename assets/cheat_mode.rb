@@ -19,8 +19,9 @@ def cheat_mode(enemies, player, target)
   when "h" then player[:weapon][:uses] +=   1 if player[:weapon]
   when "j" then weapon_breaks(player)         if player[:weapon]
   when "'" then crap_factory(player, :bonus)
+  when "]" then crap_factory(target, :usual)
   when "n" then  weapon_wakes(player, :bonus)
-  when "b" then  weapon_wakes(target, :bonus)
+  when "b" then  weapon_wakes(target, :usual)
   when "," then  print_player(player)
   when "m" then print_enemies(enemies)
   when "p" then cheat_menu(enemies, player, target)
@@ -38,6 +39,7 @@ def cheat_menu(enemies, player, target)
     { code:  ",",  description: "#{player[:name]} 📒" },
     { code:  "n",  description: "#{player[:name]} #{WEAPON}" },
     { code:  "j",  description: "#{player[:name]} 🔪#{BROKE}" },
+    { code:  "'",  description: "#{player[:name]} #{ITEM}"   },
     { code:  "x",  description: "#{player[:name]} -1 💵" },
     { code:  "c",  description: "#{player[:name]} +1 💵" },
     { code:  "f",  description: "#{player[:name]} -1 🍺" },
@@ -48,8 +50,8 @@ def cheat_menu(enemies, player, target)
     { code:  ";",  description: "#{player[:name]} +100 #{player[:emoji]}" },
     { code:  "/",  description: "#{player[:name]} -50 #{player[:emoji]}" },
     { code:  ".",  description: "#{target[:name]} -20 #{target[:emoji]}" },
-    { code:  "'",  description: "#{player[:name]} #{ITEM}"   },
     { code:  "b",  description: "#{target[:name]} #{WEAPON}" },
+    { code:  "]",  description: "#{target[:name]} #{ITEM}"   },
     { code:  "l",  description: "#{enemies.map { |enemy| enemy[:name] }.join(" ")} << 🙈 #{YL}Random#{CL}" },
     { code:  "m",  description: "#{enemies.map { |enemy| enemy[:name] }.join(" ")} 📒" },
   ]

@@ -66,6 +66,17 @@ COMBAT_SHOUT = [
   "Gonna mash you up", "Am gonna do yous in!", "C'mon let's 'ave it!", "Let's do this now!", "C'mon 'ave a go!", "Staines massive!",
   "No mercy!", "Charge!", "Watch it geez!"
 ]
+GAME_SHOUT = [
+  "Line 'em Frankie, line 'em up", "You's about to go dooooown!", "Don't fuck with the master", "Your life total is about to get shuffled!",
+  "You will be judged", "Are you willing to stand with the righteous?",
+]
+GAME_TAUNT = [
+  "I'm gonna enjoys this", "You're gonna get it now!", "Oh-ho-ho-ho-ho!", "This is gonna be sweet!", "Time for your beating!",
+  "Get ready to quit life!", "I'is gonna ctrl, shift 'n' do you in!", "Clobbering time!",
+]
+GANKED_SHOUT = [
+  "Wait, where's my ", "Shit! Who took my ", "My ", "Where the fuck is my ", "Noooooo! My ", "Swear down I had my ",
+]
 INTRO_SHOUT = [
   "jumps 🥏 from the ceiling! 💬 You goon get it now boy!",
   "busted through the 🚪 door, they're stark raving mad. They're out for 🔪 blood!",
@@ -80,14 +91,6 @@ WIN_SHOUT = [
 ]
 LOSE_SHOUT = [
   "laughs at your misfortune.", "ripped your head off. You won't be coming home for dinner.", "shall feast on your entrails.",
-]
-GAME_SHOUT = [
-  "Line 'em Frankie, line 'em up", "You's about to go dooooown!", "Don't fuck with the master", "Your life total is about to get shuffled!",
-  "You will be judged", "Are you willing to stand with the righteous?",
-]
-GAME_TAUNT = [
-  "I'm gonna enjoys this", "You're gonna get it now!", "Oh-ho-ho-ho-ho!", "This is gonna be sweet!", "Time for your beating!",
-  "Get ready to quit life!", "I'is gonna ctrl, shift 'n' do you in!", "Clobbering time!",
 ]
 GOODBYE = [
   "Good riddance!", "Don't hurry back!", "Ha, loser!", "Only cause I was gonna beat ya"
