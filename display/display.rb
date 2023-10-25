@@ -52,7 +52,7 @@ end
 
 def durability(who) # weapon durability
   " "  * 4 + "#{who[:weapon][:name]}"          + " " * (49 - who[:weapon][:name].length) + "🛠️" +
-  "🟩" *       who[:weapon][:uses].clamp(0, 5) +
+  "🟨" *       who[:weapon][:uses].clamp(0, 5) +
   "⬜" * (5 - who[:weapon][:uses]).clamp(0, 5) + " " * 3 + (who[:id] == :player ? "#{ATTACKS[who[:weapon][:bonus]]}" : "")
 end                                                          # specials display only for player weapons
 
@@ -75,13 +75,17 @@ def status(player) # Dynamic status for player cash & beers
   when 5 then " 𝙁𝙪𝙘𝙠𝙞𝙣𝙜𝙒𝙖𝙨𝙩𝙚𝙙 😵"
   end
 
-  s1 = player[:kills] < 10 ? " " : "" # creating leading whitespace instead of leading zero
-  s2 = player[:scout] < 10 ? " " : ""
-
-  left = " " * 3 + "#{GN}#{cash} #{CL}#{"💵" * [player[:cash], 0].max}" + "💷" * [0, (5 - player[:cash])].max + " " * 4 +
-  "💀#{s1}#{player[:kills]}  🏰#{s2}#{player[:scout]}"
+  left = " " * 3 + "#{GN}#{cash} #{CL}#{"💵" * [player[:cash], 0].max}" + "💷" * [0, (5 - player[:cash])].max + " " * 4
   puts STATUS_BAR
-  puts " " * 26 + "DEBUG XP#{player[:xp]}  LEVEL #{player[:level]}" 
+  
+  puts " " * 26 + "DEBUG XP#{player[:xp]}  LEVEL #{player[:level]}"
+
+  full  = "🟩" * (player[:xp] / 10 % 5)
+  empty = "🟪" * (5 - player[:xp] / 10 % 5)
+
+  puts full + empty
+
+
   puts "#{left}#{OR}#{beers}#{CL} #{"🍺" * [player[:beers], 0].max}"
 end
 

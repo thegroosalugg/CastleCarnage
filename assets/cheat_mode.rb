@@ -13,8 +13,7 @@ def cheat_mode(enemies, player, target)
   when "c" then player[:cash ]         +=   1
   when "f" then player[:beers]         -=   1
   when "d" then player[:beers]         +=   1
-  when "g" then player[:kills]         +=   1
-  when "v" then player[:scout]         +=   1
+  when "v" then player[:xp]            +=   1
   when "k" then player[:attack]        +=  10; player[:aim] = 10
   when "h" then player[:weapon][:uses] +=   1 if player[:weapon]
   when "j" then weapon_breaks(player)         if player[:weapon]
@@ -44,8 +43,7 @@ def cheat_menu(enemies, player, target)
     { code:  "c",  description: "#{player[:name]} +1 💵" },
     { code:  "f",  description: "#{player[:name]} -1 🍺" },
     { code:  "d",  description: "#{player[:name]} +1 🍺" },
-    { code:  "g",  description: "#{player[:name]} +1 💀" },
-    { code:  "v",  description: "#{player[:name]} +1 🏰" },
+    { code:  "v",  description: "#{player[:name]} +1 #{XP}" },
     { code:  "h",  description: "#{player[:name]} +1 🛠️" },
     { code:  "k",  description: "#{player[:name]} +10 💢 🎯 10" },
     { code:  ";",  description: "#{player[:name]} +100 #{player[:emoji]}" },

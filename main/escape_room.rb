@@ -33,10 +33,10 @@ def run_away(player)
 end
 
 def open_door(player)
-  player[:room]   = player[:rooms][player[:choice] - 4] # -4 to correct index
-  player[:scout] += 1 # updates visited counter
+  player[:room] = player[:rooms][player[:choice] - 4] # -4 to correct index
+  player[:xp]  += 1
   player[:beers].times { player[:room][:chance] << 3 } # 1 extra chance to meet an enemy per beer
-  player[:roll]   = player[:room][:chance].sample # final outcome is then sampled
+  player[:roll] = player[:room][:chance].sample # final outcome is then sampled
   shout(player, :room)
 end
 

@@ -49,6 +49,7 @@ def specials(enemies, player, target)
     end
     player[:shop]  = false #  shop is disabled each round whether accessed or not
     player[:drain] = true
+    player[:xp]   += 1
   else shout(player, :error)
   end
 end

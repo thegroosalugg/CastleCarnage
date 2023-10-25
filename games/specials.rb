@@ -7,6 +7,7 @@ def brawl(enemies, player, target) # Regular brawl when player strikes
   strike(enemies, player, target)
   strike(enemies, target, player) if target[:hp].positive?
   surprise(enemies, player) unless enemies.empty? || player[:hp] <= 0 || (player[:weapon] && player[:weapon][:bonus] == :sneaky)
+  player[:xp]   += 1
   player[:drain] = false
   player[:shop]  = false #  shop is disabled each round whether accessed or not
   player[:shop]  = true if player[:cash].positive? && rand(5) == 1 # shop opens for one round

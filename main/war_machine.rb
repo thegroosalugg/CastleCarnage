@@ -15,11 +15,9 @@ def wake_up
     crit:   1.5,
     cash:     0,
     beers:    0,
-    kills:    0,
-    scout:    0,
     xp:       0,
-    level:    0,
-    boosts:   []
+    level:    1,
+    boosts:   [1]
   }
 end
 
@@ -27,7 +25,7 @@ def random_enemy(player)
   enemy = {
     id:     :enemy,
     name:   "#{YL}#{ENEMIES.sample}#{CL}",
-    hp:     (rand(30..50) + rand(0..player[:kills])), # stats need to scale with player level
+    hp:     (rand(30..50) + rand(0..player[:xp] / 10)), # stats need to scale with player level
     attack: (rand(8..15)  + rand(0..player[:level])),
     block:  (rand(1..6)   + rand(0..player[:level])),
     aim:    rand(6..9),
@@ -109,8 +107,7 @@ def crap_factory(wielder, order = nil)
 end
 
 def level_up(player)
-  player[:xp]    = player[:kills] * 10 + player[:scout]
-  player[:level] = (player[:xp] / 50).to_i
+  player[:level] = 1 + (player[:xp] / 50).to_i
 
   if player[:level]         > player[:boosts].length # check which levels have been boosted
     player[:boost]          = [:attack, :block].sample
