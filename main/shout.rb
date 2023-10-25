@@ -43,7 +43,7 @@ def shout(who, what) # controls all messages in the game except for combat
   when :target   then [ 90,          TARGET     +   " "  + who[:name] ]
   when :wasted   then [ 90,          WASTED     +   " "  + who[:name] ]
   when :shop     then [ 90,          SHOP       +   " "  + who[:name] + " -#{who[:cash]} 💵 " + ([1, 3, 5].include?(who[:cash]) ? "+#{who[:gains]} #{who[:emoji]}" : "") ]
-  when :level    then [ 90,          LEVEL      +    NUM[who[:level]] +   " "  + who[:name]   " #{who[:boost]} " "#{who[:gains]}" ]
+  when :level    then [ 90,          LEVEL      +    NUM[who[:level]] +   " "  + who[:name]  + " #{who[:boost]} " + "#{who[:gains]}" ]
   when :used     then [ 80, item_used(who)]
   end
   print `clear`                            if [:error, :name].include?(what)

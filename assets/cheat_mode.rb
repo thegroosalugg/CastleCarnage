@@ -5,7 +5,7 @@
 
 def cheat_mode(enemies, player, target)
   case player[:choice]
-  when "l" then enemies << random_enemy
+  when "l" then enemies << random_enemy(player)
   when "." then target[:hp]            -=  20
   when "/" then player[:hp   ]         -=  45
   when ";" then player[:hp   ]         += 100
@@ -19,9 +19,9 @@ def cheat_mode(enemies, player, target)
   when "h" then player[:weapon][:uses] +=   1 if player[:weapon]
   when "j" then weapon_breaks(player)         if player[:weapon]
   when "'" then crap_factory(player, :bonus)
-  when "]" then crap_factory(target, :usual)
-  when "n" then  weapon_wakes(player, :bonus)
-  when "b" then  weapon_wakes(target, :usual)
+  when "]" then crap_factory(target)
+  when "n" then  weapon_wakes(player, player, :bonus)
+  when "b" then  weapon_wakes(target, player)
   when "," then  print_player(player)
   when "m" then print_enemies(enemies)
   when "p" then cheat_menu(enemies, player, target)

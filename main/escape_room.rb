@@ -17,8 +17,8 @@ def escape_room(enemies, player)
   open_door(player)
 
   case player[:roll]
-  when 1 then crap_factory(player, :usual)
-  when 2 then weapon_wakes(player, :usual)
+  when 1 then crap_factory(player)
+  when 2 then weapon_wakes(player, player) # second player is for content level scaling
   when 3 then spawn_enemy(enemies, player)
   end
   parting_gift(enemies, player)
@@ -46,7 +46,7 @@ def parting_gift(enemies, player)
     shout(player, :beers)
   end
   if rand(2) == 1 # 50% for enemy to get item or weapon
-    rand(2) == 1 ? crap_factory(enemies.sample, :usual) : weapon_wakes(enemies.sample, :usual)
+    rand(2) == 1 ? crap_factory(enemies.sample) : weapon_wakes(enemies.sample, player)
   end
   surprise(enemies, player) unless (player[:weapon] && player[:weapon][:bonus] == :sneaky) # sneaky prevents surprise attacks
   player[:drain] = false

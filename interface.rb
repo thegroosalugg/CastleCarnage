@@ -6,7 +6,7 @@ def play_game(player)
   print `clear`
   name_player(player)
   enemies = []
-  3.times { enemies << random_enemy }
+  3.times { enemies << random_enemy(player) }
   target = 0
   player[:tracks] = enemies[target]
   shout(player, :intro)

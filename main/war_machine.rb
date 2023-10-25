@@ -1,6 +1,9 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
+# When you see the player being passed as a parameter twice, the second instance is to check their level
+# All content must scale to the player's level, but the first parameter must be for the recepient, such as the enemy
+
 def wake_up
   player = {
     id: :player,
@@ -20,7 +23,7 @@ def wake_up
   }
 end
 
-def random_enemy
+def random_enemy(player)
   enemy = {
     id:     :enemy,
     name:   "#{YL}#{ENEMIES.sample}#{CL}",
@@ -35,9 +38,9 @@ end
 
 def spawn_enemy(enemies, player)
   if enemies.length < 4
-    enemies << random_enemy
+    enemies << random_enemy(player)
     shout(enemies[-1], :summon)
-  else rand(2) == 1 ? weapon_wakes(player, :usual) : crap_factory(player, :usual)
+  else rand(2) == 1 ? weapon_wakes(player, player) : crap_factory(player)
   end             # chance 3 has same outcome as 1 or 2 when enemies full
 end
 
@@ -59,12 +62,12 @@ def room_vault(n)
   rooms.map { |room| room[:name] = "\e[3#{rand(1..6)}m#{DESC.sample} #{room[:name]}#{CL}" } # Give the rooms a unique desc
   rooms
 end
-
-def weapon_wakes(wielder, request)
+                          # player now a paraameter everywhere to check their level and scale stats of everything else
+def weapon_wakes(wielder, player, order = nil)
   regular = ["#{YL}#{WEAPONS.sample}", 2..5, 10..20, 2..6,  6..9,   2..4, 1.6..2.0]
   special = ["#{MG}#{SPECIAL.sample}", 3..5, 15..25, 4..10, 6..10,  2..5, 2.0..2.5]
-                                 name, uses, attack, block,   aim, chance, crit = request == :bonus || rand(4) == 1 ? special : regular
-  bonus   = request == :bonus || rand(2) == 1 ? [:somersault, :gambler, :stylish, :sneaky, :psychic].sample : ""
+                                 name, uses, attack, block,   aim, chance, crit = order == :bonus || rand(4) == 1 ? special : regular
+  bonus   = order == :bonus || rand(2) == 1 ? [:somersault, :gambler, :stylish, :sneaky, :psychic].sample : ""
 
   weapon = {
     name:  "#{name}#{CL}",
@@ -89,8 +92,8 @@ def weapon_breaks(wielder)
   end
 end
 
-def crap_factory(wielder, request)
-  x  = request      == :bonus  ?   1 : -1 # default items can be positive or negative, pure-positive can be bought
+def crap_factory(wielder, order = nil)
+  x  = order        == :bonus  ?   1 : -1 # default items can be positive or negative, pure-positive can be bought
   hp = wielder[:id] == :player ?  10 :  5 # nerf enemy hp gain
   item = {
     name:  "#{GN}#{ITEMS.sample}#{CL}", # items are for offense only and do not nourish block

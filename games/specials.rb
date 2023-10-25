@@ -117,13 +117,13 @@ def the_shop(player) # the shop appears randomly and will disappear next round
     when 2 then crap_factory(player, :bonus)
     when 3
       player[:hp] = (player[:hp] += player[:gains]).clamp(0, 100)
-      weapon_wakes(player, :usual)
+      weapon_wakes(player, player)
     when 4
       crap_factory(player, :bonus)
-      weapon_wakes(player, :usual)
+      weapon_wakes(player, player)
     when 5
       player[:hp] = (player[:hp] += player[:gains]).clamp(0, 100)
-      weapon_wakes(player, :bonus)
+      weapon_wakes(player, player, :bonus)
     end
     shout(player, :shop)
     player[:cash] = 0
