@@ -36,8 +36,8 @@ def load_ammo(hunter)
       end
     end
     hunter[:source]         = hunter[:item] # source becomes item for strike, as we do not want to alter wielder/weapon stats
-    hunter[:hp]             = (hunter[:hp] + hunter[:item][:hp]).clamp(0, 100) # HP adds separately
-  end
+    hunter[:hp]             = (hunter[:hp] + hunter[:item][:hp]) # HP adds separately
+  end                       # removed clamp as don't want to pass player here to add clamp scaling. Not much hp is gained from items
 end
 
 def shots_fired(hunter, target, shot) # Player vs enemy strike
@@ -74,6 +74,6 @@ def bounty(hunter, target) # collect bounty
   hunter[:xp] += 10
   hunter[:cash]   = (hunter[:cash]  + 1).clamp(0,   5)
   hunter[:beers]  = (hunter[:beers] - 1).clamp(0,   5)
-  hunter[:hp]     = (hunter[:hp]   + 10).clamp(0, 100)
+  hunter[:hp]     = (hunter[:hp]   + 10).clamp(0, hunter[:max_hp])
   shout(hunter, :bounty) # amounts hardcoded as they're static
 end

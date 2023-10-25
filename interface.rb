@@ -55,9 +55,10 @@ def specials(enemies, player, target)
 end
 
 def ctrl_s(player) # player is saved on game over and can be used again on replay
-  player        = player.dup
-  player[:hp]   = 100 if player[:hp] < 100
-  player[:land] = { id: :move, art: BATTLEFIELD.sample }
+  player          = player.dup
+  player[:max_hp] = 99 + player[:level]
+  player[:hp]     = player[:max_hp]
+  player[:land]   = { id: :move, art: BATTLEFIELD.sample }
   return player
 end
 
