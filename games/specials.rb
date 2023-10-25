@@ -5,7 +5,7 @@
 
 def brawl(enemies, player, target) # Regular brawl when player strikes
   strike(enemies, player, target)
-  strike(enemies, target, player) if target[:hp].positive? && player[:hp].positive?
+  strike(enemies, target, player) if target[:hp].positive?
   surprise(enemies, player) unless enemies.empty? || player[:hp] <= 0 || (player[:weapon] && player[:weapon][:bonus] == :sneaky)
   player[:drain] = false
   player[:shop]  = false #  shop is disabled each round whether accessed or not
@@ -51,7 +51,7 @@ def sneak_attack(enemies, player, target) # sneaky attack
   else shout(player, :wasted)
   end
 
-  strike(enemies, target, player)
+  strike(enemies, target, player) if target[:hp].positive?
 end
 
 def rochambeau(enemies, player, target) # stylish attack

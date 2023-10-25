@@ -72,8 +72,8 @@ def weapon_wakes(wielder, player, order = nil)
   weapon = {
     name:  "#{name}#{CL}",
     uses:   rand(uses),
-    attack: rand(attack),
-    block:  rand(block),
+    attack: (rand(attack) + rand(0..player[:level])),
+    block:  (rand(block)  + rand(0..player[:level])),
     aim:    rand(aim),
     chance: rand(chance),
     crit:   rand(crit).round(1),
