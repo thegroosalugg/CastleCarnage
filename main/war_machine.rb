@@ -27,9 +27,9 @@ def random_enemy(player)
   enemy = {
     id:     :enemy,
     name:   "#{YL}#{ENEMIES.sample}#{CL}",
-    hp:     rand(30..50),
-    attack: rand(8..15),
-    block:  rand(1..6),
+    hp:     (rand(30..50) + rand(0..player[:kills])), # stats need to scale with player level
+    attack: (rand(8..15)  + rand(0..player[:level])),
+    block:  (rand(1..6)   + rand(0..player[:level])),
     aim:    rand(6..9),
     chance: rand(2..5),
     crit:   rand(1.5..2.5).round(1),
