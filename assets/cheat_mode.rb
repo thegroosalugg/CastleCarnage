@@ -47,6 +47,7 @@ def cheat_menu(enemies, player, target)
     { code:  "g",  description: "#{player[:name]} +1 💀" },
     { code:  "v",  description: "#{player[:name]} +1 🏰" },
     { code:  "h",  description: "#{player[:name]} +1 🛠️" },
+    { code:  "k",  description: "#{player[:name]} +10 💢 🎯 10" },
     { code:  ";",  description: "#{player[:name]} +100 #{player[:emoji]}" },
     { code:  "/",  description: "#{player[:name]} -50 #{player[:emoji]}" },
     { code:  ".",  description: "#{target[:name]} -20 #{target[:emoji]}" },

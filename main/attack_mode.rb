@@ -47,13 +47,13 @@ def shots_fired(hunter, target, shot) # Player vs enemy strike
   crit = "#{hunter[:name]} #{text}#{CRIT} #{target[:name]} -#{hunter[:damage]} #{target[:emoji]}"
   miss = "#{hunter[:name]} 🗯️❓ #{text}#{MISS} #{target[:name]}"
 
-  shout, comeback = case shot
-  when :hit  then [hit,  SMACK_BACK]
-  when :crit then [crit, SMACK_BACK]
-  when :miss then [miss,  TALK_BACK]
+  x, shout, comeback = case shot
+  when :hit  then [100, hit,  SMACK_BACK]
+  when :crit then [110, crit, SMACK_BACK]
+  when :miss then [100, miss,  TALK_BACK]
   end
 
-  puts text_break(shout, " ", 100)
+  puts text_break(shout, " ", x)
   puts text_break("#{target[:name]} 🗯️ #{comeback.sample}", " ", 85) if !text.empty? && rand(2) == 1
 end
 
