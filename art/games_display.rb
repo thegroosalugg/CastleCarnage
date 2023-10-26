@@ -1,19 +1,7 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-CARD_FACES = { id: :still, offset: 22, art:
-  <<-'ASCII'
-                     .------.
-  .------.           |A .   |
-  |A_  _ |    .------; / \  |
-  |( \/ )|-----. _   |(_,_) |
-  | \  / | /\  |( )  |  I  A|
-  |  \/ A|/  \ |_x_) |------'
-  `-----+'\  / | Y  A|
-        |  \/ A|-----'
-        `------'
-    ASCII
-  }
+# Display for stylish special move
 
 WALK_OFF = { id: :move, art:
   <<-'ASCII'
@@ -60,6 +48,22 @@ MOVES = {
       dP   dP   dP 88     88   `88888'  dP     dP `Y88888P' dP   dP   dP
   ASCII
  }
+
+ # intro display + win messages for blackjack and psychic special move
+ 
+ CARD_FACES = { id: :still, offset: 22, art:
+  <<-'ASCII'
+                     .------.
+  .------.           |A .   |
+  |A_  _ |    .------; / \  |
+  |( \/ )|-----. _   |(_,_) |
+  | \  / | /\  |( )  |  I  A|
+  |  \/ A|/  \ |_x_) |------'
+  `-----+'\  / | Y  A|
+        |  \/ A|-----'
+        `------'
+    ASCII
+  }
 
 LETSGO = { id: :still, offset: 10, art:
   <<-'ASCII',

@@ -7,10 +7,10 @@ BACK_TALK = [
 TALK_BACK = [
 "Ha! What a douche!", "Ha! Did you miss me?", "Loser!", "Nice shot bro!", "What a joker!",
 ]
-SMACK_TALK = [
+FIGHT_TALK = [
   "Ah yeah! ", "I own it! ", "Take that! ", "I'm jus' too good ", "Bow to me! ", "Ka-Blam! ", "Falcon Punch! "
 ]
-SMACK_BACK = [
+FIGHT_BACK = [
   "Hey, fuck you!", "You dick!", "What a shit..", "Hate that guy", "Ouch!", "What you do that for?", "Oooff!"
 ]
 ITEM_SHOUT = [

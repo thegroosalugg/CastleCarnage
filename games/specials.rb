@@ -11,6 +11,7 @@ def brawl(enemies, player, target) # Regular brawl when player strikes
   player[:drain] = false
   player[:shop]  = false #  shop is disabled each round whether accessed or not
   player[:shop]  = true if player[:cash].positive? && rand(5) == 1 # shop opens for one round
+  player[:land]   = { id: :still, offset: 10, art: SOUND_EFFECTS.sample }
   if rand(10) == 1 && player[:hp].positive?
     player[:beers] = (player[:beers] - 1).clamp(0, 5)
     shout(player, :sober)
