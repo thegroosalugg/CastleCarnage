@@ -108,7 +108,7 @@ def coin_flip(enemies, player, target) # psychic attack
       strike(enemies, target, player)
       break # Exit loop if choices don't match
     end
-    player[:land]   = { id: :room, art: SOUND_EFFECTS.sample } # sets the scene
+    player[:land]   = { id: :room, offset: 10, art: SOUND_EFFECTS.sample } # sets the scene
   end
   player[:land] = { id: :move, art: BATTLEFIELD.sample } # resets ASCII art to this arena
 end

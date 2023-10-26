@@ -28,7 +28,7 @@ def run_away(player)
   player[:choice] = 0
                n  = (6 - player[:beers]).clamp(1, 4) # fewer rooms available if player drunk
   player[:rooms]  = room_vault(n) # creates n rooms
-  player[:land]   = { id: :room, art: ROOM_SERVICE.sample } # sets the scene
+  player[:land]   = { id: :room, offset: 10, art: ROOM_SERVICE.sample } # sets the scene
   shout(player, :escape)
 end
 
