@@ -63,7 +63,7 @@ def show_your_moves(player, target, menu)
       when (you == 7 && them == 5) then FLUNKED
       when you > them then SUCCESS
       when you < them then FLUNKED
-      else "🍃 #{MISS}  🍂" # reusing this tag but need to pad it out with emojis
+      else "🍃  #{MISS} 🍂" # reusing this tag but need to pad it out with emojis
       end
       puts whitespace(player, " ", 14) + "#{player[:name]} 💬 #{style[you]} #{x} #{style[them]} 🗨️ #{target[:name]}"
     end

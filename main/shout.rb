@@ -41,7 +41,7 @@ def shout(who, what) # controls all messages in the game except for combat
   when :style    then [ 90,   ATTACKS[:stylish] +   " "  + who[:name] + " 🗯️ " +       GAME_SHOUT.sample ]
   when :beers    then [100,          HANGOVER   +   " "  + who[:name] + (rand(2) == 1 ? BEER_SHOUT.sample : "") + " +1 🍺" ]
   when :sober    then [100,          HANGOVER   +   " "  + who[:name] + " -1 🍺" ]
-  when :target   then [ 90,          TARGET     +   " "  + who[:name] ]
+  when :target   then [ 90,          TARGET     +   " "  + who[:name] + (who[:item]   ? " #{who[:item][:name]}" : "") ]
   when :wasted   then [ 90,          WASTED     +   " "  + who[:name] ]
   when :shop     then [ 90,          SHOP       +   " "  + who[:name] + " -#{who[:cash]} 💵 " + ([1, 3, 5].include?(who[:cash]) ? "+#{who[:gains]} #{who[:emoji]}" : "") ]
   when :used     then [ 80, item_used(who)]

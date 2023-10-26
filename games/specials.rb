@@ -11,7 +11,7 @@ def brawl(enemies, player, target) # Regular brawl when player strikes
   player[:drain] = false
   player[:shop]  = false #  shop is disabled each round whether accessed or not
   player[:shop]  = true if player[:cash].positive? && rand(5) == 1 # shop opens for one round
-  if rand(5) == 1 && player[:hp].positive?
+  if rand(10) == 1 && player[:hp].positive?
     player[:beers] = (player[:beers] - 1).clamp(0, 5)
     shout(player, :sober)
   end
@@ -115,7 +115,7 @@ def the_shop(player) # the shop appears randomly and will disappear next round
     player[:gains] = rand(8..12)
     case player[:cash]
     when 1 then player[:hp] = (player[:hp] += player[:gains]).clamp(0, player[:max_hp])
-    when 2 then crap_factory(player, :bonus)
+    when 2 then rand(2) == 1 ? crap_factory(player, :bonus) : weapon_wakes(player, player)
     when 3
       player[:hp] = (player[:hp] += player[:gains]).clamp(0, player[:max_hp])
       weapon_wakes(player, player)
@@ -125,6 +125,7 @@ def the_shop(player) # the shop appears randomly and will disappear next round
     when 5
       player[:hp] = (player[:hp] += player[:gains]).clamp(0, player[:max_hp])
       weapon_wakes(player, player, :bonus)
+      crap_factory(player, :bonus) if rand(2) == 1
     end
     shout(player, :shop)
     player[:cash] = 0
