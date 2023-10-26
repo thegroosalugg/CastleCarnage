@@ -80,8 +80,8 @@ def rochambeau(enemies, player, target) # stylish attack
     strike(enemies, target, player) if (target[:moves][round] > choice) || (target[:moves][round] == 5 && choice == 7) unless (choice == 5 && target[:moves][round] == 7)
     "#{shots_fired(player, target, :miss)} #{shots_fired(target, player, :miss)}" if choice == target[:moves][round]
   end
-  player[:land] = { id: :move, art: BATTLEFIELD.sample } # resets ASCII art to this arena
-end
+  # player[:land] = { id: :move, art: BATTLEFIELD.sample } # resets ASCII art to this arena
+end               # can't decide whether to display final move or transition back to battlefield in main interface
 
 def coin_flip(enemies, player, target) # psychic attack
   player[:sight] = room_vault(2)
