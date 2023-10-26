@@ -22,6 +22,7 @@ def blackjack(enemies, player, dealer)
     end
 
     print `clear`
+    player[:land]   = { id: :room, art: SOUND_EFFECTS.sample } # sets the scene
     while dealer[:score] < 16 && !(player[:score] == 21 && player[:hand].length == 2)
       draw_card(dealer, player)
     end
