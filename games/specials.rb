@@ -11,7 +11,7 @@ def brawl(enemies, player, target) # Regular brawl when player strikes
   player[:drain] = false
   player[:shop]  = false #  shop is disabled each round whether accessed or not
   player[:shop]  = true if player[:cash].positive? && rand(5) == 1 # shop opens for one round
-  if rand(5) == 1 && player[:hp].positive?
+  if rand(10) == 1 && player[:hp].positive?
     player[:beers] = (player[:beers] - 1).clamp(0, 5)
     shout(player, :sober)
   end
@@ -73,6 +73,7 @@ def rochambeau(enemies, player, target) # stylish attack
     end
 
     print `clear`
+    player[:land]   = { id: :room, art: SOUND_EFFECTS.sample } # sets the scene
     player[:moves] << choice
     show_your_moves(player, target, :style)
 
@@ -85,6 +86,7 @@ end
 
 def coin_flip(enemies, player, target) # psychic attack
   player[:sight] = room_vault(2)
+  player[:land]   = LETSGO # sets the scene
   shout(target, :psychic)
 
   loop do
@@ -107,7 +109,9 @@ def coin_flip(enemies, player, target) # psychic attack
       strike(enemies, target, player)
       break # Exit loop if choices don't match
     end
+    player[:land]   = { id: :room, art: SOUND_EFFECTS.sample } # sets the scene
   end
+  player[:land] = { id: :move, art: BATTLEFIELD.sample } # resets ASCII art to this arena
 end
 
 def the_shop(player) # the shop appears randomly and will disappear next round
@@ -115,7 +119,7 @@ def the_shop(player) # the shop appears randomly and will disappear next round
     player[:gains] = rand(8..12)
     case player[:cash]
     when 1 then player[:hp] = (player[:hp] += player[:gains]).clamp(0, player[:max_hp])
-    when 2 then crap_factory(player, :bonus)
+    when 2 then rand(2) == 1 ? crap_factory(player, :bonus) : weapon_wakes(player, player)
     when 3
       player[:hp] = (player[:hp] += player[:gains]).clamp(0, player[:max_hp])
       weapon_wakes(player, player)
@@ -125,6 +129,7 @@ def the_shop(player) # the shop appears randomly and will disappear next round
     when 5
       player[:hp] = (player[:hp] += player[:gains]).clamp(0, player[:max_hp])
       weapon_wakes(player, player, :bonus)
+      crap_factory(player, :bonus) if rand(2) == 1
     end
     shout(player, :shop)
     player[:cash] = 0

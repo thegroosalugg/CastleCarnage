@@ -17,7 +17,7 @@ def wake_up
     beers:    0,
     xp:       0,
     level:    1,
-    boosts:   [1]
+    boosts:  [1]
   }
 end
 
@@ -26,8 +26,8 @@ def random_enemy(player)
     id:     :enemy,
     name:   "#{YL}#{ENEMIES.sample}#{CL}",
     hp:     (rand(30..50) + rand(0..player[:xp] / 10)), # stats need to scale with player level
-    attack: (rand(8..15)  + rand(0..player[:level])),
-    block:  (rand(1..6)   + rand(0..player[:level])),
+    attack: (rand(8..15)  + rand(1..player[:level])),
+    block:  (rand(1..6)   + rand(1..player[:level])),
     aim:    rand(6..9),
     chance: rand(2..5),
     crit:   rand(1.5..2.5).round(1),
@@ -70,8 +70,8 @@ def weapon_wakes(wielder, player, order = nil)
   weapon = {
     name:  "#{name}#{CL}",
     uses:   rand(uses),
-    attack: (rand(attack) + rand(0..player[:level])),
-    block:  (rand(block)  + rand(0..player[:level])),
+    attack: (rand(attack) + rand(1..player[:level])),
+    block:  (rand(block)  + rand(1..player[:level])),
     aim:    rand(aim),
     chance: rand(chance),
     crit:   rand(crit).round(1),
@@ -91,8 +91,8 @@ def weapon_breaks(wielder)
 end
 
 def crap_factory(wielder, order = nil)
-  x  = order        == :bonus  ?   1 : -1 # default items can be positive or negative, pure-positive can be bought
-  hp = wielder[:id] == :player ?  10 :  5 # nerf enemy hp gain
+  x  = order        == :bonus  ?   1  : -1 # default items can be positive or negative, pure-positive can be bought
+  hp = wielder[:id] == :player ?  10  :  5 # nerf enemy hp gain
   item = {
     name:  "#{GN}#{ITEMS.sample}#{CL}", # items are for offense only and do not nourish block
     hp:     rand(hp),

@@ -22,8 +22,8 @@ SPECIAL = [
 ]
 ROOMS = [
   "Bathroom 🛁", "Dining Room 🍽️", "Library 📚", "Bedroom 🛌", "Kitchen 🥞", "Living Room 📺",
-  "Attic 🕸", "Basement 🏦", "Garden 🌳", "Patio 🏞", "Balcony ⛩️", "Pantry 🍏", "Gym for Muscles 🏋️‍♂️",
-  "Nightclub 🕋", "Workshop ⚒️", "Sauna 🧖‍♂️", "Lounge 🍹", "Conservatory 🌿", "Porch 🏡", "Passage 🗝️",
+  "Attic 🕸", "Basement 🏦", "Garden 🌳", "Patio 🏞", "Balcony ⛩️", "Pantry 🍏", "Gym for Muscles🏋️",
+  "Nightclub 🕋", "Workshop ⚒️", "Sauna🤽🏼", "Lounge 🍹", "Conservatory 🌿", "Porch 🏡", "Passage 🗝️",
   "Observatory 🔭", "Greenhouse 🌱", "Chapel ⛪", "Crypt ⚰️", "Chamber 🏛️", "Laboratory 🧪", "🚽 Toilet"
 ]
 DESC = [
