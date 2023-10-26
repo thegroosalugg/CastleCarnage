@@ -14,10 +14,10 @@ SMACK_BACK = [
   "Hey, fuck you!", "You dick!", "What a shit..", "Hate that guy", "Ouch!", "What you do that for?", "Oooff!"
 ]
 ITEM_SHOUT = [
-  "Delicious!", "Meh, have it anyway", "Egh! Rank!", "Fucking A!", "What idiot left this here!",
+  "Delicious!", "Meh, eat it anyway", "Egh! Rank!", "Fucking A!", "What idiot left this here!",
   "5 second rule!", "Might as well", "Holy shit!", "This will have to do", "This looks swell!",
   "Sweet as!", "Dinner sorted!", "No way! Is it back?", "Who left this 'ere?", "This will do!",
-  "Sorted!", "What's one more eh!", "I'll still have it"
+  "Sorted!", "What's one more eh!", "I'll still eat it"
 ]
 GOT_SHOUT = [
   "looks in the fridge 🗒️ and prepares a", "🪔🧞 Djinn 💬 Here you go mate! Acquired", "This cookbook 📙 contains a recipe for a",
@@ -36,7 +36,7 @@ SPAWN_SHOUT = [
 ]
 BEER_SHOUT = [
   " 💬 Sweet as!", " 💬 These are going down like skittles", " 💬 Egh, fosters", " 💬 How many calories is this?",
-  " 💬 Sunk!", " 💬 *burp", " 💬 On a day like this, why not",
+  " 💬 Sunk!", " 💬 burp", " 💬 On a day like this, why not",
 ]
 RUN_SHOUT = [
   "Dammit, gotta dash to a gaff quick, or I'm munched!", "Those bastards are right behing me, leeegg it!", "Damn, them wasteman, time to scram!",

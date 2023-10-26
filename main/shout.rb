@@ -24,7 +24,7 @@ def shout(who, what) # controls all messages in the game except for combat
   when :escape   then [ 90,          who[:name] + " 💬 " + RUN_SHOUT.sample ]
   when :room     then [ 90,          who[:name] + " 💬 " + ROOM_SHOUT.sample  + " " + who[:room][:name] ]
   when :level    then [120,          who[:name] +   " "  +     LEVEL  +       " #{BL}#{who[:level]}#{CL} "  +  " #{BUFFS[who[:boost]]} " + "+#{who[:gains]}" ]
-  when :cards    then [110,          CARD       +   " "  + who[:name] +  " "   +       who[:hand].last[:suit] ]
+  when :cards    then [105,          CARD       +   " "  + who[:name] +  " "   +       who[:hand].last[:suit] ]
   when :bounty   then [115,          BONUS      +   " "  + who[:name] + " +10 "+       who[:emoji]          + " +1 💵" + " -1 🍺 #{GN}+10#{CL} #{XP}"]
   when :broke    then [100,          BROKE      +   " "  + who[:name] +  "'s " +       who[:weapon][:name]  +  " "    + BROKE_SHOUT.sample ]
   when :item     then [100,          tag        +   " "  + who[:item][:name]   + " " + who[:name]           + " 💬 " +  ITEM_SHOUT.sample ]

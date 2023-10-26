@@ -91,8 +91,8 @@ def weapon_breaks(wielder)
 end
 
 def crap_factory(wielder, order = nil)
-  x  = order        == :bonus  ?   1 : -1 # default items can be positive or negative, pure-positive can be bought
-  hp = wielder[:id] == :player ?  10 :  5 # nerf enemy hp gain
+  x  = order        == :bonus  ?   1  : -1 # default items can be positive or negative, pure-positive can be bought
+  hp = wielder[:id] == :player ?  10  :  5 # nerf enemy hp gain
   item = {
     name:  "#{GN}#{ITEMS.sample}#{CL}", # items are for offense only and do not nourish block
     hp:     rand(hp),
