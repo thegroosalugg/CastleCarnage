@@ -48,7 +48,7 @@ def blackjack(enemies, player, dealer)
 end
 
 def set_the_scene(dealer, player)
-  player[:land]  = CARD_GAMES # change the scenery
+  player[:land]  = CARD_FACES # change the scenery
   player[:stuck] = false
   player[:lost]  = false
   card_deck(player)

@@ -85,6 +85,7 @@ end
 
 def coin_flip(enemies, player, target) # psychic attack
   player[:sight] = room_vault(2)
+  player[:land]   = LETSGO # sets the scene
   shout(target, :psychic)
 
   loop do
@@ -107,7 +108,9 @@ def coin_flip(enemies, player, target) # psychic attack
       strike(enemies, target, player)
       break # Exit loop if choices don't match
     end
+    player[:land]   = { id: :room, art: SOUND_EFFECTS.sample } # sets the scene
   end
+  player[:land] = { id: :move, art: BATTLEFIELD.sample } # resets ASCII art to this arena
 end
 
 def the_shop(player) # the shop appears randomly and will disappear next round

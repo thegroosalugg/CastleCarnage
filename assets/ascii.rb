@@ -35,6 +35,7 @@ BARRIER_EN  =           "#{RD}#{ICONS.sample}#{CL}" * 80
 SHIELD      = " " * 4 + "#{ML}#{ICONS.sample}#{CL}" * 72
 SHIELD_EN   = " " * 4 + "#{RD}#{ICONS.sample}#{CL}" * 72
 STATUS_BAR  = " " * 4 + "#{ML}#{ICON}#{CL}" * 17 + " " * 37 + "#{ML}#{ICON}#{CL}" * 18 + " " * 4
+
 MENU_HEADER = " " * 2 + "#{ML}T̿̽̈́H͛̾͌É͌R͋̔̈́E̽͌͑ C͆̔͌A̾͋͝N̿̐͝ B̔̒͛Ë́͠ O̿͊͘N̕̕͠L͆̾̾Y̒͝ O͑͆̒N͆͋͛E͆͛̈́.͐͝͝.̓͋̈́.́̐́#{CL}"
 
 # In game display tags
@@ -90,12 +91,3 @@ SHOP      = "#{GN}𝕋𝕙𝕖 𝕊𝕙𝕠𝕡#{CL}"
 GANKED    = "#{BL}ＧＡＮＫＥＤ#{CL}"
 WASTED    = "#{OR}𝕎𝔸𝕊𝕋𝔼𝔻#{CL}"
 LEVEL     = "#{BL}LEͤVͮEͤL UͧРⷬ#{CL}"
-
-# Incase I need them later
-# TRAP      = "#{YL}ƬᖇᎯᕈ🪤#{CL}"
-# DEBT      = "#{RD}ᗪ㠪乃ㄒ#{CL}"
-# BUFF      = "#{CN}𝓑𝓤𝓕𝓕🪶#{CL}"
-# "#{RD}ᙡ∈Ꭿⲕ∈ᖇⲙᎯﬡ#{CL}"
-# "#{RD}𝕄𝕖𝕒𝕥𝕊𝕙𝕚𝕖𝕝𝕕#{CL}"
-# "#{RD}🄲🄸🅅🄸🄻🄸🄰🄽#{CL}"
-# "#{RD}𝓛ⲁⲙⲉ𝛓ⲏⲟⲧ#{CL}"
