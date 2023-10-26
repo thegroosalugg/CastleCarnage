@@ -65,6 +65,7 @@ def show_your_moves(player, target, menu)
       when you < them then FLUNKED
       else "🍃  #{MISS} 🍂" # reusing this tag but need to pad it out with emojis
       end
+      player[:land]   = { id: :room, art: MOVES[player[:moves][round]] } # sets the scene
       puts whitespace(player, " ", 14) + "#{player[:name]} 💬 #{style[you]} #{x} #{style[them]} 🗨️ #{target[:name]}"
     end
   elsif menu == :flip

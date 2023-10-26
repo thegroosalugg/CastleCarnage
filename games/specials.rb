@@ -73,7 +73,6 @@ def rochambeau(enemies, player, target) # stylish attack
     end
 
     print `clear`
-    player[:land]   = { id: :room, art: SOUND_EFFECTS.sample } # sets the scene
     player[:moves] << choice
     show_your_moves(player, target, :style)
 
