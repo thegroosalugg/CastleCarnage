@@ -1,8 +1,8 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-THE_DOOR = { id: :still, offset: 22, art:
-  <<-'ASCII'
+THE_DOOR = [
+   <<-'ASCII',
   ______
   ,-' ;  ! `-.
  / :  !  :  . \                 ============
@@ -16,7 +16,22 @@ THE_DOOR = { id: :still, offset: 22, art:
 |" .  |  :  .  |
 |mt-2_;----.___|
     ASCII
-  }
+    # ASCII art 2
+    <<-'ASCII',
+    __________
+    |  __  __  |
+    | |  ||  | |
+    | |  ||  | |
+    | |__||__| |
+    |  __  __()|
+    | |  ||  | |
+    | |  ||  | |
+    | |  ||  | |
+    | |  ||  | |
+    | |__||__| |
+  ejm        |__________|
+    ASCII
+]
 
 ROOM_SERVICE = [
     # ASCII art 1
