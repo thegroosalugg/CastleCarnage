@@ -1,8 +1,8 @@
 # rubocop:disable all
 require_relative 'art/battlefield'
 require_relative 'art/room_service'
+require_relative 'art/screen'
 require_relative 'art/title_screen'
-require_relative 'art/wallpaper'
 require_relative 'assets/ascii'
 require_relative 'assets/cheat_mode'
 require_relative 'assets/names'

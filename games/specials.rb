@@ -11,6 +11,7 @@ def brawl(enemies, player, target) # Regular brawl when player strikes
   player[:drain] = false
   player[:shop]  = false #  shop is disabled each round whether accessed or not
   player[:shop]  = true if player[:cash].positive? && rand(5) == 1 # shop opens for one round
+  player[:land]   = { id: :still, offset: 10, art: "#{OR}#{SOUND_EFFECTS.sample}#{CL}" }
   if rand(10) == 1 && player[:hp].positive?
     player[:beers] = (player[:beers] - 1).clamp(0, 5)
     shout(player, :sober)
@@ -57,7 +58,7 @@ end
 
 def rochambeau(enemies, player, target) # stylish attack
   shout(target, :style)
-  player[:land]  = WALK_OFF # change the scenery
+  player[:land]  = { id: :move, art: "#{CN}#{WALK_OFF}#{CL}" } # sets the scene
   target[:moves] = []
   player[:moves] = []
 
@@ -85,7 +86,7 @@ end               # can't decide whether to display final move or transition bac
 
 def coin_flip(enemies, player, target) # psychic attack
   player[:sight] = room_vault(2)
-  player[:land]   = LETSGO # sets the scene
+  player[:land]   = { id: :still, offset: 15, art: "#{MG}#{LETSGO}#{CL}" } # sets the scene
   shout(target, :psychic)
 
   loop do
@@ -108,9 +109,9 @@ def coin_flip(enemies, player, target) # psychic attack
       strike(enemies, target, player)
       break # Exit loop if choices don't match
     end
-    player[:land]   = { id: :room, offset: 10, art: SOUND_EFFECTS.sample } # sets the scene
+    player[:land]   = { id: :still, offset: 10, art: "#{MG}#{SOUND_EFFECTS.sample}#{CL}" } # sets the scene
   end
-  player[:land] = { id: :move, art: BATTLEFIELD.sample } # resets ASCII art to this arena
+  player[:land] = { id: :move, art: "#{BL}#{BATTLEFIELD.sample}#{CL}" } # resets ASCII art to this arena
 end
 
 def the_shop(player) # the shop appears randomly and will disappear next round

@@ -1,10 +1,17 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
+def title_screen
+  puts  "#{YL}#{CASTLE_CARNAGE}#{CL}"
+  print "#{CN}#{CASTLE}#{CL}"
+  puts  " " * 28 + NAME
+end
+
 def game_info(enemies, player) # Main UI that displays all current happenings
   puts BARRIER_EN
   enemies.each { |enemy| display_bars(enemy) }
-  puts wallpaper(player)
+  print wallpaper(player) # using puts with colored multi line ascii art causes a new line to appear. However print moves the line underneath
+  print "\r"              # \r prevents the line underneath wallpaper from also moving
   display_bars(player)
   status(player)
   puts BARRIER

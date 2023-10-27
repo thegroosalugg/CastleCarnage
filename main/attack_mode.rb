@@ -41,15 +41,15 @@ def load_ammo(hunter)
 end
 
 def shots_fired(hunter, target, shot) # Player vs enemy strike
-  text = rand(3) == 1 ? (shot == :miss ? BACK_TALK.sample : "🗯️ " + SMACK_TALK.sample) : ""
+  text = rand(3) == 1 ? (shot == :miss ? BACK_TALK.sample : "🗯️ " + FIGHT_TALK.sample) : ""
 
   hit  = "#{hunter[:name]} #{text}#{HIT} #{target[:name]} -#{hunter[:damage]} #{target[:emoji]}"
   crit = "#{hunter[:name]} #{text}#{CRIT} #{target[:name]} -#{hunter[:damage]} #{target[:emoji]}"
   miss = "#{hunter[:name]} 🗯️❓ #{text}#{MISS} #{target[:name]}"
 
   x, shout, comeback = case shot
-  when :hit  then [100, hit,  SMACK_BACK]
-  when :crit then [110, crit, SMACK_BACK]
+  when :hit  then [100, hit,  FIGHT_BACK]
+  when :crit then [110, crit, FIGHT_BACK]
   when :miss then [100, miss,  TALK_BACK]
   end
 
