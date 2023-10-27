@@ -58,7 +58,7 @@ end
 
 def rochambeau(enemies, player, target) # stylish attack
   shout(target, :style)
-  player[:land]  = { id: :move, art: "#{RG}#{WALK_OFF}#{CL}" } # sets the scene
+  player[:land]  = { id: :move, art: "#{RD}#{WALK_OFF}#{CL}" } # sets the scene
   target[:moves] = []
   player[:moves] = []
 
