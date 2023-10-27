@@ -40,7 +40,7 @@ def blackjack(enemies, player, dealer)
       when 6
         print `clear`
         shout(dealer, :goodbye)
-        player[:land] = { id: :move, art: BATTLEFIELD.sample } # reset art back to main menu
+        player[:land] = { id: :move, art: "#{GN}#{BATTLEFIELD.sample}#{CL}" } # reset art back to main menu
         return # exit game
       else shout(dealer, :error)
       end
@@ -112,7 +112,7 @@ def bust_or_break(enemies, dealer, player)
     strike(enemies, dealer, player)  # player struck
     player[:stuck] = true if dealer[:score] == 21 # dealer only reveals hand if they get 21 if they didn't draw
     whos_holding_what(dealer, player) # display showed here as above must run first in that order
-    player[:land] = { id: :move, art: BATTLEFIELD.sample }
+    player[:land] = { id: :move, art: "#{RD}#{BATTLEFIELD.sample}#{CL}" }
     player[:lost] = true
   end
 end

@@ -28,7 +28,7 @@ def run_away(player)
   player[:choice] = 0
                n  = (6 - player[:beers]).clamp(1, 4) # fewer rooms available if player drunk
   player[:rooms]  = room_vault(n) # creates n rooms
-  player[:land]   = { id: :room, offset: 22, art: THE_DOOR.sample } # sets the scene
+  player[:land]   = { id: :room, offset: 22, art:  "#{YL}#{THE_DOOR.sample}#{CL}" } # sets the scene
   shout(player, :escape)
 end
 
@@ -49,7 +49,7 @@ def parting_gift(enemies, player)
     rand(2) == 1 ? crap_factory(enemies.sample) : weapon_wakes(enemies.sample, player)
   end
   surprise(enemies, player) unless (player[:weapon] && player[:weapon][:bonus] == :sneaky) # sneaky prevents surprise attacks
-  player[:land]   = { id: :room, offset: 10, art: ROOM_SERVICE.sample } # sets the scene
+  player[:land]  = { id: :room, offset: 10, art: "#{ML}#{ROOM_SERVICE.sample}#{CL}" } # sets the scene
   player[:drain] = false
   player[:shop]  = false #  shop is disabled each round whether accessed or not
 end

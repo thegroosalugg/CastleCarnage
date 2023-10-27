@@ -33,7 +33,7 @@ def play_game(player)
     graveyard(enemies, player)
     level_up(player)
     game_info(enemies, player)
-    player[:land] = { id: :move, art: BATTLEFIELD.sample } unless player[:land][:id] == :room # resets ASCII art to this arena
+    player[:land] = { id: :move, art: "#{YL}#{BATTLEFIELD.sample}#{CL}" } unless player[:land][:id] == :room # resets ASCII art to this arena
   end
   game_over(player)
 end
@@ -46,7 +46,8 @@ def specials(enemies, player, target)
     when :psychic    then    coin_flip(enemies, player, target)
     when :stylish    then   rochambeau(enemies, player, target)
     when :sneaky     then sneak_attack(enemies, player, target)
-    end
+    end                                                      # pow message
+    player[:land]   = { id: :still, offset: 10, art: "#{MG}#{SOUND_EFFECTS.sample}#{CL}" } if [:somersault, :sneaky].include?(player[:weapon][:bonus])
     player[:shop]  = false #  shop is disabled each round whether accessed or not
     player[:drain] = true
     player[:xp]   += 1
@@ -58,7 +59,7 @@ def ctrl_s(player) # player is saved on game over and can be used again on repla
   player          = player.dup
   player[:max_hp] = 99 + player[:level]
   player[:hp]     = player[:max_hp]
-  player[:land]   = { id: :move, art: BATTLEFIELD.sample }
+  player[:land]   = { id: :move, art: "#{RD}#{BATTLEFIELD.sample}#{CL}" }
   return player
 end
 

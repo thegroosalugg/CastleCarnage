@@ -58,7 +58,7 @@ end
 
 def rochambeau(enemies, player, target) # stylish attack
   shout(target, :style)
-  player[:land]  = { id: :move, art: "#{RD}#{WALK_OFF}#{CL}" } # sets the scene
+  player[:land]  = { id: :move, art: "#{CN}#{WALK_OFF}#{CL}" } # sets the scene
   target[:moves] = []
   player[:moves] = []
 
@@ -86,7 +86,7 @@ end               # can't decide whether to display final move or transition bac
 
 def coin_flip(enemies, player, target) # psychic attack
   player[:sight] = room_vault(2)
-  player[:land]   = LETSGO # sets the scene
+  player[:land]   = { id: :still, offset: 15, art: "#{MG}#{LETSGO}#{CL}" } # sets the scene
   shout(target, :psychic)
 
   loop do
@@ -111,7 +111,7 @@ def coin_flip(enemies, player, target) # psychic attack
     end
     player[:land]   = { id: :still, offset: 10, art: "#{MG}#{SOUND_EFFECTS.sample}#{CL}" } # sets the scene
   end
-  player[:land] = { id: :move, art: BATTLEFIELD.sample } # resets ASCII art to this arena
+  player[:land] = { id: :move, art: "#{BL}#{BATTLEFIELD.sample}#{CL}" } # resets ASCII art to this arena
 end
 
 def the_shop(player) # the shop appears randomly and will disappear next round

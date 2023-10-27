@@ -63,16 +63,14 @@ MOVES = {
         `------'
     ASCII
 
-LETSGO = { id: :still, offset: 10, art:
-  <<-'ASCII',
-  dP                   dP   d8              .88888.
-  88                   88   88             d8'   `88
-  88        .d8888b. d8888P .P .d8888b.    88        .d8888b.
-  88        88ooood8   88      Y8ooooo.    88   YP88 88'  `88
-  88        88.  ...   88            88    Y8.   .88 88.  .88
-  88888888P `88888P'   dP      `88888P'     `88888'  `88888P'
+LETSGO =
+  <<-'ASCII'
+   ,o0MMMMMMMMNMMMMM8888888888888888MMMMMM.88
+  8888888888V'.o   ```VoooooooooV'''   o. V8
+  8888LLLLl:  O , ,O    ``VlV''    O,  ,O  D88,
+   8888888LLb `VooV',O.WooA AooW.O `VooV' '8888
+    8888888888booooooOlllllIlllllOoooooood8888
   ASCII
-}
 
 SOUND_EFFECTS = [
   # ASCII art 1
