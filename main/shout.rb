@@ -55,7 +55,7 @@ end
 def name_player(player) # Name your player
   name = ""
   while name.empty?
-    puts "#{ML}#{TITLE_SCREEN}#{CL}"
+    title_screen
              name = gets.strip.slice(0, 8).downcase.capitalize
                 x = name.length < 4 ? TITLES.sample : ""
     player[:name] = "#{GN}#{EMOJIS.sample} #{x}#{name}#{CL}"

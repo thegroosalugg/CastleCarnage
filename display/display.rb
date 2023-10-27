@@ -1,6 +1,12 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
+def title_screen
+  puts "#{YL}#{CASTLE_CARNAGE}#{CL}"
+  puts "#{CN}#{CASTLE}#{CL}"
+  puts " " * 28 + NAME
+end
+
 def game_info(enemies, player) # Main UI that displays all current happenings
   puts BARRIER_EN
   enemies.each { |enemy| display_bars(enemy) }
