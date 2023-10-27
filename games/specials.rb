@@ -58,7 +58,7 @@ end
 
 def rochambeau(enemies, player, target) # stylish attack
   shout(target, :style)
-  player[:land]  = WALK_OFF # change the scenery
+  player[:land]  = { id: :move, art: "#{RG}#{WALK_OFF}#{CL}" } # sets the scene
   target[:moves] = []
   player[:moves] = []
 
@@ -109,7 +109,7 @@ def coin_flip(enemies, player, target) # psychic attack
       strike(enemies, target, player)
       break # Exit loop if choices don't match
     end
-    player[:land]   = { id: :room, offset: 10, art: "#{MG}#{SOUND_EFFECTS.sample}#{CL}" } # sets the scene
+    player[:land]   = { id: :still, offset: 10, art: "#{MG}#{SOUND_EFFECTS.sample}#{CL}" } # sets the scene
   end
   player[:land] = { id: :move, art: BATTLEFIELD.sample } # resets ASCII art to this arena
 end
