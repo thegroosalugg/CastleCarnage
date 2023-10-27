@@ -50,7 +50,7 @@ MOVES = {
 
  # intro display + win messages for blackjack and psychic special move
 
- CARD_FACES = { id: :still, offset: 22, art:
+ CARD_FACES =
   <<-'ASCII'
                      .------.
   .------.           |A .   |
@@ -62,7 +62,6 @@ MOVES = {
         |  \/ A|-----'
         `------'
     ASCII
-  }
 
 LETSGO = { id: :still, offset: 10, art:
   <<-'ASCII',
