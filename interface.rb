@@ -33,7 +33,7 @@ def play_game(player)
     graveyard(enemies, player)
     level_up(player)
     game_info(enemies, player)
-    player[:land] = { id: :move, art: "#{YL}#{BATTLEFIELD.sample}#{CL}" } unless player[:land][:id] == :room # resets ASCII art to this arena
+    player[:land] = { id: :move, art: "#{YL}#{BATTLEFIELD.sample}#{CL}" } unless player[:land][:id] == :sticky # resets ASCII art to this arena
   end
   game_over(player)
 end
@@ -47,7 +47,7 @@ def specials(enemies, player, target)
     when :stylish    then   rochambeau(enemies, player, target)
     when :sneaky     then sneak_attack(enemies, player, target)
     end                                                      # pow message
-    player[:land]   = { id: :still, offset: 10, art: "#{MG}#{STRIKE.sample}#{CL}" } if player[:weapon] && [:somersault, :sneaky].include?(player[:weapon][:bonus])
+    player[:land]   = { id: :flash, offset: 10, art: "#{MG}#{STRIKE.sample}#{CL}" } if player[:weapon] && [:somersault, :sneaky].include?(player[:weapon][:bonus])
     player[:shop]  = false #  shop is disabled each round whether accessed or not
     player[:drain] = true
     player[:xp]   += 1

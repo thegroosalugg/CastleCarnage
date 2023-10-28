@@ -22,7 +22,7 @@ def blackjack(enemies, player, dealer)
     end
 
     print `clear`
-    player[:land]   = { id: :still, offset: 10, art: "#{GN}#{YOU_WIN.sample}#{CL}" } # sets the scene
+    player[:land]   = { id: :flash, offset: 10, art: "#{GN}#{YOU_WIN.sample}#{CL}" } # sets the scene
     while dealer[:score] < 16 && !(player[:score] == 21 && player[:hand].length == 2)
       draw_card(dealer, player)
     end
@@ -49,7 +49,7 @@ def blackjack(enemies, player, dealer)
 end
 
 def set_the_scene(dealer, player)
-  player[:land]  = { id: :still, offset: 22, art: "#{ML}#{CARD_FACES}#{CL}" } # change the scenery
+  player[:land]  = { id: :flash, offset: 22, art: "#{ML}#{CARD_FACES}#{CL}" } # change the scenery
   player[:stuck] = false
   player[:lost]  = false
   card_deck(player)
@@ -112,7 +112,7 @@ def bust_or_break(enemies, dealer, player)
     strike(enemies, dealer, player)  # player struck
     player[:stuck] = true if dealer[:score] == 21 # dealer only reveals hand if they get 21 if they didn't draw
     whos_holding_what(dealer, player) # display showed here as above must run first in that order
-    player[:land] = { id: :move, art: "#{RD}#{BATTLEFIELD.sample}#{CL}" }
+    player[:land] = { id: :flash, offset: 4, art: "#{RD}#{LOSER}#{CL}" }
     player[:lost] = true
   end
 end

@@ -17,7 +17,7 @@ ITEM_SHOUT = [
   "Delicious!", "Meh, eat it anyway", "Egh! Rank!", "Fucking A!", "What idiot left this here!",
   "5 second rule!", "Might as well", "Holy shit!", "This will have to do", "This looks swell!",
   "Sweet as!", "Dinner sorted!", "No way! Is it back?", "Who left this 'ere?", "This will do!",
-  "Sorted!", "What's one more eh!", "I'll still eat it"
+  "What's one more eh!", "Still eat it"
 ]
 GOT_SHOUT = [
   "looks in the fridge 🗒️ and prepares a", "🪔🧞 Djinn 💬 Here you go mate! Acquired", "This cookbook 📙 contains a recipe for a",

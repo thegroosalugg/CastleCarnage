@@ -73,6 +73,16 @@ LETSGO =
 ⠀⠀⠛⢶⢰⣶⢢⣤⣤⣄⠲⣶⠖⠀⣙⣀⠀⠀⠀⠤⢤⣀⣀⡀⣀⣠⣾⠟⡌⠀
   ASCII
 
+LOSER =
+<<-'ASCII'
+e   e  e e   e eeeee eeeee       eeeee       eeeee e   e eeeee eeeeeee eeee
+8   8  8 8   8 8   8   8         8   8       8   " 8   8 8   8 8  8  8 8
+8e  8  8 8eee8 8eee8   8e        8eee8       8eeee 8eee8 8eee8 8e 8  8 8eee
+88  8  8 88  8 88  8   88        88  8          88 88  8 88  8 88 8  8 88
+88ee8ee8 88  8 88  8   88        88  8       8ee88 88  8 88  8 88 8  8 88ee
+                           eeeee       eeeee                               
+ASCII
+
 YOU_WIN = [
   # ASCII art 1
   <<-'ASCII',
