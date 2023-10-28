@@ -22,7 +22,7 @@ def blackjack(enemies, player, dealer)
     end
 
     print `clear`
-    player[:land]   = { id: :still, offset: 10, art: "#{GN}#{SOUND_EFFECTS.sample}#{CL}" } # sets the scene
+    player[:land]   = { id: :still, offset: 10, art: "#{GN}#{YOU_WIN.sample}#{CL}" } # sets the scene
     while dealer[:score] < 16 && !(player[:score] == 21 && player[:hand].length == 2)
       draw_card(dealer, player)
     end
