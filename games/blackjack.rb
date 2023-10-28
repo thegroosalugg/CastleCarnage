@@ -101,7 +101,7 @@ def draw_card(player, deck) # deck is stored in player, +1 parameter must also e
 end
 
 def bust_or_break(enemies, dealer, player)
-  shout(player, :cards) unless player[:hand].length < 3
+  shout(player, :cards) unless player[:hand].length < 3 || player[:choice] == 6
   whos_the_winner(dealer, player)
   if player[:score] <= 21 && (player[:score] > dealer[:score] || dealer[:score] > 21) # Who's the winner
     player[:cash] = (player[:cash] + 1).clamp(0, 5)
