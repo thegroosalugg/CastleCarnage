@@ -48,7 +48,10 @@ def sneak_attack(enemies, player, target) # sneaky attack
       target[:weapon] = nil
     end
     strike(enemies, player, target)
-  else shout(player, :wasted)
+    player[:land]   = { id: :flash, offset: 4, art: "#{BL}#{SNEAKY}#{CL}" }
+  else
+    shout(player, :wasted)
+    player[:land]   = { id: :flash, offset: 4, art: "#{RD}#{LOSER}#{CL}" }
   end
 
   strike(enemies, target, player) if target[:hp].positive?

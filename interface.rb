@@ -47,7 +47,7 @@ def specials(enemies, player, target)
     when :stylish    then   rochambeau(enemies, player, target)
     when :sneaky     then sneak_attack(enemies, player, target)
     end                                                      # pow message
-    player[:land]   = { id: :flash, offset: 10, art: "#{MG}#{STRIKE.sample}#{CL}" } if player[:weapon] && [:somersault, :sneaky].include?(player[:weapon][:bonus])
+    player[:land]   = { id: :flash, offset: 10, art: "#{MG}#{STRIKE.sample}#{CL}" } if player[:weapon] && player[:weapon][:bonus] == :somersault
     player[:shop]  = false #  shop is disabled each round whether accessed or not
     player[:drain] = true
     player[:xp]   += 1
