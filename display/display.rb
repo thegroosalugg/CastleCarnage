@@ -25,7 +25,7 @@ def display_bars(who) # generator that combines methods to create dynamic displa
 end
 
 def wallpaper(player) # move ASCII art
-  offset = player[:land][:id] == :move ? rand(10..30) : player[:land][:offset] # checks if art moves on each loop or if static it centers art without hardcode
+  offset = player[:land][:id] == :bounce ? rand(10..30) : player[:land][:offset] # checks if art moves on each loop or if static it centers art without hardcode
   player[:land][:art].split("\n").map { |line| " " * offset + line }.join("\n")
 end                        # \n represents line break when concatenating strings
 

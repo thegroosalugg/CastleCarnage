@@ -40,7 +40,7 @@ def blackjack(enemies, player, dealer)
       when 6
         print `clear`
         shout(dealer, :goodbye)
-        player[:land] = { id: :move, art: "#{GN}#{BATTLEFIELD.sample}#{CL}" } # reset art back to main menu
+        player[:land] = { id: :bounce, art: "#{GN}#{BATTLEFIELD.sample}#{CL}" } # reset art back to main menu
         return # exit game
       else shout(dealer, :error)
       end
