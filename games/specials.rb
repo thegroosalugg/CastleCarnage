@@ -110,7 +110,7 @@ def coin_flip(enemies, player, target) # psychic attack
       strike(enemies, target, player)
       break # Exit loop if choices don't match
     end
-    player[:land]   = { id: :flash, offset: 10, art: "#{MG}#{YOU_WIN.sample}#{CL}" }
+    player[:land]   = { id: :flash, offset: 3, art: "#{MG}#{YOU_WIN.sample}#{CL}" }
   end
   player[:land] = { id: :flash, offset: 4, art: "#{RD}#{LOSER}#{CL}" }
 end
@@ -135,6 +135,7 @@ def the_shop(player) # the shop appears randomly and will disappear next round
     shout(player, :shop)
     player[:cash] = 0
     player[:shop] = false
+    player[:land]   = { id: :flash, offset: 20, art: "#{GN}#{CASHED_OUT}#{CL}" }
   else shout(player, :error)
   end
 end
