@@ -31,6 +31,7 @@ def somersault(enemies, player) # Sommersault attack
   player[:roll] = rand(2..3)
   shout(player, :bounce)
   hunter, target = player[:flip] == 1 ? [ [player], enemies ] : [ enemies, [player] ]
+  player[:land]   = { id: :flash, offset: 4, art: (player[:flip] == 1 ? "#{YL}#{SOMERSAULT}#{CL}" : "#{RD}#{LOSER}#{CL}") }
   player[:roll].times { strike(enemies, hunter.sample, target.sample) unless enemies.empty? }
 end
 
