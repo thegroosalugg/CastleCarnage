@@ -33,7 +33,7 @@ def play_game(player)
     graveyard(enemies, player)
     level_up(player)
     game_info(enemies, player)
-    player[:land] = { id: :bounce, art: "#{YL}#{BATTLEFIELD.sample}#{CL}" } unless player[:land][:id] == :sticky # resets ASCII art to this arena
+    player[:screen] = { id: :bounce, art: "#{YL}#{BATTLEFIELD.sample}#{CL}" } unless player[:screen][:id] == :sticky # resets ASCII art to this arena
   end
   game_over(player)
 end
@@ -58,7 +58,7 @@ def ctrl_s(player) # player is saved on game over and can be used again on repla
   player          = player.dup
   player[:max_hp] = 99 + player[:level]
   player[:hp]     = player[:max_hp]
-  player[:land]   = { id: :bounce, art: "#{RD}#{BATTLEFIELD.sample}#{CL}" }
+  player[:screen]   = { id: :bounce, art: "#{RD}#{BATTLEFIELD.sample}#{CL}" }
   return player
 end
 

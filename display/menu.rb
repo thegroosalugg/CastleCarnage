@@ -66,7 +66,7 @@ def show_your_moves(player, target, menu)
       else "🍃  #{MISS} 🍂" # reusing this tag but need to pad it out with emojis
       end
       color = you == 5 ? BL : (you == 6 ? OR : MG)
-      player[:land]   = { id: :sticky, offset: 0, art: "#{color}#{MOVES[you]}#{CL}" } # sets the scene
+      player[:screen]   = { id: :sticky, offset: 0, art: "#{color}#{MOVES[you]}#{CL}" } # sets the scene
       puts whitespace(player, " ", 14) + "#{player[:name]} 💬 #{style[you]} #{x} #{style[them]} 🗨️ #{target[:name]}"
     end
   elsif menu == :flip

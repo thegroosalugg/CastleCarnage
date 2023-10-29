@@ -22,7 +22,7 @@ def strike(enemies, hunter, target) # all entities use this to fight
 
   if target[:id]   == :player && target[:hp] <= 0
     target[:tracks] = hunter   # if player dies tracks enemy who dealt lethal blow
-    target[:land]   = { id: :flash, offset: 2, art: "#{RD}#{GAME_OVER}#{CL}" } # sets the scene
+    target[:screen]   = { id: :flash, offset: 2, art: "#{RD}#{GAME_OVER}#{CL}" } # sets the scene
     shout(target, :pwned) # sends same pwned message to the player
   end
 end
@@ -63,12 +63,12 @@ def graveyard(enemies, player)
     if enemy[:hp] <= 0  # check for enemy deaths, update counter, track last enemy for game over
       shout(enemy, :pwned)
       bounty(player, enemy)
-      player[:land]  = { id: :flash, offset: 4, art: "#{CN}#{ENEMY_PWNED}#{CL}" }
+      player[:screen]  = { id: :flash, offset: 4, art: "#{CN}#{ENEMY_PWNED}#{CL}" }
       true  # This will remove the enemy from the array
     else false  # This will keep the enemy in the array
     end
   end
-  player[:land]  = { id: :flash, offset: 2, art: "#{GN}#{GAME_WON}#{CL}" } if enemies.empty?
+  player[:screen]  = { id: :flash, offset: 2, art: "#{GN}#{GAME_WON}#{CL}" } if enemies.empty?
 end
 
 def bounty(hunter, target) # collect bounty

@@ -63,7 +63,7 @@ def cheat_menu(enemies, player, target)
 end
 
 def print_player(player)
-  player.each { |key, value| puts  " " * 30 + "#{BL}#{key}:" + " " * (9 - key.length) + "#{value}#{CL}" unless [:land, :tracks].include?(key) }
+  player.each { |key, value| puts  " " * 30 + "#{BL}#{key}:" + " " * (9 - key.length) + "#{value}#{CL}" unless [:screen, :tracks].include?(key) }
   gets
   print `clear`
 end

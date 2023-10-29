@@ -2,7 +2,7 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 def brawl(enemies, player, target) # Regular brawl when player strikes
-  player[:land]   = { id: :flash, offset: 10, art: "#{YL}#{STRIKE.sample}#{CL}" }
+  player[:screen]   = { id: :flash, offset: 10, art: "#{YL}#{STRIKE.sample}#{CL}" }
   strike(enemies, player, target)
   strike(enemies, target, player) if target[:hp].positive?
   surprise(enemies, player) unless enemies.empty? || player[:hp] <= 0 || (player[:weapon] && player[:weapon][:bonus] == :sneaky)
@@ -31,7 +31,7 @@ def somersault(enemies, player) # Sommersault attack
   player[:roll] = rand(2..3)
   shout(player, :bounce)
   hunter, target = player[:flip] == 1 ? [ [player], enemies ] : [ enemies, [player] ] # don't want to repeat myself, but need target to be random
-  player[:land]   = { id: :flash, offset: 4, art: (player[:flip] == 1 ? "#{GN}#{SOMERSAULT}#{CL}" : "#{RD}#{LOSER}#{CL}") }
+  player[:screen]   = { id: :flash, offset: 4, art: (player[:flip] == 1 ? "#{GN}#{SOMERSAULT}#{CL}" : "#{RD}#{LOSER}#{CL}") }
   player[:roll].times { strike(enemies, hunter.sample, target.sample) unless enemies.empty? } # player is in an array so .sample can be run on either
 end
 
@@ -48,10 +48,10 @@ def sneak_attack(enemies, player, target) # sneaky attack
       shout(target, :ganked)
       target[:weapon] = nil
     end
-    player[:land]   = { id: :flash, offset: 4, art: "#{BL}#{SNEAKY}#{CL}" }
+    player[:screen]   = { id: :flash, offset: 4, art: "#{BL}#{SNEAKY}#{CL}" }
     strike(enemies, player, target)
   else
-    player[:land]   = { id: :flash, offset: 4, art: "#{RD}#{LOSER}#{CL}" }
+    player[:screen]   = { id: :flash, offset: 4, art: "#{RD}#{LOSER}#{CL}" }
     shout(player, :wasted)
   end
 
@@ -60,7 +60,7 @@ end
 
 def rochambeau(enemies, player, target) # stylish attack
   shout(target, :style)
-  player[:land]  = { id: :bounce, art: "#{CN}#{WALK_OFF}#{CL}" } # sets the scene
+  player[:screen]  = { id: :bounce, art: "#{CN}#{WALK_OFF}#{CL}" } # sets the scene
   target[:moves] = []
   player[:moves] = []
 
@@ -87,7 +87,7 @@ end
 
 def coin_flip(enemies, player, target) # psychic attack
   player[:sight] = room_vault(2)
-  player[:land]   = { id: :flash, offset: 22, art: "#{MG}#{LETSGO}#{CL}" } # sets the scene
+  player[:screen]   = { id: :flash, offset: 22, art: "#{MG}#{LETSGO}#{CL}" } # sets the scene
   shout(target, :psychic)
 
   loop do
@@ -104,11 +104,11 @@ def coin_flip(enemies, player, target) # psychic attack
     show_your_moves(player, target, :flip)
 
     if player[:choice] == target[:move]
-      player[:land]   = { id: :flash, offset: 3, art: "#{MG}#{YOU_WIN.sample}#{CL}" }
+      player[:screen]   = { id: :flash, offset: 3, art: "#{MG}#{YOU_WIN.sample}#{CL}" }
       strike(enemies, player, target)
       break if target[:hp] <= 0
     else
-      player[:land] = { id: :flash, offset: 4, art: "#{RD}#{LOSER}#{CL}" }
+      player[:screen] = { id: :flash, offset: 4, art: "#{RD}#{LOSER}#{CL}" }
       strike(enemies, target, player)
       break # Exit loop if choices don't match
     end
@@ -135,7 +135,7 @@ def the_shop(player) # the shop appears randomly and will disappear next round
     shout(player, :shop)
     player[:cash] = 0
     player[:shop] = false
-    player[:land]   = { id: :flash, offset: 20, art: "#{GN}#{CASHED_OUT}#{CL}" }
+    player[:screen]   = { id: :flash, offset: 20, art: "#{GN}#{CASHED_OUT}#{CL}" }
   else shout(player, :error)
   end
 end
