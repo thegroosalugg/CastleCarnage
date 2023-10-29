@@ -9,7 +9,7 @@ def brawl(enemies, player, target) # Regular brawl when player strikes
   player[:drain] = false
   player[:shop]  = false #  shop is disabled each round whether accessed or not
   player[:shop]  = true if player[:cash].positive? && rand(5) == 1 # shop opens for one round
-  player[:land]   = { id: :flash, offset: 10, art: "#{OR}#{STRIKE.sample}#{CL}" }
+  player[:land]   = { id: :flash, offset: 10, art: "#{YL}#{STRIKE.sample}#{CL}" }
   if rand(10) == 1 && player[:hp].positive?
     player[:beers] = (player[:beers] - 1).clamp(0, 5)
     shout(player, :sober)
@@ -31,7 +31,7 @@ def somersault(enemies, player) # Sommersault attack
   player[:roll] = rand(2..3)
   shout(player, :bounce)
   hunter, target = player[:flip] == 1 ? [ [player], enemies ] : [ enemies, [player] ] # don't want to repeat myself, but need target to be random
-  player[:land]   = { id: :flash, offset: 4, art: (player[:flip] == 1 ? "#{YL}#{SOMERSAULT}#{CL}" : "#{RD}#{LOSER}#{CL}") }
+  player[:land]   = { id: :flash, offset: 4, art: (player[:flip] == 1 ? "#{GN}#{SOMERSAULT}#{CL}" : "#{RD}#{LOSER}#{CL}") }
   player[:roll].times { strike(enemies, hunter.sample, target.sample) unless enemies.empty? } # player is in an array so .sample can be run on either
 end
 
