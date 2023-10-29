@@ -24,7 +24,7 @@ def game_over(player) # game over message and art
   puts BARRIER
   puts player[:hp].positive? ? "#{GN}#{GAME_WON}#{CL}" : "#{RD}#{GAME_OVER}#{CL}"
   puts BARRIER
-  puts "#{CN}#{REPLAY}#{CL}"
+  puts "#{YL}#{REPLAY}#{CL}"
 end
 
 def replay # unique error message art for continue screen
