@@ -30,9 +30,9 @@ def somersault(enemies, player) # Sommersault attack
   player[:flip] = rand(2)    # winner strikes loser 2-3 times, targets random
   player[:roll] = rand(2..3)
   shout(player, :bounce)
-  hunter, target = player[:flip] == 1 ? [ [player], enemies ] : [ enemies, [player] ]
+  hunter, target = player[:flip] == 1 ? [ [player], enemies ] : [ enemies, [player] ] # don't want to repeat myself, but need target to be random
   player[:land]   = { id: :flash, offset: 4, art: (player[:flip] == 1 ? "#{YL}#{SOMERSAULT}#{CL}" : "#{RD}#{LOSER}#{CL}") }
-  player[:roll].times { strike(enemies, hunter.sample, target.sample) unless enemies.empty? }
+  player[:roll].times { strike(enemies, hunter.sample, target.sample) unless enemies.empty? } # player is in an array so .sample can be run on either
 end
 
 def sneak_attack(enemies, player, target) # sneaky attack
@@ -110,9 +110,9 @@ def coin_flip(enemies, player, target) # psychic attack
       strike(enemies, target, player)
       break # Exit loop if choices don't match
     end
-    player[:land]   = { id: :flash, offset: 10, art: "#{MG}#{YOU_WIN.sample}#{CL}" } # sets the scene
+    player[:land]   = { id: :flash, offset: 10, art: "#{MG}#{YOU_WIN.sample}#{CL}" }
   end
-  player[:land] = { id: :flash, offset: 4, art: "#{RD}#{LOSER}#{CL}" } # resets ASCII art to this arena
+  player[:land] = { id: :flash, offset: 4, art: "#{RD}#{LOSER}#{CL}" }
 end
 
 def the_shop(player) # the shop appears randomly and will disappear next round
