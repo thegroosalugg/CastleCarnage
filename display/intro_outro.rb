@@ -22,8 +22,6 @@ end
 def game_over(player) # game over message and art
   shout(player, :outro)
   puts BARRIER
-  puts player[:hp].positive? ? "#{GN}#{GAME_WON}#{CL}" : "#{RD}#{GAME_OVER}#{CL}"
-  puts BARRIER
   puts "#{YL}#{REPLAY}#{CL}"
 end
 

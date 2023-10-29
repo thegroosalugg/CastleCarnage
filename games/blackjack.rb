@@ -22,7 +22,6 @@ def blackjack(enemies, player, dealer)
     end
 
     print `clear`
-    player[:land]   = { id: :flash, offset: 3, art: "#{GN}#{YOU_WIN.sample}#{CL}" } # sets the scene
     while dealer[:score] < 16 && !(player[:score] == 21 && player[:hand].length == 2)
       draw_card(dealer, player)
     end
@@ -104,15 +103,16 @@ def bust_or_break(enemies, dealer, player)
   shout(player, :cards) unless player[:hand].length < 3 || player[:choice] == 6
   whos_the_winner(dealer, player)
   if player[:score] <= 21 && (player[:score] > dealer[:score] || dealer[:score] > 21) # Who's the winner
-    player[:cash] = (player[:cash] + 1).clamp(0, 5)
-    n = player[:score] == 21 && player[:hand].length == 2 ? 2 : 1
+    player[:land]    = { id: :flash, offset: 3, art: "#{GN}#{YOU_WIN.sample}#{CL}" } # sets the scene
+    player[:cash]    = (player[:cash] + 1).clamp(0, 5)
+                n    = player[:score] == 21 && player[:hand].length == 2 ? 2 : 1
     n.times { break if dealer[:hp] <= 0; strike(enemies, player, dealer) } # blackjack gives 2 strikes, unless 1st strike deals lethal
   else
     # whos_the_winner(dealer, player) # end of game message
+    player[:land]    = { id: :flash, offset: 4, art: "#{RD}#{LOSER}#{CL}" }
+    player[:stuck]   = true if dealer[:score] == 21 # dealer only reveals hand if they get 21 if they didn't draw
+    player[:lost]    = true
     strike(enemies, dealer, player)  # player struck
-    player[:stuck] = true if dealer[:score] == 21 # dealer only reveals hand if they get 21 if they didn't draw
     whos_holding_what(dealer, player) # display showed here as above must run first in that order
-    player[:land] = { id: :flash, offset: 4, art: "#{RD}#{LOSER}#{CL}" }
-    player[:lost] = true
   end
 end

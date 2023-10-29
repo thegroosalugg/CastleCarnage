@@ -48,8 +48,8 @@ def parting_gift(enemies, player)
   if rand(2) == 1 # 50% for enemy to get item or weapon
     rand(2) == 1 ? crap_factory(enemies.sample) : weapon_wakes(enemies.sample, player)
   end
-  surprise(enemies, player) unless (player[:weapon] && player[:weapon][:bonus] == :sneaky) # sneaky prevents surprise attacks
   player[:land]  = { id: :sticky, offset: 3, art: "#{YL}#{ROOM_SERVICE.sample}#{CL}" } # sets the scene
-  player[:drain] = false
   player[:shop]  = false #  shop is disabled each round whether accessed or not
+  player[:drain] = false
+  surprise(enemies, player) unless (player[:weapon] && player[:weapon][:bonus] == :sneaky) # sneaky prevents surprise attacks
 end
