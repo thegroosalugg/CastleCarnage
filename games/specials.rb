@@ -2,6 +2,7 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 def brawl(enemies, player, target) # Regular brawl when player strikes
+  player[:land]   = { id: :flash, offset: 10, art: "#{YL}#{STRIKE.sample}#{CL}" }
   strike(enemies, player, target)
   strike(enemies, target, player) if target[:hp].positive?
   surprise(enemies, player) unless enemies.empty? || player[:hp] <= 0 || (player[:weapon] && player[:weapon][:bonus] == :sneaky)
@@ -9,7 +10,6 @@ def brawl(enemies, player, target) # Regular brawl when player strikes
   player[:drain] = false
   player[:shop]  = false #  shop is disabled each round whether accessed or not
   player[:shop]  = true if player[:cash].positive? && rand(5) == 1 # shop opens for one round
-  player[:land]   = { id: :flash, offset: 10, art: "#{YL}#{STRIKE.sample}#{CL}" }
   if rand(10) == 1 && player[:hp].positive?
     player[:beers] = (player[:beers] - 1).clamp(0, 5)
     shout(player, :sober)
@@ -48,11 +48,11 @@ def sneak_attack(enemies, player, target) # sneaky attack
       shout(target, :ganked)
       target[:weapon] = nil
     end
-    strike(enemies, player, target)
     player[:land]   = { id: :flash, offset: 4, art: "#{BL}#{SNEAKY}#{CL}" }
+    strike(enemies, player, target)
   else
-    shout(player, :wasted)
     player[:land]   = { id: :flash, offset: 4, art: "#{RD}#{LOSER}#{CL}" }
+    shout(player, :wasted)
   end
 
   strike(enemies, target, player) if target[:hp].positive?
@@ -104,15 +104,15 @@ def coin_flip(enemies, player, target) # psychic attack
     show_your_moves(player, target, :flip)
 
     if player[:choice] == target[:move]
+      player[:land]   = { id: :flash, offset: 3, art: "#{MG}#{YOU_WIN.sample}#{CL}" }
       strike(enemies, player, target)
       break if target[:hp] <= 0
     else
+      player[:land] = { id: :flash, offset: 4, art: "#{RD}#{LOSER}#{CL}" }
       strike(enemies, target, player)
       break # Exit loop if choices don't match
     end
-    player[:land]   = { id: :flash, offset: 3, art: "#{MG}#{YOU_WIN.sample}#{CL}" }
   end
-  player[:land] = { id: :flash, offset: 4, art: "#{RD}#{LOSER}#{CL}" }
 end
 
 def the_shop(player) # the shop appears randomly and will disappear next round

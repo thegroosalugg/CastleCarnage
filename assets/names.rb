@@ -10,7 +10,7 @@ EMOJIS = [
 ENEMIES = [
   "👺 Goblin", "👹 Ogre", "👾 Orc", "🧌 Troll", "🤷 Villager", "🦟 Cazador", "🐊 Croc", "🦈 Shark", "🚁 Chopper",
   "🧙 Wizard", "🧝 Druid", "🐺 Werewolf", "🧛 Vampire", "🧟 Zombie", "🦖 Dinosaur", "🤖 Robot", "🪿 Goose", "🦏 Rhino",
-  "🐉 Dragon", "👻 Banshee", "🦹 Chris R", "🦍 Gorilla", "🐍 Snake", "🦑 Kraken", "🦂 Scorpion", "🎠 Knight", "🛸 Aliens"
+  "🐉 Dragon", "👻 Banshee", "🦹 Chris-R", "🦍 Gorilla", "🐍 Snake", "🦑 Kraken", "🦂 Scorpion", "🎠 Knight", "🛸 Aliens"
 ]
 WEAPONS = [
   "🏏 Fungo Bat", "🥊 Bx Gloves", "🔪 Machete", "🔱 Spear", "🗡️ Sword", "🎤 Mace", "🍢 Club", "🔧 Wrench", "🪤 Trap", "🦯 Staff",
