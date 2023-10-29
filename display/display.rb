@@ -1,12 +1,6 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-def title_screen
-  puts  "#{YL}#{CASTLE_CARNAGE}#{CL}"
-  print "#{CN}#{CASTLE}#{CL}"
-  puts  " " * 28 + NAME
-end
-
 def game_info(enemies, player) # Main UI that displays all current happenings
   puts BARRIER_EN
   enemies.each { |enemy| display_bars(enemy) }
@@ -109,7 +103,7 @@ def whos_holding_what(dealer, player) # blackjack game info
 end                         # "%02d" % adds a leading zero to single digits
 
 def whos_the_winner(dealer, player) # blackjack shouts => require too many conditions to combine with shout method
- x, tag, speaker = if player[:score] == 21 && player[:hand].length == 2 && dealer[:score] != 21
+  x, tag, speaker = if player[:score] == 21 && player[:hand].length == 2 && dealer[:score] != 21
     [22, "#{BLACKJACK} #{CASH} +1 💵", player[:name]]
   elsif player[:score] <= 21 && (player[:score] > dealer[:score] || dealer[:score] > 21)
     [24, "#{SUCCESS} #{CASH} +1 💵", player[:name]]

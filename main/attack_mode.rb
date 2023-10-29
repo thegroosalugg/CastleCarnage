@@ -36,7 +36,7 @@ def load_ammo(hunter)
       end
     end
     hunter[:source]         = hunter[:item] # source becomes item for strike, as we do not want to alter wielder/weapon stats
-    hunter[:hp]             = (hunter[:hp] + hunter[:item][:hp]) # HP adds separately
+    hunter[:hp]            += hunter[:item][:hp] # HP adds separately
   end                       # removed clamp as don't want to pass player here to add clamp scaling. Not much hp is gained from items
 end
 
@@ -65,8 +65,7 @@ def graveyard(enemies, player)
       true  # This will remove the enemy from the array
     else false  # This will keep the enemy in the array
     end
-  end # Player dies and last enemy is tracked if current tracked enemy is already dead
-  player[:tracks] = enemies.sample if player[:hp] <= 0 && player[:tracks][:hp] <= 0
+  end
 end
 
 def bounty(hunter, target) # collect bounty
