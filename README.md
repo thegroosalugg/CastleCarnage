@@ -5,30 +5,24 @@ The game is made just for fun. The purpose is to practice writing and refactorin
 
 ## User Interface
 - 🐮 You
-  - 💓 Health: 100
-  - 🎯 Accuracy: 70%
-  - 💥 Crit Chance: 20%
-  - 💢 Attack: 🟧🟧⬜⬜⬜
-  - 🛡️ Block:  🟦⬜⬜⬜⬜
+  - 💓 Health
+  - 🎯 Accuracy
+  - 💥 Crit Chance
+  - 💢 Attack     $~$    🟧🟧⬜⬜⬜     $~~~$ (one square = 5)
+  - 🛡️ Block      $~~~$   🟦⬜⬜⬜⬜    $~~$ (one square = 2)
+  - ˡᵛˡ $~$ Level $~~~~$  🟩🟩🟩🟪🟪    $~~$  (one square = 10)
+  - 😐 Cash       $~~~~$  💵💵💷💷💷
+  - 😉 Beers      $~~~$  🍺🫙🫙🫙🫙
 - 🪡 Laser Gun
-  - 🛠️ Weapon Uses: 🟨🟨🟨🟨🟨
-- Sᴏᴍᴇʀsᴀᴜʟᴛ
-
-## Player Stats
-- ˡᵛˡ Level: 1
-- 🟩🟪 XP |        (one square = 10)
-- 💢🟧 Attack      (one square = 5)
-- 🛡️🟦 Block       (one square = 2)
-- 🛠️🟨 Weapon Uses (one square = 1)
-- 🤔💵 Cash        (one square = 1)
-- 😉🍺 Toxicity    (one square = 1)
+  - 🛠️ Uses:     $~~~$   🟨🟨🟨🟨🟨
+  - Specials:    $~~~~$   Sᴏᴍᴇʀsᴀᴜʟᴛ
 
 ## Main Menu
-- 🥷 [T] STRIKE:         Strike the enemy. Enemy strikes back. Surprise attack possible.
-- 🐬 [R] SPECIAL:        Special attacks appear here. Play a minigame or perform a special strike.
-- 💨 [Y] ROOMS:          Explore rooms to find items or weapons. Surprise attacks & enemy spawns possible.
-- 🛒 [E] THE SHOP:       Appears randomly in the menu. Spend all your cash for a weapon, HP, and a possible item.
-- 🎯 [5 6] CYCLE GOONS`: Press 5 or 6 to cycle which enemy is targeted for combat.
+- 🥷 [T] STRIKE:        $~~~~~~~~~~~~~~~~~~~$ Strike the enemy. Enemy strikes back. Surprise attack possible.
+- 🐬 [R] SPECIAL:       $~~~~~~~~~~~~~~~~$    Special attacks appear here. Play a minigame or perform a special strike.
+- 💨 [Y] ROOMS:         $~~~~~~~~~~~~~~~~~$   Explore rooms to find items or weapons. Surprise attacks & enemy spawns possible.
+- 🛒 [E] THE SHOP:      $~~~~~~~~~~~~~$       Appears randomly in the menu. Spend all your cash for a weapon, HP, and a possible item.
+- 🎯 [5 6] CYCLE GOONS: $~~$                  Press 5 or 6 to cycle which enemy is targeted for combat.
 
 ## Combat
 - Strike the enemy. The enemy will strike back unless you deal lethal damage.
