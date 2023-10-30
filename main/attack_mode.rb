@@ -44,8 +44,8 @@ end
 def shots_fired(hunter, target, shot) # Player vs enemy strike
   text = rand(3) == 1 ? (shot == :miss ? BACK_TALK.sample : "🗯️ " + FIGHT_TALK.sample) : ""
 
-  hit  = "#{hunter[:name]} #{text}#{HIT} #{target[:name]} -#{hunter[:damage]} #{target[:emoji]}"
-  crit = "#{hunter[:name]} #{text}#{CRIT} #{target[:name]} -#{hunter[:damage]} #{target[:emoji]}"
+  hit  = "#{hunter[:name]} #{text}#{HIT} #{target[:name]} #{target[:emoji]}-#{hunter[:damage]}"
+  crit = "#{hunter[:name]} #{text}#{CRIT} #{target[:name]} #{target[:emoji]}-#{hunter[:damage]}"
   miss = "#{hunter[:name]} 🗯️❓ #{text}#{MISS} #{target[:name]}"
 
   x, shout, comeback = case shot

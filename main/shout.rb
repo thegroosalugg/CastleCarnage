@@ -7,7 +7,7 @@ def item_used(who) # display for used item effects
       "#{who[:name]} 🥄#{value} 🥣 "
     else # everything else is checked for positive so + can be displayed
       gain = value.positive? ? "+#{value}" : value
-      "#{BUFFS[key]} #{gain}" # each key corresponds to lambda hash and prints an ASCII tag
+      "#{BUFFS[key]}#{gain} " # each key corresponds to lambda hash and prints an ASCII tag
     end
   end
   tags.join(" ")
@@ -25,7 +25,7 @@ def shout(who, what) # controls all messages in the game except for combat
   when :room     then [ 90,          who[:name] + " 💬 " + ROOM_SHOUT.sample  + " " + who[:room][:name] ]
   when :level    then [120,          who[:name] +   " "  +     LEVEL  +       " #{BL}#{who[:level]}#{CL} "  +  " #{BUFFS[who[:boost]]} " + "+#{who[:gains]}" ]
   when :cards    then [105,          CARD       +   " "  + who[:name] +  " "   +       who[:hand].last[:suit] ]
-  when :bounty   then [115,          BONUS      +   " "  + who[:name] + " +10 "+       who[:emoji]          + " +1 💵" + " -1 🍺 #{GN}+10#{CL} #{XP}"]
+  when :bounty   then [115,          BONUS      +   " "  + who[:name] + " #{who[:emoji]}+10"  + "  💵+1" + "  🍺-1  #{GN}+10#{CL}#{XP}"]
   when :broke    then [100,          BROKE      +   " "  + who[:name] +  "'s " +       who[:weapon][:name]  +  " "    + BROKE_SHOUT.sample ]
   when :item     then [100,          tag        +   " "  + who[:item][:name]   + " " + who[:name]           + " 💬 " +  ITEM_SHOUT.sample ]
   when :got      then [100,          tag        +   " "  + who[:name] +  " "   +        GOT_SHOUT.sample    +  " "   + who[:weapon][:name] ]
@@ -39,11 +39,11 @@ def shout(who, what) # controls all messages in the game except for combat
   when :gamblore then [ 90,   ATTACKS[:gambler] +   " "  + who[:name] + " 🗯️ " +       GAME_SHOUT.sample ]
   when :psychic  then [ 90,   ATTACKS[:psychic] +   " "  + who[:name] + " 🗯️ " +       GAME_SHOUT.sample ]
   when :style    then [ 90,   ATTACKS[:stylish] +   " "  + who[:name] + " 🗯️ " +       GAME_SHOUT.sample ]
-  when :beers    then [100,          HANGOVER   +   " "  + who[:name] + (rand(2) == 1 ? BEER_SHOUT.sample : "") + " +1 🍺" ]
-  when :sober    then [100,          HANGOVER   +   " "  + who[:name] + " -1 🍺" ]
+  when :beers    then [100,          HANGOVER   +   " "  + who[:name] + (rand(2) == 1 ? BEER_SHOUT.sample : "") + " 🍺+1" ]
+  when :sober    then [100,          HANGOVER   +   " "  + who[:name] + " 🍺-1" ]
   when :target   then [ 90,          TARGET     +   " "  + who[:name] + (who[:item]   ? " #{who[:item][:name]}" : "") ]
   when :wasted   then [ 90,          WASTED     +   " "  + who[:name] ]
-  when :shop     then [ 90,          SHOP       +   " "  + who[:name] + " -#{who[:cash]} 💵 " + ([1, 3, 5].include?(who[:cash]) ? "+#{who[:gains]} #{who[:emoji]}" : "") ]
+  when :shop     then [ 90,          SHOP       +   " "  + who[:name] + " 💵-#{who[:cash]} " + "#{who[:emoji]}+#{who[:gains]}" ]
   when :used     then [ 80, item_used(who)]
   end
   print `clear`                            if [:error, :name].include?(what)
