@@ -9,7 +9,7 @@ def brawl(enemies, player, target) # Regular brawl when player strikes
   player[:xp]   += 1
   player[:drain] = false
   player[:shop]  = false #  shop is disabled each round whether accessed or not
-  player[:shop]  = true if player[:cash].positive? && rand(5) == 1 # shop opens for one round
+  player[:shop]  = true if player[:cash].positive? && rand(4) == 1 # shop opens for one round
   if rand(10) == 1 && player[:hp].positive?
     player[:beers] = (player[:beers] - 1).clamp(0, 5)
     shout(player, :sober)
@@ -117,25 +117,13 @@ end
 
 def the_shop(player) # the shop appears randomly and will disappear next round
   if player[:shop] && player[:cash].positive?
-    player[:gains] = rand(8..12)
-    case player[:cash]
-    when 1 then player[:hp] = (player[:hp] += player[:gains]).clamp(0, player[:max_hp])
-    when 2 then rand(2) == 1 ? crap_factory(player, :bonus) : weapon_wakes(player, player)
-    when 3
-      player[:hp] = (player[:hp] += player[:gains]).clamp(0, player[:max_hp])
-      weapon_wakes(player, player)
-    when 4
-      crap_factory(player, :bonus)
-      weapon_wakes(player, player)
-    when 5
-      player[:hp] = (player[:hp] += player[:gains]).clamp(0, player[:max_hp])
-      weapon_wakes(player, player, :bonus)
-      crap_factory(player, :bonus) if rand(2) == 1
-    end
+    player[:gains] = rand(6..10) * player[:cash]
+    crap_factory(player, :bonus) if player[:cash] > rand(5)
+    weapon_wakes(player, player, (player[:cash] > rand(5) ? :bonus : nil))
     shout(player, :shop)
-    player[:cash] = 0
-    player[:shop] = false
-    player[:screen]   = { id: :flash, offset: 20, art: "#{GN}#{CASHED_OUT}#{CL}" }
+    player[:cash]   = 0
+    player[:shop]   = false
+    player[:screen] = { id: :flash, offset: 20, art: "#{GN}#{CASHED_OUT}#{CL}" }
   else shout(player, :error)
   end
 end
