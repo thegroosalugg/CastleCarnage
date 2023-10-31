@@ -49,8 +49,8 @@ end
 
 def set_the_scene(dealer, player)
   player[:screen]  = { id: :flash, offset: 22, art: "#{ML}#{CARD_FACES}#{CL}" } # change the scenery
-  player[:stuck] = false
-  player[:lost]  = false
+  player[:stuck]   = false
+  player[:lost]    = false
   card_deck(player)
   dealer[:hand], player[:hand] = [], []
 
@@ -103,14 +103,14 @@ def bust_or_break(enemies, dealer, player)
   shout(player, :cards) unless player[:hand].length < 3 || player[:choice] == 6
   whos_the_winner(dealer, player)
   if player[:score] <= 21 && (player[:score] > dealer[:score] || dealer[:score] > 21) # Who's the winner
-    player[:screen]    = { id: :flash, offset: 3, art: "#{GN}#{YOU_WIN.sample}#{CL}" } # sets the scene
+    player[:screen]  = { id: :flash, offset: 3, art: "#{GN}#{YOU_WIN.sample}#{CL}" } # sets the scene
     player[:cash]    = (player[:cash] + 1).clamp(0, 5)
                 n    = player[:score] == 21 && player[:hand].length == 2 ? 2 : 1
     n.times { break if dealer[:hp] <= 0; strike(enemies, player, dealer) } # blackjack gives 2 strikes, unless 1st strike deals lethal
     whos_holding_what(dealer, player) if dealer[:hp] <= 0
   else
     # whos_the_winner(dealer, player) # end of game message
-    player[:screen]    = { id: :flash, offset: 4, art: "#{RD}#{LOSER}#{CL}" }
+    player[:screen]  = { id: :flash, offset: 4, art: "#{RD}#{LOSER}#{CL}" }
     player[:stuck]   = true if dealer[:score] == 21 # dealer only reveals hand if they get 21 if they didn't draw
     player[:lost]    = true
     strike(enemies, dealer, player)  # player struck

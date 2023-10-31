@@ -5,19 +5,18 @@ BACK_TALK = [
   "Motherfucker! ", "Bugger it! ", "Bloody hell! ", "Arses! ", "Sod it! ", "Bollocks! ", "Shit! ", "I call hacks! "
 ]
 TALK_BACK = [
-"Ha! What a douche!", "Ha! Did you miss me?", "Loser!", "Nice shot bro!", "What a joker!",
+"Ha! What a douche!", "Ha! Did you miss me?", "Loser!", "Nice shot bro!", "What a joker!", "Clown"
 ]
 FIGHT_TALK = [
-  "Ah yeah! ", "I own it! ", "Take that! ", "I'm jus' too good ", "Bow to me! ", "Ka-Blam! ", "Falcon Punch! "
+  "Ah yeah! ", "Bangers 'n' Mash u up!" "I own it! ", "Take that! ", "I'm jus' too good ", "Bow to me! ", "Ka-Blam! ", "Falcon Punch! "
 ]
 FIGHT_BACK = [
-  "Hey, fuck you!", "You dick!", "What a shit..", "Hate that guy", "Ouch!", "What you do that for?", "Oooff!"
+  "Hey, fuck you!", "You dick!", "What a shit..", "Hate that guy", "Ouch!", "What you do that for?", "Oooff!", "You fucker!"
 ]
 ITEM_SHOUT = [
   "Delicious!", "Meh, eat it anyway", "Egh! Rank!", "Fucking A!", "What idiot left this here!",
-  "5 second rule!", "Might as well", "Holy shit!", "This will have to do", "This looks swell!",
-  "Sweet as!", "Dinner sorted!", "No way! Is it back?", "Who left this 'ere?", "This will do!",
-  "What's one more eh!", "Still eat it"
+  "5 second rule!", "Might as well", "Holy shit!", "This looks swell!", "Sweet as!", "Dinner sorted!",
+  "No way! Is it back?", "Who left this 'ere?", "This will do!", "What's one more, ey!", "Still eat it"
 ]
 GOT_SHOUT = [
   "looks in the fridge 🗒️ and prepares a", "🪔🧞 Djinn 💬 Here you go mate! Acquired", "This cookbook 📙 contains a recipe for a",
@@ -52,7 +51,7 @@ PWNED_SHOUT = [
   "'s head came clean off.", " 💬 Argh, yar got me!", " was anhialated ☠️", " got shanked 🗡", " got got 💀",
 ]
 COUNTER_SHOUT = [
-  "Ha, I don't think so!", "Not this time!", "#{POW}", "#{KABLAMO}",
+  "Ha, I don't think so!", "Not this time!", "#{POW}", "#{KABLAMO}", "You wish bruv",
 ]
 ROOM_SHOUT = [
   "Deffos smelled some nosh in", "Got a massively good feeling about", "Fuck it, let's have a look around", "Saw some shit in",
@@ -63,8 +62,8 @@ ERRORS = [
   "Nobody likes a joker! ", "Quit clowning around! ", "Quit faffing around! ", "Quit being a melon! ",
     ]
 COMBAT_SHOUT = [
-  "Gonna mash you up", "Am gonna do yous in!", "C'mon let's 'ave it!", "Let's do this now!", "C'mon 'ave a go!", "Staines massive!",
-  "No mercy!", "Charge!", "Watch it geez!"
+  "Bring it!", "C'mon let's 'ave it!", "Let's do this now!", "Come on 'ave a go!", "Castle hill massive!",
+  "No mercy!", "Charge!", "Watch it geez!", "What yer lookin' at?!", "I'll 'ave u!"
 ]
 GAME_SHOUT = [
   "Line 'em Frankie, line 'em up", "You's about to go dooooown!", "Don't fuck with the master", "Your life total is about to get shuffled!",
