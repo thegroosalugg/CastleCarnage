@@ -19,7 +19,7 @@ def shout(who, what) # controls all messages in the game except for combat
   when :name     then [ 85,      ERRORS.sample  +   " "  + WRONG ]
   when :bounce   then [ 85, who[:flip]  == 1 ? "#{SUCCESS} " + "⚔️ " * who[:roll] : "#{FLUNKED}" + "😓 " * who[:roll] ]
   when :outro    then [ 80, who[:tracks][:name] +   " "  + (who[:hp].positive? ? WIN_SHOUT : LOSE_SHOUT).sample ]
-  when :intro    then [ 60,[who[:tracks][:name] +   " "  + INTRO_SHOUT.sample, who[:name]        +  " "  +       INTRO_CALLBACK.sample].join(" ") ]
+  when :intro    then [ 60,[who[:tracks][:name] +   " "  + INTRO_SHOUT.sample, who[:name] +  " "  + INTRO_CALLBACK.sample].join(" ") ]
   when :goodbye  then [ 85,          who[:name] + " 💬 " + GOODBYE.sample ]
   when :escape   then [ 90,          who[:name] + " 💬 " + RUN_SHOUT.sample ]
   when :room     then [ 90,          who[:name] + " 💬 " + ROOM_SHOUT.sample  + " " + who[:room][:name] ]
@@ -44,10 +44,10 @@ def shout(who, what) # controls all messages in the game except for combat
   when :target   then [ 90,          TARGET     +   " "  + who[:name] + (who[:item]   ? " #{who[:item][:name]}" : "") ]
   when :wasted   then [100,          WASTED     +   " "  + who[:name] ]
   when :shop     then [ 90,          SHOP       +   " "  + who[:name] + " 💵-#{who[:cash]} " + "#{who[:emoji]}+#{who[:gains]}" ]
-  when :used     then [ 80, item_used(who)]
+  when :used     then [100, item_used(who)]
   end
   print `clear`                            if [:error, :name].include?(what)
   puts " " * 23 + messages                 if [:error, :target, :combat].include?(what)
   puts text_break(messages, " ", size) unless [:error, :target, :combat].include?(what)
-  puts SHIELD                               if what == :target
+  puts SHIELD                              if what == :target
 end
