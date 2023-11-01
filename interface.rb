@@ -46,7 +46,7 @@ def specials(enemies, player, target)
     when :psychic    then    coin_flip(enemies, player, target)
     when :stylish    then   rochambeau(enemies, player, target)
     when :sneaky     then sneak_attack(enemies, player, target)
-    end                                                      # pow message
+    end
     player[:shop]  = false #  shop is disabled each round whether accessed or not
     player[:drain] = true
     player[:xp]   += 1
