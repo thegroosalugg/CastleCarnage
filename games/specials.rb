@@ -2,7 +2,7 @@
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
 def brawl(enemies, player, target) # Regular brawl when player strikes
-  player[:screen]   = { id: :flash, offset: 10, art: "#{YL}#{STRIKE.sample}#{CL}" }
+  player[:screen] = { id: :flash, offset: 10, art: "#{YL}#{STRIKE.sample}#{CL}" }
   strike(enemies, player, target)
   strike(enemies, target, player) if target[:hp].positive?
   surprise(enemies, player) unless enemies.empty? || player[:hp] <= 0 || (player[:weapon] && player[:weapon][:bonus] == :sneaky)
@@ -60,9 +60,9 @@ end
 
 def rochambeau(enemies, player, target) # stylish attack
   shout(target, :style)
-  player[:screen]  = { id: :bounce, art: "#{CN}#{WALK_OFF}#{CL}" } # sets the scene
-  target[:moves] = []
-  player[:moves] = []
+  player[:screen] = { id: :bounce, art: "#{CN}#{WALK_OFF}#{CL}" } # sets the scene
+  target[:moves]  = []
+  player[:moves]  = []
 
   3.times do |round|
     break if player[:hp] <= 0 || target[:hp] <= 0
@@ -86,12 +86,12 @@ def rochambeau(enemies, player, target) # stylish attack
 end
 
 def coin_flip(enemies, player, target) # psychic attack
-  player[:sight] = room_vault(2)
-  player[:screen]   = { id: :flash, offset: 22, art: "#{MG}#{LETSGO}#{CL}" } # sets the scene
+  player[:sight]  = room_vault(2)
+  player[:screen] = { id: :flash, offset: 22, art: "#{MG}#{LETSGO}#{CL}" } # sets the scene
   shout(target, :psychic)
 
   loop do
-    target[:move] = [5, 6].sample
+    target[:move]   = [5, 6].sample
     player[:choice] = 0
 
     until [5, 6].include?(player[:choice])
