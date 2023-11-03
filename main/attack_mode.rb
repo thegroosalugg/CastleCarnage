@@ -63,7 +63,7 @@ def graveyard(enemies, player)
     if enemy[:hp] <= 0  # check for enemy deaths, update counter, track last enemy for game over
       shout(enemy, :pwned)
       bounty(player, enemy)
-      player[:screen]  = { id: :flash, offset: 4, art: "#{CN}#{ENEMY_PWNED}#{CL}" }
+      player[:screen] = { id: :flash, offset: 4, art: "#{CN}#{ENEMY_PWNED}#{CL}" }
       true  # This will remove the enemy from the array
     else false  # This will keep the enemy in the array
     end
