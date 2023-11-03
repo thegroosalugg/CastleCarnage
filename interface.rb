@@ -58,7 +58,7 @@ def ctrl_s(player) # player is saved on game over and can be used again on repla
   player          = player.dup
   player[:max_hp] = 99 + player[:level]
   player[:hp]     = player[:max_hp]
-  player[:screen]   = { id: :bounce, art: "#{RD}#{BATTLEFIELD.sample}#{CL}" }
+  player[:screen] = { id: :bounce, art: "#{RD}#{BATTLEFIELD.sample}#{CL}" }
   return player
 end
 
@@ -70,7 +70,7 @@ loop do
   loop do
     choice = gets.chomp.downcase
     case choice
-    when "n" then exit # Exit the program
+    when "n" then exit  # Exit the program
     when "y" then break # Restart the game
     else replay # end of game error screen
     end

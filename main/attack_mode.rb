@@ -22,7 +22,7 @@ def strike(enemies, hunter, target) # all entities use this to fight
 
   if target[:id]   == :player && target[:hp] <= 0
     target[:tracks] = hunter   # if player dies tracks enemy who dealt lethal blow
-    target[:screen]   = { id: :flash, offset: 2, art: "#{RD}#{GAME_OVER}#{CL}" } # sets the scene
+    target[:screen] = { id: :flash, offset: 2, art: "#{RD}#{GAME_OVER}#{CL}" } # sets the scene
     shout(target, :pwned) # sends same pwned message to the player
   end
 end
@@ -44,7 +44,7 @@ end
 def shots_fired(hunter, target, shot) # Player vs enemy strike
   text = rand(3) == 1 ? (shot == :miss ? BACK_TALK.sample : "🗯️ " + FIGHT_TALK.sample) : ""
 
-  hit  = "#{hunter[:name]} #{text}#{HIT} #{target[:name]} #{target[:emoji]}-#{hunter[:damage]}"
+  hit  = "#{hunter[:name]} #{text}#{ HIT} #{target[:name]} #{target[:emoji]}-#{hunter[:damage]}"
   crit = "#{hunter[:name]} #{text}#{CRIT} #{target[:name]} #{target[:emoji]}-#{hunter[:damage]}"
   miss = "#{hunter[:name]} 🗯️❓ #{text}#{MISS} #{target[:name]}"
 
@@ -73,7 +73,7 @@ end
 
 def bounty(hunter, target) # collect bounty
   hunter[:tracks] = target
-  hunter[:xp] += 10
+  hunter[:xp]    += 10
   hunter[:cash]   = (hunter[:cash]  + 1).clamp(0,   5)
   hunter[:beers]  = (hunter[:beers] - 1).clamp(0,   5)
   hunter[:hp]     = (hunter[:hp]   + 10).clamp(0, hunter[:max_hp])
