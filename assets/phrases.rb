@@ -1,18 +1,16 @@
 # rubocop:disable all
 #-----------------------------YOUR CODE BELOW---------------------------------->
 
-BACK_TALK = [
-  "Motherfucker! ", "Bugger it! ", "Bloody hell! ", "Arses! ", "Sod it! ", "Bollocks! ", "Shit! ", "I call hacks! "
-]
-TALK_BACK = [
-"Ha! What a douche!", "Ha! Did you miss me?", "Loser!", "Nice shot bro!", "What a joker!", "Clown"
-]
-FIGHT_TALK = [
-  "Ah yeah! ", "Bangers 'n' Mash u up!" "I own it! ", "Take that! ", "I'm jus' too good ", "Bow to me! ", "Ka-Blam! ", "Falcon Punch! "
-]
-FIGHT_BACK = [
-  "Hey, fuck you!", "You dick!", "What a shit..", "Hate that guy", "Ouch!", "What you do that for?", "Oooff!", "You fucker!"
-]
+FIGHTING_WORDS = {
+  :hit  => ["Ah yeah! ", "Bangers 'n' Mash u up! ", "I own it! ", "Take that! ", "I'm jus' too good ", "Bow to me! ", "Falcon Punch! "],
+  :crit => ["Blao! ", "Bam! ", "Ka-Pow! ", "Eat my wrath ", "You die now! ", "Smashed! ", "Ka-Blam! ", "Bye-bye! "],
+  :miss => ["Motherfucker! ", "Bugger it! ", "Bloody hell! ", "Arses! ", "Sod it! ", "Bollocks! ", "Shit! ", "I call hacks! "]
+}
+COMEBACKS = {
+  :hit  => ["Hey, fuck you!", "You dick!", "What a shit..", "Hate that guy", "Ouch!", "What you do that for?", "Oooff!", "You fucker!"],
+  :crit => ["You bastard!", "Noooooo!", "WTF!", "You cheating git!", "Imma get ya for that!", "Wanker!"],
+  :miss => ["Ha! What a douche!", "Ha! Did you miss me?", "Loser!", "Nice shot bro!", "What a joker!", "Clown", "Can't touch this!"]
+}
 ITEM_SHOUT = [
   "Delicious!", "Meh, eat it anyway", "Egh! Rank!", "Fucking A!", "What idiot left this here!",
   "5 second rule!", "Might as well", "Holy shit!", "This looks swell!", "Sweet as!", "Dinner sorted!",

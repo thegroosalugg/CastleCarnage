@@ -42,20 +42,14 @@ def load_ammo(hunter)
 end
 
 def shots_fired(hunter, target, shot) # Player vs enemy strike
-  text = rand(3) == 1 ? (shot == :miss ? BACK_TALK.sample : "🗯️ " + FIGHT_TALK.sample) : ""
+    shout = rand(3) ==   1   ? " #{FIGHTING_WORDS[shot].sample}"       : ""
+   damage =    shot != :miss ? " #{target[:emoji]}-#{hunter[:damage]}" : ""
+    emoji =    shot == :miss ? " 🗯️❓ "  :  (!shout.empty?  ?  " 🗯️ " : " ")
+     size =    shot == :crit ? 110 : 100
+  message = hunter[:name] + emoji + shout + SHOTS[shot] + " " + target[:name] + damage
 
-  hit  = "#{hunter[:name]} #{text}#{ HIT} #{target[:name]} #{target[:emoji]}-#{hunter[:damage]}"
-  crit = "#{hunter[:name]} #{text}#{CRIT} #{target[:name]} #{target[:emoji]}-#{hunter[:damage]}"
-  miss = "#{hunter[:name]} 🗯️❓ #{text}#{MISS} #{target[:name]}"
-
-  x, shout, comeback = case shot
-  when :hit  then [100, hit,  FIGHT_BACK]
-  when :crit then [110, crit, FIGHT_BACK]
-  when :miss then [100, miss,  TALK_BACK]
-  end
-
-  puts text_break(shout, " ", x)
-  puts text_break("#{target[:name]} 🗯️ #{comeback.sample}", " ", 85) if !text.empty? && rand(2) == 1
+  puts text_break(message, " ", size)
+  puts text_break("#{target[:name]} 🗯️ #{COMEBACKS[shot].sample}", " ", 85) if !shout.empty? && rand(2) == 1
 end
 
 def graveyard(enemies, player)

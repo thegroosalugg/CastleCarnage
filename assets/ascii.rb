@@ -46,7 +46,7 @@ BUFFS = {
   :attack => "#{RD}𝙍𝘼𝙂𝙀#{CL}",
   :aim    => "#{BL}🆂🅽🅸🅿🅴🆁#{CL}",
   :chance => "#{OR}ⲥꞅⲓⲧ%#{CL}",
-  :crit   => "#{MG}ⲤꞅⲓⲧⲬ#{CL}",
+  :crit   => "#{MG}ⲤꞅⲓⲧⲬ#{CL}"
 }
 
 ATTACKS = {
@@ -54,7 +54,13 @@ ATTACKS = {
   :somersault => "#{YL}Sᴏᴍᴇʀsᴀᴜʟᴛ#{CL}",
   :stylish    => "#{CN}🆂🆃🆈🅻🅸🆂🅷#{CL}",
   :psychic    => "#{MG}𝙋𝙎𝙮𝘾𝙝𝙞𝙘#{CL}",
-  :sneaky     => "#{BL}S̷N̷E̷A̷K̷Y̷#{CL}",
+  :sneaky     => "#{BL}S̷N̷E̷A̷K̷Y̷#{CL}"
+}
+
+SHOTS = {
+  :hit  => "#{RD}⚔️ 𝙷𝙸𝚃 💢#{CL}",
+  :crit => "#{OR}⚔️ 𝙲𝚁𝙸𝚃𝙸𝙲𝙰𝙻 💥#{CL}",
+  :miss => "#{BL}𝙼𝙸𝚂𝚂💤#{CL}"
 }
 
 NUM       = ["[̼̟̞0̳  ]̻̟͜", "[̼̟̞1̳  ]̻̟͜", "[̼̟̞2̳  ]̻̟͜", "[̼̟̞3̳  ]̻̟͜", "[̼̟̞4̳  ]̻̟͜", "[̼̟̞5̳  ]̻̟͜", "[̼̟̞6̳  ]̻̟͜", "[̼̟̞7̳  ]̻̟͜", "[̼̟̞8̳  ]̻̟͜", "[̼̟̞9̳  ]̻̟͜"]
@@ -71,12 +77,10 @@ BROKE     = "#{RD}𝐁𝐑𝐎𝐊𝐄💔#{CL}"
 POW       = "#{OR}👊🏼ℙ𝕆𝕎💥#{CL}"
 KABLAMO   = "#{RD}𝐾𝐴𝐵𝐿𝐴𝑀𝑂!💥#{CL}"
 TELEPORT  = "#{YL}✨ 𝘵𝘦𝘭𝘦𝘱𝘰𝘳𝘵𝘴#{CL}"
-CRIT      = "#{OR}⚔️ 𝙲𝚁𝙸𝚃𝙸𝙲𝙰𝙻 💥#{CL}"
-MISS      = "#{BL}𝙼𝙸𝚂𝚂💤#{CL}"
-HIT       = "#{RD}⚔️ 𝙷𝙸𝚃 💢#{CL}"
 COUNTER   = "#{BL}👊🏼ℂ𝕆𝕌ℕ𝕋𝔼ℝ#{CL}"
 SUCCESS   = "#{GN}🎈 𝓢𝓤𝓒𝓒𝓔𝓢𝓢 🎉#{CL}"
 FLUNKED   = "#{RD}🦨 ƑԼ𝓤ƝⲔƐƊ 🏳️#{CL}"
+NO_DICE   = "#{BL}⭕ 𝖭𝖮 𝖣𝖨𝖢𝖤 🎲#{CL}"
 SUMMON    = "#{MG}𝓢𝓟𝓐𝓦𝓝🪦#{CL}"
 SURPRISE  = "#{YL}⚡𝘚𝘜𝘙𝘗𝘙𝘐𝘚𝘌#{CL}"
 PWNED     = "#{RD}☠️𝕡𝕨𝕟𝕖𝕕#{CL}"
