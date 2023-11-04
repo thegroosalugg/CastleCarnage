@@ -48,7 +48,7 @@ def room_vault(n)
   while rooms.length < n
     room = {
       name: ROOMS.sample,
-      chance: Array.new(rand(4..12)) { rand(1..3) } # creates an array with 4-12 integers, each with a value between 0-6
+      chance: Array.new(rand(4..12)) { rand(1..3) } # creates an array with 4-12 integers, values 1-3
     }
 
     # Check if the generated room's name is unique within the rooms array
@@ -56,7 +56,7 @@ def room_vault(n)
       rooms << room
     end
   end
-                                          # ANSI color hard coded here or all rooms get same color
+                                     # ANSI color hard coded here or all rooms get same color
   rooms.map { |room| room[:name] = "\e[3#{rand(1..6)}m#{DESC.sample} #{room[:name]}#{CL}" } # Give the rooms a unique desc
   rooms
 end
@@ -69,12 +69,12 @@ def weapon_wakes(wielder, player, order = nil)
 
   weapon = {
     name:  "#{name}#{CL}",
-    uses:   rand(uses),
+    uses:    rand(uses),
     attack: (rand(attack) + rand(1..player[:level])),
     block:  (rand(block)  + rand(1..player[:level])),
-    aim:    rand(aim),
-    chance: rand(chance),
-    crit:   rand(crit).round(1),
+    aim:     rand(aim),
+    chance:  rand(chance),
+    crit:    rand(crit).round(1),
     bonus:  bonus
   }
 

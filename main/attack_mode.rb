@@ -22,7 +22,7 @@ def strike(enemies, hunter, target) # all entities use this to fight
 
   if target[:id]   == :player && target[:hp] <= 0
     target[:tracks] = hunter   # if player dies tracks enemy who dealt lethal blow
-    target[:screen]   = { id: :flash, offset: 2, art: "#{RD}#{GAME_OVER}#{CL}" } # sets the scene
+    target[:screen] = { id: :flash, offset: 2, art: "#{RD}#{GAME_OVER}#{CL}" } # sets the scene
     shout(target, :pwned) # sends same pwned message to the player
   end
 end
@@ -42,20 +42,14 @@ def load_ammo(hunter)
 end
 
 def shots_fired(hunter, target, shot) # Player vs enemy strike
-  text = rand(3) == 1 ? (shot == :miss ? BACK_TALK.sample : "🗯️ " + FIGHT_TALK.sample) : ""
+    shout = rand(3) ==   1   ? " #{FIGHTING_WORDS[shot].sample}"       : ""
+   damage =    shot != :miss ? " #{target[:emoji]}-#{hunter[:damage]}" : ""
+    emoji =    shot == :miss ? " 🗯️❓ "  :  (!shout.empty?  ?  " 🗯️ " : " ")
+     size =    shot == :crit ? 110 : 100
+  message = hunter[:name] + emoji + shout + SHOTS[shot] + " " + target[:name] + damage
 
-  hit  = "#{hunter[:name]} #{text}#{HIT} #{target[:name]} #{target[:emoji]}-#{hunter[:damage]}"
-  crit = "#{hunter[:name]} #{text}#{CRIT} #{target[:name]} #{target[:emoji]}-#{hunter[:damage]}"
-  miss = "#{hunter[:name]} 🗯️❓ #{text}#{MISS} #{target[:name]}"
-
-  x, shout, comeback = case shot
-  when :hit  then [100, hit,  FIGHT_BACK]
-  when :crit then [110, crit, FIGHT_BACK]
-  when :miss then [100, miss,  TALK_BACK]
-  end
-
-  puts text_break(shout, " ", x)
-  puts text_break("#{target[:name]} 🗯️ #{comeback.sample}", " ", 85) if !text.empty? && rand(2) == 1
+  puts text_break(message, " ", size)
+  puts text_break("#{target[:name]} 🗯️ #{COMEBACKS[shot].sample}", " ", 85) if !shout.empty? && rand(2) == 1
 end
 
 def graveyard(enemies, player)
@@ -63,7 +57,7 @@ def graveyard(enemies, player)
     if enemy[:hp] <= 0  # check for enemy deaths, update counter, track last enemy for game over
       shout(enemy, :pwned)
       bounty(player, enemy)
-      player[:screen]  = { id: :flash, offset: 4, art: "#{CN}#{ENEMY_PWNED}#{CL}" }
+      player[:screen] = { id: :flash, offset: 4, art: "#{CN}#{ENEMY_PWNED}#{CL}" }
       true  # This will remove the enemy from the array
     else false  # This will keep the enemy in the array
     end
@@ -73,7 +67,7 @@ end
 
 def bounty(hunter, target) # collect bounty
   hunter[:tracks] = target
-  hunter[:xp] += 10
+  hunter[:xp]    += 10
   hunter[:cash]   = (hunter[:cash]  + 1).clamp(0,   5)
   hunter[:beers]  = (hunter[:beers] - 1).clamp(0,   5)
   hunter[:hp]     = (hunter[:hp]   + 10).clamp(0, hunter[:max_hp])
