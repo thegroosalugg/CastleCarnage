@@ -48,9 +48,9 @@ def blackjack(enemies, player, dealer)
 end
 
 def set_the_scene(dealer, player)
-  player[:screen]  = { id: :flash, offset: 22, art: "#{ML}#{CARD_FACES}#{CL}" } # change the scenery
-  player[:stuck]   = false
-  player[:lost]    = false
+  player[:screen] = { id: :flash, offset: 22, art: "#{ML}#{CARD_FACES}#{CL}" } # change the scenery
+  player[:stuck]  = false
+  player[:lost]   = false
   card_deck(player)
   dealer[:hand], player[:hand] = [], []
 
@@ -110,9 +110,9 @@ def bust_or_break(enemies, dealer, player)
     whos_holding_what(dealer, player) if dealer[:hp] <= 0
   else
     # whos_the_winner(dealer, player) # end of game message
-    player[:screen]  = { id: :flash, offset: 4, art: "#{RD}#{LOSER}#{CL}" }
-    player[:stuck]   = true if dealer[:score] == 21 # dealer only reveals hand if they get 21 if they didn't draw
-    player[:lost]    = true
+    player[:screen] = { id: :flash, offset: 4, art: "#{RD}#{LOSER}#{CL}" }
+    player[:stuck]  = true if dealer[:score] == 21 # dealer only reveals hand if they get 21 if they didn't draw
+    player[:lost]   = true
     strike(enemies, dealer, player)  # player struck
     whos_holding_what(dealer, player) # display showed here as above must run first in that order
   end
