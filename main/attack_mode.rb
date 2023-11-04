@@ -44,7 +44,7 @@ end
 def shots_fired(hunter, target, shot) # Player vs enemy strike
     shout = rand(3) ==   1   ? " #{FIGHTING_WORDS[shot].sample}"       : ""
    damage =    shot != :miss ? " #{target[:emoji]}-#{hunter[:damage]}" : ""
-    emoji =    shot == :miss ? " 🗯️❓ "  :  (!shout.empty?  ?  " 🗯️ " : " ")
+    emoji =    shot == :miss ? " 🗯️❓ "  :  (!shout.empty?  ?  " 💬 " : " ")
      size =    shot == :crit ? 110 : 100
   message = hunter[:name] + emoji + shout + SHOTS[shot] + " " + target[:name] + damage
 
