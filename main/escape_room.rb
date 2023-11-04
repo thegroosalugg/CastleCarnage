@@ -21,6 +21,7 @@ def escape_room(enemies, player)
   when 2 then weapon_wakes(player, player) # second player is for content level scaling
   when 3 then spawn_enemy(enemies, player)
   end
+  
   parting_gift(enemies, player)
 end
 
