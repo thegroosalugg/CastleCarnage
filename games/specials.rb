@@ -31,7 +31,7 @@ def somersault(enemies, player) # Sommersault attack
   player[:roll] = rand(2..3)
   shout(player, :bounce)
   hunter, target = player[:flip] == 1 ? [ [player], enemies ] : [ enemies, [player] ] # don't want to repeat myself, but need target to be random
-  player[:screen]   = { id: :flash, offset: 4, art: (player[:flip] == 1 ? "#{GN}#{SOMERSAULT}#{CL}" : "#{RD}#{LOSER}#{CL}") }
+  player[:screen] = { id: :flash, offset: 4, art: (player[:flip] == 1 ? "#{GN}#{SOMERSAULT}#{CL}" : "#{RD}#{LOSER}#{CL}") }
   player[:roll].times { strike(enemies, hunter.sample, target.sample) unless enemies.empty? } # player is in an array so .sample can be run on either
 end
 
@@ -48,10 +48,10 @@ def sneak_attack(enemies, player, target) # sneaky attack
       shout(target, :ganked)
       target[:weapon] = nil
     end
-    player[:screen]   = { id: :flash, offset: 4, art: "#{BL}#{SNEAKY}#{CL}" }
+    player[:screen] = { id: :flash, offset: 4, art: "#{BL}#{SNEAKY}#{CL}" }
     strike(enemies, player, target)
   else
-    player[:screen]   = { id: :flash, offset: 4, art: "#{RD}#{LOSER}#{CL}" }
+    player[:screen] = { id: :flash, offset: 4, art: "#{RD}#{LOSER}#{CL}" }
     shout(player, :wasted)
   end
 
@@ -104,7 +104,7 @@ def coin_flip(enemies, player, target) # psychic attack
     show_your_moves(player, target, :flip)
 
     if player[:choice] == target[:move]
-      player[:screen]   = { id: :flash, offset: 3, art: "#{MG}#{YOU_WIN.sample}#{CL}" }
+      player[:screen] = { id: :flash, offset: 3, art: "#{MG}#{YOU_WIN.sample}#{CL}" }
       strike(enemies, player, target)
       break if target[:hp] <= 0
     else

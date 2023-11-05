@@ -44,8 +44,8 @@ def shout(who, what) # controls all messages in the game except for combat
   when :combat   then [100,              COMBAT +   " "  + who[:name] + " 🗯️ " +     COMBAT_SHOUT.sample ]
   else                [ 90,       ATTACKS[what] +   " "  + who[:name] + " 🗯️ " +       GAME_SHOUT.sample ]
   end
-  print `clear`                            if [:error, :name].include?(what)
+  print `clear`                            if [:error,            :name].include?(what)
   puts " " * 23 + messages                 if [:error, :target, :combat].include?(what)
   puts text_break(messages, " ", size) unless [:error, :target, :combat].include?(what)
-  puts SHIELD                              if what == :target
+  puts SHIELD                              if what ==  :target
 end
