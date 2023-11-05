@@ -58,7 +58,7 @@ def set_the_scene(dealer, player)
   dealer[:score], player[:score] = [dealer[:hand], player[:hand]].map { |hand| hand.sum { |card| card[:value] } }
 
   check_ace(player); check_ace(dealer)
-  shout(dealer, :gamblore)
+  shout(dealer, :gambler)
 end
 
 def card_deck(player)

@@ -59,7 +59,7 @@ def sneak_attack(enemies, player, target) # sneaky attack
 end
 
 def rochambeau(enemies, player, target) # stylish attack
-  shout(target, :style)
+  shout(target, :stylish)
   player[:screen] = { id: :bounce, art: "#{CN}#{WALK_OFF}#{CL}" } # sets the scene
   target[:moves]  = []
   player[:moves]  = []
