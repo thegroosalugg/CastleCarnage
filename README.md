@@ -2,6 +2,9 @@
 
 ## Introduction
 The game is made just for fun. The purpose is to practice writing and refactoring in Ruby.
+Download the code, enter main directory in your terminal then run >
+
+ruby interface.rb
 
 ## User Interface
 - 🐮 You
